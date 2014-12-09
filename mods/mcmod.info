@@ -1,0 +1,17 @@
+[
+{
+  "modid": "TMS",
+  "name": "TMS",
+  "description": "Made by timaxa007. Thanks for the help: anti344 and Zloi_Kloun",
+  "version": "0.1a",
+  "mcversion": "1.6.4",
+  "logoFile": "/my_face.png",
+  "url": "http://forum.mcmodding.ru/viewtopic.php?id=4",
+  "updateUrl": "",
+  "authors": ["timaxa007"],
+  "credits": "Made by timaxa007. Thanks for the help: anti344 and Zloi_Kloun",
+  "parent": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
