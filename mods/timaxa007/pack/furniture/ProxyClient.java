@@ -144,9 +144,6 @@ MinecraftForgeClient.registerItemRenderer(PackFurniture.proxy.block_metal_blocks
 //Items
 
 MinecraftForge.EVENT_BUS.register(new EventSoundFurniture());
-
-LangLib.registerLanguages();
-
 }
 
 public void preInit(FMLPreInitializationEvent event) {
