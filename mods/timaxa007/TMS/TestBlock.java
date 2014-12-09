@@ -1,0 +1,20 @@
+package mods.timaxa007.TMS;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+
+public class TestBlock extends Block {
+
+public TestBlock(int id) {
+super(id, Material.iron);
+this.setStepSound(soundWoodFootstep);
+this.setCreativeTab(Core.tabTMS);
+this.setHardness(0.1F);
+this.setResistance(10.0F);
+this.setLightValue(0.0F);
+this.setLightOpacity(1);
+this.setTextureName("timaxa007:" + "testBlock");
+this.setUnlocalizedName("block_test");
+}
+
+}

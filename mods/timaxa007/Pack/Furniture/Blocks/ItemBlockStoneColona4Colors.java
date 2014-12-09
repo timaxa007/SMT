@@ -1,0 +1,11 @@
+package mods.timaxa007.Pack.Furniture.Blocks;
+
+import mods.timaxa007.Pack.Furniture.PackFurniture;
+import net.minecraft.item.ItemMultiTextureTile;
+
+public class ItemBlockStoneColona4Colors extends ItemMultiTextureTile{
+public ItemBlockStoneColona4Colors(int id) {
+super(id, PackFurniture.proxy.block_stone_colona4_colors, BlockStoneColona4Colors.colona4Types);
+}
+
+}
