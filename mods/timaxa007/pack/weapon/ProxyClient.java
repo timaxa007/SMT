@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.weapon;
 
-import mods.timaxa007.lib.LangLib;
 import mods.timaxa007.pack.weapon.Entity.EntityBullet;
 import mods.timaxa007.pack.weapon.rb.*;
 import mods.timaxa007.pack.weapon.ri.*;
@@ -40,8 +39,6 @@ RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderE
 
 MinecraftForge.EVENT_BUS.register(new EventGUI());
 MinecraftForge.EVENT_BUS.register(new EventSoundWeapon());
-
-LangLib.registerLanguages();
 
 }
 
