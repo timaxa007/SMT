@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.furniture;
 
-import mods.timaxa007.lib.LangLib;
 import mods.timaxa007.pack.furniture.rb.*;
 import mods.timaxa007.pack.furniture.ri.*;
 import mods.timaxa007.pack.furniture.te.*;
