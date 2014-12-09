@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.mining;
 
-import mods.timaxa007.lib.LangLib;
 import mods.timaxa007.pack.mining.rb.*;
 import mods.timaxa007.pack.mining.ri.*;
 import mods.timaxa007.pack.mining.te.*;
@@ -27,8 +26,6 @@ ClientRegistry.bindTileEntitySpecialRenderer(TEBlockCristals.class, new RenderBl
 ClientRegistry.bindTileEntitySpecialRenderer(TEOreOres.class, new RenderBlockOreOres());
 
 MinecraftForgeClient.registerItemRenderer(PackMining.proxy.block_cristals.blockID, new ItemRenderBlockCristals());
-
-LangLib.registerLanguages();
 
 }
 
