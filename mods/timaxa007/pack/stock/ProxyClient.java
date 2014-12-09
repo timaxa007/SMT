@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.stock;
 
-import mods.timaxa007.lib.LangLib;
 import mods.timaxa007.pack.stock.rb.*;
 import mods.timaxa007.pack.stock.ri.*;
 import mods.timaxa007.pack.stock.te.*;
@@ -50,8 +49,6 @@ MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_apiary.blockID, 
 //Items
 
 MinecraftForge.EVENT_BUS.register(new EventSoundStock());
-
-LangLib.registerLanguages();
 
 }
 
