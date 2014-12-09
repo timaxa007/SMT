@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.magic;
 
-import mods.timaxa007.lib.LangLib;
 import mods.timaxa007.pack.magic.entity.*;
 import mods.timaxa007.pack.magic.rb.*;
 import mods.timaxa007.pack.magic.ri.*;
@@ -35,8 +34,6 @@ MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemStuffs.itemID, new
 RenderingRegistry.registerEntityRenderingHandler(EntityArrowMini.class, new RenderArrowMini());
 
 MinecraftForge.EVENT_BUS.register(new EventSoundMagic());
-
-LangLib.registerLanguages();
 
 }
 
