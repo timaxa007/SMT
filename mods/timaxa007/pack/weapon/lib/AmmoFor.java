@@ -33,7 +33,7 @@ ammo_list[nextID()] = this;
 ammoID = nextID();
 }
 
-public AmmoFor() {
+public AmmoFor(int id) {
 ammo_list[id] = this;
 ammoID = id;
 }

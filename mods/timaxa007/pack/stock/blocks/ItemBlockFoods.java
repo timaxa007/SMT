@@ -4,6 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.lib.FoodForBlock;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -13,7 +14,7 @@ import org.lwjgl.input.Keyboard;
 
 public class ItemBlockFoods extends ItemBlock {
 
-public ItemBlockFoods() {
+public ItemBlockFoods(Block id) {
 super(id);
 setMaxDamage(0);
 setHasSubtypes(true);

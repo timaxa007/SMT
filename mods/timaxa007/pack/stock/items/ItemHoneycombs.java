@@ -27,7 +27,7 @@ public class ItemHoneycombs extends Item {
 @SideOnly(Side.CLIENT) private IIcon icon_b;
 
 public ItemHoneycombs() {
-super(id);
+super();
 setCreativeTab(PackStock.proxy.tabApisPack);
 setHasSubtypes(true);
 setMaxDamage(0);
@@ -148,7 +148,7 @@ return icon_a;
 return icon_b;
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -169,7 +169,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon("timaxa007:apis/honeycombs_icon");
+itemIcon = ir.registerIcon("timaxa007:apis/honeycombs_icon");
 icon_a = ir.registerIcon("timaxa007:apis/honeycombs_a");
 icon_b = ir.registerIcon("timaxa007:apis/honeycombs_b");
 }

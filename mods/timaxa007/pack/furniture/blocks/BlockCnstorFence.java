@@ -59,7 +59,7 @@ if(tag!=null) {
 }
 
 @Override
-public void breakBlock(World world, int x, int y, int z, int id, int meta) {}
+public void breakBlock(World world, int x, int y, int z, Block id, int meta) {}
 
 @SideOnly(Side.CLIENT)
 public void getSubBlocks(int id, CreativeTabs table, List list) {

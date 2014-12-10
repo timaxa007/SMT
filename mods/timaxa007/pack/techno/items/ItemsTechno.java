@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 public class ItemsTechno extends Item {
 
 public ItemsTechno() {
-super(id);
+super();
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
 setUnlocalizedName("items_techno");
 }

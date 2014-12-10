@@ -6,7 +6,6 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.mining.PackMining;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,9 +15,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.Event.Result;
-import net.minecraftforge.event.entity.player.UseHoeEvent;
 
 import org.lwjgl.input.Keyboard;
 
@@ -27,8 +23,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolBrush extends Item{
 @SideOnly(Side.CLIENT) private IIcon iconArray;
-@SideOnly(Side.CLIENT) private IIcon theIIcon;
-public static final String[] brushColorType=new String[]{
+@SideOnly(Side.CLIENT) private IIcon theIcon;
+public static final String[] brushColorType = new String[]{
 "BrushBlack", 
 "BrushBlue", 
 "BrushBrown", 
@@ -48,7 +44,7 @@ public static final String[] brushColorType=new String[]{
 };
 
 public ToolBrush() {
-super(id);
+super();
 setCreativeTab(PackMining.proxy.tabToolsPack);
 setMaxStackSize(1);
 setMaxDamage(8);
@@ -56,48 +52,12 @@ setTextureName("timaxa007:colors/tool_brush");
 setUnlocalizedName("tool_brush");
 }
 
-public boolean onItemUse(ItemStack is, EntityPlayer player, World wrd, int x, int y, int z, int meta, float hitX, float hitY, float hitZ) {
+public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float hitZ) {
 if(!player.canPlayerEdit(x, y, z, meta, is)) {
 return false;
 }
 else{
-UseHoeEvent event=new UseHoeEvent(player, is, wrd, x, y, z);
-if(MinecraftForge.EVENT_BUS.post(event)) {return false;}
-
-if(event.getResult()==Result.ALLOW) {
-is.damageItem(1, player);
-return true;
-}
-
-int i1=wrd.getBlock(x, y, z);
-boolean air=wrd.isAirBlock(x, y+1, z);
-
-if(i1==Block.cobblestone.blockID) {
-Block block=Block.stone;
-wrd.playSoundEffect((double)((float)x+0.5F), (double)((float)y+0.5F), (double)((float)z+0.5F), block.stepSound.getStepSound(), (block.stepSound.getVolume()+1.0F)/2.0F, block.stepSound.getPitch()*0.8F);
-
-if(wrd.isRemote) {return true;}
-else{
-wrd.setBlock(x, y, z, block.blockID);
-is.damageItem(1, player);
-}
-
-return true;
-
-}else if(i1==Block.dirt.blockID||i1==Block.grass.blockID||i1==Block.mycelium.blockID) {
-Block block=Block.tilledField;
-wrd.playSoundEffect((double)((float)x+0.5F), (double)((float)y+0.5F), (double)((float)z+0.5F), block.stepSound.getStepSound(), (block.stepSound.getVolume()+1.0F) / 2.0F, block.stepSound.getPitch()*0.8F);
-
-if(wrd.isRemote) {return true;}
-else{
-wrd.setBlock(x, y, z, block.blockID);
-is.damageItem(1, player);
-}
-
-return true;
-
-}else{return false;}
-
+return false;
 }
 }
 
@@ -131,7 +91,7 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (byte j = 0; j < 16; ++j) {list.add(addTag(j));}
 list.add(new ItemStack(id, 1, 0));
 }
@@ -164,14 +124,14 @@ else{return GetColors.getHexColors[tag.getInteger("Color")];}
 
 @SideOnly(Side.CLIENT)
 public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
-return par2>0?(par2==0?iconArray:theIIcon):super.getIconFromDamageForRenderPass(par1, par2);
+return par2>0?(par2==0?iconArray:theIcon):super.getIconFromDamageForRenderPass(par1, par2);
 }
 
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon("timaxa007:colors/tool_brush");
-theIIcon=ir.registerIcon("timaxa007:"+"colors/"+"tool_brush"+"_overlay");
+itemIcon = ir.registerIcon("timaxa007:colors/tool_brush");
+theIcon=ir.registerIcon("timaxa007:"+"colors/"+"tool_brush"+"_overlay");
 iconArray=ir.registerIcon("timaxa007:"+"colors/"+"tool_brush");
 }
 

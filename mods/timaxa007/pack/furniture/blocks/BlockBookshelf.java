@@ -5,6 +5,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.te.TEBookshelf;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockBookshelf extends BlockContainer{
+public class BlockBookshelf extends BlockContainer {
 protected Random random=new Random();
 
 public BlockBookshelf() {
@@ -34,10 +35,10 @@ public TileEntity createNewTileEntity(World world, int meta) {return new TEBooks
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
-public int idPicked(World wrd, int x, int y, int z) {return 0;}
+public int idPicked(World world, int x, int y, int z) {return 0;}
 
-public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getTileEntity(x, y, z);
+public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+TileEntity te=world.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEBookshelf)) {
 return addTag(0, ((TEBookshelf)te).getType());
 }
@@ -45,20 +46,20 @@ return addTag(0, 0);
 }
 
 @Override
-public boolean onBlockActivated(World wrd, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=wrd.getTileEntity(x, y, z);
-//if(!wrd.isRemote) {return false;}
-if(te==null||player.isSneaking()) {return false;}
-if((te!=null)&&(te instanceof TEBookshelf)) {
-player.openGui(PackFurniture.instance, PackFurniture.proxy.guiBookshelf, wrd, x, y, z);
+public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
+TileEntity te=world.getTileEntity(x, y, z);
+//if(!world.isRemote) {return false;}
+if (te == null || player.isSneaking()) {return false;}
+if (te != null && te instanceof TEBookshelf) {
+player.openGui(PackFurniture.instance, PackFurniture.proxy.guiBookshelf, world, x, y, z);
 return true;
 }
 return false;
 }
 
 @Override
-public void breakBlock(World wrd, int x, int y, int z, int id, int meta) {
-TEBookshelf TEBookshelf=(TEBookshelf)wrd.getTileEntity(x, y, z);
+public void breakBlock(World world, int x, int y, int z, Block id, int meta) {
+TEBookshelf TEBookshelf=(TEBookshelf)world.getTileEntity(x, y, z);
 
 if(TEBookshelf!=null) {
 for(int j1=0;j1<TEBookshelf.getSizeInventory();++j1) {
@@ -75,7 +76,7 @@ int k1=random.nextInt(21)+10;
 if(k1>itemstack.stackSize) {k1=itemstack.stackSize;}
 
 itemstack.stackSize-=k1;
-EntityItem entityitem=new EntityItem(wrd, (double)((float)x+f), (double)((float)y+f1), (double)((float)z+f2), new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+EntityItem entityitem=new EntityItem(world, (double)((float)x+f), (double)((float)y+f1), (double)((float)z+f2), new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 
 if(itemstack.hasTagCompound()) {
 entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
@@ -85,21 +86,20 @@ float f3=0.05F;
 entityitem.motionX=(double)((float)random.nextGaussian()*f3);
 entityitem.motionY=(double)((float)random.nextGaussian()*f3+0.2F);
 entityitem.motionZ=(double)((float)random.nextGaussian()*f3);
-wrd.spawnEntityInWorld(entityitem);
+world.spawnEntityInWorld(entityitem);
 }
 }
 }
 
-wrd.func_96440_m(x, y, z, id);
 }
 
-super.breakBlock(wrd, x, y, z, id, meta);
+super.breakBlock(world, x, y, z, id, meta);
 }
 
-public void spawnDropItem(World wrd, int x, int y, int z, ItemStack is) {
-if(!wrd.isRemote&&wrd.getGameRules().getGameRuleBooleanValue("doTileDrops")) {
-EntityItem entityitem1=new EntityItem(wrd, (double)x+0.5D, (double)y+0.5D, (double)z+0.5D, is);
-wrd.spawnEntityInWorld(entityitem1);
+public void spawnDropItem(World world, int x, int y, int z, ItemStack is) {
+if(!world.isRemote&&world.getGameRules().getGameRuleBooleanValue("doTileDrops")) {
+EntityItem entityitem1=new EntityItem(world, (double)x+0.5D, (double)y+0.5D, (double)z+0.5D, is);
+world.spawnEntityInWorld(entityitem1);
 }
 }
 
@@ -128,8 +128,8 @@ list.add(addTag(0, j));
 }
 
 private static ItemStack addTag(int par1, int par2) {
-ItemStack is=new ItemStack(PackFurniture.proxy.block_bookshelf, 1, 0);
-NBTTagCompound tag=new NBTTagCompound();
+ItemStack is = new ItemStack(PackFurniture.proxy.block_bookshelf, 1, 0);
+NBTTagCompound tag = new NBTTagCompound();
 tag.setInteger("Type", par2);
 is.setTagCompound(tag);
 return is;

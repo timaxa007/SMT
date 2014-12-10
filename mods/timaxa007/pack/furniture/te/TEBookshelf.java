@@ -105,7 +105,7 @@ this.onInventoryChanged();
 
 public int addItem(ItemStack is) {
 for(int i=0;i<this.slotsContents.length;++i) {
-if(this.slotsContents[i]==null||this.slotsContents[i].itemID==0) {
+if(this.slotsContents[i]==null||this.slotsContents[i].getItem()==0) {
 this.setInventorySlotContents(i, is);
 return i;
 }

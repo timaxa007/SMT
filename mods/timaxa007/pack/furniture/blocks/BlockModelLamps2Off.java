@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.furniture.blocks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -11,6 +10,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -25,12 +25,12 @@ private final boolean powered;
 public BlockModelLamps2Off() {
 super(Material.redstoneLight);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
-setStepSound(soundGlassFootstep);
+setStepSound(soundTypeGlass);
 setHardness(0.3F);
 setResistance(1.0F);
 setLightOpacity(1);
 powered=false;
-setLightValue(0.0F);
+setLightLevel(0.0F);
 setBlockTextureName("planks_oak");
 setBlockName("BlockModelLamps2Off");
 }
@@ -52,61 +52,61 @@ public boolean renderAsNormalBlock() {return false;}
 public TileEntity createNewTileEntity(World world, int meta) {return new TELamps2Off();}
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for(byte j=0;j<16;++j) {list.add(new ItemStack(id, 1, j));}
 }
 
-public void onBlockAdded(World wrd, int x, int y, int z) {
-if(!wrd.isRemote) {
-if(powered&&!wrd.isBlockIndirectlyGettingPowered(x, y, z)) {
-wrd.scheduleBlockUpdate(x, y, z, blockID, 4);
+public void onBlockAdded(World world, int x, int y, int z) {
+if(!world.isRemote) {
+if(powered&&!world.isBlockIndirectlyGettingPowered(x, y, z)) {
+world.scheduleBlockUpdate(x, y, z, this, 4);
 }
-else if(!powered&&wrd.isBlockIndirectlyGettingPowered(x, y, z)) {
+else if(!powered&&world.isBlockIndirectlyGettingPowered(x, y, z)) {
 
 for(byte j=0;j<16;++j) {
-if(getDamageValue(wrd, x, y, z)==j) {wrd.setBlock(x, y, z, PackFurniture.proxy.block_model_lamps2_on.blockID, j, 2);}
+if(getDamageValue(world, x, y, z)==j) {world.setBlock(x, y, z, PackFurniture.proxy.block_model_lamps2_on, j, 2);}
 }
 
 }
 }
 }
 
-public void onNeighborBlockChange(World wrd, int x, int y, int z, int par5) {
-if(!wrd.isRemote) {
-if(powered&&!wrd.isBlockIndirectlyGettingPowered(x, y, z)) {
-wrd.scheduleBlockUpdate(x, y, z, blockID, 4);
+public void onNeighborBlockChange(World world, int x, int y, int z, int par5) {
+if(!world.isRemote) {
+if(powered&&!world.isBlockIndirectlyGettingPowered(x, y, z)) {
+world.scheduleBlockUpdate(x, y, z, this, 4);
 }
-else if(!powered&&wrd.isBlockIndirectlyGettingPowered(x, y, z)) {
-
-for(byte j=0;j<16;++j) {
-if(getDamageValue(wrd, x, y, z)==j) {wrd.setBlock(x, y, z, PackFurniture.proxy.block_model_lamps2_on.blockID, j, 2);}
-}
-
-}
-}
-}
-
-public void updateTick(World wrd, int x, int y, int z, Random rdm) {
-if(!wrd.isRemote&&powered&&!wrd.isBlockIndirectlyGettingPowered(x, y, z)) {
+else if(!powered&&world.isBlockIndirectlyGettingPowered(x, y, z)) {
 
 for(byte j=0;j<16;++j) {
-if(getDamageValue(wrd, x, y, z)==j) {wrd.setBlock(x, y, z, PackFurniture.proxy.block_model_lamps2_off.blockID, j, 2);}
+if(getDamageValue(world, x, y, z)==j) {world.setBlock(x, y, z, PackFurniture.proxy.block_model_lamps2_on, j, 2);}
 }
 
 }
 }
+}
 
+public void updateTick(World world, int x, int y, int z, Random rdm) {
+if(!world.isRemote&&powered&&!world.isBlockIndirectlyGettingPowered(x, y, z)) {
+
+for(byte j=0;j<16;++j) {
+if(getDamageValue(world, x, y, z)==j) {world.setBlock(x, y, z, PackFurniture.proxy.block_model_lamps2_off, j, 2);}
+}
+
+}
+}
+/*
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int meta, int fortune) {
 ArrayList<ItemStack> ret=super.getBlockDropped(world, x, y, z, meta, fortune);
 ret.add(new ItemStack(PackFurniture.proxy.block_model_lamps2_off.blockID, 1, meta));
 return ret;
 }
-
+*/
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
-iconArray=new IIcon[16];
-for(byte i=0;i<iconArray.length;++i) {
+iconArray = new IIcon[16];
+for (int i=0;i<iconArray.length;++i) {
 iconArray[i]=ir.registerIcon("timaxa007:"+"lamps/lamp_"+GetColors.getNameColors[i]+"_off");
 }
 }

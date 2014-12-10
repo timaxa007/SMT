@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,7 +28,7 @@ private static String[] modes = new String[] {
 };
 
 public ToolElectricDrills() {
-super(id);
+super();
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
 setMaxDamage(1000);
 setMaxStackSize(1);
@@ -38,9 +39,9 @@ setUnlocalizedName("tool_electric_drills");
 
 public float getStrVsBlock(ItemStack is, Block blk) {
 NBTTagCompound tag = is.getTagCompound();
-if (blk.blockID == Block.web.blockID) {
+if (blk == Blocks.web) {
 return 15.0F;
-} else if (blk.blockID == Block.stoneBrick.blockID) {
+} else if (blk == Blocks.stonebrick) {
 return 5.0F;
 } else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 0) {
 return 5.0F;
@@ -49,8 +50,8 @@ return 10.0F;
 } else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 2) {
 return 1.0F;
 } else {
-Material material=blk.blockMaterial;
-return material!=Material.plants&&material!=Material.vine&&material!=Material.coral&& material!=Material.leaves&&material!=Material.pumpkin?1.0F:1.5F;
+Material material=blk.getMaterial();
+return material!=Material.plants&&material!=Material.vine&&material!=Material.coral&& material!=Material.leaves&&material!=Material.gourd?1.0F:1.5F;
 }
 }
 
@@ -59,22 +60,19 @@ is.damageItem(1, entity2);
 return true;
 }
 
-public boolean onBlockDestroyed(ItemStack is, World world, int par3, int x, int y, int z, EntityLivingBase entity) {
+public boolean onBlockDestroyed(ItemStack is, World world, Block block, int x, int y, int z, EntityLivingBase entity) {
 NBTTagCompound tag = is.getTagCompound();
-if ((double)Block.blocksList[par3].getBlockHardness(world, x, y, z) != 0.0D) {
+if (world.getBlock(x, y, z).getBlockHardness(world, x, y, z) != 0.0F) {
 int es = 10;
 if (tag != null && tag.hasKey("ModeID")) {
 if (tag.getInteger("ModeID") == 0) {es = 10;}
 if (tag.getInteger("ModeID") == 1) {es = 20;}
 if (tag.getInteger("ModeID") == 2) {es = 5;}
 }
-is.damageItem((int)(Block.blocksList[par3].getBlockHardness(world, x, y, z) * es), entity);
+is.damageItem((int)(world.getBlock(x, y, z).getBlockHardness(world, x, y, z) * es), entity);
 return true;
-} else {
-//is.damageItem(1, entity);
-return false;
 }
-//return false;
+return false;
 }
 
 @SideOnly(Side.CLIENT)
@@ -90,7 +88,7 @@ int nbn = tag.getInteger("ModeID");
 
 if (nbn >= 2) {nbn = 0;} else {nbn = nbn + 1;}
 
-if (world.isRemote) {player.addChatMessage("[Drill]: " + modes[nbn] + " ");}
+//if (world.isRemote) {player.addChatMessage("[Drill]: " + modes[nbn] + " ");}
 tag.setInteger("ModeID", nbn);
 is.setTagCompound(tag);
 return is;

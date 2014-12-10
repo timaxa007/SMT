@@ -17,7 +17,7 @@ public class ItemBackpack extends Item {
 public static ItemStack[] slotsBackpack = new ItemStack[27];
 
 public ItemBackpack() {
-super(id);
+super();
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setTextureName("timaxa007:backpack");
 setUnlocalizedName("backpack");
@@ -42,7 +42,7 @@ return true;
 }
 */
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 list.add(addTag());
 list.add(new ItemStack(id, 1, 0));
 }

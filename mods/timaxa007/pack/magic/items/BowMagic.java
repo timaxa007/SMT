@@ -4,13 +4,13 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.pack.magic.entity.EntityArrowMini;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,7 +32,7 @@ public class BowMagic extends Item {
 @SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
 public BowMagic() {
-super(id);
+super();
 setMaxStackSize(1);
 setMaxDamage(1000);
 setCreativeTab(PackMagic.proxy.tabMagicPack);
@@ -92,12 +92,12 @@ MinecraftForge.EVENT_BUS.post(event);
 if (event.isCanceled()) {return;}
 j = event.charge;
 boolean flag = player.capabilities.isCreativeMode||EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, is) > 0;
-if (flag || player.inventory.hasItem(PackMagic.proxy.itemArrowMini.itemID)) {
+if (flag || player.inventory.hasItem(PackMagic.proxy.itemArrowMini)) {
 float f = (float)j / 20.0F;
 f = (f * f + f * 2.0F) / 3.0F;
 if ((double)f<0.1D) {return;}
 if (f > 1.0F) {f = 1.0F;}
-EntityArrowMini entityarrow = new EntityArrowMini(world, player, f*2.0F);
+/*EntityArrowMini entityarrow = new EntityArrowMini(world, player, f*2.0F);
 if (f == 1.0F) {entityarrow.setIsCritical(true);}
 int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, is);
 if (k>0) {entityarrow.setDamage(entityarrow.getDamage() + (double)k*0.5D+0.5D);}
@@ -107,10 +107,10 @@ if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, is)>0) {en
 is.damageItem(1, player);
 world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F/(itemRand.nextFloat()*0.4F+1.2F)+f*0.5F);
 if (flag) {entityarrow.canBePickedUp = 2;}
-else{player.inventory.consumeInventoryItem(PackMagic.proxy.itemArrowMini.itemID);}
+else{player.inventory.consumeInventoryItem(PackMagic.proxy.itemArrowMini.getItem());}
 //if (!world.isRemote) {
 world.spawnEntityInWorld(entityarrow);
-//}
+//}*/
 }
 }
 
@@ -125,7 +125,7 @@ ArrowNockEvent event = new ArrowNockEvent(player, is);
 MinecraftForge.EVENT_BUS.post(event);
 if (event.isCanceled()) {return event.result;}
 
-if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.itemID)) {
+if (player.capabilities.isCreativeMode || player.inventory.hasItem(Items.arrow)) {
 player.setItemInUse(is, getMaxItemUseDuration(is));
 }
 
@@ -136,7 +136,7 @@ public int getItemEnchantability() {return 1;}
 
 public IIcon getIcon(ItemStack is, int renderPass, EntityPlayer player, ItemStack useItm, int useRem) {
 BowMagic itm = PackMagic.proxy.bowMagic;
-if (useItm != null && is.itemID == itm.itemID) {
+if (useItm != null && is.getItem() == itm) {
 int j = is.getMaxItemUseDuration()-useRem;
 if (j >= 18) {return itm.getItemIIconForUseDuration(2);}
 if (j>13) {return itm.getItemIIconForUseDuration(1);}
@@ -149,7 +149,7 @@ return getIcon(is, renderPass);
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
 iconArray = new IIcon[3];
-itemIIcon = ir.registerIcon("timaxa007:" + "tool/" + "bowMagic");
+itemIcon = ir.registerIcon("timaxa007:" + "tool/" + "bowMagic");
 
 for (int i = 0; i < iconArray.length; ++i) {
 iconArray[i] = ir.registerIcon("timaxa007:" + "tool/" + "bowMagic_pull_" + i);

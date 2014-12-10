@@ -11,10 +11,10 @@ this.setStepSound(soundTypeWood);
 this.setCreativeTab(Core.tabTMS);
 this.setHardness(0.1F);
 this.setResistance(10.0F);
-this.setLightValue(0.0F);
+this.setLightLevel(0.0F);
 this.setLightOpacity(1);
-this.setTextureName("timaxa007:" + "testBlock");
-this.setUnlocalizedName("block_test");
+this.setBlockTextureName("timaxa007:" + "testBlock");
+this.setBlockName("block_test");
 }
 
 }

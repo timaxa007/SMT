@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -46,10 +47,11 @@ NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEBlockLocked) {
 if (tag != null) {
 ((TEBlockLocked)te).setType(tag.getInteger("Type"));
-((TEBlockLocked)te).setOwner(entity.getEntityName());
 } else {
 ((TEBlockLocked)te).setType(0);
-((TEBlockLocked)te).setOwner(entity.getEntityName());
+}
+if (entity instanceof EntityPlayer) {
+((TEBlockLocked)te).setOwner(((EntityPlayer)entity).getDisplayName());
 }
 }
 }
@@ -65,8 +67,9 @@ public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player
 if (!world.isRemote) {
 TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEBlockLocked) {
-if (player.username.equals(((TEBlockLocked)te).getOwner())) {
-world.destroyBlock(x, y, z, true);
+if (player.getDisplayName().equals(((TEBlockLocked)te).getOwner())) {
+//world.setBlockToAir(x, y, z);
+//world.spawnEntityInWorld(new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, addTag(((TEBlockLocked)te).getType())));
 }
 }
 }
@@ -76,7 +79,7 @@ public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer p
 if (world.isRemote) {
 TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEBlockLocked) {
-player.addChatMessage("Install Block user - " + ((TEBlockLocked)te).getOwner() + ".");
+//player.addChatMessage("Install Block user - " + ((TEBlockLocked)te).getOwner() + ".");
 return true;
 }
 }
@@ -86,14 +89,14 @@ return false;
 public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEBlockLocked) {
-if (player.username.equals(((TEBlockLocked)te).getOwner())) {
+if (player.getDisplayName().equals(((TEBlockLocked)te).getOwner())) {
 System.out.println("true");
 }
 }
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 list.add(addTag(0));
 }
 

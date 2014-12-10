@@ -1,13 +1,14 @@
 package mods.timaxa007.pack.furniture.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
-public class ItemBlockCnstorBed extends ItemBlock{
+public class ItemBlockCnstorBed extends ItemBlock {
 
-public ItemBlockCnstorBed() {
+public ItemBlockCnstorBed(Block id) {
 super(id);
-this.setMaxDamage(0);
-this.setHasSubtypes(true);
+setMaxDamage(0);
+setHasSubtypes(true);
 }
 
 }

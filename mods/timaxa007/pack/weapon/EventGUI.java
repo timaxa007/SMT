@@ -2,14 +2,14 @@ package mods.timaxa007.pack.weapon;
 
 import mods.timaxa007.pack.weapon.gui.WeaponsIngameGUI;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventGUI {
 //--------------------------------------------------------------------------------------------------------------
 Minecraft mc = Minecraft.getMinecraft();
 
-@ForgeSubscribe
+@SubscribeEvent
 public void statusBullet(LivingUpdateEvent p) {
 
 if ((mc.ingameGUI != null) && (!(mc.ingameGUI instanceof WeaponsIngameGUI))) {

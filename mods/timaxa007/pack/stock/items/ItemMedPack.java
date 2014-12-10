@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 public class ItemMedPack extends Item {
 
 public ItemMedPack() {
-super(id);
+super();
 setCreativeTab(PackStock.proxy.tabMedicalPack);
 setHasSubtypes(true);
 setMaxDamage(0);

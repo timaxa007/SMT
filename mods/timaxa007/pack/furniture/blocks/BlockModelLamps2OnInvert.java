@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.furniture.blocks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -11,6 +10,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -25,12 +25,12 @@ private final boolean powered;
 public BlockModelLamps2OnInvert() {
 super(Material.redstoneLight);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
-setStepSound(soundGlassFootstep);
+setStepSound(soundTypeGlass);
 setHardness(0.3F);
 setResistance(1.0F);
 setLightOpacity(1);
 powered=true;
-setLightValue(1.0F);
+setLightLevel(1.0F);
 setBlockTextureName("planks_oak");
 setBlockName("BlockModelLamps2OnInvert");
 }
@@ -52,20 +52,20 @@ public boolean renderAsNormalBlock() {return false;}
 public TileEntity createNewTileEntity(World world, int meta) {return new TELamps2On();}
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for(byte j=0;j<16;++j) {list.add(new ItemStack(id, 1, j));}
 }
 
-public void onBlockAdded(World par1World, int par2, int par3, int par4) {
-if(!par1World.isRemote) {
-if(!powered && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-par1World.scheduleBlockUpdate(par2, par3, par4, blockID, 4);
+public void onBlockAdded(World world, int par2, int par3, int par4) {
+if(!world.isRemote) {
+if(!powered && !world.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
+world.scheduleBlockUpdate(par2, par3, par4, this, 4);
 }
-else if(powered && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
+else if(powered && world.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
 
 for(byte j=0;j<16;++j) {
-if(getDamageValue(par1World, par2, par3, par4)==j) {
-par1World.setBlock(par2, par3, par4, PackFurniture.proxy.block_model_lamps2_off_invert.blockID, j, 2);
+if(getDamageValue(world, par2, par3, par4)==j) {
+world.setBlock(par2, par3, par4, PackFurniture.proxy.block_model_lamps2_off_invert, j, 2);
 }
 }
 
@@ -73,43 +73,43 @@ par1World.setBlock(par2, par3, par4, PackFurniture.proxy.block_model_lamps2_off_
 }
 }
 
-public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-if(!par1World.isRemote) {
-if(!powered && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-par1World.scheduleBlockUpdate(par2, par3, par4, blockID, 4);
+public void onNeighborBlockChange(World world, int par2, int par3, int par4, int par5) {
+if(!world.isRemote) {
+if(!powered && !world.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
+world.scheduleBlockUpdate(par2, par3, par4, this, 4);
 }
-else if(powered && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-
-for(byte j=0;j<16;++j) {
-if(getDamageValue(par1World, par2, par3, par4)==j) {
-
-par1World.setBlock(par2, par3, par4, PackFurniture.proxy.block_model_lamps2_off_invert.blockID, j, 2);
-}
-}
-
-}
-}
-}
-
-public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-if(!par1World.isRemote && !powered && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
+else if(powered && world.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
 
 for(byte j=0;j<16;++j) {
-if(getDamageValue(par1World, par2, par3, par4)==j) {
-par1World.setBlock(par2, par3, par4, PackFurniture.proxy.block_model_lamps2_on_invert.blockID, j, 2);
+if(getDamageValue(world, par2, par3, par4)==j) {
+
+world.setBlock(par2, par3, par4, PackFurniture.proxy.block_model_lamps2_off_invert, j, 2);
 }
 }
 
 }
 }
+}
 
+public void updateTick(World world, int par2, int par3, int par4, Random par5Random) {
+if(!world.isRemote && !powered && !world.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
+
+for(byte j=0;j<16;++j) {
+if(getDamageValue(world, par2, par3, par4)==j) {
+world.setBlock(par2, par3, par4, PackFurniture.proxy.block_model_lamps2_on_invert, j, 2);
+}
+}
+
+}
+}
+/*
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 ArrayList<ItemStack> ret=super.getBlockDropped(world, x, y, z, metadata, fortune);
-ret.add(new ItemStack(PackFurniture.proxy.block_model_lamps2_on_invert.blockID, 1, metadata));
+ret.add(new ItemStack(PackFurniture.proxy.block_model_lamps2_on_invert, 1, metadata));
 return ret;
 }
-
+*/
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 iconArray=new IIcon[16];

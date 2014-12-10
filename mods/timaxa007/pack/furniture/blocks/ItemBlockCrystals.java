@@ -3,6 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.List;
 
 import mods.timaxa007.lib.Option;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -13,7 +14,7 @@ import org.lwjgl.input.Keyboard;
 //ItemMultiTextureTile
 public class ItemBlockCrystals extends ItemBlock{
 
-public ItemBlockCrystals() {
+public ItemBlockCrystals(Block id) {
 super(id);
 //super(PackFurniture.blockCrystals, GetColors.getNameColors);
 this.setMaxDamage(0);

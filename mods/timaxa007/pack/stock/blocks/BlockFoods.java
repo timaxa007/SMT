@@ -90,8 +90,8 @@ public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityP
 if (!world.isRemote) {
 TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEFoods && !player.capabilities.isCreativeMode) {
-dropBlockAsItem_do(world, x, y, z, addTag(((TEFoods)te).getFoodID(), ((TEFoods)te).getType(), ((TEFoods)te).getColor1(), ((TEFoods)te).getColor2()));
-world.removeBlockTileEntity(x, y, z);
+dropBlockAsItem(world, x, y, z, addTag(((TEFoods)te).getFoodID(), ((TEFoods)te).getType(), ((TEFoods)te).getColor1(), ((TEFoods)te).getColor2()));
+world.removeTileEntity(x, y, z);
 world.setBlockToAir(x, y, z);
 }
 }

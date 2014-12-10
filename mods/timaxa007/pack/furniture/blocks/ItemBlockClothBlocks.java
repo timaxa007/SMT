@@ -3,6 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.List;
 
 import mods.timaxa007.lib.Option;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -12,7 +13,7 @@ import org.lwjgl.input.Keyboard;
 
 public class ItemBlockClothBlocks extends ItemBlock {
 
-public ItemBlockClothBlocks() {
+public ItemBlockClothBlocks(Block id) {
 super(id);
 }
 

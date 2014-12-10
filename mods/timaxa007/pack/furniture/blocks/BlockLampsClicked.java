@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.furniture.blocks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -11,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
@@ -21,18 +21,18 @@ public class BlockLampsClicked extends Block{
 @SideOnly(Side.CLIENT) private IIcon[] iconArray;
 private final String light;
 
-public BlockLampsClicked(int id, boolean par2) {
+public BlockLampsClicked(boolean par2) {
 super(Material.rock);
-setStepSound(soundGlassFootstep);
+setStepSound(soundTypeGlass);
 setHardness(0.3F);
 setResistance(1.0F);
 setLightOpacity(5);
 if(par2) {
 light="on";
-setLightValue(1.0F);
+setLightLevel(1.0F);
 }else{
 light="off";
-setLightValue(0.0F);
+setLightLevel(0.0F);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 }
 setBlockTextureName("planks_oak");
@@ -43,16 +43,16 @@ public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for(byte j=0;j<16;++j) {list.add(new ItemStack(id, 1, j));}
 }
 
 public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-int blok;
-if(blockID==PackFurniture.proxy.block_lamps_click_on.blockID) {
-blok=PackFurniture.proxy.block_lamps_click_off.blockID;
+Block blok;
+if(this==PackFurniture.proxy.block_lamps_click_on) {
+blok=PackFurniture.proxy.block_lamps_click_off;
 }else{
-blok=PackFurniture.proxy.block_lamps_click_on.blockID;
+blok=PackFurniture.proxy.block_lamps_click_on;
 }
 for(byte j=0;j<16;++j) {
 if(getDamageValue(world, x, y, z)==j) {
@@ -61,14 +61,14 @@ world.setBlock(x, y, z, blok, j, 0);
 }
 return true;
 }
-
+/*
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 ArrayList<ItemStack> ret=super.getBlockDropped(world, x, y, z, metadata, fortune);
-ret.add(new ItemStack(PackFurniture.proxy.block_lamps_click_off.blockID, 1, metadata));
+ret.add(new ItemStack(PackFurniture.proxy.block_lamps_click_off, 1, metadata));
 return ret;
 }
-
+*/
 @SideOnly(Side.CLIENT)
 public IIcon getIcon(int par1, int par2) {
 return iconArray[par2 % iconArray.length];

@@ -187,7 +187,7 @@ public static FoodForItem test2 = new FoodForItem("test2").setFoodStats(2, 0.2F)
 @SideOnly(Side.CLIENT) private IIcon[][] icon_g;
 
 public ItemFoods() {
-super(id);
+super();
 setCreativeTab(PackStock.proxy.tabFoodPack);
 setHasSubtypes(true);
 setMaxDamage(0);
@@ -543,7 +543,7 @@ return icon_g[FoodForItem.getID_tag(tag.getString("NameID"))][pass];
 } else if (tag != null && tag.hasKey("ItemID")) {
 return icon_g[tag.getInteger("ItemID")][pass];
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -605,14 +605,14 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon(getIconString() + "foods/food");
+itemIcon = ir.registerIcon(getIconString() + "foods/food");
 icon_g = new IIcon[FoodForItem.food_list.length][4];
 for (int i = 0; i < FoodForItem.food_list.length; i++) {
 for (int j = 0; j < 4; j++) {
 if ( FoodForItem.food_list[i] != null) {
 icon_g[i][j] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getTexture(j));
 } else {
-icon_g[i][j] = itemIIcon;
+icon_g[i][j] = itemIcon;
 }
 }
 }
@@ -628,8 +628,8 @@ icon_tex[i] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getText
 	icon_ovl[i] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getTexture(1));
 	}
 } else {
-icon_tex[i] = itemIIcon;
-icon_ovl[i] = itemIIcon;
+icon_tex[i] = itemIcon;
+icon_ovl[i] = itemIcon;
 }
 }
 */

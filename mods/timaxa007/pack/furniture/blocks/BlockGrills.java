@@ -5,6 +5,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.te.TEGrills;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -61,7 +62,7 @@ return true;
 return false;
 }
 
-public void breakBlock(World wrd, int x, int y, int z, int blkid, int blkmeta) {
+public void breakBlock(World wrd, int x, int y, int z, Block blkid, int blkmeta) {
 if(!keepFurnaceInventory) {
 TEGrills tileentityfurnace=(TEGrills)wrd.getTileEntity(x, y, z);
 
@@ -80,7 +81,7 @@ int k1=furnaceRand.nextInt(21)+10;
 if(k1>itemstack.stackSize) {k1=itemstack.stackSize;}
 
 itemstack.stackSize-=k1;
-EntityItem entityitem=new EntityItem(wrd, (double)((float)x+f), (double)((float)y+f1), (double)((float)z+f2), new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+EntityItem entityitem=new EntityItem(wrd, (double)((float)x+f), (double)((float)y+f1), (double)((float)z+f2), new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 
 if(itemstack.hasTagCompound()) {
 entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
@@ -95,7 +96,6 @@ wrd.spawnEntityInWorld(entityitem);
 }
 }
 
-wrd.func_96440_m(x, y, z, blkid);
 }
 }
 

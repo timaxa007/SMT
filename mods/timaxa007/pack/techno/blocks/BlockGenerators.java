@@ -38,7 +38,7 @@ public static final String[] generatorNames=new String[]{
 public BlockGenerators() {
 super(Material.iron);
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
-setStepSound(soundMetalFootstep);
+setStepSound(soundTypeMetal);
 setBlockTextureName("planks_oak");
 setBlockName("BlockGenerators");
 }
@@ -58,8 +58,8 @@ public void getSubBlocks(int id, CreativeTabs table, List list) {
 for(byte j=0;j<16;++j) {list.add(new ItemStack(id, 1, j));}
 }
 
-//public int getItem() {return PackTechno.itemBrickColors.itemID;}
-//public int getBlock() {return PackTechno.blockGenerators.blockID;}
+//public int getItem() {return PackTechno.itemBrickColors.getItem();}
+//public int getBlock() {return PackTechno.blockGenerators;}
 
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {

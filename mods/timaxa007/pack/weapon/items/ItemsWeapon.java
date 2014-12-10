@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 public class ItemsWeapon extends Item {
 
 public ItemsWeapon() {
-super(id);
+super();
 setCreativeTab(PackWeapon.proxy.tabWeaponPack);
 setUnlocalizedName("items_weapon");
 }

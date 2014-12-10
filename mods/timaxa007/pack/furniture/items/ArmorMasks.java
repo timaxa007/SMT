@@ -113,8 +113,8 @@ model_mask.isSneak = entity.isSneaking();
 model_mask.isRiding = entity.isRiding();
 model_mask.isChild = entity.isChild();
 //model_mask.onGround = entity.onGround();
-model_mask.heldItemRight = entity.getCurrentItemOrArmor(0) != null ? 1 :0;
 if (entity instanceof EntityPlayer) {
+model_mask.heldItemRight = ((EntityPlayer)entity).getCurrentEquippedItem() != null ? 1 :0;
 model_mask.aimedBow = ((EntityPlayer)entity).getItemInUseDuration() > 2;
 }
 return model_mask;
@@ -130,14 +130,14 @@ NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("TypeMask")) {
 return iconArray[tag.getInteger("TypeMask")];
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon(getIconString());
+itemIcon = ir.registerIcon(getIconString());
 iconArray = new IIcon[type_mask.length];
 for (int i = 0; i < type_mask.length; ++i) {
 iconArray[i] = ir.registerIcon(getIconString() + "_" + type_mask[i]);

@@ -54,7 +54,7 @@ public static final int[] shardHex=new int[]{
 };
 
 public ShardElements() {
-super(id);
+super();
 this.setHasSubtypes(true);
 this.setMaxDamage(0);
 this.setCreativeTab(PackMagic.proxy.tabMagicPack);
@@ -67,7 +67,7 @@ return super.getUnlocalizedName()+"."+shaedNames[j];
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for(int j=0;j<shaedNames.length;++j) {list.add(new ItemStack(id, 1, j));}
 }
 

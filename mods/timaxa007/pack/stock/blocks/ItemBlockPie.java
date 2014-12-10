@@ -4,17 +4,17 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemMultiTextureTile;
+import net.minecraft.item.ItemMultiTexture;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 
 import org.lwjgl.input.Keyboard;
 
-public class ItemBlockPie extends ItemMultiTextureTile{
+public class ItemBlockPie extends ItemMultiTexture {
 
-public ItemBlockPie() {
-super(PackStock.proxy.block_cakes, BlockPies.typePies);
+public ItemBlockPie(Block id) {
+super(id, PackStock.proxy.block_cakes, BlockPies.typePies);
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {

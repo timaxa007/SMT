@@ -1,17 +1,18 @@
 package mods.timaxa007.pack.furniture.blocks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.te.TELampsOn;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -24,11 +25,11 @@ public class BlockModelLampsClickedOn extends BlockContainer{
 
 public BlockModelLampsClickedOn() {
 super(Material.redstoneLight);
-setStepSound(soundGlassFootstep);
+setStepSound(soundTypeGlass);
 setHardness(0.3F);
 setResistance(1.0F);
 setLightOpacity(1);
-setLightValue(1.0F);
+setLightLevel(1.0F);
 setBlockTextureName("planks_oak");
 setBlockName("BlockModelLampsClickOn");
 }
@@ -50,32 +51,32 @@ public boolean renderAsNormalBlock() {return false;}
 public TileEntity createNewTileEntity(World world, int meta) {return new TELampsOn();}
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for(byte j=0;j<16;++j) {list.add(new ItemStack(id, 1, j));}
 }
 
-public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-int blok;
-if(blockID==PackFurniture.proxy.block_model_lamps_click_on.blockID) {
-blok=PackFurniture.proxy.block_model_lamps_click_off.blockID;
-}else{
-blok=PackFurniture.proxy.block_model_lamps_click_on.blockID;
+public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+Block blok;
+if (this == PackFurniture.proxy.block_model_lamps_click_on) {
+blok = PackFurniture.proxy.block_model_lamps_click_off;
+} else {
+blok=PackFurniture.proxy.block_model_lamps_click_on;
 }
 for(byte j=0;j<16;++j) {
-if(getDamageValue(par1World, par2, par3, par4)==j) {
-par1World.setBlock(par2, par3, par4, blok, j, 0);
+if(getDamageValue(world, par2, par3, par4)==j) {
+world.setBlock(par2, par3, par4, blok, j, 0);
 }
 }
 return true;
 }
-
+/*
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 ArrayList<ItemStack> ret=super.getBlockDropped(world, x, y, z, metadata, fortune);
-ret.add(new ItemStack(PackFurniture.proxy.block_model_lamps_click_off.blockID, 1, metadata));
+ret.add(new ItemStack(PackFurniture.proxy.block_model_lamps_click_off, 1, metadata));
 return ret;
 }
-
+*/
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 iconArray=new IIcon[16];

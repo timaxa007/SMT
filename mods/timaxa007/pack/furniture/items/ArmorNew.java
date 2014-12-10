@@ -8,17 +8,16 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArmorNew extends ItemArmor {
 
-public ArmorNew(int id, EnumArmorMaterial mat, int par3, int par4) {
+public ArmorNew(ArmorMaterial mat, int par3, int par4) {
 super(mat, par3, par4);
 }
 
@@ -35,7 +34,7 @@ public void addInformation(ItemStack is, EntityPlayer player, List list, boolean
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 list.add(new ItemStack(id, 1, 0));
 }
 
@@ -69,8 +68,8 @@ model_new_armor.isSneak = entity.isSneaking();
 model_new_armor.isRiding = entity.isRiding();
 model_new_armor.isChild = entity.isChild();
 //model_armor_medieval.onGround = entity.onGround();
-model_new_armor.heldItemRight = entity.getCurrentItemOrArmor(0) != null ? 1 :0;
 if (entity instanceof EntityPlayer) {
+model_new_armor.heldItemRight = ((EntityPlayer)entity).getCurrentEquippedItem() != null ? 1 :0;
 model_new_armor.aimedBow = ((EntityPlayer)entity).getItemInUseDuration() > 2;
 }
 return model_new_armor;

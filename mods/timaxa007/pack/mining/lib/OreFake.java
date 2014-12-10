@@ -31,7 +31,7 @@ ore_list[nextID()] = this;
 oreID = nextID();
 }
 
-public OreFake() {
+public OreFake(int id) {
 ore_list[id] = this;
 oreID = id;
 }

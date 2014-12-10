@@ -2,8 +2,6 @@ package mods.timaxa007.pack.mining.blocks;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.pack.mining.te.TEOreOres;
@@ -12,6 +10,8 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -19,6 +19,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class OreOres extends Block implements ITileEntityProvider {
 
@@ -44,7 +46,7 @@ public static String[] type_ore = new String[] {
 public OreOres() {
 super(Material.rock);
 setCreativeTab(PackMining.proxy.tabMiningPack);
-setStepSound(soundStoneFootstep);
+setStepSound(soundTypeStone);
 setHardness(1.0F);
 setResistance(5.0F);
 setBlockTextureName("stone");
@@ -70,10 +72,10 @@ return 0xFFFFFF;
 public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
 TileEntity te = block_access.getTileEntity(x, y, z);
 if (te != null && te instanceof TEOreOres) {
-if (blockID == PackMining.proxy.ore_rock_ores.blockID) {return Block.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-if (blockID == PackMining.proxy.ore_nether_ores.blockID) {return Block.netherrack.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-if (blockID == PackMining.proxy.ore_ender_ores.blockID) {return Block.whiteStone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-return Block.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));
+if (this == PackMining.proxy.ore_rock_ores) {return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
+if (this == PackMining.proxy.ore_nether_ores) {return Blocks.netherrack.getIcon(side, block_access.getBlockMetadata(x, y, z));}
+if (this == PackMining.proxy.ore_ender_ores) {return Blocks.end_stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
+return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));
 }
 return getIcon(side, block_access.getBlockMetadata(x, y, z));
 }
@@ -103,7 +105,7 @@ if (tag.hasKey("ColorBlock")) {((TEOreOres)te).setColorBlock(tag.getInteger("Col
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for (int i = 0; i < type_ore.length; i++) {
 //for (int j = 0; j < 16; j++) {
 int j = 14;
@@ -113,7 +115,11 @@ list.add(addTag(id, i, GetColors.getHexColors[j]));
 //list.add(new ItemStack(id, 1, 0));
 }
 
-private static ItemStack addTag(int par1, int par2, int par3) {
+private static ItemStack addTag(Block par1, int par2, int par3) {
+return addTag(Item.getItemFromBlock(par1), par2, par3);
+}
+
+private static ItemStack addTag(Item par1, int par2, int par3) {
 ItemStack is = new ItemStack(par1, 1, 0);
 NBTTagCompound tag = new NBTTagCompound();
 tag.setByte("Type", (byte)par2);

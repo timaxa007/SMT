@@ -12,7 +12,7 @@ super(name);
 
 @SideOnly(Side.CLIENT)
 public int getTabIIconItemIndex() {
-return PackMining.proxy.toolPickaxe.itemID;
+return PackMining.proxy.toolPickaxe.getItem();
 }
 
 }

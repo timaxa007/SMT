@@ -215,7 +215,7 @@ this.mincerItemStacks[0]=null;
 public static int getItemBurnTime(ItemStack is) {
 if(is==null) {return 0;}
 else{
-int i=is.getItem().itemID;
+int i=is.getItem().getItem();
 Item item=is.getItem();
 
 if(is.getItem() instanceof ItemBlock&&Block.blocksList[i]!=null) {
@@ -223,7 +223,7 @@ Block block=Block.blocksList[i];
 if(block==Block.blockRedstone) {return 200*9;}
 }
 
-if(i==Item.redstone.itemID) return 200;
+if(i==Item.redstone.getItem()) return 200;
 return 0;
 }
 }
@@ -250,7 +250,7 @@ return this.isItemValidForSlot(par1, is);
 }
 
 public boolean canExtractItem(int par1, ItemStack is, int par3) {
-return par3!=0||par1!=1||is.itemID==Item.bucketEmpty.itemID;
+return par3!=0||par1!=1||is.getItem()==Item.bucketEmpty.getItem();
 }
 
 }

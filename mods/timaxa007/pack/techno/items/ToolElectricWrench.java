@@ -7,13 +7,13 @@ import net.minecraft.item.Item;
 public class ToolElectricWrench extends Item {
 
 public ToolElectricWrench() {
-super(id);
+super();
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
 setUnlocalizedName("electric.wrench");
 }
 
 @Override
 public void registerIcons(IIconRegister ir) {
-itemIIcon = ir.registerIcon("timaxa007:" + "testItem");
+itemIcon = ir.registerIcon("timaxa007:" + "testItem");
 }
 }

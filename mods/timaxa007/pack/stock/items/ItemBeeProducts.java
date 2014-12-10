@@ -24,7 +24,7 @@ public class ItemBeeProducts extends Item {
 @SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
 public ItemBeeProducts() {
-super(id);
+super();
 setCreativeTab(PackStock.proxy.tabApisPack);
 setHasSubtypes(true);
 setMaxDamage(0);
@@ -167,7 +167,7 @@ return icon_tex[bee_products.valueOf(tag.getString("NameID")).ordinal()];
 return icon_ovl[bee_products.valueOf(tag.getString("NameID")).ordinal()];
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -188,7 +188,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon("timaxa007:apis/bee_products_icon");
+itemIcon = ir.registerIcon("timaxa007:apis/bee_products_icon");
 icon_tex = new IIcon[bee_products.values().length];
 icon_ovl = new IIcon[bee_products.values().length];
 for (bee_products j : bee_products.values()) {

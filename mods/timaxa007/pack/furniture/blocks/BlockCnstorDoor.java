@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -56,7 +57,7 @@ NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TECnstorDoors && tag != null) {
 if (tag.hasKey("SubID")) {((TECnstorDoors)te).setSubID((int)tag.getByte("SubID"));}
 if (tag.hasKey("ColorBlock")) {((TECnstorDoors)te).setColorBlock(tag.getInteger("ColorBlock"));}
-if (entity instanceof EntityPlayer) {((TECnstorDoors)te).setOwner(((EntityPlayer)entity).username);}
+if (entity instanceof EntityPlayer) {((TECnstorDoors)te).setOwner(((EntityPlayer)entity).getDisplayName());}
 }
 }
 
@@ -79,7 +80,7 @@ if (tag != null && tag.hasKey("CordX") && tag.hasKey("CordY") && tag.hasKey("Cor
 if (tag.getInteger("CordX") == x && tag.getInteger("CordY") == y && tag.getInteger("CordZ") == z) {
 ((TECnstorDoors)te).openDoor(true);
 } else {
-if (world.isRemote) {player.addChatMessage("This key does not fit into this door.");}
+//if (world.isRemote) {player.addChatMessage("This key does not fit into this door.");}
 return false;
 }
 } else {
@@ -96,7 +97,7 @@ current.setTagCompound(tag);
 if (ib == 1) {//
 
 if (world.provider.isDaytime()) {
-if (player.username.equals(((TECnstorDoors)te).getOwner())) {
+if (player.getDisplayName().equals(((TECnstorDoors)te).getOwner())) {
 ((TECnstorDoors)te).openDoor(true);
 } else {
 return false;
@@ -123,22 +124,26 @@ public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityP
 if (!world.isRemote) {
 TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TECnstorDoors && !player.capabilities.isCreativeMode) {
-dropBlockAsItem_do(world, x, y, z, addTag(world.getBlock(x, y, z), ((TECnstorDoors)te).getSubID(), ((TECnstorDoors)te).getColorBlock()));
-world.removeBlockTileEntity(x, y, z);
+dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TECnstorDoors)te).getSubID(), ((TECnstorDoors)te).getColorBlock()));
+world.removeTileEntity(x, y, z);
 world.setBlockToAir(x, y, z);
 }
 }
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 
 list.add(addTag(id, 0, 0xFFFFFF));
 
 //list.add(new ItemStack(id, 1, 0));
 }
 
-private static ItemStack addTag(int par1, int par2, int par3) {
+private static ItemStack addTag(Block par1, int par2, int par3) {
+return addTag(Item.getItemFromBlock(par1), par2, par3);
+}
+
+private static ItemStack addTag(Item par1, int par2, int par3) {
 ItemStack is = new ItemStack(par1, 1, 0);
 NBTTagCompound tag = new NBTTagCompound();
 tag.setByte("SubID", (byte)par2);

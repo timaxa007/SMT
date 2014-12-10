@@ -4,8 +4,6 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapon;
-import mods.timaxa007.pack.weapon.entity.EntityBullet;
-import mods.timaxa007.pack.weapon.lib.MagazineFor;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.KeyBindingHandler;
 import net.minecraft.client.Minecraft;
@@ -34,7 +32,7 @@ public class ItemWeapons extends Item {
 @SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
 public ItemWeapons() {
-super(id);
+super();
 setMaxStackSize(1);
 setCreativeTab(PackWeapon.proxy.tabWeaponPack);
 setTextureName("timaxa007:item_weapons");
@@ -45,7 +43,7 @@ public void onUpdate(ItemStack is, World world, Entity entity, int par4, boolean
 
 if (entity instanceof EntityPlayer) {
 
-ItemStack actHBI = ((EntityPlayer)entity).getCurrentItemOrArmor(0);
+ItemStack actHBI = ((EntityPlayer)entity).getCurrentEquippedItem();
 
 if (actHBI != null && actHBI.getItem() instanceof ItemWeapons && actHBI.getTagCompound() != null) {
 NBTTagCompound tag = actHBI.getTagCompound();
@@ -64,7 +62,7 @@ if (!Mouse.isButtonDown(0)) {var1 = 0;} else {var1++;}
 if (isFire(var1, 5) && var2 > 0) {
 if (!world.isRemote) {
 world.playSoundAtEntity(entity, "timaxa007:ak74_shoot", 1.0F, 1.0F);
-world.spawnEntityInWorld(new EntityBullet(world, (EntityPlayer)entity, 2.0F));
+//world.spawnEntityInWorld(new EntityBullet(world, (EntityPlayer)entity, 2.0F));
 } else {
 System.out.println("isFire - n: " + var1);
 }
@@ -77,7 +75,7 @@ tag.setInteger("Shooted", var1);
 
 }
 //----------------------------------------------------------------------------------------------------------------
-if (Keyboard.isKeyDown(KeyBindingHandler.reload_key_bind.keyCode)) {
+if (Keyboard.isKeyDown(KeyBindingHandler.reload_key_bind.getKeyCode())) {
 if (WeaponFor.weapon_list[tag.getInteger("WeaponID")] != null) {
 if (!world.isRemote) {
 
@@ -90,7 +88,7 @@ tag.setInteger("AmmoAtm", 20);
 }
 }
 //----------------------------------------------------------------------------------------------------------------
-if (Keyboard.isKeyDown(KeyBindingHandler.mode_switch_key_bind.keyCode)) {
+if (Keyboard.isKeyDown(KeyBindingHandler.mode_switch_key_bind.getKeyCode())) {
 if (!world.isRemote) {
 
 ((EntityPlayer)entity).openGui(PackWeapon.instance, 1, world, (int)entity.posX, (int)entity.posY, (int)entity.posZ);
@@ -188,7 +186,7 @@ System.out.println("off-scope");
 
 public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 NBTTagCompound tag = is.getTagCompound();
-//if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.itemID)) {
+//if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.getItem())) {
 player.setItemInUse(is, getMaxItemUseDuration(is));
 //}
 if (!world.isRemote) {
@@ -276,7 +274,7 @@ return icon_tex[tag.getInteger("WeaponID")];
 return icon_ovl[tag.getInteger("WeaponID")];
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -297,7 +295,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon("timaxa007:" + "weapons");
+itemIcon = ir.registerIcon("timaxa007:" + "weapons");
 icon_tex = new IIcon[WeaponFor.weapon_list.length];
 icon_ovl = new IIcon[WeaponFor.weapon_list.length];
 for (int i = 0; i < WeaponFor.weapon_list.length; i++) {
@@ -309,8 +307,8 @@ icon_tex[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[
 	icon_ovl[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[i].getTexture2Name());
 	}
 } else {*/
-icon_tex[i] = itemIIcon;
-icon_ovl[i] = itemIIcon;
+icon_tex[i] = itemIcon;
+icon_ovl[i] = itemIcon;
 //}
 }
 }

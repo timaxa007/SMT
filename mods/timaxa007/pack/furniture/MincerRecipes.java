@@ -18,12 +18,12 @@ private HashMap<List<Integer>, ItemStack> metaMinceList=new HashMap<List<Integer
 public static final MincerRecipes mince() {return minceBase;}
 
 private MincerRecipes() {
-this.addMince(Item.porkRaw.itemID, new ItemStack(Item.porkCooked));
-this.addMince(Item.beefRaw.itemID, new ItemStack(Item.beefCooked));
-this.addMince(Item.chickenRaw.itemID, new ItemStack(Item.chickenCooked));
-this.addMince(Item.fishRaw.itemID, new ItemStack(Item.fishCooked));
-this.addMince(Block.cactus.blockID, new ItemStack(Item.dyePowder, 1, 2));
-this.addMince(Item.potato.itemID, new ItemStack(Item.bakedPotato));
+this.addMince(Item.porkRaw.getItem(), new ItemStack(Item.porkCooked));
+this.addMince(Item.beefRaw.getItem(), new ItemStack(Item.beefCooked));
+this.addMince(Item.chickenRaw.getItem(), new ItemStack(Item.chickenCooked));
+this.addMince(Item.fishRaw.getItem(), new ItemStack(Item.fishCooked));
+this.addMince(Block.cactus, new ItemStack(Item.dyePowder, 1, 2));
+this.addMince(Item.potato.getItem(), new ItemStack(Item.bakedPotato));
 }
 
 public void addMince(int par1, ItemStack par2ItemStack) {
@@ -38,9 +38,9 @@ metaMinceList.put(Arrays.asList(itemID, metadata), itemstack);
 
 public ItemStack getMinceResult(ItemStack is) {
 if(is==null) {return null;}
-ItemStack ret=(ItemStack)metaMinceList.get(Arrays.asList(is.itemID, is.getItemDamage()));
+ItemStack ret=(ItemStack)metaMinceList.get(Arrays.asList(is.getItem(), is.getItemDamage()));
 if(ret!=null) {return ret;}
-return (ItemStack)minceList.get(Integer.valueOf(is.itemID));
+return (ItemStack)minceList.get(Integer.valueOf(is.getItem()));
 }
 
 public Map<List<Integer>, ItemStack> getMetaMinceList() {return metaMinceList;}

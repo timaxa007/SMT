@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -32,7 +32,7 @@ public static String[] armor_type_name = new String[] {
 "boot"
 };
 
-public ArmorCostumes(int id, EnumArmorMaterial par2, int par3, int par4) {
+public ArmorCostumes(ArmorMaterial par2, int par3, int par4) {
 super(par2, par3, par4);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 }
@@ -99,14 +99,14 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (costumes j : costumes.values()) {
 list.add(addTag(id, j.toString()));
 }
 //list.add(new ItemStack(id, 1, 0));
 }
 
-private ItemStack addTag(int id, String par2) {
+private ItemStack addTag(Item id, String par2) {
 ItemStack is = new ItemStack(id, 1, 0);
 NBTTagCompound tag = new NBTTagCompound();
 tag.setString("NameID", par2);
@@ -136,7 +136,7 @@ return icon_tex[costumes.valueOf(tag.getString("NameID")).ordinal()];
 return icon_ovl[costumes.valueOf(tag.getString("NameID")).ordinal()];
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -160,7 +160,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon("timaxa007:" + "armor/" + "armor");
+itemIcon = ir.registerIcon("timaxa007:" + "armor/" + "armor");
 icon_tex = new IIcon[costumes.values().length];
 icon_ovl = new IIcon[costumes.values().length];
 for (costumes j : costumes.values()) {

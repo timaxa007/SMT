@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.magic.blocks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -12,7 +11,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -54,13 +52,13 @@ public int idDropped(int par1, Random rdm, int par3) {return par1;}
 public int damageDropped(int par1) {return par1;}
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for(byte j=0;j<16;++j) {list.add(new ItemStack(id, 1, j));}
 }
 
 private Item getItem() {return PackMagic.proxy.shardElements;}
 private Block getBlock() {return PackMagic.proxy.oreElements;}
-
+/*
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World wrd, int x, int y, int z, int meta, int fortune) {
 ArrayList<ItemStack> ret=super.getBlockDropped(wrd, x, y, z, meta, fortune);
@@ -81,7 +79,7 @@ ret.add(new ItemStack(getItem(), 1, meta));
 }
 return ret;
 }
-
+*/
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 iconArray=new IIcon[16];

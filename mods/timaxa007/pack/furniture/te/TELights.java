@@ -28,7 +28,7 @@ else {light_level = i;}
 /** <b>float</b> - 0.0F, 0.0625F, 0.125F, 0.1875F, 0.25F, 0.3125F, 0.375F, 0.4375F, 
  * 0.5F, 0.5625F, 0.625F, 0.6875F, 0.75F, 0.8125F, 0.875F, 0.9375F, 1.0F
 **/
-public void setLightValue(float f) {setLightLevel((int)(f*16.0F));}
+public void setLightLevel(float f) {setLightLevel((int)(f*16.0F));}
 public void setColorHex1(int i) {color_hex1 = i;}
 
 public String getType()	{return type;}

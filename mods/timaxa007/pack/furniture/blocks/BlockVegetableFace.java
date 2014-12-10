@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
@@ -44,7 +45,7 @@ public static String[] type_face = new String[] {
 };
 
 public BlockVegetableFace() {
-super(Material.pumpkin);
+super(Material.gourd);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.5F);
 setResistance(2.5F);
@@ -120,8 +121,8 @@ public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityP
 if (!world.isRemote) {
 TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEBlockVegetableFace && !player.capabilities.isCreativeMode) {
-dropBlockAsItem_do(world, x, y, z, addTag(world.getBlock(x, y, z), ((TEBlockVegetableFace)te).getSubID(), ((TEBlockVegetableFace)te).getFace(), ((TEBlockVegetableFace)te).getColorBlock()));
-world.removeBlockTileEntity(x, y, z);
+dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TEBlockVegetableFace)te).getSubID(), ((TEBlockVegetableFace)te).getFace(), ((TEBlockVegetableFace)te).getColorBlock()));
+world.removeTileEntity(x, y, z);
 world.setBlockToAir(x, y, z);
 }
 }
@@ -140,10 +141,10 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 return true;
 }
 //--------------------------------
-else if (current.getItem() == Item.dyePowder && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
+else if (current.getItem() == Items.dye && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 //((TEBlockVegetableFace)te).setColorBlock(ItemDye.dyeColors[current.getItemDamage()]);
-((TEBlockVegetableFace)te).setColorBlock(GetColors.getColorMix(ItemDye.dyeColors[current.getItemDamage()], ((TEBlockVegetableFace)te).getColorBlock()));
+((TEBlockVegetableFace)te).setColorBlock(GetColors.getColorMix(ItemDye.field_150922_c[current.getItemDamage()], ((TEBlockVegetableFace)te).getColorBlock()));
 //world.scheduleBlockUpdate(x, y, z, world.getBlock(x, y, z), 4);
 return true;
 }
@@ -154,7 +155,7 @@ else {return false;}
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for (int i1 = 0; i1 < type_block.length; i1++) {
 for (int i3 = 0; i3 < type_face.length; i3++) {
 //for (int j = 0; j < 16; j++) {
@@ -169,7 +170,11 @@ list.add(addTag(id, i, (j * 1000000)));
 //list.add(new ItemStack(id, 1, 0));
 }
 
-private static ItemStack addTag(int par1, int par2, int par3, int par4) {
+private static ItemStack addTag(Block par1, int par2, int par3, int par4) {
+return addTag(Item.getItemFromBlock(par1), par2, par3, par4);
+}
+
+private static ItemStack addTag(Item par1, int par2, int par3, int par4) {
 ItemStack is = new ItemStack(par1, 1, 0);
 NBTTagCompound tag = new NBTTagCompound();
 tag.setByte("SubID", (byte)par2);

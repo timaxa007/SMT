@@ -38,7 +38,7 @@ weapon_list[nextID()] = this;
 weaponID = nextID();
 }
 
-public WeaponFor() {
+public WeaponFor(int id) {
 weapon_list[id] = this;
 weaponID = id;
 }

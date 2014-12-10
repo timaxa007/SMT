@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.furniture.blocks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -10,6 +9,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -36,13 +37,13 @@ public int quantityDropped(Random rdm) {return 0;}
 public int getRenderType() {return PackFurniture.proxy.renderBlockCandleModelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
-
+/*
 public boolean canPlaceBlockAt(World world, int x, int y, int z) {
 int l = world.getBlock(x, y, z);
 Block block = Block.blocksList[l];
 return (block == null || block.isBlockReplaceable(world, x, y, z)) && world.doesBlockHaveSolidTopSurface(x, y - 1, z);
 }
-
+*/
 @SideOnly(Side.CLIENT)
 public void randomDisplayTick(World world, int x, int y, int z, Random rdm) {
 int l = world.getBlockMetadata(x, y, z);
@@ -53,7 +54,7 @@ double d3 = 0.2199999988079071D;
 double d4 = 0.27000001072883606D;
 int random = rdm.nextInt(16);
 
-if (world.getBlock(x, y - 1, z) == Block.bookShelf.blockID) {
+if (world.getBlock(x, y - 1, z) == Blocks.bookshelf) {
 
 if (random == 0) {world.spawnParticle("enchantmenttable", d0 - 0.2D, d1, d2 - 0.2D, 0.0D + 0.1D, 0.0D, 0.0D + 0.1D);}
 else if (random == 1) {world.spawnParticle("enchantmenttable", d0 - 0.2D, d1, d2 + 0.2D, 0.0D + 0.1D, 0.0D, 0.0D - 0.1D);}
@@ -159,7 +160,7 @@ world.spawnParticle("flame", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 }
 
 else{*/
-if (this.blockID == PackFurniture.proxy.block_candle_light.blockID) {
+if (this == PackFurniture.proxy.block_candle_light) {
 if (world.rand.nextInt(8) == 0) {
 world.spawnParticle("smoke", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 }
@@ -171,15 +172,15 @@ world.spawnParticle("flame", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 
 }
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for (byte j = 0; j < 16; ++ j) {list.add(new ItemStack(id, 1, j));}
 }
-
+/*
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int meta, int fortune) {
 ArrayList<ItemStack> ret = super.getBlockDropped(world, x, y, z, meta, fortune);
 ret.add(new ItemStack(PackFurniture.proxy.block_candle, 1, meta));
 return ret;
 }
-
+*/
 }

@@ -31,7 +31,7 @@ itemID = nextID();
 //nameID = "";
 }
 
-public ItemForStock() {
+public ItemForStock(int id) {
 item_list[id] = this;
 itemID = id;
 //nameID = "";

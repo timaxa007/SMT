@@ -76,9 +76,9 @@ public void breakBlock(World world, int x, int y, int z, int oldID, int oldMeta)
 if (!world.isRemote) {
 TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TECnstorBlock) {
-dropBlockAsItem_do(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
+dropBlockAsItem(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
 } else {
-dropBlockAsItem_do(world, x, y, z, addTag(0, 0));
+dropBlockAsItem(world, x, y, z, addTag(0, 0));
 }
 }
 super.breakBlock(world, x, y, z, oldID, oldMeta);
@@ -89,8 +89,8 @@ public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int 
 if (!world.isRemote) {
 TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TECnstorBlock && !player.capabilities.isCreativeMode) {
-dropBlockAsItem_do(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
-world.removeBlockTileEntity(x, y, z);
+dropBlockAsItem(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
+world.removeTileEntity(x, y, z);
 }
 world.setBlockToAir(x, y, z);
 return true;
@@ -105,8 +105,8 @@ public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityP
 if (!world.isRemote) {
 TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TECnstorBlock && !player.capabilities.isCreativeMode) {
-dropBlockAsItem_do(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
-world.removeBlockTileEntity(x, y, z);
+dropBlockAsItem(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
+world.removeTileEntity(x, y, z);
 world.setBlockToAir(x, y, z);
 }
 }

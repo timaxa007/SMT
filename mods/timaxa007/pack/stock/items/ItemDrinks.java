@@ -26,7 +26,7 @@ public class ItemDrinks extends Item {
 @SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
 public ItemDrinks() {
-super(id);
+super();
 //setCreativeTab(PackStock.proxy.tabFoodPack);
 setHasSubtypes(true);
 setMaxDamage(0);
@@ -213,7 +213,7 @@ return icon_tex[drinks.valueOf(tag.getString("NameID")).ordinal()];
 return icon_ovl[drinks.valueOf(tag.getString("NameID")).ordinal()];
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -234,7 +234,7 @@ if (renderPass == 0) {
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon("timaxa007:" + "drinks/" + "drink");
+itemIcon = ir.registerIcon("timaxa007:" + "drinks/" + "drink");
 icon_tex = new IIcon[drinks.values().length];
 icon_ovl = new IIcon[drinks.values().length];
 for (drinks j : drinks.values()) {

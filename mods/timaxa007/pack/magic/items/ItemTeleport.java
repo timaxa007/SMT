@@ -15,7 +15,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemTeleport extends Item {
 
 public ItemTeleport() {
-super(id);
+super();
 setHasSubtypes(true);
 setMaxDamage(0);
 setCreativeTab(PackMagic.proxy.tabMagicPack);
@@ -45,7 +45,7 @@ list.add("CordX - " + tag.getDouble("CordX") + ", CordY - " + tag.getDouble("Cor
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 list.add(new ItemStack(id, 1, 0));
 }
 

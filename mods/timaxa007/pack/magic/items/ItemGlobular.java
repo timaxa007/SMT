@@ -19,7 +19,7 @@ public class ItemGlobular extends Item {
 @SideOnly(Side.CLIENT) private IIcon icon_overlay;
 
 public ItemGlobular() {
-super(id);
+super();
 setCreativeTab(PackMagic.proxy.tabMagicPack);
 setTextureName("timaxa007:testItem1");
 setUnlocalizedName("globular");
@@ -67,9 +67,9 @@ NBTTagCompound tag = is.getTagCompound();
 if(tag != null && tag.hasKey("Active")) {
 
 if (pass == 0) {
-return tag.getBoolean("Active")?icon_overlay:itemIIcon;
+return tag.getBoolean("Active")?icon_overlay:itemIcon;
 } else {
-return itemIIcon;
+return itemIcon;
 }
 
 }else{
@@ -80,7 +80,7 @@ return getIconFromDamageForRenderPass(is.getItemDamage(), pass);
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-//itemIIcon = ir.registerIcon("timaxa007:testItem1");
+//itemIcon = ir.registerIcon("timaxa007:testItem1");
 icon_overlay = ir.registerIcon(getIconString() + "_overlay");
 }
 

@@ -30,7 +30,7 @@ fluid_list[nextID()] = this;
 fluidID = nextID();
 }
 
-public FluidFake() {
+public FluidFake(int id) {
 fluid_list[id] = this;
 fluidID = id;
 }

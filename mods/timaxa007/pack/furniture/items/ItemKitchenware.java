@@ -23,7 +23,7 @@ public class ItemKitchenware extends Item {
 @SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
 public ItemKitchenware() {
-super(id);
+super();
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHasSubtypes(true);
 setMaxDamage(0);
@@ -116,7 +116,7 @@ return icon_tex[kitchenware.valueOf(tag.getString("NameID")).ordinal()];
 return icon_ovl[kitchenware.valueOf(tag.getString("NameID")).ordinal()];
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -140,7 +140,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon("timaxa007:" + "kitchenware/" + "kitchenware");
+itemIcon = ir.registerIcon("timaxa007:" + "kitchenware/" + "kitchenware");
 icon_tex = new IIcon[kitchenware.values().length];
 icon_ovl = new IIcon[kitchenware.values().length];
 for (kitchenware j : kitchenware.values()) {

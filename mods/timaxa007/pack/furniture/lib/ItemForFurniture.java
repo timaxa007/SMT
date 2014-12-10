@@ -30,7 +30,7 @@ item_list[nextID()] = this;
 itemID = nextID();
 }
 
-public ItemForFurniture() {
+public ItemForFurniture(int id) {
 item_list[id] = this;
 itemID = id;
 }

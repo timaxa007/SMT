@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.stock.blocks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -10,6 +9,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -57,22 +57,22 @@ public IIcon getIcon(int par1, int par2) {return iconArray[par2 % iconArray.leng
 
 public int quantityDropped(Random rdm) {return 0;}
 public int idDropped(int id, Random rdm, int par3) {return id;}
-public int damageDropped() {return id;}
+public int damageDropped(int meta) {return meta;}
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for (int j = 0; j < healingTypes.length; ++j) {
 list.add(new ItemStack(id, 1, j));
 }
 }
-
+/*
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 ArrayList<ItemStack> ret = super.getBlockDropped(world, x, y, z, metadata, fortune);
 ret.add(new ItemStack(PackStock.proxy.block_healing, 1, metadata));
 return ret;
 }
-
+*/
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 iconArray = new IIcon[healingTypes.length];

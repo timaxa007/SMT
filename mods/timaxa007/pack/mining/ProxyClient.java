@@ -25,7 +25,7 @@ render_block_cristals_modelID = RenderingRegistry.getNextAvailableRenderId();
 ClientRegistry.bindTileEntitySpecialRenderer(TEBlockCristals.class, new RenderBlockCristals());
 ClientRegistry.bindTileEntitySpecialRenderer(TEOreOres.class, new RenderBlockOreOres());
 
-MinecraftForgeClient.registerItemRenderer(PackMining.proxy.block_cristals.blockID, new ItemRenderBlockCristals());
+MinecraftForgeClient.registerItemRenderer(PackMining.proxy.block_cristals, new ItemRenderBlockCristals());
 
 }
 

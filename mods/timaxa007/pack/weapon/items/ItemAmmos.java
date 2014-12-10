@@ -24,7 +24,7 @@ public class ItemAmmos extends Item {
 @SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
 public ItemAmmos() {
-super(id);
+super();
 setMaxStackSize(1);
 setCreativeTab(PackWeapon.proxy.tabWeaponPack);
 setTextureName("timaxa007:item_ammos");
@@ -84,7 +84,7 @@ return icon_tex[tag.getInteger("AmmoID")];
 return icon_ovl[tag.getInteger("AmmoID")];
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -105,7 +105,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon("timaxa007:" + "ammos");
+itemIcon = ir.registerIcon("timaxa007:" + "ammos");
 icon_tex = new IIcon[AmmoFor.ammo_list.length];
 icon_ovl = new IIcon[AmmoFor.ammo_list.length];
 for (int i = 0; i < AmmoFor.ammo_list.length; i++) {
@@ -117,8 +117,8 @@ icon_tex[i] = ir.registerIcon("timaxa007:" + "ammos/" + AmmoFor.ammo_list[i].get
 	icon_ovl[i] = ir.registerIcon("timaxa007:" + "ammos/" + AmmoFor.ammo_list[i].getTexture2Name());
 	}
 } else {*/
-icon_tex[i] = itemIIcon;
-icon_ovl[i] = itemIIcon;
+icon_tex[i] = itemIcon;
+icon_ovl[i] = itemIcon;
 //}
 }
 }

@@ -37,7 +37,7 @@ magazine_list[nextID()] = this;
 magazineID = nextID();
 }
 
-public MagazineFor() {
+public MagazineFor(int id) {
 magazine_list[id] = this;
 magazineID = id;
 }

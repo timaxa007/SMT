@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 public class ItemsMining extends Item {
 
 public ItemsMining() {
-super(id);
+super();
 setCreativeTab(PackMining.proxy.tabMiningPack);
 setUnlocalizedName("items_mining");
 }

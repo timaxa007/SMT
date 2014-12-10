@@ -76,7 +76,7 @@ effects_list[nextID()] = this;
 effectID = nextID();
 }
 
-public Effects() {
+public Effects(int id) {
 effects_list[id] = this;
 effectID = id;
 }

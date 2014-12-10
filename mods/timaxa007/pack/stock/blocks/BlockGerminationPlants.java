@@ -87,9 +87,9 @@ return true;
 }
 } else {
 if (world.isRemote) {
-player.addChatMessage("/*****************************************/");
+//player.addChatMessage("/*****************************************/");
 
-player.addChatMessage(
+/*player.addChatMessage(
 " Plant ID - " + ((TEGerminationPlants)te).getPlantID() + 
 " / Name - " + GerminationPlants.plant_list[((TEGerminationPlants)te).getPlantID()].getLocalizedName() +
 " / Plant Type - " + ((TEGerminationPlants)te).getPlantType());
@@ -101,7 +101,7 @@ player.addChatMessage(
 player.addChatMessage(
 " Growth - " + ((TEGerminationPlants)te).getGrowth() + 
 " / Fertility - " + ((TEGerminationPlants)te).getFertility() + 
-" / Resistance - " + ((TEGerminationPlants)te).getResistance());
+" / Resistance - " + ((TEGerminationPlants)te).getResistance());*/
 }
 }
 }
@@ -122,12 +122,12 @@ return false;
 
 public boolean checkBlockGrowingPrimary(World world, int x, int y, int z, String primary) {
 if (primary != null && primary != "") {
-if (world.getBlock(x, y - 1, z) == Block.dirt.blockID) {return true;}
-if (world.getBlock(x, y - 1, z) == Block.sand.blockID) {return true;}
-if (world.getBlock(x, y - 1, z) == Block.stone.blockID) {return true;}
-if (world.getBlock(x, y - 1, z) == Block.cobblestone.blockID) {return true;}
-if (world.getBlock(x, y - 1, z) == Block.slowSand.blockID) {return true;}
-if (world.getBlock(x, y - 1, z) == Block.netherrack.blockID) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.dirt) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.sand) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.stone) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.cobblestone) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.slowSand) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.netherrack) {return true;}
 }
 return false;
 }
@@ -165,7 +165,7 @@ if (current != null) {
 if (
 (current.getItem() == PackStock.proxy.item_base_seed)&&
 (((TEGerminationPlants)te).getPlant() == "")&&
-(world.getBlock(x, y-1, z) == Block.tilledField.blockID)
+(world.getBlock(x, y-1, z) == Block.tilledField)
 ) {
 ItemStack isg = new ItemStack(current.getItem(), 1, current.getItemDamage());
 NBTTagCompound nbt = isg.getTagCompound();
@@ -176,7 +176,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 }else if (
 (current.getItem() == Item.reed)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlock(x, y-1, z) == Block.sand.blockID)&&
+(world.getBlock(x, y-1, z) == Block.sand)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(4);
@@ -186,7 +186,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.potato)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||(world.getBlock(x, y-1, z) == Block.dirt.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField)||(world.getBlock(x, y-1, z) == Block.dirt))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(2);
@@ -196,7 +196,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.carrot)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlock(x, y-1, z) == Block.tilledField.blockID)&&
+(world.getBlock(x, y-1, z) == Block.tilledField)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(1);
@@ -206,7 +206,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.netherStalkSeeds)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlock(x, y-1, z) == Block.slowSand.blockID)&&
+(world.getBlock(x, y-1, z) == Block.slowSand)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(5);
@@ -216,7 +216,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.seeds)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlock(x, y-1, z) == Block.tilledField.blockID)&&
+(world.getBlock(x, y-1, z) == Block.tilledField)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(3);
@@ -226,7 +226,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.melonSeeds)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlock(x, y-1, z) == Block.tilledField.blockID)&&
+(world.getBlock(x, y-1, z) == Block.tilledField)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(6);
@@ -236,7 +236,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.pumpkinSeeds)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlock(x, y-1, z) == Block.tilledField.blockID)&&
+(world.getBlock(x, y-1, z) == Block.tilledField)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(7);
@@ -244,13 +244,13 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSize;--current.stackSize;--current.stackSize;}
 //--------------------------------
 }else if (
-(current.itemID == Block.mushroomBrown.blockID)&&
+(current.getItem() == Block.mushroomBrown)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||
-(world.getBlock(x, y-1, z) == Block.dirt.blockID)||
-(world.getBlock(x, y-1, z) == Block.cobblestone.blockID)||
-(world.getBlock(x, y-1, z) == Block.cobblestoneMossy.blockID)||
-(world.getBlock(x, y-1, z) == Block.mycelium.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField)||
+(world.getBlock(x, y-1, z) == Block.dirt)||
+(world.getBlock(x, y-1, z) == Block.cobblestone)||
+(world.getBlock(x, y-1, z) == Block.cobblestoneMossy)||
+(world.getBlock(x, y-1, z) == Block.mycelium))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(8);
@@ -258,13 +258,13 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSize;--current.stackSize;--current.stackSize;}
 //--------------------------------
 }else if (
-(current.itemID == Block.mushroomRed.blockID)&&
+(current.getItem() == Block.mushroomRed)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||
-(world.getBlock(x, y-1, z) == Block.dirt.blockID)||
-(world.getBlock(x, y-1, z) == Block.cobblestone.blockID)||
-(world.getBlock(x, y-1, z) == Block.cobblestoneMossy.blockID)||
-(world.getBlock(x, y-1, z) == Block.mycelium.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField)||
+(world.getBlock(x, y-1, z) == Block.dirt)||
+(world.getBlock(x, y-1, z) == Block.cobblestone)||
+(world.getBlock(x, y-1, z) == Block.cobblestoneMossy)||
+(world.getBlock(x, y-1, z) == Block.mycelium))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(9);
@@ -272,11 +272,11 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSize;--current.stackSize;--current.stackSize;}
 //--------------------------------
 }else if (
-(current.itemID == Block.plantRed.blockID)&&
+(current.getItem() == Block.plantRed)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||
-(world.getBlock(x, y-1, z) == Block.dirt.blockID)||
-(world.getBlock(x, y-1, z) == Block.grass.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField)||
+(world.getBlock(x, y-1, z) == Block.dirt)||
+(world.getBlock(x, y-1, z) == Block.grass))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(10);
@@ -284,11 +284,11 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSize;--current.stackSize;--current.stackSize;}
 //--------------------------------
 }else if (
-(current.itemID == Block.plantYellow.blockID)&&
+(current.getItem() == Block.plantYellow)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||
-(world.getBlock(x, y-1, z) == Block.dirt.blockID)||
-(world.getBlock(x, y-1, z) == Block.grass.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField)||
+(world.getBlock(x, y-1, z) == Block.dirt)||
+(world.getBlock(x, y-1, z) == Block.grass))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(11);
@@ -338,31 +338,31 @@ return false;
 }
 
 private static int[] plods1 = {
-Item.carrot.itemID, 
-Item.potato.itemID, 
-Item.seeds.itemID, 
-Item.reed.itemID, 
-Item.netherStalkSeeds.itemID, 
-Item.melonSeeds.itemID, 
-Item.pumpkinSeeds.itemID, 
-Block.mushroomBrown.blockID, 
-Block.mushroomRed.blockID, 
-Block.plantRed.blockID, 
-Block.plantYellow.blockID, 
+Item.carrot.getItem(), 
+Item.potato.getItem(), 
+Item.seeds.getItem(), 
+Item.reed.getItem(), 
+Item.netherStalkSeeds.getItem(), 
+Item.melonSeeds.getItem(), 
+Item.pumpkinSeeds.getItem(), 
+Block.mushroomBrown, 
+Block.mushroomRed, 
+Block.plantRed, 
+Block.plantYellow, 
 };
 
 private static int[] plods2 = {
-Item.carrot.itemID, 
-Item.potato.itemID, 
-Item.seeds.itemID, 
-Item.reed.itemID, 
-Item.netherStalkSeeds.itemID, 
-Item.melonSeeds.itemID, 
-Item.pumpkinSeeds.itemID, 
-Block.mushroomBrown.blockID, 
-Block.mushroomRed.blockID, 
-Block.plantRed.blockID, 
-Block.plantYellow.blockID, 
+Item.carrot.getItem(), 
+Item.potato.getItem(), 
+Item.seeds.getItem(), 
+Item.reed.getItem(), 
+Item.netherStalkSeeds.getItem(), 
+Item.melonSeeds.getItem(), 
+Item.pumpkinSeeds.getItem(), 
+Block.mushroomBrown, 
+Block.mushroomRed, 
+Block.plantRed, 
+Block.plantYellow, 
 };
 
 private void spawnPlod(World world, int x, int y, int z, int ps1, int pc1, int ps2, int pc2) {

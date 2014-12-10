@@ -13,7 +13,7 @@ super(name);
 
 @SideOnly(Side.CLIENT)
 public int getTabIIconItemIndex() {
-return Item.swordStone.itemID;
+return Item.swordStone.getItem();
 }
 
 }

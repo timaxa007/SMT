@@ -8,12 +8,12 @@ import mods.timaxa007.pack.magic.te.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.EnumHelper;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -24,11 +24,7 @@ import cpw.mods.fml.relauncher.Side;
 
 public class ProxyServer {
 
-public static CreativeTabs tabMagicPack = new TabMagicPack(CreativeTabs.getNextID(), "tabMagicPack");
-
-public static EnumArmorMaterial MagicARMORMATERIAL = EnumHelper.addArmorMaterial("MagicARMORMATERIAL", 20, new int[]{10, 25, 10, 5}, 10);
-
-public static EnumToolMaterial MAGICTOOL = EnumHelper.addToolMaterial("MAGIC", 4, 1024, 64, 8, 16);
+public static CreativeTabs tabMagicPack = new TabMagicPack("tabMagicPack");
 
 public static final Material oreMagic = new MaterialOreMagic();
 
@@ -41,18 +37,8 @@ public static Block block_locked;public static int block_locked_blockID;
 
 //Items
 public static Item items_for_magic;public static int items_for_magic_itemID;
-public static ItemArmor armorMagicHelmet;public static int armorMagicHelmetitemID;
-public static ItemArmor armorMagicChest;public static int armorMagicChestitemID;
-public static ItemArmor armorMagicLeggin;public static int armorMagicLegginitemID;
-public static ItemArmor armorMagicBoot;public static int armorMagicBootitemID;
 public static Item shardElements;public static int shardElementsitemID;
-public static Item toolMagicSword;public static int toolMagicSworditemID;
-public static Item toolMagicAxe;public static int toolMagicAxeitemID;
-public static Item toolMagicPickaxe;public static int toolMagicPickaxeitemID;
-public static Item toolMagicShovel;public static int toolMagicShovelitemID;
-public static Item toolMagicHoe;public static int toolMagicHoeitemID;
 public static BowMagic bowMagic;public static int bowMagicitemID;
-public static Item itemRandomItem;public static int itemRandomItemitemID;
 public static Item itemWands;public static int itemWandsitemID;
 public static Item itemStuffs;public static int itemStuffsitemID;
 public static Item itemArrowMini;public static int itemArrowMiniitemID;
@@ -71,31 +57,21 @@ TickRegistry.registerTickHandler(new TickHandlerPackMagicServer(), Side.SERVER);
 new ListMagic();
 
 //Blocks
-blockMagicMachines = new BlockMagicMachines(blockMagicMachinesblockID);
-oreElements = new OreElements(oreElementsblockID);
-blockSlims = new BlockSlims(blockSlimsblockID);
-blockMagicCauldron = new BlockMagicCauldron(blockMagicCauldronblockID);
-block_locked = new BlockLocked(block_locked_blockID);
+blockMagicMachines = new BlockMagicMachines();
+oreElements = new OreElements();
+blockSlims = new BlockSlims();
+blockMagicCauldron = new BlockMagicCauldron();
+block_locked = new BlockLocked();
 
 //Items
-items_for_magic = new ItemsMagic(items_for_magic_itemID);
-armorMagicHelmet = (ItemArmor)(new ArmorMagic(armorMagicHelmetitemID, MagicARMORMATERIAL, 4, 0).setUnlocalizedName("ArmorMagicHelmet"));
-armorMagicChest = (ItemArmor)(new ArmorMagic(armorMagicChestitemID, MagicARMORMATERIAL, 4, 1).setUnlocalizedName("ArmorMagicChest"));
-armorMagicLeggin = (ItemArmor)(new ArmorMagic(armorMagicLegginitemID, MagicARMORMATERIAL, 4, 2).setUnlocalizedName("ArmorMagicLeggin"));
-armorMagicBoot = (ItemArmor)(new ArmorMagic(armorMagicBootitemID, MagicARMORMATERIAL, 4, 3).setUnlocalizedName("ArmorMagicBoot"));
-shardElements = new ShardElements(shardElementsitemID);
-toolMagicSword = new ToolMagicSword(toolMagicSworditemID, MAGICTOOL);
-toolMagicAxe = new ToolMagicAxe(toolMagicAxeitemID, MAGICTOOL);
-toolMagicPickaxe = new ToolMagicPickaxe(toolMagicPickaxeitemID, MAGICTOOL);
-toolMagicShovel = new ToolMagicShovel(toolMagicShovelitemID, MAGICTOOL);
-toolMagicHoe = new ToolMagicHoe(toolMagicHoeitemID, MAGICTOOL);
-bowMagic = new BowMagic(bowMagicitemID);
-itemRandomItem = new ItemRandomItem(itemRandomItemitemID);
-itemWands = new ItemWands(itemWandsitemID);
-itemStuffs = new ItemStuffs(itemStuffsitemID);
-itemArrowMini = new ItemArrowMini(itemArrowMiniitemID);
-item_teleport = new ItemTeleport(item_teleport_itemID);
-item_globular = new ItemGlobular(item_globular_itemID);
+items_for_magic = new ItemsMagic();
+shardElements = new ShardElements();
+bowMagic = new BowMagic();
+itemWands = new ItemWands();
+itemStuffs = new ItemStuffs();
+itemArrowMini = new ItemArrowMini();
+item_teleport = new ItemTeleport();
+item_globular = new ItemGlobular();
 
 //Blocks
 GameRegistry.registerBlock(oreElements, ItemOreElements.class, "OreElements");
@@ -106,18 +82,8 @@ GameRegistry.registerBlock(block_locked, "BlockLocked");
 
 //Items
 GameRegistry.registerItem(items_for_magic, "ItemsMagic");
-GameRegistry.registerItem(armorMagicHelmet, "ArmorMagicHelmet");
-GameRegistry.registerItem(armorMagicChest, "ArmorMagicChest");
-GameRegistry.registerItem(armorMagicLeggin, "ArmorMagicLeggin");
-GameRegistry.registerItem(armorMagicBoot, "ArmorMagicBoot");
 GameRegistry.registerItem(shardElements, "ShardElements");
-GameRegistry.registerItem(toolMagicSword, "ToolMagicSword");
-GameRegistry.registerItem(toolMagicAxe, "ToolMagicAxe");
-GameRegistry.registerItem(toolMagicPickaxe, "ToolMagicPickaxe");
-GameRegistry.registerItem(toolMagicShovel, "ToolMagicShovel");
-GameRegistry.registerItem(toolMagicHoe, "ToolMagicHoe");
 GameRegistry.registerItem(bowMagic, "BowMagic");
-GameRegistry.registerItem(itemRandomItem, "ItemRandomItem");
 GameRegistry.registerItem(itemWands, "ItemWands");
 GameRegistry.registerItem(itemStuffs, "ItemStuffs");
 GameRegistry.registerItem(itemArrowMini, "ItemArrowMini");
@@ -133,7 +99,7 @@ renderBlockMagicCauldronModelID = -1;
 
 MinecraftForge.EVENT_BUS.register(new EventMagic());
 
-NetworkRegistry.instance().registerGuiHandler(this, new HandlerGuiMagic());
+NetworkRegistry.INSTANCE.registerGuiHandler(this, new HandlerGuiMagic());
 
 Recipes_Magic.list();
 
@@ -143,33 +109,7 @@ public void preInit(FMLPreInitializationEvent event) {
 
 Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 cfg.load();
-int idblock = 2400;
-int iditem = 5400;
-blockMagicMachinesblockID = cfg.getBlock("machines_magic", idblock++).getInt();
-oreElementsblockID = cfg.getBlock("ore_elements", idblock++).getInt();
-blockSlimsblockID = cfg.getBlock("slims", idblock++).getInt();
-blockMagicCauldronblockID = cfg.getBlock("cauldron_magic", idblock++).getInt();
-block_locked_blockID = cfg.getBlock("block_locked", idblock++).getInt();
 
-//Items
-items_for_magic_itemID = cfg.getItem("items_for_magic", iditem++).getInt();
-armorMagicHelmetitemID = cfg.getItem("armor_magic_helmet", iditem++).getInt();
-armorMagicChestitemID = cfg.getItem("armor_magic_chest", iditem++).getInt();
-armorMagicLegginitemID = cfg.getItem("armor_magic_leggin", iditem++).getInt();
-armorMagicBootitemID = cfg.getItem("armor_magic_boot", iditem++).getInt();
-shardElementsitemID = cfg.getItem("shard_elements", iditem++).getInt();
-toolMagicSworditemID = cfg.getItem("magic_sword", iditem++).getInt();
-toolMagicAxeitemID = cfg.getItem("magic_axe", iditem++).getInt();
-toolMagicPickaxeitemID = cfg.getItem("magic_pickaxe", iditem++).getInt();
-toolMagicShovelitemID = cfg.getItem("magic_shovel", iditem++).getInt();
-toolMagicHoeitemID = cfg.getItem("magic_hoe", iditem++).getInt();
-bowMagicitemID = cfg.getItem("bow_magic", iditem++).getInt();
-itemRandomItemitemID = cfg.getItem("item_random_item", iditem++).getInt();
-itemWandsitemID = cfg.getItem("wands", iditem++).getInt();
-itemStuffsitemID = cfg.getItem("stuffs", iditem++).getInt();
-itemArrowMiniitemID = cfg.getItem("arrow_mini", iditem++).getInt();
-item_teleport_itemID = cfg.getItem("item_teleport", iditem++).getInt();
-item_globular_itemID = cfg.getItem("item_globular", iditem++).getInt();
 cfg.save();
 
 }

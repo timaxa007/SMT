@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -18,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPies extends BlockContainer{
+public class BlockPies extends BlockContainer {
 public static final String[] typePies = new String[]{
 "Standard", 
 "Fruity", 
@@ -71,7 +72,7 @@ int act = (((TEPie)te).getAmount()-1);
 
 if (((TEPie)te).getAmount() <= 0) {
 world.setBlockToAir(x, y, z);
-world.removeBlockTileEntity(x, y, z);
+world.removeTileEntity(x, y, z);
 }
 
 }
@@ -100,7 +101,7 @@ if (tag != null) {
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for(byte j = 0;j<16;++j) {list.add(addTag(j));}
 list.add(new ItemStack(id, 1, 0));
 }

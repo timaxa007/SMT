@@ -3,6 +3,7 @@ package mods.timaxa007.pack.weapon.items;
 import mods.timaxa007.pack.magic.entity.EntityArrowMini;
 import mods.timaxa007.pack.weapon.PackWeapon;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,26 +12,26 @@ import net.minecraft.world.World;
 public class MolotovCocktail extends Item {
 
 public MolotovCocktail() {
-super(id);
+super();
 setCreativeTab(PackWeapon.proxy.tabWeaponPack);
 setTextureName("timaxa007:item_molotov_cocktail");
 setUnlocalizedName("item_molotov_cocktail");
 }
 
 public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
-if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.flintAndSteel.itemID)) {
+if (player.capabilities.isCreativeMode || player.inventory.hasItem(Items.flint_and_steel)) {
 
 if (!player.capabilities.isCreativeMode) {
 for (int i = 0; i < player.inventory.mainInventory.length; i++) {
 if (player.inventory.mainInventory[i] != null) {
 
-if (player.inventory.getStackInSlot(i).itemID == new ItemStack(Item.flintAndSteel, 1, 0).itemID && player.inventory.getStackInSlot(i).getItemDamage() != player.inventory.getStackInSlot(i).getMaxDamage()) {
-player.inventory.setInventorySlotContents(i, new ItemStack(Item.flintAndSteel, 1, player.inventory.getStackInSlot(i).getItemDamage()+1));
+if (player.inventory.getStackInSlot(i).getItem() == new ItemStack(Items.flint_and_steel, 1, 0).getItem() && player.inventory.getStackInSlot(i).getItemDamage() != player.inventory.getStackInSlot(i).getMaxDamage()) {
+player.inventory.setInventorySlotContents(i, new ItemStack(Items.flint_and_steel, 1, player.inventory.getStackInSlot(i).getItemDamage()+1));
 --is.stackSize;
 break;
 }
 
-if (player.inventory.getStackInSlot(i).itemID == new ItemStack(Item.flintAndSteel, 1, 0).itemID && player.inventory.getStackInSlot(i).getItemDamage() == player.inventory.getStackInSlot(i).getMaxDamage()) {
+if (player.inventory.getStackInSlot(i).getItem() == new ItemStack(Items.flint_and_steel, 1, 0).getItem() && player.inventory.getStackInSlot(i).getItemDamage() == player.inventory.getStackInSlot(i).getMaxDamage()) {
 player.inventory.setInventorySlotContents(i, null);
 }
 
@@ -55,7 +56,7 @@ return EnumAction.block;
 }
 
 public ItemStack onItemRightClick(ItemStack is, World wrd, EntityPlayer player) {
-if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.flintAndSteel.itemID)) {
+if (player.capabilities.isCreativeMode || player.inventory.hasItem(Items.flint_and_steel)) {
 player.setItemInUse(is, this.getMaxItemUseDuration(is));
 }
 return is;

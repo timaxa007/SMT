@@ -26,7 +26,7 @@ public class ItemColored extends Item {
 @SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
 public ItemColored() {
-super(id);
+super();
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 //setHasSubtypes(true);
 //setMaxDamage(0);
@@ -125,7 +125,7 @@ return icon_tex[tag.getInteger("ItemID")];
 return icon_ovl[tag.getInteger("ItemID")];
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -152,7 +152,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon(getIconString() + "testItem");
+itemIcon = ir.registerIcon(getIconString() + "testItem");
 icon_tex = new IIcon[ItemForStock.item_list.length];
 icon_ovl = new IIcon[ItemForStock.item_list.length];
 for (int i = 0; i < ItemForStock.item_list.length; i++) {
@@ -164,8 +164,8 @@ icon_tex[i] = ir.registerIcon(getIconString() + ItemForStock.item_list[i].getTex
 	icon_ovl[i] = ir.registerIcon(getIconString() + ItemForStock.item_list[i].getTexture2());
 	}
 } else {
-icon_tex[i] = itemIIcon;
-icon_ovl[i] = itemIIcon;
+icon_tex[i] = itemIcon;
+icon_ovl[i] = itemIcon;
 }
 }
 }

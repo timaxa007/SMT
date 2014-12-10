@@ -31,7 +31,7 @@ public class ToolPickaxe extends Item{
 //private final EnumToolMaterial toolMaterial;
 
 public ToolPickaxe() {
-super(id);
+super();
 //this.toolMaterial=EnumToolMaterial.IRON;
 this.maxStackSize=1;
 this.setMaxDamage(EnumToolMaterial.IRON.getMaxUses());
@@ -40,9 +40,9 @@ this.setUnlocalizedName("tool.pickaxe");
 }
 
 public float getStrVsBlock(ItemStack is, Block blk) {
-if(blk.blockID==Block.web.blockID) {
+if(blk==Block.web) {
 return 15.0F;
-}else if(blk.blockID==Block.stoneBrick.blockID) {
+}else if(blk==Block.stoneBrick) {
 return 5.0F;
 }else{
 Material material=blk.blockMaterial;
@@ -79,8 +79,8 @@ return is;
 }
 
 public boolean canHarvestBlock(Block blk) {
-if(blk.blockID==Block.web.blockID) {return true;}
-if(blk.blockID==Block.stoneBrick.blockID) {return true;}
+if(blk==Block.web) {return true;}
+if(blk==Block.stoneBrick) {return true;}
 return false;
 }
 
@@ -94,7 +94,7 @@ return "none";
 */
 /*
 public boolean getIsRepairable(ItemStack is1, ItemStack is2) {
-return this.toolMaterial.getToolCraftingMaterial()==is2.itemID?true:super.getIsRepairable(is1, is2);
+return this.toolMaterial.getToolCraftingMaterial()==is2.getItem()?true:super.getIsRepairable(is1, is2);
 }
 */
 /*

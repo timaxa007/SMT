@@ -1,18 +1,17 @@
 package mods.timaxa007.pack.magic;
 
 import net.minecraft.creativetab.CreativeTabs;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.item.Item;
 
 public class TabMagicPack extends CreativeTabs {
 
-public TabMagicPack(int id, String name) {
+public TabMagicPack(String name) {
 super(name);
 }
 
-@SideOnly(Side.CLIENT)
-public int getTabIIconItemIndex() {
-return PackMagic.proxy.toolMagicPickaxe.itemID;
+@Override
+public Item getTabIconItem() {
+return PackMagic.proxy.toolMagicPickaxe;
 }
 
 }

@@ -231,7 +231,7 @@ this.slotCon[4]=null;
 public static int getItemBurnTime(ItemStack is) {
 if(is==null) {return 0;}
 else{
-int i=is.getItem().itemID;
+int i=is.getItem().getItem();
 Item item=is.getItem();
 
 if(is.getItem() instanceof ItemBlock&&Block.blocksList[i]!=null) {
@@ -239,9 +239,9 @@ Block block=Block.blocksList[i];
 if(block==Block.coalBlock) {return 200*80;}
 }
 
-if(i==Item.coal.itemID) return 200*10;
-if(i==Item.stick.itemID) return 100;
-if(i==Item.paper.itemID) return 20;
+if(i==Item.coal.getItem()) return 200*10;
+if(i==Item.stick.getItem()) return 100;
+if(i==Item.paper.getItem()) return 20;
 return 0;
 }
 }
@@ -268,7 +268,7 @@ return this.isItemValidForSlot(par1, is);
 }
 
 public boolean canExtractItem(int par1, ItemStack is, int par3) {
-return par3!=0||par1!=1||is.itemID==Item.bucketEmpty.itemID;
+return par3!=0||par1!=1||is.getItem()==Item.bucketEmpty.getItem();
 }
 
 public Packet getDescriptionPacket() {

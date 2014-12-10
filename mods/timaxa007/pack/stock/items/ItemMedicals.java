@@ -224,7 +224,7 @@ public static final String[] medicalNames = new String[]{
 @SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
 public ItemMedicals() {
-super(id);
+super();
 setHasSubtypes(true);
 setMaxDamage(0);
 setCreativeTab(PackStock.proxy.tabMedicalPack);

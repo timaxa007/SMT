@@ -25,10 +25,10 @@ renderBlockMagicCauldronModelID = RenderingRegistry.getNextAvailableRenderId();
 
 ClientRegistry.bindTileEntitySpecialRenderer(TEMagicCauldron.class, new BlockRenderMagicCauldron());
 
-MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.blockMagicCauldron.blockID, new ItemRenderMagicCauldron());
-MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.toolMagicSword.itemID, new ItemRenderMagicSword());
-MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemWands.itemID, new ItemRenderWands());
-MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemStuffs.itemID, new ItemRenderStuffs());
+MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.blockMagicCauldron, new ItemRenderMagicCauldron());
+MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.toolMagicSword.getItem(), new ItemRenderMagicSword());
+MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemWands.getItem(), new ItemRenderWands());
+MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemStuffs.getItem(), new ItemRenderStuffs());
 
 RenderingRegistry.registerEntityRenderingHandler(EntityArrowMini.class, new RenderArrowMini());
 

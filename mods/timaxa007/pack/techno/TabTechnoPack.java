@@ -12,7 +12,7 @@ super(name);
 
 @SideOnly(Side.CLIENT)
 public int getTabIIconItemIndex() {
-return PackTechno.proxy.tool_electric_wrench.itemID;
+return PackTechno.proxy.tool_electric_wrench.getItem();
 }
 
 }

@@ -43,17 +43,17 @@ public String getLabel() {return "TMS KeyBindings";}
 public void keyDown(EnumSet<TickType> types, KeyBinding kb, boolean tickEnd, boolean isRepeat) {
 if (tickEnd) {
 if (FMLClientHandler.instance().getClient().currentScreen == null) {
-if (kb.keyCode == reload_key_bind.keyCode)		{System.out.println("reload_key_bind");}
-if (kb.keyCode == change_type_key_bind.keyCode)	{System.out.println("change_type_key_bind");}
-if (kb.keyCode == mode_switch_key_bind.keyCode)	{System.out.println("mode_switch_key_bind");}
-if (kb.keyCode == use_key_bind.keyCode)			{System.out.println("use_key_bind");}
-if (kb.keyCode == down_key_bind.keyCode)		{System.out.println("down_key_bind");}
-if (kb.keyCode == move_left_key_bind.keyCode)	{System.out.println("move_left_key_bind");}
-if (kb.keyCode == stop_key_bind.keyCode)		{System.out.println("stop_key_bind");}
-if (kb.keyCode == move_right_key_bind.keyCode)	{System.out.println("move_right_key_bind");}
-if (kb.keyCode == yaw_left_key_bind.keyCode)	{System.out.println("yaw_left_key_bind");}
-if (kb.keyCode == up_key_bind.keyCode)			{System.out.println("up_key_bind");}
-if (kb.keyCode == yaw_right_key_bind.keyCode)	{System.out.println("yaw_right_key_bind");}
+if (kb.getKeyCode() == reload_key_bind.getKeyCode())		{System.out.println("reload_key_bind");}
+if (kb.getKeyCode() == change_type_key_bind.getKeyCode())	{System.out.println("change_type_key_bind");}
+if (kb.getKeyCode() == mode_switch_key_bind.getKeyCode())	{System.out.println("mode_switch_key_bind");}
+if (kb.getKeyCode() == use_key_bind.getKeyCode())			{System.out.println("use_key_bind");}
+if (kb.getKeyCode() == down_key_bind.getKeyCode())		{System.out.println("down_key_bind");}
+if (kb.getKeyCode() == move_left_key_bind.getKeyCode())	{System.out.println("move_left_key_bind");}
+if (kb.getKeyCode() == stop_key_bind.getKeyCode())		{System.out.println("stop_key_bind");}
+if (kb.getKeyCode() == move_right_key_bind.getKeyCode())	{System.out.println("move_right_key_bind");}
+if (kb.getKeyCode() == yaw_left_key_bind.getKeyCode())	{System.out.println("yaw_left_key_bind");}
+if (kb.getKeyCode() == up_key_bind.getKeyCode())			{System.out.println("up_key_bind");}
+if (kb.getKeyCode() == yaw_right_key_bind.getKeyCode())	{System.out.println("yaw_right_key_bind");}
 }
 }
 }

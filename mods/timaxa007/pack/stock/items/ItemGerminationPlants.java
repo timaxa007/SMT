@@ -111,7 +111,7 @@ public static GerminationPlants crop_coral  = new GerminationPlants("crop_coral"
 public static GerminationPlants crop_kelp = new GerminationPlants("crop_kelp").setName("kelp").setType("Herbal Water").setTexture("kelp").setPlantStats(1, 2, 3).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
 public ItemGerminationPlants() {
-super(id);
+super();
 setCreativeTab(PackStock.proxy.tabPlantPack);
 setHasSubtypes(true);
 setMaxDamage(0);
@@ -217,7 +217,7 @@ return icon_a;
 return icon_b;
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -238,7 +238,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon(getIconString());
+itemIcon = ir.registerIcon(getIconString());
 //icon_a = ir.registerIcon("timaxa007:base_seed");
 //icon_b = ir.registerIcon("timaxa007:base_seed");
 }

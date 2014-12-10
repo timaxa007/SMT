@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -56,7 +57,7 @@ if(tag!=null) {
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for(byte j=0;j<16;++j) {list.add(addTag(j));}
 list.add(new ItemStack(id, 1, 0));
 }
@@ -69,14 +70,14 @@ tag.setInteger("Type", par1);
 is.setTagCompound(tag);
 return is;
 }
-
+/*
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 ArrayList<ItemStack> ret=super.getBlockDropped(world, x, y, z, metadata, fortune);
-ret.add(new ItemStack(PackFurniture.proxy.block_crystals.blockID, 1, metadata));
+ret.add(new ItemStack(PackFurniture.proxy.block_crystals, 1, metadata));
 return ret;
 }
-
+*/
 public void registerIcons(IIconRegister ir) {blockIcon = ir.registerIcon("glass");}
 
 }

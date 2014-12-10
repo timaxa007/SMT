@@ -238,7 +238,7 @@ this.playSound("mob.zombie.step", 0.15F, 1.0F);
 }
 
 protected int getDropItemId() {
-return Item.rottenFlesh.itemID;
+return Item.rottenFlesh.getItem();
 }
 
 public EnumCreatureAttribute getCreatureAttribute() {
@@ -248,13 +248,13 @@ return EnumCreatureAttribute.UNDEAD;
 protected void dropRareDrop(int par1) {
 switch(this.rand.nextInt(3)) {
 case 0:
-this.dropItem(Item.ingotIron.itemID, 1);
+this.dropItem(Item.ingotIron.getItem(), 1);
 break;
 case 1:
-this.dropItem(Item.carrot.itemID, 1);
+this.dropItem(Item.carrot.getItem(), 1);
 break;
 case 2:
-this.dropItem(Item.potato.itemID, 1);
+this.dropItem(Item.potato.getItem(), 1);
 }
 }
 
@@ -446,7 +446,7 @@ for(int l = (int)this.posY - 4;l < (int)this.posY + 4 && j < 14;++l) {
 for(int i1 = (int)this.posZ - 4;i1 < (int)this.posZ + 4 && j < 14;++i1) {
 int j1 = this.worldObj.getBlock(k, l, i1);
 
-if(j1 == Block.fenceIron.blockID || j1 == Block.bed.blockID) {
+if(j1 == Block.fenceIron || j1 == Block.bed) {
 if(this.rand.nextFloat() < 0.3F) {
 ++i;
 }

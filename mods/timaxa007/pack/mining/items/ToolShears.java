@@ -104,7 +104,7 @@ public static final int[] shearsHexColors=new int[]{
 };
 
 public ToolShears() {
-super(id);
+super();
 this.setMaxStackSize(1);
 this.setMaxDamage(512);
 //this.setCreativeTab(PackMining.tabMiningPack);
@@ -113,7 +113,7 @@ this.setUnlocalizedName("tool.shears");
 }
 
 public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase) {
-if(par3 != Block.leaves.blockID && par3 != Block.web.blockID && par3 != Block.tallGrass.blockID && par3 != Block.vine.blockID && par3 != Block.tripWire.blockID && !(Block.blocksList[par3] instanceof IShearable)) {
+if(par3 != Block.leaves && par3 != Block.web && par3 != Block.tallGrass && par3 != Block.vine && par3 != Block.tripWire && !(Block.blocksList[par3] instanceof IShearable)) {
 return super.onBlockDestroyed(par1ItemStack, par2World, par3, par4, par5, par6, par7EntityLivingBase);
 }
 else{
@@ -122,11 +122,11 @@ return true;
 }
 
 public boolean canHarvestBlock(Block par1Block) {
-return par1Block.blockID==Block.web.blockID || par1Block.blockID==Block.redstoneWire.blockID || par1Block.blockID==Block.tripWire.blockID;
+return par1Block==Block.web || par1Block==Block.redstoneWire || par1Block==Block.tripWire;
 }
 
 public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-return par2Block.blockID != Block.web.blockID && par2Block.blockID != Block.leaves.blockID ? (par2Block.blockID==Block.cloth.blockID ? 5.0F : super.getStrVsBlock(par1ItemStack, par2Block)) : 15.0F;
+return par2Block != Block.web && par2Block != Block.leaves ? (par2Block==Block.cloth ? 5.0F : super.getStrVsBlock(par1ItemStack, par2Block)) : 15.0F;
 }
 
 @Override

@@ -43,7 +43,7 @@ public static final String[] paintCanColorType=new String[]{
 };
 
 public ItemPaintCan() {
-super(id);
+super();
 this.setMaxStackSize(1);
 this.setMaxDamage(15);
 this.setCreativeTab(PackMining.proxy.tabToolsPack);

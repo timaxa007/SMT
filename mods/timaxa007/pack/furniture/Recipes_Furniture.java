@@ -141,7 +141,7 @@ for (int i = 0; i < 16; ++i) {
 GameRegistry.addRecipe(new ShapelessOreRecipe(Item.stick, new Object[]{dyes[i], Item.stick}));
 }
 */
-//MincerRecipes.mince().addMince(Item.bakedPotato.itemID, 0, new ItemStack(PackFurniture.itemColored, 1, 0));
+//MincerRecipes.mince().addMince(Item.bakedPotato.getItem(), 0, new ItemStack(PackFurniture.itemColored, 1, 0));
 
 }
 

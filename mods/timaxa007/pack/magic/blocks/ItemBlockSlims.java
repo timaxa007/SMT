@@ -5,17 +5,17 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.magic.PackMagic;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemMultiTextureTile;
+import net.minecraft.item.ItemMultiTexture;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
 
 import org.lwjgl.input.Keyboard;
 
-public class ItemBlockSlims extends ItemMultiTextureTile{
-public ItemBlockSlims() {
-super(PackMagic.proxy.blockSlims, GetColors.getNameColors);
+public class ItemBlockSlims extends ItemMultiTexture {
+public ItemBlockSlims(Block id) {
+super(id, PackMagic.proxy.blockSlims, GetColors.getNameColors);
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {

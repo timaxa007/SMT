@@ -1,11 +1,11 @@
 package mods.timaxa007.pack.magic;
 
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
-import net.minecraftforge.event.ForgeSubscribe;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventSoundMagic {
 //--------------------------------------------------------------------------------------------------------------
-@ForgeSubscribe
+@SubscribeEvent
 public void onSoundPlay(SoundLoadEvent s) {
 s.manager.addSound("timaxa007:sound.ogg");
 }

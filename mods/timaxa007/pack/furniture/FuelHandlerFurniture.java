@@ -8,7 +8,7 @@ public class FuelHandlerFurniture implements IFuelHandler{
 
 @Override
 public int getBurnTime(ItemStack fuel) {
-//if(fuel.itemID==core.blockWoodColors.blockID) {return 200;}
+//if(fuel.getItem()==core.blockWoodColors) {return 200;}
 return 0;
 }
 

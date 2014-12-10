@@ -82,7 +82,7 @@ int k1=furnaceRand.nextInt(21)+10;
 if(k1>itemstack.stackSize) {k1=itemstack.stackSize;}
 
 itemstack.stackSize-=k1;
-EntityItem entityitem=new EntityItem(wrd, (double)((float)x+f), (double)((float)y+f1), (double)((float)z+f2), new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+EntityItem entityitem=new EntityItem(wrd, (double)((float)x+f), (double)((float)y+f1), (double)((float)z+f2), new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 
 if(itemstack.hasTagCompound()) {
 entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());

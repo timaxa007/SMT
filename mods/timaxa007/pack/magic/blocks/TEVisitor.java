@@ -13,15 +13,15 @@ String visitor4="none";
 String visitor5="none";
 
 public void processActivate(EntityPlayer par5EntityPlayer, World world) {
-if(!visitor1.equals(par5EntityPlayer.getEntityName())) {
+if(!visitor1.equals(par5EntityPlayer.getDisplayName())) {
 visitor5=visitor4;
 visitor4=visitor3;
 visitor3=visitor2;
 visitor2=visitor1;
-visitor1=par5EntityPlayer.getEntityName();
+visitor1=par5EntityPlayer.getDisplayName();
 }
-par5EntityPlayer.addChatMessage("Visitors: "+visitor1+", "+visitor2+", "+visitor3+", "+visitor4+", "+visitor5);
-world.notifyBlockChange(xCoord, yCoord, zCoord, 2);
+//par5EntityPlayer.addChatMessage("Visitors: "+visitor1+", "+visitor2+", "+visitor3+", "+visitor4+", "+visitor5);
+//world.notifyBlockChange(xCoord, yCoord, zCoord, 2);
 }
 
 @Override

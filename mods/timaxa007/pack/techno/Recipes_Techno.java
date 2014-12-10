@@ -17,38 +17,38 @@ public static void list() {
 Iterator<IRecipe> iterator=CraftingManager.getInstance().getRecipeList().iterator();
 while(iterator.hasNext()) {
 ItemStack r=iterator.next().getRecipeOutput();
-if(r != null && r.itemID==Block.chest.blockID) iterator.remove();
-if(r != null && r.itemID==Block.furnaceIdle.blockID) iterator.remove();
+if(r != null && r.getItem()==Block.chest) iterator.remove();
+if(r != null && r.getItem()==Block.furnaceIdle) iterator.remove();
 
-if(r != null && r.itemID==Item.shovelWood.itemID) iterator.remove();
-if(r != null && r.itemID==Item.shovelStone.itemID) iterator.remove();
-if(r != null && r.itemID==Item.shovelIron.itemID) iterator.remove();
-if(r != null && r.itemID==Item.shovelGold.itemID) iterator.remove();
-if(r != null && r.itemID==Item.shovelDiamond.itemID) iterator.remove();
+if(r != null && r.getItem()==Item.shovelWood.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.shovelStone.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.shovelIron.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.shovelGold.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.shovelDiamond.getItem()) iterator.remove();
 
-if(r != null && r.itemID==Item.pickaxeWood.itemID) iterator.remove();
-if(r != null && r.itemID==Item.pickaxeStone.itemID) iterator.remove();
-if(r != null && r.itemID==Item.pickaxeIron.itemID) iterator.remove();
-if(r != null && r.itemID==Item.pickaxeGold.itemID) iterator.remove();
-if(r != null && r.itemID==Item.pickaxeDiamond.itemID) iterator.remove();
+if(r != null && r.getItem()==Item.pickaxeWood.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.pickaxeStone.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.pickaxeIron.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.pickaxeGold.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.pickaxeDiamond.getItem()) iterator.remove();
 
-if(r != null && r.itemID==Item.axeWood.itemID) iterator.remove();
-if(r != null && r.itemID==Item.axeStone.itemID) iterator.remove();
-if(r != null && r.itemID==Item.axeIron.itemID) iterator.remove();
-if(r != null && r.itemID==Item.axeGold.itemID) iterator.remove();
-if(r != null && r.itemID==Item.axeDiamond.itemID) iterator.remove();
+if(r != null && r.getItem()==Item.axeWood.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.axeStone.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.axeIron.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.axeGold.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.axeDiamond.getItem()) iterator.remove();
 
-if(r != null && r.itemID==Item.swordWood.itemID) iterator.remove();
-if(r != null && r.itemID==Item.swordStone.itemID) iterator.remove();
-if(r != null && r.itemID==Item.swordIron.itemID) iterator.remove();
-if(r != null && r.itemID==Item.swordGold.itemID) iterator.remove();
-if(r != null && r.itemID==Item.swordDiamond.itemID) iterator.remove();
+if(r != null && r.getItem()==Item.swordWood.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.swordStone.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.swordIron.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.swordGold.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.swordDiamond.getItem()) iterator.remove();
 
-if(r != null && r.itemID==Item.hoeWood.itemID) iterator.remove();
-if(r != null && r.itemID==Item.hoeStone.itemID) iterator.remove();
-if(r != null && r.itemID==Item.hoeIron.itemID) iterator.remove();
-if(r != null && r.itemID==Item.hoeGold.itemID) iterator.remove();
-if(r != null && r.itemID==Item.hoeDiamond.itemID) iterator.remove();
+if(r != null && r.getItem()==Item.hoeWood.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.hoeStone.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.hoeIron.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.hoeGold.getItem()) iterator.remove();
+if(r != null && r.getItem()==Item.hoeDiamond.getItem()) iterator.remove();
 
 }
 

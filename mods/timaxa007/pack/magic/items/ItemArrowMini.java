@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 public class ItemArrowMini extends Item {
 
 public ItemArrowMini() {
-super(id);
+super();
 setCreativeTab(PackMagic.proxy.tabMagicPack);
 setTextureName("arrow");
 setUnlocalizedName("arrow_mini");

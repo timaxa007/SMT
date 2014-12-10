@@ -24,7 +24,7 @@ public static final String[] natureProductNames=new String[]{
 @SideOnly(Side.CLIENT) private IIcon[] theIIcon;
 
 public ItemNatureProduct() {
-super(id);
+super();
 this.setHasSubtypes(true);
 this.setMaxDamage(0);
 this.setCreativeTab(PackStock.proxy.tabFoodPack);

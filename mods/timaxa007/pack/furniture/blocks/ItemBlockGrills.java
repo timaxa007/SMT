@@ -5,6 +5,7 @@ import java.util.List;
 import org.lwjgl.input.Keyboard;
 
 import mods.timaxa007.lib.Option;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -13,10 +14,10 @@ import net.minecraft.util.EnumChatFormatting;
 
 public class ItemBlockGrills extends ItemBlock{
 
-public ItemBlockGrills() {
+public ItemBlockGrills(Block id) {
 super(id);
-this.setMaxDamage(0);
-this.setHasSubtypes(true);
+setMaxDamage(0);
+setHasSubtypes(true);
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {

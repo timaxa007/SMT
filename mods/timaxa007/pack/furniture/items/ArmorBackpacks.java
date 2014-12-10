@@ -10,7 +10,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -29,7 +28,7 @@ public static String[] type_packpacks = new String[] {
 };
 
 public ArmorBackpacks() {
-super(EnumArmorMaterial.IRON, 0, 1);
+super(ArmorMaterial.IRON, 0, 1);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setTextureName("timaxa007:armor/backpack");
 setUnlocalizedName("armor_backpacks");
@@ -109,8 +108,8 @@ model_backpack.isSneak = entity.isSneaking();
 model_backpack.isRiding = entity.isRiding();
 model_backpack.isChild = entity.isChild();
 //model_mask.onGround = entity.onGround();
-model_backpack.heldItemRight = entity.getCurrentItemOrArmor(0) != null ? 1 :0;
 if (entity instanceof EntityPlayer) {
+model_backpack.heldItemRight = ((EntityPlayer)entity).getCurrentEquippedItem() != null ? 1 :0;
 model_backpack.aimedBow = ((EntityPlayer)entity).getItemInUseDuration() > 2;
 }
 return model_backpack;
@@ -126,14 +125,14 @@ NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("TypeBackpack")) {
 return iconArray[tag.getInteger("TypeBackpack")];
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon(getIconString());
+itemIcon = ir.registerIcon(getIconString());
 iconArray = new IIcon[type_packpacks.length];
 for (int i = 0; i < type_packpacks.length; ++i) {
 iconArray[i] = ir.registerIcon(getIconString() + "_" + type_packpacks[i]);

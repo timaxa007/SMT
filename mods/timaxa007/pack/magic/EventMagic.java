@@ -1,28 +1,26 @@
 package mods.timaxa007.pack.magic;
 
-import java.util.Random;
-
+import mods.timaxa007.pack.furniture.PackFurniture;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventMagic {
 //--------------------------------------------------------------------------------------------------------------
-@ForgeSubscribe
+@SubscribeEvent
 public void onEntityUpdate(LivingUpdateEvent e) {
-ItemStack helmet = e.entityLiving.getCurrentItemOrArmor(4);
-ItemStack chestplate = e.entityLiving.getCurrentItemOrArmor(3);
-ItemStack leggings = e.entityLiving.getCurrentItemOrArmor(2);
-ItemStack boots = e.entityLiving.getCurrentItemOrArmor(1);
-ItemStack actHBI = e.entityLiving.getCurrentItemOrArmor(0);//active HotBar Item
+ItemStack helmet = ((EntityPlayer)e.entityLiving).getCurrentArmor(0);
+ItemStack chestplate = ((EntityPlayer)e.entityLiving).getCurrentArmor(1);
+ItemStack leggings = ((EntityPlayer)e.entityLiving).getCurrentArmor(2);
+ItemStack boots = ((EntityPlayer)e.entityLiving).getCurrentArmor(3);
+ItemStack actHBI = ((EntityPlayer)e.entityLiving).getCurrentEquippedItem();//active HotBar Item
 ItemStack helmetI;
 ItemStack chestplateI;
 ItemStack leggingsI;
@@ -34,7 +32,7 @@ helmetI=new ItemStack(Item.bootsIron);
 chestplateI=new ItemStack(Item.legsIron);
 leggingsI=new ItemStack(Item.plateIron);
 bootsI=new ItemStack(Item.helmetIron);
-if((boots.itemID==helmetI.itemID)&&(leggings.itemID==chestplateI.itemID)&&(chestplate.itemID==leggingsI.itemID)&&(helmet.itemID==bootsI.itemID)) {
+if((boots.getItem()==helmetI.getItem())&&(leggings.getItem()==chestplateI.getItem())&&(chestplate.getItem()==leggingsI.getItem())&&(helmet.getItem()==bootsI.getItem())) {
 float health=e.entityLiving.getHealth();
 float baseRegen=0.2F;
 float regenStreght=3;
@@ -44,11 +42,11 @@ e.entityLiving.setHealth(health+willRegen);
 */
 //--------------------------------------------------------------
 
-helmetI = new ItemStack(PackMagic.proxy.armorMagicBoot);
-chestplateI = new ItemStack(PackMagic.proxy.armorMagicLeggin);
-leggingsI = new ItemStack(PackMagic.proxy.armorMagicChest);
-bootsI = new ItemStack(PackMagic.proxy.armorMagicHelmet);
-if (boots.itemID == helmetI.itemID && leggings.itemID == chestplateI.itemID && chestplate.itemID == leggingsI.itemID && helmet.itemID == bootsI.itemID) {
+helmetI = new ItemStack(PackFurniture.proxy.armor_new_helmet);
+chestplateI = new ItemStack(PackFurniture.proxy.armor_new_chest);
+leggingsI = new ItemStack(PackFurniture.proxy.armor_new_leggin);
+bootsI = new ItemStack(PackFurniture.proxy.armor_new_boot);
+if (boots.getItem() == helmetI.getItem() && leggings.getItem() == chestplateI.getItem() && chestplate.getItem() == leggingsI.getItem() && helmet.getItem() == bootsI.getItem()) {
 
 if (e.entityLiving.isSneaking()) {
 
@@ -74,7 +72,7 @@ e.entityLiving.fallDistance = e.entityLiving.fallDistance-0.1F;
 }
 }
 //--------------------------------------------------------------------------------------------------------------
-@ForgeSubscribe
+@SubscribeEvent
 public void onHitEntity(LivingHurtEvent e) {
 if (e.source instanceof EntityDamageSource) {
 
@@ -88,7 +86,7 @@ EntityPlayer player = (EntityPlayer) ent;
 ItemStack weapon = player.getCurrentEquippedItem();
 
 if (weapon != null) {
-if (weapon.getItem().itemID == Item.swordGold.itemID) {
+if (weapon.getItem() == Items.golden_sword) {
 //e.ammount=100;
 }
 

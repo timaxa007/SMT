@@ -25,7 +25,7 @@ public class ItemParticlesGun extends Item {
 @SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
 public ItemParticlesGun() {
-super(id);
+super();
 setMaxStackSize(1);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setTextureName("timaxa007:item_weapons");
@@ -96,7 +96,7 @@ return icon_tex[WeaponFor.weapon_list[tag.getInteger("WeaponID")].weaponID];
 return icon_ovl[WeaponFor.weapon_list[tag.getInteger("WeaponID")].weaponID];
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -116,7 +116,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon("timaxa007:" + "weapons");
+itemIcon = ir.registerIcon("timaxa007:" + "weapons");
 icon_tex = new IIcon[WeaponFor.weapon_list.length];
 icon_ovl = new IIcon[WeaponFor.weapon_list.length];
 for (int i = 0; i < WeaponFor.weapon_list.length; i++) {
@@ -128,8 +128,8 @@ icon_tex[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[
 	icon_ovl[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[i].getTexture2Name());
 	}
 } else {*/
-//icon_tex[i] = itemIIcon;
-//icon_ovl[i] = itemIIcon;
+//icon_tex[i] = itemIcon;
+//icon_ovl[i] = itemIcon;
 //}
 //}
 //}

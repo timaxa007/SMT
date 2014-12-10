@@ -9,7 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,8 +27,8 @@ public static final String[] type_medieval = new String[] {
 "iron"
 };
 
-public ArmorMedieval(int id, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
-super(par2EnumArmorMaterial, par3, par4);
+public ArmorMedieval(ArmorMaterial par2, int par3, int par4) {
+super(par2, par3, par4);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setTextureName("timaxa007:armor/medieval");
 setUnlocalizedName("armor_medieval");
@@ -55,7 +55,7 @@ list.add("TypeMask: " + tag.getInteger("TypeMedieval") + "/" + type_medieval[tag
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (int j = 0; j < type_medieval.length; ++j) {
 list.add(addTag(new ItemStack(id, 1, 0), j));
 }
@@ -107,8 +107,8 @@ model_armor_medieval.isSneak = entity.isSneaking();
 model_armor_medieval.isRiding = entity.isRiding();
 model_armor_medieval.isChild = entity.isChild();
 //model_armor_medieval.onGround = entity.onGround();
-model_armor_medieval.heldItemRight = entity.getCurrentItemOrArmor(0) != null ? 1 :0;
 if (entity instanceof EntityPlayer) {
+model_armor_medieval.heldItemRight = ((EntityPlayer)entity).getCurrentEquippedItem() != null ? 1 :0;
 model_armor_medieval.aimedBow = ((EntityPlayer)entity).getItemInUseDuration() > 2;
 }
 return model_armor_medieval;

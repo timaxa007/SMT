@@ -41,7 +41,7 @@ FoodForItem1();
 foodID = nextID();*/
 }
 
-public FoodForItem() {
+public FoodForItem(int id) {
 FoodForItem1(id);
 /*food_list[id] = this;
 foodID = id;*/

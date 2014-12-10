@@ -14,18 +14,18 @@ import org.lwjgl.opengl.GL12;
 public class RenderArrowMini extends Render {
 
 private static final ResourceLocation arrowTextures = new ResourceLocation("textures/blocks/iron_block.png");
-private static final IModelCustom model = AdvancedModelLoader.loadModel("/assets/timaxa007/obj/arrow_mini.obj");
+private static final IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "/obj/arrow_mini.obj"));
 
 @Override
 public void doRender(Entity entity, double d0, double d1, double d2, float f, float f1) {
-renderArrow((EntityArrowMini)entity, d0, d1, d2, f, f1);
+//renderArrow((EntityArrowMini)entity, d0, d1, d2, f, f1);
 }
 
 @Override
 protected ResourceLocation getEntityTexture(Entity entity) {
 return arrowTextures;
 }
-
+/*
 public void renderArrow(EntityArrowMini entity, double d0, double d1, double d2, float f, float f1) {
 this.bindEntityTexture(entity);
 GL11.glPushMatrix();
@@ -39,5 +39,5 @@ model.renderAll();
 GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 GL11.glPopMatrix();
 }
-
+*/
 }

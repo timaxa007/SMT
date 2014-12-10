@@ -14,18 +14,18 @@ import net.minecraft.world.World;
 
 public class Blaster extends Item{
 public Blaster() {
-super(id);
+super();
 this.setCreativeTab(PackWeapon.proxy.tabWeaponPack);
 this.setUnlocalizedName("blaster");
 this.setFull3D();
 }
 
 public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
-if (player.inventory.hasItem(PackFurniture.proxy.item_colored.itemID)) {
+if (player.inventory.hasItem(PackFurniture.proxy.item_colored)) {
 if (!world.isRemote) {
-EntityBlasterBullet blasterBullet = new EntityBlasterBullet(world, player, 2.0F);
-world.spawnEntityInWorld(blasterBullet);
-player.inventory.consumeInventoryItem(PackFurniture.proxy.item_colored.itemID);
+//EntityBlasterBullet blasterBullet = new EntityBlasterBullet(world, player, 2.0F);
+//world.spawnEntityInWorld(blasterBullet);
+player.inventory.consumeInventoryItem(PackFurniture.proxy.item_colored);
 }
 }
 }
@@ -39,7 +39,7 @@ return EnumAction.bow;
 }
 
 public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-if (player.inventory.hasItem(PackFurniture.proxy.item_colored.itemID)) {
+if (player.inventory.hasItem(PackFurniture.proxy.item_colored)) {
 player.setItemInUse(is, this.getMaxItemUseDuration(is));
 }
 return is;
@@ -55,6 +55,6 @@ list.add("HiddenINFO");
 
 @Override
 public void registerIcons(IIconRegister ir) {
-this.itemIIcon=ir.registerIcon("timaxa007:"+"blaster");
+this.itemIcon=ir.registerIcon("timaxa007:"+"blaster");
 }
 }

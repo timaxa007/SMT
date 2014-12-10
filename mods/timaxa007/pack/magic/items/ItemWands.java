@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemWands extends Item{
 
 public ItemWands() {
-super(id);
+super();
 this.setCreativeTab(PackMagic.proxy.tabMagicPack);
 this.setUnlocalizedName("wands");
 this.setFull3D();
@@ -41,7 +41,7 @@ return is;
 
 @Override
 public void registerIcons(IIconRegister ir) {
-this.itemIIcon=ir.registerIcon("timaxa007:"+"wands");
+this.itemIcon=ir.registerIcon("timaxa007:"+"wands");
 }
 
 }

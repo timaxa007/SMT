@@ -1,18 +1,17 @@
 package mods.timaxa007.pack.furniture;
 
 import net.minecraft.creativetab.CreativeTabs;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.item.Item;
 
 public class TabFurniturePack extends CreativeTabs {
 
-public TabFurniturePack(int id, String name) {
+public TabFurniturePack(String name) {
 super(name);
 }
 
-@SideOnly(Side.CLIENT)
-public int getTabIIconItemIndex() {
-return PackFurniture.proxy.block_cnstor_block.blockID;
+@Override
+public Item getTabIconItem() {
+return Item.getItemFromBlock(PackFurniture.proxy.block_cnstor_block);
 }
 
 }

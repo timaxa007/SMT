@@ -22,8 +22,8 @@ case 1:generateEnd(world, random, chunkX * 16, chunkZ * 16);break;
  
 public void generateNether(World world, Random rand, int chunkX, int chunkZ) {
 
-(new WorldGenMinable(PackMining.proxy.blockRock.blockID, 12, 32, 
-Block.netherrack.blockID)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(127), chunkZ + rand.nextInt(16));
+(new WorldGenMinable(PackMining.proxy.blockRock, 12, 32, 
+Block.netherrack)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(127), chunkZ + rand.nextInt(16));
 
 }
  
@@ -33,8 +33,8 @@ for (int x = 0; x < 16; ++x) {
 for (int y = 0; y < 16; ++y) {
 for (int z = 1; z < world.getHeight(); ++z) {
 if (world.getBiomeGenForCoords(chunkX + x, y).biomeID == 30 || world.getBiomeGenForCoords(chunkX + x, chunkY + y).biomeID == 31) {
-if ((world.getBlock(chunkX + x, z, chunkY + y) == Block.grass.blockID || world.getBlock(chunkX + x, z, chunkY + y) == Block.netherrack.blockID)) {
-world.setBlock(chunkX + x, z, chunkY + y, PackMining.proxy.blockRock.blockID);
+if ((world.getBlock(chunkX + x, z, chunkY + y) == Block.grass || world.getBlock(chunkX + x, z, chunkY + y) == Block.netherrack)) {
+world.setBlock(chunkX + x, z, chunkY + y, PackMining.proxy.blockRock);
 }
 }
 }
@@ -45,43 +45,43 @@ world.setBlock(chunkX + x, z, chunkY + y, PackMining.proxy.blockRock.blockID);
 for (int j = 0;j<16;j++) {
 int rdm = rand.nextInt(100);
 if(rdm == 0) {
-(new WorldGenMinable(PackMining.proxy.oreGemsLarge.blockID, j, 4, 
-Block.stone.blockID)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(10), chunkZ + rand.nextInt(16));
+(new WorldGenMinable(PackMining.proxy.oreGemsLarge, j, 4, 
+Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(10), chunkZ + rand.nextInt(16));
 }
 }
 
 for (int j = 0; j < 16; j++) {
 int rdm = rand.nextInt(50);
 if(rdm == 0) {
-(new WorldGenMinable(PackMining.proxy.oreGemsMedium.blockID, j, 6, 
-Block.stone.blockID)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(20), chunkZ + rand.nextInt(16));
+(new WorldGenMinable(PackMining.proxy.oreGemsMedium, j, 6, 
+Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(20), chunkZ + rand.nextInt(16));
 }
 }
 
 for (int j = 0; j < 16; j++) {
 int rdm = rand.nextInt(10);
 if(rdm == 0) {
-(new WorldGenMinable(PackMining.proxy.oreGemsSmall.blockID, j, 8, 
-Block.stone.blockID)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(30), chunkZ + rand.nextInt(16));
+(new WorldGenMinable(PackMining.proxy.oreGemsSmall, j, 8, 
+Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(30), chunkZ + rand.nextInt(16));
 }
 }
 
 for (int j = 0; j < 16; j++) {
-(new WorldGenMinable(PackMining.proxy.blockRock.blockID, j, 16, 
-Block.stone.blockID)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(96), chunkZ + rand.nextInt(16));
+(new WorldGenMinable(PackMining.proxy.blockRock, j, 16, 
+Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(96), chunkZ + rand.nextInt(16));
 }
 
 for (int j = 0; j < 16; j++) {
-(new WorldGenMinable(PackMining.proxy.oreMetals.blockID, j, 8, 
-Block.stone.blockID)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(60), chunkZ + rand.nextInt(16));
+(new WorldGenMinable(PackMining.proxy.oreMetals, j, 8, 
+Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(60), chunkZ + rand.nextInt(16));
 }
 */
 }
  
 public void generateEnd(World world, Random rand, int chunkX, int chunkZ) {
 
-(new WorldGenMinable(PackMining.proxy.blockRock.blockID, 12, 32, 
-Block.whiteStone.blockID)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(96), chunkZ + rand.nextInt(16));
+(new WorldGenMinable(PackMining.proxy.blockRock, 12, 32, 
+Block.whiteStone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(96), chunkZ + rand.nextInt(16));
 
 
 }

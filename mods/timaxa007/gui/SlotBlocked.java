@@ -70,11 +70,11 @@ this.field_75228_b=0;
 
 GameRegistry.onItemSmelted(thePlayer, is);
 
-if(is.itemID==Item.ingotIron.itemID) {
+if(is.getItem()==Item.ingotIron.getItem()) {
 this.thePlayer.addStat(AchievementList.acquireIron, 1);
 }
 
-if(is.itemID==Item.fishCooked.itemID) {
+if(is.getItem()==Item.fishCooked.getItem()) {
 this.thePlayer.addStat(AchievementList.cookFish, 1);
 }
 }

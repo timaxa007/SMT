@@ -67,7 +67,7 @@ public static final String[] airbrushColorType = new String[] {
 };
 */
 public ToolAirBrush() {
-super(id);
+super();
 setCreativeTab(PackMining.proxy.tabToolsPack);
 setMaxStackSize(1);
 setMaxDamage(10000);
@@ -99,11 +99,11 @@ if (te != null && te instanceof TEBlockRockBlocks) {
 } else {return false;}
 } else {return false;}
 /*
-} else if (i1 == Block.dirt.blockID || i1 == Block.grass.blockID || i1 == Block.mycelium.blockID) {
+} else if (i1 == Block.dirt || i1 == Block.grass || i1 == Block.mycelium) {
 Block block = Block.tilledField;
 world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), block.stepSound.getStepSound(), (block.stepSound.getVolume()+1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
 
-world.setBlock(x, y, z, block.blockID);
+world.setBlock(x, y, z, block);
 is.damageItem(1, player);
 
 return true;
@@ -144,7 +144,7 @@ list.add(Option.getText("Color") + "2: " + Option.getText("Empty") + ".");
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (int i = 0; i < airbrush_type.length; ++i) {
 for (int j2 = 0; j2 < 16; ++j2) {
 int j1 = 0xFFFFFF;
@@ -154,7 +154,7 @@ list.add(addTag(id, i, j1, GetColors.getHexColors[j2]));
 //list.add(new ItemStack(id, 1, 0));
 }
 
-private static ItemStack addTag(int par1, int par2, int par3, int par4) {
+private static ItemStack addTag(Item par1, int par2, int par3, int par4) {
 ItemStack is = new ItemStack(par1, 1, 0);
 NBTTagCompound tag = new NBTTagCompound();
 tag.setByte("Type", (byte)par2);
@@ -175,7 +175,7 @@ return icon_tex[(int)tag.getByte("Type")];
 } else {
 return icon_ovl[(int)tag.getByte("Type")];
 }
-} else {return itemIIcon;}
+} else {return itemIcon;}
 }
 
 @SideOnly(Side.CLIENT)
@@ -193,7 +193,7 @@ public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
 icon_tex = new IIcon[airbrush_type.length];
 icon_ovl = new IIcon[airbrush_type.length];
-itemIIcon = ir.registerIcon("timaxa007:colors/tool_airbrush");
+itemIcon = ir.registerIcon("timaxa007:colors/tool_airbrush");
 for (int i = 0; i < airbrush_type.length; i++) {
 icon_tex[i] = ir.registerIcon("timaxa007:colors/" + "tool_airbrush");
 icon_ovl[i] = ir.registerIcon("timaxa007:colors/" + "tool_airbrush" + "_overlay");

@@ -11,8 +11,8 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,22 +31,22 @@ public class ToolAxe extends Item{
 //private final EnumToolMaterial toolMaterial;
 
 public ToolAxe() {
-super(id);
-//this.toolMaterial=EnumToolMaterial.IRON;
-this.maxStackSize=1;
-this.setMaxDamage(EnumToolMaterial.IRON.getMaxUses());
-this.setCreativeTab(PackMining.proxy.tabToolsPack);
-this.setUnlocalizedName("tool.axe");
+super();
+//toolMaterial=EnumToolMaterial.IRON;
+maxStackSize=1;
+setMaxDamage(ToolMaterial.IRON.getMaxUses());
+setCreativeTab(PackMining.proxy.tabToolsPack);
+setUnlocalizedName("tool.axe");
 }
 
 public float getStrVsBlock(ItemStack is, Block blk) {
-if(blk.blockID==Block.web.blockID) {
+if(blk==Blocks.web) {
 return 15.0F;
-}else if(blk.blockID==Block.stoneBrick.blockID) {
+}else if(blk==Blocks.stonebrick) {
 return 5.0F;
 }else{
-Material material=blk.blockMaterial;
-return material!=Material.plants&&material!=Material.vine&&material!=Material.coral&& material!=Material.leaves&&material!=Material.pumpkin?1.0F:1.5F;
+Material material=blk.getMaterial();
+return material!=Material.plants&&material!=Material.vine&&material!=Material.coral&& material!=Material.leaves&&material!=Material.gourd?1.0F:1.5F;
 }
 }
 
@@ -54,7 +54,7 @@ public boolean hitEntity(ItemStack is, EntityLivingBase entity1, EntityLivingBas
 is.damageItem(1, entity2);
 return true;
 }
-
+/*
 public boolean onBlockDestroyed(ItemStack is, World wrd, int par3, int x, int y, int z, EntityLivingBase entity) {
 if((double)Block.blocksList[par3].getBlockHardness(wrd, x, y, z)!=0.0D) {
 is.damageItem((int)(Block.blocksList[par3].getBlockHardness(wrd, x, y, z)*10), entity);
@@ -65,7 +65,7 @@ return false;
 }
 //return false;
 }
-
+*/
 @SideOnly(Side.CLIENT)
 public boolean isFull3D() {return true;}
 
@@ -74,13 +74,13 @@ public EnumAction getItemUseAction(ItemStack is) {return EnumAction.block;}
 public int getMaxItemUseDuration(ItemStack is) {return 72000;}
 
 public ItemStack onItemRightClick(ItemStack is, World wrd, EntityPlayer player) {
-player.setItemInUse(is, this.getMaxItemUseDuration(is));
+player.setItemInUse(is, getMaxItemUseDuration(is));
 return is;
 }
 
 public boolean canHarvestBlock(Block blk) {
-if(blk.blockID==Block.web.blockID) {return true;}
-if(blk.blockID==Block.stoneBrick.blockID) {return true;}
+if(blk==Blocks.web) {return true;}
+if(blk==Blocks.stonebrick) {return true;}
 return false;
 }
 
@@ -94,7 +94,7 @@ return "none";
 */
 /*
 public boolean getIsRepairable(ItemStack is1, ItemStack is2) {
-return this.toolMaterial.getToolCraftingMaterial()==is2.itemID?true:super.getIsRepairable(is1, is2);
+return toolMaterial.getToolCraftingMaterial()==is2.getItem()?true:super.getIsRepairable(is1, is2);
 }
 */
 /*
@@ -141,7 +141,7 @@ return is;
 }
 
 @SideOnly(Side.CLIENT)
-public IIcon getIconFromDamage(int par1) {return this.iconArray;}
+public IIcon getIconFromDamage(int par1) {return iconArray;}
 
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
@@ -164,14 +164,14 @@ return GetColors.getHexColors[tag.getInteger("Color")];
 
 @SideOnly(Side.CLIENT)
 public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
-return par2>0?(par2==0?this.iconArray:this.theIIcon):super.getIconFromDamageForRenderPass(par1, par2);
+return par2>0?(par2==0?iconArray:theIIcon):super.getIconFromDamageForRenderPass(par1, par2);
 }
 
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-this.theIIcon=ir.registerIcon("timaxa007:"+"tool/"+"axeMetals_overlay");
-this.iconArray=ir.registerIcon("timaxa007:"+"tool/"+"axeHandle");
+theIIcon=ir.registerIcon("timaxa007:"+"tool/"+"axeMetals_overlay");
+iconArray=ir.registerIcon("timaxa007:"+"tool/"+"axeHandle");
 }
 
 

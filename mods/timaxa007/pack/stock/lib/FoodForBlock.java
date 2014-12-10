@@ -38,7 +38,7 @@ color_hex1 = 0;
 color_hex2 = 0;
 }
 
-public FoodForBlock() {
+public FoodForBlock(int id) {
 food_list[id] = this;
 foodID = id;
 color_hex1 = 0;

@@ -31,9 +31,9 @@ renderBlockClaymoreModelID = RenderingRegistry.getNextAvailableRenderId();
 ClientRegistry.bindTileEntitySpecialRenderer(TEClaymore.class, new BlockRenderClaymore());
 
 //Blocks
-MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.block_claymore.blockID, new ItemRendererClaymore());
+MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.block_claymore, new ItemRendererClaymore());
 //Item
-MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.item_weapons.itemID, new ItemRendererWeapons());
+MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.item_weapons.getItem(), new ItemRendererWeapons());
 
 RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderEntityBullet());
 

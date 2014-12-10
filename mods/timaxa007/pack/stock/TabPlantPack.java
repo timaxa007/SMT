@@ -12,7 +12,7 @@ super(name);
 
 @SideOnly(Side.CLIENT)
 public int getTabIIconItemIndex() {
-return PackStock.proxy.item_germination_plants.itemID;
+return PackStock.proxy.item_germination_plants.getItem();
 }
 
 }

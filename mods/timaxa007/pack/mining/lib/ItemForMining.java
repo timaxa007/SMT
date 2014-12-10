@@ -30,7 +30,7 @@ item_list[nextID()] = this;
 itemID = nextID();
 }
 
-public ItemForMining() {
+public ItemForMining(int id) {
 item_list[id] = this;
 itemID = id;
 }

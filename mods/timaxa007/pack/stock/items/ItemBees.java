@@ -25,7 +25,7 @@ public class ItemBees extends Item {
 @SideOnly(Side.CLIENT) private IIcon[] icon_c;
 
 public ItemBees() {
-super(id);
+super();
 setCreativeTab(PackStock.proxy.tabApisPack);
 setHasSubtypes(true);
 setMaxDamage(0);
@@ -148,7 +148,7 @@ return icon_b[tag.getInteger("TypeBee")];
 return icon_c[tag.getInteger("TypeBee")];
 }
 } else {
-return itemIIcon;
+return itemIcon;
 }
 }
 
@@ -171,7 +171,7 @@ return 16777215;
 @SideOnly(Side.CLIENT)
 public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIIcon = ir.registerIcon(getIconString() + "icon");
+itemIcon = ir.registerIcon(getIconString() + "icon");
 icon_a = new IIcon[bees.type_bee.length];
 icon_b = new IIcon[bees.type_bee.length];
 icon_c = new IIcon[bees.type_bee.length];

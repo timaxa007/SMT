@@ -6,10 +6,10 @@ import net.minecraft.world.biome.BiomeGenBase;
 public class BiomeHot extends BiomeGenBase {
 
 public BiomeHot() {
-super(id);
+super();
 biomeName = "Hot Biome";
-topBlock = (byte)Block.netherrack.blockID;
-fillerBlock = (byte)Block.stone.blockID;
+topBlock = (byte)Block.netherrack;
+fillerBlock = (byte)Block.stone;
 waterColorMultiplier = 14185574;
 }
 

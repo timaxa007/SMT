@@ -51,16 +51,16 @@ setThickness(getThickness() + 1);
 }
 
 if (!worldObj.isRemote && worldObj.getWorldTime() % (20 * updt) == 0 &&
-(worldObj.isAirBlock(xCoord, yCoord + 1, zCoord) || worldObj.getBlock(xCoord, yCoord + 1, zCoord) == Block.leaves.blockID) &&
+(worldObj.isAirBlock(xCoord, yCoord + 1, zCoord) || worldObj.getBlock(xCoord, yCoord + 1, zCoord) == Block.leaves) &&
 getHeight() == 16) {
-worldObj.setBlock(xCoord, yCoord + 1, zCoord, PackStock.proxy.block_germination_plants.blockID);
+worldObj.setBlock(xCoord, yCoord + 1, zCoord, PackStock.proxy.block_germination_plants);
 TEGerminationPlants tes = new TEGerminationPlants();
 tes.setTypePlant(getTypePlant());
 tes.setPlant(getPlant());
 tes.setSticks(0);
 tes.setHeight(1);
 tes.setThickness(1);
-worldObj.setBlockTileEntity(xCoord, yCoord + 1, zCoord, tes);
+worldObj.setTileEntity(xCoord, yCoord + 1, zCoord, tes);
 }
 
 }

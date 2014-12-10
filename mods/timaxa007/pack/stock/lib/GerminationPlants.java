@@ -39,7 +39,7 @@ plant_list[nextID()] = this;
 plantID = nextID();
 }
 
-public GerminationPlants() {
+public GerminationPlants(int id) {
 plant_list[id] = this;
 plantID = id;
 }

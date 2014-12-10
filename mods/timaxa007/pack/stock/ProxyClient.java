@@ -39,12 +39,12 @@ ClientRegistry.bindTileEntitySpecialRenderer(TEApiary.class, new RenderBlockApia
 //Items
 
 //Blocks
-MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_germination_plants.blockID, new ItemRenderBlockGerminationPlants());
-MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_pizzas.blockID, new ItemRenderPizzas());
-MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_foods.blockID, new ItemRenderFoods());
-MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_cakes.blockID, new ItemRenderCakes());
-MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_pies.blockID, new ItemRenderPies());
-MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_apiary.blockID, new ItemRenderBlockApiary());
+MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_germination_plants, new ItemRenderBlockGerminationPlants());
+MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_pizzas, new ItemRenderPizzas());
+MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_foods, new ItemRenderFoods());
+MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_cakes, new ItemRenderCakes());
+MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_pies, new ItemRenderPies());
+MinecraftForgeClient.registerItemRenderer(PackStock.proxy.block_apiary, new ItemRenderBlockApiary());
 
 //Items
 

@@ -35,9 +35,9 @@ ClientRegistry.bindTileEntitySpecialRenderer(TEModuleMovement.class, new BlockRe
 
 
 //Blocks
-MinecraftForgeClient.registerItemRenderer(PackTechno.proxy.block_electric_wires.blockID, new ItemRenderBlockElectricWires());
-MinecraftForgeClient.registerItemRenderer(PackTechno.proxy.block_chip.blockID, new ItemRenderBlockChip());
-MinecraftForgeClient.registerItemRenderer(PackTechno.proxy.block_module_movement.blockID, new ItemRenderBlockModuleMovement());
+MinecraftForgeClient.registerItemRenderer(PackTechno.proxy.block_electric_wires, new ItemRenderBlockElectricWires());
+MinecraftForgeClient.registerItemRenderer(PackTechno.proxy.block_chip, new ItemRenderBlockChip());
+MinecraftForgeClient.registerItemRenderer(PackTechno.proxy.block_module_movement, new ItemRenderBlockModuleMovement());
 
 //Items
 

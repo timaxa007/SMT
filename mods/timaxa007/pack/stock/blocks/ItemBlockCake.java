@@ -4,17 +4,18 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemMultiTextureTile;
+import net.minecraft.item.ItemMultiTexture;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 import org.lwjgl.input.Keyboard;
 
-public class ItemBlockCake extends ItemMultiTextureTile{
+public class ItemBlockCake extends ItemMultiTexture {
 
-public ItemBlockCake() {
-super(PackStock.proxy.block_cakes, BlockCakes.typeCakes);
+public ItemBlockCake(Block id) {
+super(id, PackStock.proxy.block_cakes, BlockCakes.typeCakes);
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {

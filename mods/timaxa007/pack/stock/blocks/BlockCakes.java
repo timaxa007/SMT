@@ -85,7 +85,7 @@ int act = (((TECake)te).getAmount()-1);
 
 if (((TECake)te).getAmount() <= 0) {
 world.setBlockToAir(x, y, z);
-world.removeBlockTileEntity(x, y, z);
+world.removeTileEntity(x, y, z);
 }
 
 }
