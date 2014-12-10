@@ -17,7 +17,7 @@ import org.lwjgl.input.Keyboard;
 
 public class ItemBlockBarrels extends ItemBlock{
 
-public ItemBlockBarrels(int id) {
+public ItemBlockBarrels() {
 super(id);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);
@@ -34,7 +34,7 @@ if(hitY==1.0F) {y++;}
 if(hitY==0.0F) {y--;}
 
 wrd.setBlock(x, y, z, PackFurniture.proxy.block_barrels.blockID, 0, 3);
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if((te!=null)&&(te instanceof TEBarrels)) {
 

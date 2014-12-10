@@ -14,8 +14,8 @@ import org.lwjgl.input.Keyboard;
 
 public class ItemBlockPizza extends ItemMultiTextureTile{
 
-public ItemBlockPizza(int id) {
-super(id, PackStock.proxy.block_pizzas, BlockPizzas.typePizzas);
+public ItemBlockPizza() {
+super(PackStock.proxy.block_pizzas, BlockPizzas.typePizzas);
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {

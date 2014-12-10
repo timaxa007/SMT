@@ -6,7 +6,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 public class EventGUI {
-
+//--------------------------------------------------------------------------------------------------------------
 Minecraft mc = Minecraft.getMinecraft();
 
 @ForgeSubscribe
@@ -17,5 +17,5 @@ mc.ingameGUI = new WeaponsIngameGUI(mc);
 }
 
 }
-
+//--------------------------------------------------------------------------------------------------------------
 }

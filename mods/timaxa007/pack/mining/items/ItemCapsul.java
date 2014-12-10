@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCapsul extends Item {
 
-public ItemCapsul(int id) {
+public ItemCapsul() {
 super(id);
 setCreativeTab(PackMining.proxy.tabMiningPack);
 setHasSubtypes(true);

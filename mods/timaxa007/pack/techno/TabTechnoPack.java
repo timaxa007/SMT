@@ -7,11 +7,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TabTechnoPack extends CreativeTabs {
 
 public TabTechnoPack(int id, String name) {
-super(id, name);
+super(name);
 }
 
 @SideOnly(Side.CLIENT)
-public int getTabIconItemIndex() {
+public int getTabIIconItemIndex() {
 return PackTechno.proxy.tool_electric_wrench.itemID;
 }
 

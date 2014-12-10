@@ -14,7 +14,7 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -22,36 +22,36 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 
-@SideOnly(Side.CLIENT) private Icon[] icon_array;
+@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
-public BlockCnstorDoor(int id) {
-super(id, Material.glass);
+public BlockCnstorDoor() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);
-setStepSound(soundWoodFootstep);
-setTextureName("timaxa007:woodFrame");
-setUnlocalizedName("cnstor.door");
+setStepSound(soundTypeWood);
+setBlockTextureName("timaxa007:woodFrame");
+setBlockName("cnstor.door");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TECnstorDoors();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TECnstorDoors();}
 
 public int idPicked(World world, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TECnstorDoors) {
-return addTag(world.getBlockId(x, y, z), ((TECnstorDoors)te).getSubID(), ((TECnstorDoors)te).getColorBlock());
+return addTag(world.getBlock(x, y, z), ((TECnstorDoors)te).getSubID(), ((TECnstorDoors)te).getColorBlock());
 } else {
-return addTag(world.getBlockId(x, y, z), 0, 0xFFFFFF);
+return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
 }
 }
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TECnstorDoors && tag != null) {
 if (tag.hasKey("SubID")) {((TECnstorDoors)te).setSubID((int)tag.getByte("SubID"));}
@@ -63,7 +63,7 @@ if (entity instanceof EntityPlayer) {((TECnstorDoors)te).setOwner(((EntityPlayer
 @Override
 public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
 int ib = 0;
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 //if(!world.isRemote) {return false;}
 if (te == null || player.isSneaking()) {return false;}
 
@@ -121,9 +121,9 @@ return false;
 @Override
 public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 if (!world.isRemote) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TECnstorDoors && !player.capabilities.isCreativeMode) {
-dropBlockAsItem_do(world, x, y, z, addTag(world.getBlockId(x, y, z), ((TECnstorDoors)te).getSubID(), ((TECnstorDoors)te).getColorBlock()));
+dropBlockAsItem_do(world, x, y, z, addTag(world.getBlock(x, y, z), ((TECnstorDoors)te).getSubID(), ((TECnstorDoors)te).getColorBlock()));
 world.removeBlockTileEntity(x, y, z);
 world.setBlockToAir(x, y, z);
 }
@@ -148,8 +148,8 @@ return is;
 }
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-icon_array = new Icon[type_block.length];
+public void registerIcons(IIconRegister ir) {
+icon_array = new IIcon[type_block.length];
 blockIcon = ir.registerIcon("planks_oak");
 for (int i = 0; i < icon_array.length; ++i) {
 icon_array[i] = ir.registerIcon("timaxa007:" + "wood/" + type_block[i] + "_overlay");

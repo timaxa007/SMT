@@ -22,17 +22,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFoods extends Block implements ITileEntityProvider {
 
-public BlockFoods(int id) {
-super(id, Material.glass);
+public BlockFoods() {
+super(Material.glass);
 setCreativeTab(PackStock.proxy.tabFoodPack);
 setHardness(0.25F);
 setResistance(0.5F);
-setTextureName("planks_oak");
-setUnlocalizedName("foods");
+setBlockTextureName("planks_oak");
+setBlockName("foods");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEFoods();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEFoods();}
 public int quantityDropped(Random radom) {return 0;}
 public int getRenderType() {return PackStock.proxy.render_block_foods_modelID;}
 public boolean isOpaqueCube() {return false;}
@@ -40,7 +40,7 @@ public boolean isOpaqueCube() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEFoods) {
 return addTag(((TEFoods)te).getFoodID(), ((TEFoods)te).getType(), ((TEFoods)te).getColor1(), ((TEFoods)te).getColor2());
 } else {
@@ -50,7 +50,7 @@ return addTag(0, 0, 0, 0);
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEFoods && tag != null) {
 
@@ -88,7 +88,7 @@ if (tag.hasKey("Color2")) {
 @Override
 public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 if (!world.isRemote) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEFoods && !player.capabilities.isCreativeMode) {
 dropBlockAsItem_do(world, x, y, z, addTag(((TEFoods)te).getFoodID(), ((TEFoods)te).getType(), ((TEFoods)te).getColor1(), ((TEFoods)te).getColor2()));
 world.removeBlockTileEntity(x, y, z);

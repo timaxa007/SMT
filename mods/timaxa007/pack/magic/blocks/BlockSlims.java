@@ -9,32 +9,32 @@ import mods.timaxa007.pack.magic.PackInfo;
 import mods.timaxa007.pack.magic.PackMagic;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSlims extends BlockContainer{
 @SideOnly(Side.CLIENT)
-private Icon[] iconArray;
+private IIcon[] iconArray;
 
-public BlockSlims(int id) {
-super(id, Material.wood);
+public BlockSlims() {
+super(Material.wood);
 setCreativeTab(PackMagic.proxy.tabMagicPack);
-setTextureName("planks_oak");
-setUnlocalizedName("magic.slims");
+setBlockTextureName("planks_oak");
+setBlockName("magic.slims");
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIcon(int par1, int par2) {return iconArray[par2 % iconArray.length];}
+public IIcon getIcon(int par1, int par2) {return iconArray[par2 % iconArray.length];}
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TESlims();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TESlims();}
 
 @SideOnly(Side.CLIENT)
 public void getSubBlocks(int id, CreativeTabs table, List list) {
@@ -42,8 +42,8 @@ for(byte j=0;j<16;++j) {list.add(new ItemStack(id, 1, j));}
 }
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-iconArray=new Icon[16];
+public void registerIcons(IIconRegister ir) {
+iconArray=new IIcon[16];
 for(byte i=0;i<iconArray.length;++i) {
 iconArray[i]=ir.registerIcon("timaxa007:"+"blockSlims/"+"blockSlims"+GetColors.getNameColors[i]);
 }

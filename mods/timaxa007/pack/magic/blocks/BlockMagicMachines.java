@@ -14,20 +14,20 @@ import net.minecraft.world.World;
 
 public class BlockMagicMachines extends BlockContainer{
 
-public BlockMagicMachines(int id) {
-super(id, Material.rock);
+public BlockMagicMachines() {
+super(Material.rock);
 setCreativeTab(PackMagic.proxy.tabMagicPack);
 setHardness(0.5F);
 setResistance(1.0F);
-setTextureName("planks_oak");
-setUnlocalizedName("magic.machines");
+setBlockTextureName("planks_oak");
+setBlockName("magic.machines");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEMagicMachines();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEMagicMachines();}
 
 public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if((te!=null)&&(te instanceof TEMagicMachines)) {
 
@@ -48,7 +48,7 @@ if(is.hasDisplayName()) {
 }
 
 public boolean onBlockActivated(World wrd, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 //if(!wrd.isRemote) {return false;}
 if(player.isSneaking()) {return false;}
 if(te!=null&&te instanceof TEMagicMachines) {

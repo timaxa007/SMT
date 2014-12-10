@@ -10,18 +10,18 @@ import net.minecraft.world.World;
 
 public class BlockCnstorBed extends Block implements ITileEntityProvider {
 
-public BlockCnstorBed(int id) {
-super(id, Material.glass);
+public BlockCnstorBed() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(1.0F);
 setResistance(5.0F);
 setLightOpacity(0);
-setStepSound(soundWoodFootstep);
-setTextureName("timaxa007:" + "woodFrame");
-setUnlocalizedName("cnstor.bed");
+setStepSound(soundTypeWood);
+setBlockTextureName("timaxa007:" + "woodFrame");
+setBlockName("cnstor.bed");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return null;}
+public TileEntity createNewTileEntity(World world, int meta) {return null;}
 
 }

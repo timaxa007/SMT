@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 public class MolotovCocktail extends Item {
 
-public MolotovCocktail(int id) {
+public MolotovCocktail() {
 super(id);
 setCreativeTab(PackWeapon.proxy.tabWeaponPack);
 setTextureName("timaxa007:item_molotov_cocktail");

@@ -23,7 +23,7 @@ private float temperature;
 private float temperature_min;
 private float temperature_max;
 
-//@SideOnly(Side.CLIENT) protected Icon icon_ore;
+//@SideOnly(Side.CLIENT) protected IIcon icon_ore;
 protected String textureName;
 
 public OreFake() {
@@ -31,7 +31,7 @@ ore_list[nextID()] = this;
 oreID = nextID();
 }
 
-public OreFake(int id) {
+public OreFake() {
 ore_list[id] = this;
 oreID = id;
 }
@@ -115,7 +115,7 @@ public OreFake setTextureOre(String str) {textureName = "ore/" + str;return this
 public String getTexture() {return textureName == null ? getName() : textureName;}
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 icon_ore = ir.registerIcon("timaxa007:" + getTextureName());
 }
 */

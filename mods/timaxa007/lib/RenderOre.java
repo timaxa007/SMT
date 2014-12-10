@@ -20,7 +20,7 @@ public class RenderOre extends TileEntitySpecialRenderer {
 /**Warning: Not correctly working with sided textured blocks.*/
 @Override
 public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {
-int b = te.getWorldObj().getBlockId(te.xCoord, te.yCoord - 1, te.zCoord);
+int b = te.getWorldObj().getBlock(te.xCoord, te.yCoord - 1, te.zCoord);
 int meta = te.getWorldObj().getBlockMetadata(te.xCoord, te.yCoord - 1, te.zCoord);
 /**Texture of block in y - 1.*/
 BufferedImage stone = Block.blocksList[b] != null && Block.blocksList[b].getIcon(1, meta) != null ? 

@@ -27,7 +27,7 @@ private float temperature;
 private float temperature_min;
 private float temperature_max;
 
-//@SideOnly(Side.CLIENT) protected Icon icon_food;
+//@SideOnly(Side.CLIENT) protected IIcon icon_food;
 protected String texture1Name;
 protected String texture2Name;
 
@@ -38,7 +38,7 @@ color_hex1 = 0;
 color_hex2 = 0;
 }
 
-public FoodForBlock(int id) {
+public FoodForBlock() {
 food_list[id] = this;
 foodID = id;
 color_hex1 = 0;
@@ -150,7 +150,7 @@ public String getTexture2() {return texture2Name == null ? getTexture1() : textu
 
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 icon_food = ir.registerIcon("timaxa007:" + getTextureName());
 }
 */

@@ -31,7 +31,7 @@ private float humidity;
 private float humidity_min;
 private float humidity_max;
 
-//@SideOnly(Side.CLIENT) protected Icon icon_plant;
+//@SideOnly(Side.CLIENT) protected IIcon icon_plant;
 protected String texture;
 
 public GerminationPlants() {
@@ -39,7 +39,7 @@ plant_list[nextID()] = this;
 plantID = nextID();
 }
 
-public GerminationPlants(int id) {
+public GerminationPlants() {
 plant_list[id] = this;
 plantID = id;
 }
@@ -186,7 +186,7 @@ public GerminationPlants setTexture(String str) {texture = str;return this;}
 public String getTexture() {return texture == null ? getName() : texture;}
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 icon_plant = ir.registerIcon("timaxa007:" + getTexture());
 }
 */

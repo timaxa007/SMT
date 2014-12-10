@@ -33,7 +33,7 @@ for (int x = 0; x < 16; ++x) {
 for (int y = 0; y < 16; ++y) {
 for (int z = 1; z < world.getHeight(); ++z) {
 if (world.getBiomeGenForCoords(chunkX + x, y).biomeID == 30 || world.getBiomeGenForCoords(chunkX + x, chunkY + y).biomeID == 31) {
-if ((world.getBlockId(chunkX + x, z, chunkY + y) == Block.grass.blockID || world.getBlockId(chunkX + x, z, chunkY + y) == Block.netherrack.blockID)) {
+if ((world.getBlock(chunkX + x, z, chunkY + y) == Block.grass.blockID || world.getBlock(chunkX + x, z, chunkY + y) == Block.netherrack.blockID)) {
 world.setBlock(chunkX + x, z, chunkY + y, PackMining.proxy.blockRock.blockID);
 }
 }

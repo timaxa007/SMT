@@ -8,11 +8,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TabWeaponPack extends CreativeTabs {
 
 public TabWeaponPack(int id, String name) {
-super(id, name);
+super(name);
 }
 
 @SideOnly(Side.CLIENT)
-public int getTabIconItemIndex() {
+public int getTabIIconItemIndex() {
 return Item.swordStone.itemID;
 }
 

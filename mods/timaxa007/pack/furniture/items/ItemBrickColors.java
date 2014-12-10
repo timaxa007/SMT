@@ -3,17 +3,17 @@ package mods.timaxa007.pack.furniture.items;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBrickColors extends Item{
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 public static final String[] brickName=new String[]{
 "brick_clay_black", 
 "brick_clay_blue", 
@@ -55,7 +55,7 @@ public static final String[] brickName=new String[]{
 };
 
 
-public ItemBrickColors(int id) {
+public ItemBrickColors() {
 super(id);
 this.setHasSubtypes(true);
 this.setMaxDamage(0);
@@ -64,7 +64,7 @@ this.setUnlocalizedName("brick_colors");
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamage(int par1) {
+public IIcon getIconFromDamage(int par1) {
 int j=MathHelper.clamp_int(par1, 0, (brickName.length)-1);
 return this.iconArray[j];
 }
@@ -82,8 +82,8 @@ list.add(new ItemStack(id, 1, j));
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-this.iconArray=new Icon[brickName.length];
+public void registerIcons(IIconRegister ir) {
+this.iconArray=new IIcon[brickName.length];
 
 for(int i=0;i<brickName.length;++i) {
 this.iconArray[i]=ir.registerIcon("timaxa007:"+"bricks/"+brickName[i]);

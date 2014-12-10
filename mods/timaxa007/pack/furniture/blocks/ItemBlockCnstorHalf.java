@@ -4,7 +4,7 @@ import net.minecraft.item.ItemBlock;
 
 public class ItemBlockCnstorHalf extends ItemBlock{
 
-public ItemBlockCnstorHalf(int id) {
+public ItemBlockCnstorHalf() {
 super(id);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);

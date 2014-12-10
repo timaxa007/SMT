@@ -12,14 +12,14 @@ import mods.timaxa007.pack.furniture.te.TEBlockRockBlocks;
 import mods.timaxa007.pack.furniture.te.TEBlockSandBlocks;
 import mods.timaxa007.pack.furniture.te.TEBlockWoodBlocks;
 import mods.timaxa007.pack.mining.PackMining;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -29,8 +29,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolAirBrush extends Item {
 
-@SideOnly(Side.CLIENT) private Icon[] icon_tex;
-@SideOnly(Side.CLIENT) private Icon[] icon_ovl;
+@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
+@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
 public static final String[] airbrush_type = new String[] {
 "easy", 
@@ -66,7 +66,7 @@ public static final String[] airbrushColorType = new String[] {
 "AirBrushYellow"
 };
 */
-public ToolAirBrush(int id) {
+public ToolAirBrush() {
 super(id);
 setCreativeTab(PackMining.proxy.tabToolsPack);
 setMaxStackSize(1);
@@ -79,7 +79,7 @@ public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, 
 if (!player.canPlayerEdit(x, y, z, meta, is)) {
 return false;
 } else {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("ColorHex2")) {
 if (te != null && te instanceof TEBlockRockBlocks) {
@@ -167,7 +167,7 @@ return is;
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("Type")) {
 if (pass == 0) {
@@ -175,7 +175,7 @@ return icon_tex[(int)tag.getByte("Type")];
 } else {
 return icon_ovl[(int)tag.getByte("Type")];
 }
-} else {return itemIcon;}
+} else {return itemIIcon;}
 }
 
 @SideOnly(Side.CLIENT)
@@ -189,11 +189,11 @@ if (tag != null && tag.hasKey("ColorHex2")) {return tag.getInteger("ColorHex2");
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-icon_tex = new Icon[airbrush_type.length];
-icon_ovl = new Icon[airbrush_type.length];
-itemIcon = ir.registerIcon("timaxa007:colors/tool_airbrush");
+icon_tex = new IIcon[airbrush_type.length];
+icon_ovl = new IIcon[airbrush_type.length];
+itemIIcon = ir.registerIcon("timaxa007:colors/tool_airbrush");
 for (int i = 0; i < airbrush_type.length; i++) {
 icon_tex[i] = ir.registerIcon("timaxa007:colors/" + "tool_airbrush");
 icon_ovl[i] = ir.registerIcon("timaxa007:colors/" + "tool_airbrush" + "_overlay");

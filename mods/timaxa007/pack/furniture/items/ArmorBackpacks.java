@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.model.ModelBackpacks;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,22 +14,22 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArmorBackpacks extends ItemArmor {
 
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
 public static String[] type_packpacks = new String[] {
 "test", 
 "none"
 };
 
-public ArmorBackpacks(int id) {
-super(id, EnumArmorMaterial.IRON, 0, 1);
+public ArmorBackpacks() {
+super(EnumArmorMaterial.IRON, 0, 1);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setTextureName("timaxa007:armor/backpack");
 setUnlocalizedName("armor_backpacks");
@@ -121,20 +121,20 @@ return null;
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("TypeBackpack")) {
 return iconArray[tag.getInteger("TypeBackpack")];
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon(getIconString());
-iconArray = new Icon[type_packpacks.length];
+itemIIcon = ir.registerIcon(getIconString());
+iconArray = new IIcon[type_packpacks.length];
 for (int i = 0; i < type_packpacks.length; ++i) {
 iconArray[i] = ir.registerIcon(getIconString() + "_" + type_packpacks[i]);
 }

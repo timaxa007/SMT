@@ -15,7 +15,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class EventMagic {
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void onEntityUpdate(LivingUpdateEvent e) {
 ItemStack helmet = e.entityLiving.getCurrentItemOrArmor(4);
@@ -73,12 +73,12 @@ e.entityLiving.fallDistance = e.entityLiving.fallDistance-0.1F;
 
 }
 }
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void onHitEntity(LivingHurtEvent e) {
 if (e.source instanceof EntityDamageSource) {
 
-EntityDamageSource dmgSource = (EntityDamageSource) e.source;
+EntityDamageSource dmgSource = (EntityDamageSource)e.source;
 Entity ent = dmgSource.getEntity();
 if (ent instanceof EntityPlayer) {
 /*
@@ -96,5 +96,5 @@ if (weapon.getItem().itemID == Item.swordGold.itemID) {
 }
 }
 }
-
+//--------------------------------------------------------------------------------------------------------------
 }

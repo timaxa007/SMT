@@ -7,13 +7,13 @@ import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.mining.PackMining;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,8 +26,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolBrush extends Item{
-@SideOnly(Side.CLIENT) private Icon iconArray;
-@SideOnly(Side.CLIENT) private Icon theIcon;
+@SideOnly(Side.CLIENT) private IIcon iconArray;
+@SideOnly(Side.CLIENT) private IIcon theIIcon;
 public static final String[] brushColorType=new String[]{
 "BrushBlack", 
 "BrushBlue", 
@@ -47,7 +47,7 @@ public static final String[] brushColorType=new String[]{
 "BrushYellow"
 };
 
-public ToolBrush(int id) {
+public ToolBrush() {
 super(id);
 setCreativeTab(PackMining.proxy.tabToolsPack);
 setMaxStackSize(1);
@@ -69,7 +69,7 @@ is.damageItem(1, player);
 return true;
 }
 
-int i1=wrd.getBlockId(x, y, z);
+int i1=wrd.getBlock(x, y, z);
 boolean air=wrd.isAirBlock(x, y+1, z);
 
 if(i1==Block.cobblestone.blockID) {
@@ -146,7 +146,7 @@ return is;
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamage(int par1) {return iconArray;}
+public IIcon getIconFromDamage(int par1) {return iconArray;}
 
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
@@ -163,15 +163,15 @@ else{return GetColors.getHexColors[tag.getInteger("Color")];}
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamageForRenderPass(int par1, int par2) {
-return par2>0?(par2==0?iconArray:theIcon):super.getIconFromDamageForRenderPass(par1, par2);
+public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
+return par2>0?(par2==0?iconArray:theIIcon):super.getIconFromDamageForRenderPass(par1, par2);
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon("timaxa007:colors/tool_brush");
-theIcon=ir.registerIcon("timaxa007:"+"colors/"+"tool_brush"+"_overlay");
+itemIIcon = ir.registerIcon("timaxa007:colors/tool_brush");
+theIIcon=ir.registerIcon("timaxa007:"+"colors/"+"tool_brush"+"_overlay");
 iconArray=ir.registerIcon("timaxa007:"+"colors/"+"tool_brush");
 }
 

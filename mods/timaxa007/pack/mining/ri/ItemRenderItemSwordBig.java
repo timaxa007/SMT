@@ -5,7 +5,7 @@ import org.lwjgl.opengl.GL11;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
 
 public class ItemRenderItemSwordBig implements IItemRenderer {
@@ -34,7 +34,7 @@ if (firstPerson) {
 }
 */
 GL11.glScalef(f, f, f);
-Icon icon = is.getItem().getIcon(is, 0);
+IIcon icon = is.getItem().getIcon(is, 0);
 Tessellator tessellator = Tessellator.instance;
 ItemRenderer.renderItemIn2D(tessellator, icon.getMaxU(), icon.getMinV(), icon.getMinU(), icon.getMaxV(), icon.getIconWidth(), icon.getIconHeight(), 0.0625F);
 GL11.glPopMatrix();

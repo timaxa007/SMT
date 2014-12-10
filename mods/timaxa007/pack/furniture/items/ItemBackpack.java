@@ -16,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemBackpack extends Item {
 public static ItemStack[] slotsBackpack = new ItemStack[27];
 
-public ItemBackpack(int id) {
+public ItemBackpack() {
 super(id);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setTextureName("timaxa007:backpack");

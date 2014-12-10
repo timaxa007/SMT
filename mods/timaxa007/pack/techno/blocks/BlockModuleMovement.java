@@ -29,18 +29,18 @@ public String typeModule[]= new String[]{
 "Jump"
 };
 
-public BlockModuleMovement(int id) {
-super(id, Material.circuits);
+public BlockModuleMovement() {
+super(Material.circuits);
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
 setHardness(0.5F);
 setResistance(0.1F);
 setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
-setTextureName("planks_oak");
-setUnlocalizedName("module.movement");
+setBlockTextureName("planks_oak");
+setBlockName("module.movement");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEModuleMovement();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEModuleMovement();}
 
 public int getRenderType() {return -1;}
 public boolean renderAsNormalBlock() {return false;}
@@ -48,7 +48,7 @@ public boolean isOpaqueCube() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEModuleMovement)) {
 return addTag(((TEModuleMovement)te).getTypes());
 }
@@ -62,7 +62,7 @@ return AxisAlignedBB.getAABBPool().getAABB((double)par2, (double)par3, (double)p
 }
 */
 public void onEntityCollidedWithBlock(World wrd, int x, int y, int z, Entity entity) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEModuleMovement)) {
 if(((TEModuleMovement)te).getTypes()==0) {
 
@@ -110,7 +110,7 @@ entity.motionZ*=0.4D;
 
 @Override
 public boolean onBlockActivated(World wrd, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 //if(!wrd.isRemote) {return false;}
 if(player.isSneaking()) {return false;}
 if((te!=null)&&(te instanceof TEModuleMovement)) {

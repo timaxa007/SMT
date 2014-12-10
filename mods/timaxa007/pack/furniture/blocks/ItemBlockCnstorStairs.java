@@ -4,7 +4,7 @@ import net.minecraft.item.ItemBlock;
 
 public class ItemBlockCnstorStairs extends ItemBlock {
 
-public ItemBlockCnstorStairs(int id) {
+public ItemBlockCnstorStairs() {
 super(id);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);

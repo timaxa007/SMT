@@ -20,23 +20,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBoxParticles extends BlockContainer{
 
-public BlockBoxParticles(int id) {
-super(id, Material.rock);
+public BlockBoxParticles() {
+super(Material.rock);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.35F);
-setTextureName("planks_oak");
-setUnlocalizedName("boxParticles");
+setBlockTextureName("planks_oak");
+setBlockName("boxParticles");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEBoxParticles();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEBoxParticles();}
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEBoxParticles)) {
 return addTag(0, ((TEBoxParticles)te).getTypes());
 }
@@ -49,7 +49,7 @@ public void updateTick(World wrd, int x, int y, int z, Random rdm) {
 
 @Override
 public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase el, ItemStack is) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if((te!=null)&&(te instanceof TEBoxParticles)) {
 
@@ -67,7 +67,7 @@ if(tag!=null) {
 
 @SideOnly(Side.CLIENT)
 public void randomDisplayTick(World wrd, int x, int y, int z, Random rdm) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if(te!=null) {
 String listP[]=new String[]{
 "smoke", 

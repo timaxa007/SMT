@@ -18,23 +18,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBlender extends BlockContainer{
 
-public BlockBlender(int id) {
-super(id, Material.wood);
+public BlockBlender() {
+super(Material.wood);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.5F);
-setTextureName("planks_oak");
-setUnlocalizedName("blender");
+setBlockTextureName("planks_oak");
+setBlockName("blender");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEBlender();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEBlender();}
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEBlender)) {
 //return addTag(0, ((TEBlender)te).getType(), ((TEBlender)te).getSize());
 return addTag(0, ((TEBlender)te).getType(), 0, ((TEBlender)te).getTypeGlass(), ((TEBlender)te).getTypeSize());

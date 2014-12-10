@@ -21,17 +21,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockJar01 extends Block implements ITileEntityProvider {
 
-public BlockJar01(int id) {
-super(id, Material.glass);
+public BlockJar01() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.25F);
 setLightOpacity(0);
-setTextureName("glass");
-setUnlocalizedName("jar01");
+setBlockTextureName("glass");
+setBlockName("jar01");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEJar01();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEJar01();}
 
 public int getRenderType() {return PackFurniture.proxy.render_block_jar01_modelID;}
 public boolean isOpaqueCube() {return false;}
@@ -39,7 +39,7 @@ public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEJar01) {
 return addTag(((TEJar01)te).getColorWater());
 } else {
@@ -50,7 +50,7 @@ return addTag(0xFFFFFF);
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEJar01) {
 /*
@@ -69,7 +69,7 @@ if (tag != null) {
 public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
 ItemStack current = player.getCurrentEquippedItem();
 if (current != null) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 //--------------------------------
 if (current.getItem() == PackFurniture.proxy.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 --current.stackSize;

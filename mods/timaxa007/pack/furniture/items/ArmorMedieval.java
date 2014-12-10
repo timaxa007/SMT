@@ -13,14 +13,14 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArmorMedieval extends ItemArmor {
 
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
 public static final String[] type_medieval = new String[] {
 "gold", 
@@ -28,7 +28,7 @@ public static final String[] type_medieval = new String[] {
 };
 
 public ArmorMedieval(int id, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
-super(id, par2EnumArmorMaterial, par3, par4);
+super(par2EnumArmorMaterial, par3, par4);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setTextureName("timaxa007:armor/medieval");
 setUnlocalizedName("armor_medieval");

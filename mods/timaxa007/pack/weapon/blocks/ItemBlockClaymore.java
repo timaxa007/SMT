@@ -4,7 +4,7 @@ import net.minecraft.item.ItemBlock;
 
 public class ItemBlockClaymore extends ItemBlock{
 
-public ItemBlockClaymore(int id) {
+public ItemBlockClaymore() {
 super(id);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);

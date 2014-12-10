@@ -5,13 +5,13 @@ import java.util.List;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapon;
 import mods.timaxa007.pack.weapon.lib.AmmoFor;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 
 import org.lwjgl.input.Keyboard;
 
@@ -20,10 +20,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemAmmos extends Item {
 
-@SideOnly(Side.CLIENT) private Icon[] icon_tex;
-@SideOnly(Side.CLIENT) private Icon[] icon_ovl;
+@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
+@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-public ItemAmmos(int id) {
+public ItemAmmos() {
 super(id);
 setMaxStackSize(1);
 setCreativeTab(PackWeapon.proxy.tabWeaponPack);
@@ -75,7 +75,7 @@ return is;
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("AmmoID")) {
 if (pass == 0) {
@@ -84,7 +84,7 @@ return icon_tex[tag.getInteger("AmmoID")];
 return icon_ovl[tag.getInteger("AmmoID")];
 }
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
@@ -103,11 +103,11 @@ return 16777215;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon("timaxa007:" + "ammos");
-icon_tex = new Icon[AmmoFor.ammo_list.length];
-icon_ovl = new Icon[AmmoFor.ammo_list.length];
+itemIIcon = ir.registerIcon("timaxa007:" + "ammos");
+icon_tex = new IIcon[AmmoFor.ammo_list.length];
+icon_ovl = new IIcon[AmmoFor.ammo_list.length];
 for (int i = 0; i < AmmoFor.ammo_list.length; i++) {
 /*if (AmmoFor.ammo_list[i] != null) {
 icon_tex[i] = ir.registerIcon("timaxa007:" + "ammos/" + AmmoFor.ammo_list[i].getTexture1Name());
@@ -117,8 +117,8 @@ icon_tex[i] = ir.registerIcon("timaxa007:" + "ammos/" + AmmoFor.ammo_list[i].get
 	icon_ovl[i] = ir.registerIcon("timaxa007:" + "ammos/" + AmmoFor.ammo_list[i].getTexture2Name());
 	}
 } else {*/
-icon_tex[i] = itemIcon;
-icon_ovl[i] = itemIcon;
+icon_tex[i] = itemIIcon;
+icon_ovl[i] = itemIIcon;
 //}
 }
 }

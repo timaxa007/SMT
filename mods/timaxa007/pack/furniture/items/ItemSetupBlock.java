@@ -4,12 +4,12 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -17,7 +17,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSetupBlock extends Item {
 
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
 public static final String[] typeSetupBlocks = new String[] {
 "door_wood_black", 
@@ -38,7 +38,7 @@ public static final String[] typeSetupBlocks = new String[] {
 "door_wood_yellow"
 };
 
-public ItemSetupBlock(int id) {
+public ItemSetupBlock() {
 super(id);
 setHasSubtypes(true);
 setMaxDamage(0);
@@ -94,8 +94,8 @@ if (par4 == 3) {b0 = 1;}
 
 int i1 = (par0World.isBlockNormalCube(par1-b0, par2, par3-b1) ? 1 : 0)+(par0World.isBlockNormalCube(par1-b0, par2+1, par3-b1) ? 1 : 0);
 int j1 = (par0World.isBlockNormalCube(par1+b0, par2, par3+b1) ? 1 : 0)+(par0World.isBlockNormalCube(par1+b0, par2+1, par3+b1) ? 1 : 0);
-boolean flag = par0World.getBlockId(par1-b0, par2, par3-b1) == par5Block.blockID || par0World.getBlockId(par1-b0, par2+1, par3-b1) == par5Block.blockID;
-boolean flag1 = par0World.getBlockId(par1+b0, par2, par3+b1) == par5Block.blockID || par0World.getBlockId(par1+b0, par2+1, par3+b1) == par5Block.blockID;
+boolean flag = par0World.getBlock(par1-b0, par2, par3-b1) == par5Block.blockID || par0World.getBlock(par1-b0, par2+1, par3-b1) == par5Block.blockID;
+boolean flag1 = par0World.getBlock(par1+b0, par2, par3+b1) == par5Block.blockID || par0World.getBlock(par1+b0, par2+1, par3+b1) == par5Block.blockID;
 boolean flag2 = false;
 
 if (flag && !flag1) {flag2 = true;}
@@ -108,7 +108,7 @@ par0World.notifyBlocksOfNeighborChange(par1, par2+1, par3, par5Block.blockID);
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamage(int par1) {
+public IIcon getIconFromDamage(int par1) {
 int j = MathHelper.clamp_int(par1, 0, (typeSetupBlocks.length)-1);
 return iconArray[j];
 }
@@ -126,8 +126,8 @@ list.add(new ItemStack(id, 1, j));
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-iconArray = new Icon[typeSetupBlocks.length];
+public void registerIcons(IIconRegister ir) {
+iconArray = new IIcon[typeSetupBlocks.length];
 
 for(int i = 0;i<typeSetupBlocks.length;++i) {
 iconArray[i]  =  ir.registerIcon("timaxa007:" + "door/" + typeSetupBlocks[i]);

@@ -8,7 +8,7 @@ import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.te.TECake;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,19 +41,19 @@ public static final String[] typeCakes = new String[]{
 "Chocolate"
 };
 
-public BlockCakes(int id) {
-super(id, Material.cake);
+public BlockCakes() {
+super(Material.cake);
 setCreativeTab(PackStock.proxy.tabFoodPack);
 setHardness(0.5F);
 setResistance(1.0F);
 setTickRandomly(true);
 setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 0.5F, 0.875F);
-setTextureName("planks_oak");
-setUnlocalizedName("cake");
+setBlockTextureName("planks_oak");
+setBlockName("cake");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TECake();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TECake();}
 
 public int getRenderType() {return PackStock.proxy.render_block_cake_modelID;}
 public int quantityDropped(Random radom) {return 0;}
@@ -62,7 +62,7 @@ public boolean isOpaqueCube() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te = wrd.getBlockTileEntity(x, y, z);
+TileEntity te = wrd.getTileEntity(x, y, z);
 if ((te != null)&&(te instanceof TECake)) {
 return addTag(((TECake)te).getTypes());
 }
@@ -78,7 +78,7 @@ return true;
 private void eatCakeSlice(World world, int x, int y, int z, EntityPlayer player) {
 if (player.canEat(false)) {
 
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null) {
 int act = (((TECake)te).getAmount()-1);
 ((TECake)te).setAmount(act);
@@ -95,7 +95,7 @@ world.removeBlockTileEntity(x, y, z);
 
 @Override
 public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase el, ItemStack is) {
-TileEntity te = wrd.getBlockTileEntity(x, y, z);
+TileEntity te = wrd.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TECake) {
 
@@ -131,7 +131,7 @@ return is;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 this.blockIcon = ir.registerIcon("timaxa007:" + "food/" + "cake/" + "cake_top");
 }
 

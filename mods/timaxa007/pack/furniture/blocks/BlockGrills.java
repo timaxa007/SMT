@@ -25,16 +25,16 @@ private static boolean keepFurnaceInventory;
 private final Random furnaceRand=new Random();
 private boolean isActive;
 
-public BlockGrills(int id) {
-super(id, Material.iron);
+public BlockGrills() {
+super(Material.iron);
 setHardness(0.5F);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
-setTextureName("planks_oak");
-setUnlocalizedName("grills");
+setBlockTextureName("planks_oak");
+setBlockName("grills");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEGrills();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEGrills();}
 
 public int getRenderType() {return -1;}
 public boolean renderAsNormalBlock() {return false;}
@@ -42,7 +42,7 @@ public boolean isOpaqueCube() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEGrills)) {
 return addTag(((TEGrills)te).getTypes());
 }
@@ -51,7 +51,7 @@ return addTag(0);
 
 @Override
 public boolean onBlockActivated(World wrd, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 //if(!wrd.isRemote) {return false;}
 if(player.isSneaking()) {return false;}
 if((te!=null)&&(te instanceof TEGrills)) {
@@ -63,7 +63,7 @@ return false;
 
 public void breakBlock(World wrd, int x, int y, int z, int blkid, int blkmeta) {
 if(!keepFurnaceInventory) {
-TEGrills tileentityfurnace=(TEGrills)wrd.getBlockTileEntity(x, y, z);
+TEGrills tileentityfurnace=(TEGrills)wrd.getTileEntity(x, y, z);
 
 if(tileentityfurnace!=null) {
 for(int j1=0;j1 < tileentityfurnace.getSizeInventory();++j1) {
@@ -104,7 +104,7 @@ super.breakBlock(wrd, x, y, z, blkid, blkmeta);
 
 @Override
 public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase el, ItemStack is) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if((te!=null)&&(te instanceof TEGrills)) {
 

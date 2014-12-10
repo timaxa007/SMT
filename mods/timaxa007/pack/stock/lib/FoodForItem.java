@@ -33,7 +33,7 @@ private int[] color_hex = new int[] {0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF};
 private String[] texture_name = new String[] {"empty", "empty", "empty", "empty"};
 private int[] clr_tmp = color_hex;
 private String[] txr_tmp = texture_name;
-//@SideOnly(Side.CLIENT) protected Icon icon_food;
+//@SideOnly(Side.CLIENT) protected IIcon icon_food;
 
 public FoodForItem() {
 FoodForItem1();
@@ -41,7 +41,7 @@ FoodForItem1();
 foodID = nextID();*/
 }
 
-public FoodForItem(int id) {
+public FoodForItem() {
 FoodForItem1(id);
 /*food_list[id] = this;
 foodID = id;*/
@@ -67,7 +67,7 @@ private void FoodForItem1() {
 food_list[nextID()] = this;
 foodID = nextID();
 }
-private void FoodForItem1(int id) {
+private void FoodForItem1() {
 food_list[id] = this;
 foodID = id;
 }
@@ -212,7 +212,7 @@ public String[] getTexture() {return texture_name;}
 public String getTexture(int i) {return i < texture_name.length && i >= 0 ? texture_name[i] : "empty";}
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 icon_food = ir.registerIcon("timaxa007:" + getTextureName());
 }
 */

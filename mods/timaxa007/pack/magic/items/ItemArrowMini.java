@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 
 public class ItemArrowMini extends Item {
 
-public ItemArrowMini(int id) {
+public ItemArrowMini() {
 super(id);
 setCreativeTab(PackMagic.proxy.tabMagicPack);
 setTextureName("arrow");

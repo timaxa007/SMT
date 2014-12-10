@@ -21,25 +21,25 @@ public TECnstorFence() {
 
 public void updateEntity() {
 
-if (worldObj.getBlockTileEntity(xCoord, yCoord, zCoord-1) instanceof TECnstorFence) {
+if (worldObj.getTileEntity(xCoord, yCoord, zCoord-1) instanceof TECnstorFence) {
 stepN = true;
 } else {
 stepN = false;
 }
 
-if (worldObj.getBlockTileEntity(xCoord, yCoord, zCoord+1) instanceof TECnstorFence) {
+if (worldObj.getTileEntity(xCoord, yCoord, zCoord+1) instanceof TECnstorFence) {
 stepS = true;
 } else {
 stepS = false;
 }
 
-if (worldObj.getBlockTileEntity(xCoord+1, yCoord, zCoord) instanceof TECnstorFence) {
+if (worldObj.getTileEntity(xCoord+1, yCoord, zCoord) instanceof TECnstorFence) {
 stepW = true;
 } else {
 stepW = false;
 }
 
-if (worldObj.getBlockTileEntity(xCoord-1, yCoord, zCoord) instanceof TECnstorFence) {
+if (worldObj.getTileEntity(xCoord-1, yCoord, zCoord) instanceof TECnstorFence) {
 stepE = true;
 } else {
 stepE = false;

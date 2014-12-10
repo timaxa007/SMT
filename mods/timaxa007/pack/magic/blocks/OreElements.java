@@ -7,11 +7,11 @@ import java.util.Random;
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.items.ShardElements;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -35,19 +35,19 @@ public static final String[] elementsNames=new String[]{
 "15", 
 "16"
 };
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
-public OreElements(int id) {
-super(id, PackMagic.proxy.oreMagic);
+public OreElements() {
+super(PackMagic.proxy.oreMagic);
 setCreativeTab(PackMagic.proxy.tabMagicPack);
 setHardness(0.5F);
 setResistance(0.1F);
-setTextureName("planks_oak");
-setUnlocalizedName("magic.ore.elements");
+setBlockTextureName("planks_oak");
+setBlockName("magic.ore.elements");
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIcon(int par1, int par2) {return iconArray[par2%iconArray.length];}
+public IIcon getIcon(int par1, int par2) {return iconArray[par2%iconArray.length];}
 
 public int quantityDropped(Random rdm) {return 0;}
 public int idDropped(int par1, Random rdm, int par3) {return par1;}
@@ -83,8 +83,8 @@ return ret;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-iconArray=new Icon[16];
+public void registerIcons(IIconRegister ir) {
+iconArray=new IIcon[16];
 for(byte i=0;i<iconArray.length;++i) {
 iconArray[i]=ir.registerIcon("timaxa007:"+"ore/"+"oreElement"+ShardElements.shaedNames[i]);
 }

@@ -3,7 +3,7 @@ package mods.timaxa007.pack.magic.items;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemWands extends Item{
 
-public ItemWands(int id) {
+public ItemWands() {
 super(id);
 this.setCreativeTab(PackMagic.proxy.tabMagicPack);
 this.setUnlocalizedName("wands");
@@ -40,8 +40,8 @@ return is;
 }
 
 @Override
-public void registerIcons(IconRegister ir) {
-this.itemIcon=ir.registerIcon("timaxa007:"+"wands");
+public void registerIcons(IIconRegister ir) {
+this.itemIIcon=ir.registerIcon("timaxa007:"+"wands");
 }
 
 }

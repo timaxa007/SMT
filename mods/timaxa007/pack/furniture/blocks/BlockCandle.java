@@ -18,27 +18,27 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCandle extends Block implements ITileEntityProvider {
 
-public BlockCandle(int id) {
-super(id, Material.circuits);
+public BlockCandle() {
+super(Material.circuits);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.3F);
 setResistance(1.0F);
 setLightOpacity(0);
 float f = 0.15F;
 setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 3.0F, 0.5F + f);
-setTextureName("snow");
-setUnlocalizedName("candle");
+setBlockTextureName("snow");
+setBlockName("candle");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TECandle();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TECandle();}
 public int quantityDropped(Random rdm) {return 0;}
 public int getRenderType() {return PackFurniture.proxy.renderBlockCandleModelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 
 public boolean canPlaceBlockAt(World world, int x, int y, int z) {
-int l = world.getBlockId(x, y, z);
+int l = world.getBlock(x, y, z);
 Block block = Block.blocksList[l];
 return (block == null || block.isBlockReplaceable(world, x, y, z)) && world.doesBlockHaveSolidTopSurface(x, y - 1, z);
 }
@@ -53,7 +53,7 @@ double d3 = 0.2199999988079071D;
 double d4 = 0.27000001072883606D;
 int random = rdm.nextInt(16);
 
-if (world.getBlockId(x, y - 1, z) == Block.bookShelf.blockID) {
+if (world.getBlock(x, y - 1, z) == Block.bookShelf.blockID) {
 
 if (random == 0) {world.spawnParticle("enchantmenttable", d0 - 0.2D, d1, d2 - 0.2D, 0.0D + 0.1D, 0.0D, 0.0D + 0.1D);}
 else if (random == 1) {world.spawnParticle("enchantmenttable", d0 - 0.2D, d1, d2 + 0.2D, 0.0D + 0.1D, 0.0D, 0.0D - 0.1D);}

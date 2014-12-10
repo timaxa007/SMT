@@ -4,7 +4,7 @@ import net.minecraft.item.ItemBlock;
 
 public class ItemBlockCnstorBed extends ItemBlock{
 
-public ItemBlockCnstorBed(int id) {
+public ItemBlockCnstorBed() {
 super(id);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);

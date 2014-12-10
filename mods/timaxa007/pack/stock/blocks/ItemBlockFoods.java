@@ -13,7 +13,7 @@ import org.lwjgl.input.Keyboard;
 
 public class ItemBlockFoods extends ItemBlock {
 
-public ItemBlockFoods(int id) {
+public ItemBlockFoods() {
 super(id);
 setMaxDamage(0);
 setHasSubtypes(true);

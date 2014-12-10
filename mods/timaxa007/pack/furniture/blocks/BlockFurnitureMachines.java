@@ -14,20 +14,20 @@ import net.minecraft.world.World;
 
 public class BlockFurnitureMachines extends BlockContainer {
 
-public BlockFurnitureMachines(int id) {
-super(id, Material.rock);
+public BlockFurnitureMachines() {
+super(Material.rock);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(1.0F);
 setResistance(3.5F);
-setTextureName("stone");
-setUnlocalizedName("furniture.machines");
+setBlockTextureName("stone");
+setBlockName("furniture.machines");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEFurnitureMachines();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEFurnitureMachines();}
 
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEFurnitureMachines) {
 
@@ -48,7 +48,7 @@ if (is.hasDisplayName()) {
 }
 
 public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 //if (!world.isRemote) {return false;}
 if (player.isSneaking()) {return false;}
 if (te != null && te instanceof TEFurnitureMachines) {

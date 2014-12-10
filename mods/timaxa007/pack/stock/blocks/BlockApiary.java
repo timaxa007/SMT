@@ -27,17 +27,17 @@ public static String[] type_beehives = new String[] {
 "Drying"
 };
 
-public BlockApiary(int id) {
-super(id, Material.glass);
+public BlockApiary() {
+super(Material.glass);
 setCreativeTab(PackStock.proxy.tabApisPack);
 setHardness(0.5F);
 setResistance(1.0F);
-setTextureName("planks_oak");
-setUnlocalizedName("apiary");
+setBlockTextureName("planks_oak");
+setBlockName("apiary");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEApiary();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEApiary();}
 
 public int getRenderType() {return PackStock.proxy.render_block_apiary_modelID;}
 public int quantityDropped(Random random) {return 0;}
@@ -46,7 +46,7 @@ public boolean isOpaqueCube() {return false;}
 public int idPicked(World world, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEApiary) {
 return addTag(((TEApiary)te).getName(), ((TEApiary)te).getType());
 } else {
@@ -56,7 +56,7 @@ return addTag("", 0);
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEApiary) {
 if (tag != null) {

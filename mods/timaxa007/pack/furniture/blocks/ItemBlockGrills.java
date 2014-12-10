@@ -13,7 +13,7 @@ import net.minecraft.util.EnumChatFormatting;
 
 public class ItemBlockGrills extends ItemBlock{
 
-public ItemBlockGrills(int id) {
+public ItemBlockGrills() {
 super(id);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);

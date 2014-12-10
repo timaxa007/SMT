@@ -7,7 +7,7 @@ import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.te.TEPizza;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,19 +39,19 @@ public static final String[] typePizzas = new String[]{
 "Chocolate"
 };
 
-public BlockPizzas(int id) {
-super(id, Material.cake);
+public BlockPizzas() {
+super(Material.cake);
 setCreativeTab(PackStock.proxy.tabFoodPack);
 setHardness(0.5F);
 setResistance(1.0F);
 setTickRandomly(true);
 setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.1875F, 0.9375F);
-setTextureName("planks_oak");
-setUnlocalizedName("pizza");
+setBlockTextureName("planks_oak");
+setBlockName("pizza");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEPizza();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEPizza();}
 
 public int getRenderType() {return PackStock.proxy.render_block_pizza_modelID;}
 public boolean renderAsNormalBlock() {return false;}
@@ -65,7 +65,7 @@ return true;
 private void eatCakeSlice(World world, int x, int y, int z, EntityPlayer player) {
 if (player.canEat(false)) {
 
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null) {
 int act = (((TEPizza)te).getAmount()-1);
 ((TEPizza)te).setAmount(act);
@@ -82,7 +82,7 @@ world.removeBlockTileEntity(x, y, z);
 
 @Override
 public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase el, ItemStack is) {
-TileEntity te = wrd.getBlockTileEntity(x, y, z);
+TileEntity te = wrd.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEPizza) {
 
@@ -118,7 +118,7 @@ return is;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 blockIcon = ir.registerIcon("timaxa007:" + "food/" + "pizza/" + "pizza_top");
 }
 

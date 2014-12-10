@@ -7,11 +7,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TabFoodPack extends CreativeTabs{
 
 public TabFoodPack(int id, String name) {
-super(id, name);
+super(name);
 }
 
 @SideOnly(Side.CLIENT)
-public int getTabIconItemIndex() {
+public int getTabIIconItemIndex() {
 return PackStock.proxy.item_foods.itemID;
 }
 

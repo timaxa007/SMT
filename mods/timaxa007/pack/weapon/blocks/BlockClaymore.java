@@ -15,17 +15,17 @@ import net.minecraft.world.World;
 
 public class BlockClaymore extends BlockContainer {
 
-public BlockClaymore(int id) {
-super(id, Material.circuits);
+public BlockClaymore() {
+super(Material.circuits);
 setCreativeTab(PackWeapon.proxy.tabWeaponPack);
 setHardness(0.5F);
 setResistance(1.0F);
 setBlockBounds(0.1875F, 0.0F, 0.1875F, 0.8125F, 0.5F, 0.8125F);
-setUnlocalizedName("claymore");
+setBlockName("claymore");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEClaymore();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEClaymore();}
 
 public int getRenderType() {return -1;}
 public boolean renderAsNormalBlock() {return false;}

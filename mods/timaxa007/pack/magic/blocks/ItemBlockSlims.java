@@ -14,8 +14,8 @@ import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
 
 public class ItemBlockSlims extends ItemMultiTextureTile{
-public ItemBlockSlims(int id) {
-super(id, PackMagic.proxy.blockSlims, GetColors.getNameColors);
+public ItemBlockSlims() {
+super(PackMagic.proxy.blockSlims, GetColors.getNameColors);
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {

@@ -2,7 +2,7 @@ package mods.timaxa007.pack.magic.items;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
@@ -15,7 +15,7 @@ public class ToolMagicShovel extends ItemTool{
 public static final Block[] blocksEffectiveAgainst=new Block[]{Block.grass, Block.dirt, Block.sand, Block.gravel, Block.snow, Block.blockSnow, Block.blockClay, Block.tilledField, Block.slowSand, Block.mycelium};
 
 public ToolMagicShovel(int id, EnumToolMaterial par2) {
-super(id, 1, par2, blocksEffectiveAgainst);
+super(1, par2, blocksEffectiveAgainst);
 this.setCreativeTab(PackMagic.proxy.tabMagicPack);
 this.setUnlocalizedName("magic.shovel");
 }
@@ -53,8 +53,8 @@ return false;
 public boolean hasEffect(ItemStack is) {return true;}
 
 @Override
-public void registerIcons(IconRegister ir) {
-this.itemIcon=ir.registerIcon("timaxa007:" + "tool/" + "shovelMagic");
+public void registerIcons(IIconRegister ir) {
+this.itemIIcon=ir.registerIcon("timaxa007:" + "tool/" + "shovelMagic");
 }
 
 }

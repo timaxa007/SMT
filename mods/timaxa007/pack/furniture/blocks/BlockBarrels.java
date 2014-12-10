@@ -17,23 +17,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBarrels extends BlockContainer{
 
-public BlockBarrels(int id) {
-super(id, Material.clay);
+public BlockBarrels() {
+super(Material.clay);
 this.setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 this.setHardness(0.5F);
-setTextureName("planks_oak");
-this.setUnlocalizedName("barrels");
+setBlockTextureName("planks_oak");
+this.setBlockName("barrels");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEBarrels();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEBarrels();}
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEBarrels)) {
 return addTag(((TEBarrels)te).getTypeB(), ((TEBarrels)te).getTypeP(), ((TEBarrels)te).getTypeCD(), ((TEBarrels)te).getLie());
 }

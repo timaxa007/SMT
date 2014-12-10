@@ -7,7 +7,7 @@ import mods.timaxa007.pack.mining.lib.OreFake;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.FoodForItem;
 import mods.timaxa007.tms.Core;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -16,7 +16,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -181,12 +181,12 @@ public static FoodForItem test1 = new FoodForItem("test1").setFoodStats(2, 0.2F)
 public static FoodForItem test2 = new FoodForItem("test2").setFoodStats(2, 0.2F).setName("cookie").setColors(0xFFFFFF).setTextureFood("test_1", "O");
 */
 /*
-@SideOnly(Side.CLIENT) private Icon[] icon_tex;
-@SideOnly(Side.CLIENT) private Icon[] icon_ovl;
+@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
+@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 */
-@SideOnly(Side.CLIENT) private Icon[][] icon_g;
+@SideOnly(Side.CLIENT) private IIcon[][] icon_g;
 
-public ItemFoods(int id) {
+public ItemFoods() {
 super(id);
 setCreativeTab(PackStock.proxy.tabFoodPack);
 setHasSubtypes(true);
@@ -536,14 +536,14 @@ public boolean requiresMultipleRenderPasses() {return true;}
 @SideOnly(Side.CLIENT)
 public int getRenderPasses(int meta) {return 4;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("NameID")) {
 return icon_g[FoodForItem.getID_tag(tag.getString("NameID"))][pass];
 } else if (tag != null && tag.hasKey("ItemID")) {
 return icon_g[tag.getInteger("ItemID")][pass];
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
@@ -603,22 +603,22 @@ return 16777215;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon(getIconString() + "foods/food");
-icon_g = new Icon[FoodForItem.food_list.length][4];
+itemIIcon = ir.registerIcon(getIconString() + "foods/food");
+icon_g = new IIcon[FoodForItem.food_list.length][4];
 for (int i = 0; i < FoodForItem.food_list.length; i++) {
 for (int j = 0; j < 4; j++) {
 if ( FoodForItem.food_list[i] != null) {
 icon_g[i][j] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getTexture(j));
 } else {
-icon_g[i][j] = itemIcon;
+icon_g[i][j] = itemIIcon;
 }
 }
 }
 /*
-icon_tex = new Icon[FoodForItem.food_list.length];
-icon_ovl = new Icon[FoodForItem.food_list.length];
+icon_tex = new IIcon[FoodForItem.food_list.length];
+icon_ovl = new IIcon[FoodForItem.food_list.length];
 for (int i = 0; i < FoodForItem.food_list.length; i++) {
 if (FoodForItem.food_list[i] != null) {
 icon_tex[i] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getTexture(0));
@@ -628,8 +628,8 @@ icon_tex[i] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getText
 	icon_ovl[i] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getTexture(1));
 	}
 } else {
-icon_tex[i] = itemIcon;
-icon_ovl[i] = itemIcon;
+icon_tex[i] = itemIIcon;
+icon_ovl[i] = itemIIcon;
 }
 }
 */

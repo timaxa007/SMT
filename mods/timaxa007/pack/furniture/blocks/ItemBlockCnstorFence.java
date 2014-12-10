@@ -4,7 +4,7 @@ import net.minecraft.item.ItemBlock;
 
 public class ItemBlockCnstorFence extends ItemBlock {
 
-public ItemBlockCnstorFence(int id) {
+public ItemBlockCnstorFence() {
 super(id);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);

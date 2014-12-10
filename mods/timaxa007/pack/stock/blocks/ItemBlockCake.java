@@ -13,8 +13,8 @@ import org.lwjgl.input.Keyboard;
 
 public class ItemBlockCake extends ItemMultiTextureTile{
 
-public ItemBlockCake(int id) {
-super(id, PackStock.proxy.block_cakes, BlockCakes.typeCakes);
+public ItemBlockCake() {
+super(PackStock.proxy.block_cakes, BlockCakes.typeCakes);
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {

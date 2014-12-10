@@ -1,19 +1,19 @@
 package mods.timaxa007.pack.techno.items;
 
 import mods.timaxa007.pack.techno.PackTechno;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 
 public class ToolElectricWrench extends Item {
 
-public ToolElectricWrench(int id) {
+public ToolElectricWrench() {
 super(id);
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
 setUnlocalizedName("electric.wrench");
 }
 
 @Override
-public void registerIcons(IconRegister ir) {
-itemIcon = ir.registerIcon("timaxa007:" + "testItem");
+public void registerIcons(IIconRegister ir) {
+itemIIcon = ir.registerIcon("timaxa007:" + "testItem");
 }
 }

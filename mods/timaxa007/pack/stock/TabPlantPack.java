@@ -7,11 +7,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TabPlantPack extends CreativeTabs{
 
 public TabPlantPack(int id, String name) {
-super(id, name);
+super(name);
 }
 
 @SideOnly(Side.CLIENT)
-public int getTabIconItemIndex() {
+public int getTabIIconItemIndex() {
 return PackStock.proxy.item_germination_plants.itemID;
 }
 

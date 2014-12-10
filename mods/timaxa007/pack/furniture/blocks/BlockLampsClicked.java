@@ -8,21 +8,21 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockLampsClicked extends Block{
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 private final String light;
 
 public BlockLampsClicked(int id, boolean par2) {
-super(id, Material.rock);
+super(Material.rock);
 setStepSound(soundGlassFootstep);
 setHardness(0.3F);
 setResistance(1.0F);
@@ -35,7 +35,7 @@ light="off";
 setLightValue(0.0F);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 }
-setTextureName("planks_oak");
+setBlockTextureName("planks_oak");
 }
 
 public int quantityDropped(Random rdm) {return 0;}
@@ -70,13 +70,13 @@ return ret;
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIcon(int par1, int par2) {
+public IIcon getIcon(int par1, int par2) {
 return iconArray[par2 % iconArray.length];
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-iconArray=new Icon[16];
+public void registerIcons(IIconRegister ir) {
+iconArray=new IIcon[16];
 for(byte i=0;i<iconArray.length;++i) {
 iconArray[i]=ir.registerIcon("timaxa007:"+"lamps/lamp_"+GetColors.getNameColors[i]+"_"+light);
 }

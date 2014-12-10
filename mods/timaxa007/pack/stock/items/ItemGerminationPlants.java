@@ -18,8 +18,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemGerminationPlants extends Item {
 /*
-@SideOnly(Side.CLIENT) private Icon icon_a;
-@SideOnly(Side.CLIENT) private Icon icon_b;
+@SideOnly(Side.CLIENT) private IIcon icon_a;
+@SideOnly(Side.CLIENT) private IIcon icon_b;
 */
 //Crop
 //Stem
@@ -110,7 +110,7 @@ public static GerminationPlants sapling_colored_oil_red = new GerminationPlants(
 public static GerminationPlants crop_coral  = new GerminationPlants("crop_coral").setName("coral").setType("Herbal Water").setTexture("coral").setPlantStats(1, 2, 3).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 public static GerminationPlants crop_kelp = new GerminationPlants("crop_kelp").setName("kelp").setType("Herbal Water").setTexture("kelp").setPlantStats(1, 2, 3).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
-public ItemGerminationPlants(int id) {
+public ItemGerminationPlants() {
 super(id);
 setCreativeTab(PackStock.proxy.tabPlantPack);
 setHasSubtypes(true);
@@ -123,7 +123,7 @@ public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, 
 if (!player.canPlayerEdit(x, y, z, meta, is)) {return false;}
 else {
 
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEBlockGerminationPlants) {
 
@@ -209,7 +209,7 @@ return is;
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 if (tag != null && tag.hasKey("PlantID")) {
 if (pass == 0) {
 return icon_a;
@@ -217,7 +217,7 @@ return icon_a;
 return icon_b;
 }
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
@@ -236,9 +236,9 @@ return 16777215;
 */
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon(getIconString());
+itemIIcon = ir.registerIcon(getIconString());
 //icon_a = ir.registerIcon("timaxa007:base_seed");
 //icon_b = ir.registerIcon("timaxa007:base_seed");
 }

@@ -139,7 +139,7 @@ prevRotationYaw = rotationYaw = (float)(Math.atan2(motionX, motionZ) * 180.0D / 
 prevRotationPitch = rotationPitch = (float)(Math.atan2(motionY, (double)f) * 180.0D / Math.PI);
 }
 
-int i = worldObj.getBlockId(xTile, yTile, zTile);
+int i = worldObj.getBlock(xTile, yTile, zTile);
 
 if (i > 0) {
 Block.blocksList[i].setBlockBoundsBasedOnState(worldObj, xTile, yTile, zTile);
@@ -153,7 +153,7 @@ inGround = true;
 if (arrowShake > 0) {--arrowShake;}
 
 if (inGround) {
-int j = worldObj.getBlockId(xTile, yTile, zTile);
+int j = worldObj.getBlock(xTile, yTile, zTile);
 int k = worldObj.getBlockMetadata(xTile, yTile, zTile);
 
 if (j == inTile && k == inData) {
@@ -285,7 +285,7 @@ ticksInAir = 0;
 xTile = movingobjectposition.blockX;
 yTile = movingobjectposition.blockY;
 zTile = movingobjectposition.blockZ;
-inTile = worldObj.getBlockId(xTile, yTile, zTile);
+inTile = worldObj.getBlock(xTile, yTile, zTile);
 inData = worldObj.getBlockMetadata(xTile, yTile, zTile);
 motionX = (double)((float)(movingobjectposition.hitVec.xCoord - posX));
 motionY = (double)((float)(movingobjectposition.hitVec.yCoord - posY));

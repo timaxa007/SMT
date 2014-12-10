@@ -20,25 +20,25 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCnstorFence extends Block implements ITileEntityProvider {
 
-public BlockCnstorFence(int id) {
-super(id, Material.glass);
+public BlockCnstorFence() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);
-setStepSound(soundWoodFootstep);
-setTextureName("timaxa007:" + "woodFrame");
-setUnlocalizedName("cnstor.fence");
+setStepSound(soundTypeWood);
+setBlockTextureName("timaxa007:" + "woodFrame");
+setBlockName("cnstor.fence");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TECnstorFence();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TECnstorFence();}
 public int getRenderType() {return PackFurniture.proxy.renderBlockCnstorFenceModelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TECnstorFence) {
 return addTag(((TECnstorFence)te).getTypes());
 }
@@ -47,7 +47,7 @@ return addTag(0);
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if(te != null && te instanceof TECnstorFence) {
 if(tag!=null) {

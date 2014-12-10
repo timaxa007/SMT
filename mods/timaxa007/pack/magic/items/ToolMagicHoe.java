@@ -3,7 +3,7 @@ package mods.timaxa007.pack.magic.items;
 import mods.timaxa007.pack.magic.PackMagic;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
@@ -39,7 +39,7 @@ is.damageItem(1, player);
 return true;
 }
 
-int i1=wrd.getBlockId(x, y, z);
+int i1=wrd.getBlock(x, y, z);
 boolean air=wrd.isAirBlock(x, y+1, z);
 
 if(i1==Block.cobblestone.blockID) {
@@ -136,8 +136,8 @@ return this.theToolMaterial.toString();
 public boolean hasEffect(ItemStack is) {return true;}
 
 @Override
-public void registerIcons(IconRegister ir) {
-this.itemIcon=ir.registerIcon("timaxa007:" + "tool/" + "hoeMagic");
+public void registerIcons(IIconRegister ir) {
+this.itemIIcon=ir.registerIcon("timaxa007:" + "tool/" + "hoeMagic");
 }
 
 }

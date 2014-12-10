@@ -21,17 +21,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMashineWater extends Block implements ITileEntityProvider {
 
-public BlockMashineWater(int id) {
-super(id, Material.iron);
+public BlockMashineWater() {
+super(Material.iron);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.25F);
 setLightOpacity(0);
-setTextureName("glass");
-setUnlocalizedName("masine_water");
+setBlockTextureName("glass");
+setBlockName("masine_water");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEMashineWater();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEMashineWater();}
 
 public int getRenderType() {return PackFurniture.proxy.render_block_jar01_modelID;}
 public boolean isOpaqueCube() {return false;}
@@ -39,7 +39,7 @@ public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEMashineWater) {
 return addTag(((TEMashineWater)te).getColor(), ((TEMashineWater)te).getPart());
 } else {
@@ -50,7 +50,7 @@ return addTag(0xFFFFFF, false);
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEMashineWater) {
 /*
@@ -69,7 +69,7 @@ if (tag != null) {
 }
 
 public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEMashineWater) {
 player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_mashine_water, world, x, y, z);
 return true;

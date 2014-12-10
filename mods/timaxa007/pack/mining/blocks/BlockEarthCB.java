@@ -9,10 +9,10 @@ import mods.timaxa007.pack.mining.PackInfo;
 import mods.timaxa007.pack.mining.PackMining;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -20,10 +20,10 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockEarthCB extends Block{
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
-@SideOnly(Side.CLIENT) private Icon iconEarthTop;
-@SideOnly(Side.CLIENT) private Icon iconSnowSide;
-@SideOnly(Side.CLIENT) private Icon iconEarthSideOverlay;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon iconEarthTop;
+@SideOnly(Side.CLIENT) private IIcon iconSnowSide;
+@SideOnly(Side.CLIENT) private IIcon iconEarthSideOverlay;
 public static final String[] earthType=new String[]{
 "1", 
 "2", 
@@ -43,25 +43,25 @@ public static final String[] earthType=new String[]{
 "16"
 };
 
-public BlockEarthCB(int id) {
-super(id, Material.circuits);
-setStepSound(soundWoodFootstep);
+public BlockEarthCB() {
+super(Material.circuits);
+setStepSound(soundTypeWood);
 setCreativeTab(PackMining.proxy.tabMiningPack);
 setHardness(0.5F);
 setResistance(10.0F);
 setLightValue(0.0F);
 setLightOpacity(1);
-setTextureName("dirt");
-setUnlocalizedName("BlockEarthCB");
+setBlockTextureName("dirt");
+setBlockName("BlockEarthCB");
 }
 /*
 @SideOnly(Side.CLIENT)
-public Icon getIcon(int par1, int par2) {
+public IIcon getIcon(int par1, int par2) {
 return par1==1 ? iconEarthTop : (par1==0 ? Block.dirt.getBlockTextureFromSide(par1) : iconArray[par2 % iconArray.length]);
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIcon(int par1, int par2) {
+public IIcon getIcon(int par1, int par2) {
 return iconArray[par2 % iconArray.length];
 }
 */
@@ -75,9 +75,9 @@ for(byte l=0;l<4;++l) {
 int i1=par2+par5Random.nextInt(3)-1;
 int j1=par3+par5Random.nextInt(5)-3;
 int k1=par4+par5Random.nextInt(3)-1;
-int l1=par1World.getBlockId(i1, j1+1, k1);
+int l1=par1World.getBlock(i1, j1+1, k1);
 
-if(par1World.getBlockId(i1, j1, k1)==Block.dirt.blockID && par1World.getBlockLightValue(i1, j1+1, k1) >= 4 && par1World.getBlockLightOpacity(i1, j1+1, k1) <= 2) {
+if(par1World.getBlock(i1, j1, k1)==Block.dirt.blockID && par1World.getBlockLightValue(i1, j1+1, k1) >= 4 && par1World.getBlockLightOpacity(i1, j1+1, k1) <= 2) {
 par1World.setBlock(i1, j1, k1, PackMining.proxy.blockEarth.blockID);
 }
 }
@@ -90,7 +90,7 @@ return Block.dirt.idDropped(0, par2Random, par3);
 }
 */
 @SideOnly(Side.CLIENT)
-public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int x, int y, int z, int side) {
+public IIcon getBlockTexture(IBlockAccess par1IBlockAccess, int x, int y, int z, int side) {
 if(side==1) {
 return iconEarthTop;
 }
@@ -128,7 +128,7 @@ j1 += i2 & 255;
 return (l / 9 & 255) << 16 | (i1 / 9 & 255) << 8 | j1 / 9 & 255;
 }
 
-@SideOnly(Side.CLIENT) public static Icon getIconSideOverlay() {return PackMining.proxy.blockEarth.iconEarthSideOverlay;}
+@SideOnly(Side.CLIENT) public static IIcon getIconSideOverlay() {return PackMining.proxy.blockEarth.iconEarthSideOverlay;}
 
 public int quantityDropped(Random par1Random) {return 0;}
 public int idDropped(int par1, Random par2Random, int par3) {return par1;}
@@ -152,15 +152,15 @@ return ret;
 
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 blockIcon=ir.registerIcon("grass_side");
 iconEarthTop=ir.registerIcon("grass_top");
 iconSnowSide=ir.registerIcon("snow_side");
 iconEarthSideOverlay=ir.registerIcon("earth_side_overlay");
 }
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-iconArray=new Icon[16];
+public void registerIcons(IIconRegister ir) {
+iconArray=new IIcon[16];
 for(byte i=0;i<iconArray.length;++i) {
 iconArray[i]=ir.registerIcon("timaxa007:"+"testBlock2"+GetColors.getNameColors[i]);
 }

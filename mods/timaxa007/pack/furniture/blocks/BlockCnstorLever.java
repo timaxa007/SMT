@@ -10,18 +10,18 @@ import net.minecraft.world.World;
 
 public class BlockCnstorLever extends Block implements ITileEntityProvider {
 
-public BlockCnstorLever(int id) {
-super(id, Material.glass);
+public BlockCnstorLever() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);
-setStepSound(soundWoodFootstep);
-setTextureName("timaxa007:"+"woodFrame");
-setUnlocalizedName("cnstor.lever");
+setStepSound(soundTypeWood);
+setBlockTextureName("timaxa007:"+"woodFrame");
+setBlockName("cnstor.lever");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return null;}
+public TileEntity createNewTileEntity(World world, int meta) {return null;}
 
 }

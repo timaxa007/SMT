@@ -16,20 +16,20 @@ import net.minecraft.world.World;
 
 public class BlockElectricMachines extends BlockContainer{
 
-public BlockElectricMachines(int id) {
-super(id, Material.iron);
+public BlockElectricMachines() {
+super(Material.iron);
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
 setHardness(0.5F);
 setResistance(1.0F);
-setTextureName("planks_oak");
-setUnlocalizedName("electric.Machines");
+setBlockTextureName("planks_oak");
+setBlockName("electric.Machines");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEElectricMachines();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEElectricMachines();}
 
 public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if((te!=null)&&(te instanceof TEElectricMachines)) {
 
@@ -73,7 +73,7 @@ wrd.destroyBlock(x, y, z, true);
 }
 
 public boolean onBlockActivated(World wrd, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 //if(!wrd.isRemote) {return false;}
 if(player.isSneaking()) {return false;}
 if(te!=null&&te instanceof TEElectricMachines) {

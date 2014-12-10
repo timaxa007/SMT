@@ -3,7 +3,7 @@ package mods.timaxa007.pack.stock.items;
 import java.util.List;
 
 import mods.timaxa007.pack.stock.PackStock;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -11,7 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -221,9 +221,9 @@ public static final String[] medicalNames = new String[]{
 "PillPremium10"
 
 };
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
-public ItemMedicals(int id) {
+public ItemMedicals() {
 super(id);
 setHasSubtypes(true);
 setMaxDamage(0);
@@ -232,7 +232,7 @@ setUnlocalizedName("medicals");
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamage(int id) {
+public IIcon getIconFromDamage() {
 int j = MathHelper.clamp_int(id, 0, (medicalNames.length)-1);
 return iconArray[j];
 }
@@ -732,8 +732,8 @@ return (is.getItemDamage() >=  91 && is.getItemDamage() <=  150);
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-iconArray = new Icon[medicalNames.length];
+public void registerIcons(IIconRegister ir) {
+iconArray = new IIcon[medicalNames.length];
 
 for (int i = 0; i < medicalNames.length; ++i) {
 iconArray[i] = ir.registerIcon("timaxa007:" + "medical/");

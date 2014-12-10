@@ -17,20 +17,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCnstorAngle extends Block implements ITileEntityProvider {
 
-public BlockCnstorAngle(int id) {
-super(id, Material.glass);
+public BlockCnstorAngle() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(1.0F);
 setResistance(5.0F);
 setLightOpacity(0);
-setStepSound(soundWoodFootstep);
-setTextureName("timaxa007:" + "woodFrame");
+setStepSound(soundTypeWood);
+setBlockTextureName("timaxa007:" + "woodFrame");
 setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-setUnlocalizedName("cnstor.angle");
+setBlockName("cnstor.angle");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEAngleMod();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEAngleMod();}
 public int getRenderType() {return PackFurniture.proxy.renderBlockCnstorAngleModelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
@@ -38,7 +38,7 @@ public int idPicked(World world, int x, int y, int z) {return 0;}
 /*
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEAngleMod) {
 

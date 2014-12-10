@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 public class ItemMedPack extends Item {
 
-public ItemMedPack(int id) {
+public ItemMedPack() {
 super(id);
 setCreativeTab(PackStock.proxy.tabMedicalPack);
 setHasSubtypes(true);

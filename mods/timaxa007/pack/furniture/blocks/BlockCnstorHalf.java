@@ -9,18 +9,18 @@ import net.minecraft.world.World;
 
 public class BlockCnstorHalf extends Block implements ITileEntityProvider {
 
-public BlockCnstorHalf(int id) {
-super(id, Material.glass);
+public BlockCnstorHalf() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);
-setStepSound(soundWoodFootstep);
-setTextureName("timaxa007:"+"woodFrame");
-setUnlocalizedName("cnstor.half");
+setStepSound(soundTypeWood);
+setBlockTextureName("timaxa007:"+"woodFrame");
+setBlockName("cnstor.half");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return null;}
+public TileEntity createNewTileEntity(World world, int meta) {return null;}
 
 }

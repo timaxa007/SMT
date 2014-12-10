@@ -444,7 +444,7 @@ int j = 0;
 for(int k = (int)this.posX - 4;k < (int)this.posX + 4 && j < 14;++k) {
 for(int l = (int)this.posY - 4;l < (int)this.posY + 4 && j < 14;++l) {
 for(int i1 = (int)this.posZ - 4;i1 < (int)this.posZ + 4 && j < 14;++i1) {
-int j1 = this.worldObj.getBlockId(k, l, i1);
+int j1 = this.worldObj.getBlock(k, l, i1);
 
 if(j1 == Block.fenceIron.blockID || j1 == Block.bed.blockID) {
 if(this.rand.nextFloat() < 0.3F) {

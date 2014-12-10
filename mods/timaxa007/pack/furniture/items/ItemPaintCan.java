@@ -6,13 +6,13 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.mining.PackMining;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 
 import org.lwjgl.input.Keyboard;
@@ -21,8 +21,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPaintCan extends Item{
-@SideOnly(Side.CLIENT) private Icon iconArray;
-@SideOnly(Side.CLIENT) private Icon theIcon;
+@SideOnly(Side.CLIENT) private IIcon iconArray;
+@SideOnly(Side.CLIENT) private IIcon theIIcon;
 public static final String[] paintCanColorType=new String[]{
 "PaintCanBlack", 
 "PaintCanBlue", 
@@ -42,7 +42,7 @@ public static final String[] paintCanColorType=new String[]{
 "PaintCanYellow"
 };
 
-public ItemPaintCan(int id) {
+public ItemPaintCan() {
 super(id);
 this.setMaxStackSize(1);
 this.setMaxDamage(15);
@@ -90,7 +90,7 @@ return is;
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamage(int par1) {return this.iconArray;}
+public IIcon getIconFromDamage(int par1) {return this.iconArray;}
 
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
@@ -109,14 +109,14 @@ else{return GetColors.getHexColors[tag.getInteger("Color")];}
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamageForRenderPass(int par1, int par2) {
-return par2 > 0 ? (par2==0 ? this.iconArray : this.theIcon) : super.getIconFromDamageForRenderPass(par1, par2);
+public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
+return par2 > 0 ? (par2==0 ? this.iconArray : this.theIIcon) : super.getIconFromDamageForRenderPass(par1, par2);
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-this.theIcon=ir.registerIcon("timaxa007:"+"colors/"+"paint_can"+"_overlay");
+this.theIIcon=ir.registerIcon("timaxa007:"+"colors/"+"paint_can"+"_overlay");
 this.iconArray=ir.registerIcon("timaxa007:"+"colors/"+"paint_can");
 }
 

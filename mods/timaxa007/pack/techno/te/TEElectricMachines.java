@@ -249,7 +249,7 @@ return 0;
 public static boolean isItemFuel(ItemStack is) {return getItemBurnTime(is)>0;}
 
 public boolean isUseableByPlayer(EntityPlayer player) {
-return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord)!=this?false:player.getDistanceSq((double)this.xCoord+0.5D, (double)this.yCoord+0.5D, (double)this.zCoord+0.5D)<=64.0D;
+return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord)!=this?false:player.getDistanceSq((double)this.xCoord+0.5D, (double)this.yCoord+0.5D, (double)this.zCoord+0.5D)<=64.0D;
 }
 
 public void openChest() {}

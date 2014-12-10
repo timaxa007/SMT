@@ -4,13 +4,13 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 
 import org.lwjgl.input.Keyboard;
 
@@ -19,10 +19,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemKitchenware extends Item {
 
-@SideOnly(Side.CLIENT) private Icon[] icon_tex;
-@SideOnly(Side.CLIENT) private Icon[] icon_ovl;
+@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
+@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-public ItemKitchenware(int id) {
+public ItemKitchenware() {
 super(id);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHasSubtypes(true);
@@ -107,7 +107,7 @@ is.setTagCompound(tag);
 return is;
 }
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("NameID") && kitchenware.hasStrCode(tag.getString("NameID"))) {
 if (pass == 0) {
@@ -116,7 +116,7 @@ return icon_tex[kitchenware.valueOf(tag.getString("NameID")).ordinal()];
 return icon_ovl[kitchenware.valueOf(tag.getString("NameID")).ordinal()];
 }
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
@@ -138,11 +138,11 @@ return 16777215;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon("timaxa007:" + "kitchenware/" + "kitchenware");
-icon_tex = new Icon[kitchenware.values().length];
-icon_ovl = new Icon[kitchenware.values().length];
+itemIIcon = ir.registerIcon("timaxa007:" + "kitchenware/" + "kitchenware");
+icon_tex = new IIcon[kitchenware.values().length];
+icon_ovl = new IIcon[kitchenware.values().length];
 for (kitchenware j : kitchenware.values()) {
 icon_tex[j.ordinal()] = ir.registerIcon("timaxa007:" + "kitchenware/" + j.texture);
 if (j.pass) {

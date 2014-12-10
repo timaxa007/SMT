@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 
 public class ItemsMagic extends Item {
 
-public ItemsMagic(int id) {
+public ItemsMagic() {
 super(id);
 setCreativeTab(PackMagic.proxy.tabMagicPack);
 setUnlocalizedName("items_magic");

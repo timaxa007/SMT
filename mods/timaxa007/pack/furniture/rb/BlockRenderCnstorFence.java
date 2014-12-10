@@ -23,7 +23,7 @@ this.renderTE((TECnstorFence)te, d1, d2, d3, f);
 
 public void renderTE(TECnstorFence te, double d1, double d2, double d3, float f) {
 //int tex=tileEntity.getBlockMetadata();
-//te.worldObj.getBlockTileEntity(par1, par2, par3)
+//te.worldObj.getTileEntity(par1, par2, par3)
 int tex=te.getTypes();
 boolean sN=te.getStepN();
 boolean sS=te.getStepS();

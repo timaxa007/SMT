@@ -7,7 +7,7 @@ import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.te.TECrystals;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -20,16 +20,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCrystals extends BlockContainer{
 
-public BlockCrystals(int id) {
-super(id, Material.glass);
+public BlockCrystals() {
+super(Material.glass);
 setHardness(0.5F);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
-setTextureName("planks_oak");
-setUnlocalizedName("crystals");
+setBlockTextureName("planks_oak");
+setBlockName("crystals");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TECrystals();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TECrystals();}
 
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
@@ -37,7 +37,7 @@ public boolean renderAsNormalBlock() {return false;}
 
 @Override
 public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase el, ItemStack is) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if((te!=null)&&(te instanceof TECrystals)) {
 
@@ -77,6 +77,6 @@ ret.add(new ItemStack(PackFurniture.proxy.block_crystals.blockID, 1, metadata));
 return ret;
 }
 
-public void registerIcons(IconRegister ir) {blockIcon = ir.registerIcon("glass");}
+public void registerIcons(IIconRegister ir) {blockIcon = ir.registerIcon("glass");}
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.entity.EntityArrowMini;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -16,7 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
@@ -29,9 +29,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BowMagic extends Item {
 
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
-public BowMagic(int id) {
+public BowMagic() {
 super(id);
 setMaxStackSize(1);
 setMaxDamage(1000);
@@ -134,22 +134,22 @@ return is;
 
 public int getItemEnchantability() {return 1;}
 
-public Icon getIcon(ItemStack is, int renderPass, EntityPlayer player, ItemStack useItm, int useRem) {
+public IIcon getIcon(ItemStack is, int renderPass, EntityPlayer player, ItemStack useItm, int useRem) {
 BowMagic itm = PackMagic.proxy.bowMagic;
 if (useItm != null && is.itemID == itm.itemID) {
 int j = is.getMaxItemUseDuration()-useRem;
-if (j >= 18) {return itm.getItemIconForUseDuration(2);}
-if (j>13) {return itm.getItemIconForUseDuration(1);}
-if (j>0) {return itm.getItemIconForUseDuration(0);}
+if (j >= 18) {return itm.getItemIIconForUseDuration(2);}
+if (j>13) {return itm.getItemIIconForUseDuration(1);}
+if (j>0) {return itm.getItemIIconForUseDuration(0);}
 }
 return getIcon(is, renderPass);
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-iconArray = new Icon[3];
-itemIcon = ir.registerIcon("timaxa007:" + "tool/" + "bowMagic");
+iconArray = new IIcon[3];
+itemIIcon = ir.registerIcon("timaxa007:" + "tool/" + "bowMagic");
 
 for (int i = 0; i < iconArray.length; ++i) {
 iconArray[i] = ir.registerIcon("timaxa007:" + "tool/" + "bowMagic_pull_" + i);
@@ -157,7 +157,7 @@ iconArray[i] = ir.registerIcon("timaxa007:" + "tool/" + "bowMagic_pull_" + i);
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getItemIconForUseDuration(int par1) {
+public IIcon getItemIIconForUseDuration(int par1) {
 return iconArray[par1];
 }
 

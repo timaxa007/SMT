@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTeleport extends Item {
 
-public ItemTeleport(int id) {
+public ItemTeleport() {
 super(id);
 setHasSubtypes(true);
 setMaxDamage(0);

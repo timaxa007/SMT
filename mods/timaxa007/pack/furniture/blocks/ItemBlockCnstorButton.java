@@ -4,7 +4,7 @@ import net.minecraft.item.ItemBlock;
 
 public class ItemBlockCnstorButton extends ItemBlock {
 
-public ItemBlockCnstorButton(int id) {
+public ItemBlockCnstorButton() {
 super(id);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);

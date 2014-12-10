@@ -26,7 +26,7 @@ private static String[] modes = new String[] {
 "Low"		//2
 };
 
-public ToolElectricDrills(int id) {
+public ToolElectricDrills() {
 super(id);
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
 setMaxDamage(1000);

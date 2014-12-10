@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.weapon.PackWeapon;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class Blaster extends Item{
-public Blaster(int id) {
+public Blaster() {
 super(id);
 this.setCreativeTab(PackWeapon.proxy.tabWeaponPack);
 this.setUnlocalizedName("blaster");
@@ -54,7 +54,7 @@ list.add("HiddenINFO");
 }
 
 @Override
-public void registerIcons(IconRegister ir) {
-this.itemIcon=ir.registerIcon("timaxa007:"+"blaster");
+public void registerIcons(IIconRegister ir) {
+this.itemIIcon=ir.registerIcon("timaxa007:"+"blaster");
 }
 }

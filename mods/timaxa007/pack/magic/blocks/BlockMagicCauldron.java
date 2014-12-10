@@ -7,12 +7,12 @@ import net.minecraft.world.World;
 
 public class BlockMagicCauldron extends BlockContainer {
 
-public BlockMagicCauldron(int id) {
-super(id, Material.iron);
-setTextureName("iron_block");
+public BlockMagicCauldron() {
+super(Material.iron);
+setBlockTextureName("iron_block");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return null;}
+public TileEntity createNewTileEntity(World world, int meta) {return null;}
 
 }

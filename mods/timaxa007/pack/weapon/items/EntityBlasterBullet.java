@@ -144,7 +144,7 @@ this.prevRotationYaw=this.rotationYaw=(float)(Math.atan2(this.motionX, this.moti
 this.prevRotationPitch=this.rotationPitch=(float)(Math.atan2(this.motionY, (double)f) * 180.0D / Math.PI);
 }
 
-int i=this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
+int i=this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 
 if(i > 0) {
 Block.blocksList[i].setBlockBoundsBasedOnState(this.worldObj, this.xTile, this.yTile, this.zTile);
@@ -158,7 +158,7 @@ if(this.arrowShake > 0) {
 }
 
 if(this.inGround) {
-int j=this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
+int j=this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 int k=this.worldObj.getBlockMetadata(this.xTile, this.yTile, this.zTile);
 
 if(j==this.inTile && k==this.inData) {
@@ -227,7 +227,7 @@ else{
 this.xTile=movingobjectposition.blockX;
 this.yTile=movingobjectposition.blockY;
 this.zTile=movingobjectposition.blockZ;
-this.inTile=this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
+this.inTile=this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 this.inData=this.worldObj.getBlockMetadata(this.xTile, this.yTile, this.zTile);
 this.motionX=(double)((float)(movingobjectposition.hitVec.xCoord-this.posX));
 this.motionY=(double)((float)(movingobjectposition.hitVec.yCoord-this.posY));

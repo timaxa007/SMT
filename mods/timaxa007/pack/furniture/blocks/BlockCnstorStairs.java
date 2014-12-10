@@ -11,19 +11,19 @@ import net.minecraft.world.World;
 
 public class BlockCnstorStairs extends Block implements ITileEntityProvider {
 
-public BlockCnstorStairs(int id) {
-super(id, Material.glass);
+public BlockCnstorStairs() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);
-setStepSound(soundWoodFootstep);
-setTextureName("timaxa007:" + "woodFrame");
+setStepSound(soundTypeWood);
+setBlockTextureName("timaxa007:" + "woodFrame");
 setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-setUnlocalizedName("cnstor.stairs");
+setBlockName("cnstor.stairs");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return null;}
+public TileEntity createNewTileEntity(World world, int meta) {return null;}
 
 }

@@ -24,18 +24,18 @@ private static boolean keepFurnaceInventory;
 private final Random furnaceRand=new Random();
 private boolean isActive;
 */
-public BlockChip(int id) {
-super(id, Material.iron);
+public BlockChip() {
+super(Material.iron);
 setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
 setHardness(0.5F);
 setResistance(1.0F);
-setTextureName("iron_block");
-setUnlocalizedName("electric.chip");
+setBlockTextureName("iron_block");
+setBlockName("electric.chip");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEChip();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEChip();}
 
 public int getRenderType() {return -1;}
 public boolean renderAsNormalBlock() {return false;}
@@ -43,7 +43,7 @@ public boolean isOpaqueCube() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEChip)) {
 return addTag(((TEChip)te).getTypes());
 }
@@ -52,7 +52,7 @@ return addTag(0);
 /*
 @Override
 public boolean onBlockActivated(World wrd, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 //if(!wrd.isRemote) {return false;}
 if(player.isSneaking()) {return false;}
 if((te!=null)&&(te instanceof TEChip)) {
@@ -65,7 +65,7 @@ return false;
 /*
 public void breakBlock(World wrd, int x, int y, int z, int blkid, int blkmeta) {
 if(!keepFurnaceInventory) {
-TEChip tileentityfurnace=(TEChip)wrd.getBlockTileEntity(x, y, z);
+TEChip tileentityfurnace=(TEChip)wrd.getTileEntity(x, y, z);
 
 if(tileentityfurnace!=null) {
 for(int j1=0;j1 < tileentityfurnace.getSizeInventory();++j1) {
@@ -106,7 +106,7 @@ super.breakBlock(wrd, x, y, z, blkid, blkmeta);
 */
 
 public void onEntityCollidedWithBlock(World wrd, int x, int y, int z, Entity entity) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEChip)) {
 if(((TEChip)te).getRotation()==0) {entity.motionZ+=0.1D;}
 else if(((TEChip)te).getRotation()==1) {entity.motionX-=0.1D;}
@@ -122,7 +122,7 @@ entity.motionZ*=0.5D;
 
 @Override
 public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if((te!=null)&&(te instanceof TEChip)) {
 

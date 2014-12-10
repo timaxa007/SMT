@@ -13,9 +13,9 @@ import org.lwjgl.input.Keyboard;
 //ItemMultiTextureTile
 public class ItemBlockCrystals extends ItemBlock{
 
-public ItemBlockCrystals(int id) {
+public ItemBlockCrystals() {
 super(id);
-//super(id, PackFurniture.blockCrystals, GetColors.getNameColors);
+//super(PackFurniture.blockCrystals, GetColors.getNameColors);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);
 }

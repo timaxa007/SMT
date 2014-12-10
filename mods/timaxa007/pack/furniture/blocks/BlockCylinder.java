@@ -11,15 +11,15 @@ import net.minecraft.world.World;
 
 public class BlockCylinder extends Block implements ITileEntityProvider {
 
-public BlockCylinder(int id) {
-super(id, Material.iron);
+public BlockCylinder() {
+super(Material.iron);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
-setTextureName("iron_block");
-setUnlocalizedName("cylinder");
+setBlockTextureName("iron_block");
+setBlockName("cylinder");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TECylinder();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TECylinder();}
 
 public int getRenderType() {return PackFurniture.proxy.render_block_cylinder_modelID;}
 public boolean isOpaqueCube() {return false;}

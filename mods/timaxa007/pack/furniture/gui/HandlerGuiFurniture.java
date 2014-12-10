@@ -10,7 +10,7 @@ public class HandlerGuiFurniture implements IGuiHandler{
 
 @Override
 public Object getServerGuiElement(int id, EntityPlayer player, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 switch(id) {
 case 1:return new ContainerFurnitureMachines(player, (TEFurnitureMachines)te);
 case 16:return new ContainerBookshelf(player, (TEBookshelf)te);
@@ -24,7 +24,7 @@ default:return null;
 
 @Override
 public Object getClientGuiElement(int id, EntityPlayer player, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 switch(id) {
 case 1:return new GuiFurnitureMachines(player, (TEFurnitureMachines)te);
 case 16:return new GuiBookshelf(player, (TEBookshelf)te);

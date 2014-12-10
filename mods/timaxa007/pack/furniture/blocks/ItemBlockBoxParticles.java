@@ -13,7 +13,7 @@ import org.lwjgl.input.Keyboard;
 
 public class ItemBlockBoxParticles extends ItemBlock{
 
-public ItemBlockBoxParticles(int id) {
+public ItemBlockBoxParticles() {
 super(id);
 this.setMaxDamage(0);
 this.setHasSubtypes(true);

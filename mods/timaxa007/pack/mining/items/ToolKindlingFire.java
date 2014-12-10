@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 
 public class ToolKindlingFire extends Item{
 
-public ToolKindlingFire(int id) {
+public ToolKindlingFire() {
 super(id);
 this.maxStackSize = 1;
 this.setMaxDamage(64);
@@ -27,7 +27,7 @@ if(meta==5) {++x;}
 
 if(!player.canPlayerEdit(x, y, z, meta, is)) {return false;}
 else{
-int i1=wrd.getBlockId(x, y, z);
+int i1=wrd.getBlock(x, y, z);
 
 if(i1==0) {
 wrd.playSoundEffect((double)x+0.5D, (double)y+0.5D, (double)z+0.5D, "fire.ignite", 1.0F, itemRand.nextFloat()*0.4F+0.8F);

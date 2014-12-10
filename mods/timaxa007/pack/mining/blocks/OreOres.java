@@ -15,7 +15,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -41,25 +41,25 @@ public static String[] type_ore = new String[] {
 "shard"
 };
 
-public OreOres(int id) {
-super(id, Material.rock);
+public OreOres() {
+super(Material.rock);
 setCreativeTab(PackMining.proxy.tabMiningPack);
 setStepSound(soundStoneFootstep);
 setHardness(1.0F);
 setResistance(5.0F);
-setTextureName("stone");
-setUnlocalizedName("ore_ores");
+setBlockTextureName("stone");
+setBlockName("ore_ores");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEOreOres();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEOreOres();}
 //public int getRenderType() {return -1;}
 //public boolean renderAsNormalBlock() {return false;}
 //public boolean isOpaqueCube() {return false;}
 
 @SideOnly(Side.CLIENT)
 public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
-TileEntity te = block_access.getBlockTileEntity(x, y, z);
+TileEntity te = block_access.getTileEntity(x, y, z);
 if (te != null && te instanceof TEOreOres) {
 return ((TEOreOres)te).getColorBlock();
 }
@@ -67,8 +67,8 @@ return 0xFFFFFF;
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
-TileEntity te = block_access.getBlockTileEntity(x, y, z);
+public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
+TileEntity te = block_access.getTileEntity(x, y, z);
 if (te != null && te instanceof TEOreOres) {
 if (blockID == PackMining.proxy.ore_rock_ores.blockID) {return Block.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
 if (blockID == PackMining.proxy.ore_nether_ores.blockID) {return Block.netherrack.getIcon(side, block_access.getBlockMetadata(x, y, z));}
@@ -81,17 +81,17 @@ return getIcon(side, block_access.getBlockMetadata(x, y, z));
 public int idPicked(World world, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEOreOres) {
-return addTag(world.getBlockId(x, y, z), ((TEOreOres)te).getType(), ((TEOreOres)te).getColorBlock());
+return addTag(world.getBlock(x, y, z), ((TEOreOres)te).getType(), ((TEOreOres)te).getColorBlock());
 } else {
-return addTag(world.getBlockId(x, y, z), 0, 0xFFFFFF);
+return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
 }
 }
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEOreOres && tag != null) {
 

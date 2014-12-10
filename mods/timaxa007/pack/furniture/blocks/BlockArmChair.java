@@ -19,25 +19,25 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockArmChair extends Block implements ITileEntityProvider {
 
-public BlockArmChair(int id) {
-super(id, Material.glass);
+public BlockArmChair() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.5F);
 setResistance(2.5F);
-setStepSound(soundWoodFootstep);
-setTextureName("planks_oak");
-setUnlocalizedName("armchair");
+setStepSound(soundTypeWood);
+setBlockTextureName("planks_oak");
+setBlockName("armchair");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEArmChair();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEArmChair();}
 public int getRenderType() {return PackFurniture.proxy.renderBlockArmChairModelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World world, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if((te != null && te instanceof TEArmChair)) {
 return addTag(((TEArmChair)te).getType(), ((TEArmChair)te).getSize());
 }

@@ -11,7 +11,7 @@ super(position, tabID);
 }
 
 @SideOnly(Side.CLIENT)
-public int getTabIconItemIndex() {
+public int getTabIIconItemIndex() {
 return Core.item_test.itemID;
 }
 

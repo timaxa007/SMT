@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.model.ModelMask;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,14 +13,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArmorMasks extends ItemArmor {
 
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
 public static final String[] type_mask = new String[] {
 "mini", 
@@ -31,8 +31,8 @@ public static final String[] type_mask = new String[] {
 "test"
 };
 
-public ArmorMasks(int id) {
-super(id, PackFurniture.proxy.COSTUME, 0, 0);
+public ArmorMasks() {
+super(PackFurniture.proxy.COSTUME, 0, 0);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setTextureName("timaxa007:armor/mask");
 setUnlocalizedName("armor_masks");
@@ -125,20 +125,20 @@ return null;
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("TypeMask")) {
 return iconArray[tag.getInteger("TypeMask")];
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon(getIconString());
-iconArray = new Icon[type_mask.length];
+itemIIcon = ir.registerIcon(getIconString());
+iconArray = new IIcon[type_mask.length];
 for (int i = 0; i < type_mask.length; ++i) {
 iconArray[i] = ir.registerIcon(getIconString() + "_" + type_mask[i]);
 }

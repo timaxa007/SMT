@@ -17,23 +17,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockChair extends BlockContainer{
 
-public BlockChair(int id) {
-super(id, Material.wood);
+public BlockChair() {
+super(Material.wood);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.5F);
-setTextureName("planks_oak");
-setUnlocalizedName("chairs");
+setBlockTextureName("planks_oak");
+setBlockName("chairs");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEChair();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEChair();}
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 int retre=0;
 if((te!=null)&&(te instanceof TEChair)) {
 retre=((TEChair)te).getType();

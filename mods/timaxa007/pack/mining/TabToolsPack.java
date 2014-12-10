@@ -7,11 +7,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TabToolsPack extends CreativeTabs{
 
 public TabToolsPack(int id, String name) {
-super(id, name);
+super(name);
 }
 
 @SideOnly(Side.CLIENT)
-public int getTabIconItemIndex() {
+public int getTabIIconItemIndex() {
 return PackMining.proxy.toolPickaxe.itemID;
 }
 

@@ -21,23 +21,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockBookshelf extends BlockContainer{
 protected Random random=new Random();
 
-public BlockBookshelf(int id) {
-super(id, Material.wood);
+public BlockBookshelf() {
+super(Material.wood);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.5F);
-setTextureName("bookshelf");
-setUnlocalizedName("bookshelf");
+setBlockTextureName("bookshelf");
+setBlockName("bookshelf");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEBookshelf();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEBookshelf();}
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEBookshelf)) {
 return addTag(0, ((TEBookshelf)te).getType());
 }
@@ -46,7 +46,7 @@ return addTag(0, 0);
 
 @Override
 public boolean onBlockActivated(World wrd, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 //if(!wrd.isRemote) {return false;}
 if(te==null||player.isSneaking()) {return false;}
 if((te!=null)&&(te instanceof TEBookshelf)) {
@@ -58,7 +58,7 @@ return false;
 
 @Override
 public void breakBlock(World wrd, int x, int y, int z, int id, int meta) {
-TEBookshelf TEBookshelf=(TEBookshelf)wrd.getBlockTileEntity(x, y, z);
+TEBookshelf TEBookshelf=(TEBookshelf)wrd.getTileEntity(x, y, z);
 
 if(TEBookshelf!=null) {
 for(int j1=0;j1<TEBookshelf.getSizeInventory();++j1) {

@@ -5,20 +5,20 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.timaxa007.pack.magic.PackMagic;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class ItemGlobular extends Item {
 
-@SideOnly(Side.CLIENT) private Icon icon_overlay;
+@SideOnly(Side.CLIENT) private IIcon icon_overlay;
 
-public ItemGlobular(int id) {
+public ItemGlobular() {
 super(id);
 setCreativeTab(PackMagic.proxy.tabMagicPack);
 setTextureName("timaxa007:testItem1");
@@ -62,14 +62,14 @@ return is;
 public boolean requiresMultipleRenderPasses() {return true;}
 
 @SideOnly(Side.CLIENT)
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if(tag != null && tag.hasKey("Active")) {
 
 if (pass == 0) {
-return tag.getBoolean("Active")?icon_overlay:itemIcon;
+return tag.getBoolean("Active")?icon_overlay:itemIIcon;
 } else {
-return itemIcon;
+return itemIIcon;
 }
 
 }else{
@@ -78,9 +78,9 @@ return getIconFromDamageForRenderPass(is.getItemDamage(), pass);
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-//itemIcon = ir.registerIcon("timaxa007:testItem1");
+//itemIIcon = ir.registerIcon("timaxa007:testItem1");
 icon_overlay = ir.registerIcon(getIconString() + "_overlay");
 }
 

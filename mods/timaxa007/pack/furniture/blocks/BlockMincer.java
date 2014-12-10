@@ -20,17 +20,17 @@ private static boolean keepFurnaceInventory;
 private final Random furnaceRand=new Random();
 private boolean isActive;
 
-public BlockMincer(int id) {
-super(id, Material.iron);
+public BlockMincer() {
+super(Material.iron);
 setStepSound(soundMetalFootstep);
-setTextureName("iron_block");
+setBlockTextureName("iron_block");
 setHardness(0.5F);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
-setUnlocalizedName("mincer");
+setBlockName("mincer");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEMincer();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEMincer();}
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
@@ -38,13 +38,13 @@ public boolean renderAsNormalBlock() {return false;}
 public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 int i1=MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
 wrd.setBlock(x, y, z, blockID, i1, 3);
-if(is.hasDisplayName()) {((TEMincer)wrd.getBlockTileEntity(x, y, z)).setGuiDisplayName(is.getDisplayName());
+if(is.hasDisplayName()) {((TEMincer)wrd.getTileEntity(x, y, z)).setGuiDisplayName(is.getDisplayName());
 }
 }
 
 @Override
 public boolean onBlockActivated(World wrd, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 //if(!wrd.isRemote) {return false;}
 if(player.isSneaking()) {return false;}
 if((te!=null)&&(te instanceof TEMincer)) {
@@ -56,7 +56,7 @@ return false;
 
 public void breakBlock(World wrd, int x, int y, int z, int blkid, int blkmeta) {
 if(!keepFurnaceInventory) {
-TEMincer tileentityfurnace=(TEMincer)wrd.getBlockTileEntity(x, y, z);
+TEMincer tileentityfurnace=(TEMincer)wrd.getTileEntity(x, y, z);
 
 if(tileentityfurnace!=null) {
 for(int j1=0;j1<tileentityfurnace.getSizeInventory();++j1) {
@@ -97,7 +97,7 @@ super.breakBlock(wrd, x, y, z, blkid, blkmeta);
 
 public static void updateFurnaceBlockState(boolean par0, World wrd, int x, int y, int z) {
 int l=wrd.getBlockMetadata(x, y, z);
-TileEntity tileentity=wrd.getBlockTileEntity(x, y, z);
+TileEntity tileentity=wrd.getTileEntity(x, y, z);
 keepFurnaceInventory=true;
 /*
 if(par0) {

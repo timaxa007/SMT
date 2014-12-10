@@ -12,7 +12,7 @@ import org.lwjgl.input.Keyboard;
 
 public class ItemBlockMetalBlocks extends ItemBlock {
 
-public ItemBlockMetalBlocks(int id) {
+public ItemBlockMetalBlocks() {
 super(id);
 }
 

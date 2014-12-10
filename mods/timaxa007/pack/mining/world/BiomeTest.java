@@ -5,7 +5,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class BiomeTest extends BiomeGenBase{
 
-public BiomeTest(int id) {
+public BiomeTest() {
 super(id);
 setBiomeName("Test Biome");
 //setMinMaxHeight(-1.0F, 0.5F);

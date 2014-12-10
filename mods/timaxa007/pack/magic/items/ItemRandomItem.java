@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 
 public class ItemRandomItem extends Item {
 
-public ItemRandomItem(int id) {
+public ItemRandomItem() {
 super(id);
 setHasSubtypes(true);
 setMaxDamage(0);

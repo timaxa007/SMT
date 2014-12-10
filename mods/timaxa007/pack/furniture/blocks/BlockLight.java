@@ -31,14 +31,14 @@ public static final String[] block_type = new String[] {
 ""
 };
 
-public BlockLight(int id) {
-super(id, Material.circuits);
-setTextureName("glass");
-setUnlocalizedName("lights");
+public BlockLight() {
+super(Material.circuits);
+setBlockTextureName("glass");
+setBlockName("lights");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TELights();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TELights();}
 
 public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {return null;}
 //public int getRenderType() {return 4;}
@@ -50,9 +50,9 @@ public boolean isOpaqueCube() {return false;}
 public int idPicked(World world, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TELights) {
-return addTag(world.getBlockId(x, y, z), ((TELights)te).getType(), ((TELights)te).getColorHex1());
+return addTag(world.getBlock(x, y, z), ((TELights)te).getType(), ((TELights)te).getColorHex1());
 } else {
 return null;
 }
@@ -60,7 +60,7 @@ return null;
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TELights && tag != null) {
 if (tag.hasKey("Type")) {((TELights)te).setType(tag.getString("Type"));} 
@@ -73,9 +73,9 @@ else {((TELights)te).setColorHex1(0xFFFFFF);}
 @Override
 public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 if (!world.isRemote) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TELights && !player.capabilities.isCreativeMode) {
-dropBlockAsItem_do(world, x, y, z, addTag(world.getBlockId(x, y, z), ((TELights)te).getType(), ((TELights)te).getColorHex1()));
+dropBlockAsItem_do(world, x, y, z, addTag(world.getBlock(x, y, z), ((TELights)te).getType(), ((TELights)te).getColorHex1()));
 world.removeBlockTileEntity(x, y, z);
 world.setBlockToAir(x, y, z);
 }
@@ -85,7 +85,7 @@ world.setBlockToAir(x, y, z);
 public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
 ItemStack current = player.getCurrentEquippedItem();
 if (current != null) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 //--------------------------------
 if (current.getItem() == PackFurniture.proxy.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 if (!player.capabilities.isCreativeMode) {--current.stackSize;}

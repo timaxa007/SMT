@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +13,7 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 
 import org.lwjgl.input.Keyboard;
@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ArmorWoolColors extends ItemArmor {
 
 public ArmorWoolColors(int id, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
-super(id, par2EnumArmorMaterial, par3, par4);
+super(par2EnumArmorMaterial, par3, par4);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 }
 
@@ -94,10 +94,10 @@ else {return "timaxa007:textures/armor/armor_wool_color_white_2.png";}
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 String[] typeArmor = new String[] {"helm", "chest", "leggin", "boot"};
 super.registerIcons(ir);
-itemIcon = ir.registerIcon("timaxa007:armor/armor_wool_" + typeArmor[armorType] +"_overlay");
+itemIIcon = ir.registerIcon("timaxa007:armor/armor_wool_" + typeArmor[armorType] +"_overlay");
 }
 
 }

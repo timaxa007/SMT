@@ -5,7 +5,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class BiomeHot extends BiomeGenBase {
 
-public BiomeHot(int id) {
+public BiomeHot() {
 super(id);
 biomeName = "Hot Biome";
 topBlock = (byte)Block.netherrack.blockID;

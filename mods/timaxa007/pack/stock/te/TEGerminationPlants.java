@@ -37,7 +37,7 @@ if (worldObj.getWorldTime() % (20 * updt) == 0 && getHeight() < 16) {
 setHeight(getHeight() + 1);
 }
 
-TileEntity teb = worldObj.getBlockTileEntity(xCoord, yCoord - 1, zCoord);
+TileEntity teb = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
 
 if (worldObj.getWorldTime() % (20 * 10 * updt) == 0 && getThickness() <= 8) {
 if (teb != null && teb instanceof TEGerminationPlants) {
@@ -51,7 +51,7 @@ setThickness(getThickness() + 1);
 }
 
 if (!worldObj.isRemote && worldObj.getWorldTime() % (20 * updt) == 0 &&
-(worldObj.isAirBlock(xCoord, yCoord + 1, zCoord) || worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == Block.leaves.blockID) &&
+(worldObj.isAirBlock(xCoord, yCoord + 1, zCoord) || worldObj.getBlock(xCoord, yCoord + 1, zCoord) == Block.leaves.blockID) &&
 getHeight() == 16) {
 worldObj.setBlock(xCoord, yCoord + 1, zCoord, PackStock.proxy.block_germination_plants.blockID);
 TEGerminationPlants tes = new TEGerminationPlants();

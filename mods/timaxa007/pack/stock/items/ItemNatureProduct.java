@@ -3,13 +3,13 @@ package mods.timaxa007.pack.stock.items;
 import java.util.List;
 
 import mods.timaxa007.pack.stock.PackStock;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -20,10 +20,10 @@ public static final String[] natureProductNames=new String[]{
 "1", 
 "100"
 };
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
-@SideOnly(Side.CLIENT) private Icon[] theIcon;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] theIIcon;
 
-public ItemNatureProduct(int id) {
+public ItemNatureProduct() {
 super(id);
 this.setHasSubtypes(true);
 this.setMaxDamage(0);
@@ -271,7 +271,7 @@ return EnumAction.eat;
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamage(int id) {
+public IIcon getIconFromDamage() {
 int j=MathHelper.clamp_int(id, 0, (natureProductNames.length)-1);
 return this.iconArray[j];
 }
@@ -293,17 +293,17 @@ else{return 16777215;}
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamageForRenderPass(int par1, int par2) {
-return par2==0 ? (par2>0 ? this.iconArray[par1] : this.theIcon[par1]) : super.getIconFromDamageForRenderPass(par1, par2);
+public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
+return par2==0 ? (par2>0 ? this.iconArray[par1] : this.theIIcon[par1]) : super.getIconFromDamageForRenderPass(par1, par2);
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-this.theIcon=new Icon[natureProductNames.length];
-this.iconArray=new Icon[natureProductNames.length];
+this.theIIcon=new IIcon[natureProductNames.length];
+this.iconArray=new IIcon[natureProductNames.length];
 for(int i=0;i<natureProductNames.length;++i) {
-this.theIcon[i]=ir.registerIcon("timaxa007:"+"testItem");
+this.theIIcon[i]=ir.registerIcon("timaxa007:"+"testItem");
 this.iconArray[i]=ir.registerIcon("timaxa007:"+"empty");
 }
 }

@@ -23,25 +23,25 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGerminationPlants extends BlockContainer {
 
-public BlockGerminationPlants(int id) {
-super(id, Material.glass);
+public BlockGerminationPlants() {
+super(Material.glass);
 setCreativeTab(PackStock.proxy.tabPlantPack);
 setHardness(0.25F);
 setResistance(0.1F);
 setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 1.0F, 0.875F);
-setTextureName("plank_oak");
-setUnlocalizedName("germination");
+setBlockTextureName("plank_oak");
+setBlockName("germination");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEGerminationPlants();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEGerminationPlants();}
 
 public int getRenderType() {return PackStock.proxy.render_block_germination_plants_modelID;}
 public boolean renderAsNormalBlock() {return false;}
 public boolean isOpaqueCube() {return false;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEGerminationPlants) {
 /*return addTag(
 ((TEGerminationPlants)te).getPlant(), 
@@ -66,7 +66,7 @@ public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, 
 public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
 ItemStack current = player.getCurrentEquippedItem();
 
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEGerminationPlants) {
 if (current != null) {
 if (current.getItem() instanceof ItemGerminationPlants && current.getTagCompound() != null && 
@@ -122,12 +122,12 @@ return false;
 
 public boolean checkBlockGrowingPrimary(World world, int x, int y, int z, String primary) {
 if (primary != null && primary != "") {
-if (world.getBlockId(x, y - 1, z) == Block.dirt.blockID) {return true;}
-if (world.getBlockId(x, y - 1, z) == Block.sand.blockID) {return true;}
-if (world.getBlockId(x, y - 1, z) == Block.stone.blockID) {return true;}
-if (world.getBlockId(x, y - 1, z) == Block.cobblestone.blockID) {return true;}
-if (world.getBlockId(x, y - 1, z) == Block.slowSand.blockID) {return true;}
-if (world.getBlockId(x, y - 1, z) == Block.netherrack.blockID) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.dirt.blockID) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.sand.blockID) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.stone.blockID) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.cobblestone.blockID) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.slowSand.blockID) {return true;}
+if (world.getBlock(x, y - 1, z) == Block.netherrack.blockID) {return true;}
 }
 return false;
 }
@@ -143,7 +143,7 @@ return false;
 */
 /*
 public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEGerminationPlants) {
 
 String psp1 = ((TEGerminationPlants)te).getPlant();
@@ -157,7 +157,7 @@ spawnPlod(world, x, y, z, psp1, psg1, 0, 0);
 public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
 ItemStack current = player.getCurrentEquippedItem();
 
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEGerminationPlants) {
 
 if (current != null) {
@@ -165,7 +165,7 @@ if (current != null) {
 if (
 (current.getItem() == PackStock.proxy.item_base_seed)&&
 (((TEGerminationPlants)te).getPlant() == "")&&
-(world.getBlockId(x, y-1, z) == Block.tilledField.blockID)
+(world.getBlock(x, y-1, z) == Block.tilledField.blockID)
 ) {
 ItemStack isg = new ItemStack(current.getItem(), 1, current.getItemDamage());
 NBTTagCompound nbt = isg.getTagCompound();
@@ -176,7 +176,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 }else if (
 (current.getItem() == Item.reed)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlockId(x, y-1, z) == Block.sand.blockID)&&
+(world.getBlock(x, y-1, z) == Block.sand.blockID)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(4);
@@ -186,7 +186,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.potato)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlockId(x, y-1, z) == Block.tilledField.blockID)||(world.getBlockId(x, y-1, z) == Block.dirt.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||(world.getBlock(x, y-1, z) == Block.dirt.blockID))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(2);
@@ -196,7 +196,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.carrot)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlockId(x, y-1, z) == Block.tilledField.blockID)&&
+(world.getBlock(x, y-1, z) == Block.tilledField.blockID)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(1);
@@ -206,7 +206,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.netherStalkSeeds)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlockId(x, y-1, z) == Block.slowSand.blockID)&&
+(world.getBlock(x, y-1, z) == Block.slowSand.blockID)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(5);
@@ -216,7 +216,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.seeds)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlockId(x, y-1, z) == Block.tilledField.blockID)&&
+(world.getBlock(x, y-1, z) == Block.tilledField.blockID)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(3);
@@ -226,7 +226,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.melonSeeds)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlockId(x, y-1, z) == Block.tilledField.blockID)&&
+(world.getBlock(x, y-1, z) == Block.tilledField.blockID)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(6);
@@ -236,7 +236,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.getItem() == Item.pumpkinSeeds)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-(world.getBlockId(x, y-1, z) == Block.tilledField.blockID)&&
+(world.getBlock(x, y-1, z) == Block.tilledField.blockID)&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(7);
@@ -246,11 +246,11 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.itemID == Block.mushroomBrown.blockID)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlockId(x, y-1, z) == Block.tilledField.blockID)||
-(world.getBlockId(x, y-1, z) == Block.dirt.blockID)||
-(world.getBlockId(x, y-1, z) == Block.cobblestone.blockID)||
-(world.getBlockId(x, y-1, z) == Block.cobblestoneMossy.blockID)||
-(world.getBlockId(x, y-1, z) == Block.mycelium.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||
+(world.getBlock(x, y-1, z) == Block.dirt.blockID)||
+(world.getBlock(x, y-1, z) == Block.cobblestone.blockID)||
+(world.getBlock(x, y-1, z) == Block.cobblestoneMossy.blockID)||
+(world.getBlock(x, y-1, z) == Block.mycelium.blockID))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(8);
@@ -260,11 +260,11 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.itemID == Block.mushroomRed.blockID)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlockId(x, y-1, z) == Block.tilledField.blockID)||
-(world.getBlockId(x, y-1, z) == Block.dirt.blockID)||
-(world.getBlockId(x, y-1, z) == Block.cobblestone.blockID)||
-(world.getBlockId(x, y-1, z) == Block.cobblestoneMossy.blockID)||
-(world.getBlockId(x, y-1, z) == Block.mycelium.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||
+(world.getBlock(x, y-1, z) == Block.dirt.blockID)||
+(world.getBlock(x, y-1, z) == Block.cobblestone.blockID)||
+(world.getBlock(x, y-1, z) == Block.cobblestoneMossy.blockID)||
+(world.getBlock(x, y-1, z) == Block.mycelium.blockID))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(9);
@@ -274,9 +274,9 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.itemID == Block.plantRed.blockID)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlockId(x, y-1, z) == Block.tilledField.blockID)||
-(world.getBlockId(x, y-1, z) == Block.dirt.blockID)||
-(world.getBlockId(x, y-1, z) == Block.grass.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||
+(world.getBlock(x, y-1, z) == Block.dirt.blockID)||
+(world.getBlock(x, y-1, z) == Block.grass.blockID))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(10);
@@ -286,9 +286,9 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 }else if (
 (current.itemID == Block.plantYellow.blockID)&&
 (((TEGerminationPlants)te).getPlant() == 0)&&
-((world.getBlockId(x, y-1, z) == Block.tilledField.blockID)||
-(world.getBlockId(x, y-1, z) == Block.dirt.blockID)||
-(world.getBlockId(x, y-1, z) == Block.grass.blockID))&&
+((world.getBlock(x, y-1, z) == Block.tilledField.blockID)||
+(world.getBlock(x, y-1, z) == Block.dirt.blockID)||
+(world.getBlock(x, y-1, z) == Block.grass.blockID))&&
 (current.stackSize >= 4)
 ) {
 ((TEGerminationPlants)te).setPlant(11);
@@ -401,7 +401,7 @@ world.spawnEntityInWorld(entityitem2);
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEGerminationPlants) {
 
@@ -457,6 +457,6 @@ return is;
 
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {blockIcon = ir.registerIcon("wood");}
+public void registerIcons(IIconRegister ir) {blockIcon = ir.registerIcon("wood");}
 */
 }

@@ -10,18 +10,18 @@ import net.minecraft.world.World;
 
 public class BlockCnstorButton extends Block implements ITileEntityProvider {
 
-public BlockCnstorButton(int id) {
-super(id, Material.glass);
+public BlockCnstorButton() {
+super(Material.glass);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);
-setStepSound(soundWoodFootstep);
-setTextureName("timaxa007:" + "woodFrame");
-setUnlocalizedName("cnstor.button");
+setStepSound(soundTypeWood);
+setBlockTextureName("timaxa007:" + "woodFrame");
+setBlockName("cnstor.button");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return null;}
+public TileEntity createNewTileEntity(World world, int meta) {return null;}
 
 }

@@ -3,7 +3,7 @@ package mods.timaxa007.pack.magic.items;
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.ProxyClient;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.EnumArmorMaterial;
@@ -15,7 +15,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ArmorMagic extends ItemArmor{
 
 public ArmorMagic(int id, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
-super(id, par2EnumArmorMaterial, par3, par4);
+super(par2EnumArmorMaterial, par3, par4);
 this.setCreativeTab(PackMagic.proxy.tabMagicPack);
 }
 /*
@@ -77,12 +77,12 @@ return "timaxa007:textures/armor/arrmor_t.png";
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-if(this.itemID==PackMagic.proxy.armorMagicHelmet.itemID) {this.itemIcon=ir.registerIcon("timaxa007:"+"armor/"+"armorMagicHelmet");}
-else if(this.itemID==PackMagic.proxy.armorMagicChest.itemID) {this.itemIcon=ir.registerIcon("timaxa007:"+"armor/"+"armorMagicChest");}
-else if(this.itemID==PackMagic.proxy.armorMagicLeggin.itemID) {this.itemIcon=ir.registerIcon("timaxa007:"+"armor/"+"armorMagicLeggin");}
-else if(this.itemID==PackMagic.proxy.armorMagicBoot.itemID) {this.itemIcon=ir.registerIcon("timaxa007:"+"armor/"+"armorMagicBoots");}
-else{this.itemIcon=ir.registerIcon("timaxa007:"+"testItem");}
+public void registerIcons(IIconRegister ir) {
+if(this.itemID==PackMagic.proxy.armorMagicHelmet.itemID) {this.itemIIcon=ir.registerIcon("timaxa007:"+"armor/"+"armorMagicHelmet");}
+else if(this.itemID==PackMagic.proxy.armorMagicChest.itemID) {this.itemIIcon=ir.registerIcon("timaxa007:"+"armor/"+"armorMagicChest");}
+else if(this.itemID==PackMagic.proxy.armorMagicLeggin.itemID) {this.itemIIcon=ir.registerIcon("timaxa007:"+"armor/"+"armorMagicLeggin");}
+else if(this.itemID==PackMagic.proxy.armorMagicBoot.itemID) {this.itemIIcon=ir.registerIcon("timaxa007:"+"armor/"+"armorMagicBoots");}
+else{this.itemIIcon=ir.registerIcon("timaxa007:"+"testItem");}
 }
 
 }

@@ -19,15 +19,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockElectricWires extends BlockContainer {
 
-public BlockElectricWires(int id) {
-super(id, Material.glass);
+public BlockElectricWires() {
+super(Material.glass);
 setCreativeTab(PackTechno.proxy.tabTechnoPack);
-setTextureName("glass");
-setUnlocalizedName("wires");
+setBlockTextureName("glass");
+setBlockName("wires");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEElectricWires();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEElectricWires();}
 
 public int getRenderType() {return PackTechno.proxy.render_block_electric_wires_modelID;}
 public boolean isOpaqueCube() {return false;}
@@ -35,7 +35,7 @@ public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEElectricWires) {
 return addTag(((TEElectricWires)te).getType(), ((TEElectricWires)te).getSize(), ((TEElectricWires)te).getColor());
 } else {
@@ -46,7 +46,7 @@ return addTag(0, 0, 0xFFFFFF);
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEElectricWires) {
 /*

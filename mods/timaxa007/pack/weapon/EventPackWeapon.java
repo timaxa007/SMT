@@ -8,7 +8,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import org.lwjgl.input.Mouse;
 
 public class EventPackWeapon {
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void onFire(LivingUpdateEvent p) {
 if (Mouse.isButtonDown(0)) {
@@ -18,7 +18,7 @@ if (actHBI != null && actHBI.getItem() instanceof ItemWeapons) {
 }
 }
 }
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void onScope(LivingUpdateEvent p) {
 if (Mouse.isButtonDown(1)) {
@@ -28,5 +28,5 @@ if (actHBI != null && actHBI.getItem() instanceof ItemWeapons) {
 }
 }
 }
-
+//--------------------------------------------------------------------------------------------------------------
 }

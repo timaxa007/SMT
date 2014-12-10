@@ -7,11 +7,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TabFurniturePack extends CreativeTabs {
 
 public TabFurniturePack(int id, String name) {
-super(id, name);
+super(name);
 }
 
 @SideOnly(Side.CLIENT)
-public int getTabIconItemIndex() {
+public int getTabIIconItemIndex() {
 return PackFurniture.proxy.block_cnstor_block.blockID;
 }
 

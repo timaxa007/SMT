@@ -10,7 +10,7 @@ import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.KeyBindingHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,7 +19,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -30,10 +30,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemWeapons extends Item {
 
-@SideOnly(Side.CLIENT) private Icon[] icon_tex;
-@SideOnly(Side.CLIENT) private Icon[] icon_ovl;
+@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
+@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-public ItemWeapons(int id) {
+public ItemWeapons() {
 super(id);
 setMaxStackSize(1);
 setCreativeTab(PackWeapon.proxy.tabWeaponPack);
@@ -267,7 +267,7 @@ return is;
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("WeaponID")) {
 if (pass == 0) {
@@ -276,7 +276,7 @@ return icon_tex[tag.getInteger("WeaponID")];
 return icon_ovl[tag.getInteger("WeaponID")];
 }
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
@@ -295,11 +295,11 @@ return 16777215;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon("timaxa007:" + "weapons");
-icon_tex = new Icon[WeaponFor.weapon_list.length];
-icon_ovl = new Icon[WeaponFor.weapon_list.length];
+itemIIcon = ir.registerIcon("timaxa007:" + "weapons");
+icon_tex = new IIcon[WeaponFor.weapon_list.length];
+icon_ovl = new IIcon[WeaponFor.weapon_list.length];
 for (int i = 0; i < WeaponFor.weapon_list.length; i++) {
 /*if (WeaponFor.weapon_list[i] != null) {
 icon_tex[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[i].getTexture1Name());
@@ -309,8 +309,8 @@ icon_tex[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[
 	icon_ovl[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[i].getTexture2Name());
 	}
 } else {*/
-icon_tex[i] = itemIcon;
-icon_ovl[i] = itemIcon;
+icon_tex[i] = itemIIcon;
+icon_ovl[i] = itemIIcon;
 //}
 }
 }

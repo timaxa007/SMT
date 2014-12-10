@@ -2,12 +2,16 @@ package mods.timaxa007.pack.stock;
 
 import mods.timaxa007.pack.stock.items.ItemsStock;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -23,7 +27,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventPackStock {
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void onUseBonemeal(BonemealEvent event) {
 /*
@@ -35,7 +39,7 @@ event.setResult(Result.ALLOW);
 }
 */
 }
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void onUpdate(LivingUpdateEvent p) {
 if (p.entityLiving instanceof EntityPlayer) {
@@ -46,7 +50,7 @@ if (((EntityPlayer)p.entityLiving).inventory.mainInventory[i] != null && ((Entit
 if (((EntityPlayer)p.entityLiving).getActivePotionEffect(Potion.nightVision) != null) {
 //((EntityPlayer)p.entityLiving).removePotionEffect(Potion.nightVision.id);
 } else {
-((EntityPlayer)p.entityLiving).addPotionEffect(new PotionEffect(Potion.nightVision.id, 20, 3));
+//((EntityPlayer)p.entityLiving).addPotionEffect(new PotionEffect(Potion.nightVision.id, 20, 3));
 }
 break;
 }
@@ -54,7 +58,7 @@ break;
 
 }
 }
-
+//--------------------------------------------------------------------------------------------------------------
 public static double rand;
 
 @ForgeSubscribe
@@ -78,32 +82,32 @@ event.entityLiving.entityDropItem(new ItemStack(Item.leather.itemID, 1, 0), 0.0F
 }
 }
 }
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void addNewBucket(FillBucketEvent event) {
 if (event.current.getItem() == Item.bucketEmpty) {
-if (event.world.getBlockId(event.target.blockX, event.target.blockY, event.target.blockZ) == Block.stone.blockID) {
+if (event.world.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ) == Block.stone.blockID) {
 event.result = new ItemStack(PackStock.proxy.item_drinks, 1, 0);
 event.world.setBlockToAir(event.target.blockX, event.target.blockY, event.target.blockZ);
 event.setResult(Result.ALLOW);
 }
 }
 }
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void addNewBottle(PlayerInteractEvent event) {
 EntityPlayer player = event.entityPlayer;
 World world = player.worldObj;
 ItemStack current = player.getCurrentEquippedItem();
 if (player != null && world != null && event.action == event.action.RIGHT_CLICK_BLOCK) {
-if (current != null && current.getItem() == Item.glassBottle && world.getBlockId(event.x, event.y, event.z) == Block.stone.blockID) {
+if (current != null && current.getItem() == Item.glassBottle && world.getBlock(event.x, event.y, event.z) == Block.stone.blockID) {
 --current.stackSize;
 player.inventory.addItemStackToInventory(new ItemStack(PackStock.proxy.item_drinks, 1, 0));
 event.setResult(Result.ALLOW);
 }
 }
 }
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void onEatFoodItem(PlayerEvent event) {
 
@@ -114,7 +118,7 @@ if (event.entityPlayer.getCurrentItemOrArmor(0).getItem() instanceof ItemFood) {
 }
 
 }
-
+//--------------------------------------------------------------------------------------------------------------
 @ForgeSubscribe
 public void onEntityTrimming(EntityInteractEvent event) {
 World world = event.entity.worldObj;
@@ -123,11 +127,14 @@ if (event.entityPlayer.getCurrentItemOrArmor(0) != null && event.entityPlayer.ge
 if (event.target instanceof EntityChicken) {
 if (!world.isRemote) {
 world.spawnEntityInWorld(new EntityItem(world, event.target.posX, event.target.posY, event.target.posZ, new ItemStack(Item.feather, 1, 0)));
+event.target.setDead();
+Entity entity = ItemMonsterPlacer.spawnCreature(world, EntityList.getEntityID(new EntityCow(world)), event.target.posX, event.target.posY, event.target.posZ);
+world.spawnEntityInWorld(entity);
 }
 }
 
 }
 
 }
-
+//--------------------------------------------------------------------------------------------------------------
 }

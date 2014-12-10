@@ -5,8 +5,8 @@ import mods.timaxa007.pack.furniture.PackFurniture;
 import net.minecraft.item.ItemMultiTextureTile;
 
 public class ItemBlockLampsClickOff extends ItemMultiTextureTile{
-public ItemBlockLampsClickOff(int id) {
-super(id, PackFurniture.proxy.block_lamps_click_off, GetColors.getNameColors);
+public ItemBlockLampsClickOff() {
+super(PackFurniture.proxy.block_lamps_click_off, GetColors.getNameColors);
 }
 
 }

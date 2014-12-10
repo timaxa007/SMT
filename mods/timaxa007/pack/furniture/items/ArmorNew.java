@@ -19,7 +19,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ArmorNew extends ItemArmor {
 
 public ArmorNew(int id, EnumArmorMaterial mat, int par3, int par4) {
-super(id, mat, par3, par4);
+super(mat, par3, par4);
 }
 
 public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack is) {

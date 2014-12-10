@@ -17,23 +17,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockWardrobe extends BlockContainer{
 
-public BlockWardrobe(int id) {
-super(id, Material.wood);
+public BlockWardrobe() {
+super(Material.wood);
 setHardness(0.5F);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
-setTextureName("planks_oak");
-setUnlocalizedName("wardrobes");
+setBlockTextureName("planks_oak");
+setBlockName("wardrobes");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TEWardrobe();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEWardrobe();}
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 int retre=0;
 if((te!=null)&&(te instanceof TEWardrobe)) {
 retre=((TEWardrobe)te).getType();

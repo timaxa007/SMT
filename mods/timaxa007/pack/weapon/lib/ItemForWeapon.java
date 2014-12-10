@@ -21,7 +21,7 @@ private String type;
 private int color_hex1;
 private int color_hex2;
 
-//@SideOnly(Side.CLIENT) protected Icon icon_item;
+//@SideOnly(Side.CLIENT) protected IIcon icon_item;
 protected String texture1Name;
 protected String texture2Name;
 
@@ -30,7 +30,7 @@ item_list[nextID()] = this;
 itemID = nextID();
 }
 
-public ItemForWeapon(int id) {
+public ItemForWeapon() {
 item_list[id] = this;
 itemID = id;
 }
@@ -101,7 +101,7 @@ public String getTexture2() {return texture2Name == null ? getTexture1() : textu
 
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 icon_item = ir.registerIcon("timaxa007:" + getTextureName());
 }
 */

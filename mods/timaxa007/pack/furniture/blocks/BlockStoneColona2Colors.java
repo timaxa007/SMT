@@ -8,25 +8,25 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockStoneColona2Colors extends Block{
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
-@SideOnly(Side.CLIENT) private Icon[] iconTop;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconTop;
 public static final String[] colona2Types=new String[]{"Gray", "Green", "Light-Blue", "Light-Gray"};
 
-public BlockStoneColona2Colors(int id) {
-super(id, Material.rock);
+public BlockStoneColona2Colors() {
+super(Material.rock);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setStepSound(soundStoneFootstep);
-setTextureName("planks_oak");
-setUnlocalizedName("StoneColona2Colors");
+setBlockTextureName("planks_oak");
+setBlockName("StoneColona2Colors");
 }
 
 //public int damageDropped(int par1) {return par1 & 3;}
@@ -48,7 +48,7 @@ if(par1World.checkChunksExist(par2-j1, par3-j1, par4-j1, par2+j1, par3+j1, par4+
 for(int k1=-b0;k1<=b0;++k1) {
 for(int l1=-b0;l1<=b0;++l1) {
 for(int i2=-b0;i2<=b0;++i2) {
-int j2=par1World.getBlockId(par2+k1, par3+l1, par4+i2);
+int j2=par1World.getBlock(par2+k1, par3+l1, par4+i2);
 if(Block.blocksList[j2] != null) {Block.blocksList[j2].beginLeavesDecay(par1World, par2+k1, par3+l1, par4+i2);}
 }
 }
@@ -77,7 +77,7 @@ return j1 | b0;
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIcon(int par1, int par2) {
+public IIcon getIcon(int par1, int par2) {
 int k=par2 & 12;
 int l=par2 & 3;
 return k==0 && (par1==1 || par1==0) ? iconTop[l] : (k==4 && (par1==5 || par1==4) ? iconTop[l] : (k==8 && (par1==2 || par1==3) ? iconTop[l] : iconArray[l]));
@@ -96,9 +96,9 @@ return ret;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-iconArray=new Icon[colona2Types.length];
-iconTop=new Icon[colona2Types.length];
+public void registerIcons(IIconRegister ir) {
+iconArray=new IIcon[colona2Types.length];
+iconTop=new IIcon[colona2Types.length];
 for(byte i=0;i<iconArray.length;++i) {
 iconArray[i] = ir.registerIcon("timaxa007:" + "stone/" + "stone_colona_" + GetColors.getNameColors[i + 4]);
 iconTop[i] = ir.registerIcon("timaxa007:" + "stone/" + "stone_colona_" + GetColors.getNameColors[i + 4] + "_top");

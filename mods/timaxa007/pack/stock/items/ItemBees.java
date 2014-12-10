@@ -5,13 +5,13 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 
 import org.lwjgl.input.Keyboard;
 
@@ -20,11 +20,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBees extends Item {
 
-@SideOnly(Side.CLIENT) private Icon[] icon_a;
-@SideOnly(Side.CLIENT) private Icon[] icon_b;
-@SideOnly(Side.CLIENT) private Icon[] icon_c;
+@SideOnly(Side.CLIENT) private IIcon[] icon_a;
+@SideOnly(Side.CLIENT) private IIcon[] icon_b;
+@SideOnly(Side.CLIENT) private IIcon[] icon_c;
 
-public ItemBees(int id) {
+public ItemBees() {
 super(id);
 setCreativeTab(PackStock.proxy.tabApisPack);
 setHasSubtypes(true);
@@ -137,7 +137,7 @@ public int getRenderPasses(int metadata) {return 3;}
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("NameID") && tag.hasKey("TypeBee")) {
 if (pass == 0) {
@@ -148,7 +148,7 @@ return icon_b[tag.getInteger("TypeBee")];
 return icon_c[tag.getInteger("TypeBee")];
 }
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
@@ -169,12 +169,12 @@ return 16777215;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon(getIconString() + "icon");
-icon_a = new Icon[bees.type_bee.length];
-icon_b = new Icon[bees.type_bee.length];
-icon_c = new Icon[bees.type_bee.length];
+itemIIcon = ir.registerIcon(getIconString() + "icon");
+icon_a = new IIcon[bees.type_bee.length];
+icon_b = new IIcon[bees.type_bee.length];
+icon_c = new IIcon[bees.type_bee.length];
 for (int i = 0; i < bees.type_bee.length; ++i) {
 icon_a[i] = ir.registerIcon(getIconString() + bees.type_bee[i] + "_a");
 icon_b[i] = ir.registerIcon(getIconString() + bees.type_bee[i] + "_b");

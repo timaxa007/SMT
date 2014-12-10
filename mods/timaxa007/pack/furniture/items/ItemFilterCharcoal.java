@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemFilterCharcoal extends Item {
 
-public ItemFilterCharcoal(int id) {
+public ItemFilterCharcoal() {
 super(id);
 setMaxStackSize(1);
 setMaxDamage(8);

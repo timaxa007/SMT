@@ -5,13 +5,13 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 
 import org.lwjgl.input.Keyboard;
 
@@ -20,10 +20,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBeeProducts extends Item {
 
-@SideOnly(Side.CLIENT) private Icon[] icon_tex;
-@SideOnly(Side.CLIENT) private Icon[] icon_ovl;
+@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
+@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-public ItemBeeProducts(int id) {
+public ItemBeeProducts() {
 super(id);
 setCreativeTab(PackStock.proxy.tabApisPack);
 setHasSubtypes(true);
@@ -158,7 +158,7 @@ return is;
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("NameID") && bee_products.hasStrCode(tag.getString("NameID"))) {
 if (pass == 0) {
@@ -167,7 +167,7 @@ return icon_tex[bee_products.valueOf(tag.getString("NameID")).ordinal()];
 return icon_ovl[bee_products.valueOf(tag.getString("NameID")).ordinal()];
 }
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
@@ -186,11 +186,11 @@ return 16777215;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon("timaxa007:apis/bee_products_icon");
-icon_tex = new Icon[bee_products.values().length];
-icon_ovl = new Icon[bee_products.values().length];
+itemIIcon = ir.registerIcon("timaxa007:apis/bee_products_icon");
+icon_tex = new IIcon[bee_products.values().length];
+icon_ovl = new IIcon[bee_products.values().length];
 for (bee_products j : bee_products.values()) {
 icon_tex[j.ordinal()] = ir.registerIcon("timaxa007:apis/" + j.name);
 icon_ovl[j.ordinal()] = ir.registerIcon("timaxa007:apis/" + j.name + "_overlay");

@@ -23,12 +23,12 @@ public TEElectricWires() {
 }
 
 public void updateEntity() {
-if (worldObj.getBlockTileEntity(xCoord, yCoord + 1, zCoord) instanceof TEElectricWires) {up = true;} else {up = false;}
-if (worldObj.getBlockTileEntity(xCoord, yCoord - 1, zCoord) instanceof TEElectricWires) {down = true;} else {down = false;}
-if (worldObj.getBlockTileEntity(xCoord + 1, yCoord, zCoord) instanceof TEElectricWires) {north = true;} else {north = false;}
-if (worldObj.getBlockTileEntity(xCoord - 1, yCoord, zCoord) instanceof TEElectricWires) {south = true;} else {south = false;}
-if (worldObj.getBlockTileEntity(xCoord, yCoord, zCoord + 1) instanceof TEElectricWires) {west = true;} else {west = false;}
-if (worldObj.getBlockTileEntity(xCoord, yCoord, zCoord - 1) instanceof TEElectricWires) {east = true;} else {east = false;}
+if (worldObj.getTileEntity(xCoord, yCoord + 1, zCoord) instanceof TEElectricWires) {up = true;} else {up = false;}
+if (worldObj.getTileEntity(xCoord, yCoord - 1, zCoord) instanceof TEElectricWires) {down = true;} else {down = false;}
+if (worldObj.getTileEntity(xCoord + 1, yCoord, zCoord) instanceof TEElectricWires) {north = true;} else {north = false;}
+if (worldObj.getTileEntity(xCoord - 1, yCoord, zCoord) instanceof TEElectricWires) {south = true;} else {south = false;}
+if (worldObj.getTileEntity(xCoord, yCoord, zCoord + 1) instanceof TEElectricWires) {west = true;} else {west = false;}
+if (worldObj.getTileEntity(xCoord, yCoord, zCoord - 1) instanceof TEElectricWires) {east = true;} else {east = false;}
 }
 
 public int getType() {return type;}

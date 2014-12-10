@@ -8,10 +8,10 @@ import mods.timaxa007.pack.mining.PackInfo;
 import mods.timaxa007.pack.mining.PackMining;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -19,7 +19,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSandCB extends Block{
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 public static final String[] sandType=new String[]{
 "1", 
 "2", 
@@ -39,16 +39,16 @@ public static final String[] sandType=new String[]{
 "16"
 };
 
-public BlockSandCB(int id) {
-super(id, Material.circuits);
+public BlockSandCB() {
+super(Material.circuits);
 setStepSound(soundSandFootstep);
 setCreativeTab(PackMining.proxy.tabMiningPack);
 setHardness(0.5F);
 setResistance(10.0F);
 setLightValue(0.0F);
 setLightOpacity(1);
-setTextureName("sand");
-setUnlocalizedName("BlockSandCB");
+setBlockTextureName("sand");
+setBlockName("BlockSandCB");
 }
 /*
 public int idDropped(int par1, Random par2Random, int par3) {
@@ -82,7 +82,7 @@ return (l / 9 & 255) << 8 | (i1 / 9 & 255) << 8 | j1 / 9 & 255;
 }
 /*
 @SideOnly(Side.CLIENT)
-public Icon getIcon(int par1, int par2) {
+public IIcon getIcon(int par1, int par2) {
 return iconArray[par2 % iconArray.length];
 }
 */
@@ -107,8 +107,8 @@ return ret;
 }
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-iconArray=new Icon[16];
+public void registerIcons(IIconRegister ir) {
+iconArray=new IIcon[16];
 for(byte i=0;i<iconArray.length;++i) {
 iconArray[i]=ir.registerIcon("timaxa007:"+"sand");
 }

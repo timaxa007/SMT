@@ -7,7 +7,7 @@ import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.mining.PackMining;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +16,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -25,13 +25,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolScythe extends Item{
-@SideOnly(Side.CLIENT) private Icon iconHead;
-@SideOnly(Side.CLIENT) private Icon iconHandler;
-@SideOnly(Side.CLIENT) private Icon iconP2;
+@SideOnly(Side.CLIENT) private IIcon iconHead;
+@SideOnly(Side.CLIENT) private IIcon iconHandler;
+@SideOnly(Side.CLIENT) private IIcon iconP2;
 
 //private final EnumToolMaterial toolMaterial;
 
-public ToolScythe(int id) {
+public ToolScythe() {
 super(id);
 //toolMaterial=EnumToolMaterial.IRON;
 maxStackSize=1;
@@ -142,7 +142,7 @@ return is;
 }
 /*
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamage(int par1) {return theIcon;}
+public IIcon getIconFromDamage(int par1) {return theIIcon;}
 */
 @SideOnly(Side.CLIENT)
 public int getRenderPasses(int metadata) {return 3;}
@@ -165,7 +165,7 @@ return 16777215;
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if(tag!=null&&tag.hasKey("Color")) {
 if(pass==0) {
@@ -182,15 +182,15 @@ return getIconFromDamageForRenderPass(is.getItemDamage(), pass);
 }
 /*
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamageForRenderPass(int par1, int par2) {
-if(par2==0) {return theIcon;}
+public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
+if(par2==0) {return theIIcon;}
 else if(par2==1) {return iconP1;}
 else if(par2==2) {return iconP2;}
 else{return super.getIconFromDamageForRenderPass(par1, par2);}
 }
 */
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
 iconHead=ir.registerIcon("timaxa007:"+"tool/"+"scythe_overlay");
 iconHandler=ir.registerIcon("timaxa007:"+"tool/"+"scytheHandle");

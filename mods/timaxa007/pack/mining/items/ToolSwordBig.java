@@ -11,7 +11,7 @@ import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.mining.PackMining;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,16 +20,16 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class ToolSwordBig extends Item {
-@SideOnly(Side.CLIENT) private Icon iconArray;
-@SideOnly(Side.CLIENT) private Icon theIcon;
+@SideOnly(Side.CLIENT) private IIcon iconArray;
+@SideOnly(Side.CLIENT) private IIcon theIIcon;
 
 //private final EnumToolMaterial toolMaterial;
 
-public ToolSwordBig(int id) {
+public ToolSwordBig() {
 super(id);
 //toolMaterial = EnumToolMaterial.IRON;
 maxStackSize = 1;
@@ -142,7 +142,7 @@ return is;
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamage(int par1) {return iconArray;}
+public IIcon getIconFromDamage(int par1) {return iconArray;}
 
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
@@ -164,14 +164,14 @@ return GetColors.getHexColors[tag.getInteger("Color")];
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamageForRenderPass(int par1, int par2) {
-return par2>0?(par2 == 0?iconArray:theIcon):super.getIconFromDamageForRenderPass(par1, par2);
+public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
+return par2>0?(par2 == 0?iconArray:theIIcon):super.getIconFromDamageForRenderPass(par1, par2);
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-theIcon = ir.registerIcon("timaxa007:" + "weapon/" + "swordHeadBigMetals_overlay");
+theIIcon = ir.registerIcon("timaxa007:" + "weapon/" + "swordHeadBigMetals_overlay");
 iconArray = ir.registerIcon("timaxa007:" + "weapon/" + "swordHandle");
 }
 

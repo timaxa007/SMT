@@ -7,11 +7,11 @@ import net.minecraft.creativetab.CreativeTabs;
 public class TabApisPack extends CreativeTabs {
 
 public TabApisPack(int id, String name) {
-super(id, name);
+super(name);
 }
 
 @SideOnly(Side.CLIENT)
-public int getTabIconItemIndex() {
+public int getTabIIconItemIndex() {
 return PackStock.proxy.item_bees.itemID;
 }
 

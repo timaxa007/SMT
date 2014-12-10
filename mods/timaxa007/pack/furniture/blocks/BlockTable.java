@@ -17,23 +17,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockTable extends BlockContainer{
 
-public BlockTable(int id) {
-super(id, Material.wood);
+public BlockTable() {
+super(Material.wood);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 setHardness(0.5F);
-setTextureName("planks_oak");
-setUnlocalizedName("tables");
+setBlockTextureName("planks_oak");
+setBlockName("tables");
 }
 
 @Override
-public TileEntity createNewTileEntity(World wrd) {return new TETable();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TETable();}
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getBlockTileEntity(x, y, z);
+TileEntity te=wrd.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TETable)) {
 return addTag(0, ((TETable)te).getType(), ((TETable)te).getSize());
 }

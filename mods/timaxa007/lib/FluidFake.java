@@ -22,7 +22,7 @@ private float temperature;
 private float temperature_min;
 private float temperature_max;
 
-//@SideOnly(Side.CLIENT) protected Icon icon_fluid;
+//@SideOnly(Side.CLIENT) protected IIcon icon_fluid;
 protected String textureName;
 
 public FluidFake() {
@@ -30,7 +30,7 @@ fluid_list[nextID()] = this;
 fluidID = nextID();
 }
 
-public FluidFake(int id) {
+public FluidFake() {
 fluid_list[id] = this;
 fluidID = id;
 }
@@ -112,7 +112,7 @@ public FluidFake setTexture(String str) {textureName = str;return this;}
 public String getTexture() {return textureName == null ? getName() : textureName;}
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 icon_fluid = ir.registerIcon("timaxa007:" + getTextureName());
 }
 */

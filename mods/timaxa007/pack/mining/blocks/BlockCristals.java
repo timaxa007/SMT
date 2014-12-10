@@ -20,17 +20,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCristals extends Block implements ITileEntityProvider {
 
-public BlockCristals(int id) {
-super(id, Material.glass);
+public BlockCristals() {
+super(Material.glass);
 setCreativeTab(PackMining.proxy.tabMiningPack);
 setHardness(0.25F);
 setLightOpacity(0);
-setTextureName("glass");
-setUnlocalizedName("cristals");
+setBlockTextureName("glass");
+setBlockName("cristals");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world) {return new TEBlockCristals();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEBlockCristals();}
 
 public int getRenderType() {return PackMining.proxy.render_block_cristals_modelID;}
 public boolean isOpaqueCube() {return false;}
@@ -38,7 +38,7 @@ public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World wrd, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 if (te != null && te instanceof TEBlockCristals) {
 return addTag(((TEBlockCristals)te).getType(), ((TEBlockCristals)te).getColor(), ((TEBlockCristals)te).getSize());
 } else {
@@ -49,7 +49,7 @@ return addTag(0, 0xFFFFFF, 1);
 
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEBlockCristals) {
 /*

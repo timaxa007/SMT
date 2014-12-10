@@ -4,8 +4,8 @@ import mods.timaxa007.pack.stock.PackStock;
 import net.minecraft.item.ItemMultiTextureTile;
 
 public class ItemBlockHealing extends ItemMultiTextureTile{
-public ItemBlockHealing(int id) {
-super(id, PackStock.proxy.block_healing, BlockHealing.healingTypes);
+public ItemBlockHealing() {
+super(PackStock.proxy.block_healing, BlockHealing.healingTypes);
 }
 
 }

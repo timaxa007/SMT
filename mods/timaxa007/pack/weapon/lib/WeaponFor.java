@@ -29,7 +29,7 @@ private float temperature;
 private float temperature_min;
 private float temperature_max;
 
-//@SideOnly(Side.CLIENT) protected Icon icon_weapon;
+//@SideOnly(Side.CLIENT) protected IIcon icon_weapon;
 protected String texture1Name;
 protected String texture2Name;
 
@@ -38,7 +38,7 @@ weapon_list[nextID()] = this;
 weaponID = nextID();
 }
 
-public WeaponFor(int id) {
+public WeaponFor() {
 weapon_list[id] = this;
 weaponID = id;
 }
@@ -141,7 +141,7 @@ public int getSizeAmmo() {return size_ammo;}
 
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 icon_weapon = ir.registerIcon("timaxa007:" + getTextureName());
 }
 */

@@ -8,18 +8,18 @@ import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.te.TEHealing;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockHealing extends BlockContainer {
 
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
 public static final String[] healingTypes = new String[] {
 "healing1", 
@@ -40,24 +40,24 @@ public static final String[] healingTypes = new String[] {
 "healing16"
 };
 
-public BlockHealing(int id) {
-super(id, Material.wood);
+public BlockHealing() {
+super(Material.wood);
 setCreativeTab(PackStock.proxy.tabMedicalPack);
-setStepSound(soundWoodFootstep);
+setStepSound(soundTypeWood);
 setHardness(0.1F);
 setResistance(0.01F);
-setTextureName("planks_oak");
-setUnlocalizedName("block_healing");
+setBlockTextureName("planks_oak");
+setBlockName("block_healing");
 }
 
-public TileEntity createNewTileEntity(World world) {return new TEHealing();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEHealing();}
 
 @SideOnly(Side.CLIENT)
-public Icon getIcon(int par1, int par2) {return iconArray[par2 % iconArray.length];}
+public IIcon getIcon(int par1, int par2) {return iconArray[par2 % iconArray.length];}
 
 public int quantityDropped(Random rdm) {return 0;}
 public int idDropped(int id, Random rdm, int par3) {return id;}
-public int damageDropped(int id) {return id;}
+public int damageDropped() {return id;}
 
 @SideOnly(Side.CLIENT)
 public void getSubBlocks(int id, CreativeTabs table, List list) {
@@ -74,8 +74,8 @@ return ret;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-iconArray = new Icon[healingTypes.length];
+public void registerIcons(IIconRegister ir) {
+iconArray = new IIcon[healingTypes.length];
 for (int i = 0; i < iconArray.length; ++i) {
 //iconArray[i] = ir.registerIcon("timaxa007:"+"tree/"+"sapling"+sapling1Types[i]);
 iconArray[i] = ir.registerIcon("timaxa007:"+"healing/"+healingTypes);

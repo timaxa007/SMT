@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +12,7 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -22,8 +22,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArmorCostumes extends ItemArmor {
 
-@SideOnly(Side.CLIENT) private Icon[] icon_tex;
-@SideOnly(Side.CLIENT) private Icon[] icon_ovl;
+@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
+@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
 public static String[] armor_type_name = new String[] {
 "helmet", 
@@ -33,7 +33,7 @@ public static String[] armor_type_name = new String[] {
 };
 
 public ArmorCostumes(int id, EnumArmorMaterial par2, int par3, int par4) {
-super(id, par2, par3, par4);
+super(par2, par3, par4);
 setCreativeTab(PackFurniture.proxy.tabFurniturePack);
 }
 
@@ -127,7 +127,7 @@ return "timaxa007:textures/armor/none_1.png";
 }
 }
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("NameID") && costumes.hasStrCode(tag.getString("NameID"))) {
 if (pass == 0) {
@@ -136,7 +136,7 @@ return icon_tex[costumes.valueOf(tag.getString("NameID")).ordinal()];
 return icon_ovl[costumes.valueOf(tag.getString("NameID")).ordinal()];
 }
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
@@ -158,11 +158,11 @@ return 16777215;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon("timaxa007:" + "armor/" + "armor");
-icon_tex = new Icon[costumes.values().length];
-icon_ovl = new Icon[costumes.values().length];
+itemIIcon = ir.registerIcon("timaxa007:" + "armor/" + "armor");
+icon_tex = new IIcon[costumes.values().length];
+icon_ovl = new IIcon[costumes.values().length];
 for (costumes j : costumes.values()) {
 icon_tex[j.ordinal()] = ir.registerIcon("timaxa007:" + "armor/" + j.texture + "_" + armorType);
 if (j.pass) {

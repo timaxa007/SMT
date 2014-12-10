@@ -3,18 +3,18 @@ package mods.timaxa007.pack.magic.items;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ShardElements extends Item{
-@SideOnly(Side.CLIENT) private Icon[] iconArray;
-@SideOnly(Side.CLIENT) private Icon[] theIcon;
+@SideOnly(Side.CLIENT) private IIcon[] iconArray;
+@SideOnly(Side.CLIENT) private IIcon[] theIIcon;
 public static final String[] shaedNames=new String[]{
 "Air", 
 "Earth", 
@@ -53,7 +53,7 @@ public static final int[] shardHex=new int[]{
 0x000000
 };
 
-public ShardElements(int id) {
+public ShardElements() {
 super(id);
 this.setHasSubtypes(true);
 this.setMaxDamage(0);
@@ -72,7 +72,7 @@ for(int j=0;j<shaedNames.length;++j) {list.add(new ItemStack(id, 1, j));}
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamage(int par1) {
+public IIcon getIconFromDamage(int par1) {
 int j=MathHelper.clamp_int(par1, 0, (shaedNames.length)-1);
 return this.iconArray[j];
 }
@@ -109,18 +109,18 @@ else{return 16777215;}
 }
 
 @SideOnly(Side.CLIENT)
-public Icon getIconFromDamageForRenderPass(int par1, int par2) {
+public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
 int j=MathHelper.clamp_int(par1, 0, (shardHex.length)-1);
-return par2 > 0 ? (par2==0 ? this.iconArray[j] : this.theIcon[j]) : super.getIconFromDamageForRenderPass(par1, par2);
+return par2 > 0 ? (par2==0 ? this.iconArray[j] : this.theIIcon[j]) : super.getIconFromDamageForRenderPass(par1, par2);
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
-this.iconArray=new Icon[shaedNames.length];
-this.theIcon=new Icon[shaedNames.length];
+public void registerIcons(IIconRegister ir) {
+this.iconArray=new IIcon[shaedNames.length];
+this.theIIcon=new IIcon[shaedNames.length];
 for(int i=0;i<shaedNames.length;++i) {
 this.iconArray[i]=ir.registerIcon("timaxa007:"+"shardElementEasy"+"_overlay");
-this.theIcon[i]=ir.registerIcon("timaxa007:"+"shardElementEasy");
+this.theIIcon[i]=ir.registerIcon("timaxa007:"+"shardElementEasy");
 }
 }
 

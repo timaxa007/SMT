@@ -10,7 +10,7 @@ public class HandlerGuiTechno implements IGuiHandler {
 
 @Override
 public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 switch(id) {
 case 1:return new ContainerElectricMachines(player, (TEElectricMachines)te);
 default:return null;
@@ -19,7 +19,7 @@ default:return null;
 
 @Override
 public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-TileEntity te = world.getBlockTileEntity(x, y, z);
+TileEntity te = world.getTileEntity(x, y, z);
 switch(id) {
 case 1:return new GuiElectricMachines(player, (TEElectricMachines)te);
 default:return null;

@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -23,10 +23,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemHoneycombs extends Item {
 
-@SideOnly(Side.CLIENT) private Icon icon_a;
-@SideOnly(Side.CLIENT) private Icon icon_b;
+@SideOnly(Side.CLIENT) private IIcon icon_a;
+@SideOnly(Side.CLIENT) private IIcon icon_b;
 
-public ItemHoneycombs(int id) {
+public ItemHoneycombs() {
 super(id);
 setCreativeTab(PackStock.proxy.tabApisPack);
 setHasSubtypes(true);
@@ -139,7 +139,7 @@ return is;
 @SideOnly(Side.CLIENT)
 public boolean requiresMultipleRenderPasses() {return true;}
 
-public Icon getIcon(ItemStack is, int pass) {
+public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("NameID")) {
 if (pass == 0) {
@@ -148,7 +148,7 @@ return icon_a;
 return icon_b;
 }
 } else {
-return itemIcon;
+return itemIIcon;
 }
 }
 
@@ -167,9 +167,9 @@ return 16777215;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 super.registerIcons(ir);
-itemIcon = ir.registerIcon("timaxa007:apis/honeycombs_icon");
+itemIIcon = ir.registerIcon("timaxa007:apis/honeycombs_icon");
 icon_a = ir.registerIcon("timaxa007:apis/honeycombs_a");
 icon_b = ir.registerIcon("timaxa007:apis/honeycombs_b");
 }

@@ -25,7 +25,7 @@ private float temperature;
 private float temperature_min;
 private float temperature_max;
 
-//@SideOnly(Side.CLIENT) protected Icon icon_magazine;
+//@SideOnly(Side.CLIENT) protected IIcon icon_magazine;
 protected String texture1Name;
 protected String texture2Name;
 
@@ -37,7 +37,7 @@ magazine_list[nextID()] = this;
 magazineID = nextID();
 }
 
-public MagazineFor(int id) {
+public MagazineFor() {
 magazine_list[id] = this;
 magazineID = id;
 }
@@ -137,7 +137,7 @@ public AmmoFor getBullet() {return bullet;}
 
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister ir) {
+public void registerIcons(IIconRegister ir) {
 icon_magazine = ir.registerIcon("timaxa007:" + getTextureName());
 }
 */
