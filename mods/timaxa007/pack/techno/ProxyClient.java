@@ -31,11 +31,16 @@ ClientRegistry.bindTileEntitySpecialRenderer(TEElectricWires.class, new BlockRen
 ClientRegistry.bindTileEntitySpecialRenderer(TEChip.class, new BlockRenderChip());
 ClientRegistry.bindTileEntitySpecialRenderer(TEModuleMovement.class, new BlockRenderModuleMovement());
 
+//Items
+
+
+//Blocks
 MinecraftForgeClient.registerItemRenderer(PackTechno.proxy.block_electric_wires.blockID, new ItemRenderBlockElectricWires());
 MinecraftForgeClient.registerItemRenderer(PackTechno.proxy.block_chip.blockID, new ItemRenderBlockChip());
 MinecraftForgeClient.registerItemRenderer(PackTechno.proxy.block_module_movement.blockID, new ItemRenderBlockModuleMovement());
 
 //Items
+
 MinecraftForge.EVENT_BUS.register(new EventSoundTechno());
 
 }

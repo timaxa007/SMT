@@ -1,6 +1,5 @@
 package mods.timaxa007.tms;
 
-import mods.timaxa007.lib.LangLib;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -51,8 +50,6 @@ item_test = new TestItem(item_test_itemID);
 GameRegistry.registerBlock(block_test, "TestBlock");
 
 GameRegistry.registerItem(item_test, "TestItem");
-
-LangLib.registerLanguages();
 
 Recipes_TMS.list();
 

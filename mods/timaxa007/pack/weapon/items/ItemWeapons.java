@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapon;
-import mods.timaxa007.pack.weapon.Entity.EntityBullet;
+import mods.timaxa007.pack.weapon.entity.EntityBullet;
 import mods.timaxa007.pack.weapon.lib.MagazineFor;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.KeyBindingHandler;

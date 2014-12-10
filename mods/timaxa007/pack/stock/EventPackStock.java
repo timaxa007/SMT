@@ -2,9 +2,12 @@ package mods.timaxa007.pack.stock;
 
 import mods.timaxa007.pack.stock.items.ItemsStock;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -14,7 +17,9 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventPackStock {
@@ -22,7 +27,7 @@ public class EventPackStock {
 @ForgeSubscribe
 public void onUseBonemeal(BonemealEvent event) {
 /*
-if (event.ID==PackStock.proxy.blockSapling1.blockID) {
+if (event.ID == PackStock.proxy.blockSapling1.blockID) {
 if (!event.world.isRemote) {
 ((BlockSapling1)PackStock.proxy.blockSapling1).onTreeUp(event.world, event.X, event.Y, event.Z);
 }
@@ -97,6 +102,32 @@ player.inventory.addItemStackToInventory(new ItemStack(PackStock.proxy.item_drin
 event.setResult(Result.ALLOW);
 }
 }
+}
+
+@ForgeSubscribe
+public void onEatFoodItem(PlayerEvent event) {
+
+if (event.entityPlayer.isEating() && event.entityPlayer.getCurrentItemOrArmor(0) != null) {
+if (event.entityPlayer.getCurrentItemOrArmor(0).getItem() instanceof ItemFood) {
+}
+
+}
+
+}
+
+@ForgeSubscribe
+public void onEntityTrimming(EntityInteractEvent event) {
+World world = event.entity.worldObj;
+if (event.entityPlayer.getCurrentItemOrArmor(0) != null && event.entityPlayer.getCurrentItemOrArmor(0).getItem() instanceof ItemsStock) {
+
+if (event.target instanceof EntityChicken) {
+if (!world.isRemote) {
+world.spawnEntityInWorld(new EntityItem(world, event.target.posX, event.target.posY, event.target.posZ, new ItemStack(Item.feather, 1, 0)));
+}
+}
+
+}
+
 }
 
 }

@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.weapon.ri;
 
-import mods.timaxa007.pack.weapon.Entity.EntityBullet;
+import mods.timaxa007.pack.weapon.entity.EntityBullet;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;

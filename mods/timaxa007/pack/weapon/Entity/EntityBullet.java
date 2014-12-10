@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.weapon.Entity;
+package mods.timaxa007.pack.weapon.entity;
 
 import java.util.List;
 

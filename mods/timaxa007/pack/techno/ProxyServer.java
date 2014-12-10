@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.techno;
 
-import mods.timaxa007.lib.LangLib;
 import mods.timaxa007.pack.techno.blocks.*;
 import mods.timaxa007.pack.techno.gui.HandlerGuiTechno;
 import mods.timaxa007.pack.techno.items.*;
@@ -79,8 +78,6 @@ render_block_chip_modelID = -1;
 render_block_module_movement_modelID = -1;
 
 NetworkRegistry.instance().registerGuiHandler(this, new HandlerGuiTechno());
-
-LangLib.registerLanguages();
 
 Recipes_Techno.list();
 
