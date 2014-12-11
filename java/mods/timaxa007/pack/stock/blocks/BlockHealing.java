@@ -74,7 +74,7 @@ return ret;
 }
 */
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {
+public void registerBlockIcons(IIconRegister ir) {
 iconArray = new IIcon[healingTypes.length];
 for (int i = 0; i < iconArray.length; ++i) {
 //iconArray[i] = ir.registerIcon("timaxa007:"+"tree/"+"sapling"+sapling1Types[i]);

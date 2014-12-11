@@ -150,14 +150,14 @@ return ret;
 */
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {
+public void registerBlockIcons(IIconRegister ir) {
 blockIcon=ir.registerIcon("grass_side");
 iconEarthTop=ir.registerIcon("grass_top");
 iconSnowSide=ir.registerIcon("snow_side");
 iconEarthSideOverlay=ir.registerIcon("earth_side_overlay");
 }
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {
+public void registerBlockIcons(IIconRegister ir) {
 iconArray=new IIcon[16];
 for(byte i=0;i<iconArray.length;++i) {
 iconArray[i]=ir.registerIcon("timaxa007:"+"testBlock2"+GetColors.getNameColors[i]);

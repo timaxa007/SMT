@@ -153,7 +153,7 @@ return is;
 }
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {
+public void registerBlockIcons(IIconRegister ir) {
 icon_array = new IIcon[type_block.length];
 blockIcon = ir.registerIcon("planks_oak");
 for (int i = 0; i < icon_array.length; ++i) {

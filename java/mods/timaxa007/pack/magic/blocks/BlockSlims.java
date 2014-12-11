@@ -37,7 +37,7 @@ for(byte j=0;j<16;++j) {list.add(new ItemStack(id, 1, j));}
 }
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {
+public void registerBlockIcons(IIconRegister ir) {
 iconArray=new IIcon[16];
 for(byte i=0;i<iconArray.length;++i) {
 iconArray[i]=ir.registerIcon("timaxa007:"+"blockSlims/"+"blockSlims"+GetColors.getNameColors[i]);

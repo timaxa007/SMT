@@ -109,7 +109,7 @@ return is;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {
+public void registerBlockIcons(IIconRegister ir) {
 icon_array = new IIcon[type_block.length];
 for (int i = 0; i < icon_array.length; ++i) {
 icon_array[i] = ir.registerIcon("timaxa007:" + "stone/" + type_block[i]);

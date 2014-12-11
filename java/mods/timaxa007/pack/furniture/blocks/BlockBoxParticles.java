@@ -33,23 +33,23 @@ public TileEntity createNewTileEntity(World world, int meta) {return new TEBoxPa
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
-public int idPicked(World wrd, int x, int y, int z) {return 0;}
+public int idPicked(World world, int x, int y, int z) {return 0;}
 
-public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getTileEntity(x, y, z);
+public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+TileEntity te=world.getTileEntity(x, y, z);
 if((te!=null)&&(te instanceof TEBoxParticles)) {
 return addTag(0, ((TEBoxParticles)te).getTypes());
 }
 return addTag(0, 0);
 }
 
-public void updateTick(World wrd, int x, int y, int z, Random rdm) {
+public void updateTick(World world, int x, int y, int z, Random rdm) {
 
 }
 
 @Override
-public void onBlockPlacedBy(World wrd, int x, int y, int z, EntityLivingBase el, ItemStack is) {
-TileEntity te=wrd.getTileEntity(x, y, z);
+public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase el, ItemStack is) {
+TileEntity te=world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if((te!=null)&&(te instanceof TEBoxParticles)) {
 
@@ -66,8 +66,8 @@ if(tag!=null) {
 }
 
 @SideOnly(Side.CLIENT)
-public void randomDisplayTick(World wrd, int x, int y, int z, Random rdm) {
-TileEntity te=wrd.getTileEntity(x, y, z);
+public void randomDisplayTick(World world, int x, int y, int z, Random rdm) {
+TileEntity te=world.getTileEntity(x, y, z);
 if(te!=null) {
 String listP[]=new String[]{
 "smoke", 
@@ -95,7 +95,7 @@ String listP[]=new String[]{
 "witchFurniture", 
 "happyVillager"
 };
-//int l=wrd.getBlockMetadata(x, y, z);
+//int l=world.getBlockMetadata(x, y, z);
 int l=5;
 
 if(l>0) {
@@ -114,7 +114,7 @@ float f3=f*f*0.6F-0.7F;
 if(f2<0.0F) {f2=0.0F;}
 if(f3<0.0F) {f3=0.0F;}
 if(((TEBoxParticles)te).getTypes()<listP.length) {
-wrd.spawnParticle(listP[((TEBoxParticles)te).getTypes()], d0, d1, d2, (double)f2, (double)f1, (double)f3);
+world.spawnParticle(listP[((TEBoxParticles)te).getTypes()], d0, d1, d2, (double)f2, (double)f1, (double)f3);
 }
 }
 }

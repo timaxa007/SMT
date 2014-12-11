@@ -118,7 +118,7 @@ return is;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {
+public void registerBlockIcons(IIconRegister ir) {
 blockIcon = ir.registerIcon("timaxa007:" + "food/" + "pizza/" + "pizza_top");
 }
 

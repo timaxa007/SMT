@@ -81,7 +81,7 @@ return ret;
 }
 */
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {
+public void registerBlockIcons(IIconRegister ir) {
 iconArray=new IIcon[16];
 for(byte i=0;i<iconArray.length;++i) {
 iconArray[i]=ir.registerIcon("timaxa007:"+"ore/"+"oreElement"+ShardElements.shaedNames[i]);

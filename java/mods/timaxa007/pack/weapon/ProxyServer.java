@@ -20,6 +20,7 @@ public static CreativeTabs tabWeaponPack = new TabWeaponPack("tabWeaponPack");
 
 //Blocks
 public static Block block_claymore;
+public static Block block_timer;
 
 //Items
 public static Item items_for_weapon;
@@ -44,6 +45,7 @@ new ListWeapon();
 
 //Blocks
 block_claymore = new BlockClaymore();
+block_timer = new BlockTimer();
 
 //Items
 items_for_weapon = new ItemsWeapon();
@@ -54,6 +56,7 @@ item_magazines = new ItemMagazines();
 
 //Blocks
 GameRegistry.registerBlock(block_claymore, ItemBlockClaymore.class, "BlockClaymore");
+GameRegistry.registerBlock(block_timer, "BlockTimer");
 
 //Items
 GameRegistry.registerItem(items_for_weapon, "ItemsWeapon");

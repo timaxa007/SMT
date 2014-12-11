@@ -78,6 +78,6 @@ ret.add(new ItemStack(PackFurniture.proxy.block_crystals, 1, metadata));
 return ret;
 }
 */
-public void registerIcons(IIconRegister ir) {blockIcon = ir.registerIcon("glass");}
+public void registerBlockIcons(IIconRegister ir) {blockIcon = ir.registerIcon("glass");}
 
 }

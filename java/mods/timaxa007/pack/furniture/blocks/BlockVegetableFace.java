@@ -185,7 +185,7 @@ return is;
 }
 
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {
+public void registerBlockIcons(IIconRegister ir) {
 icon_array = new IIcon[type_block.length][type_side.length];
 icon_face = new IIcon[type_block.length][type_face.length];
 blockIcon = ir.registerIcon("pumpkin_side");

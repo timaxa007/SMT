@@ -457,6 +457,6 @@ return is;
 
 /*
 @SideOnly(Side.CLIENT)
-public void registerIcons(IIconRegister ir) {blockIcon = ir.registerIcon("wood");}
+public void registerBlockIcons(IIconRegister ir) {blockIcon = ir.registerIcon("wood");}
 */
 }
