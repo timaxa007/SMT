@@ -5,8 +5,8 @@ import net.minecraft.item.Item;
 
 public class TabTMS extends CreativeTabs {
 
-public TabTMS(int position, String tabID) {
-super(position, tabID);
+public TabTMS(String tabID) {
+super(tabID);
 }
 
 @Override

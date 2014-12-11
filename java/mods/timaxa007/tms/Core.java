@@ -23,7 +23,7 @@ public class Core {
 @SidedProxy(clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyServer")
 public static ProxyServer proxy;
 
-public static CreativeTabs tabTMS = new TabTMS(CreativeTabs.getNextID(), "tabTMS");
+public static CreativeTabs tabTMS = new TabTMS("tabTMS");
 
 public static boolean show_tip_info_testing;
 public static boolean disable_sub_mod_furniture;
@@ -36,23 +36,6 @@ public static boolean disable_sub_mod_weapon;
 public static Block block_test;
 
 public static Item item_test;
-
-
-@EventHandler
-public void init(FMLInitializationEvent event) {
-proxy.regLoad();
-
-block_test = new TestBlock();
-
-item_test = new TestItem();
-
-GameRegistry.registerBlock(block_test, "TestBlock");
-
-GameRegistry.registerItem(item_test, "TestItem");
-
-Recipes_TMS.list();
-
-}
 
 @EventHandler
 public void preInit(FMLPreInitializationEvent event) {
@@ -70,6 +53,23 @@ disable_sub_mod_techno = config.get("configs", "disable_sub_mod_techno", false).
 disable_sub_mod_weapon = config.get("configs", "disable_sub_mod_weapon", false).getBoolean(false);
 
 config.save();
+
+block_test = new TestBlock();
+
+item_test = new TestItem();
+
+GameRegistry.registerBlock(block_test, "TestBlock");
+
+GameRegistry.registerItem(item_test, "TestItem");
+
+Recipes_TMS.list();
+
+}
+
+@EventHandler
+public void init(FMLInitializationEvent event) {
+proxy.regLoad();
+
 }
 
 @EventHandler
