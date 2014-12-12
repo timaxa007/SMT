@@ -15,11 +15,17 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 //@Mod (modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION, dependencies = "required-before:01miningpack;required-before:02pmfpack;required-before:03furniturepack;required-before:04technopack;required-before:05magicpack;required-before:06weaponpack")
-@Mod (modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION)
+@Mod (modid = Core.MODID, name = Core.MODNAME, version = Core.VERSION)
 //@NetworkMod (clientSideRequired = true, serverSideRequired = true, versionBounds = ModInfo.VERSION)
 
 public class Core {
-@Instance(ModInfo.MODID) public static Core instance;
+
+public static final String MODID = "00tms";
+public static final String MODNAME = "TMS";
+public static final String VERSION = "0.1a";
+public static final String AUTHOR = "timaxa007";
+
+@Instance(Core.MODID) public static Core instance;
 @SidedProxy(clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyServer")
 public static ProxyServer proxy;
 

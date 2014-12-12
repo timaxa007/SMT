@@ -23,7 +23,7 @@ public class BlockJar01 extends Block implements ITileEntityProvider {
 
 public BlockJar01() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.25F);
 setLightOpacity(0);
 setBlockTextureName("glass");

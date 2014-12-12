@@ -17,7 +17,7 @@ public class ProxyClient extends ProxyServer {
 public void init() {
 super.init();
 
-renderBlockMagicCauldronModelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_magic_cauldron_modelID = RenderingRegistry.getNextAvailableRenderId();
 
 //RenderingRegistry.addNewArmourRendererPrefix("TestArmor");
 

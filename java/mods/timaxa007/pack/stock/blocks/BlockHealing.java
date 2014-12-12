@@ -42,7 +42,7 @@ public static final String[] healingTypes = new String[] {
 
 public BlockHealing() {
 super(Material.wood);
-setCreativeTab(PackStock.proxy.tabMedicalPack);
+setCreativeTab(PackStock.proxy.tab_medical_pack);
 setStepSound(soundTypeWood);
 setHardness(0.1F);
 setResistance(0.01F);

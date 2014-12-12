@@ -24,7 +24,7 @@ public class BlockCrystals extends BlockContainer{
 public BlockCrystals() {
 super(Material.glass);
 setHardness(0.5F);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setBlockTextureName("planks_oak");
 setBlockName("crystals");
 }

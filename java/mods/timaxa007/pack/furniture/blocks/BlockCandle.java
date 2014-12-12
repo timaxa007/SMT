@@ -21,7 +21,7 @@ public class BlockCandle extends Block implements ITileEntityProvider {
 
 public BlockCandle() {
 super(Material.circuits);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.3F);
 setResistance(1.0F);
 setLightOpacity(0);
@@ -34,7 +34,7 @@ setBlockName("candle");
 @Override
 public TileEntity createNewTileEntity(World world, int meta) {return new TECandle();}
 public int quantityDropped(Random rdm) {return 0;}
-public int getRenderType() {return PackFurniture.proxy.renderBlockCandleModelID;}
+public int getRenderType() {return PackFurniture.proxy.render_block_candle_modelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 /*

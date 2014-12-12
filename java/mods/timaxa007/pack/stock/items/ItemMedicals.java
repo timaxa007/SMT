@@ -227,7 +227,7 @@ public ItemMedicals() {
 super();
 setHasSubtypes(true);
 setMaxDamage(0);
-setCreativeTab(PackStock.proxy.tabMedicalPack);
+setCreativeTab(PackStock.proxy.tab_medical_pack);
 setUnlocalizedName("medicals");
 }
 

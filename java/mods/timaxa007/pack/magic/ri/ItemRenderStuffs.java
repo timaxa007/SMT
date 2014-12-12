@@ -1,9 +1,5 @@
 package mods.timaxa007.pack.magic.ri;
 
-import org.lwjgl.opengl.GL11;
-
-import mods.timaxa007.pack.furniture.PackInfo;
-import mods.timaxa007.pack.stock.model.ModelPiePar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,6 +7,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
+
+import org.lwjgl.opengl.GL11;
 
 public class ItemRenderStuffs implements IItemRenderer{
 private IModelCustom model;

@@ -19,7 +19,7 @@ public class BlockBarrels extends BlockContainer{
 
 public BlockBarrels() {
 super(Material.clay);
-this.setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+this.setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 this.setHardness(0.5F);
 setBlockTextureName("planks_oak");
 this.setBlockName("barrels");

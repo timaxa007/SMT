@@ -35,7 +35,7 @@ setLightLevel(1.0F);
 light="off";
 powered=false;
 setLightLevel(0.0F);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 }
 setBlockTextureName("planks_oak");
 }

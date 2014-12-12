@@ -27,7 +27,7 @@ public class ItemColored extends Item {
 
 public ItemColored() {
 super();
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 //setHasSubtypes(true);
 //setMaxDamage(0);
 setTextureName("timaxa007:");

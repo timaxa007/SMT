@@ -22,27 +22,27 @@ public void init() {
 super.init();
 
 //Blocks
-renderBlockCnstorBlockModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockCnstorAngleModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockCnstorFenceModelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_cnstor_block_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_cnstor_angle_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_cnstor_fence_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_lights_modelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockLampsOnModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockLampsOffModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockLamps2OnModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockLamps2OffModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockCandleModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockCrystalsModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockBarrelsModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockBookshelfModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockTableModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockChairModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockWardrobeModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockMincerModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockArmChairModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockBlenderModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockGrillsModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockBoxParticlesModelID = RenderingRegistry.getNextAvailableRenderId();
-renderBlockBallsModelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_lamps_on_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_lamps_off_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_lamps2_on_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_lamps2_off_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_candle_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_crystals_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_barrels_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_bookshelf_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_table_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_chair_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_wardrobe_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_mincer_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_armchair_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_blender_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_grills_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_box_particles_modelID = RenderingRegistry.getNextAvailableRenderId();
+render_block_balls_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_jar01_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_pipes_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_cylinder_modelID = RenderingRegistry.getNextAvailableRenderId();
@@ -75,7 +75,7 @@ ClientRegistry.bindTileEntitySpecialRenderer(TEJar01.class, new RenderBlockJar01
 ClientRegistry.bindTileEntitySpecialRenderer(TEPipes.class, new RenderBlockPipes());
 ClientRegistry.bindTileEntitySpecialRenderer(TECylinder.class, new RenderBlockCylinder());
 ClientRegistry.bindTileEntitySpecialRenderer(TEMashineWater.class, new RenderBlockMashineWater());
-//ClientRegistry.bindTileEntitySpecialRenderer(TEBlockWoodBlocks.class, new RenderBlockWoodBlocks());
+//ClientRegistry.bindTileEntitySpecialRenderer(TEWoodBlocks.class, new RenderBlockWoodBlocks());
 
 //Items
 

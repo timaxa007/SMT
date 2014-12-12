@@ -20,7 +20,7 @@ private IIcon[] iconArray;
 
 public BlockSlims() {
 super(Material.wood);
-setCreativeTab(PackMagic.proxy.tabMagicPack);
+setCreativeTab(PackMagic.proxy.tab_magic_pack);
 setBlockTextureName("planks_oak");
 setBlockName("magic.slims");
 }

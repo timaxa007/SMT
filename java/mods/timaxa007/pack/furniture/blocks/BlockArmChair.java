@@ -21,7 +21,7 @@ public class BlockArmChair extends Block implements ITileEntityProvider {
 
 public BlockArmChair() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.5F);
 setResistance(2.5F);
 setStepSound(soundTypeWood);
@@ -31,7 +31,7 @@ setBlockName("armchair");
 
 @Override
 public TileEntity createNewTileEntity(World world, int meta) {return new TEArmChair();}
-public int getRenderType() {return PackFurniture.proxy.renderBlockArmChairModelID;}
+public int getRenderType() {return PackFurniture.proxy.render_block_armchair_modelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World world, int x, int y, int z) {return 0;}

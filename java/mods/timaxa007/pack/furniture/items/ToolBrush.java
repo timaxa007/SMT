@@ -45,7 +45,7 @@ public static final String[] brushColorType = new String[]{
 
 public ToolBrush() {
 super();
-setCreativeTab(PackMining.proxy.tabToolsPack);
+setCreativeTab(PackMining.proxy.tab_tools_pack);
 setMaxStackSize(1);
 setMaxDamage(8);
 setTextureName("timaxa007:colors/tool_brush");

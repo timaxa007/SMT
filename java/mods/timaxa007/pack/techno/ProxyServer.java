@@ -15,7 +15,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tabTechnoPack = new TabTechnoPack("tabTechnoPack");
+public static CreativeTabs tab_techno_pack = new TabTechnoPack("tab_techno_pack");
 
 //Blocks
 public static Block block_electric_machines;
@@ -30,7 +30,7 @@ public static Item tool_electric_drills;
 
 //GUI
 //public static int guiID=0;
-public static int guiElectricMachines = 1;
+public static int gui_electric_machines = 1;
 
 //Render Model ID
 public static int render_block_electric_wires_modelID;
@@ -84,7 +84,7 @@ Recipes_Techno.list();
 
 public void init() {
 
-NetworkRegistry.INSTANCE.registerGuiHandler(PackInfo.MODID, new HandlerGuiTechno());
+NetworkRegistry.INSTANCE.registerGuiHandler(PackTechno.MODID, new HandlerGuiTechno());
 
 }
 

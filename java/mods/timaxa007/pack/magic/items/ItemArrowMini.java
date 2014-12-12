@@ -7,7 +7,7 @@ public class ItemArrowMini extends Item {
 
 public ItemArrowMini() {
 super();
-setCreativeTab(PackMagic.proxy.tabMagicPack);
+setCreativeTab(PackMagic.proxy.tab_magic_pack);
 setTextureName("arrow");
 setUnlocalizedName("arrow_mini");
 }

@@ -24,7 +24,7 @@ protected Random random=new Random();
 
 public BlockBookshelf() {
 super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.5F);
 setBlockTextureName("bookshelf");
 setBlockName("bookshelf");
@@ -46,12 +46,12 @@ return addTag(0, 0);
 }
 
 @Override
-public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=world.getTileEntity(x, y, z);
+public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+TileEntity te = world.getTileEntity(x, y, z);
 //if(!world.isRemote) {return false;}
 if (te == null || player.isSneaking()) {return false;}
 if (te != null && te instanceof TEBookshelf) {
-player.openGui(PackFurniture.instance, PackFurniture.proxy.guiBookshelf, world, x, y, z);
+player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_bookshelf, world, x, y, z);
 return true;
 }
 return false;
@@ -59,7 +59,7 @@ return false;
 
 @Override
 public void breakBlock(World world, int x, int y, int z, Block id, int meta) {
-TEBookshelf TEBookshelf=(TEBookshelf)world.getTileEntity(x, y, z);
+TEBookshelf TEBookshelf = (TEBookshelf)world.getTileEntity(x, y, z);
 
 if(TEBookshelf!=null) {
 for(int j1=0;j1<TEBookshelf.getSizeInventory();++j1) {

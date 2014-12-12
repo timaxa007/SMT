@@ -19,7 +19,7 @@ public class BlockChair extends BlockContainer{
 
 public BlockChair() {
 super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.5F);
 setBlockTextureName("planks_oak");
 setBlockName("chairs");

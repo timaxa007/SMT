@@ -12,7 +12,7 @@ public class ItemsMining extends Item {
 
 public ItemsMining() {
 super();
-setCreativeTab(PackMining.proxy.tabMiningPack);
+setCreativeTab(PackMining.proxy.tab_mining_pack);
 setUnlocalizedName("items_mining");
 }
 /*

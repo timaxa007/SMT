@@ -37,7 +37,7 @@ public static final String[] elementsNames=new String[]{
 
 public OreElements() {
 super(PackMagic.proxy.oreMagic);
-setCreativeTab(PackMagic.proxy.tabMagicPack);
+setCreativeTab(PackMagic.proxy.tab_magic_pack);
 setHardness(0.5F);
 setResistance(0.1F);
 setBlockTextureName("planks_oak");

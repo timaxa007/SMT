@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.mining.rb;
 
-import mods.timaxa007.pack.mining.te.TEBlockCristals;
+import mods.timaxa007.pack.mining.te.TECristals;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -23,10 +23,10 @@ model3 = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/cr
 
 @Override
 public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float f) {
-renderTE((TEBlockCristals)te, dx, dy, dz, f);
+renderTE((TECristals)te, dx, dy, dz, f);
 }
 
-private void renderTE(TEBlockCristals te, double dx, double dy, double dz, float f) {
+private void renderTE(TECristals te, double dx, double dy, double dz, float f) {
 int typ = 0;
 int crl = 0xFFFFFF;
 int siz = 1;

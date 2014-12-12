@@ -30,7 +30,7 @@ public class ItemsStock extends Item {
 
 public ItemsStock() {
 super();
-setCreativeTab(PackStock.proxy.tabStockPack);
+setCreativeTab(PackStock.proxy.tab_stock_pack);
 setTextureName("timaxa007:");
 setUnlocalizedName("items_stock");
 }

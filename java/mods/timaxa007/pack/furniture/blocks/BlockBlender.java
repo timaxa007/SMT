@@ -20,7 +20,7 @@ public class BlockBlender extends BlockContainer{
 
 public BlockBlender() {
 super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.5F);
 setBlockTextureName("planks_oak");
 setBlockName("blender");

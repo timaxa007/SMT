@@ -34,7 +34,7 @@ public class ItemWeapons extends Item {
 public ItemWeapons() {
 super();
 setMaxStackSize(1);
-setCreativeTab(PackWeapon.proxy.tabWeaponPack);
+setCreativeTab(PackWeapon.proxy.tab_weapon_pack);
 setTextureName("timaxa007:item_weapons");
 setUnlocalizedName("item_weapons");
 }

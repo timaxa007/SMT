@@ -22,7 +22,7 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 
 public BlockCnstorFence() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);
@@ -33,7 +33,7 @@ setBlockName("cnstor.fence");
 
 @Override
 public TileEntity createNewTileEntity(World world, int meta) {return new TECnstorFence();}
-public int getRenderType() {return PackFurniture.proxy.renderBlockCnstorFenceModelID;}
+public int getRenderType() {return PackFurniture.proxy.render_block_cnstor_fence_modelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 

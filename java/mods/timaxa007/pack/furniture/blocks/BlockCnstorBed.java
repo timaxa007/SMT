@@ -12,7 +12,7 @@ public class BlockCnstorBed extends Block implements ITileEntityProvider {
 
 public BlockCnstorBed() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(1.0F);
 setResistance(5.0F);
 setLightOpacity(0);

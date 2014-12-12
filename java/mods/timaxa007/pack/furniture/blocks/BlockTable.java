@@ -19,7 +19,7 @@ public class BlockTable extends BlockContainer{
 
 public BlockTable() {
 super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.5F);
 setBlockTextureName("planks_oak");
 setBlockName("tables");

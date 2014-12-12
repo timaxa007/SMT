@@ -23,7 +23,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tabFurniturePack = new TabFurniturePack("tabFurniturePack");
+public static CreativeTabs tab_furniture_pack = new TabFurniturePack("tab_furniture_pack");
 
 public static ArmorMaterial CLOTHWOOL = EnumHelper.addArmorMaterial("CLOTHWOOL", 6, new int[] {2, 3, 2, 1}, 10);
 public static ArmorMaterial COSTUME = EnumHelper.addArmorMaterial("COSTUME", 0, new int[] {2, 2, 2, 1}, 3);
@@ -155,27 +155,27 @@ public static ItemArmor armor_new_leggin;
 public static ItemArmor armor_new_boot;
 
 //Blocks
-public static int renderBlockCnstorBlockModelID;
-public static int renderBlockCnstorAngleModelID;
-public static int renderBlockCnstorFenceModelID;
+public static int render_block_cnstor_block_modelID;
+public static int render_block_cnstor_angle_modelID;
+public static int render_block_cnstor_fence_modelID;
 public static int render_block_lights_modelID;
-public static int renderBlockLampsOnModelID;
-public static int renderBlockLampsOffModelID;
-public static int renderBlockLamps2OnModelID;
-public static int renderBlockLamps2OffModelID;
-public static int renderBlockCandleModelID;
-public static int renderBlockCrystalsModelID;
-public static int renderBlockBarrelsModelID;
-public static int renderBlockBookshelfModelID;
-public static int renderBlockTableModelID;
-public static int renderBlockChairModelID;
-public static int renderBlockWardrobeModelID;
-public static int renderBlockMincerModelID;
-public static int renderBlockArmChairModelID;
-public static int renderBlockBlenderModelID;
-public static int renderBlockGrillsModelID;
-public static int renderBlockBoxParticlesModelID;
-public static int renderBlockBallsModelID;
+public static int render_block_lamps_on_modelID;
+public static int render_block_lamps_off_modelID;
+public static int render_block_lamps2_on_modelID;
+public static int render_block_lamps2_off_modelID;
+public static int render_block_candle_modelID;
+public static int render_block_crystals_modelID;
+public static int render_block_barrels_modelID;
+public static int render_block_bookshelf_modelID;
+public static int render_block_table_modelID;
+public static int render_block_chair_modelID;
+public static int render_block_wardrobe_modelID;
+public static int render_block_mincer_modelID;
+public static int render_block_armchair_modelID;
+public static int render_block_blender_modelID;
+public static int render_block_grills_modelID;
+public static int render_block_box_particles_modelID;
+public static int render_block_balls_modelID;
 public static int render_block_jar01_modelID;
 public static int render_block_pipes_modelID;
 public static int render_block_cylinder_modelID;
@@ -183,12 +183,12 @@ public static int render_block_mashine_waiter_modelID;
 
 //GUI
 //public static int guiID = 0;
-public static int guiFurnitureMachines = 1;
-public static int guiBookshelf = 16;
-public static int guiMincer = 17;
-public static int guiGrills = 18;
+public static int gui_furniture_machines = 1;
+public static int gui_bookshelf = 16;
+public static int gui_mincer = 17;
+public static int gui_grills = 18;
 public static int gui_mashine_water = 19;
-public static int guiBackpack = 20;
+public static int gui_backpack = 20;
 
 public void preInit(FMLPreInitializationEvent event) {
 
@@ -230,7 +230,7 @@ air_light_14 = new AirLight().setLightLevel(0.875F);
 air_light_15 = new AirLight().setLightLevel(0.9375F);
 air_light_16 = new AirLight().setLightLevel(1.0F);
 
-block_light_0 = new BlockLight().setLightLevel(0.0F).setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+block_light_0 = new BlockLight().setLightLevel(0.0F).setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 block_light_1 = new BlockLight().setLightLevel(0.0625F);
 block_light_2 = new BlockLight().setLightLevel(0.125F);
 block_light_3 = new BlockLight().setLightLevel(0.1875F);
@@ -325,27 +325,27 @@ armor_new_leggin = (ItemArmor) new ArmorNew(COSTUME, 0, 2).setUnlocalizedName("a
 armor_new_boot = (ItemArmor) new ArmorNew(COSTUME, 0, 3).setUnlocalizedName("armor_new_boot");
 
 //Blocks
-renderBlockCnstorBlockModelID = -1;
-renderBlockCnstorAngleModelID = -1;
-renderBlockCnstorFenceModelID = -1;
+render_block_cnstor_block_modelID = -1;
+render_block_cnstor_angle_modelID = -1;
+render_block_cnstor_fence_modelID = -1;
 render_block_lights_modelID = -1;
-renderBlockLampsOnModelID = -1;
-renderBlockLampsOffModelID = -1;
-renderBlockLamps2OnModelID = -1;
-renderBlockLamps2OffModelID = -1;
-renderBlockCandleModelID = -1;
-renderBlockCrystalsModelID = -1;
-renderBlockBarrelsModelID = -1;
-renderBlockBookshelfModelID = -1;
-renderBlockTableModelID = -1;
-renderBlockChairModelID = -1;
-renderBlockWardrobeModelID = -1;
-renderBlockMincerModelID = -1;
-renderBlockArmChairModelID = -1;
-renderBlockBlenderModelID = -1;
-renderBlockGrillsModelID = -1;
-renderBlockBoxParticlesModelID = -1;
-renderBlockBallsModelID = -1;
+render_block_lamps_on_modelID = -1;
+render_block_lamps_off_modelID = -1;
+render_block_lamps2_on_modelID = -1;
+render_block_lamps2_off_modelID = -1;
+render_block_candle_modelID = -1;
+render_block_crystals_modelID = -1;
+render_block_barrels_modelID = -1;
+render_block_bookshelf_modelID = -1;
+render_block_table_modelID = -1;
+render_block_chair_modelID = -1;
+render_block_wardrobe_modelID = -1;
+render_block_mincer_modelID = -1;
+render_block_armchair_modelID = -1;
+render_block_blender_modelID = -1;
+render_block_grills_modelID = -1;
+render_block_box_particles_modelID = -1;
+render_block_balls_modelID = -1;
 render_block_jar01_modelID = -1;
 render_block_pipes_modelID = -1;
 render_block_cylinder_modelID = -1;
@@ -503,14 +503,14 @@ GameRegistry.registerTileEntity(TEJar01.class, "TEJar01");
 GameRegistry.registerTileEntity(TEPipes.class, "TEPipes");
 GameRegistry.registerTileEntity(TEMashineWater.class, "TEMashineWater");
 GameRegistry.registerTileEntity(TEBlockBlocks.class, "TEBlockBlocks");
-GameRegistry.registerTileEntity(TEBlockRockBlocks.class, "TEBlockRockBlocks");
-GameRegistry.registerTileEntity(TEBlockGlassBlocks.class, "TEBlockGlassBlocks");
-GameRegistry.registerTileEntity(TEBlockWoodBlocks.class, "TEBlockWoodBlocks");
-GameRegistry.registerTileEntity(TEBlockGroundBlocks.class, "TEBlockGroundBlocks");
-GameRegistry.registerTileEntity(TEBlockSandBlocks.class, "TEBlockSandBlocks");
-GameRegistry.registerTileEntity(TEBlockClothBlocks.class, "TEBlockClothBlocks");
-GameRegistry.registerTileEntity(TEBlockMetalBlocks.class, "TEBlockMetalBlocks");
-GameRegistry.registerTileEntity(TEBlockVegetableFace.class, "TEBlockVegetableFace");
+GameRegistry.registerTileEntity(TERockBlocks.class, "TERockBlocks");
+GameRegistry.registerTileEntity(TEGlassBlocks.class, "TEGlassBlocks");
+GameRegistry.registerTileEntity(TEWoodBlocks.class, "TEWoodBlocks");
+GameRegistry.registerTileEntity(TEGroundBlocks.class, "TEGroundBlocks");
+GameRegistry.registerTileEntity(TESandBlocks.class, "TESandBlocks");
+GameRegistry.registerTileEntity(TEClothBlocks.class, "TEClothBlocks");
+GameRegistry.registerTileEntity(TEMetalBlocks.class, "TEMetalBlocks");
+GameRegistry.registerTileEntity(TEVegetableFace.class, "TEVegetableFace");
 
 OreDictionary.registerOre("dyeBlack", new ItemStack(item_colored, 1, 0));
 OreDictionary.registerOre("dyeBlue", new ItemStack(item_colored, 1, 1));
@@ -567,7 +567,7 @@ MinecraftForge.EVENT_BUS.register(new EventFurniture());
 
 public void init() {
 
-NetworkRegistry.INSTANCE.registerGuiHandler(PackInfo.MODID, new HandlerGuiFurniture());
+NetworkRegistry.INSTANCE.registerGuiHandler(PackFurniture.MODID, new HandlerGuiFurniture());
 
 }
 

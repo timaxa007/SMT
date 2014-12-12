@@ -16,7 +16,7 @@ public class BlockMagicMachines extends BlockContainer{
 
 public BlockMagicMachines() {
 super(Material.rock);
-setCreativeTab(PackMagic.proxy.tabMagicPack);
+setCreativeTab(PackMagic.proxy.tab_magic_pack);
 setHardness(0.5F);
 setResistance(1.0F);
 setBlockTextureName("planks_oak");
@@ -52,7 +52,7 @@ TileEntity te = world.getTileEntity(x, y, z);
 //if (!world.isRemote) {return false;}
 if (player.isSneaking()) {return false;}
 if (te != null && te instanceof TEMagicMachines) {
-player.openGui(PackMagic.instance, PackMagic.proxy.guiMagicMachines, world, x, y, z);
+player.openGui(PackMagic.instance, PackMagic.proxy.gui_magic_machines, world, x, y, z);
 return true;
 }
 return false;

@@ -27,7 +27,7 @@ public ItemNatureProduct() {
 super();
 this.setHasSubtypes(true);
 this.setMaxDamage(0);
-this.setCreativeTab(PackStock.proxy.tabFoodPack);
+this.setCreativeTab(PackStock.proxy.tab_food_pack);
 this.setUnlocalizedName("NatureProduct");
 }
 

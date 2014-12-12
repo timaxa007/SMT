@@ -31,7 +31,7 @@ if(par2) {
 light="on";
 powered=true;
 setLightLevel(1.0F);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 }else{
 light="off";
 powered=false;

@@ -7,7 +7,7 @@ public class ItemsWeapon extends Item {
 
 public ItemsWeapon() {
 super();
-setCreativeTab(PackWeapon.proxy.tabWeaponPack);
+setCreativeTab(PackWeapon.proxy.tab_weapon_pack);
 setUnlocalizedName("items_weapon");
 }
 

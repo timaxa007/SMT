@@ -24,7 +24,7 @@ public class BlockBalls extends BlockContainer{
 public BlockBalls() {
 super(Material.circuits);
 setHardness(0.5F);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setBlockTextureName("planks_oak");
 setBlockName("balls");
 }

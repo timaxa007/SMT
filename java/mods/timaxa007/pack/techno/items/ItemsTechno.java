@@ -7,7 +7,7 @@ public class ItemsTechno extends Item {
 
 public ItemsTechno() {
 super();
-setCreativeTab(PackTechno.proxy.tabTechnoPack);
+setCreativeTab(PackTechno.proxy.tab_techno_pack);
 setUnlocalizedName("items_techno");
 }
 

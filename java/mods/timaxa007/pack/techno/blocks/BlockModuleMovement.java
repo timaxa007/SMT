@@ -31,7 +31,7 @@ public String typeModule[]= new String[]{
 
 public BlockModuleMovement() {
 super(Material.circuits);
-setCreativeTab(PackTechno.proxy.tabTechnoPack);
+setCreativeTab(PackTechno.proxy.tab_techno_pack);
 setHardness(0.5F);
 setResistance(0.1F);
 setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);

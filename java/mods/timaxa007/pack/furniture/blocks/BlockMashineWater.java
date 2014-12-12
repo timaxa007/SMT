@@ -23,7 +23,7 @@ public class BlockMashineWater extends Block implements ITileEntityProvider {
 
 public BlockMashineWater() {
 super(Material.iron);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.25F);
 setLightOpacity(0);
 setBlockTextureName("glass");

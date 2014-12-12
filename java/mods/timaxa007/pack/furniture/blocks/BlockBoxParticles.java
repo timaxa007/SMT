@@ -22,7 +22,7 @@ public class BlockBoxParticles extends BlockContainer{
 
 public BlockBoxParticles() {
 super(Material.rock);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.35F);
 setBlockTextureName("planks_oak");
 setBlockName("boxParticles");

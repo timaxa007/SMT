@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.mining;
+package mods.timaxa007.pack.mining.lib;
 
 public class PeriodicTable {
 

@@ -13,7 +13,7 @@ public class BlockCnstorStairs extends Block implements ITileEntityProvider {
 
 public BlockCnstorStairs() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);

@@ -3,7 +3,6 @@ package mods.timaxa007.pack.stock.blocks;
 import java.util.List;
 import java.util.Random;
 
-import mods.timaxa007.pack.stock.PackInfo;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.te.TECake;
 import net.minecraft.block.BlockContainer;
@@ -43,7 +42,7 @@ public static final String[] typeCakes = new String[]{
 
 public BlockCakes() {
 super(Material.cake);
-setCreativeTab(PackStock.proxy.tabFoodPack);
+setCreativeTab(PackStock.proxy.tab_food_pack);
 setHardness(0.5F);
 setResistance(1.0F);
 setTickRandomly(true);

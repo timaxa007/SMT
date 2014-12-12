@@ -18,7 +18,7 @@ public class BlockClaymore extends Block implements ITileEntityProvider {
 
 public BlockClaymore() {
 super(Material.circuits);
-setCreativeTab(PackWeapon.proxy.tabWeaponPack);
+setCreativeTab(PackWeapon.proxy.tab_weapon_pack);
 setHardness(0.5F);
 setResistance(1.0F);
 setBlockBounds(0.1875F, 0.0F, 0.1875F, 0.8125F, 0.5F, 0.8125F);

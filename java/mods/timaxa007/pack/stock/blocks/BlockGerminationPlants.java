@@ -4,9 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.items.ItemGerminationPlants;
-import mods.timaxa007.pack.stock.lib.GerminationPlants;
 import mods.timaxa007.pack.stock.te.TEGerminationPlants;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,7 +23,7 @@ public class BlockGerminationPlants extends BlockContainer {
 
 public BlockGerminationPlants() {
 super(Material.glass);
-setCreativeTab(PackStock.proxy.tabPlantPack);
+setCreativeTab(PackStock.proxy.tab_plant_pack);
 setHardness(0.25F);
 setResistance(0.1F);
 setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 1.0F, 0.875F);

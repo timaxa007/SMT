@@ -41,7 +41,7 @@ public static final String[] typePies = new String[]{
 
 public BlockPies() {
 super(Material.rock);
-setCreativeTab(PackStock.proxy.tabFoodPack);
+setCreativeTab(PackStock.proxy.tab_food_pack);
 setHardness(0.5F);
 setResistance(1.0F);
 setTickRandomly(true);

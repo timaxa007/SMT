@@ -6,7 +6,7 @@ import java.util.Random;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.lib.AddBlockWood;
-import mods.timaxa007.pack.furniture.te.TEBlockWoodBlocks;
+import mods.timaxa007.pack.furniture.te.TEWoodBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -92,7 +92,7 @@ public static String[] type_block = new String[] {
 
 public BlockWoodBlocks() {
 super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.75F);
 setResistance(7.0F);
 setStepSound(soundTypeWood);
@@ -101,7 +101,7 @@ setBlockName("block_wood_blocks");
 }
 
 @Override
-public TileEntity createNewTileEntity(World world, int meta) {return new TEBlockWoodBlocks();}
+public TileEntity createNewTileEntity(World world, int meta) {return new TEWoodBlocks();}
 //public int getRenderType() {return -1;}
 public int quantityDropped(Random random) {return 0;}
 public boolean renderAsNormalBlock() {return false;}
@@ -110,8 +110,8 @@ public boolean isOpaqueCube() {return false;}
 @SideOnly(Side.CLIENT)
 public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
 TileEntity te = block_access.getTileEntity(x, y, z);
-if (te != null && te instanceof TEBlockWoodBlocks) {
-return ((TEBlockWoodBlocks)te).getColorBlock();
+if (te != null && te instanceof TEWoodBlocks) {
+return ((TEWoodBlocks)te).getColorBlock();
 }
 return 0xFFFFFF;
 }
@@ -119,8 +119,8 @@ return 0xFFFFFF;
 @SideOnly(Side.CLIENT)
 public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
 TileEntity te = block_access.getTileEntity(x, y, z);
-if (te != null && te instanceof TEBlockWoodBlocks) {
-return icon_array[((TEBlockWoodBlocks)te).getSubID()];
+if (te != null && te instanceof TEWoodBlocks) {
+return icon_array[((TEWoodBlocks)te).getSubID()];
 }
 return getIcon(side, block_access.getBlockMetadata(x, y, z));
 }
@@ -129,8 +129,8 @@ public int idPicked(World world, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 TileEntity te = world.getTileEntity(x, y, z);
-if (te != null && te instanceof TEBlockWoodBlocks) {
-return addTag(world.getBlock(x, y, z), ((TEBlockWoodBlocks)te).getSubID(), ((TEBlockWoodBlocks)te).getColorBlock());
+if (te != null && te instanceof TEWoodBlocks) {
+return addTag(world.getBlock(x, y, z), ((TEWoodBlocks)te).getSubID(), ((TEWoodBlocks)te).getColorBlock());
 } else {
 return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
 }
@@ -140,11 +140,11 @@ return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
-if (te != null && te instanceof TEBlockWoodBlocks && tag != null) {
-if (tag.hasKey("SubID")) {((TEBlockWoodBlocks)te).setSubID((int)tag.getByte("SubID"));} 
-else {((TEBlockWoodBlocks)te).setSubID(0);}
-if (tag.hasKey("ColorBlock")) {((TEBlockWoodBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));} 
-else {((TEBlockWoodBlocks)te).setColorBlock(0xFFFFFF);}
+if (te != null && te instanceof TEWoodBlocks && tag != null) {
+if (tag.hasKey("SubID")) {((TEWoodBlocks)te).setSubID((int)tag.getByte("SubID"));} 
+else {((TEWoodBlocks)te).setSubID(0);}
+if (tag.hasKey("ColorBlock")) {((TEWoodBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));} 
+else {((TEWoodBlocks)te).setColorBlock(0xFFFFFF);}
 }
 }
 
@@ -152,8 +152,8 @@ else {((TEBlockWoodBlocks)te).setColorBlock(0xFFFFFF);}
 public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 if (!world.isRemote) {
 TileEntity te = world.getTileEntity(x, y, z);
-if (te != null && te instanceof TEBlockWoodBlocks && !player.capabilities.isCreativeMode) {
-dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TEBlockWoodBlocks)te).getSubID(), ((TEBlockWoodBlocks)te).getColorBlock()));
+if (te != null && te instanceof TEWoodBlocks && !player.capabilities.isCreativeMode) {
+dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TEWoodBlocks)te).getSubID(), ((TEWoodBlocks)te).getColorBlock()));
 world.removeTileEntity(x, y, z);
 world.setBlockToAir(x, y, z);
 }
@@ -167,16 +167,16 @@ TileEntity te = world.getTileEntity(x, y, z);
 //--------------------------------
 if (current.getItem() == PackFurniture.proxy.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 if (!player.capabilities.isCreativeMode) {--current.stackSize;}
-//((TEBlockWoodBlocks)te).setColorBlock(GetColors.getHexColors[current.getItemDamage()]);
-((TEBlockWoodBlocks)te).setColorBlock(GetColors.getColorMix(GetColors.getHexColors[current.getItemDamage()], ((TEBlockWoodBlocks)te).getColorBlock()));
+//((TEWoodBlocks)te).setColorBlock(GetColors.getHexColors[current.getItemDamage()]);
+((TEWoodBlocks)te).setColorBlock(GetColors.getColorMix(GetColors.getHexColors[current.getItemDamage()], ((TEWoodBlocks)te).getColorBlock()));
 //world.scheduleBlockUpdate(x, y, z, world.getBlock(x, y, z), 4);
 return true;
 }
 //--------------------------------
 else if (current.getItem() == Items.dye && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 if (!player.capabilities.isCreativeMode) {--current.stackSize;}
-//((TEBlockWoodBlocks)te).setColorBlock(ItemDye.dyeColors[current.getItemDamage()]);
-((TEBlockWoodBlocks)te).setColorBlock(GetColors.getColorMix(ItemDye.field_150922_c[current.getItemDamage()], ((TEBlockWoodBlocks)te).getColorBlock()));
+//((TEWoodBlocks)te).setColorBlock(ItemDye.dyeColors[current.getItemDamage()]);
+((TEWoodBlocks)te).setColorBlock(GetColors.getColorMix(ItemDye.field_150922_c[current.getItemDamage()], ((TEWoodBlocks)te).getColorBlock()));
 //world.scheduleBlockUpdate(x, y, z, world.getBlock(x, y, z), 4);
 return true;
 }

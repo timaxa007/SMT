@@ -5,12 +5,12 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TEBlockGroundBlocks extends TileEntity {
+public class TEMetalBlocks extends TileEntity {
 
 private int sub_id;
 private int color_block;
 
-public TEBlockGroundBlocks() {
+public TEMetalBlocks() {
 sub_id = 0;
 color_block = 0xFFFFFF;
 }

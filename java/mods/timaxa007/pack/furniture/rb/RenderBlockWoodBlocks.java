@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.rb;
 
-import mods.timaxa007.pack.furniture.te.TEBlockWoodBlocks;
+import mods.timaxa007.pack.furniture.te.TEWoodBlocks;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -13,10 +13,10 @@ public class RenderBlockWoodBlocks extends TileEntitySpecialRenderer {
 
 @Override
 public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float f) {
-renderTE((TEBlockWoodBlocks)te, dx, dy,dz, f);
+renderTE((TEWoodBlocks)te, dx, dy,dz, f);
 }
 
-private void renderTE(TEBlockWoodBlocks te, double dx, double dy, double dz, float f) {
+private void renderTE(TEWoodBlocks te, double dx, double dy, double dz, float f) {
 int typ = 0;
 //int clr = 0x00AAFF;
 //int clr = 0xAA9999;

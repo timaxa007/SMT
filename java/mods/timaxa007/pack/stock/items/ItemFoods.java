@@ -188,7 +188,7 @@ public static FoodForItem test2 = new FoodForItem("test2").setFoodStats(2, 0.2F)
 
 public ItemFoods() {
 super();
-setCreativeTab(PackStock.proxy.tabFoodPack);
+setCreativeTab(PackStock.proxy.tab_food_pack);
 setHasSubtypes(true);
 setMaxDamage(0);
 setTextureName("timaxa007:");

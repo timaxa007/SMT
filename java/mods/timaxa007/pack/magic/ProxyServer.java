@@ -21,7 +21,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tabMagicPack = new TabMagicPack("tabMagicPack");
+public static CreativeTabs tab_magic_pack = new TabMagicPack("tab_magic_pack");
 
 public static final Material oreMagic = new MaterialOreMagic();
 
@@ -44,9 +44,9 @@ public static Item item_globular;
 
 //GUI
 //public static int guiID = 0;
-public static int guiMagicMachines = 1;
+public static int gui_magic_machines = 1;
 
-public static int renderBlockMagicCauldronModelID;
+public static int render_block_magic_cauldron_modelID;
 
 public void preInit(FMLPreInitializationEvent event) {
 Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
@@ -95,7 +95,7 @@ GameRegistry.registerTileEntity(TEMagicMachines.class, "TEMagicMachines");
 GameRegistry.registerTileEntity(TEMagicCauldron.class, "TEMagicCauldron");
 GameRegistry.registerTileEntity(TEBlockLocked.class, "TEBlockLocked");
 
-renderBlockMagicCauldronModelID = -1;
+render_block_magic_cauldron_modelID = -1;
 
 MinecraftForge.EVENT_BUS.register(new EventMagic());
 
@@ -105,7 +105,7 @@ Recipes_Magic.list();
 
 public void init() {
 
-NetworkRegistry.INSTANCE.registerGuiHandler(PackInfo.MODID, new HandlerGuiMagic());
+NetworkRegistry.INSTANCE.registerGuiHandler(PackMagic.MODID, new HandlerGuiMagic());
 
 }
 

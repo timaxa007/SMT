@@ -20,7 +20,7 @@ MinecraftForge.EVENT_BUS.register(new EventSoundMining());
 
 render_block_cristals_modelID = RenderingRegistry.getNextAvailableRenderId();
 
-ClientRegistry.bindTileEntitySpecialRenderer(TEBlockCristals.class, new RenderBlockCristals());
+ClientRegistry.bindTileEntitySpecialRenderer(TECristals.class, new RenderBlockCristals());
 ClientRegistry.bindTileEntitySpecialRenderer(TEOreOres.class, new RenderBlockOreOres());
 
 MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMining.proxy.block_cristals), new ItemRenderBlockCristals());

@@ -18,7 +18,7 @@ public ItemTeleport() {
 super();
 setHasSubtypes(true);
 setMaxDamage(0);
-setCreativeTab(PackMagic.proxy.tabMagicPack);
+setCreativeTab(PackMagic.proxy.tab_magic_pack);
 setUnlocalizedName("teleport");
 }
 

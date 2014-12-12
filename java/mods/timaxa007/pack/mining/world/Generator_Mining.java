@@ -2,11 +2,8 @@ package mods.timaxa007.pack.mining.world;
 
 import java.util.Random;
 
-import mods.timaxa007.pack.mining.PackMining;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class Generator_Mining implements IWorldGenerator {
@@ -21,14 +18,14 @@ case 1:generateEnd(world, random, chunkX * 16, chunkZ * 16);break;
 }
  
 public void generateNether(World world, Random rand, int chunkX, int chunkZ) {
-
+/*
 (new WorldGenMinable(PackMining.proxy.blockRock, 12, 32, 
 Blocks.netherrack)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(127), chunkZ + rand.nextInt(16));
-
+*/
 }
  
 public void generateSurface(World world, Random rand, int chunkX, int chunkY) {
-
+/*
 for (int x = 0; x < 16; ++x) {
 for (int y = 0; y < 16; ++y) {
 for (int z = 1; z < world.getHeight(); ++z) {
@@ -40,7 +37,7 @@ world.setBlock(chunkX + x, z, chunkY + y, PackMining.proxy.blockRock);
 }
 }
 }
-
+*/
 /*
 for (int j = 0;j<16;j++) {
 int rdm = rand.nextInt(100);
@@ -79,11 +76,10 @@ Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(60),
 }
  
 public void generateEnd(World world, Random rand, int chunkX, int chunkZ) {
-
+/*
 (new WorldGenMinable(PackMining.proxy.blockRock, 12, 32, 
 Blocks.end_stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(96), chunkZ + rand.nextInt(16));
-
-
+*/
 }
 
 }

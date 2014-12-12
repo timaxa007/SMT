@@ -12,7 +12,7 @@ public class BlockBonfires extends Block {
 
 public BlockBonfires() {
 super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(0.5F);
 setResistance(2.5F);
 setLightOpacity(0);

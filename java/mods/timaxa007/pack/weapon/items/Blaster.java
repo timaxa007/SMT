@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 public class Blaster extends Item{
 public Blaster() {
 super();
-this.setCreativeTab(PackWeapon.proxy.tabWeaponPack);
+this.setCreativeTab(PackWeapon.proxy.tab_weapon_pack);
 this.setUnlocalizedName("blaster");
 this.setFull3D();
 }

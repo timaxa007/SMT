@@ -27,7 +27,7 @@ private boolean isActive;
 public BlockChip() {
 super(Material.iron);
 setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
-setCreativeTab(PackTechno.proxy.tabTechnoPack);
+setCreativeTab(PackTechno.proxy.tab_techno_pack);
 setHardness(0.5F);
 setResistance(1.0F);
 setBlockTextureName("iron_block");

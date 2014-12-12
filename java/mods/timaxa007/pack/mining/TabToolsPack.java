@@ -11,7 +11,7 @@ super(name);
 
 @Override
 public Item getTabIconItem() {
-return PackMining.proxy.toolPickaxe;
+return PackMining.proxy.items_for_mining;
 }
 
 }

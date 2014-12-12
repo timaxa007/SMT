@@ -21,7 +21,7 @@ public class BlockPipes extends BlockContainer {
 
 public BlockPipes() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setBlockTextureName("glass");
 setBlockName("pipes");
 }

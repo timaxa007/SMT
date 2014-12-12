@@ -8,7 +8,7 @@ public class ToolElectricWrench extends Item {
 
 public ToolElectricWrench() {
 super();
-setCreativeTab(PackTechno.proxy.tabTechnoPack);
+setCreativeTab(PackTechno.proxy.tab_techno_pack);
 setUnlocalizedName("electric.wrench");
 }
 

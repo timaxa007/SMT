@@ -18,7 +18,7 @@ public class BlockElectricMachines extends BlockContainer {
 
 public BlockElectricMachines() {
 super(Material.iron);
-setCreativeTab(PackTechno.proxy.tabTechnoPack);
+setCreativeTab(PackTechno.proxy.tab_techno_pack);
 setHardness(0.5F);
 setResistance(1.0F);
 setBlockTextureName("planks_oak");
@@ -77,7 +77,7 @@ TileEntity te = world.getTileEntity(x, y, z);
 //if(!world.isRemote) {return false;}
 if (player.isSneaking()) {return false;}
 if (te != null && te instanceof TEElectricMachines) {
-player.openGui(PackTechno.instance, PackTechno.proxy.guiElectricMachines, world, x, y, z);
+player.openGui(PackTechno.instance, PackTechno.proxy.gui_electric_machines, world, x, y, z);
 return true;
 }
 return false;

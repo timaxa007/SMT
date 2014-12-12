@@ -57,7 +57,7 @@ public ShardElements() {
 super();
 this.setHasSubtypes(true);
 this.setMaxDamage(0);
-this.setCreativeTab(PackMagic.proxy.tabMagicPack);
+this.setCreativeTab(PackMagic.proxy.tab_magic_pack);
 this.setUnlocalizedName("ShardElements");
 }
 

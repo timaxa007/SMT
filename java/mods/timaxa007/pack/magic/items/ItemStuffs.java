@@ -15,7 +15,7 @@ public class ItemStuffs extends Item{
 
 public ItemStuffs() {
 super();
-this.setCreativeTab(PackMagic.proxy.tabMagicPack);
+this.setCreativeTab(PackMagic.proxy.tab_magic_pack);
 this.setUnlocalizedName("stuffs");
 this.setFull3D();
 }

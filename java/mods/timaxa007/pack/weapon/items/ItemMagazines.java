@@ -26,7 +26,7 @@ public class ItemMagazines extends Item {
 public ItemMagazines() {
 super();
 setMaxStackSize(1);
-setCreativeTab(PackWeapon.proxy.tabWeaponPack);
+setCreativeTab(PackWeapon.proxy.tab_weapon_pack);
 setTextureName("timaxa007:item_magazines");
 setUnlocalizedName("item_magazines");
 }

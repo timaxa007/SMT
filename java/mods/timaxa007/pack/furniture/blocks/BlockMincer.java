@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 public class BlockMincer extends BlockContainer{
 private static boolean keepFurnaceInventory;
-private final Random furnaceRand=new Random();
+private final Random furnaceRand = new Random();
 private boolean isActive;
 
 public BlockMincer() {
@@ -26,7 +26,7 @@ super(Material.iron);
 setStepSound(soundTypeMetal);
 setBlockTextureName("iron_block");
 setHardness(0.5F);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setBlockName("mincer");
 }
 
@@ -43,24 +43,24 @@ world.setBlock(x, y, z, this, i1, 3);
 }
 
 @Override
-public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te=world.getTileEntity(x, y, z);
-//if(!world.isRemote) {return false;}
-if(player.isSneaking()) {return false;}
-if((te!=null)&&(te instanceof TEMincer)) {
-player.openGui(PackFurniture.instance, PackFurniture.proxy.guiMincer, world, x, y, z);
+public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+TileEntity te = world.getTileEntity(x, y, z);
+//if (!world.isRemote) {return false;}
+if (player.isSneaking()) {return false;}
+if (te!=null && te instanceof TEMincer) {
+player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_mincer, world, x, y, z);
 return true;
 }
 return false;
 }
 
 public void breakBlock(World world, int x, int y, int z, Block blkid, int blkmeta) {
-if(!keepFurnaceInventory) {
-TEMincer tileentityfurnace=(TEMincer)world.getTileEntity(x, y, z);
+if (!keepFurnaceInventory) {
+TEMincer tileentityfurnace = (TEMincer)world.getTileEntity(x, y, z);
 
-if(tileentityfurnace!=null) {
-for(int j1=0;j1<tileentityfurnace.getSizeInventory();++j1) {
-ItemStack itemstack=tileentityfurnace.getStackInSlot(j1);
+if (tileentityfurnace != null) {
+for (int j1 = 0; j1 < tileentityfurnace.getSizeInventory(); ++j1) {
+ItemStack itemstack = tileentityfurnace.getStackInSlot(j1);
 
 if(itemstack!=null) {
 float f=furnaceRand.nextFloat()*0.8F+0.1F;

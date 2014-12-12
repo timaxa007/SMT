@@ -12,7 +12,7 @@ public class ItemMedPack extends Item {
 
 public ItemMedPack() {
 super();
-setCreativeTab(PackStock.proxy.tabMedicalPack);
+setCreativeTab(PackStock.proxy.tab_medical_pack);
 setHasSubtypes(true);
 setMaxDamage(0);
 setMaxStackSize(1);

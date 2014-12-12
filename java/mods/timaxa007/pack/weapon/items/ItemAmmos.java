@@ -26,7 +26,7 @@ public class ItemAmmos extends Item {
 public ItemAmmos() {
 super();
 setMaxStackSize(1);
-setCreativeTab(PackWeapon.proxy.tabWeaponPack);
+setCreativeTab(PackWeapon.proxy.tab_weapon_pack);
 setTextureName("timaxa007:item_ammos");
 setUnlocalizedName("item_ammos");
 }

@@ -20,7 +20,7 @@ public class BlockWardrobe extends BlockContainer{
 public BlockWardrobe() {
 super(Material.wood);
 setHardness(0.5F);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setBlockTextureName("planks_oak");
 setBlockName("wardrobes");
 }

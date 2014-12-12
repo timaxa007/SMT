@@ -12,7 +12,7 @@ public class MolotovCocktail extends Item {
 
 public MolotovCocktail() {
 super();
-setCreativeTab(PackWeapon.proxy.tabWeaponPack);
+setCreativeTab(PackWeapon.proxy.tab_weapon_pack);
 setTextureName("timaxa007:item_molotov_cocktail");
 setUnlocalizedName("item_molotov_cocktail");
 }

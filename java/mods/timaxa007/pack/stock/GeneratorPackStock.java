@@ -34,7 +34,7 @@ if (world.getBiomeGenForCoords(x, y).biomeID == BiomeGenBase.forest.biomeID || w
 for (int z = 1; z < world.getHeight(); ++z) {
 if (world.getBlock(x1, z - 1, y1) == Block.grass && world.isAirBlock(x1, z, y1)) {
 world.setBlock(x1, z, y1, PackStock.proxy.block_saplings);
-TEBlockSaplings te = new TEBlockSaplings();
+TESaplings te = new TESaplings();
 te.setType("oak");
 te.setHeight(1);
 te.setThickness(1);

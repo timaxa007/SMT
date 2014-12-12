@@ -5,34 +5,30 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TEBlockVegetableFace extends TileEntity {
+public class TEGroundBlocks extends TileEntity {
 
 private int sub_id;
-private int face_id;
-//private int rotation;
 private int color_block;
 
-public TEBlockVegetableFace() {
+public TEGroundBlocks() {
 sub_id = 0;
-face_id = 0;
-//rotation = 0;
 color_block = 0xFFFFFF;
 }
 
 public int getSubID() {return sub_id;}
-public int getFace() {return face_id;}
-//public int getRotation() {return rotation;}
 public int getColorBlock() {return color_block;}
 /*
 public void setSubID(int i) {
-if (i >= Byte.MAX_VALUE) {sub_id = Byte.MAX_VALUE;} 
-else if (i <= Byte.MIN_VALUE) {sub_id = Byte.MIN_VALUE;} 
-else {sub_id = i;}
+if (i >= Byte.MAX_VALUE) {
+sub_id = Byte.MAX_VALUE;
+} else if (i <= Byte.MIN_VALUE) {
+sub_id = Byte.MIN_VALUE;
+} else {
+sub_id = i;
+}
 }
 */
 public void setSubID(int i) {sub_id = i;}
-public void setFace(int i) {face_id = i;}
-//public void setRotation(int i) {rotation = i;}
 public void setColorBlock(int i) {color_block = i;}
 
 public boolean canUpdate() {return false;}
@@ -41,8 +37,6 @@ public boolean canUpdate() {return false;}
 public void readFromNBT(NBTTagCompound nbt) {
 super.readFromNBT(nbt);
 if (nbt.hasKey("SubID")) {sub_id = (int)nbt.getByte("SubID");}
-if (nbt.hasKey("FaceID")) {face_id = (int)nbt.getByte("FaceID");}
-//if (nbt.hasKey("Rotation")) {rotation = (int)nbt.getByte("Rotation");}
 if (nbt.hasKey("ColorBlock")) {color_block = nbt.getInteger("ColorBlock");}
 }
 
@@ -50,8 +44,6 @@ if (nbt.hasKey("ColorBlock")) {color_block = nbt.getInteger("ColorBlock");}
 public void writeToNBT(NBTTagCompound nbt) {
 super.writeToNBT(nbt);
 nbt.setByte("SubID", (byte)sub_id);
-nbt.setByte("FaceID", (byte)face_id);
-//nbt.setByte("Rotation", (byte)rotation);
 nbt.setInteger("ColorBlock", color_block);
 }
 

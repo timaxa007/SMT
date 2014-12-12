@@ -19,7 +19,7 @@ public class BlockCnstorAngle extends Block implements ITileEntityProvider {
 
 public BlockCnstorAngle() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(1.0F);
 setResistance(5.0F);
 setLightOpacity(0);
@@ -31,7 +31,7 @@ setBlockName("cnstor.angle");
 
 @Override
 public TileEntity createNewTileEntity(World world, int meta) {return new TEAngleMod();}
-public int getRenderType() {return PackFurniture.proxy.renderBlockCnstorAngleModelID;}
+public int getRenderType() {return PackFurniture.proxy.render_block_cnstor_angle_modelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World world, int x, int y, int z) {return 0;}

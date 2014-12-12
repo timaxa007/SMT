@@ -13,7 +13,7 @@ public class BlockCylinder extends Block implements ITileEntityProvider {
 
 public BlockCylinder() {
 super(Material.iron);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setBlockTextureName("iron_block");
 setBlockName("cylinder");
 }

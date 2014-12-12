@@ -16,7 +16,7 @@ public class BlockFurnitureMachines extends BlockContainer {
 
 public BlockFurnitureMachines() {
 super(Material.rock);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setHardness(1.0F);
 setResistance(3.5F);
 setBlockTextureName("stone");
@@ -47,12 +47,12 @@ if (is.hasDisplayName()) {
 }
 }
 
-public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
+public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 TileEntity te = world.getTileEntity(x, y, z);
 //if (!world.isRemote) {return false;}
 if (player.isSneaking()) {return false;}
 if (te != null && te instanceof TEFurnitureMachines) {
-player.openGui(PackFurniture.instance, PackFurniture.proxy.guiFurnitureMachines, world, x, y, z);
+player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_furniture_machines, world, x, y, z);
 return true;
 }
 return false;

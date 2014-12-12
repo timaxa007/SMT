@@ -29,7 +29,7 @@ public static String[] type_packpacks = new String[] {
 
 public ArmorBackpacks() {
 super(ArmorMaterial.IRON, 0, 1);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 setTextureName("timaxa007:armor/backpack");
 setUnlocalizedName("armor_backpacks");
 }

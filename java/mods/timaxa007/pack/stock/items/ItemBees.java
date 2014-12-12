@@ -26,7 +26,7 @@ public class ItemBees extends Item {
 
 public ItemBees() {
 super();
-setCreativeTab(PackStock.proxy.tabApisPack);
+setCreativeTab(PackStock.proxy.tab_apis_pack);
 setHasSubtypes(true);
 setMaxDamage(0);
 setTextureName("timaxa007:apis/bees_");

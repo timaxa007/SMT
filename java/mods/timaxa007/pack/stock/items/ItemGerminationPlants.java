@@ -112,7 +112,7 @@ public static GerminationPlants crop_kelp = new GerminationPlants("crop_kelp").s
 
 public ItemGerminationPlants() {
 super();
-setCreativeTab(PackStock.proxy.tabPlantPack);
+setCreativeTab(PackStock.proxy.tab_plant_pack);
 setHasSubtypes(true);
 setMaxDamage(0);
 setTextureName("timaxa007:base_seed");
@@ -125,11 +125,11 @@ else {
 
 TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
-if (te != null && te instanceof TEBlockGerminationPlants) {
+if (te != null && te instanceof TEGerminationPlants) {
 
 if (tag != null) {
-if (((TEBlockGerminationPlants)te).getPlant() == 0) {
-((TEBlockGerminationPlants)te).setPlant(tag.getInteger("PlantID"));
+if (((TEGerminationPlants)te).getPlant() == 0) {
+((TEGerminationPlants)te).setPlant(tag.getInteger("PlantID"));
 }
 return true;
 } else {

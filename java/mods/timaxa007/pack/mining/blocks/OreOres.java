@@ -45,7 +45,7 @@ public static String[] type_ore = new String[] {
 
 public OreOres() {
 super(Material.rock);
-setCreativeTab(PackMining.proxy.tabMiningPack);
+setCreativeTab(PackMining.proxy.tab_mining_pack);
 setStepSound(soundTypeStone);
 setHardness(1.0F);
 setResistance(5.0F);

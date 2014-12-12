@@ -17,11 +17,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tabStockPack = new TabStockPack("tabStockPack");
-public static CreativeTabs tabPlantPack = new TabPlantPack("tabPlantPack");
-public static CreativeTabs tabFoodPack = new TabFoodPack("tabFoodPack");
-public static CreativeTabs tabMedicalPack = new TabMedicalPack("tabMedicalPack");
-public static CreativeTabs tabApisPack = new TabApisPack("tabApisPack");
+public static CreativeTabs tab_stock_pack = new TabStockPack("tab_stock_pack");
+public static CreativeTabs tab_plant_pack = new TabPlantPack("tab_plant_pack");
+public static CreativeTabs tab_food_pack = new TabFoodPack("tab_food_pack");
+public static CreativeTabs tab_medical_pack = new TabMedicalPack("tab_medical_pack");
+public static CreativeTabs tab_apis_pack = new TabApisPack("tab_apis_pack");
 
 //Blocks
 public static Block block_germination_plants;

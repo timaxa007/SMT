@@ -21,7 +21,7 @@ public class BlockElectricWires extends BlockContainer {
 
 public BlockElectricWires() {
 super(Material.glass);
-setCreativeTab(PackTechno.proxy.tabTechnoPack);
+setCreativeTab(PackTechno.proxy.tab_techno_pack);
 setBlockTextureName("glass");
 setBlockName("wires");
 }
@@ -51,7 +51,7 @@ NBTTagCompound tag = is.getTagCompound();
 if (te != null && te instanceof TEElectricWires) {
 /*
 int l=MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
-((TEBlockJar01)te).setRot(l);
+((TEJar01)te).setRot(l);
 */
 if (tag != null) {
 ((TEElectricWires)te).setType(tag.getInteger("Type"));

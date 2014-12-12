@@ -24,19 +24,16 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tabMiningPack = new TabMiningPack("tabMiningPack");
-public static CreativeTabs tabToolsPack = new TabToolsPack("tabToolsPack");
+public static CreativeTabs tab_mining_pack = new TabMiningPack("tab_mining_pack");
+public static CreativeTabs tab_tools_pack = new TabToolsPack("tab_tools_pack");
 
-public static ArmorMaterial METALSMATERIAL = EnumHelper.addArmorMaterial("METALSMATERIAL", 15, new int[]{3, 7, 5, 3}, 10);
-public static ArmorMaterial GEMSMATERIAL = EnumHelper.addArmorMaterial("GEMSMATERIAL", 15, new int[]{5, 10, 7, 4}, 12);
+public static ArmorMaterial METALSMATERIAL = EnumHelper.addArmorMaterial("METALSMATERIAL", 15, new int[] {3, 7, 5, 3}, 10);
+public static ArmorMaterial GEMSMATERIAL = EnumHelper.addArmorMaterial("GEMSMATERIAL", 15, new int[] {5, 10, 7, 4}, 12);
 
 public static final ToolMaterial TOOLGEMS = EnumHelper.addToolMaterial("TOOLGEMS", 3, 512, 7.0F, 3, 7);
 public static final ToolMaterial TOOLMETALS = EnumHelper.addToolMaterial("TOOLMETALS", 2, 300, 6.0F, 2, 11);
 
 //Blocks
-public static BlockEarthCB blockEarth;
-public static BlockSandCB blockSand;
-public static BlockRockCB blockRock;
 public static Block ore_rock_ores;
 public static Block ore_nether_ores;
 public static Block ore_ender_ores;
@@ -44,21 +41,6 @@ public static Block block_cristals;
 
 //Items
 public static Item items_for_mining;
-public static Item toolKindlingFire;
-public static Item toolSword;
-public static Item toolAxe;
-public static Item toolPickaxe;
-public static Item toolShovel;
-public static Item toolHoe;
-public static Item toolShears;
-public static Item toolHammer;
-public static Item toolKnife;
-public static Item toolScrewdriver;
-public static Item toolScythe;
-public static Item toolSickle;
-public static Item toolRake;
-public static Item itemCapsul;
-public static Item tool_sword_big;
 
 public static int render_block_cristals_modelID;
 
@@ -82,9 +64,6 @@ cfg.save();
 new ListMining();
 
 //Blocks
-blockEarth = (BlockEarthCB)(new BlockEarthCB());
-blockSand = (BlockSandCB)(new BlockSandCB());
-blockRock = (BlockRockCB)(new BlockRockCB());
 ore_rock_ores = new OreOres().setBlockTextureName("stone");
 ore_nether_ores = new OreOres().setBlockTextureName("netherrack");
 ore_ender_ores = new OreOres().setBlockTextureName("end_stone");
@@ -92,26 +71,8 @@ block_cristals = new BlockCristals();
 
 //Items
 items_for_mining = new ItemsMining();
-toolKindlingFire = new ToolKindlingFire();
-toolSword = new ToolSword();
-toolAxe = new ToolAxe();
-toolPickaxe = new ToolPickaxe();
-toolShovel = new ToolShovel();
-toolHoe = new ToolHoe();
-toolShears = new ToolShears();
-toolHammer = new ToolHammer();
-toolKnife = new ToolKnife();
-toolScrewdriver = new ToolScrewdriver();
-toolScythe = new ToolScythe();
-toolSickle = new ToolSickle();
-toolRake = new ToolRake();
-itemCapsul = new ItemCapsul();
-tool_sword_big = new ToolSwordBig();
 
 //Blocks
-GameRegistry.registerBlock(blockEarth, ItemBlockEarthCB.class, "BlockEarthCB");
-GameRegistry.registerBlock(blockSand, ItemBlockSandCB.class, "BlockSandCB");
-GameRegistry.registerBlock(blockRock, ItemBlockRockCB.class, "BlockRockCB");
 GameRegistry.registerBlock(ore_rock_ores, "OreRockOres");
 GameRegistry.registerBlock(ore_nether_ores, "OreNetherOres");
 GameRegistry.registerBlock(ore_ender_ores, "OreEnderOres");
@@ -119,23 +80,8 @@ GameRegistry.registerBlock(block_cristals, "BlockCristals");
 
 //Items
 GameRegistry.registerItem(items_for_mining, "ItemsMining");
-GameRegistry.registerItem(toolKindlingFire, "ToolKindlingFire");
-GameRegistry.registerItem(toolSword, "ToolSword");
-GameRegistry.registerItem(toolAxe, "ToolAxe");
-GameRegistry.registerItem(toolPickaxe, "ToolPickaxe");
-GameRegistry.registerItem(toolShovel, "ToolShovel");
-GameRegistry.registerItem(toolHoe, "ToolHoe");
-GameRegistry.registerItem(toolShears, "ToolShears");
-GameRegistry.registerItem(toolHammer, "ToolHammer");
-GameRegistry.registerItem(toolKnife, "ToolKnife");
-GameRegistry.registerItem(toolScrewdriver, "ToolScrewdriver");
-GameRegistry.registerItem(toolScythe, "ToolScythe");
-GameRegistry.registerItem(toolSickle, "ToolSickle");
-GameRegistry.registerItem(toolRake, "ToolRake");
-GameRegistry.registerItem(itemCapsul, "ItemCapsul");
-GameRegistry.registerItem(tool_sword_big, "ToolSwordBig");
 
-GameRegistry.registerTileEntity(TEBlockCristals.class, "TEBlockCristals");
+GameRegistry.registerTileEntity(TECristals.class, "TECristals");
 GameRegistry.registerTileEntity(TEOreOres.class, "TEOreOres");
 
 render_block_cristals_modelID = -1;

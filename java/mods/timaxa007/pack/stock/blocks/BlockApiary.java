@@ -29,7 +29,7 @@ public static String[] type_beehives = new String[] {
 
 public BlockApiary() {
 super(Material.glass);
-setCreativeTab(PackStock.proxy.tabApisPack);
+setCreativeTab(PackStock.proxy.tab_apis_pack);
 setHardness(0.5F);
 setResistance(1.0F);
 setBlockTextureName("planks_oak");

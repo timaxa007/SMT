@@ -5,13 +5,13 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TEBlockCristals extends TileEntity {
+public class TECristals extends TileEntity {
 
 private int type;
 private int color;
 private int size;
 
-public TEBlockCristals() {
+public TECristals() {
 type = 0;
 color = 0;
 size = 0;

@@ -28,7 +28,7 @@ public class ItemHoneycombs extends Item {
 
 public ItemHoneycombs() {
 super();
-setCreativeTab(PackStock.proxy.tabApisPack);
+setCreativeTab(PackStock.proxy.tab_apis_pack);
 setHasSubtypes(true);
 setMaxDamage(0);
 setUnlocalizedName("honeycombs");

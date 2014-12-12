@@ -23,7 +23,7 @@ public class ArmorWoolColors extends ItemArmor {
 
 public ArmorWoolColors(ArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
 super(par2EnumArmorMaterial, par3, par4);
-setCreativeTab(PackFurniture.proxy.tabFurniturePack);
+setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
 }
 
 public String getUnlocalizedName(ItemStack is) {

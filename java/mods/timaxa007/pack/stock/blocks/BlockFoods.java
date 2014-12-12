@@ -24,7 +24,7 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 
 public BlockFoods() {
 super(Material.glass);
-setCreativeTab(PackStock.proxy.tabFoodPack);
+setCreativeTab(PackStock.proxy.tab_food_pack);
 setHardness(0.25F);
 setResistance(0.5F);
 setBlockTextureName("planks_oak");
