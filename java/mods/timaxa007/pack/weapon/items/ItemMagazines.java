@@ -55,7 +55,7 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (int i = 0; i < MagazineFor.magazine_list.length; i++) {
 if (MagazineFor.magazine_list[i] != null) {
 list.add(addTag(i));

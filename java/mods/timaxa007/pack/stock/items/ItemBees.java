@@ -113,7 +113,7 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (bees j : bees.values()) {
 for (int i = 0; i < bees.type_bee.length; ++i) {
 list.add(addTag(j.toString(), i));

@@ -178,7 +178,7 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (int i = 0; i < GerminationPlants.plant_list.length; ++i) {
 if (GerminationPlants.plant_list[i] != null) {
 list.add(addTag(

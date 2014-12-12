@@ -93,7 +93,7 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (int i = 1; i < ItemForStock.item_list.length; i++) {
 if (ItemForStock.item_list[i] != null && ItemForStock.item_list[i].nameID != "") {
 list.add(addTag(ItemForStock.item_list[i].nameID));

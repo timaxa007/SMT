@@ -52,10 +52,6 @@ public static int render_block_cake_modelID;
 public static int render_block_pie_modelID;
 public static int render_block_apiary_modelID;
 
-public void init() {
-
-}
-
 public void preInit(FMLPreInitializationEvent event) {
 Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 cfg.load();
@@ -132,6 +128,10 @@ MinecraftForge.EVENT_BUS.register(new EventPackStock());
 GameRegistry.addRecipe(new RecipeFoodsColors());
 
 Recipes_Stock.list();
+
+}
+
+public void init() {
 
 }
 

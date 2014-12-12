@@ -46,7 +46,7 @@ list.add("Active: " + tag.getBoolean("Active") + ".");
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 list.add(addTag());
 }
 

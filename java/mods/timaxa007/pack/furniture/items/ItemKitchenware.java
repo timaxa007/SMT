@@ -92,7 +92,7 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (kitchenware j : kitchenware.values()) {
 list.add(addTag(j.toString()));
 }

@@ -75,7 +75,7 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for(byte j=0;j<16;++j) {list.add(addTag(new ItemStack(PackFurniture.proxy.item_paint_can), j));}
 list.add(new ItemStack(PackFurniture.proxy.item_paint_can, 1, 0));
 }

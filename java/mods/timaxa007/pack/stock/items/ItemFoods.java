@@ -497,7 +497,7 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (int i = 0; i < FoodForItem.food_list.length; i++) {
 if (FoodForItem.food_list[i] != null && FoodForItem.food_list[i].tagID != null) {
 list.add(addTag(FoodForItem.food_list[i].tagID));

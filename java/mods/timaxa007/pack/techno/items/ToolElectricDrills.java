@@ -105,7 +105,7 @@ list.add("ModeID: " + tag.getInteger("ModeID"));
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 list.add(addTag());
 //list.add(new ItemStack(id, 1, 0));
 }

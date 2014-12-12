@@ -178,7 +178,7 @@ list.add(Option.prshift);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for (drinks j1 : drinks.values()) {
 for (int i = 0; i < FluidFake.fluid_list.length; ++i) {
 if (FluidFake.fluid_list[i] != null) {

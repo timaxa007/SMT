@@ -21,7 +21,7 @@ this.setFull3D();
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubItems(int id, CreativeTabs table, List list) {
+public void getSubItems(Item id, CreativeTabs table, List list) {
 for(byte j1=0;j1<4;++j1) {
 for(byte j2=0;j2<4;++j2) {
 list.add(addTag(j1, j2));

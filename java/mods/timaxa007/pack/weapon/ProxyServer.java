@@ -28,12 +28,6 @@ public static Item item_weapons;
 public static Item item_ammos;
 public static Item item_magazines;
 
-public void init() {
-
-NetworkRegistry.INSTANCE.registerGuiHandler(PackWeapon.MODID, new HandlerGuiWeapons());
-
-}
-
 public void preInit(FMLPreInitializationEvent event) {
 Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 cfg.load();
@@ -68,6 +62,12 @@ GameRegistry.registerTileEntity(TEClaymore.class, "TEClaymore");
 MinecraftForge.EVENT_BUS.register(new EventPackWeapon());
 
 Recipes_Weapon.list();
+
+}
+
+public void init() {
+
+NetworkRegistry.INSTANCE.registerGuiHandler(PackWeapon.MODID, new HandlerGuiWeapons());
 
 }
 
