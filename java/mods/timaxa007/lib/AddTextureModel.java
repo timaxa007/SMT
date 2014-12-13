@@ -8,6 +8,7 @@ public class AddTextureModel {
 public static AddTextureModel[] list = new AddTextureModel[1024];
 
 public int id;
+public String tag;
 private Block block;
 private String texture;
 private String custom_mod;
@@ -18,25 +19,22 @@ private static String ti = "textures/items/";
 public AddTextureModel() {
 id = getNextID();
 list[id] = this;
+tag = null;
 block = null;
 texture = null;
 custom_mod = null;
 }
-/*
-public AddTextureModel(Block block) {
+
+public AddTextureModel(String tag_name) {
 id = getNextID();
 list[id] = this;
-this.block = block;
+checkTag(tag_name);//OFF
+tag = tag_name;
+block = null;
 texture = null;
+custom_mod = null;
 }
 
-public AddTextureModel(String str) {
-id = getNextID();
-list[id] = this;
-block = null;
-texture = str;
-}
-*/
 private static int getNextID() {
 for (int i = 0; i < list.length; ++i) {
 if (list == null) {return i;}
@@ -44,7 +42,37 @@ if (list == null) {return i;}
 return list.length - 1;
 }
 
+public static boolean hasTag(String str) {
+for (int i = 0; i < list.length; i++) {
+if (str.equalsIgnoreCase(list[i].tag)) {
+return true;
+}
+}
+return false;
+}
+
+public static int getID_tag(String str) {
+for (int i = 0; i < list.length; i++) {
+if (str.equalsIgnoreCase(list[i].tag)) {return i;}
+}
+return 0;
+}
+
+private void checkTag(String str) {
+for (int i = 0; i < list.length; i++) {
+if (list[i] != null && list[i].tag == str) {
+System.out.println("!Duplicate: " + str);
+}
+}
+}
+
 public AddTextureModel setBlock(Block block) {
+this.block = block;
+return this;
+}
+
+public AddTextureModel setBlock(String mod_id, Block block) {
+custom_mod = mod_id;
 this.block = block;
 return this;
 }
