@@ -1,6 +1,6 @@
 package mods.timaxa007.lib;
 
-
+@Deprecated
 public class TileTexture {
 
 private static String tb = "textures/blocks/";
