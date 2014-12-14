@@ -38,8 +38,8 @@ public boolean renderAsNormalBlock() {return false;}
 public int idPicked(World world, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te=world.getTileEntity(x, y, z);
-if((te!=null)&&(te instanceof TEBookshelf)) {
+TileEntity te = world.getTileEntity(x, y, z);
+if (te != null && te instanceof TEBookshelf) {
 return addTag(0, ((TEBookshelf)te).getType());
 }
 return addTag(0, 0);

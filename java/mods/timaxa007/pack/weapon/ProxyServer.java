@@ -47,7 +47,7 @@ item_ammos = new ItemAmmos();
 item_magazines = new ItemMagazines();
 
 //Blocks
-GameRegistry.registerBlock(block_claymore, ItemBlockClaymore.class, "BlockClaymore");
+GameRegistry.registerBlock(block_claymore, "BlockClaymore");
 
 //Items
 GameRegistry.registerItem(items_for_weapon, "ItemsWeapon");

@@ -24,6 +24,7 @@ GL11.glPushMatrix();
 GL11.glTranslated(dx, dy, dz);
 GL11.glTranslatef(0.5F, 1.5F, 0.5F);
 GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+GL11.glRotatef(-45F + (te.getBlockMetadata() * 45F), 0.0F, 1.0F, 0.0F);
 bindTexture(new ResourceLocation("textures/blocks/planks_oak.png"));
 model.render();
 GL11.glPopMatrix();

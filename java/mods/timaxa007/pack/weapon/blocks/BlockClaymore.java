@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.weapon.blocks;
 
+import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.weapon.PackWeapon;
 import mods.timaxa007.pack.weapon.te.TEClaymore;
 import net.minecraft.block.Block;
@@ -7,10 +8,10 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
@@ -33,20 +34,21 @@ public boolean renderAsNormalBlock() {return false;}
 public boolean isOpaqueCube() {return false;}
 
 public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-if(entity instanceof EntityLivingBase) {
+if (entity instanceof EntityLivingBase) {
 world.createExplosion(entity, x, y, z, 5, true);
-}else{}
+}
 }
 
 public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explos) {
-if(!world.isRemote);
+if (!world.isRemote);
 }
 
-
 @Override
-public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase el, ItemStack is) {
-int l = MathHelper.floor_double((double)(el.rotationYaw*4.0F/360.0F)+0.5D)&3;
-world.setBlock(x, y, z, this, l, 3);
+public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
+if (!world.isRemote && entity instanceof EntityPlayer) {
+int l = ActionModel.rotation_model_45degrees_invert(entity.rotationYaw);
+world.setBlockMetadataWithNotify(x, y, z, l, 3);
+}
 }
 
 public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {return null;}
