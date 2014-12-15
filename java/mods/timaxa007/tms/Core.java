@@ -1,5 +1,6 @@
 package mods.timaxa007.tms;
 
+import mods.timaxa007.lib.ListTextureModel;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -45,7 +46,6 @@ public static Item item_test;
 
 @EventHandler
 public void preInit(FMLPreInitializationEvent event) {
-ConfigurationHandler configHandler = new ConfigurationHandler(event);
 Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 config.load();
 
@@ -59,6 +59,8 @@ disable_sub_mod_techno = config.get("configs", "disable_sub_mod_techno", false).
 disable_sub_mod_weapon = config.get("configs", "disable_sub_mod_weapon", false).getBoolean(false);
 
 config.save();
+
+new ListTextureModel();
 
 block_test = new TestBlock();
 
