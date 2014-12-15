@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.weapon;
 
-import mods.timaxa007.pack.weapon.entity.*;
 import mods.timaxa007.pack.weapon.rb.*;
 import mods.timaxa007.pack.weapon.ri.*;
 import mods.timaxa007.pack.weapon.ri.*;
