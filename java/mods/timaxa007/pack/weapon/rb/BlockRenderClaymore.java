@@ -9,10 +9,10 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 public class BlockRenderClaymore extends TileEntitySpecialRenderer {
-private static ModelClaymoreStick model;
+private static final ModelClaymoreStick model = new ModelClaymoreStick();;
 
 public BlockRenderClaymore() {
-model = new ModelClaymoreStick();
+
 }
 
 public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float f) {
@@ -24,7 +24,7 @@ GL11.glPushMatrix();
 GL11.glTranslated(dx, dy, dz);
 GL11.glTranslatef(0.5F, 1.5F, 0.5F);
 GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-GL11.glRotatef(-45F + (te.getBlockMetadata() * 45F), 0.0F, 1.0F, 0.0F);
+GL11.glRotatef(te.getBlockMetadata() * 45F, 0.0F, 1.0F, 0.0F);
 bindTexture(new ResourceLocation("textures/blocks/planks_oak.png"));
 model.render();
 GL11.glPopMatrix();
