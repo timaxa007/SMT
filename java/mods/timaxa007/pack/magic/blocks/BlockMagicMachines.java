@@ -16,7 +16,7 @@ public class BlockMagicMachines extends BlockContainer{
 
 public BlockMagicMachines() {
 super(Material.rock);
-setCreativeTab(PackMagic.proxy.tab_magic_pack);
+setCreativeTab(PackMagic.proxy.tab_magic);
 setHardness(0.5F);
 setResistance(1.0F);
 setBlockTextureName("planks_oak");

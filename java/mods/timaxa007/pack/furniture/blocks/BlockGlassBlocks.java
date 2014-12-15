@@ -44,7 +44,7 @@ public static String[] type_block = new String[] {
 
 public BlockGlassBlocks() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(1.5F);
 setResistance(10.0F);
 setStepSound(soundTypeGlass);

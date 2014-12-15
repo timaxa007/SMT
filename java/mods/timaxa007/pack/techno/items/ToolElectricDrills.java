@@ -29,7 +29,7 @@ private static String[] modes = new String[] {
 
 public ToolElectricDrills() {
 super();
-setCreativeTab(PackTechno.proxy.tab_techno_pack);
+setCreativeTab(PackTechno.proxy.tab_techno);
 setMaxDamage(1000);
 setMaxStackSize(1);
 setNoRepair();

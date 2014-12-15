@@ -15,7 +15,7 @@ public class ItemWands extends Item{
 
 public ItemWands() {
 super();
-this.setCreativeTab(PackMagic.proxy.tab_magic_pack);
+this.setCreativeTab(PackMagic.proxy.tab_magic);
 this.setUnlocalizedName("wands");
 this.setFull3D();
 }

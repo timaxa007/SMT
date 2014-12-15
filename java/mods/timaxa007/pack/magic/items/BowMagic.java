@@ -35,7 +35,7 @@ public BowMagic() {
 super();
 setMaxStackSize(1);
 setMaxDamage(1000);
-setCreativeTab(PackMagic.proxy.tab_magic_pack);
+setCreativeTab(PackMagic.proxy.tab_magic);
 setUnlocalizedName("magic.bow");
 }
 

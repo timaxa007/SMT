@@ -15,7 +15,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tab_techno_pack = new TabTechnoPack("tab_techno_pack");
+public static CreativeTabs tab_techno = new TabTechno("tab_techno");
 
 //Blocks
 public static Block block_electric_machines;

@@ -1,35 +1,29 @@
 package mods.timaxa007.pack.stock;
 
-import mods.timaxa007.lib.*;
 import mods.timaxa007.pack.stock.blocks.*;
-import mods.timaxa007.pack.stock.entity.*;
 import mods.timaxa007.pack.stock.items.*;
 import mods.timaxa007.pack.stock.list.ListStock;
 import mods.timaxa007.pack.stock.te.*;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tab_stock_pack = new TabStockPack("tab_stock_pack");
-public static CreativeTabs tab_plant_pack = new TabPlantPack("tab_plant_pack");
-public static CreativeTabs tab_food_pack = new TabFoodPack("tab_food_pack");
-public static CreativeTabs tab_medical_pack = new TabMedicalPack("tab_medical_pack");
-public static CreativeTabs tab_apis_pack = new TabApisPack("tab_apis_pack");
+public static CreativeTabs tab_stock = new TabStock("tab_stock");
+public static CreativeTabs tab_plant = new TabPlant("tab_plant");
+public static CreativeTabs tab_food = new TabFood("tab_food");
+public static CreativeTabs tab_medical = new TabMedical("tab_medical");
+public static CreativeTabs tab_apis = new TabApis("tab_apis");
 
 //Blocks
 public static Block block_germination_plants;
 public static Block block_foods;
 public static Block block_healing;
-public static Block block_pizzas;
-public static Block block_cakes;
-public static Block block_pies;
 public static Block block_apiary;
 
 //Items
@@ -47,9 +41,6 @@ public static Item item_bees;
 //Blocks
 public static int render_block_germination_plants_modelID;
 public static int render_block_foods_modelID;
-public static int render_block_pizza_modelID;
-public static int render_block_cake_modelID;
-public static int render_block_pie_modelID;
 public static int render_block_apiary_modelID;
 
 public void preInit(FMLPreInitializationEvent event) {
@@ -64,9 +55,6 @@ new ListStock();
 block_germination_plants = new BlockGerminationPlants();
 block_foods = new BlockFoods();
 block_healing = new BlockHealing();
-block_pizzas = new BlockPizzas();
-block_cakes = new BlockCakes();
-block_pies = new BlockPies();
 block_apiary = new BlockApiary();
 
 //Items
@@ -85,9 +73,6 @@ item_bees = new ItemBees();
 GameRegistry.registerBlock(block_germination_plants, "BlockGerminationPlants");
 GameRegistry.registerBlock(block_foods, ItemBlockFoods.class, "BlockFoods");
 GameRegistry.registerBlock(block_healing, ItemBlockHealing.class, "BlockHealing");
-GameRegistry.registerBlock(block_pizzas, ItemBlockPizza.class, "BlockPizza");
-GameRegistry.registerBlock(block_cakes, ItemBlockCake.class, "BlockCake");
-GameRegistry.registerBlock(block_pies, ItemBlockPie.class, "BlockPie");
 GameRegistry.registerBlock(block_apiary, "BlockApiary");
 
 //Items
@@ -106,17 +91,11 @@ GameRegistry.registerItem(item_bees, "ItemBees");
 GameRegistry.registerTileEntity(TEGerminationPlants.class, "TEGerminationPlants");
 GameRegistry.registerTileEntity(TEFoods.class, "TEFoods");
 GameRegistry.registerTileEntity(TEHealing.class, "TEHealing");
-GameRegistry.registerTileEntity(TEPizza.class, "TEPizza");
-GameRegistry.registerTileEntity(TECake.class, "TECake");
-GameRegistry.registerTileEntity(TEPie.class, "TEPie");
 GameRegistry.registerTileEntity(TEApiary.class, "TEApiary");
 
 //Blocks
 render_block_germination_plants_modelID = -1;
 render_block_foods_modelID = -1;
-render_block_pizza_modelID = -1;
-render_block_cake_modelID = -1;
-render_block_pie_modelID = -1;
 render_block_apiary_modelID = -1;
 
 //EntityList.addMapping(EntityTest.class, "Test", 111, 0x0033FF, 0x00CCFF);

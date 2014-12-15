@@ -2,24 +2,21 @@ package mods.timaxa007.pack.techno.blocks;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.te.TEModuleMovement;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockModuleMovement extends BlockContainer{
 
@@ -31,7 +28,7 @@ public String typeModule[]= new String[]{
 
 public BlockModuleMovement() {
 super(Material.circuits);
-setCreativeTab(PackTechno.proxy.tab_techno_pack);
+setCreativeTab(PackTechno.proxy.tab_techno);
 setHardness(0.5F);
 setResistance(0.1F);
 setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
@@ -120,7 +117,7 @@ return false;
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for(int j=0;j<typeModule.length;++j) {
 list.add(addTag(j));
 }

@@ -11,6 +11,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -24,7 +25,7 @@ protected Random random=new Random();
 
 public BlockBookshelf() {
 super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(0.5F);
 setBlockTextureName("bookshelf");
 setBlockName("bookshelf");
@@ -104,7 +105,7 @@ world.spawnEntityInWorld(entityitem1);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 
 //for(int j=0;j<TileTexture.tt01.length;++j) {
 //for(byte i=0;i<16;++i) {

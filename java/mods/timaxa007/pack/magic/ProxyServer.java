@@ -9,32 +9,46 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tab_magic_pack = new TabMagicPack("tab_magic_pack");
+public static CreativeTabs tab_magic = new TabMagic("tab_magic");
 
-public static final Material oreMagic = new MaterialOreMagic();
+public static final Material ore_magic = new MaterialOreMagic();
+
+public static final String[] elementsNames = new String[] {
+"Air", 
+"Earth", 
+"Fire", 
+"Water", 
+"Sound", 
+"6", 
+"Lightning", 
+"Liquid", 
+"Flame", 
+"10", 
+"11", 
+"12", 
+"13", 
+"14", 
+"15", 
+"16"
+};
+//ShardElements = gems
 
 //Blocks
 public static Block blockMagicMachines;
-public static Block oreElements;
 public static Block blockSlims;
 public static Block blockMagicCauldron;
 public static Block block_locked;
 
 //Items
 public static Item items_for_magic;
-public static Item shardElements;
 public static BowMagic bowMagic;
 public static Item itemWands;
 public static Item itemStuffs;
@@ -58,14 +72,12 @@ new ListMagic();
 
 //Blocks
 blockMagicMachines = new BlockMagicMachines();
-oreElements = new OreElements();
 blockSlims = new BlockSlims();
 blockMagicCauldron = new BlockMagicCauldron();
 block_locked = new BlockLocked();
 
 //Items
 items_for_magic = new ItemsMagic();
-shardElements = new ShardElements();
 bowMagic = new BowMagic();
 itemWands = new ItemWands();
 itemStuffs = new ItemStuffs();
@@ -74,7 +86,6 @@ item_teleport = new ItemTeleport();
 item_globular = new ItemGlobular();
 
 //Blocks
-GameRegistry.registerBlock(oreElements, ItemOreElements.class, "OreElements");
 GameRegistry.registerBlock(blockSlims, ItemBlockSlims.class, "BlockSlims");
 GameRegistry.registerBlock(blockMagicMachines, "BlockMagicMachines");
 GameRegistry.registerBlock(blockMagicCauldron, "BlockMagicCauldron");
@@ -82,7 +93,6 @@ GameRegistry.registerBlock(block_locked, "BlockLocked");
 
 //Items
 GameRegistry.registerItem(items_for_magic, "ItemsMagic");
-GameRegistry.registerItem(shardElements, "ShardElements");
 GameRegistry.registerItem(bowMagic, "BowMagic");
 GameRegistry.registerItem(itemWands, "ItemWands");
 GameRegistry.registerItem(itemStuffs, "ItemStuffs");

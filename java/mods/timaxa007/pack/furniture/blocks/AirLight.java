@@ -15,7 +15,7 @@ public class AirLight extends Block {
 
 public AirLight() {
 super(Material.air);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 setBlockTextureName("glass");
 setBlockName("air_light");

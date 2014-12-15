@@ -7,7 +7,7 @@ public class ItemsMagic extends Item {
 
 public ItemsMagic() {
 super();
-setCreativeTab(PackMagic.proxy.tab_magic_pack);
+setCreativeTab(PackMagic.proxy.tab_magic);
 setUnlocalizedName("items_magic");
 }
 

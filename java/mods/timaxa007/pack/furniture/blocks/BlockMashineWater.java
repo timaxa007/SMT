@@ -11,6 +11,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -23,7 +24,7 @@ public class BlockMashineWater extends Block implements ITileEntityProvider {
 
 public BlockMashineWater() {
 super(Material.iron);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(0.25F);
 setLightOpacity(0);
 setBlockTextureName("glass");
@@ -79,7 +80,7 @@ return false;
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 //for (int j = 0; j < 16; ++j) {
 int j = 14;
 list.add(addTag(GetColors.getHexColors[j], true));

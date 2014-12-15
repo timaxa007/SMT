@@ -21,7 +21,7 @@ public class BlockCandle extends Block implements ITileEntityProvider {
 
 public BlockCandle() {
 super(Material.circuits);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(0.3F);
 setResistance(1.0F);
 setLightOpacity(0);

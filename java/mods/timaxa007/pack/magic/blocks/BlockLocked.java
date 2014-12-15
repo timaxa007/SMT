@@ -24,7 +24,7 @@ public class BlockLocked extends Block implements ITileEntityProvider {
 public BlockLocked() {
 super(Material.iron);
 setBlockUnbreakable();
-setCreativeTab(PackMagic.proxy.tab_magic_pack);
+setCreativeTab(PackMagic.proxy.tab_magic);
 setBlockTextureName("planks_oak");
 setBlockName("locked");
 }

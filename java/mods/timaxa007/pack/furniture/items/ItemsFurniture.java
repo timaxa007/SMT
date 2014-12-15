@@ -15,7 +15,7 @@ public class ItemsFurniture extends Item {
 
 public ItemsFurniture() {
 super();
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setUnlocalizedName("items_furniture");
 }
 

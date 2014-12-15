@@ -68,7 +68,7 @@ public static final String[] airbrushColorType = new String[] {
 */
 public ToolAirBrush() {
 super();
-setCreativeTab(PackMining.proxy.tab_tools_pack);
+setCreativeTab(PackMining.proxy.tab_tools);
 setMaxStackSize(1);
 setMaxDamage(10000);
 setTextureName("timaxa007:colors/tool_airbrush");

@@ -40,7 +40,7 @@ public static String[] type_block = new String[] {
 
 public BlockGroundBlocks() {
 super(Material.ground);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(0.75F);
 setResistance(5.0F);
 setStepSound(soundTypeGrass);

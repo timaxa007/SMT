@@ -69,11 +69,31 @@ type.skin.name=Skin
 type.leather.name=Leather
 type.fur.name=Fur
 
-itemGroup.tabTMS=Tab TMS's
+itemGroup.tab_tms=Tab TMS's
 tile.block_test.name=Test Block
 item.item_test.name=Test Item
 
-itemGroup.tabFurniturePack=Tab Furniture's Pack
+itemGroup.tab_furniture=Tab Furniture's
+
+itemGroup.tab_magic=Tab Magic's
+
+itemGroup.tab_mining=Tab Mining's
+
+itemGroup.tab_tools=Tab Tool's
+
+itemGroup.tab_stock=Tab Stock's
+
+itemGroup.tab_plant=Tab Plant's
+
+itemGroup.tab_food=Tab Food's
+
+itemGroup.tab_medical=Tab Medical's
+
+itemGroup.tab_apis=Tab Apiculture's
+
+itemGroup.tab_techno=Tab Techno
+
+itemGroup.tab_weapon=Tab Weapon's
 
 tile.furniture.machines.name=Machine
 tile.cnstor.block.name=Constructor Block
@@ -686,11 +706,6 @@ item.armor_masks.5.name=Mask 5
 item.armor_masks.test.name=Mask Test
 
 tile.pipes.name=Pipe
-
-itemGroup.tabPlantPack=Tab Plant's Pack
-itemGroup.tabFoodPack=Tab Food's Pack
-itemGroup.tabMedicalPack=Tab Medical's Pack
-itemGroup.tabApisPack=Tab Apiculture's Pack
 
 item.foods.name=Food
 food.unnamed.name=Unnamed

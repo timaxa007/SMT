@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -23,7 +24,7 @@ public class BlockGerminationPlants extends BlockContainer {
 
 public BlockGerminationPlants() {
 super(Material.glass);
-setCreativeTab(PackStock.proxy.tab_plant_pack);
+setCreativeTab(PackStock.proxy.tab_plant);
 setHardness(0.25F);
 setResistance(0.1F);
 setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 1.0F, 0.875F);
@@ -434,7 +435,7 @@ tag.hasKey("Resistance")
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 list.add(addTag(0, "", 0, 0, 0, 0, 0));
 //list.add(new ItemStack(id, 1, 0));
 }

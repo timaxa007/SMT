@@ -69,11 +69,31 @@ type.skin.name=Шкура
 type.leather.name=Кожа
 type.fur.name=Мех
 
-itemGroup.tabTMS=Таблица TMS
+itemGroup.tab_tms=Таблица TMS
 tile.block_test.name=Тест Блок
 item.item_test.name=Тест Предмет
 
-itemGroup.tabFurniturePack=Таблица Гарнитура
+itemGroup.tab_furniture=Таблица Гарнитура
+
+itemGroup.tab_magic=Таблица Магии
+
+itemGroup.tab_mining=Таблица Щахтёрства
+
+itemGroup.tab_tools=Таблица Инструментов
+
+itemGroup.tab_plant=Таблица Плантации
+
+itemGroup.tab_stock=Таблица Запасов
+
+itemGroup.tab_food=Таблица Еды
+
+itemGroup.tab_medical=Таблица Медицыны
+
+itemGroup.tab_apis=Таблица Пчеловодства
+
+itemGroup.tab_techno=Таблица Техно
+
+itemGroup.tab_weapon=Таблица Оружия
 
 tile.furniture.machines.name=Машина
 tile.cnstor.block.name=Конструктор Блок
@@ -686,11 +706,6 @@ item.armor_masks.5.name=Маска 5
 item.armor_masks.test.name=Маска Тест
 
 tile.pipes.name=Труба
-
-itemGroup.tabPlantPack=Таблица Плантации
-itemGroup.tabFoodPack=Таблица Еды
-itemGroup.tabMedicalPack=Таблица Медицыны
-itemGroup.tabApisPack=Таблица Пчеловодства
 
 item.foods.name=Еда
 food.unnamed.name=Без имени

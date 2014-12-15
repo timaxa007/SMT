@@ -2,7 +2,6 @@ package mods.timaxa007.pack.furniture.blocks;
 
 import java.util.List;
 
-import mods.timaxa007.lib.TileTexture;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.te.TECnstorFence;
 import net.minecraft.block.Block;
@@ -10,6 +9,7 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -22,7 +22,7 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 
 public BlockCnstorFence() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);
@@ -62,7 +62,7 @@ if(tag!=null) {
 public void breakBlock(World world, int x, int y, int z, Block id, int meta) {}
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 //for (int  j = 0; j < TileTexture.texTest01.length; ++j) {
 //for (byte i = 0; i < 16; ++i) {
 int j = 0;

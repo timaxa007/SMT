@@ -18,7 +18,7 @@ public class BlockElectricMachines extends BlockContainer {
 
 public BlockElectricMachines() {
 super(Material.iron);
-setCreativeTab(PackTechno.proxy.tab_techno_pack);
+setCreativeTab(PackTechno.proxy.tab_techno);
 setHardness(0.5F);
 setResistance(1.0F);
 setBlockTextureName("planks_oak");

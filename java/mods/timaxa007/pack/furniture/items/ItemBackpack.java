@@ -18,7 +18,7 @@ public static ItemStack[] slotsBackpack = new ItemStack[27];
 
 public ItemBackpack() {
 super();
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setTextureName("timaxa007:backpack");
 setUnlocalizedName("backpack");
 }

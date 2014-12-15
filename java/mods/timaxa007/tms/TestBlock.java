@@ -8,7 +8,7 @@ public class TestBlock extends Block {
 public TestBlock() {
 super(Material.iron);
 this.setStepSound(soundTypeWood);
-this.setCreativeTab(Core.tabTMS);
+this.setCreativeTab(Core.tab_tms);
 this.setHardness(0.1F);
 this.setResistance(10.0F);
 this.setLightLevel(0.0F);

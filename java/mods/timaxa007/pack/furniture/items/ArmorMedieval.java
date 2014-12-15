@@ -29,7 +29,7 @@ public static final String[] type_medieval = new String[] {
 
 public ArmorMedieval(ArmorMaterial par2, int par3, int par4) {
 super(par2, par3, par4);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setTextureName("timaxa007:armor/medieval");
 setUnlocalizedName("armor_medieval");
 }

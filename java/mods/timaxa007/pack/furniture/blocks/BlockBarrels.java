@@ -7,6 +7,7 @@ import mods.timaxa007.pack.furniture.te.TEBarrels;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -19,7 +20,7 @@ public class BlockBarrels extends BlockContainer{
 
 public BlockBarrels() {
 super(Material.clay);
-this.setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+this.setCreativeTab(PackFurniture.proxy.tab_furniture);
 this.setHardness(0.5F);
 setBlockTextureName("planks_oak");
 this.setBlockName("barrels");
@@ -47,7 +48,7 @@ if( instanceof EntityPlayer) {}
 */
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 
 //for(int j1=0;j1<TileTexture.getTexturesConstructionCount;++j1) {
 //for(byte i=0;i<16;++i) {

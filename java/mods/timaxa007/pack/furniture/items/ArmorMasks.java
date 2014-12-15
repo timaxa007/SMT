@@ -34,7 +34,7 @@ public static final String[] type_mask = new String[] {
 
 public ArmorMasks() {
 super(PackFurniture.proxy.COSTUME, 0, 0);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setTextureName("timaxa007:armor/mask");
 setUnlocalizedName("armor_masks");
 }

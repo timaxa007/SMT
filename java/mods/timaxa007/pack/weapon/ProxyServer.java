@@ -16,13 +16,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tab_weapon_pack = new TabWeaponPack("tab_weapon_pack");
+public static CreativeTabs tab_weapons = new TabWeapons("tab_weapons");
 
 //Blocks
 public static Block block_claymore;
 
 //Items
-public static Item items_for_weapon;
+public static Item items_for_weapons;
 public static Item item_molotov_cocktail;
 public static Item item_weapons;
 public static Item item_ammos;
@@ -40,7 +40,7 @@ new ListWeapon();
 block_claymore = new BlockClaymore();
 
 //Items
-items_for_weapon = new ItemsWeapon();
+items_for_weapons = new ItemsWeapons();
 item_molotov_cocktail = new MolotovCocktail();
 item_weapons = new ItemWeapons();
 item_ammos = new ItemAmmos();
@@ -50,7 +50,7 @@ item_magazines = new ItemMagazines();
 GameRegistry.registerBlock(block_claymore, "BlockClaymore");
 
 //Items
-GameRegistry.registerItem(items_for_weapon, "ItemsWeapon");
+GameRegistry.registerItem(items_for_weapons, "ItemsWeapons");
 GameRegistry.registerItem(item_molotov_cocktail, "MolotovCocktail");
 GameRegistry.registerItem(item_weapons, "ItemWeapons");
 GameRegistry.registerItem(item_ammos, "ItemAmmos");

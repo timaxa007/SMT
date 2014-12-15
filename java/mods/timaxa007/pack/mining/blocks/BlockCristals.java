@@ -10,6 +10,7 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -22,7 +23,7 @@ public class BlockCristals extends Block implements ITileEntityProvider {
 
 public BlockCristals() {
 super(Material.glass);
-setCreativeTab(PackMining.proxy.tab_mining_pack);
+setCreativeTab(PackMining.proxy.tab_mining);
 setHardness(0.25F);
 setLightOpacity(0);
 setBlockTextureName("glass");
@@ -70,7 +71,7 @@ if (tag != null) {
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for (int t = 0; t < 3; ++t) {
 for (int c = 0; c < GetColors.getHexColors.length; ++c) {
 for (int s = 1; s < 5; ++s) {

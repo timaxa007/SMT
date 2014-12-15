@@ -42,10 +42,8 @@ render_block_armchair_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_blender_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_grills_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_box_particles_modelID = RenderingRegistry.getNextAvailableRenderId();
-render_block_balls_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_jar01_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_pipes_modelID = RenderingRegistry.getNextAvailableRenderId();
-render_block_cylinder_modelID = RenderingRegistry.getNextAvailableRenderId();
 render_block_mashine_waiter_modelID = RenderingRegistry.getNextAvailableRenderId();
 
 //Blocks
@@ -70,10 +68,8 @@ ClientRegistry.bindTileEntitySpecialRenderer(TEArmChair.class, new BlockRenderAr
 ClientRegistry.bindTileEntitySpecialRenderer(TEBlender.class, new BlockRenderBlender());
 ClientRegistry.bindTileEntitySpecialRenderer(TEGrills.class, new BlockRenderGrills());
 ClientRegistry.bindTileEntitySpecialRenderer(TEBoxParticles.class, new BlockRenderBoxParticles());
-ClientRegistry.bindTileEntitySpecialRenderer(TEBalls.class, new BlockRenderBalls());
 ClientRegistry.bindTileEntitySpecialRenderer(TEJar01.class, new RenderBlockJar01());
 ClientRegistry.bindTileEntitySpecialRenderer(TEPipes.class, new RenderBlockPipes());
-ClientRegistry.bindTileEntitySpecialRenderer(TECylinder.class, new RenderBlockCylinder());
 ClientRegistry.bindTileEntitySpecialRenderer(TEMashineWater.class, new RenderBlockMashineWater());
 //ClientRegistry.bindTileEntitySpecialRenderer(TEWoodBlocks.class, new RenderBlockWoodBlocks());
 
@@ -125,10 +121,8 @@ MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.pr
 MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_blender), new ItemRenderBlender());
 MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_grills), new ItemRenderGrills());
 MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_box_particles), new ItemRenderBoxParticles());
-MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_balls), new ItemRenderBalls());
 MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_jar01), new ItemRenderBlockJar01());
 MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_pipes), new ItemRenderBlockPipes());
-MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_cylinder), new ItemRenderBlockCylinder());
 MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_mashine_waiter), new ItemRenderBlockMashineWater());
 MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_rock_blocks), new ItemRenderBlockRockBlocks());
 MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_glass_blocks), new ItemRenderBlockGlassBlocks());

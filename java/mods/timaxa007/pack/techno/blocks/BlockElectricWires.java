@@ -9,6 +9,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -21,7 +22,7 @@ public class BlockElectricWires extends BlockContainer {
 
 public BlockElectricWires() {
 super(Material.glass);
-setCreativeTab(PackTechno.proxy.tab_techno_pack);
+setCreativeTab(PackTechno.proxy.tab_techno);
 setBlockTextureName("glass");
 setBlockName("wires");
 }
@@ -67,7 +68,7 @@ if (tag != null) {
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for (int j = 0; j < TileTexture.texTest01.length; ++j) {
 list.add(addTag(j, 1, 0xFFFFFF));
 list.add(addTag(j, 2, 0xFFFFFF));

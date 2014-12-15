@@ -27,7 +27,7 @@ public class ItemParticlesGun extends Item {
 public ItemParticlesGun() {
 super();
 setMaxStackSize(1);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setTextureName("timaxa007:item_weapons");
 setUnlocalizedName("item_weapons");
 }

@@ -2,13 +2,13 @@ package mods.timaxa007.pack.furniture.blocks;
 
 import java.util.List;
 
-import mods.timaxa007.lib.TileTexture;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.te.TEArmChair;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -21,7 +21,7 @@ public class BlockArmChair extends Block implements ITileEntityProvider {
 
 public BlockArmChair() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(0.5F);
 setResistance(2.5F);
 setStepSound(soundTypeWood);
@@ -45,7 +45,7 @@ return addTag(0, 0);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 //for(int j = 0; j < TileTexture.texTest01.length; ++j) {
 //for(byte i=0;i<16;++i) {
 int j=0;

@@ -12,6 +12,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -24,7 +25,7 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 
 public BlockFoods() {
 super(Material.glass);
-setCreativeTab(PackStock.proxy.tab_food_pack);
+setCreativeTab(PackStock.proxy.tab_food);
 setHardness(0.25F);
 setResistance(0.5F);
 setBlockTextureName("planks_oak");
@@ -98,7 +99,7 @@ world.setBlockToAir(x, y, z);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for (int j = 1; j < FoodForBlock.food_list.length; ++j) {
 if (FoodForBlock.food_list[j] != null) {
 list.add(addTag(j, 0, FoodForBlock.food_list[j].getColor1(), FoodForBlock.food_list[j].getColor2()));

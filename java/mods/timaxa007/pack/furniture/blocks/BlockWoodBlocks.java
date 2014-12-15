@@ -92,7 +92,7 @@ public static String[] type_block = new String[] {
 
 public BlockWoodBlocks() {
 super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(0.75F);
 setResistance(7.0F);
 setStepSound(soundTypeWood);

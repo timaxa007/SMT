@@ -112,7 +112,7 @@ public static GerminationPlants crop_kelp = new GerminationPlants("crop_kelp").s
 
 public ItemGerminationPlants() {
 super();
-setCreativeTab(PackStock.proxy.tab_plant_pack);
+setCreativeTab(PackStock.proxy.tab_plant);
 setHasSubtypes(true);
 setMaxDamage(0);
 setTextureName("timaxa007:base_seed");

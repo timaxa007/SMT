@@ -34,7 +34,7 @@ public static String[] armor_type_name = new String[] {
 
 public ArmorCostumes(ArmorMaterial par2, int par3, int par4) {
 super(par2, par3, par4);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 }
 
 public enum costumes {

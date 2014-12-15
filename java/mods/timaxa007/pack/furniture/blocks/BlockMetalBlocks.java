@@ -40,7 +40,7 @@ public static String[] type_block = new String[] {
 
 public BlockMetalBlocks() {
 super(Material.iron);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(5.0F);
 setResistance(10.0F);
 setStepSound(soundTypeMetal);

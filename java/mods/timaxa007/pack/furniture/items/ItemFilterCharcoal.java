@@ -12,7 +12,7 @@ public ItemFilterCharcoal() {
 super();
 setMaxStackSize(1);
 setMaxDamage(8);
-//setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+//setCreativeTab(PackFurniture.proxy.tab_furniture);
 //setTextureName(PackInfo.MODID+":filter_charcoal");
 setTextureName("timaxa007:filter_charcoal");
 setUnlocalizedName("filter_charcoal");

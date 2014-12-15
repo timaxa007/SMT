@@ -10,7 +10,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Recipes_Stock {
 
 public static void list() {
-
+/*
 GameRegistry.addRecipe(addTagCake(PackStock.proxy.block_cakes, "Standart"), new Object[]{
 "SGS", "WVW", 'W', Items.wheat, 'S', Items.sugar, 'V', Items.milk_bucket, 'G', Items.egg});
 
@@ -25,7 +25,7 @@ GameRegistry.addRecipe(addTagCake(PackStock.proxy.block_cakes, "Vegetable"), new
 
 GameRegistry.addRecipe(addTagCake(PackStock.proxy.block_cakes, "Meat"), new Object[]{
 "III", "SGS", "WVW", 'W', Items.wheat, 'S', Items.sugar, 'V', Items.milk_bucket, 'G', Items.egg, 'I', Items.porkchop});
-
+*/
 }
 
 private static ItemStack addTagCake(Block par1, String par2) {

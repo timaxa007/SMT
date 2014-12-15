@@ -24,7 +24,7 @@ public class ItemKitchenware extends Item {
 
 public ItemKitchenware() {
 super();
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHasSubtypes(true);
 setMaxDamage(0);
 setUnlocalizedName("kitchenware");

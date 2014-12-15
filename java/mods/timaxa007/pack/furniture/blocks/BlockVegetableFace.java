@@ -46,7 +46,7 @@ public static String[] type_face = new String[] {
 
 public BlockVegetableFace() {
 super(Material.gourd);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(0.5F);
 setResistance(2.5F);
 setStepSound(soundTypeWood);

@@ -34,7 +34,7 @@ public static String[] type_block = new String[] {
 
 public BlockBlocks(int id, Material mat) {
 super(mat);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setBlockTextureName("planks_oak");
 setBlockName("block_blocks");
 }

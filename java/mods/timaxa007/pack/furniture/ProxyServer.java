@@ -23,7 +23,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tab_furniture_pack = new TabFurniturePack("tab_furniture_pack");
+public static CreativeTabs tab_furniture = new TabFurniture("tab_furniture");
 
 public static ArmorMaterial CLOTHWOOL = EnumHelper.addArmorMaterial("CLOTHWOOL", 6, new int[] {2, 3, 2, 1}, 10);
 public static ArmorMaterial COSTUME = EnumHelper.addArmorMaterial("COSTUME", 0, new int[] {2, 2, 2, 1}, 3);
@@ -109,12 +109,10 @@ public static Block block_arm_chair;
 public static Block block_blender;
 public static Block block_grills;
 public static Block block_box_particles;
-public static Block block_balls;
 public static Block block_bonfires;
 public static Block block_bonfires_burning;
 public static Block block_jar01;
 public static Block block_pipes;
-public static Block block_cylinder;
 public static Block block_mashine_waiter;
 public static Block block_rock_blocks;
 public static Block block_glass_blocks;
@@ -175,10 +173,8 @@ public static int render_block_armchair_modelID;
 public static int render_block_blender_modelID;
 public static int render_block_grills_modelID;
 public static int render_block_box_particles_modelID;
-public static int render_block_balls_modelID;
 public static int render_block_jar01_modelID;
 public static int render_block_pipes_modelID;
-public static int render_block_cylinder_modelID;
 public static int render_block_mashine_waiter_modelID;
 
 //GUI
@@ -230,7 +226,7 @@ air_light_14 = new AirLight().setLightLevel(0.875F);
 air_light_15 = new AirLight().setLightLevel(0.9375F);
 air_light_16 = new AirLight().setLightLevel(1.0F);
 
-block_light_0 = new BlockLight().setLightLevel(0.0F).setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+block_light_0 = new BlockLight().setLightLevel(0.0F).setCreativeTab(PackFurniture.proxy.tab_furniture);
 block_light_1 = new BlockLight().setLightLevel(0.0625F);
 block_light_2 = new BlockLight().setLightLevel(0.125F);
 block_light_3 = new BlockLight().setLightLevel(0.1875F);
@@ -279,12 +275,10 @@ block_arm_chair = new BlockArmChair();
 block_blender = new BlockBlender();
 block_grills = new BlockGrills();
 block_box_particles = new BlockBoxParticles();
-block_balls = new BlockBalls();
 block_bonfires = new BlockBonfires().setLightLevel(0.0F);
 block_bonfires_burning = new BlockBonfires().setLightLevel(0.75F);
 block_jar01 = new BlockJar01();
 block_pipes = new BlockPipes();
-block_cylinder = new BlockCylinder();
 block_mashine_waiter = new BlockMashineWater();
 block_rock_blocks = new BlockRockBlocks();
 block_glass_blocks = new BlockGlassBlocks();
@@ -345,10 +339,8 @@ render_block_armchair_modelID = -1;
 render_block_blender_modelID = -1;
 render_block_grills_modelID = -1;
 render_block_box_particles_modelID = -1;
-render_block_balls_modelID = -1;
 render_block_jar01_modelID = -1;
 render_block_pipes_modelID = -1;
-render_block_cylinder_modelID = -1;
 render_block_mashine_waiter_modelID = -1;
 
 //Blocks
@@ -431,12 +423,10 @@ GameRegistry.registerBlock(block_arm_chair, ItemBlockArmChair.class, "BlockArmCh
 GameRegistry.registerBlock(block_blender, ItemBlockBlender.class, "BlockBlender");
 GameRegistry.registerBlock(block_grills, ItemBlockGrills.class, "BlockGrills");
 GameRegistry.registerBlock(block_box_particles, ItemBlockBoxParticles.class, "BlockBoxParticles");
-GameRegistry.registerBlock(block_balls, "BlockBalls");
 GameRegistry.registerBlock(block_bonfires, "BlockBonfires");
 GameRegistry.registerBlock(block_bonfires_burning, "BlockBonfiresBurning");
 GameRegistry.registerBlock(block_jar01, "BlockJar01");
 GameRegistry.registerBlock(block_pipes, "BlockPipes");
-GameRegistry.registerBlock(block_cylinder, "BlockCylinder");
 GameRegistry.registerBlock(block_mashine_waiter, "BlockMashineWater");
 GameRegistry.registerBlock(block_rock_blocks, ItemBlockRockBlocks.class, "BlockRockBlocks");
 GameRegistry.registerBlock(block_glass_blocks, ItemBlockGlassBlocks.class, "BlockGlassBlocks");
@@ -498,7 +488,6 @@ GameRegistry.registerTileEntity(TEArmChair.class, "TEArmChair");
 GameRegistry.registerTileEntity(TEBlender.class, "TEBlender");
 GameRegistry.registerTileEntity(TEGrills.class, "TEGrills");
 GameRegistry.registerTileEntity(TEBoxParticles.class, "TEBoxParticles");
-GameRegistry.registerTileEntity(TEBalls.class, "TEBalls");
 GameRegistry.registerTileEntity(TEJar01.class, "TEJar01");
 GameRegistry.registerTileEntity(TEPipes.class, "TEPipes");
 GameRegistry.registerTileEntity(TEMashineWater.class, "TEMashineWater");

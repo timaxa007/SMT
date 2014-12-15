@@ -30,7 +30,7 @@ public static final String AUTHOR = "timaxa007";
 @SidedProxy(clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyServer")
 public static ProxyServer proxy;
 
-public static CreativeTabs tabTMS = new TabTMS("tabTMS");
+public static CreativeTabs tab_tms = new TabTMS("tab_tms");
 
 public static boolean show_tip_info_testing;
 public static boolean disable_sub_mod_furniture;

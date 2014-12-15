@@ -7,6 +7,7 @@ import mods.timaxa007.pack.furniture.te.TEChair;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -19,7 +20,7 @@ public class BlockChair extends BlockContainer{
 
 public BlockChair() {
 super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(0.5F);
 setBlockTextureName("planks_oak");
 setBlockName("chairs");
@@ -42,7 +43,7 @@ return addTag(0, retre);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 
 //for(int j=0;j<TileTexture.getTexturesConstructionCount;++j) {
 //for(byte i=0;i<16;++i) {

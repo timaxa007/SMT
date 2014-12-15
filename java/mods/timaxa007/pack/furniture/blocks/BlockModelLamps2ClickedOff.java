@@ -25,7 +25,7 @@ public class BlockModelLamps2ClickedOff extends BlockContainer{
 
 public BlockModelLamps2ClickedOff() {
 super(Material.redstoneLight);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setStepSound(soundTypeGlass);
 setHardness(0.3F);
 setResistance(1.0F);

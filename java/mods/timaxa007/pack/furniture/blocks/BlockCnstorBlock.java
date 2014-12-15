@@ -13,6 +13,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -25,7 +26,7 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 
 public BlockCnstorBlock() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);
@@ -113,7 +114,7 @@ world.setBlockToAir(x, y, z);
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 for (int j = 0; j < TileTexture.texTest01.length; ++j) {
 //for (byte i = 0; i < 16; ++i) {
 //int j = 74;

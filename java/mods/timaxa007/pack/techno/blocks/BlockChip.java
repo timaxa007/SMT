@@ -9,6 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -27,7 +28,7 @@ private boolean isActive;
 public BlockChip() {
 super(Material.iron);
 setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
-setCreativeTab(PackTechno.proxy.tab_techno_pack);
+setCreativeTab(PackTechno.proxy.tab_techno);
 setHardness(0.5F);
 setResistance(1.0F);
 setBlockTextureName("iron_block");
@@ -144,7 +145,7 @@ if(tag.hasKey("Type")) {
 }
 
 @SideOnly(Side.CLIENT)
-public void getSubBlocks(int id, CreativeTabs table, List list) {
+public void getSubBlocks(Item id, CreativeTabs table, List list) {
 //for(int j=0;j<TileTexture.tt01.length;++j) {
 int j=0;
 list.add(addTag(j));

@@ -36,7 +36,7 @@ public static final String[] generatorNames = new String[] {
 
 public BlockGenerators() {
 super(Material.iron);
-setCreativeTab(PackTechno.proxy.tab_techno_pack);
+setCreativeTab(PackTechno.proxy.tab_techno);
 setStepSound(soundTypeMetal);
 setBlockTextureName("planks_oak");
 setBlockName("BlockGenerators");

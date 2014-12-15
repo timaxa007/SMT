@@ -26,7 +26,7 @@ super(Material.iron);
 setStepSound(soundTypeMetal);
 setBlockTextureName("iron_block");
 setHardness(0.5F);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setBlockName("mincer");
 }
 

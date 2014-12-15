@@ -27,7 +27,7 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 
 public BlockCnstorDoor() {
 super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
+setCreativeTab(PackFurniture.proxy.tab_furniture);
 setHardness(1.0F);
 setResistance(3.5F);
 setLightOpacity(0);

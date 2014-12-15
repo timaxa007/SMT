@@ -4,28 +4,21 @@ import mods.timaxa007.pack.mining.blocks.*;
 import mods.timaxa007.pack.mining.items.*;
 import mods.timaxa007.pack.mining.list.ListMining;
 import mods.timaxa007.pack.mining.te.*;
-import mods.timaxa007.pack.mining.world.*;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tab_mining_pack = new TabMiningPack("tab_mining_pack");
-public static CreativeTabs tab_tools_pack = new TabToolsPack("tab_tools_pack");
+public static CreativeTabs tab_mining = new TabMining("tab_mining");
+public static CreativeTabs tab_tools = new TabTools("tab_tools");
 
 public static ArmorMaterial METALSMATERIAL = EnumHelper.addArmorMaterial("METALSMATERIAL", 15, new int[] {3, 7, 5, 3}, 10);
 public static ArmorMaterial GEMSMATERIAL = EnumHelper.addArmorMaterial("GEMSMATERIAL", 15, new int[] {5, 10, 7, 4}, 12);
