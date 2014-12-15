@@ -46,7 +46,7 @@ if (!world.isRemote);
 @Override
 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 if (!world.isRemote && entity instanceof EntityPlayer) {
-int l = ActionModel.rotation_model_45degrees_invert(entity.rotationYaw);
+int l = ActionModel.rotation_model_8sides_invert(entity.rotationYaw);
 world.setBlockMetadataWithNotify(x, y, z, l, 3);
 }
 }

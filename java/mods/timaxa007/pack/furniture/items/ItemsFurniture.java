@@ -20,7 +20,7 @@ setUnlocalizedName("items_furniture");
 }
 
 public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-if (!world.isRemote) player.addChatMessage(new ChatComponentText("F - " + ActionModel.rotation_model_90degrees_invert(player)));
+if (!world.isRemote) player.addChatMessage(new ChatComponentText("F - " + ActionModel.rotation_model_8sides_invert(player)));
 return is;
 }
 
