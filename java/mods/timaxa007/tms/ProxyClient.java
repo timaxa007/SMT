@@ -1,14 +1,13 @@
 package mods.timaxa007.tms;
 
-//import cpw.mods.fml.client.registry.KeyBindingRegistry;
+import cpw.mods.fml.common.FMLLog;
+import org.apache.logging.log4j.Level;
 
 public class ProxyClient extends ProxyServer {
 
-@Override
-public void regLoad() {
-super.regLoad();
-//KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
-
-}
-
+    @Override
+    public void initialize() {
+        super.initialize();
+        if(Core.debug) FMLLog.log(Core.MODID, Level.DEBUG, "Successful initialized client part.");
+    }
 }
