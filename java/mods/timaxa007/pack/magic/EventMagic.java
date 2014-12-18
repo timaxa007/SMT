@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.magic;
 
-import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.pack.furniture.common.main.PackFurniture;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
