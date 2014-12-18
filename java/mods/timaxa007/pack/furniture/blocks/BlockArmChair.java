@@ -20,74 +20,74 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockArmChair extends Block implements ITileEntityProvider {
 
-   public BlockArmChair() {
-      super(Material.wood);
-      setCreativeTab(PackFurniture.proxy.tab_furniture_pack);
-      setHardness(0.5F);
-      setResistance(2.5F);
-      setStepSound(soundTypeWood);
-      setBlockTextureName("planks_oak");
-      setBlockName("armchair");
-   }
+	public BlockArmChair() {
+		super(Material.wood);
+		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setHardness(0.5F);
+		setResistance(2.5F);
+		setStepSound(soundTypeWood);
+		setBlockTextureName("planks_oak");
+		setBlockName("armchair");
+	}
 
-   @Override
-   public TileEntity createNewTileEntity(World world, int meta) {
-      return new TileEntityArmChair();
-   }
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityArmChair();
+	}
 
-   @Override
-   public int getRenderType() {
-      return PackFurniture.proxy.render_block_armchair_modelID;
-   }
+	@Override
+	public int getRenderType() {
+		return PackFurniture.proxy.render_block_armchair_modelID;
+	}
 
-   @Override
-   public boolean isOpaqueCube() {
-      return false;
-   }
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
 
-   @Override
-   public boolean renderAsNormalBlock() {
-      return false;
-   }
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
 
-   @Override
-   public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-      TileEntity te = world.getTileEntity(x, y, z);
-      if((te != null && te instanceof TileEntityArmChair)) {
-         TileEntityArmChair tile = (TileEntityArmChair) te;
-         return addTag(tile.getType(), tile.getSize());
-      } else return addTag("minecraft:air", 0);
-   }
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if ((te != null && te instanceof TileEntityArmChair)) {
+			TileEntityArmChair tile = (TileEntityArmChair) te;
+			return addTag(tile.getType(), tile.getSize());
+		} else return addTag("minecraft:air", 0);
+	}
 
-   @Override
-   @SideOnly(Side.CLIENT)
-   public void getSubBlocks(Item item, CreativeTabs table, List list) {
-      for (String type : (Set<String>) Block.blockRegistry.getKeys()) {
-         Block b = (Block) Block.blockRegistry.getObject(type);
-         if (b.getIcon(1, 0) != null && !(b instanceof ITileEntityProvider)) {
-            list.add(addTag(type, 0));
-            list.add(addTag(type, 1));
-            list.add(addTag(type, 2));
-            list.add(addTag(type, 3));
-            list.add(addTag(type, 4));
-            list.add(addTag(type, 5));
-            list.add(addTag(type, 6));
-            list.add(addTag(type, 7));
-            list.add(addTag(type, 8));
-            list.add(addTag(type, 9));
-            list.add(addTag(type, 10));
-            list.add(addTag(type, 11));
-          }
-       }
-   }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item item, CreativeTabs table, List list) {
+		for (String type : (Set<String>) Block.blockRegistry.getKeys()) {
+			Block b = (Block) Block.blockRegistry.getObject(type);
+			if (b.getIcon(1, 0) != null && !(b instanceof ITileEntityProvider)) {
+				list.add(addTag(type, 0));
+				list.add(addTag(type, 1));
+				list.add(addTag(type, 2));
+				list.add(addTag(type, 3));
+				list.add(addTag(type, 4));
+				list.add(addTag(type, 5));
+				list.add(addTag(type, 6));
+				list.add(addTag(type, 7));
+				list.add(addTag(type, 8));
+				list.add(addTag(type, 9));
+				list.add(addTag(type, 10));
+				list.add(addTag(type, 11));
+			}
+		}
+	}
 
-   private static ItemStack addTag(String par1, int par2) {
-      ItemStack is=new ItemStack(PackFurniture.proxy.block_arm_chair, 1, 0);
-      NBTTagCompound tag=new NBTTagCompound();
-      tag.setString("Type", par1);
-      tag.setInteger("Size", par2);
-      is.setTagCompound(tag);
-      return is;
-   }
+	private static ItemStack addTag(String par1, int par2) {
+		ItemStack is=new ItemStack(PackFurniture.proxy.block_arm_chair, 1, 0);
+		NBTTagCompound tag=new NBTTagCompound();
+		tag.setString("Type", par1);
+		tag.setInteger("Size", par2);
+		is.setTagCompound(tag);
+		return is;
+	}
 
 }

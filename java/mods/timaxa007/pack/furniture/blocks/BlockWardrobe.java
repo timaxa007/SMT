@@ -31,12 +31,12 @@ public TileEntity createNewTileEntity(World world, int meta) {return new TEWardr
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
-public int idPicked(World wrd, int x, int y, int z) {return 0;}
+public int idPicked(World world, int x, int y, int z) {return 0;}
 
-public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getTileEntity(x, y, z);
+public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+TileEntity te=world.getTileEntity(x, y, z);
 int retre=0;
-if((te!=null)&&(te instanceof TEWardrobe)) {
+if ((te != null)&&(te instanceof TEWardrobe)) {
 retre=((TEWardrobe)te).getType();
 }
 return addTag(0, retre);

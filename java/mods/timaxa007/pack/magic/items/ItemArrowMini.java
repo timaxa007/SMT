@@ -5,11 +5,11 @@ import net.minecraft.item.Item;
 
 public class ItemArrowMini extends Item {
 
-public ItemArrowMini() {
-super();
-setCreativeTab(PackMagic.proxy.tab_magic);
-setTextureName("arrow");
-setUnlocalizedName("arrow_mini");
-}
+	public ItemArrowMini() {
+		super();
+		setCreativeTab(PackMagic.proxy.tab_magic);
+		setTextureName("arrow");
+		setUnlocalizedName("arrow_mini");
+	}
 
 }

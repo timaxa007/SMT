@@ -5,13 +5,13 @@ import net.minecraft.item.Item;
 
 public class TabTechno extends CreativeTabs {
 
-public TabTechno(String name) {
-super(name);
-}
+	public TabTechno(String name) {
+		super(name);
+	}
 
-@Override
-public Item getTabIconItem() {
-return PackTechno.proxy.tool_electric_wrench;
-}
+	@Override
+	public Item getTabIconItem() {
+		return PackTechno.proxy.tool_electric_wrench;
+	}
 
 }

@@ -10,63 +10,60 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
-public class BlockRenderBookshelf extends TileEntitySpecialRenderer{
-private IModelCustom mdl1;
-private IModelCustom mdl2;
-private IModelCustom mdlB;
+public class BlockRenderBookshelf extends TileEntitySpecialRenderer {
+	private static final IModelCustom mdl1 = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/bookshelf_side.obj"));
+	private static final IModelCustom mdl2 = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/bookshelf_shelf.obj"));
+	private static final IModelCustom mdlB = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/book.obj"));
 
-public BlockRenderBookshelf() {
-mdl1=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/bookshelf_side.obj"));
-mdl2=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/bookshelf_shelf.obj"));
-mdlB=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/book.obj"));
-}
+	public BlockRenderBookshelf() {
 
-public void renderTileEntityAt(TileEntity tileEntity, double d1, double d2, double d3, float f) {
-this.renderTE((TEBookshelf)tileEntity, d1, d2, d3, f);
-}
+	}
 
-public void renderTE(TEBookshelf tileEntity, double d1, double d2, double d3, float f) {
-//int meta=tileEntity.getBlockMetadata();
-int tex=tileEntity.getType();
-int rot=tileEntity.getRotation();
-//int cont=tileEntity.getCount();
-int cont=0;
-//int rot=2;
-float par1=0.0625F;
-float par2=0.01F;
+	public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float f) {
+		renderTE((TEBookshelf)te, dx, dy, dz, f);
+	}
 
-GL11.glPushMatrix();
-GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+	private void renderTE(TEBookshelf te, double dx, double dy, double dz, float f) {
+		int tex = te.getType();
+		int rot = te.getRotation();
+		//int cont = te.getCount();
+		int cont = 0;
+		//int rot = 2;
+		float par1 = 0.0625F;
+		float par2 = 0.01F;
 
-switch(rot) {
-case 0:GL11.glRotatef(-180F, 0F, 0F, 1F);break;
-case 3:GL11.glRotatef(-90F, 0F, 0F, 1F);break;
-case 2:GL11.glRotatef(0F, 0F, 0F, 1F);break;
-case 1:GL11.glRotatef(90F, 0F, 0F, 1F);break;
-default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
-}
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float)dx+0.5F, (float)dy, (float)dz+0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-this.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
-mdl1.renderAll();
-GL11.glPopMatrix();
+		switch(rot) {
+		case 0:GL11.glRotatef(-180F, 0F, 0F, 1F);break;
+		case 3:GL11.glRotatef(-90F, 0F, 0F, 1F);break;
+		case 2:GL11.glRotatef(0F, 0F, 0F, 1F);break;
+		case 1:GL11.glRotatef(90F, 0F, 0F, 1F);break;
+		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
+		}
 
-GL11.glPushMatrix();
-GL11.glTranslatef((float)d1+0.5F, (float)d2+(par1*7), (float)d3+0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		mdl1.renderAll();
+		GL11.glPopMatrix();
 
-switch(rot) {
-case 0:GL11.glRotatef(-180F, 0F, 0F, 1F);break;
-case 3:GL11.glRotatef(-90F, 0F, 0F, 1F);break;
-case 2:GL11.glRotatef(0F, 0F, 0F, 1F);break;
-case 1:GL11.glRotatef(90F, 0F, 0F, 1F);break;
-default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
-}
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float)dx+0.5F, (float)dy+(par1*7), (float)dz+0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-this.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
-mdl2.renderAll();
-GL11.glPopMatrix();
+		switch(rot) {
+		case 0:GL11.glRotatef(-180F, 0F, 0F, 1F);break;
+		case 3:GL11.glRotatef(-90F, 0F, 0F, 1F);break;
+		case 2:GL11.glRotatef(0F, 0F, 0F, 1F);break;
+		case 1:GL11.glRotatef(90F, 0F, 0F, 1F);break;
+		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
+		}
 
-}
+		bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		mdl2.renderAll();
+		GL11.glPopMatrix();
+
+	}
 
 }

@@ -18,55 +18,52 @@ import org.lwjgl.input.Keyboard;
 
 public class ItemBlockBarrels extends ItemBlock{
 
-public ItemBlockBarrels(Block id) {
-super(id);
-setMaxDamage(0);
-setHasSubtypes(true);
-}
+	public ItemBlockBarrels(Block id) {
+		super(id);
+		setMaxDamage(0);
+		setHasSubtypes(true);
+	}
 
-public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float hitZ) {
-if(!player.canPlayerEdit(x, y, z, meta, is)) {return false;}
-else{
-if(hitX==1.0F) {x++;}
-if(hitX==0.0F) {x--;}
-if(hitZ==1.0F) {z++;}
-if(hitZ==0.0F) {z--;}
-if(hitY==1.0F) {y++;}
-if(hitY==0.0F) {y--;}
+	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if (!player.canPlayerEdit(x, y, z, side, is)) {return false;}
+		else {
+			if (hitX==1.0F) {x++;}
+			if (hitX==0.0F) {x--;}
+			if (hitZ==1.0F) {z++;}
+			if (hitZ==0.0F) {z--;}
+			if (hitY==1.0F) {y++;}
+			if (hitY==0.0F) {y--;}
 
-world.setBlock(x, y, z, PackFurniture.proxy.block_barrels, 0, 3);
-TileEntity te=world.getTileEntity(x, y, z);
-NBTTagCompound tag = is.getTagCompound();
-if(te!=null && te instanceof TEBarrels) {
+			world.setBlock(x, y, z, PackFurniture.proxy.block_barrels, 0, 3);
+			TileEntity te = world.getTileEntity(x, y, z);
+			NBTTagCompound tag = is.getTagCompound();
+			if (te != null && te instanceof TEBarrels) {
 
-int l=MathHelper.floor_double((double)(player.rotationYaw*4.0F/360.0F)+0.5D)&3;
-((TEBarrels)te).setRotation(l);
+				int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				((TEBarrels)te).setRotation(l);
 
-if(tag!=null) {
-((TEBarrels)te).setTypeB(tag.getInteger("TypeB"));
-((TEBarrels)te).setTypeP(tag.getInteger("TypeP"));
-((TEBarrels)te).setTypeCD(tag.getInteger("TypeCD"));
-((TEBarrels)te).setLie(tag.getBoolean("Lie"));
-}else{
-((TEBarrels)te).setTypeB(0);
-((TEBarrels)te).setTypeP(1);
-((TEBarrels)te).setTypeCD(0);
-((TEBarrels)te).setLie(false);
-}
-}
-return true;
-}
-}
+				if (tag != null) {
+					if (tag.hasKey("TypeB")) ((TEBarrels)te).setTypeB(tag.getInteger("TypeB"));
+					if (tag.hasKey("TypeP")) ((TEBarrels)te).setTypeP(tag.getInteger("TypeP"));
+					if (tag.hasKey("TypeCD")) ((TEBarrels)te).setTypeCD(tag.getInteger("TypeCD"));
+					if (tag.hasKey("Lie")) ((TEBarrels)te).setLie(tag.getBoolean("Lie"));
+				}
+			}
+			return true;
+		}
+	}
 
-public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-NBTTagCompound tag = is.getTagCompound();
-if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)||Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-if(tag.hasKey("TypeB")) {list.add("TypeB: "+tag.getInteger("TypeB")+".");}
-if(tag.hasKey("TypeP")) {list.add("TypeP: "+tag.getInteger("TypeP")+".");}
-if(tag.hasKey("TypeCD")) {list.add("TypeCD: "+tag.getInteger("TypeCD")+".");}
-}else{
-list.add(Option.prshift);
-}
-}
+	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+			if (tag != null) {
+				if (tag.hasKey("TypeB")) list.add("TypeB: "+tag.getInteger("TypeB")+".");
+				if (tag.hasKey("TypeP")) list.add("TypeP: "+tag.getInteger("TypeP")+".");
+				if (tag.hasKey("TypeCD")) list.add("TypeCD: "+tag.getInteger("TypeCD")+".");
+			}
+		} else {
+			list.add(Option.prshift);
+		}
+	}
 
 }

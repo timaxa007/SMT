@@ -31,11 +31,11 @@ public TileEntity createNewTileEntity(World world, int meta) {return new TETable
 public int getRenderType() {return -1;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
-public int idPicked(World wrd, int x, int y, int z) {return 0;}
+public int idPicked(World world, int x, int y, int z) {return 0;}
 
-public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getTileEntity(x, y, z);
-if((te!=null)&&(te instanceof TETable)) {
+public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+TileEntity te=world.getTileEntity(x, y, z);
+if ((te != null)&&(te instanceof TETable)) {
 return addTag(0, ((TETable)te).getType(), ((TETable)te).getSize());
 }
 return addTag(0, 0, 0);

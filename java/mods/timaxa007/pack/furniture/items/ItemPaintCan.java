@@ -52,24 +52,24 @@ this.setUnlocalizedName("ItemPaintCan");
 
 public String getUnlocalizedName(ItemStack is) {
 NBTTagCompound tag = is.getTagCompound();
-if(tag != null) {
+if (tag != null) {
 int i=MathHelper.clamp_int(tag.getInteger("Color"), 0, (paintCanColorType.length-1));
 return super.getUnlocalizedName()+"."+paintCanColorType[i];
-}else{
+} else {
 return super.getUnlocalizedName();
 }
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 NBTTagCompound tag = is.getTagCompound();
-if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-	if(tag!=null) {
+if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+	if (tag != null) {
 	list.add(Option.getText("Color")+": "+Option.GetColors(tag.getInteger("Color"), "a")+".");
-	}else{
+	} else {
 	list.add(Option.getText("Color")+": Empty.");
 	}
 list.add(Option.getText("Type")+": Tool / Brush.");
-}else{
+} else {
 list.add(Option.prshift);
 }
 }
@@ -98,12 +98,12 @@ public boolean requiresMultipleRenderPasses() {return true;}
 @SideOnly(Side.CLIENT)
 public int getColorFromItemStack(ItemStack is, int renderPass) {
 NBTTagCompound tag = is.getTagCompound();
-if(renderPass==0) {
+if (renderPass==0) {
 return 16777215;
-}else{
+} else {
 
-if(tag==null) {return 16777215;}
-else{return GetColors.getHexColors[tag.getInteger("Color")];}
+if (tag==null) {return 16777215;}
+else {return GetColors.getHexColors[tag.getInteger("Color")];}
 
 }
 }

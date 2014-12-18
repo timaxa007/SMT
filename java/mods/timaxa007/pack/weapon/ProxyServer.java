@@ -16,59 +16,59 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-public static CreativeTabs tab_weapons = new TabWeapons("tab_weapons");
+	public static CreativeTabs tab_weapons = new TabWeapons("tab_weapons");
 
-//Blocks
-public static Block block_claymore;
+	//Blocks
+	public static Block block_claymore;
 
-//Items
-public static Item items_for_weapons;
-public static Item item_molotov_cocktail;
-public static Item item_weapons;
-public static Item item_ammos;
-public static Item item_magazines;
+	//Items
+	public static Item items_for_weapons;
+	public static Item item_molotov_cocktail;
+	public static Item item_weapons;
+	public static Item item_ammos;
+	public static Item item_magazines;
 
-public void preInit(FMLPreInitializationEvent event) {
-Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
-cfg.load();
+	public void preInit(FMLPreInitializationEvent event) {
+		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		cfg.load();
 
-cfg.save();
+		cfg.save();
 
-new ListWeapon();
+		new ListWeapon();
 
-//Blocks
-block_claymore = new BlockClaymore();
+		//Blocks
+		block_claymore = new BlockClaymore();
 
-//Items
-items_for_weapons = new ItemsWeapons();
-item_molotov_cocktail = new MolotovCocktail();
-item_weapons = new ItemWeapons();
-item_ammos = new ItemAmmos();
-item_magazines = new ItemMagazines();
+		//Items
+		items_for_weapons = new ItemsWeapons();
+		item_molotov_cocktail = new MolotovCocktail();
+		item_weapons = new ItemWeapons();
+		item_ammos = new ItemAmmos();
+		item_magazines = new ItemMagazines();
 
-//Blocks
-GameRegistry.registerBlock(block_claymore, "BlockClaymore");
+		//Blocks
+		GameRegistry.registerBlock(block_claymore, "BlockClaymore");
 
-//Items
-GameRegistry.registerItem(items_for_weapons, "ItemsWeapons");
-GameRegistry.registerItem(item_molotov_cocktail, "MolotovCocktail");
-GameRegistry.registerItem(item_weapons, "ItemWeapons");
-GameRegistry.registerItem(item_ammos, "ItemAmmos");
-GameRegistry.registerItem(item_magazines, "ItemMagazines");
+		//Items
+		GameRegistry.registerItem(items_for_weapons, "ItemsWeapons");
+		GameRegistry.registerItem(item_molotov_cocktail, "MolotovCocktail");
+		GameRegistry.registerItem(item_weapons, "ItemWeapons");
+		GameRegistry.registerItem(item_ammos, "ItemAmmos");
+		GameRegistry.registerItem(item_magazines, "ItemMagazines");
 
-//Blocks
-GameRegistry.registerTileEntity(TEClaymore.class, "TEClaymore");
+		//Blocks
+		GameRegistry.registerTileEntity(TEClaymore.class, "TEClaymore");
 
-MinecraftForge.EVENT_BUS.register(new EventPackWeapon());
+		MinecraftForge.EVENT_BUS.register(new EventPackWeapon());
 
-Recipes_Weapon.list();
+		Recipes_Weapon.list();
 
-}
+	}
 
-public void init() {
+	public void init() {
 
-NetworkRegistry.INSTANCE.registerGuiHandler(PackWeapon.MODID, new HandlerGuiWeapons());
+		NetworkRegistry.INSTANCE.registerGuiHandler(PackWeapon.MODID, new HandlerGuiWeapons());
 
-}
+	}
 
 }

@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.techno;
 
-public class PacketHandlerTechno{
+public class PacketHandlerTechno {
 
-public PacketHandlerTechno() {
+	public PacketHandlerTechno() {
 
-}
+	}
 
 }

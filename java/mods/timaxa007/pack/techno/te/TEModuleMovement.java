@@ -1,41 +1,57 @@
 package mods.timaxa007.pack.techno.te;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 public class TEModuleMovement extends TileEntity {
 
-private int types;
-private int rot;
+	private int type;
+	private int rot;
 
-public TEModuleMovement() {
+	public TEModuleMovement() {
+		type = 0;
+		rot = 0;
+	}
 
-}
+	public void setType(int i) {
+		type = i;
+	}
 
-public int getTypes() {return this.types;}
-public int getRot() {return this.rot;}
+	public void setRot(int i) {
+		rot = i;
+	}
 
-public void setTypes(int i) {this.types=i;}
-public void setRot(int i) {this.rot=i;}
+	public int getType() {
+		return type;
+	}
 
-public void readFromNBT(NBTTagCompound nbt) {
-super.readFromNBT(nbt);
-if(nbt.hasKey("Type")) {this.types=nbt.getInteger("Type");}
-if(nbt.hasKey("Rot")) {this.rot=nbt.getInteger("Rot");}
-}
+	public int getRot() {
+		return rot;
+	}
 
-public void writeToNBT(NBTTagCompound nbt) {
-super.writeToNBT(nbt);
-nbt.setInteger("Type", types);
-nbt.setInteger("Rot", rot);
-}
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		if (nbt.hasKey("Type")) type = nbt.getInteger("Type");
+		if (nbt.hasKey("Rot")) rot = nbt.getInteger("Rot");
+	}
 
-public Packet getDescriptionPacket() {
-NBTTagCompound nbt = new NBTTagCompound();
-writeToNBT(nbt);
-return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 0, nbt);
-}
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		nbt.setInteger("Type", type);
+		nbt.setInteger("Rot", rot);
+	}
+
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbt = new NBTTagCompound();
+		writeToNBT(nbt);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 0, nbt);
+	}
+
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
+		readFromNBT(packet.func_148857_g());
+	}
 
 }

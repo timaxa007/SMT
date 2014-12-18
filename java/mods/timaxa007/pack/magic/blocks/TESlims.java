@@ -4,8 +4,8 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TESlims extends TileEntity {
 
-public TESlims() {
+	public TESlims() {
 
-}
+	}
 
 }

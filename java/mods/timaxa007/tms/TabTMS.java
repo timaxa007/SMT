@@ -5,13 +5,13 @@ import net.minecraft.item.Item;
 
 public class TabTMS extends CreativeTabs {
 
-public TabTMS(String tabID) {
-super(tabID);
-}
+	public TabTMS(String tabID) {
+		super(tabID);
+	}
 
-@Override
-public Item getTabIconItem() {
-return Core.item_test;
-}
+	@Override
+	public Item getTabIconItem() {
+		return Core.item_test;
+	}
 
 }

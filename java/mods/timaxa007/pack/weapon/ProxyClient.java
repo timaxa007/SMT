@@ -15,34 +15,34 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class ProxyClient extends ProxyServer {
 
-//Blocks
-public static int renderBlockClaymoreModelID;
-Minecraft mc = Minecraft.getMinecraft();
+	//Blocks
+	public static int renderBlockClaymoreModelID;
+	Minecraft mc = Minecraft.getMinecraft();
 
-@Override
-public void init() {
-super.init();
+	@Override
+	public void init() {
+		super.init();
 
-renderBlockClaymoreModelID = RenderingRegistry.getNextAvailableRenderId();
+		renderBlockClaymoreModelID = RenderingRegistry.getNextAvailableRenderId();
 
-//Blocks
-ClientRegistry.bindTileEntitySpecialRenderer(TEClaymore.class, new BlockRenderClaymore());
+		//Blocks
+		ClientRegistry.bindTileEntitySpecialRenderer(TEClaymore.class, new BlockRenderClaymore());
 
-//Blocks
-MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapon.proxy.block_claymore), new ItemRendererClaymore());
-//Item
-MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.item_weapons, new ItemRendererWeapons());
+		//Blocks
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapon.proxy.block_claymore), new ItemRendererClaymore());
+		//Item
+		MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.item_weapons, new ItemRendererWeapons());
 
-//RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderEntityBullet());
+		//RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderEntityBullet());
 
-MinecraftForge.EVENT_BUS.register(new EventGUI());
-MinecraftForge.EVENT_BUS.register(new EventSoundWeapon());
+		MinecraftForge.EVENT_BUS.register(new EventGUI());
+		MinecraftForge.EVENT_BUS.register(new EventSoundWeapon());
 
-}
+	}
 
-public void preInit(FMLPreInitializationEvent event) {
-super.preInit(event);
+	public void preInit(FMLPreInitializationEvent event) {
+		super.preInit(event);
 
-}
+	}
 
 }

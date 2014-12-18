@@ -10,73 +10,77 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
-public class ItemRenderWands implements IItemRenderer{
+public class ItemRenderWands implements IItemRenderer {
 
-private IModelCustom model;
+	private static final IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/wand.obj"));
 
-public ItemRenderWands() {
-model=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/wand.obj"));
-}
+	public ItemRenderWands() {
 
-@Override
-public boolean handleRenderType(ItemStack is, ItemRenderType type) {return true;}
+	}
 
-@Override
-public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {return true;}
+	@Override
+	public boolean handleRenderType(ItemStack is, ItemRenderType type) {
+		return true;
+	}
 
-@Override
-public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-NBTTagCompound tag = is.getTagCompound();
-//int tex=is.getItemDamage();
-int texS=0;
-int texC=0;
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {
+		return true;
+	}
 
-if(tag!=null) {
-if(tag.hasKey("Type")) {texS=tag.getInteger("Type");}
-if(tag.hasKey("Cap")) {texC=tag.getInteger("Cap");}
-}
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
+		NBTTagCompound tag = is.getTagCompound();
+		//int tex = is.getItemDamage();
+		int texS = 0;
+		int texC = 0;
 
-GL11.glPushMatrix();
-GL11.glTranslatef(0.5F, 0.0F, 0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		if (tag != null) {
+			if (tag.hasKey("Type")) texS = tag.getInteger("Type");
+			if (tag.hasKey("Cap")) texC = tag.getInteger("Cap");
+		}
 
-if(type==type.EQUIPPED) {
-GL11.glScalef(1.2F, 1.2F, 1.2F);
-GL11.glRotatef(-70.0F, 1.0F, 0.0F, 0.0F);
-GL11.glRotatef(-45.0F, 0.0F, 1.0F, 0.0F);
-GL11.glTranslatef(0.075F, -0.4F, -0.4F);
-}else if(type==type.EQUIPPED_FIRST_PERSON) {
-GL11.glScalef(1.0F, 1.0F, 1.0F);
-}else if(type==type.INVENTORY) {
-GL11.glScalef(0.8F, 0.8F, 0.8F);
-GL11.glTranslatef(0.0F, -0.5F, 0.0F);
-}else{
-//GL11.glTranslatef(0.0F, -0.7F, 0.0F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-GL11.glScalef(1.0F, 1.0F, 1.0F);
-}
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-switch(texS) {
-case 0:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"planks_birch.png"));break;
-case 1:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"planks_jungle.png"));break;
-case 2:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"planks_spruce.png"));break;
-default:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"planks_oak.png"));break;//4
-}
+		if (type == type.EQUIPPED) {
+			GL11.glScalef(1.2F, 1.2F, 1.2F);
+			GL11.glRotatef(-70.0F, 1.0F, 0.0F, 0.0F);
+			GL11.glRotatef(-45.0F, 0.0F, 1.0F, 0.0F);
+			GL11.glTranslatef(0.075F, -0.4F, -0.4F);
+		} else if (type == type.EQUIPPED_FIRST_PERSON) {
+			GL11.glScalef(1.0F, 1.0F, 1.0F);
+		} else if (type == type.INVENTORY) {
+			GL11.glScalef(0.8F, 0.8F, 0.8F);
+			GL11.glTranslatef(0.0F, -0.5F, 0.0F);
+		} else {
+			//GL11.glTranslatef(0.0F, -0.7F, 0.0F);
+			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+			GL11.glScalef(1.0F, 1.0F, 1.0F);
+		}
 
-this.model.renderPart("stick");
+		switch(texS) {
+		case 0:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"planks_birch.png"));break;
+		case 1:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"planks_jungle.png"));break;
+		case 2:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"planks_spruce.png"));break;
+		default:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"planks_oak.png"));break;//4
+		}
 
-switch(texC) {
-case 0:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"gold_block.png"));break;
-case 1:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"diamond_block.png"));break;
-case 2:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"emerald_block.png"));break;
-default:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"iron_block.png"));break;//4
-}
+		model.renderPart("stick");
 
-this.model.renderPart("cap_up");
-this.model.renderPart("cap_down");
+		switch(texC) {
+		case 0:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"gold_block.png"));break;
+		case 1:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"diamond_block.png"));break;
+		case 2:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"emerald_block.png"));break;
+		default:Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/"+"blocks/"+"iron_block.png"));break;//4
+		}
 
-GL11.glPopMatrix();
+		model.renderPart("cap_up");
+		model.renderPart("cap_down");
 
-}
+		GL11.glPopMatrix();
+
+	}
 
 }

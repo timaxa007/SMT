@@ -7,6 +7,6 @@ import mods.timaxa007.pack.stock.lib.GerminationPlants;
 
 public class Yam {
 
-public static GerminationPlants crop_yam = new GerminationPlants("crop_yam").setName("yam").setType("Crop").setTexture("yam").setPlantStats(3, 2, 1).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
+	public static GerminationPlants crop_yam = new GerminationPlants("crop_yam").setName("yam").setType("Crop").setTexture("yam").setPlantStats(3, 2, 1).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
 }

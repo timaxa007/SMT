@@ -7,6 +7,6 @@ import mods.timaxa007.pack.stock.lib.GerminationPlants;
 
 public class Broomcorn {
 
-public static GerminationPlants crop_broomcorn = new GerminationPlants("crop_broomcorn").setName("broomcorn").setType("Herbal").setTexture("broomcorn").setPlantStats(3, 2, 1).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
+	public static GerminationPlants crop_broomcorn = new GerminationPlants("crop_broomcorn").setName("broomcorn").setType("Herbal").setTexture("broomcorn").setPlantStats(3, 2, 1).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
 }

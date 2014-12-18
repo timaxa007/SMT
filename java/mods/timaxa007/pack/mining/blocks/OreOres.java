@@ -24,108 +24,103 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class OreOres extends Block implements ITileEntityProvider {
 
-public static String[] type_ore = new String[] {
-"appa", 
-"chunk", 
-"creg", 
-"dust", 
-"gem_large", 
-"gem_med1", 
-"gem_medium_2", 
-"gem_medium_3", 
-"gem_medium_4", 
-"gem_medium", 
-"gem_small", 
-"gem_smalled_4", 
-"lap", 
-"metal_2", 
-"metal", 
-"shard"
-};
+	public static String[] type_ore = new String[] {
+		"appa", 
+		"chunk", 
+		"creg", 
+		"dust", 
+		"gem_large", 
+		"gem_med1", 
+		"gem_medium_2", 
+		"gem_medium_3", 
+		"gem_medium_4", 
+		"gem_medium", 
+		"gem_small", 
+		"gem_smalled_4", 
+		"lap", 
+		"metal_2", 
+		"metal", 
+		"shard"
+	};
 
-public OreOres() {
-super(Material.rock);
-setCreativeTab(PackMining.proxy.tab_mining);
-setStepSound(soundTypeStone);
-setHardness(1.0F);
-setResistance(5.0F);
-setBlockTextureName("stone");
-setBlockName("ore_ores");
-}
+	public OreOres() {
+		super(Material.rock);
+		setCreativeTab(PackMining.proxy.tab_mining);
+		setStepSound(soundTypeStone);
+		setHardness(1.0F);
+		setResistance(5.0F);
+		setBlockTextureName("stone");
+		setBlockName("ore_ores");
+	}
 
-@Override
-public TileEntity createNewTileEntity(World world, int meta) {return new TEOreOres();}
-//public int getRenderType() {return -1;}
-//public boolean renderAsNormalBlock() {return false;}
-//public boolean isOpaqueCube() {return false;}
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {return new TEOreOres();}
+	//public int getRenderType() {return -1;}
+	//public boolean renderAsNormalBlock() {return false;}
+	//public boolean isOpaqueCube() {return false;}
 
-@SideOnly(Side.CLIENT)
-public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
-TileEntity te = block_access.getTileEntity(x, y, z);
-if (te != null && te instanceof TEOreOres) {
-return ((TEOreOres)te).getColorBlock();
-}
-return 0xFFFFFF;
-}
+	@SideOnly(Side.CLIENT)
+	public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
+		TileEntity te = block_access.getTileEntity(x, y, z);
+		if (te != null && te instanceof TEOreOres) {
+			return ((TEOreOres)te).getColorBlock();
+		}
+		return 0xFFFFFF;
+	}
 
-@SideOnly(Side.CLIENT)
-public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
-TileEntity te = block_access.getTileEntity(x, y, z);
-if (te != null && te instanceof TEOreOres) {
-if (this == PackMining.proxy.ore_rock_ores) {return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-if (this == PackMining.proxy.ore_nether_ores) {return Blocks.netherrack.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-if (this == PackMining.proxy.ore_ender_ores) {return Blocks.end_stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));
-}
-return getIcon(side, block_access.getBlockMetadata(x, y, z));
-}
+	@SideOnly(Side.CLIENT)
+	public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
+		TileEntity te = block_access.getTileEntity(x, y, z);
+		if (te != null && te instanceof TEOreOres) {
+			if (this == PackMining.proxy.ore_rock_ores) {return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
+			if (this == PackMining.proxy.ore_nether_ores) {return Blocks.netherrack.getIcon(side, block_access.getBlockMetadata(x, y, z));}
+			if (this == PackMining.proxy.ore_ender_ores) {return Blocks.end_stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
+			return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));
+		}
+		return getIcon(side, block_access.getBlockMetadata(x, y, z));
+	}
 
-public int idPicked(World world, int x, int y, int z) {return 0;}
+	public int idPicked(World world, int x, int y, int z) {return 0;}
 
-public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getTileEntity(x, y, z);
-if (te != null && te instanceof TEOreOres) {
-return addTag(world.getBlock(x, y, z), ((TEOreOres)te).getType(), ((TEOreOres)te).getColorBlock());
-} else {
-return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
-}
-}
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if (te != null && te instanceof TEOreOres)
+			return addTag(world.getBlock(x, y, z), ((TEOreOres)te).getType(), ((TEOreOres)te).getColorBlock());
+		return null;
+	}
 
-@Override
-public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getTileEntity(x, y, z);
-NBTTagCompound tag = is.getTagCompound();
-if (te != null && te instanceof TEOreOres && tag != null) {
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		NBTTagCompound tag = is.getTagCompound();
+		if (te != null && te instanceof TEOreOres && tag != null) {
+			if (tag.hasKey("Type")) ((TEOreOres)te).setType((int)tag.getByte("Type"));
+			if (tag.hasKey("ColorBlock")) ((TEOreOres)te).setColorBlock(tag.getInteger("ColorBlock"));
+		}
+	}
 
-if (tag.hasKey("Type")) {((TEOreOres)te).setType((int)tag.getByte("Type"));} else {((TEOreOres)te).setType(0);}
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item id, CreativeTabs table, List list) {
+		for (int i = 0; i < type_ore.length; i++) {
+			//for (int j = 0; j < 16; j++) {
+			int j = 14;
+			list.add(addTag(id, i, GetColors.getHexColors[j]));
+			//}
+		}
+		//list.add(new ItemStack(id, 1, 0));
+	}
 
-if (tag.hasKey("ColorBlock")) {((TEOreOres)te).setColorBlock(tag.getInteger("ColorBlock"));} else {((TEOreOres)te).setColorBlock(0xFFFFFF);}
+	private static ItemStack addTag(Block par1, int par2, int par3) {
+		return addTag(Item.getItemFromBlock(par1), par2, par3);
+	}
 
-}
-}
-
-@SideOnly(Side.CLIENT)
-public void getSubBlocks(Item id, CreativeTabs table, List list) {
-for (int i = 0; i < type_ore.length; i++) {
-//for (int j = 0; j < 16; j++) {
-int j = 14;
-list.add(addTag(id, i, GetColors.getHexColors[j]));
-//}
-}
-//list.add(new ItemStack(id, 1, 0));
-}
-
-private static ItemStack addTag(Block par1, int par2, int par3) {
-return addTag(Item.getItemFromBlock(par1), par2, par3);
-}
-
-private static ItemStack addTag(Item par1, int par2, int par3) {
-ItemStack is = new ItemStack(par1, 1, 0);
-NBTTagCompound tag = new NBTTagCompound();
-tag.setByte("Type", (byte)par2);
-tag.setInteger("ColorBlock", par3);
-is.setTagCompound(tag);
-return is;
-}
+	private static ItemStack addTag(Item par1, int par2, int par3) {
+		ItemStack is = new ItemStack(par1, 1, 0);
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setByte("Type", (byte)par2);
+		tag.setInteger("ColorBlock", par3);
+		is.setTagCompound(tag);
+		return is;
+	}
 
 }

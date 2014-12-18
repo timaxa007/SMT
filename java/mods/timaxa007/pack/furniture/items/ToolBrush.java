@@ -53,10 +53,10 @@ setUnlocalizedName("tool_brush");
 }
 
 public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float hitZ) {
-if(!player.canPlayerEdit(x, y, z, meta, is)) {
+if (!player.canPlayerEdit(x, y, z, meta, is)) {
 return false;
 }
-else{
+else {
 return false;
 }
 }
@@ -71,21 +71,21 @@ NBTTagCompound tag = is.getTagCompound();
 if (tag != null) {
 int i = MathHelper.clamp_int(tag.getInteger("Color"), 0, (brushColorType.length-1));
 return super.getUnlocalizedName() + "." + brushColorType[i];
-}else{
+} else {
 return super.getUnlocalizedName();
 }
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 NBTTagCompound tag = is.getTagCompound();
-if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-	if(tag!=null) {
+if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+	if (tag != null) {
 	list.add(Option.getText("Color")+": "+Option.GetColors(tag.getInteger("Color"), "a")+".");
-	}else{
+	} else {
 	list.add(Option.getText("Color")+": Empty.");
 	}
 list.add(Option.getText("Type")+": Tool / Brush.");
-}else{
+} else {
 list.add(Option.prshift);
 }
 }
@@ -114,11 +114,11 @@ public boolean requiresMultipleRenderPasses() {return true;}
 @SideOnly(Side.CLIENT)
 public int getColorFromItemStack(ItemStack is, int renderPass) {
 NBTTagCompound tag = is.getTagCompound();
-if(renderPass==0) {
+if (renderPass==0) {
 return 16777215;
-}else{
-if(tag==null) {return 16777215;}
-else{return GetColors.getHexColors[tag.getInteger("Color")];}
+} else {
+if (tag==null) {return 16777215;}
+else {return GetColors.getHexColors[tag.getInteger("Color")];}
 }
 }
 

@@ -111,9 +111,9 @@ public TileTexture() {
 }
 
 public static String getTexTest01_1(int i) {
-if(i <= 0) {return (String)texTest01[0][0];}
-else if(i > texTest01.length) {return (String)texTest01[0][0];}
-else{return (String)texTest01[i][0];}
+if (i <= 0) {return (String)texTest01[0][0];}
+else if (i > texTest01.length) {return (String)texTest01[0][0];}
+else {return (String)texTest01[i][0];}
 }
 
 public static String getTexTest01_2(int i) {

@@ -24,114 +24,78 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 
-public BlockCnstorBlock() {
-super(Material.glass);
-setCreativeTab(PackFurniture.proxy.tab_furniture);
-setHardness(1.0F);
-setResistance(3.5F);
-setLightOpacity(0);
-setStepSound(soundTypeWood);
-setBlockTextureName("timaxa007:woodFrame");
-setBlockName("cnstor.block");
-}
+	public BlockCnstorBlock() {
+		super(Material.glass);
+		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setHardness(1.0F);
+		setResistance(3.5F);
+		setLightOpacity(0);
+		setStepSound(soundTypeWood);
+		setBlockTextureName("timaxa007:woodFrame");
+		setBlockName("cnstor.block");
+	}
 
-@Override
-public TileEntity createNewTileEntity(World world, int meta) {return new TECnstorBlock();}
-public int quantityDropped(Random radom) {return 0;}
-public int getRenderType() {return PackFurniture.proxy.render_block_cnstor_block_modelID;}
-public boolean isOpaqueCube() {return false;}
-//public boolean renderAsNormalBlock() {return false;}
-public int idPicked(World wrd, int x, int y, int z) {return 0;}
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {return new TECnstorBlock();}
+	public int quantityDropped(Random radom) {return 0;}
+	public int getRenderType() {return PackFurniture.proxy.render_block_cnstor_block_modelID;}
+	public boolean isOpaqueCube() {return false;}
+	//public boolean renderAsNormalBlock() {return false;}
+	public int idPicked(World world, int x, int y, int z) {return 0;}
 
-public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getTileEntity(x, y, z);
-if (te != null && te instanceof TECnstorBlock) {
-return addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor());
-} else {
-return addTag(0, 0);
-}
-}
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if (te != null && te instanceof TECnstorBlock) {
+			return addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor());
+		} else {
+			return addTag(0, 0);
+		}
+	}
 
-@Override
-public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getTileEntity(x, y, z);
-NBTTagCompound tag = is.getTagCompound();
-if (te != null && te instanceof TECnstorBlock && tag != null) {
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
+		
+		TileEntity te = world.getTileEntity(x, y, z);
+		NBTTagCompound tag = is.getTagCompound();
+		
+		if (te != null && te instanceof TECnstorBlock && tag != null) {
+			if (tag.hasKey("Type")) ((TECnstorBlock)te).setType(tag.getInteger("Type"));
+			if (tag.hasKey("Color")) ((TECnstorBlock)te).setColor(tag.getInteger("Color"));
+		}
+		
+	}
 
-if (tag.hasKey("Type")) {
-((TECnstorBlock)te).setType(tag.getInteger("Type"));
-} else {
-((TECnstorBlock)te).setType(0);
-}
+	@Override
+	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
+		if (!world.isRemote) {
+			TileEntity te = world.getTileEntity(x, y, z);
+			if (te != null && te instanceof TECnstorBlock && !player.capabilities.isCreativeMode) {
+				dropBlockAsItem(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
+				world.removeTileEntity(x, y, z);
+				world.setBlockToAir(x, y, z);
+			}
+		}
+	}
 
-if (tag.hasKey("Color")) {
-((TECnstorBlock)te).setColor(tag.getInteger("Color"));
-} else {
-((TECnstorBlock)te).setColor(0);
-}
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item id, CreativeTabs table, List list) {
+		for (int j = 0; j < TileTexture.texTest01.length; ++j) {
+			//for (byte i = 0; i < 16; ++i) {
+			//int j = 74;
+			int i = 14;
+			list.add(addTag(j, GetColors.getHexColors[i]));
+			//}
+		}
+		//list.add(new ItemStack(id, 1, 0));
+	}
 
-}
-}
-/*
-public void breakBlock(World world, int x, int y, int z, int oldID, int oldMeta) {
-if (!world.isRemote) {
-TileEntity te = world.getTileEntity(x, y, z);
-if (te != null && te instanceof TECnstorBlock) {
-dropBlockAsItem(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
-} else {
-dropBlockAsItem(world, x, y, z, addTag(0, 0));
-}
-}
-super.breakBlock(world, x, y, z, oldID, oldMeta);
-}
-*/
-/*
-public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int y, int z) {
-if (!world.isRemote) {
-TileEntity te = world.getTileEntity(x, y, z);
-if (te != null && te instanceof TECnstorBlock && !player.capabilities.isCreativeMode) {
-dropBlockAsItem(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
-world.removeTileEntity(x, y, z);
-}
-world.setBlockToAir(x, y, z);
-return true;
-} else {
-return false;
-}
-}
-*/
-
-@Override
-public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
-if (!world.isRemote) {
-TileEntity te = world.getTileEntity(x, y, z);
-if (te != null && te instanceof TECnstorBlock && !player.capabilities.isCreativeMode) {
-dropBlockAsItem(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
-world.removeTileEntity(x, y, z);
-world.setBlockToAir(x, y, z);
-}
-}
-}
-
-@SideOnly(Side.CLIENT)
-public void getSubBlocks(Item id, CreativeTabs table, List list) {
-for (int j = 0; j < TileTexture.texTest01.length; ++j) {
-//for (byte i = 0; i < 16; ++i) {
-//int j = 74;
-int i = 14;
-list.add(addTag(j, GetColors.getHexColors[i]));
-//}
-}
-//list.add(new ItemStack(id, 1, 0));
-}
-
-private static ItemStack addTag(int par1, int par2) {
-ItemStack is = new ItemStack(PackFurniture.proxy.block_cnstor_block);
-NBTTagCompound tag = new NBTTagCompound();
-tag.setInteger("Type", par1);
-tag.setInteger("Color", par2);
-is.setTagCompound(tag);
-return is;
-}
+	private static ItemStack addTag(int par1, int par2) {
+		ItemStack is = new ItemStack(PackFurniture.proxy.block_cnstor_block);
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("Type", par1);
+		tag.setInteger("Color", par2);
+		is.setTagCompound(tag);
+		return is;
+	}
 
 }

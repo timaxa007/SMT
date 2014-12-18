@@ -10,52 +10,56 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
-public class ItemRenderBlockModuleMovement implements IItemRenderer{
-private IModelCustom model;
+public class ItemRenderBlockModuleMovement implements IItemRenderer {
+	private static final IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/module_movement.obj"));
 
-public ItemRenderBlockModuleMovement() {
-model=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/module_movement.obj"));
-}
+	public ItemRenderBlockModuleMovement() {
 
-@Override
-public boolean handleRenderType(ItemStack is, ItemRenderType type) {return true;}
+	}
 
-@Override
-public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {return true;}
+	@Override
+	public boolean handleRenderType(ItemStack is, ItemRenderType type) {
+		return true;
+	}
 
-@Override
-public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-NBTTagCompound tag = is.getTagCompound();
-//int tex=is.getItemDamage();
-int tps=0;
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {
+		return true;
+	}
 
-if(tag!=null) {
-if(tag.hasKey("Type")) {tps=tag.getInteger("Type");}
-}
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
+		NBTTagCompound tag = is.getTagCompound();
 
-GL11.glPushMatrix();
-GL11.glEnable(GL11.GL_BLEND);
-GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-GL11.glTranslatef(0.5F, 0.0F, 0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		int tps = 0;
 
-Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", "textures/"+"obj/"+"dot_red.png"));
+		if (tag != null) {
+			if (tag.hasKey("Type")) tps=tag.getInteger("Type");
+		}
 
-switch(tps) {
-case 0:model.renderPart("cursor");break;
-case 1:model.renderPart("move");break;
-case 2:model.renderPart("jump_g");model.renderPart("jump_p");break;
-default:model.renderPart("");break;
-}
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", "textures/"+"obj/"+"dot_white.png"));
+		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", "textures/obj/dot_red.png"));
 
-model.renderPart("module");
+		switch(tps) {
+		case 0:model.renderPart("cursor");break;
+		case 1:model.renderPart("move");break;
+		case 2:model.renderPart("jump_g");model.renderPart("jump_p");break;
+		default:model.renderPart("");break;
+		}
 
-//model.renderAll();
-GL11.glDisable(GL11.GL_BLEND);
-GL11.glPopMatrix();
+		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", "textures/obj/dot_white.png"));
 
-}
+		model.renderPart("module");
+
+		//model.renderAll();
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glPopMatrix();
+
+	}
 
 }

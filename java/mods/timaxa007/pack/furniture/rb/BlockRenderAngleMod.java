@@ -10,81 +10,75 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
-public class BlockRenderAngleMod extends TileEntitySpecialRenderer{
-private IModelCustom mdl0_1;
-private IModelCustom mdl1_l;
-private IModelCustom mdl1_r;
-private IModelCustom mdl1_1;
-private IModelCustom mdlS;
-private IModelCustom mdlT;
-private IModelCustom mdlB;
+public class BlockRenderAngleMod extends TileEntitySpecialRenderer {
+	private static final IModelCustom mdl0_1 = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/triangle01_1.obj"));
+	private static final IModelCustom mdl1_l = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/triangle_left.obj"));
+	private static final IModelCustom mdl1_r = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/triangle_right.obj"));
+	private static final IModelCustom mdl1_1 = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/angle_side.obj"));
+	private static final IModelCustom mdlS = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/square_side.obj"));
+	private static final IModelCustom mdlT = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/square_top.obj"));
+	private static final IModelCustom mdlB = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/square_bottom.obj"));
 
-public BlockRenderAngleMod() {
-mdl0_1=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/triangle01_1.obj"));
+	public BlockRenderAngleMod() {
 
-mdl1_l=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/triangle_left.obj"));
-mdl1_r=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/triangle_right.obj"));
+	}
 
-mdl1_1=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/angle_side.obj"));
+	public void renderTileEntityAt(TileEntity te, double d1, double d2, double d3, float f) {
+		renderTE((TEAngleMod)te, d1, d2, d3, f);
+	}
 
-mdlS=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/square_side.obj"));
+	private void renderTE(TEAngleMod te, double d1, double d2, double d3, float f) {
+		//int meta = te.getBlockMetadata();
+		int tex = te.getType();
+		int mdl = te.getSize();
+		int rot = te.getRotation();
+		boolean uper = te.getUPing();
+		//--------------------------------
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
+		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		mdl1_l.renderAll();
+		GL11.glPopMatrix();
+		//--------------------------------
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
+		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		mdl1_r.renderAll();
+		GL11.glPopMatrix();
+		//--------------------------------
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
+		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		mdl1_1.renderAll();
+		GL11.glPopMatrix();
+		//--------------------------------
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		GL11.glRotatef(0F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
+		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		mdlS.renderAll();
+		GL11.glPopMatrix();
+		//--------------------------------
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		//GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
+		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		if (!uper) {
+			mdlB.renderAll();
+		} else {
+			mdlT.renderAll();
+			}
+		GL11.glPopMatrix();
+		//--------------------------------
 
-mdlT=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/square_top.obj"));
-mdlB=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/square_bottom.obj"));
-}
-
-public void renderTileEntityAt(TileEntity tileEntity, double d1, double d2, double d3, float f) {
-this.renderTE((TEAngleMod)tileEntity, d1, d2, d3, f);
-}
-
-public void renderTE(TEAngleMod tileEntity, double d1, double d2, double d3, float f) {
-//int meta=tileEntity.getBlockMetadata();
-int tex=tileEntity.getType();
-int mdl=tileEntity.getSize();
-int rot=tileEntity.getRotation();
-boolean uper=tileEntity.getUPing();
-//--------------------------------
-GL11.glPushMatrix();
-GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-this.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
-mdl1_l.renderAll();
-GL11.glPopMatrix();
-//--------------------------------
-GL11.glPushMatrix();
-GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-this.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
-mdl1_r.renderAll();
-GL11.glPopMatrix();
-//--------------------------------
-GL11.glPushMatrix();
-GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-this.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
-mdl1_1.renderAll();
-GL11.glPopMatrix();
-//--------------------------------
-GL11.glPushMatrix();
-GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-GL11.glRotatef(0F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-this.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
-mdlS.renderAll();
-GL11.glPopMatrix();
-//--------------------------------
-GL11.glPushMatrix();
-GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-//GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-this.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
-if(!uper) {mdlB.renderAll();}else{mdlT.renderAll();}
-GL11.glPopMatrix();
-//--------------------------------
-
-}
+	}
 
 }

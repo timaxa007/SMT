@@ -5,13 +5,13 @@ import net.minecraft.item.Item;
 
 public class TabPlant extends CreativeTabs {
 
-public TabPlant(String name) {
-super(name);
-}
+	public TabPlant(String name) {
+		super(name);
+	}
 
-@Override
-public Item getTabIconItem() {
-return PackStock.proxy.item_germination_plants;
-}
+	@Override
+	public Item getTabIconItem() {
+		return PackStock.proxy.item_germination_plants;
+	}
 
 }

@@ -5,13 +5,13 @@ import net.minecraft.item.Item;
 
 public class TabFood extends CreativeTabs {
 
-public TabFood(String name) {
-super(name);
-}
+	public TabFood(String name) {
+		super(name);
+	}
 
-@Override
-public Item getTabIconItem() {
-return PackStock.proxy.item_foods;
-}
+	@Override
+	public Item getTabIconItem() {
+		return PackStock.proxy.item_foods;
+	}
 
 }

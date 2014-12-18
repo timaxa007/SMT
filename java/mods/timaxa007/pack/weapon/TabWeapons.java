@@ -6,13 +6,13 @@ import net.minecraft.item.Item;
 
 public class TabWeapons extends CreativeTabs {
 
-public TabWeapons(String name) {
-super(name);
-}
+	public TabWeapons(String name) {
+		super(name);
+	}
 
-@Override
-public Item getTabIconItem() {
-return Items.stone_sword;
-}
+	@Override
+	public Item getTabIconItem() {
+		return Items.stone_sword;
+	}
 
 }

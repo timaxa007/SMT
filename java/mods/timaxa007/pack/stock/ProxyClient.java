@@ -12,37 +12,37 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class ProxyClient extends ProxyServer {
 
-@Override
-public void init() {
-super.init();
+	@Override
+	public void init() {
+		super.init();
 
-//Blocks
-render_block_germination_plants_modelID = RenderingRegistry.getNextAvailableRenderId();
-render_block_foods_modelID = RenderingRegistry.getNextAvailableRenderId();
-render_block_apiary_modelID = RenderingRegistry.getNextAvailableRenderId();
+		//Blocks
+		render_block_germination_plants_modelID = RenderingRegistry.getNextAvailableRenderId();
+		render_block_foods_modelID = RenderingRegistry.getNextAvailableRenderId();
+		render_block_apiary_modelID = RenderingRegistry.getNextAvailableRenderId();
 
-//Items
+		//Items
 
-//Blocks
-ClientRegistry.bindTileEntitySpecialRenderer(TEGerminationPlants.class, new RenderBlockGerminationPlants());
-ClientRegistry.bindTileEntitySpecialRenderer(TEFoods.class, new RenderBlockFoods());
-ClientRegistry.bindTileEntitySpecialRenderer(TEApiary.class, new RenderBlockApiary());
+		//Blocks
+		ClientRegistry.bindTileEntitySpecialRenderer(TEGerminationPlants.class, new RenderBlockGerminationPlants());
+		ClientRegistry.bindTileEntitySpecialRenderer(TEFoods.class, new RenderBlockFoods());
+		ClientRegistry.bindTileEntitySpecialRenderer(TEApiary.class, new RenderBlockApiary());
 
-//Items
+		//Items
 
-//Blocks
-MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_germination_plants), new ItemRenderBlockGerminationPlants());
-MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_foods), new ItemRenderFoods());
-MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_apiary), new ItemRenderBlockApiary());
+		//Blocks
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_germination_plants), new ItemRenderBlockGerminationPlants());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_foods), new ItemRenderFoods());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_apiary), new ItemRenderBlockApiary());
 
-//Items
+		//Items
 
-MinecraftForge.EVENT_BUS.register(new EventSoundStock());
+		MinecraftForge.EVENT_BUS.register(new EventSoundStock());
 
-}
+	}
 
-public void preInit(FMLPreInitializationEvent event) {
-super.preInit(event);
-}
+	public void preInit(FMLPreInitializationEvent event) {
+		super.preInit(event);
+	}
 
 }

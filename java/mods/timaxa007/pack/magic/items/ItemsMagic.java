@@ -5,10 +5,10 @@ import net.minecraft.item.Item;
 
 public class ItemsMagic extends Item {
 
-public ItemsMagic() {
-super();
-setCreativeTab(PackMagic.proxy.tab_magic);
-setUnlocalizedName("items_magic");
-}
+	public ItemsMagic() {
+		super();
+		setCreativeTab(PackMagic.proxy.tab_magic);
+		setUnlocalizedName("items_magic");
+	}
 
 }

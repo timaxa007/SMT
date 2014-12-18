@@ -6,10 +6,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class Recipes_Weapon{
+public class Recipes_Weapon {
 
-public static void list() {
+	public static void list() {
 
-}
+	}
 
 }

@@ -12,24 +12,24 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class ProxyClient extends ProxyServer{
 
-@Override
-public void init() {
-super.init();
+	@Override
+	public void init() {
+		super.init();
 
-MinecraftForge.EVENT_BUS.register(new EventSoundMining());
+		MinecraftForge.EVENT_BUS.register(new EventSoundMining());
 
-render_block_cristals_modelID = RenderingRegistry.getNextAvailableRenderId();
+		render_block_cristals_modelID = RenderingRegistry.getNextAvailableRenderId();
 
-ClientRegistry.bindTileEntitySpecialRenderer(TECristals.class, new RenderBlockCristals());
-ClientRegistry.bindTileEntitySpecialRenderer(TEOreOres.class, new RenderBlockOreOres());
+		ClientRegistry.bindTileEntitySpecialRenderer(TECristals.class, new RenderBlockCristals());
+		ClientRegistry.bindTileEntitySpecialRenderer(TEOreOres.class, new RenderBlockOreOres());
 
-MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMining.proxy.block_cristals), new ItemRenderBlockCristals());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMining.proxy.block_cristals), new ItemRenderBlockCristals());
 
-}
+	}
 
-public void preInit(FMLPreInitializationEvent event) {
-super.preInit(event);
+	public void preInit(FMLPreInitializationEvent event) {
+		super.preInit(event);
 
-}
+	}
 
 }

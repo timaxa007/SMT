@@ -9,26 +9,31 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 public class ItemRendererClaymore implements IItemRenderer {
-private static ModelClaymoreStick model;
+	
+	private static final ModelClaymoreStick model = new ModelClaymoreStick();
 
-public ItemRendererClaymore() {
-model = new ModelClaymoreStick();
-}
+	public ItemRendererClaymore() {
+		
+	}
 
-@Override
-public boolean handleRenderType(ItemStack is, ItemRenderType type) {return true;}
+	@Override
+	public boolean handleRenderType(ItemStack is, ItemRenderType type) {
+		return true;
+	}
 
-@Override
-public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {return true;}
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {
+		return true;
+	}
 
-@Override
-public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-GL11.glPushMatrix();
-GL11.glTranslatef(0.5F, 1.5F, 0.5F);
-GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("textures/blocks/planks_oak.png"));
-model.render();
-GL11.glPopMatrix();
-}
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0.5F, 1.5F, 0.5F);
+		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("textures/blocks/planks_oak.png"));
+		model.render();
+		GL11.glPopMatrix();
+	}
 
 }

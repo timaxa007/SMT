@@ -22,80 +22,87 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMashineWater extends Block implements ITileEntityProvider {
 
-public BlockMashineWater() {
-super(Material.iron);
-setCreativeTab(PackFurniture.proxy.tab_furniture);
-setHardness(0.25F);
-setLightOpacity(0);
-setBlockTextureName("glass");
-setBlockName("masine_water");
-}
+	public BlockMashineWater() {
+		super(Material.iron);
+		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setHardness(0.25F);
+		setLightOpacity(0);
+		setBlockTextureName("glass");
+		setBlockName("masine_water");
+	}
 
-@Override
-public TileEntity createNewTileEntity(World world, int meta) {return new TEMashineWater();}
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TEMashineWater();
+	}
 
-public int getRenderType() {return PackFurniture.proxy.render_block_jar01_modelID;}
-public boolean isOpaqueCube() {return false;}
-public boolean renderAsNormalBlock() {return false;}
-public int idPicked(World wrd, int x, int y, int z) {return 0;}
+	public int getRenderType() {
+		return PackFurniture.proxy.render_block_jar01_modelID;
+	}
 
-public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-TileEntity te = world.getTileEntity(x, y, z);
-if (te != null && te instanceof TEMashineWater) {
-return addTag(((TEMashineWater)te).getColor(), ((TEMashineWater)te).getPart());
-} else {
-return addTag(0xFFFFFF, false);
-}
-}
+	public boolean isOpaqueCube() {
+		return false;
+	}
 
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
 
-@Override
-public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-TileEntity te = world.getTileEntity(x, y, z);
-NBTTagCompound tag = is.getTagCompound();
-if (te != null && te instanceof TEMashineWater) {
-/*
-int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-((TEMashineWater)te).setRot(l);
-*/
-if (tag != null) {
-((TEMashineWater)te).setColor(tag.getInteger("Color"));
-((TEMashineWater)te).setPart(tag.getBoolean("Part"));
-}else{
-((TEMashineWater)te).setColor(0xFFFFFF);
-((TEMashineWater)te).setPart(false);
-}
+	public int idPicked(World world, int x, int y, int z) {
+		return 0;
+	}
 
-}
-}
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if (te != null && te instanceof TEMashineWater) {
+			return addTag(((TEMashineWater)te).getColor(), ((TEMashineWater)te).getPart());
+		}
+		return null;
+	}
 
-public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
-TileEntity te = world.getTileEntity(x, y, z);
-if (te != null && te instanceof TEMashineWater) {
-player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_mashine_water, world, x, y, z);
-return true;
-} else {
-return false;
-}
-}
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		NBTTagCompound tag = is.getTagCompound();
+		if (te != null && te instanceof TEMashineWater) {
+			/*
+			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+			((TEMashineWater)te).setRot(l);
+			 */
+			if (tag != null) {
+				if (tag.hasKey("Color")) ((TEMashineWater)te).setColor(tag.getInteger("Color"));
+				if (tag.hasKey("Part")) ((TEMashineWater)te).setPart(tag.getBoolean("Part"));
+			}
 
-@SideOnly(Side.CLIENT)
-public void getSubBlocks(Item id, CreativeTabs table, List list) {
-//for (int j = 0; j < 16; ++j) {
-int j = 14;
-list.add(addTag(GetColors.getHexColors[j], true));
-list.add(addTag(GetColors.getHexColors[j], false));
-//}
-//list.add(new ItemStack(id, 1, 0));
-}
+		}
+	}
 
-private static ItemStack addTag(int par1, boolean par2) {
-ItemStack is = new ItemStack(PackFurniture.proxy.block_mashine_waiter, 1, par1);
-NBTTagCompound tag = new NBTTagCompound();
-tag.setInteger("Color", par1);
-tag.setBoolean("Part", par2);
-is.setTagCompound(tag);
-return is;
-}
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if (te != null && te instanceof TEMashineWater) {
+			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_mashine_water, world, x, y, z);
+			return true;
+		}
+		return false;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item id, CreativeTabs table, List list) {
+		//for (int j = 0; j < 16; ++j) {
+		int j = 14;
+		list.add(addTag(GetColors.getHexColors[j], true));
+		list.add(addTag(GetColors.getHexColors[j], false));
+		//}
+		//list.add(new ItemStack(id, 1, 0));
+	}
+
+	private static ItemStack addTag(int par1, boolean par2) {
+		ItemStack is = new ItemStack(PackFurniture.proxy.block_mashine_waiter, 1, par1);
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("Color", par1);
+		tag.setBoolean("Part", par2);
+		is.setTagCompound(tag);
+		return is;
+	}
 
 }

@@ -8,22 +8,22 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 public class HandlerGuiMagic implements IGuiHandler {
 
-@Override
-public Object getServerGuiElement(int id, EntityPlayer player, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getTileEntity(x, y, z);
-switch(id) {
-//case 1:return new ContainerMagicMachines(player, (TEMagicMachines)te);
-default:return null;
-}
-}
+	@Override
+	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		switch(id) {
+		//case 1:return new ContainerMagicMachines(player, (TEMagicMachines)te);
+		default:return null;
+		}
+	}
 
-@Override
-public Object getClientGuiElement(int id, EntityPlayer player, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getTileEntity(x, y, z);
-switch(id) {
-//case 1:return new GuiMagicMachines(player, (TEMagicMachines)te);
-default:return null;
-}
-}
+	@Override
+	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		switch(id) {
+		//case 1:return new GuiMagicMachines(player, (TEMagicMachines)te);
+		default:return null;
+		}
+	}
 
 }

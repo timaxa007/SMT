@@ -5,10 +5,10 @@ import net.minecraft.item.Item;
 
 public class ItemsWeapons extends Item {
 
-public ItemsWeapons() {
-super();
-setCreativeTab(PackWeapon.proxy.tab_weapons);
-setUnlocalizedName("items_weapons");
-}
+	public ItemsWeapons() {
+		super();
+		setCreativeTab(PackWeapon.proxy.tab_weapons);
+		setUnlocalizedName("items_weapons");
+	}
 
 }

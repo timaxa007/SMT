@@ -13,24 +13,24 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class PackMining {
 
-public static final String MODID = "01miningpack";
-public static final String MODNAME = "MiningPack";
-public static final String VERSION = "0.1a";
-public static final String AUTHOR = "timaxa007";
+	public static final String MODID = "01miningpack";
+	public static final String MODNAME = "MiningPack";
+	public static final String VERSION = "0.1a";
+	public static final String AUTHOR = "timaxa007";
 
-@Instance(PackMining.MODID) public static PackMining instance;
-@SidedProxy(clientSide = "mods.timaxa007.pack.mining.ProxyClient", serverSide = "mods.timaxa007.pack.mining.ProxyServer")
-public static ProxyServer proxy;
+	@Instance(PackMining.MODID) public static PackMining instance;
+	@SidedProxy(clientSide = "mods.timaxa007.pack.mining.ProxyClient", serverSide = "mods.timaxa007.pack.mining.ProxyServer")
+	public static ProxyServer proxy;
 
-@EventHandler
-public void init(FMLInitializationEvent event) {
-proxy.init();
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.init();
 
-}
+	}
 
-@EventHandler
-public void preInit(FMLPreInitializationEvent event) {
-proxy.preInit(event);
-}
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		proxy.preInit(event);
+	}
 
 }

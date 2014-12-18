@@ -33,7 +33,7 @@ public TileEntity createNewTileEntity(World world, int meta) {return new TEPipes
 public int getRenderType() {return PackFurniture.proxy.render_block_pipes_modelID;}
 public boolean isOpaqueCube() {return false;}
 public boolean renderAsNormalBlock() {return false;}
-public int idPicked(World wrd, int x, int y, int z) {return 0;}
+public int idPicked(World world, int x, int y, int z) {return 0;}
 
 public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 TileEntity te = world.getTileEntity(x, y, z);

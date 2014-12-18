@@ -13,30 +13,30 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class ProxyClient extends ProxyServer {
 
-@Override
-public void init() {
-super.init();
+	@Override
+	public void init() {
+		super.init();
 
-render_block_magic_cauldron_modelID = RenderingRegistry.getNextAvailableRenderId();
+		render_block_magic_cauldron_modelID = RenderingRegistry.getNextAvailableRenderId();
 
-//RenderingRegistry.addNewArmourRendererPrefix("TestArmor");
+		//RenderingRegistry.addNewArmourRendererPrefix("TestArmor");
 
-ClientRegistry.bindTileEntitySpecialRenderer(TEMagicCauldron.class, new BlockRenderMagicCauldron());
+		ClientRegistry.bindTileEntitySpecialRenderer(TEMagicCauldron.class, new BlockRenderMagicCauldron());
 
-MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMagic.proxy.blockMagicCauldron), new ItemRenderMagicCauldron());
-//MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.toolMagicSword, new ItemRenderMagicSword());
-MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemWands, new ItemRenderWands());
-MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemStuffs, new ItemRenderStuffs());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMagic.proxy.blockMagicCauldron), new ItemRenderMagicCauldron());
+		//MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.toolMagicSword, new ItemRenderMagicSword());
+		MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemWands, new ItemRenderWands());
+		MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemStuffs, new ItemRenderStuffs());
 
-//RenderingRegistry.registerEntityRenderingHandler(EntityArrowMini.class, new RenderArrowMini());
+		//RenderingRegistry.registerEntityRenderingHandler(EntityArrowMini.class, new RenderArrowMini());
 
-MinecraftForge.EVENT_BUS.register(new EventSoundMagic());
+		MinecraftForge.EVENT_BUS.register(new EventSoundMagic());
 
-}
+	}
 
-public void preInit(FMLPreInitializationEvent event) {
-super.preInit(event);
+	public void preInit(FMLPreInitializationEvent event) {
+		super.preInit(event);
 
-}
+	}
 
 }

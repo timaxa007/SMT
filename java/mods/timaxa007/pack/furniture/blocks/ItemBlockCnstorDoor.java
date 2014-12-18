@@ -5,10 +5,10 @@ import net.minecraft.item.ItemBlock;
 
 public class ItemBlockCnstorDoor extends ItemBlock {
 
-public ItemBlockCnstorDoor(Block id) {
-super(id);
-setMaxDamage(0);
-setHasSubtypes(true);
-}
+	public ItemBlockCnstorDoor(Block id) {
+		super(id);
+		setMaxDamage(0);
+		setHasSubtypes(true);
+	}
 
 }

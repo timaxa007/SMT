@@ -5,10 +5,10 @@ import net.minecraft.item.Item;
 
 public class ItemsTechno extends Item {
 
-public ItemsTechno() {
-super();
-setCreativeTab(PackTechno.proxy.tab_techno);
-setUnlocalizedName("items_techno");
-}
+	public ItemsTechno() {
+		super();
+		setCreativeTab(PackTechno.proxy.tab_techno);
+		setUnlocalizedName("items_techno");
+	}
 
 }

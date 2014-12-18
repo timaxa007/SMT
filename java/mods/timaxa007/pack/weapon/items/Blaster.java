@@ -12,49 +12,48 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class Blaster extends Item{
-public Blaster() {
-super();
-this.setCreativeTab(PackWeapon.proxy.tab_weapons);
-this.setUnlocalizedName("blaster");
-this.setFull3D();
-}
+public class Blaster extends Item {
 
-public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
-if (player.inventory.hasItem(PackFurniture.proxy.item_colored)) {
-if (!world.isRemote) {
-//EntityBlasterBullet blasterBullet = new EntityBlasterBullet(world, player, 2.0F);
-//world.spawnEntityInWorld(blasterBullet);
-player.inventory.consumeInventoryItem(PackFurniture.proxy.item_colored);
-}
-}
-}
+	public Blaster() {
+		super();
+		setCreativeTab(PackWeapon.proxy.tab_weapons);
+		setUnlocalizedName("blaster");
+		setFull3D();
+	}
 
-public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-return 72000;
-}
+	public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
+		if (player.inventory.hasItem(PackFurniture.proxy.item_colored)) {
+			if (!world.isRemote) {
+				//EntityBlasterBullet blasterBullet = new EntityBlasterBullet(world, player, 2.0F);
+				//world.spawnEntityInWorld(blasterBullet);
+				player.inventory.consumeInventoryItem(PackFurniture.proxy.item_colored);
+			}
+		}
+	}
 
-public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-return EnumAction.bow;
-}
+	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		return 72000;
+	}
 
-public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-if (player.inventory.hasItem(PackFurniture.proxy.item_colored)) {
-player.setItemInUse(is, this.getMaxItemUseDuration(is));
-}
-return is;
-}
+	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+		return EnumAction.bow;
+	}
 
-public void addInformation(ItemStack is, CreativeTabs tab, List list, boolean f3Enabled) {
-list.add("INFO");
-if(tab==CreativeTabs.tabBlock)
-list.add("ITS IN BLOCK TAB!!!");
-if(f3Enabled)
-list.add("HiddenINFO");
-}
+	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
+		if (player.inventory.hasItem(PackFurniture.proxy.item_colored)) {
+			player.setItemInUse(is, getMaxItemUseDuration(is));
+		}
+		return is;
+	}
 
-@Override
-public void registerIcons(IIconRegister ir) {
-this.itemIcon=ir.registerIcon("timaxa007:"+"blaster");
-}
+	public void addInformation(ItemStack is, CreativeTabs tab, List list, boolean f3Enabled) {
+		list.add("INFO");
+		if (tab == CreativeTabs.tabBlock) list.add("ITS IN BLOCK TAB!!!");
+		if (f3Enabled) list.add("HiddenINFO");
+	}
+
+	@Override
+	public void registerIcons(IIconRegister ir) {
+		itemIcon = ir.registerIcon("timaxa007:"+"blaster");
+	}
 }

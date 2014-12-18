@@ -35,70 +35,73 @@ import java.io.IOException;
 
 public class Core {
 
-    public static final boolean OBFUSCATED = isObfuscated();
-    public static final String MODID = "00tms";
-    public static final String MODNAME = "TMS";
-    public static final String VERSION = "0.2a";
-    public static final String[] AUTHORS = new String[] {"timaxa007", "Dragon2488"};
+	public static final boolean OBFUSCATED = isObfuscated();
+	public static final String MODID = "00tms";
+	public static final String MODNAME = "TMS";
+	public static final String VERSION = "0.2a";
+	public static final String[] AUTHORS = new String[] {"timaxa007", "Dragon2488"};
 
-    @Instance(Core.MODID)
-    public static Core instance;
+	@Instance(Core.MODID)
+	public static Core instance;
 
-    @SidedProxy(clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyServer")
-    public static ProxyServer proxy;
+	@SidedProxy(clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyServer")
+	public static ProxyServer proxy;
 
-    public static CreativeTabs tabTMS = new TabTMS("tabTMS");
+	public static CreativeTabs tab_tms = new TabTMS("tab_tms");
 
-    public static boolean debug;
-    public static boolean show_tip_info_testing;
-    public static boolean disable_sub_mod_furniture;
-    public static boolean disable_sub_mod_magic;
-    public static boolean disable_sub_mod_mining;
-    public static boolean disable_sub_mod_stock;
-    public static boolean disable_sub_mod_techno;
-    public static boolean disable_sub_mod_weapon;
+	public static boolean debug;
+	public static boolean show_tip_info_testing;
+	public static boolean disable_sub_mod_furniture;
+	public static boolean disable_sub_mod_magic;
+	public static boolean disable_sub_mod_mining;
+	public static boolean disable_sub_mod_stock;
+	public static boolean disable_sub_mod_techno;
+	public static boolean disable_sub_mod_weapon;
 
-    public static Block block_test;
-    public static Item item_test;
+	public static Block block_test;
+	public static Item item_test;
 
-    private static Configuration currectConfig;
+	private static Configuration currectConfig;
 
-    @EventHandler
-    public void preInitialize(FMLPreInitializationEvent event) {
-        currectConfig = new Configuration(event.getSuggestedConfigurationFile());
-        syncConfig(currectConfig);
+	@EventHandler
+	public void preInitialize(FMLPreInitializationEvent event) {
+		currectConfig = new Configuration(event.getSuggestedConfigurationFile());
+		syncConfig(currectConfig);
 
-        block_test = new TestBlock();
-        item_test = new TestItem();
-        GameRegistry.registerBlock(block_test, "TestBlock");
-        GameRegistry.registerItem(item_test, "TestItem");
-        Recipes_TMS.list();
-        new ListTextureModel();
-    }
+		new ListTextureModel();
+		
+		block_test = new TestBlock();
+		item_test = new TestItem();
+		
+		GameRegistry.registerBlock(block_test, "TestBlock");
+		GameRegistry.registerItem(item_test, "TestItem");
+		
+		Recipes_TMS.list();
+	}
 
-    @EventHandler
-    public void initialize(FMLInitializationEvent event) {
-        proxy.initialize();
-    }
+	@EventHandler
+	public void initialize(FMLInitializationEvent event) {
+		proxy.initialize();
+	}
 
-    private static boolean isObfuscated() {
-        try {
-            return !World.class.getName().endsWith("World");
-        } catch(Exception e) {
-            return false;
-        }
-    }
+	private static boolean isObfuscated() {
+		try {
+			return !World.class.getName().endsWith("World");
+		} catch(Exception e) {
+			return false;
+		}
+	}
 
-    private static void syncConfig(Configuration config) {
-        config.load();
-        debug = config.get("debugging", "debug", false).getBoolean(false);
-        show_tip_info_testing = config.get("debugging", "size_quest_items", false).getBoolean(false);
-        disable_sub_mod_furniture = config.get("configs", "disable_sub_mod_furniture", false).getBoolean(false);
-        disable_sub_mod_magic = config.get("configs", "disable_sub_mod_magic", false).getBoolean(false);
-        disable_sub_mod_mining = config.get("configs", "disable_sub_mod_mining", false).getBoolean(false);
-        disable_sub_mod_stock = config.get("configs", "disable_sub_mod_stock", false).getBoolean(false);
-        disable_sub_mod_techno = config.get("configs", "disable_sub_mod_techno", false).getBoolean(false);
-        disable_sub_mod_weapon = config.get("configs", "disable_sub_mod_weapon", false).getBoolean(false);
-        config.save();
-    }
+	private static void syncConfig(Configuration config) {
+		config.load();
+		debug = config.get("debugging", "debug", false).getBoolean(false);
+		show_tip_info_testing = config.get("debugging", "size_quest_items", false).getBoolean(false);
+		disable_sub_mod_furniture = config.get("configs", "disable_sub_mod_furniture", false).getBoolean(false);
+		disable_sub_mod_magic = config.get("configs", "disable_sub_mod_magic", false).getBoolean(false);
+		disable_sub_mod_mining = config.get("configs", "disable_sub_mod_mining", false).getBoolean(false);
+		disable_sub_mod_stock = config.get("configs", "disable_sub_mod_stock", false).getBoolean(false);
+		disable_sub_mod_techno = config.get("configs", "disable_sub_mod_techno", false).getBoolean(false);
+		disable_sub_mod_weapon = config.get("configs", "disable_sub_mod_weapon", false).getBoolean(false);
+		config.save();
+	}
 }

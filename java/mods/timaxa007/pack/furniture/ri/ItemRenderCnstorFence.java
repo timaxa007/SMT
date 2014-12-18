@@ -12,51 +12,50 @@ import net.minecraftforge.client.model.IModelCustom;
 import org.lwjgl.opengl.GL11;
 
 public class ItemRenderCnstorFence implements IItemRenderer {
-private IModelCustom model;
+	private static final IModelCustom model=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/fence01.obj"));
 
-public ItemRenderCnstorFence() {
-model=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/fence01.obj"));
-}
+	public ItemRenderCnstorFence() {
 
-@Override
-public boolean handleRenderType(ItemStack is, ItemRenderType type) {
-return true;
-}
+	}
 
-@Override
-public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {
-return true;
-}
+	@Override
+	public boolean handleRenderType(ItemStack is, ItemRenderType type) {
+		return true;
+	}
 
-@Override
-public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-NBTTagCompound tag = is.getTagCompound();
-//int tex=tileEntity.getBlockMetadata();
-//int tex=is.getItemDamage();
-int tex=0;
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {
+		return true;
+	}
 
-if(tag!=null) {
-if(tag.hasKey("Type")) {tex=tag.getInteger("Type");}
-}
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
+		NBTTagCompound tag = is.getTagCompound();
 
-GL11.glPushMatrix();
-GL11.glTranslatef(0.5F, 0.0F, 0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		int tex = 0;
 
-Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		if (tag != null) {
+			if (tag.hasKey("Type")) tex = tag.getInteger("Type");
+		}
 
-this.model.renderPart("pillar");/*
-this.model.renderPart("stick_up_1");
-this.model.renderPart("stick_down_1");
-this.model.renderPart("stick_up_2");
-this.model.renderPart("stick_down_2");
-this.model.renderPart("stick_up_3");
-this.model.renderPart("stick_down_3");
-this.model.renderPart("stick_up_4");
-this.model.renderPart("stick_down_4");*/
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-GL11.glPopMatrix();
+		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
 
-}
+		model.renderPart("pillar");/*
+		model.renderPart("stick_up_1");
+		model.renderPart("stick_down_1");
+		model.renderPart("stick_up_2");
+		model.renderPart("stick_down_2");
+		model.renderPart("stick_up_3");
+		model.renderPart("stick_down_3");
+		model.renderPart("stick_up_4");
+		model.renderPart("stick_down_4");*/
+
+		GL11.glPopMatrix();
+
+	}
 
 }

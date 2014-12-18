@@ -13,104 +13,102 @@ import org.lwjgl.opengl.GL11;
 
 public class ItemRenderBlockElectricWires implements IItemRenderer {
 
-@Override
-public boolean handleRenderType(ItemStack is, ItemRenderType type) {
-return true;
-}
+	@Override
+	public boolean handleRenderType(ItemStack is, ItemRenderType type) {
+		return true;
+	}
 
-@Override
-public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {
-if (type == type.INVENTORY) {
-return false;
-} else {
-return true;
-}
-}
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {
+		if (type == type.INVENTORY) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
-@Override
-public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-NBTTagCompound tag = is.getTagCompound();
-int typ = 0;
-int siz = 1;
-int clr = 0xFFFFFF;
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 
-if (tag != null) {
-if (tag.hasKey("Type")) {
-typ = tag.getInteger("Type");
-}
-if (tag.hasKey("Size")) {
-siz = tag.getInteger("Size");
-}
-}
+		NBTTagCompound tag = is.getTagCompound();
 
-double s_p = (double) 1 / 16;
-double ss_p = (double) s_p * siz;
-double ss_p_p_i = 8.0D + ss_p * 16;
-double ss_p_m_i = 8.0D - ss_p * 16;
-double ss_p_p = 0.5D + ss_p;
-double ss_p_m = 0.5D - ss_p;
+		int typ = 0;
+		int siz = 1;
+		int clr = 0xFFFFFF;
 
-if (type == type.INVENTORY) {
-GL11.glPushMatrix();
-GL11.glEnable(GL11.GL_BLEND);
-GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		if (tag != null) {
+			if (tag.hasKey("Type")) typ = tag.getInteger("Type");
+			if (tag.hasKey("Size")) siz = tag.getInteger("Size");
+		}
 
-Tessellator tessellator = Tessellator.instance;
+		double s_p = (double) 1 / 16;
+		double ss_p = (double) s_p * siz;
+		double ss_p_p_i = 8.0D + ss_p * 16;
+		double ss_p_m_i = 8.0D - ss_p * 16;
+		double ss_p_p = 0.5D + ss_p;
+		double ss_p_m = 0.5D - ss_p;
 
-Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[typ][0], (String)TileTexture.texTest01[typ][1]));
+		if (type == type.INVENTORY) {
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-tessellator.startDrawingQuads();
-tessellator.addVertexWithUV(ss_p_m_i, ss_p_p_i, 1.0D, ss_p_m, ss_p_p);
-tessellator.addVertexWithUV(ss_p_p_i, ss_p_p_i, 1.0D, ss_p_p, ss_p_p);
-tessellator.addVertexWithUV(ss_p_p_i, ss_p_m_i, 1.0D, ss_p_p, ss_p_m);
-tessellator.addVertexWithUV(ss_p_m_i, ss_p_m_i, 1.0D, ss_p_m, ss_p_m);
-tessellator.draw();
-//--------------------------------------------------
-Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/blocks/gold_block.png"));
+			Tessellator tessellator = Tessellator.instance;
 
-tessellator.startDrawingQuads();
-tessellator.addVertexWithUV(16.0D, ss_p_m_i + 1.0D, 0.0D, 1.0D, ss_p_p);
-tessellator.addVertexWithUV(0.0D, ss_p_m_i + 1.0D, 0.0D, 0.0D, ss_p_p);
-tessellator.addVertexWithUV(0.0D, ss_p_p_i - 1.0D, 0.0D, 0.0D, ss_p_m);
-tessellator.addVertexWithUV(16.0D, ss_p_p_i - 1.0D, 0.0D, 1.0D, ss_p_m);
-tessellator.draw();
+			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[typ][0], (String)TileTexture.texTest01[typ][1]));
 
-GL11.glEnable(GL11.GL_LIGHTING);
-GL11.glDisable(GL11.GL_BLEND);
-GL11.glPopMatrix();
+			tessellator.startDrawingQuads();
+			tessellator.addVertexWithUV(ss_p_m_i, ss_p_p_i, 1.0D, ss_p_m, ss_p_p);
+			tessellator.addVertexWithUV(ss_p_p_i, ss_p_p_i, 1.0D, ss_p_p, ss_p_p);
+			tessellator.addVertexWithUV(ss_p_p_i, ss_p_m_i, 1.0D, ss_p_p, ss_p_m);
+			tessellator.addVertexWithUV(ss_p_m_i, ss_p_m_i, 1.0D, ss_p_m, ss_p_m);
+			tessellator.draw();
+			//--------------------------------------------------
+			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/blocks/gold_block.png"));
 
-} else {
+			tessellator.startDrawingQuads();
+			tessellator.addVertexWithUV(16.0D, ss_p_m_i + 1.0D, 0.0D, 1.0D, ss_p_p);
+			tessellator.addVertexWithUV(0.0D, ss_p_m_i + 1.0D, 0.0D, 0.0D, ss_p_p);
+			tessellator.addVertexWithUV(0.0D, ss_p_p_i - 1.0D, 0.0D, 0.0D, ss_p_m);
+			tessellator.addVertexWithUV(16.0D, ss_p_p_i - 1.0D, 0.0D, 1.0D, ss_p_m);
+			tessellator.draw();
 
-GL11.glPushMatrix();
-GL11.glEnable(GL11.GL_BLEND);
-GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-GL11.glDisable(GL11.GL_LIGHTING);
+			GL11.glEnable(GL11.GL_LIGHTING);
+			GL11.glDisable(GL11.GL_BLEND);
+			GL11.glPopMatrix();
 
-//--------------------------------------------------
-Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[typ][0], (String)TileTexture.texTest01[typ][1]));
+		} else {
 
-BlockRenderElectricWires.addBox(ss_p_p, 1.0D, ss_p_p, ss_p_m, ss_p_p, ss_p_m);
-BlockRenderElectricWires.addBox(ss_p_p, ss_p_m, ss_p_p, ss_p_m, 0.0D, ss_p_m);
-BlockRenderElectricWires.addBox(1.0D, ss_p_p, ss_p_p, ss_p_p, ss_p_m, ss_p_m);
-BlockRenderElectricWires.addBox(ss_p_p, ss_p_p, 1.0D, ss_p_m, ss_p_m, ss_p_p);
-BlockRenderElectricWires.addBox(ss_p_m, ss_p_p, ss_p_p, 0.0D, ss_p_m, ss_p_m);
-BlockRenderElectricWires.addBox(ss_p_p, ss_p_p, ss_p_m, ss_p_m, ss_p_m, 0.0D);
-//--------------------------------------------------
-Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/blocks/gold_block.png"));
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			GL11.glDisable(GL11.GL_LIGHTING);
 
-BlockRenderElectricWires.addBox(ss_p_p - s_p, 1.0D + s_p, ss_p_p - s_p, ss_p_m + s_p, ss_p_p - s_p, ss_p_m + s_p);
-BlockRenderElectricWires.addBox(ss_p_p - s_p, ss_p_m + s_p, ss_p_p - s_p, ss_p_m + s_p, 0.0D - s_p, ss_p_m + s_p);
-BlockRenderElectricWires.addBox(1.0D + s_p, ss_p_p - s_p, ss_p_p - s_p, ss_p_p - s_p, ss_p_m + s_p, ss_p_m + s_p);
-BlockRenderElectricWires.addBox(ss_p_p - s_p, ss_p_p - s_p, 1.0D + s_p, ss_p_m + s_p, ss_p_m + s_p, ss_p_p - s_p);
-BlockRenderElectricWires.addBox(ss_p_m + s_p, ss_p_p - s_p, ss_p_p - s_p, 0.0D - s_p, ss_p_m, ss_p_m + s_p);
-BlockRenderElectricWires.addBox(ss_p_p - s_p, ss_p_p - s_p, ss_p_m + s_p, ss_p_m + s_p, ss_p_m + s_p, 0.0D - s_p);
-//--------------------------------------------------
+			//--------------------------------------------------
+			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[typ][0], (String)TileTexture.texTest01[typ][1]));
 
-GL11.glEnable(GL11.GL_LIGHTING);
-GL11.glDisable(GL11.GL_BLEND);
-GL11.glPopMatrix();
-}
-//--------------------------------------------------
-}
+			BlockRenderElectricWires.addBox(ss_p_p, 1.0D, ss_p_p, ss_p_m, ss_p_p, ss_p_m);
+			BlockRenderElectricWires.addBox(ss_p_p, ss_p_m, ss_p_p, ss_p_m, 0.0D, ss_p_m);
+			BlockRenderElectricWires.addBox(1.0D, ss_p_p, ss_p_p, ss_p_p, ss_p_m, ss_p_m);
+			BlockRenderElectricWires.addBox(ss_p_p, ss_p_p, 1.0D, ss_p_m, ss_p_m, ss_p_p);
+			BlockRenderElectricWires.addBox(ss_p_m, ss_p_p, ss_p_p, 0.0D, ss_p_m, ss_p_m);
+			BlockRenderElectricWires.addBox(ss_p_p, ss_p_p, ss_p_m, ss_p_m, ss_p_m, 0.0D);
+			//--------------------------------------------------
+			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/blocks/gold_block.png"));
+
+			BlockRenderElectricWires.addBox(ss_p_p - s_p, 1.0D + s_p, ss_p_p - s_p, ss_p_m + s_p, ss_p_p - s_p, ss_p_m + s_p);
+			BlockRenderElectricWires.addBox(ss_p_p - s_p, ss_p_m + s_p, ss_p_p - s_p, ss_p_m + s_p, 0.0D - s_p, ss_p_m + s_p);
+			BlockRenderElectricWires.addBox(1.0D + s_p, ss_p_p - s_p, ss_p_p - s_p, ss_p_p - s_p, ss_p_m + s_p, ss_p_m + s_p);
+			BlockRenderElectricWires.addBox(ss_p_p - s_p, ss_p_p - s_p, 1.0D + s_p, ss_p_m + s_p, ss_p_m + s_p, ss_p_p - s_p);
+			BlockRenderElectricWires.addBox(ss_p_m + s_p, ss_p_p - s_p, ss_p_p - s_p, 0.0D - s_p, ss_p_m, ss_p_m + s_p);
+			BlockRenderElectricWires.addBox(ss_p_p - s_p, ss_p_p - s_p, ss_p_m + s_p, ss_p_m + s_p, ss_p_m + s_p, 0.0D - s_p);
+			//--------------------------------------------------
+
+			GL11.glEnable(GL11.GL_LIGHTING);
+			GL11.glDisable(GL11.GL_BLEND);
+			GL11.glPopMatrix();
+		}
+		//--------------------------------------------------
+	}
 
 }

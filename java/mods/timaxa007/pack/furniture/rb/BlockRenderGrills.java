@@ -10,43 +10,43 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
-public class BlockRenderGrills extends TileEntitySpecialRenderer{
-private IModelCustom model;
+public class BlockRenderGrills extends TileEntitySpecialRenderer {
+	private static final IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/grill01.obj"));
 
-public BlockRenderGrills() {
-model=AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/grill01.obj"));
-}
+	public BlockRenderGrills() {
 
-public void renderTileEntityAt(TileEntity tileEntity, double d1, double d2, double d3, float f) {
-this.renderTE((TEGrills)tileEntity, d1, d2, d3, f);
-}
+	}
 
-public void renderTE(TEGrills tileEntity, double d1, double d2, double d3, float f) {
-//int tex=tileEntity.getBlockMetadata();
-int tex=tileEntity.getTypes();
-//int amt=tileEntity.getAmount();
-int rot=tileEntity.getRot();
+	public void renderTileEntityAt(TileEntity te, double dx, double dy, double dz, float f) {
+		renderTE((TEGrills)te, dx, dy, dz, f);
+	}
 
-GL11.glPushMatrix();
-GL11.glTranslated(d1, d2, d3);
-GL11.glTranslatef(0.5F, 0.0F, 0.5F);
-GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+	private void renderTE(TEGrills te, double dx, double dy, double dz, float f) {
+		//int tex = te.getBlockMetadata();
+		int tex = te.getTypes();
+		//int amt = te.getAmount();
+		int rot = te.getRot();
 
-switch(rot) {
-case 0:GL11.glRotatef(-180F, 0F, 0F, 1F);break;
-case 3:GL11.glRotatef(-90F, 0F, 0F, 1F);break;
-case 2:GL11.glRotatef(0F, 0F, 0F, 1F);break;
-case 1:GL11.glRotatef(90F, 0F, 0F, 1F);break;
-default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
-}
+		GL11.glPushMatrix();
+		GL11.glTranslated(dx, dy, dz);
+		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-this.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		switch(rot) {
+		case 0:GL11.glRotatef(-180F, 0F, 0F, 1F);break;
+		case 3:GL11.glRotatef(-90F, 0F, 0F, 1F);break;
+		case 2:GL11.glRotatef(0F, 0F, 0F, 1F);break;
+		case 1:GL11.glRotatef(90F, 0F, 0F, 1F);break;
+		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
+		}
 
-this.model.renderPart("grill");
-this.model.renderPart("grid");
+		bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
 
-GL11.glPopMatrix();
+		model.renderPart("grill");
+		model.renderPart("grid");
 
-}
+		GL11.glPopMatrix();
+
+	}
 
 }

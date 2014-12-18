@@ -12,32 +12,32 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class TEHealing extends TileEntity {
 
-public void updateEntity() {
-if (worldObj.getTotalWorldTime() % 80L == 0L) {
-addEffectsToPlayers();
-}
-}
+	public void updateEntity() {
+		if (worldObj.getTotalWorldTime() % 80L == 0L) {
+			addEffectsToPlayers();
+		}
+	}
 
-private void addEffectsToPlayers() {
-if (!worldObj.isRemote) {/*
-double d0 = (double)(50);
+	private void addEffectsToPlayers() {
+		if (!worldObj.isRemote) {/*
+			double d0 = (double)(50);
 
-AxisAlignedBB axisalignedbb = AxisAlignedBB.getAABBPool().getAABB((double)xCoord, (double)yCoord, (double)zCoord, (double)(xCoord + 1), (double)(yCoord + 1), (double)(zCoord + 1)).expand(d0, d0, d0);
-axisalignedbb.maxY = (double)worldObj.getHeight();
-List list = worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
-Iterator iterator = list.iterator();
-EntityPlayer entityplayer;
+			AxisAlignedBB axisalignedbb = AxisAlignedBB.getAABBPool().getAABB((double)xCoord, (double)yCoord, (double)zCoord, (double)(xCoord + 1), (double)(yCoord + 1), (double)(zCoord + 1)).expand(d0, d0, d0);
+			axisalignedbb.maxY = (double)worldObj.getHeight();
+			List list = worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
+			Iterator iterator = list.iterator();
+			EntityPlayer entityplayer;
 
-while(iterator.hasNext()) {
-entityplayer = (EntityPlayer)iterator.next();
-if (entityplayer.inventory.armorItemInSlot(3) != null && entityplayer.inventory.armorItemInSlot(3).getItem() instanceof ItemArmor) {
+			while(iterator.hasNext()) {
+				entityplayer = (EntityPlayer)iterator.next();
+				if (entityplayer.inventory.armorItemInSlot(3) != null && entityplayer.inventory.armorItemInSlot(3).getItem() instanceof ItemArmor) {
 
-} else {
-entityplayer.addPotionEffect(new PotionEffect(Potion.poison.id, 20 * 1, 0, true));
-}
-}
-*/
-}
-}
+				} else {
+					entityplayer.addPotionEffect(new PotionEffect(Potion.poison.id, 20 * 1, 0, true));
+				}
+			}
+		 */
+		}
+	}
 
 }

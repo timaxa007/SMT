@@ -19,55 +19,66 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBlender extends BlockContainer{
 
-public BlockBlender() {
-super(Material.wood);
-setCreativeTab(PackFurniture.proxy.tab_furniture);
-setHardness(0.5F);
-setBlockTextureName("planks_oak");
-setBlockName("blender");
-}
+	public BlockBlender() {
+		super(Material.wood);
+		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setHardness(0.5F);
+		setBlockTextureName("planks_oak");
+		setBlockName("blender");
+	}
 
-@Override
-public TileEntity createNewTileEntity(World world, int meta) {return new TEBlender();}
-public int getRenderType() {return -1;}
-public boolean isOpaqueCube() {return false;}
-public boolean renderAsNormalBlock() {return false;}
-public int idPicked(World wrd, int x, int y, int z) {return 0;}
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TEBlender();
+	}
 
-public ItemStack getPickBlock(MovingObjectPosition target, World wrd, int x, int y, int z) {
-TileEntity te=wrd.getTileEntity(x, y, z);
-if((te!=null)&&(te instanceof TEBlender)) {
-//return addTag(0, ((TEBlender)te).getType(), ((TEBlender)te).getSize());
-return addTag(0, ((TEBlender)te).getType(), 0, ((TEBlender)te).getTypeGlass(), ((TEBlender)te).getTypeSize());
-}
-return addTag(0, 0, 0, 0, 0);
-}
+	public int getRenderType() {
+		return PackFurniture.proxy.render_block_blender_modelID;
+	}
 
-@SideOnly(Side.CLIENT)
-public void getSubBlocks(Item id, CreativeTabs table, List list) {
+	public boolean isOpaqueCube() {
+		return false;
+	}
 
-//for(int j=0;j<TileTexture.getTexturesConstructionCount;++j) {
-for(byte i=0;i<16;++i) {
-int j=0;
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
 
-list.add(addTag(0, j, 0, i, 1));
-}
-//}
-//list.add(new ItemStack(id, 1, 0));
-}
+	public int idPicked(World world, int x, int y, int z) {
+		return 0;
+	}
 
-private static ItemStack addTag(int par1, int par2, int par3, int par4, int par5) {
-ItemStack is=new ItemStack(PackFurniture.proxy.block_blender, 1, par1);
-NBTTagCompound tag=new NBTTagCompound();
-tag.setInteger("Type", par2);
-tag.setInteger("TypeCap", par2);
-tag.setInteger("TypeHandler", par2);
-tag.setInteger("TypeBox", par2);
-tag.setInteger("TypeGlass", par4);
-tag.setInteger("TypeSize", par5);
-tag.setInteger("Size", par3);
-is.setTagCompound(tag);
-return is;
-}
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if (te != null && te instanceof TEBlender) {
+			return addTag(0, ((TEBlender)te).getType(), 0, ((TEBlender)te).getTypeGlass(), ((TEBlender)te).getTypeSize());
+		}
+		return addTag(0, 0, 0, 0, 0);
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item id, CreativeTabs table, List list) {
+		//for(int j=0;j<TileTexture.getTexturesConstructionCount;++j) {
+		for (byte i = 0; i < 16; ++i) {
+			int j=0;
+			list.add(addTag(0, j, 0, i, 1));
+		}
+		//}
+		//list.add(new ItemStack(id, 1, 0));
+	}
+
+	private static ItemStack addTag(int par1, int par2, int par3, int par4, int par5) {
+		ItemStack is = new ItemStack(PackFurniture.proxy.block_blender, 1, par1);
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("Type", par2);
+		tag.setInteger("TypeCap", par2);
+		tag.setInteger("TypeHandler", par2);
+		tag.setInteger("TypeBox", par2);
+		tag.setInteger("TypeGlass", par4);
+		tag.setInteger("TypeSize", par5);
+		tag.setInteger("Size", par3);
+		is.setTagCompound(tag);
+		return is;
+	}
 
 }

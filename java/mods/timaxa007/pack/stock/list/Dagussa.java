@@ -7,6 +7,6 @@ import mods.timaxa007.pack.stock.lib.GerminationPlants;
 
 public class Dagussa {
 
-public static GerminationPlants crop_dagussa = new GerminationPlants("crop_dagussa").setName("dagussa").setType("Herbal").setTexture("dagussa").setPlantStats(3, 2, 1).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
+	public static GerminationPlants crop_dagussa = new GerminationPlants("crop_dagussa").setName("dagussa").setType("Herbal").setTexture("dagussa").setPlantStats(3, 2, 1).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
 }

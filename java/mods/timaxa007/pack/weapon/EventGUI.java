@@ -6,16 +6,16 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventGUI {
-//--------------------------------------------------------------------------------------------------------------
-Minecraft mc = Minecraft.getMinecraft();
+	//--------------------------------------------------------------------------------------------------------------
+	Minecraft mc = Minecraft.getMinecraft();
 
-@SubscribeEvent
-public void statusBullet(LivingUpdateEvent p) {
+	@SubscribeEvent
+	public void statusBullet(LivingUpdateEvent p) {
 
-if ((mc.ingameGUI != null) && (!(mc.ingameGUI instanceof WeaponsIngameGUI))) {
-mc.ingameGUI = new WeaponsIngameGUI(mc);
-}
+		if ((mc.ingameGUI != null) && (!(mc.ingameGUI instanceof WeaponsIngameGUI))) {
+			mc.ingameGUI = new WeaponsIngameGUI(mc);
+		}
 
-}
-//--------------------------------------------------------------------------------------------------------------
+	}
+	//--------------------------------------------------------------------------------------------------------------
 }

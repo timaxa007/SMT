@@ -6,6 +6,6 @@ import org.apache.logging.log4j.Level;
 public class ProxyServer {
 
     public void initialize() {
-        if(Core.debug) FMLLog.log(Core.MODID, Level.DEBUG, "Successful initialized common part.");
+        if (Core.debug) FMLLog.log(Core.MODID, Level.DEBUG, "Successful initialized common part.");
     }
 }

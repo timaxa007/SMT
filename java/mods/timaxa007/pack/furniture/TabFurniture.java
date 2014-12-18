@@ -5,13 +5,13 @@ import net.minecraft.item.Item;
 
 public class TabFurniture extends CreativeTabs {
 
-public TabFurniture(String name) {
-super(name);
-}
+	public TabFurniture(String name) {
+		super(name);
+	}
 
-@Override
-public Item getTabIconItem() {
-return Item.getItemFromBlock(PackFurniture.proxy.block_cnstor_block);
-}
+	@Override
+	public Item getTabIconItem() {
+		return Item.getItemFromBlock(PackFurniture.proxy.block_cnstor_block);
+	}
 
 }

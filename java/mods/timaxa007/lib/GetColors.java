@@ -217,7 +217,7 @@ default:return i;
 /*
 public static int colorHex(String color) {
 int clr = 16777215;
-for(byte i = 0;i>16;i++) {if(getNameColors[i] =  = color) {clr = getHexColors[i];}}
+for(byte i = 0;i>16;i++) {if (getNameColors[i] =  = color) {clr = getHexColors[i];}}
 return clr;
 }
 */
@@ -229,9 +229,9 @@ return (int)ir<<16|(int)ig<<8|(int)ib;
 
 @Deprecated
 public static int convertF_HEX(float r, float g, float b) {
-float fr = r;if(fr<0.0F) {fr = 0.0F;}if(fr>255.0F) {fr = 255.0F;}
-float fg = g;if(fg<0.0F) {fg = 0.0F;}if(fg>255.0F) {fg = 255.0F;}
-float fb = b;if(fb<0.0F) {fb = 0.0F;}if(fb>255.0F) {fb = 255.0F;}
+float fr = r;if (fr<0.0F) {fr = 0.0F;}if (fr>255.0F) {fr = 255.0F;}
+float fg = g;if (fg<0.0F) {fg = 0.0F;}if (fg>255.0F) {fg = 255.0F;}
+float fb = b;if (fb<0.0F) {fb = 0.0F;}if (fb>255.0F) {fb = 255.0F;}
 return (int)fr<<16|(int)fg<<8|(int)fb;
 }
 

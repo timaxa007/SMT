@@ -1,48 +1,71 @@
 package mods.timaxa007.pack.techno.te;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 public class TEChip extends TileEntity {
 
-private int types;
-//private int sizes;
-private int rot;
+	private int type;
+	//private int size;
+	private int rot;
 
-public TEChip() {
+	public TEChip() {
+		type = 0;
+		//size = 0;
+		rot = 0;
+	}
 
-}
+	public void setType(int i) {
+		type = i;
+	}
 
-public int getTypes() {return types;}
-//public int getSize() {return sizes;}
-public int getRotation() {return rot;}
+	/*public void setSize(int i) {
+		size = i;
+	}*/
 
-public void setType(int i) {types=i;}
-//public void setSize(int i) {sizes=i;}
-public void setRotation(int i) {rot=i;}
+	public void setRotation(int i) {
+		rot = i;
+	}
 
-@Override
-public void readFromNBT(NBTTagCompound nbt) {
-super.readFromNBT(nbt);
-if(nbt.hasKey("Type")) {types=nbt.getInteger("Type");}
-//if(nbt.hasKey("Size")) {sizes=nbt.getInteger("Size");}
-if(nbt.hasKey("Rotation")) {rot=nbt.getInteger("Rotation");}
-}
+	public int getType() {
+		return type;
+	}
 
-@Override
-public void writeToNBT(NBTTagCompound nbt) {
-super.writeToNBT(nbt);
-nbt.setInteger("Type", types);
-//nbt.setInteger("Size", sizes);
-nbt.setInteger("Rotation", rot);
-}
+	/*public int getSize() {
+		return size;
+	}*/
 
-public Packet getDescriptionPacket() {
-NBTTagCompound nbt = new NBTTagCompound();
-writeToNBT(nbt);
-return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 0, nbt);
-}
+	public int getRotation() {
+		return rot;
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		if (nbt.hasKey("Type")) type = nbt.getInteger("Type");
+		//if (nbt.hasKey("Size")) size = nbt.getInteger("Size");
+		if (nbt.hasKey("Rotation")) rot = nbt.getInteger("Rotation");
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		nbt.setInteger("Type", type);
+		//nbt.setInteger("Size", size);
+		nbt.setInteger("Rotation", rot);
+	}
+
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbt = new NBTTagCompound();
+		writeToNBT(nbt);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 0, nbt);
+	}
+
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
+		readFromNBT(packet.func_148857_g());
+	}
 
 }

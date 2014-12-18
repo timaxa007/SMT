@@ -7,6 +7,6 @@ import mods.timaxa007.pack.stock.lib.GerminationPlants;
 
 public class Lime {
 
-public static GerminationPlants tree_lime = new GerminationPlants("tree_lime").setName("lime").setType("Tree").setTexture("lime").setPlantStats(1, 2, 3).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
+	public static GerminationPlants tree_lime = new GerminationPlants("tree_lime").setName("lime").setType("Tree").setTexture("lime").setPlantStats(1, 2, 3).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
 }

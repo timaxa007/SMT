@@ -5,13 +5,13 @@ import net.minecraft.item.Item;
 
 public class TabMedical extends CreativeTabs {
 
-public TabMedical(String name) {
-super(name);
-}
+	public TabMedical(String name) {
+		super(name);
+	}
 
-@Override
-public Item getTabIconItem() {
-return PackStock.proxy.item_medicals;
-}
+	@Override
+	public Item getTabIconItem() {
+		return PackStock.proxy.item_medicals;
+	}
 
 }

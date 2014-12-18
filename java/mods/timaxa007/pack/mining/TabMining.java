@@ -5,13 +5,13 @@ import net.minecraft.item.Item;
 
 public class TabMining extends CreativeTabs {
 
-public TabMining(String name) {
-super(name);
-}
+	public TabMining(String name) {
+		super(name);
+	}
 
-@Override
-public Item getTabIconItem() {
-return PackMining.proxy.items_for_mining;
-}
+	@Override
+	public Item getTabIconItem() {
+		return PackMining.proxy.items_for_mining;
+	}
 
 }
