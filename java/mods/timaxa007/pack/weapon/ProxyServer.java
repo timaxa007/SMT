@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.weapon;
 
 import mods.timaxa007.pack.weapon.block.*;
-import mods.timaxa007.pack.weapon.event.EventPackWeapon;
+import mods.timaxa007.pack.weapon.event.EventWeapon;
 import mods.timaxa007.pack.weapon.gui.HandlerGuiWeapons;
 import mods.timaxa007.pack.weapon.item.*;
 import mods.timaxa007.pack.weapon.lib.ListWeapon;
@@ -57,9 +57,9 @@ public class ProxyServer {
 		//Blocks
 		GameRegistry.registerTileEntity(TileEntityClaymore.class, "TileEntityClaymore");
 
-		MinecraftForge.EVENT_BUS.register(new EventPackWeapon());
-
 		Recipes_Weapon.list();
+
+		MinecraftForge.EVENT_BUS.register(new EventWeapon());
 
 	}
 

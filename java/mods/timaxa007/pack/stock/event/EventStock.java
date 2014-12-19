@@ -25,7 +25,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class EventPackStock {
+public class EventStock {
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
 	public void onUseBonemeal(BonemealEvent event) {

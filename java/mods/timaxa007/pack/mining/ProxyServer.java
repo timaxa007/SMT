@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.mining;
 
 import mods.timaxa007.pack.mining.block.*;
+import mods.timaxa007.pack.mining.event.EventMining;
 import mods.timaxa007.pack.mining.item.*;
 import mods.timaxa007.pack.mining.lib.ListMining;
 import mods.timaxa007.pack.mining.tile.*;
@@ -9,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -95,6 +97,8 @@ public class ProxyServer {
 		DimensionManager.registerDimension(world_dim_only_night_id, world_dim_only_night_id);
 		  */
 		Recipes_Mining.list();
+
+		MinecraftForge.EVENT_BUS.register(new EventMining());
 
 	}
 

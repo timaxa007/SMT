@@ -1,12 +1,14 @@
 package mods.timaxa007.pack.techno;
 
 import mods.timaxa007.pack.techno.block.*;
+import mods.timaxa007.pack.techno.event.EventTechno;
 import mods.timaxa007.pack.techno.gui.HandlerGuiTechno;
 import mods.timaxa007.pack.techno.item.*;
 import mods.timaxa007.pack.techno.lib.ListTechno;
 import mods.timaxa007.pack.techno.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -76,6 +78,8 @@ public class ProxyServer {
 		render_block_module_movement_modelID = -1;
 
 		Recipes_Techno.list();
+
+		MinecraftForge.EVENT_BUS.register(new EventTechno());
 
 	}
 

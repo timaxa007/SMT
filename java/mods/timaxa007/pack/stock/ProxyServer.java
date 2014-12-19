@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.stock;
 
 import mods.timaxa007.pack.stock.block.*;
-import mods.timaxa007.pack.stock.event.EventPackStock;
+import mods.timaxa007.pack.stock.event.EventStock;
 import mods.timaxa007.pack.stock.item.*;
 import mods.timaxa007.pack.stock.lib.ListStock;
 import mods.timaxa007.pack.stock.tile.*;
@@ -94,13 +94,13 @@ public class ProxyServer {
 
 		//EntityList.addMapping(EntityTest.class, "Test", 111, 0x0033FF, 0x00CCFF);
 
-		MinecraftForge.EVENT_BUS.register(new EventPackStock());
-
 		//GameRegistry.registerWorldGenerator(new GeneratorPackStock());
 
 		GameRegistry.addRecipe(new RecipeFoodsColors());
 
 		Recipes_Stock.list();
+
+		MinecraftForge.EVENT_BUS.register(new EventStock());
 
 	}
 
