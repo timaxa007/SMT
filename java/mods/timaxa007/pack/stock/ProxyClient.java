@@ -2,8 +2,8 @@ package mods.timaxa007.pack.stock;
 
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.ProxyServer;
-import mods.timaxa007.pack.stock.render.blocks.*;
-import mods.timaxa007.pack.stock.render.items.*;
+import mods.timaxa007.pack.stock.render.block.*;
+import mods.timaxa007.pack.stock.render.item.*;
 import mods.timaxa007.pack.stock.event.EventStockClient;
 import mods.timaxa007.pack.stock.tile.*;
 import net.minecraft.item.Item;

@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.model;
 
-import mods.timaxa007.pack.stock.render.blocks.RenderBlockApiary;
+import mods.timaxa007.pack.stock.render.block.RenderBlockApiary;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;

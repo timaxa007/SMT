@@ -1,8 +1,8 @@
 package mods.timaxa007.pack.stock;
 
-import mods.timaxa007.pack.stock.blocks.*;
+import mods.timaxa007.pack.stock.block.*;
 import mods.timaxa007.pack.stock.event.EventPackStock;
-import mods.timaxa007.pack.stock.items.*;
+import mods.timaxa007.pack.stock.item.*;
 import mods.timaxa007.pack.stock.lib.ListStock;
 import mods.timaxa007.pack.stock.tile.*;
 import net.minecraft.block.Block;

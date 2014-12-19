@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.stock.event;
 
 import mods.timaxa007.pack.stock.PackStock;
-import mods.timaxa007.pack.stock.items.ItemsStock;
+import mods.timaxa007.pack.stock.item.ItemsStock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.item.EntityItem;

@@ -2,8 +2,8 @@ package mods.timaxa007.pack.weapon;
 
 import mods.timaxa007.pack.weapon.PackWeapon;
 import mods.timaxa007.pack.weapon.ProxyServer;
-import mods.timaxa007.pack.weapon.render.blocks.*;
-import mods.timaxa007.pack.weapon.render.items.*;
+import mods.timaxa007.pack.weapon.render.block.*;
+import mods.timaxa007.pack.weapon.render.item.*;
 import mods.timaxa007.pack.weapon.event.EventWeaponsClient;
 import mods.timaxa007.pack.weapon.tile.*;
 import net.minecraft.client.Minecraft;

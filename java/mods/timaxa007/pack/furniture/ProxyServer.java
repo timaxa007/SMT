@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.furniture;
 
-import mods.timaxa007.pack.furniture.blocks.*;
+import mods.timaxa007.pack.furniture.block.*;
 import mods.timaxa007.pack.furniture.event.EventFurniture;
 import mods.timaxa007.pack.furniture.gui.HandlerGuiFurniture;
-import mods.timaxa007.pack.furniture.items.*;
+import mods.timaxa007.pack.furniture.item.*;
 import mods.timaxa007.pack.furniture.lib.ListFurniture;
 import mods.timaxa007.pack.furniture.tile.*;
 import net.minecraft.block.Block;

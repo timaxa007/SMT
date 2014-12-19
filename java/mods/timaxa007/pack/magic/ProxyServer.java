@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.magic;
 
-import mods.timaxa007.pack.magic.blocks.*;
+import mods.timaxa007.pack.magic.block.*;
 import mods.timaxa007.pack.magic.event.EventMagic;
 import mods.timaxa007.pack.magic.gui.HandlerGuiMagic;
-import mods.timaxa007.pack.magic.items.*;
+import mods.timaxa007.pack.magic.item.*;
 import mods.timaxa007.pack.magic.lib.ListMagic;
 import mods.timaxa007.pack.magic.tile.*;
 import net.minecraft.block.Block;

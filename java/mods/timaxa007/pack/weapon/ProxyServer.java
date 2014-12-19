@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.weapon;
 
-import mods.timaxa007.pack.weapon.blocks.*;
+import mods.timaxa007.pack.weapon.block.*;
 import mods.timaxa007.pack.weapon.event.EventPackWeapon;
 import mods.timaxa007.pack.weapon.gui.HandlerGuiWeapons;
-import mods.timaxa007.pack.weapon.items.*;
+import mods.timaxa007.pack.weapon.item.*;
 import mods.timaxa007.pack.weapon.lib.ListWeapon;
 import mods.timaxa007.pack.weapon.tile.*;
 import net.minecraft.block.Block;

@@ -2,8 +2,8 @@ package mods.timaxa007.pack.furniture;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.ProxyServer;
-import mods.timaxa007.pack.furniture.render.blocks.*;
-import mods.timaxa007.pack.furniture.render.items.*;
+import mods.timaxa007.pack.furniture.render.block.*;
+import mods.timaxa007.pack.furniture.render.item.*;
 import mods.timaxa007.pack.furniture.event.EventFurnitureClient;
 import mods.timaxa007.pack.furniture.tile.*;
 import net.minecraft.item.Item;

@@ -2,8 +2,8 @@ package mods.timaxa007.pack.magic;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.ProxyServer;
-import mods.timaxa007.pack.magic.render.blocks.*;
-import mods.timaxa007.pack.magic.render.items.*;
+import mods.timaxa007.pack.magic.render.block.*;
+import mods.timaxa007.pack.magic.render.item.*;
 import mods.timaxa007.pack.magic.event.EventMagicClient;
 import mods.timaxa007.pack.magic.tile.*;
 import net.minecraft.item.Item;

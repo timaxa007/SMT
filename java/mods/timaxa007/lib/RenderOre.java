@@ -24,8 +24,8 @@ public void renderTileEntityAt(TileEntity te, double x, double y, double z, floa
 Block b = te.getWorldObj().getBlock(te.xCoord, te.yCoord - 1, te.zCoord);
 int meta = te.getWorldObj().getBlockMetadata(te.xCoord, te.yCoord - 1, te.zCoord);
 /**Texture of block in y - 1.*/
-//BufferedImage stone = Block.blocksList[b] != null && Block.blocksList[b].getIcon(1, meta) != null ? 
-//ImageUtils.getImageFrom(ImageUtils.getLocationFrom(Block.blocksList[b].getIcon(1, meta).getIconName())) : 
+//BufferedImage stone = Block.blockList[b] != null && Block.blockList[b].getIcon(1, meta) != null ? 
+//ImageUtils.getImageFrom(ImageUtils.getLocationFrom(Block.blockList[b].getIcon(1, meta).getIconName())) : 
 ImageUtils.getImageFrom(ImageUtils.getLocationFrom(Blocks.stone.getIcon(1, meta).getIconName()));
 /**Texture of base ore*/
 BufferedImage ore = ImageUtils.getImageFrom(new ResourceLocation("timaxa007", "textures/blocks/ore/ore_dust_overlay.png"));

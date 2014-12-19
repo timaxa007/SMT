@@ -2,8 +2,8 @@ package mods.timaxa007.pack.techno;
 
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.ProxyServer;
-import mods.timaxa007.pack.techno.render.blocks.*;
-import mods.timaxa007.pack.techno.render.items.*;
+import mods.timaxa007.pack.techno.render.block.*;
+import mods.timaxa007.pack.techno.render.item.*;
 import mods.timaxa007.pack.techno.event.EventTechnoClient;
 import mods.timaxa007.pack.techno.tile.*;
 import net.minecraft.item.Item;

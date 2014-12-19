@@ -1,8 +1,8 @@
 package mods.timaxa007.pack.techno;
 
-import mods.timaxa007.pack.techno.blocks.*;
+import mods.timaxa007.pack.techno.block.*;
 import mods.timaxa007.pack.techno.gui.HandlerGuiTechno;
-import mods.timaxa007.pack.techno.items.*;
+import mods.timaxa007.pack.techno.item.*;
 import mods.timaxa007.pack.techno.lib.ListTechno;
 import mods.timaxa007.pack.techno.tile.*;
 import net.minecraft.block.Block;

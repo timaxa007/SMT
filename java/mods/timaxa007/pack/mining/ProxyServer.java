@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.mining;
 
-import mods.timaxa007.pack.mining.blocks.*;
-import mods.timaxa007.pack.mining.items.*;
+import mods.timaxa007.pack.mining.block.*;
+import mods.timaxa007.pack.mining.item.*;
 import mods.timaxa007.pack.mining.lib.ListMining;
 import mods.timaxa007.pack.mining.tile.*;
 import net.minecraft.block.Block;

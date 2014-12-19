@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.weapon.gui;
 
-import mods.timaxa007.pack.weapon.items.ItemWeapons;
+import mods.timaxa007.pack.weapon.item.ItemWeapons;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;

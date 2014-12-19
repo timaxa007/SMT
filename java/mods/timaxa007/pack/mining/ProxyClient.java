@@ -2,8 +2,8 @@ package mods.timaxa007.pack.mining;
 
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.pack.mining.ProxyServer;
-import mods.timaxa007.pack.mining.render.blocks.*;
-import mods.timaxa007.pack.mining.render.items.*;
+import mods.timaxa007.pack.mining.render.block.*;
+import mods.timaxa007.pack.mining.render.item.*;
 import mods.timaxa007.pack.mining.event.EventMiningClient;
 import mods.timaxa007.pack.mining.tile.*;
 import net.minecraft.item.Item;
