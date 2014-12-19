@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.magic;
 
-import mods.timaxa007.pack.magic.entity.*;
-import mods.timaxa007.pack.magic.rb.*;
-import mods.timaxa007.pack.magic.ri.*;
-import mods.timaxa007.pack.magic.te.*;
+import mods.timaxa007.pack.magic.event.sound.EventSoundMagic;
+import mods.timaxa007.pack.magic.render.block.*;
+import mods.timaxa007.pack.magic.render.item.*;
+import mods.timaxa007.pack.magic.tile.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;

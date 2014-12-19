@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.magic.blocks;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.pack.magic.te.TEMagicMachines;
+import mods.timaxa007.pack.magic.tile.TEMagicMachines;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;

@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.magic.list;
 
 import mods.timaxa007.lib.FluidFake;
+import net.minecraft.client.settings.GameSettings;
 
 public class ListMagic {
 

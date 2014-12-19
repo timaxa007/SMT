@@ -1,10 +1,12 @@
 package mods.timaxa007.pack.magic;
 
 import mods.timaxa007.pack.magic.blocks.*;
+import mods.timaxa007.pack.magic.event.EventMagic;
 import mods.timaxa007.pack.magic.gui.HandlerGuiMagic;
 import mods.timaxa007.pack.magic.items.*;
 import mods.timaxa007.pack.magic.list.ListMagic;
-import mods.timaxa007.pack.magic.te.*;
+import mods.timaxa007.pack.magic.recipe.RecipesMagic;
+import mods.timaxa007.pack.magic.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -109,7 +111,7 @@ public class ProxyServer {
 
 		MinecraftForge.EVENT_BUS.register(new EventMagic());
 
-		Recipes_Magic.list();
+		RecipesMagic.list();
 
 	}
 

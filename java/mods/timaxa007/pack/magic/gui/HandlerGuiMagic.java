@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.magic.gui;
 
-import mods.timaxa007.pack.magic.te.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

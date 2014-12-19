@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.magic.blocks;
 
-import mods.timaxa007.pack.magic.te.TEMagicCauldron;
+import mods.timaxa007.pack.magic.tile.TEMagicCauldron;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
