@@ -94,7 +94,7 @@ ORANGE(10, 0xFF8800, 15435844, "orange"),
 PINK(11, 0xFF8888, 14188952, "pink"), 
 PURPLE(12, 0x8800FF, 8073150, "purple"), 
 RED(13, 0xFF0000, 11743532, "red"), 
-WHITileEntity(14, 0xFFFFFF, 15790320, "white"), 
+WHITE(14, 0xFFFFFF, 15790320, "white"), 
 YELLOW(15, 0xFFFF00, 14602026, "yellow"), 
 NONE(16, 0x000000, 0x000000, "none");
 
