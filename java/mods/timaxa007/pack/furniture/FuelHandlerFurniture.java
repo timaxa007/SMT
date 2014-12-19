@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.IFuelHandler;
 
-public class FuelHandlerFurniture implements IFuelHandler {
+public class FuelHandlerFurniture implements IFuelHandler{
 
 	@Override
 	public int getBurnTime(ItemStack fuel) {

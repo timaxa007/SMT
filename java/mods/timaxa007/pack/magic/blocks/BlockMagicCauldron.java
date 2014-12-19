@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.magic.blocks;
 
-import mods.timaxa007.pack.magic.tile.TEMagicCauldron;
+import mods.timaxa007.pack.magic.tile.TileEntityMagicCauldron;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -17,7 +17,7 @@ public class BlockMagicCauldron extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEMagicCauldron();
+		return new TileEntityMagicCauldron();
 	}
 
 }

@@ -14,7 +14,7 @@ public class ItemStuffs extends Item{
 
 	public ItemStuffs() {
 		super();
-		setCreativeTab(PackMagic.proxy.tab_magic);
+		setCreativeTab(PackMagic.tab_magic);
 		setTextureName("timaxa007:stuffs");
 		setUnlocalizedName("stuffs");
 		setFull3D();

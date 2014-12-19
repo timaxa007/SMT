@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEGrills;
+import mods.timaxa007.pack.furniture.tile.TileEntityGrills;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -30,14 +30,14 @@ public class BlockGrills extends BlockContainer {
 	public BlockGrills() {
 		super(Material.iron);
 		setHardness(0.5F);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setBlockTextureName("planks_oak");
 		setBlockName("grills");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEGrills();
+		return new TileEntityGrills();
 	}
 
 	public int getRenderType() {
@@ -58,7 +58,7 @@ public class BlockGrills extends BlockContainer {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEGrills) return addTag(((TEGrills)te).getTypes());
+		if (te != null && te instanceof TileEntityGrills) return addTag(((TileEntityGrills)te).getTypes());
 		return null;
 	}
 
@@ -67,7 +67,7 @@ public class BlockGrills extends BlockContainer {
 		TileEntity te = world.getTileEntity(x, y, z);
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
-		if (te != null && te instanceof TEGrills) {
+		if (te != null && te instanceof TileEntityGrills) {
 			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_grills, world, x, y, z);
 			return true;
 		}
@@ -76,7 +76,7 @@ public class BlockGrills extends BlockContainer {
 
 	public void breakBlock(World world, int x, int y, int z, Block blkid, int blkmeta) {
 		if (!keepFurnaceInventory) {
-			TEGrills tileentityfurnace = (TEGrills)world.getTileEntity(x, y, z);
+			TileEntityGrills tileentityfurnace = (TileEntityGrills)world.getTileEntity(x, y, z);
 
 			if (tileentityfurnace != null) {
 				for (int j1 = 0; j1 < tileentityfurnace.getSizeInventory(); ++j1) {
@@ -118,13 +118,13 @@ public class BlockGrills extends BlockContainer {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEGrills) {
+		if (te != null && te instanceof TileEntityGrills) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F/ 360.0F) + 0.5D) & 3;
-			((TEGrills)te).setRot(l);
+			((TileEntityGrills)te).setRot(l);
 
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TEGrills)te).setTypes(tag.getInteger("Type"));
+				if (tag.hasKey("Type")) ((TileEntityGrills)te).setTypes(tag.getInteger("Type"));
 			}
 
 		}

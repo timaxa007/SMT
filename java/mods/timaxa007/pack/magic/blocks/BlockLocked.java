@@ -3,7 +3,7 @@ package mods.timaxa007.pack.magic.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.pack.magic.tile.TEBlockLocked;
+import mods.timaxa007.pack.magic.tile.TileEntityBlockLocked;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -24,20 +24,20 @@ public class BlockLocked extends Block implements ITileEntityProvider {
 	public BlockLocked() {
 		super(Material.iron);
 		setBlockUnbreakable();
-		setCreativeTab(PackMagic.proxy.tab_magic);
+		setCreativeTab(PackMagic.tab_magic);
 		setBlockTextureName("planks_oak");
 		setBlockName("locked");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEBlockLocked();
+		return new TileEntityBlockLocked();
 	}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEBlockLocked) {
-			addTag(((TEBlockLocked)te).getType());
+		if (te != null && te instanceof TileEntityBlockLocked) {
+			addTag(((TileEntityBlockLocked)te).getType());
 		}
 		return null;
 	}
@@ -46,14 +46,14 @@ public class BlockLocked extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEBlockLocked) {
+		if (te != null && te instanceof TileEntityBlockLocked) {
 			if (tag != null) {
-				((TEBlockLocked)te).setType(tag.getInteger("Type"));
+				((TileEntityBlockLocked)te).setType(tag.getInteger("Type"));
 			} else {
-				((TEBlockLocked)te).setType(0);
+				((TileEntityBlockLocked)te).setType(0);
 			}
 			if (entity instanceof EntityPlayer) {
-				((TEBlockLocked)te).setOwner(((EntityPlayer)entity).getDisplayName());
+				((TileEntityBlockLocked)te).setOwner(((EntityPlayer)entity).getDisplayName());
 			}
 		}
 	}
@@ -67,10 +67,10 @@ public class BlockLocked extends Block implements ITileEntityProvider {
 	public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player) {
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
-			if (te != null && te instanceof TEBlockLocked) {
-				if (player.getDisplayName().equals(((TEBlockLocked)te).getOwner())) {
+			if (te != null && te instanceof TileEntityBlockLocked) {
+				if (player.getDisplayName().equals(((TileEntityBlockLocked)te).getOwner())) {
 					//world.setBlockToAir(x, y, z);
-					//world.spawnEntityInWorld(new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, addTag(((TEBlockLocked)te).getType())));
+					//world.spawnEntityInWorld(new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, addTag(((TileEntityBlockLocked)te).getType())));
 				}
 			}
 		}
@@ -79,8 +79,8 @@ public class BlockLocked extends Block implements ITileEntityProvider {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
 		if (world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
-			if (te != null && te instanceof TEBlockLocked) {
-				//player.addChatMessage("Install Block user - " + ((TEBlockLocked)te).getOwner() + ".");
+			if (te != null && te instanceof TileEntityBlockLocked) {
+				//player.addChatMessage("Install Block user - " + ((TileEntityBlockLocked)te).getOwner() + ".");
 				return true;
 			}
 		}
@@ -89,8 +89,8 @@ public class BlockLocked extends Block implements ITileEntityProvider {
 
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEBlockLocked) {
-			if (player.getDisplayName().equals(((TEBlockLocked)te).getOwner())) {
+		if (te != null && te instanceof TileEntityBlockLocked) {
+			if (player.getDisplayName().equals(((TileEntityBlockLocked)te).getOwner())) {
 				System.out.println("true");
 			}
 		}

@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.furniture.lib;
 /**
+ * Use in <b>BlockGround</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -18,8 +19,8 @@ public class AddBlockGround {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public AddBlockGround() {
-		list[nextID()] = this;
 		id = nextID();
+		list[id] = this;
 		tag = "";
 		color_hex = 0xFFFFFF;
 		texture = "";
@@ -27,9 +28,9 @@ public class AddBlockGround {
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public AddBlockGround(int i) {
-		list[i] = this;
-		id = i;
+	public AddBlockGround(int id) {
+		this.id = id;
+		list[id] = this;
 		tag = "";
 		color_hex = 0xFFFFFF;
 		texture = "";
@@ -37,68 +38,94 @@ public class AddBlockGround {
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public AddBlockGround(int i, String str) {
-		checkTag(str);//OFF
-		list[i] = this;
-		id = i;
-		tag = str;
+	public AddBlockGround(int id, String tag) {
+		this.id = id;
+		list[id] = this;
+		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
+		checkTag(tag);//OFF
 	}
 
-	public AddBlockGround(String str) {
-		checkTag(str);//OFF
-		list[nextID()] = this;
+	public AddBlockGround(String tag) {
 		id = nextID();
-		tag = str;
+		list[id] = this;
+		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
+		checkTag(tag);//OFF
 	}
 
 	public int nextID() {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] == null) {return i;}
-		}
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
+				return i;
 		return list.length - 1;
 	}
 
-	public boolean hasTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public int getID_tag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {return i;}
-		}
+	public int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
+				return i;
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] != null && list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public AddBlockGround setID(int i) {id = i;return this;}
-	public int getID() {return id;}
+	public AddBlockGround setID(int id) {
+		this.id = id;
+		return this;
+	}
 
-	public AddBlockGround setTag(String str) {tag = str;return this;}
-	public String getTag() {return tag;}
+	public int getID() {
+		return id;
+	}
 
-	public AddBlockGround setName(String str) {name = str;return this;}
-	public String getName() {return name;}
+	public AddBlockGround setTag(String tag) {
+		this.tag = tag;
+		return this;
+	}
 
-	public AddBlockGround setColor(int i) {color_hex = i;return this;}
-	public int getColor() {return color_hex;}
+	public String getTag() {
+		return tag;
+	}
 
-	public AddBlockGround setTexture(String str) {texture = str;return this;}
-	public String getTexture() {return texture;}
+	public AddBlockGround setName(String name) {
+		this.name = name;
+		return this;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public AddBlockGround setColor(int color) {
+		color_hex = color;
+		return this;
+	}
+
+	public int getColor() {
+		return color_hex;
+	}
+
+	public AddBlockGround setTexture(String path) {
+		texture = path;
+		return this;
+	}
+
+	public String getTexture() {
+		return texture;
+	}
 
 }

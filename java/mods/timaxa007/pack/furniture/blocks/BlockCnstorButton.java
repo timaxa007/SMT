@@ -11,7 +11,7 @@ public class BlockCnstorButton extends Block implements ITileEntityProvider {
 
 	public BlockCnstorButton() {
 		super(Material.glass);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setLightOpacity(0);

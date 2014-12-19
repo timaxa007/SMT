@@ -1,10 +1,11 @@
 package mods.timaxa007.pack.weapon;
 
-import mods.timaxa007.pack.weapon.entity.*;
-import mods.timaxa007.pack.weapon.rb.*;
-import mods.timaxa007.pack.weapon.ri.*;
-import mods.timaxa007.pack.weapon.ri.*;
-import mods.timaxa007.pack.weapon.te.TEClaymore;
+import mods.timaxa007.pack.weapon.PackWeapon;
+import mods.timaxa007.pack.weapon.ProxyServer;
+import mods.timaxa007.pack.weapon.render.blocks.*;
+import mods.timaxa007.pack.weapon.render.items.*;
+import mods.timaxa007.pack.weapon.event.EventWeaponsClient;
+import mods.timaxa007.pack.weapon.tile.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -23,20 +24,22 @@ public class ProxyClient extends ProxyServer {
 	public void init() {
 		super.init();
 
+		//Blocks
 		renderBlockClaymoreModelID = RenderingRegistry.getNextAvailableRenderId();
 
 		//Blocks
-		ClientRegistry.bindTileEntitySpecialRenderer(TEClaymore.class, new BlockRenderClaymore());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityClaymore.class, new BlockRenderClaymore());
 
 		//Blocks
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapon.proxy.block_claymore), new ItemRendererClaymore());
+		
 		//Item
 		MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.item_weapons, new ItemRendererWeapons());
 
+		//Entity
 		//RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderEntityBullet());
 
-		MinecraftForge.EVENT_BUS.register(new EventGUI());
-		MinecraftForge.EVENT_BUS.register(new EventSoundWeapon());
+		MinecraftForge.EVENT_BUS.register(new EventWeaponsClient());
 
 	}
 

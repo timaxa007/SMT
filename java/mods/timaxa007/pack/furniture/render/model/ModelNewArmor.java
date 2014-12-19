@@ -5,6 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
+@Deprecated
 public class ModelNewArmor extends ModelBiped {
 	private static ModelRenderer helmUp;
 	private static ModelRenderer helmLeft;

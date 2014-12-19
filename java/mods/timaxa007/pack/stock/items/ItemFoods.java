@@ -187,7 +187,7 @@ public class ItemFoods extends Item {
 
 	public ItemFoods() {
 		super();
-		setCreativeTab(PackStock.proxy.tab_food);
+		setCreativeTab(PackStock.tab_food);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setTextureName("timaxa007:");
@@ -401,9 +401,9 @@ sauce_hex = hex_sauce;
 	public int getMaxItemUseDuration(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("NameID")) {
-			return FoodForItem.food_list[FoodForItem.getID_tag(tag.getString("NameID"))].getSpeedOfEating();
+			return FoodForItem.list[FoodForItem.getID_tag(tag.getString("NameID"))].getSpeedOfEating();
 		} else if (tag != null && tag.hasKey("ItemID")) {
-			return FoodForItem.food_list[tag.getInteger("ItemID")].getSpeedOfEating();
+			return FoodForItem.list[tag.getInteger("ItemID")].getSpeedOfEating();
 		} else {
 			return 64;
 		}
@@ -416,9 +416,9 @@ sauce_hex = hex_sauce;
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("NameID")) {
-			return "food." + FoodForItem.food_list[FoodForItem.getID_tag(tag.getString("NameID"))].getName();
+			return "food." + FoodForItem.list[FoodForItem.getID_tag(tag.getString("NameID"))].getName();
 		} else if (tag != null && tag.hasKey("ItemID")) {
-			return "food." + FoodForItem.food_list[tag.getInteger("ItemID")].getName();
+			return "food." + FoodForItem.list[tag.getInteger("ItemID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
@@ -431,10 +431,10 @@ sauce_hex = hex_sauce;
 				if (Core.show_tip_info_testing) {
 
 					if (tag.hasKey("NameID")) {
-						if (FoodForItem.food_list[FoodForItem.getID_tag(tag.getString("NameID"))] != null) {
+						if (FoodForItem.list[FoodForItem.getID_tag(tag.getString("NameID"))] != null) {
 							list.add("NameID: " + tag.getString("NameID") + " / [-] ID:" + FoodForItem.getID_tag(tag.getString("NameID")) + ".");
-							//if (FoodForItem.food_list[FoodForItem.getID_tag(tag.getString("NameID"))].getType() != null) {
-							list.add(Option.getText("Type") + ": " + FoodForItem.food_list[FoodForItem.getID_tag(tag.getString("NameID"))].getLocalizedType() + ".");
+							//if (FoodForItem.list[FoodForItem.getID_tag(tag.getString("NameID"))].getType() != null) {
+							list.add(Option.getText("Type") + ": " + FoodForItem.list[FoodForItem.getID_tag(tag.getString("NameID"))].getLocalizedType() + ".");
 							//}
 						} else {
 							list.add("Bag Item is in NameID: " + tag.getString("NameID") + ".");
@@ -442,10 +442,10 @@ sauce_hex = hex_sauce;
 					}
 
 					if (tag.hasKey("ItemID")) {
-						if (FoodForItem.food_list[tag.getInteger("ItemID")] != null) {
-							list.add("NameID: " + FoodForItem.food_list[tag.getInteger("ItemID")].tag + " [-] / ItemID: " + tag.getInteger("ItemID") + ".");
-							//if (FoodForItem.food_list[tag.getInteger("ItemID")].getType() != null) {
-							list.add(Option.getText("Type") + ": " + FoodForItem.food_list[tag.getInteger("ItemID")].getLocalizedType() + ".");
+						if (FoodForItem.list[tag.getInteger("ItemID")] != null) {
+							list.add("NameID: " + FoodForItem.list[tag.getInteger("ItemID")].tag + " [-] / ItemID: " + tag.getInteger("ItemID") + ".");
+							//if (FoodForItem.list[tag.getInteger("ItemID")].getType() != null) {
+							list.add(Option.getText("Type") + ": " + FoodForItem.list[tag.getInteger("ItemID")].getLocalizedType() + ".");
 							//}
 						} else {
 							list.add("Bag Item is in ItemID: " + tag.getInteger("ItemID") + ".");
@@ -497,10 +497,10 @@ sauce_hex = hex_sauce;
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		for (int i = 0; i < FoodForItem.food_list.length; i++) {
-			if (FoodForItem.food_list[i] != null && FoodForItem.food_list[i].tag != null) {
-				list.add(addTag(FoodForItem.food_list[i].tag));
-			} else if (FoodForItem.food_list[i] != null && FoodForItem.food_list[i].tag == null) {
+		for (int i = 0; i < FoodForItem.list.length; i++) {
+			if (FoodForItem.list[i] != null && FoodForItem.list[i].tag != null) {
+				list.add(addTag(FoodForItem.list[i].tag));
+			} else if (FoodForItem.list[i] != null && FoodForItem.list[i].tag == null) {
 				list.add(addTag(i));
 			}
 		}
@@ -574,7 +574,7 @@ int r3 = ((r1 + (r2 * 2)) / 3);int g3 = ((g1 + (g2 * 2)) / 3);int b3 = ((b1 + (b
 
 		if (tag != null && tag.hasKey("NameID") && tag.hasKey("ColorHex")) {
 
-			int clr1 = FoodForItem.food_list[FoodForItem.getID_tag(tag.getString("NameID"))].getColor(pass);
+			int clr1 = FoodForItem.list[FoodForItem.getID_tag(tag.getString("NameID"))].getColor(pass);
 			int r1 = (int)(clr1 >> 16 & 255);int g1 = (int)(clr1 >> 8 & 255);int b1 = (int)(clr1 >> 0 & 255);
 			int clr2 = tag.getInteger("ColorHex");
 			int r2 = (int)(clr2 >> 16 & 255);int g2 = (int)(clr2 >> 8 & 255);int b2 = (int)(clr2 >> 0 & 255);
@@ -584,7 +584,7 @@ int r3 = ((r1 + (r2 * 2)) / 3);int g3 = ((g1 + (g2 * 2)) / 3);int b3 = ((b1 + (b
 
 		} else if (tag != null && tag.hasKey("ItemID") && tag.hasKey("ColorHex")) {
 
-			int clr1 = FoodForItem.food_list[tag.getInteger("ItemID")].getColor(pass);
+			int clr1 = FoodForItem.list[tag.getInteger("ItemID")].getColor(pass);
 			int r1 = (int)(clr1 >> 16 & 255);int g1 = (int)(clr1 >> 8 & 255);int b1 = (int)(clr1 >> 0 & 255);
 			int clr2 = tag.getInteger("ColorHex");
 			int r2 = (int)(clr2 >> 16 & 255);int g2 = (int)(clr2 >> 8 & 255);int b2 = (int)(clr2 >> 0 & 255);
@@ -593,9 +593,9 @@ int r3 = ((r1 + (r2 * 2)) / 3);int g3 = ((g1 + (g2 * 2)) / 3);int b3 = ((b1 + (b
 			return (int)r3 << 16 | (int)g3 << 8 | (int)b3;
 
 		} else if (tag != null && tag.hasKey("NameID")) {
-			return FoodForItem.food_list[FoodForItem.getID_tag(tag.getString("NameID"))].getColor(pass);
+			return FoodForItem.list[FoodForItem.getID_tag(tag.getString("NameID"))].getColor(pass);
 		} else if (tag != null && tag.hasKey("ItemID")) {
-			return FoodForItem.food_list[tag.getInteger("ItemID")].getColor(pass);
+			return FoodForItem.list[tag.getInteger("ItemID")].getColor(pass);
 		} else {
 			return 16777215;
 		}
@@ -605,26 +605,26 @@ int r3 = ((r1 + (r2 * 2)) / 3);int g3 = ((g1 + (g2 * 2)) / 3);int b3 = ((b1 + (b
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);
 		itemIcon = ir.registerIcon(getIconString() + "foods/food");
-		icon_g = new IIcon[FoodForItem.food_list.length][4];
-		for (int i = 0; i < FoodForItem.food_list.length; i++) {
+		icon_g = new IIcon[FoodForItem.list.length][4];
+		for (int i = 0; i < FoodForItem.list.length; i++) {
 			for (int j = 0; j < 4; j++) {
-				if ( FoodForItem.food_list[i] != null) {
-					icon_g[i][j] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getTexture(j));
+				if ( FoodForItem.list[i] != null) {
+					icon_g[i][j] = ir.registerIcon(getIconString() + FoodForItem.list[i].getTexture(j));
 				} else {
 					icon_g[i][j] = itemIcon;
 				}
 			}
 		}
 		/*
-icon_tex = new IIcon[FoodForItem.food_list.length];
-icon_ovl = new IIcon[FoodForItem.food_list.length];
-for (int i = 0; i < FoodForItem.food_list.length; i++) {
-if (FoodForItem.food_list[i] != null) {
-icon_tex[i] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getTexture(0));
-	if (FoodForItem.food_list[i].getTexture(1) == FoodForItem.food_list[i].getTexture(0)) {
+icon_tex = new IIcon[FoodForItem.list.length];
+icon_ovl = new IIcon[FoodForItem.list.length];
+for (int i = 0; i < FoodForItem.list.length; i++) {
+if (FoodForItem.list[i] != null) {
+icon_tex[i] = ir.registerIcon(getIconString() + FoodForItem.list[i].getTexture(0));
+	if (FoodForItem.list[i].getTexture(1) == FoodForItem.list[i].getTexture(0)) {
 	icon_ovl[i] = ir.registerIcon(getIconString() + "empty");
 	} else {
-	icon_ovl[i] = ir.registerIcon(getIconString() + FoodForItem.food_list[i].getTexture(1));
+	icon_ovl[i] = ir.registerIcon(getIconString() + FoodForItem.list[i].getTexture(1));
 	}
 } else {
 icon_tex[i] = itemIcon;

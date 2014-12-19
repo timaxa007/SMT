@@ -1,22 +1,20 @@
 package mods.timaxa007.pack.weapon;
 
 import mods.timaxa007.pack.weapon.blocks.*;
+import mods.timaxa007.pack.weapon.event.EventPackWeapon;
 import mods.timaxa007.pack.weapon.gui.HandlerGuiWeapons;
 import mods.timaxa007.pack.weapon.items.*;
-import mods.timaxa007.pack.weapon.list.ListWeapon;
-import mods.timaxa007.pack.weapon.te.*;
+import mods.timaxa007.pack.weapon.lib.ListWeapon;
+import mods.timaxa007.pack.weapon.tile.*;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
-
-	public static CreativeTabs tab_weapons = new TabWeapons("tab_weapons");
 
 	//Blocks
 	public static Block block_claymore;
@@ -57,7 +55,7 @@ public class ProxyServer {
 		GameRegistry.registerItem(item_magazines, "ItemMagazines");
 
 		//Blocks
-		GameRegistry.registerTileEntity(TEClaymore.class, "TEClaymore");
+		GameRegistry.registerTileEntity(TileEntityClaymore.class, "TileEntityClaymore");
 
 		MinecraftForge.EVENT_BUS.register(new EventPackWeapon());
 

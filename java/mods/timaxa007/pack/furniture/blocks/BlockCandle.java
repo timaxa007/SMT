@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TECandle;
+import mods.timaxa007.pack.furniture.tile.TileEntityCandle;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -21,7 +21,7 @@ public class BlockCandle extends Block implements ITileEntityProvider {
 
 	public BlockCandle() {
 		super(Material.circuits);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.3F);
 		setResistance(1.0F);
 		setLightOpacity(0);
@@ -33,7 +33,7 @@ public class BlockCandle extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TECandle();
+		return new TileEntityCandle();
 	}
 
 	public int quantityDropped(Random random) {

@@ -5,28 +5,21 @@ import mods.timaxa007.pack.furniture.event.EventFurniture;
 import mods.timaxa007.pack.furniture.gui.HandlerGuiFurniture;
 import mods.timaxa007.pack.furniture.items.*;
 import mods.timaxa007.pack.furniture.lib.ListFurniture;
-import mods.timaxa007.pack.furniture.recipe.RecipeArmorColor;
-import mods.timaxa007.pack.furniture.recipe.RecipeCnstorBlockColors;
-import mods.timaxa007.pack.furniture.recipe.RecipesArmor;
-import mods.timaxa007.pack.furniture.recipe.RecipesFurniture;
 import mods.timaxa007.pack.furniture.tile.*;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
-
-	public static CreativeTabs tab_furniture = new TabFurniture("tab_furniture");
 
 	public static ArmorMaterial CLOTHWOOL = EnumHelper.addArmorMaterial("CLOTHWOOL", 6, new int[] {2, 3, 2, 1}, 10);
 	public static ArmorMaterial COSTUME = EnumHelper.addArmorMaterial("COSTUME", 0, new int[] {2, 2, 2, 1}, 3);
@@ -217,7 +210,7 @@ public class ProxyServer {
 		air_light_15 = new AirLight().setLightLevel(0.9375F);
 		air_light_16 = new AirLight().setLightLevel(1.0F);
 
-		block_light_0 = new BlockLight().setLightLevel(0.0F).setCreativeTab(PackFurniture.proxy.tab_furniture);
+		block_light_0 = new BlockLight().setLightLevel(0.0F).setCreativeTab(PackFurniture.tab_furniture);
 		block_light_1 = new BlockLight().setLightLevel(0.0625F);
 		block_light_2 = new BlockLight().setLightLevel(0.125F);
 		block_light_3 = new BlockLight().setLightLevel(0.1875F);
@@ -433,36 +426,36 @@ public class ProxyServer {
 		GameRegistry.registerItem(armor_new_leggin, "ArmorNewLeggin");
 		GameRegistry.registerItem(armor_new_boot, "ArmorNewBoot");
 
-		GameRegistry.registerTileEntity(TEFurnitureMachines.class, "TEFurnitureMachines");
-		GameRegistry.registerTileEntity(TECnstorBlock.class, "TECnstorBlock");
-		GameRegistry.registerTileEntity(TEAngleMod.class, "TEAngleMod");
-		GameRegistry.registerTileEntity(TECnstorFence.class, "TECnstorFence");
-		GameRegistry.registerTileEntity(TECnstorDoors.class, "TECnstorDoors");
-		GameRegistry.registerTileEntity(TELights.class, "TELights");
-		GameRegistry.registerTileEntity(TECandle.class, "TECandle");
-		GameRegistry.registerTileEntity(TECrystals.class, "TECrystals");
-		GameRegistry.registerTileEntity(TEBarrels.class, "TEBarrels");
-		GameRegistry.registerTileEntity(TEBookshelf.class, "TEBookshelf");
-		GameRegistry.registerTileEntity(TETable.class, "TETable");
-		GameRegistry.registerTileEntity(TEChair.class, "TEChair");
-		GameRegistry.registerTileEntity(TEWardrobe.class, "TEWardrobe");
-		GameRegistry.registerTileEntity(TEMincer.class, "TEMincer");
-		GameRegistry.registerTileEntity(TEArmChair.class, "TEArmChair");
-		GameRegistry.registerTileEntity(TEBlender.class, "TEBlender");
-		GameRegistry.registerTileEntity(TEGrills.class, "TEGrills");
-		GameRegistry.registerTileEntity(TEBoxParticles.class, "TEBoxParticles");
-		GameRegistry.registerTileEntity(TEJar01.class, "TEJar01");
-		GameRegistry.registerTileEntity(TEPipes.class, "TEPipes");
-		GameRegistry.registerTileEntity(TEMashineWater.class, "TEMashineWater");
-		GameRegistry.registerTileEntity(TEBlockBlocks.class, "TEBlockBlocks");
-		GameRegistry.registerTileEntity(TERockBlocks.class, "TERockBlocks");
-		GameRegistry.registerTileEntity(TEGlassBlocks.class, "TEGlassBlocks");
-		GameRegistry.registerTileEntity(TEWoodBlocks.class, "TEWoodBlocks");
-		GameRegistry.registerTileEntity(TEGroundBlocks.class, "TEGroundBlocks");
-		GameRegistry.registerTileEntity(TESandBlocks.class, "TESandBlocks");
-		GameRegistry.registerTileEntity(TEClothBlocks.class, "TEClothBlocks");
-		GameRegistry.registerTileEntity(TEMetalBlocks.class, "TEMetalBlocks");
-		GameRegistry.registerTileEntity(TEVegetableFace.class, "TEVegetableFace");
+		GameRegistry.registerTileEntity(TileEntityFurnitureMachines.class, "TileEntityFurnitureMachines");
+		GameRegistry.registerTileEntity(TileEntityCnstorBlock.class, "TileEntityCnstorBlock");
+		GameRegistry.registerTileEntity(TileEntityAngleMod.class, "TileEntityAngleMod");
+		GameRegistry.registerTileEntity(TileEntityCnstorFence.class, "TileEntityCnstorFence");
+		GameRegistry.registerTileEntity(TileEntityCnstorDoors.class, "TileEntityCnstorDoors");
+		GameRegistry.registerTileEntity(TileEntityLights.class, "TileEntityLights");
+		GameRegistry.registerTileEntity(TileEntityCandle.class, "TileEntityCandle");
+		GameRegistry.registerTileEntity(TileEntityCrystals.class, "TileEntityCrystals");
+		GameRegistry.registerTileEntity(TileEntityBarrels.class, "TileEntityBarrels");
+		GameRegistry.registerTileEntity(TileEntityBookshelf.class, "TileEntityBookshelf");
+		GameRegistry.registerTileEntity(TileEntityTable.class, "TileEntityTable");
+		GameRegistry.registerTileEntity(TileEntityChair.class, "TileEntityChair");
+		GameRegistry.registerTileEntity(TileEntityWardrobe.class, "TileEntityWardrobe");
+		GameRegistry.registerTileEntity(TileEntityMincer.class, "TileEntityMincer");
+		GameRegistry.registerTileEntity(TileEntityArmChair.class, "TileEntityArmChair");
+		GameRegistry.registerTileEntity(TileEntityBlender.class, "TileEntityBlender");
+		GameRegistry.registerTileEntity(TileEntityGrills.class, "TileEntityGrills");
+		GameRegistry.registerTileEntity(TileEntityBoxParticles.class, "TileEntityBoxParticles");
+		GameRegistry.registerTileEntity(TileEntityJar01.class, "TileEntityJar01");
+		GameRegistry.registerTileEntity(TileEntityPipes.class, "TileEntityPipes");
+		GameRegistry.registerTileEntity(TileEntityMashineWater.class, "TileEntityMashineWater");
+		GameRegistry.registerTileEntity(TileEntityBlockBlocks.class, "TileEntityBlockBlocks");
+		GameRegistry.registerTileEntity(TileEntityRockBlocks.class, "TileEntityRockBlocks");
+		GameRegistry.registerTileEntity(TileEntityGlassBlocks.class, "TileEntityGlassBlocks");
+		GameRegistry.registerTileEntity(TileEntityWoodBlocks.class, "TileEntityWoodBlocks");
+		GameRegistry.registerTileEntity(TileEntityGroundBlocks.class, "TileEntityGroundBlocks");
+		GameRegistry.registerTileEntity(TileEntitySandBlocks.class, "TileEntitySandBlocks");
+		GameRegistry.registerTileEntity(TileEntityClothBlocks.class, "TileEntityClothBlocks");
+		GameRegistry.registerTileEntity(TileEntityMetalBlocks.class, "TileEntityMetalBlocks");
+		GameRegistry.registerTileEntity(TileEntityVegetableFace.class, "TileEntityVegetableFace");
 
 		OreDictionary.registerOre("dyeBlack", new ItemStack(item_colored, 1, 0));
 		OreDictionary.registerOre("dyeBlue", new ItemStack(item_colored, 1, 1));
@@ -510,8 +503,8 @@ public class ProxyServer {
 		TickRegistry.registerTickHandler(new TickClientHandler(), Side.CLIENT);
 		TickRegistry.registerTickHandler(new TickServerHandler(), Side.SERVER);
 		 */
-		RecipesFurniture.list();
-		RecipesArmor.list();
+		Recipes_Furniture.list();
+		Recipes_Armor.list();
 
 		MinecraftForge.EVENT_BUS.register(new EventFurniture());
 

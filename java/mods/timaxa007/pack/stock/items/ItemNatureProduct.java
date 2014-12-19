@@ -9,7 +9,7 @@ public class ItemNatureProduct extends Item {
 		super();
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setCreativeTab(PackStock.proxy.tab_food);
+		setCreativeTab(PackStock.tab_food);
 		setUnlocalizedName("NatureProduct");
 	}
 

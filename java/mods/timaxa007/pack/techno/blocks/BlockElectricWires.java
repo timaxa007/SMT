@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.TileTexture;
 import mods.timaxa007.pack.techno.PackTechno;
-import mods.timaxa007.pack.techno.te.TEElectricWires;
+import mods.timaxa007.pack.techno.tile.TileEntityElectricWires;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -23,14 +23,14 @@ public class BlockElectricWires extends Block implements ITileEntityProvider {
 
 	public BlockElectricWires() {
 		super(Material.glass);
-		setCreativeTab(PackTechno.proxy.tab_techno);
+		setCreativeTab(PackTechno.tab_techno);
 		setBlockTextureName("glass");
 		setBlockName("wires");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEElectricWires();
+		return new TileEntityElectricWires();
 	}
 
 	public int getRenderType() {
@@ -51,8 +51,8 @@ public class BlockElectricWires extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEElectricWires)
-			return addTag(((TEElectricWires)te).getType(), ((TEElectricWires)te).getSize(), ((TEElectricWires)te).getColor());
+		if (te != null && te instanceof TileEntityElectricWires)
+			return addTag(((TileEntityElectricWires)te).getType(), ((TileEntityElectricWires)te).getSize(), ((TileEntityElectricWires)te).getColor());
 		return null;
 	}
 
@@ -62,15 +62,15 @@ public class BlockElectricWires extends Block implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
 
-		if (te != null && te instanceof TEElectricWires) {
+		if (te != null && te instanceof TileEntityElectricWires) {
 
 			//int l=MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
-			//((TEJar01)te).setRot(l);
+			//((TileEntityJar01)te).setRot(l);
 
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TEElectricWires)te).setType(tag.getInteger("Type"));
-				if (tag.hasKey("Size")) ((TEElectricWires)te).setSize(tag.getInteger("Size"));
-				if (tag.hasKey("Color")) ((TEElectricWires)te).setColor(tag.getInteger("Color"));
+				if (tag.hasKey("Type")) ((TileEntityElectricWires)te).setType(tag.getInteger("Type"));
+				if (tag.hasKey("Size")) ((TileEntityElectricWires)te).setSize(tag.getInteger("Size"));
+				if (tag.hasKey("Color")) ((TileEntityElectricWires)te).setColor(tag.getInteger("Color"));
 			}
 
 		}

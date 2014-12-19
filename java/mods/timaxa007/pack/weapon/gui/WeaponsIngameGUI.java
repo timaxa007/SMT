@@ -11,7 +11,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import org.lwjgl.opengl.GL11;
 
@@ -27,13 +26,13 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 		this.mc = mc;
 		player = mc.thePlayer;
 	}
-/*
+	/*
 	public WeaponsIngameGUI(Minecraft mc, LivingUpdateEvent p) {
 		super(mc);
 		this.mc = mc;
 		player = (EntityPlayer)p.entity;
 	}
-*/
+	 */
 	private ScaledResolution res = null;
 	private FontRenderer fontrenderer = null;
 	private RenderGameOverlayEvent eventParent;

@@ -1,7 +1,9 @@
 package mods.timaxa007.pack.weapon.lib;
 
+import mods.timaxa007.pack.weapon.PackWeapon;
 import net.minecraft.util.StatCollector;
 /**
+ * Use in <b>ItemAmmos</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -9,12 +11,12 @@ import net.minecraft.util.StatCollector;
  */
 public class AmmoFor {
 
-	public static final AmmoFor[] ammo_list = new AmmoFor[2048];
+	public static final AmmoFor[] list = new AmmoFor[2048];
 
-	public static final AmmoFor ammo_empty = new AmmoFor(0);
+	public static final AmmoFor empty = new AmmoFor(0);
 
-	public int ammoID;
-	public String tagID;
+	public int id;
+	public String tag;
 	private String name;
 	private String type;
 
@@ -24,76 +26,68 @@ public class AmmoFor {
 	private float temperature_min;
 	private float temperature_max;
 
-	protected String texture1Name;
-	protected String texture2Name;
+	private String texture1Name;
+	private String texture2Name;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public AmmoFor() {
-		ammo_list[nextID()] = this;
-		ammoID = nextID();
+		id = nextID();
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public AmmoFor(int id) {
-		ammo_list[id] = this;
-		ammoID = id;
-	}
-
-	public AmmoFor(String str) {
-		checkTagID(str);//OFF
-		ammo_list[nextID()] = this;
-		ammoID = nextID();
-		tagID = str;
+		this.id = id;
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public AmmoFor(int id, String str) {
-		checkTagID(str);//OFF
-		ammo_list[id] = this;
-		ammoID = id;
-		tagID = str;
+	public AmmoFor(int id, String tag) {
+		this.id = id;
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
+	}
+
+	public AmmoFor(String tag) {
+		id = nextID();
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < ammo_list.length; i++) {
-			if (ammo_list[i] == null) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-			}
-		}
-		return ammo_list.length - 1;
+		return list.length - 1;
 	}
 
-	public static boolean hasTagID(String str) {
-		for (int i = 0; i < ammo_list.length; i++) {
-			if (str.equalsIgnoreCase(ammo_list[i].tagID)) {
+	public static boolean hasTag(String str) {
+		for (int i = 0; i < list.length; i++)
+			if (str.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
 	public static int getID_tag(String str) {
-		for (int i = 0; i < ammo_list.length; i++) {
-			if (str.equalsIgnoreCase(ammo_list[i].tagID)) {
+		for (int i = 0; i < list.length; i++)
+			if (str.equalsIgnoreCase(list[i].tag))
 				return i;
-			}
-		}
 		return 0;
 	}
 
-	private void checkTagID(String str) {
-		for (int i = 0; i < ammo_list.length; i++) {
-			if (ammo_list[i] != null && ammo_list[i].tagID == str) {
+	private void checkTag(String str) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == str)
 				System.out.println("!Duplicate: " + str);
-			}
-		}
 	}
 
-	public AmmoFor setName(String str) {
-		name = str;
+	public AmmoFor setName(String name) {
+		this.name = name;
 		return this;
 	}
 
@@ -105,8 +99,9 @@ public class AmmoFor {
 		return StatCollector.translateToLocal("ammo." + getName() + ".name");
 	}
 
-	public AmmoFor setType(String str) {
-		type = str;return this;
+	public AmmoFor setType(String type) {
+		this.type = type;
+		return this;
 	}
 
 	public String getType() {
@@ -117,20 +112,20 @@ public class AmmoFor {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
 
-	public AmmoFor setColors(int i) {
-		color_hex1 = i;
-		color_hex2 = i;
+	public AmmoFor setColors(int color) {
+		color_hex1 = color;
+		color_hex2 = color;
 		return this;
 	}
 
-	public AmmoFor setColors(int i1, int i2) {
-		color_hex1 = i1;
-		color_hex2 = i2;
+	public AmmoFor setColors(int color1, int color2) {
+		color_hex1 = color1;
+		color_hex2 = color2;
 		return this;
 	}
 
-	public AmmoFor setColor1(int i) {
-		color_hex1 = i;
+	public AmmoFor setColor1(int color1) {
+		color_hex1 = color1;
 		return this;
 	}
 
@@ -138,8 +133,8 @@ public class AmmoFor {
 		return color_hex1 == 0 ? 0xFFFFFF : color_hex1;
 	}
 
-	public AmmoFor setColor2(int i) {
-		color_hex2 = i;
+	public AmmoFor setColor2(int color2) {
+		color_hex2 = color2;
 		return this;
 	}
 
@@ -181,26 +176,28 @@ public class AmmoFor {
 		return temperature_max == 0 ? 0.0F : temperature_max;
 	}
 
-	public AmmoFor setTextures(String str) {
-		texture1Name = str;texture2Name = str + "_overlay";
+	public AmmoFor setTextures(String path) {
+		texture1Name = path;
+		texture2Name = path + "_overlay";
 		return this;
 	}
 
-	public AmmoFor setTextures(String str1, String str2) {
-		texture1Name = str1;texture2Name = str2;
+	public AmmoFor setTextures(String path1, String path2) {
+		texture1Name = path1;
+		texture2Name = path2;
 		return this;
 	}
 
-	public AmmoFor setTexture1(String str) {
-		texture1Name = str;
+	public AmmoFor setTexture1(String path1) {
+		texture1Name = path1;
 		return this;
 	}
 
 	public String getTexture1() {
 		return texture1Name == null ? getName() : texture1Name;}
 
-	public AmmoFor setTexture2(String str) {
-		texture2Name = str;
+	public AmmoFor setTexture2(String path2) {
+		texture2Name = path2;
 		return this;
 	}
 

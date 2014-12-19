@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEBookshelf;
+import mods.timaxa007.pack.furniture.tile.TileEntityBookshelf;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -37,14 +37,14 @@ public class ItemBlockBookshelf extends ItemBlock {
 			world.setBlock(x, y, z, PackFurniture.proxy.block_bookshelf, 0, 3);
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
-			if (te != null && te instanceof TEBookshelf) {
+			if (te != null && te instanceof TileEntityBookshelf) {
 
 				int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				((TEBookshelf)te).setRotation(l);
-				//if (is.hasDisplayName()) ((TEBookshelf)te).setCustomName(is.getDisplayName());
+				((TileEntityBookshelf)te).setRotation(l);
+				//if (is.hasDisplayName()) ((TileEntityBookshelf)te).setCustomName(is.getDisplayName());
 
 				if (tag != null) {
-					if (tag.hasKey("Type")) ((TEBookshelf)te).setType(tag.getInteger("Type"));
+					if (tag.hasKey("Type")) ((TileEntityBookshelf)te).setType(tag.getInteger("Type"));
 				}
 			}
 			return true;

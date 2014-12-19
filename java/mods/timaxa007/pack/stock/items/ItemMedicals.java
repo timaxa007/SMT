@@ -227,7 +227,7 @@ public class ItemMedicals extends Item {
 		super();
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setCreativeTab(PackStock.proxy.tab_medical);
+		setCreativeTab(PackStock.tab_medical);
 		setUnlocalizedName("medicals");
 	}
 

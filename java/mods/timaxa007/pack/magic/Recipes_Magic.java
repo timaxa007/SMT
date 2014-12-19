@@ -8,7 +8,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Recipes_Magic {
 
 	public static void list() {
-		//Testing - is DELETE
+		//Testing - is DELETileEntity
 		GameRegistry.addShapelessRecipe(testTagAdd(0, "Red"), new Object[] {Items.redstone, Items.cookie});
 		GameRegistry.addShapelessRecipe(testTagAdd(0, "Ded"), new Object[] {Items.redstone, Items.carrot});
 		GameRegistry.addShapelessRecipe(testTagAdd(1, "Did"), new Object[] {Items.gunpowder, Items.cookie});

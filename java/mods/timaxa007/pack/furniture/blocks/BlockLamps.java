@@ -35,7 +35,7 @@ public class BlockLamps extends Block{
 			light="off";
 			powered=false;
 			setLightLevel(0.0F);
-			setCreativeTab(PackFurniture.proxy.tab_furniture);
+			setCreativeTab(PackFurniture.tab_furniture);
 		}
 		setBlockTextureName("planks_oak");
 	}

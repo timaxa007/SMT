@@ -3,6 +3,7 @@ package mods.timaxa007.pack.stock.lib;
 import mods.timaxa007.lib.GetColors;
 import net.minecraft.util.StatCollector;
 /**
+ * Use in <b>ItemFoods</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -10,7 +11,7 @@ import net.minecraft.util.StatCollector;
  */
 public class FoodForItem {
 
-	public static final FoodForItem[] food_list = new FoodForItem[32767];
+	public static final FoodForItem[] list = new FoodForItem[32767];
 
 	public static final FoodForItem empty = new FoodForItem(0);
 
@@ -38,71 +39,62 @@ public class FoodForItem {
 	@Deprecated
 	public FoodForItem() {
 		id = nextID();
-		food_list[id] = this;
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public FoodForItem(int id) {
 		this.id = id;
-		food_list[id] = this;
-	}
-
-	public FoodForItem(String str) {
-		checkTag(str);//OFF
-		id = nextID();
-		food_list[id] = this;
-		tag = str;
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public FoodForItem(int id, String str) {
-		checkTag(str);/*OFF*/
+	public FoodForItem(int id, String tag) {
 		this.id = id;
-		food_list[id] = this;
-		tag = str;
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
+	}
+
+	public FoodForItem(String tag) {
+		id = nextID();
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < food_list.length; i++) {
-			if (food_list[i] == null) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-			}
-		}
-		return food_list.length - 1;
+		return list.length - 1;
 	}
 
-	public static boolean hasTag(String str) {
-		for (int i = 0; i < food_list.length; i++) {
-			if (str.equalsIgnoreCase(food_list[i].tag)) {
+	public static boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public static int getID_tag(String str) {
-		for (int i = 0; i < food_list.length; i++) {
-			if (food_list[i] != null) {
-				if (str.equalsIgnoreCase(food_list[i].tag)) {
+	public static int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null)
+				if (tag.equalsIgnoreCase(list[i].tag))
 					return i;
-				}
-			}
-		}
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < food_list.length; i++) {
-			if (food_list[i] != null && food_list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public FoodForItem setName(String str) {
-		name = str;
+	public FoodForItem setName(String name) {
+		this.name = name;
 		return this;
 	}
 
@@ -114,8 +106,8 @@ public class FoodForItem {
 		return StatCollector.translateToLocal("food." + getName() + ".name");
 	}
 
-	public FoodForItem setShortName(String str) {
-		name_short = str;
+	public FoodForItem setShortName(String name_short) {
+		this.name_short = name_short;
 		return this;
 	}
 
@@ -127,8 +119,8 @@ public class FoodForItem {
 		return StatCollector.translateToLocal("food." + getShortName() + ".name");
 	}
 
-	public FoodForItem setType(String str) {
-		type = str;
+	public FoodForItem setType(String type) {
+		this.type = type;
 		return this;
 	}
 
@@ -207,11 +199,21 @@ public class FoodForItem {
 		return temp_max;
 	}
 
-	public FoodForItem setColors(int[] i) {color_hex = i;return this;}
+	public FoodForItem setColors(int[] i) {
+		color_hex = i;
+		return this;
+	}
 
-	public FoodForItem setColors(int i1) {color_hex[0] = i1;return this;}
+	public FoodForItem setColors(int i1) {
+		color_hex[0] = i1;
+		return this;
+	}
 
-	public FoodForItem setColors(int i1, int i2) {color_hex[0] = i1;color_hex[1] = i2;return this;}
+	public FoodForItem setColors(int i1, int i2) {
+		color_hex[0] = i1;
+		color_hex[1] = i2;
+		return this;
+	}
 
 	/*public FoodForItem setColors(int i1, int i2, int i3) {
 	color_hex[0] = i1;

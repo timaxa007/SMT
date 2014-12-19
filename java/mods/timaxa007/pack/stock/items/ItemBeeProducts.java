@@ -25,7 +25,7 @@ public class ItemBeeProducts extends Item {
 
 	public ItemBeeProducts() {
 		super();
-		setCreativeTab(PackStock.proxy.tab_apis);
+		setCreativeTab(PackStock.tab_apis);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setUnlocalizedName("bee_products");

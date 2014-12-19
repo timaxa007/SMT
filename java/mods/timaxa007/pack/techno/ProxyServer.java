@@ -3,10 +3,9 @@ package mods.timaxa007.pack.techno;
 import mods.timaxa007.pack.techno.blocks.*;
 import mods.timaxa007.pack.techno.gui.HandlerGuiTechno;
 import mods.timaxa007.pack.techno.items.*;
-import mods.timaxa007.pack.techno.list.ListTechno;
-import mods.timaxa007.pack.techno.te.*;
+import mods.timaxa007.pack.techno.lib.ListTechno;
+import mods.timaxa007.pack.techno.tile.*;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -14,8 +13,6 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
-
-	public static CreativeTabs tab_techno = new TabTechno("tab_techno");
 
 	//Blocks
 	public static Block block_electric_machines;
@@ -69,10 +66,10 @@ public class ProxyServer {
 		GameRegistry.registerItem(tool_electric_drills, "ToolElectricDrills");
 
 		//Blocks
-		GameRegistry.registerTileEntity(TEElectricMachines.class, "TEElectricMachines");
-		GameRegistry.registerTileEntity(TEElectricWires.class, "TEElectricWires");
-		GameRegistry.registerTileEntity(TEChip.class, "TEChip");
-		GameRegistry.registerTileEntity(TEModuleMovement.class, "TEModuleMovement");
+		GameRegistry.registerTileEntity(TileEntityElectricMachines.class, "TileEntityElectricMachines");
+		GameRegistry.registerTileEntity(TileEntityElectricWires.class, "TileEntityElectricWires");
+		GameRegistry.registerTileEntity(TileEntityChip.class, "TileEntityChip");
+		GameRegistry.registerTileEntity(TileEntityModuleMovement.class, "TileEntityModuleMovement");
 
 		render_block_electric_wires_modelID = -1;
 		render_block_chip_modelID = -1;

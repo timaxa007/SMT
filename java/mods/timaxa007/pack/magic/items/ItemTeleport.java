@@ -18,7 +18,7 @@ public class ItemTeleport extends Item {
 		super();
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setCreativeTab(PackMagic.proxy.tab_magic);
+		setCreativeTab(PackMagic.tab_magic);
 		setUnlocalizedName("teleport");
 	}
 

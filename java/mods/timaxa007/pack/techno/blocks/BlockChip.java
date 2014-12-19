@@ -3,7 +3,7 @@ package mods.timaxa007.pack.techno.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.techno.PackTechno;
-import mods.timaxa007.pack.techno.te.TEChip;
+import mods.timaxa007.pack.techno.tile.TileEntityChip;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -25,7 +25,7 @@ public class BlockChip extends Block implements ITileEntityProvider{
 	public BlockChip() {
 		super(Material.iron);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
-		setCreativeTab(PackTechno.proxy.tab_techno);
+		setCreativeTab(PackTechno.tab_techno);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockTextureName("iron_block");
@@ -34,7 +34,7 @@ public class BlockChip extends Block implements ITileEntityProvider{
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEChip();
+		return new TileEntityChip();
 	}
 
 	public int getRenderType() {
@@ -55,7 +55,7 @@ public class BlockChip extends Block implements ITileEntityProvider{
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEChip) return addTag(((TEChip)te).getType());
+		if (te != null && te instanceof TileEntityChip) return addTag(((TileEntityChip)te).getType());
 		return null;
 	}
 	/*
@@ -67,7 +67,7 @@ public class BlockChip extends Block implements ITileEntityProvider{
 			return false;
 		}
 
-		if (te != null && te instanceof TEChip) {
+		if (te != null && te instanceof TileEntityChip) {
 			player.openGui(PackTechno.instance, 0, world, x, y, z);
 			return true;
 		}
@@ -77,14 +77,14 @@ public class BlockChip extends Block implements ITileEntityProvider{
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		TileEntity te = world.getTileEntity(x, y, z);
 
-		if (te != null && te instanceof TEChip) {
-			if (((TEChip)te).getRotation() == 0) {
+		if (te != null && te instanceof TileEntityChip) {
+			if (((TileEntityChip)te).getRotation() == 0) {
 				entity.motionZ += 0.1D;
-			} else if (((TEChip)te).getRotation() == 1) {
+			} else if (((TileEntityChip)te).getRotation() == 1) {
 				entity.motionX -= 0.1D;
-			} else if (((TEChip)te).getRotation() == 3) {
+			} else if (((TileEntityChip)te).getRotation() == 3) {
 				entity.motionX += 0.1D;
-			} else if (((TEChip)te).getRotation() == 2) {
+			} else if (((TileEntityChip)te).getRotation() == 2) {
 				entity.motionZ -= 0.1D;
 			} else {}
 		}
@@ -98,14 +98,14 @@ public class BlockChip extends Block implements ITileEntityProvider{
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEChip) {
+		if (te != null && te instanceof TileEntityChip) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			((TEChip)te).setRotation(l);
+			((TileEntityChip)te).setRotation(l);
 
 			if (tag != null) {
 
-				if (tag.hasKey("Type")) ((TEChip)te).setType(tag.getInteger("Type"));
+				if (tag.hasKey("Type")) ((TileEntityChip)te).setType(tag.getInteger("Type"));
 
 			}
 

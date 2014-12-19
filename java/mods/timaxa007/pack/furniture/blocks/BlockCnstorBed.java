@@ -12,7 +12,7 @@ public class BlockCnstorBed extends Block implements ITileEntityProvider {
 	public BlockCnstorBed() {
 		super(Material.glass);
 		setStepSound(soundTypeWood);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(5.0F);
 		setLightOpacity(0);

@@ -10,6 +10,7 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
+@Deprecated
 public class ModelArmorMedieval extends ModelBiped {
 
 	private static final IModelCustom model_armor_medieval = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/armor_medieval.obj"));

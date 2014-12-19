@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.furniture.lib;
 /**
+ * Use in <b>BlockWood</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -18,8 +19,8 @@ public class AddBlockWood {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public AddBlockWood() {
-		list[nextID()] = this;
 		id = nextID();
+		list[id] = this;
 		tag = "";
 		color_hex = 0xFFFFFF;
 		texture = "";
@@ -27,9 +28,9 @@ public class AddBlockWood {
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public AddBlockWood(int i) {
-		list[i] = this;
-		id = i;
+	public AddBlockWood(int id) {
+		this.id = id;
+		list[id] = this;
 		tag = "";
 		color_hex = 0xFFFFFF;
 		texture = "";
@@ -37,68 +38,94 @@ public class AddBlockWood {
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public AddBlockWood(int i, String str) {
-		checkTag(str);//OFF
-		list[i] = this;
-		id = i;
-		tag = str;
+	public AddBlockWood(int id, String tag) {
+		checkTag(tag);//OFF
+		this.id = id;
+		list[id] = this;
+		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
 	}
 
-	public AddBlockWood(String str) {
-		checkTag(str);//OFF
-		list[nextID()] = this;
+	public AddBlockWood(String tag) {
+		checkTag(tag);//OFF
 		id = nextID();
-		tag = str;
+		list[id] = this;
+		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
 	}
 
 	public int nextID() {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] == null) {return i;}
-		}
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
+				return i;
 		return list.length - 1;
 	}
 
-	public boolean hasTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public int getID_tag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {return i;}
-		}
+	public int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
+				return i;
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] != null && list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public AddBlockWood setID(int i) {id = i;return this;}
-	public int getID() {return id;}
+	public AddBlockWood setID(int id) {
+		this.id = id;
+		return this;
+	}
 
-	public AddBlockWood setTag(String str) {tag = str;return this;}
-	public String getTag() {return tag;}
+	public int getID() {
+		return id;
+	}
 
-	public AddBlockWood setName(String str) {name = str;return this;}
-	public String getName() {return name;}
+	public AddBlockWood setTag(String tag) {
+		this.tag = tag;
+		return this;
+	}
 
-	public AddBlockWood setColor(int i) {color_hex = i;return this;}
-	public int getColor() {return color_hex;}
+	public String getTag() {
+		return tag;
+	}
 
-	public AddBlockWood setTexture(String str) {texture = str;return this;}
-	public String getTexture() {return texture;}
+	public AddBlockWood setName(String name) {
+		this.name = name;
+		return this;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public AddBlockWood setColor(int color) {
+		color_hex = color;
+		return this;
+	}
+
+	public int getColor() {
+		return color_hex;
+	}
+
+	public AddBlockWood setTexture(String path) {
+		texture = path;
+		return this;
+	}
+
+	public String getTexture() {
+		return texture;
+	}
 
 }

@@ -16,7 +16,7 @@ public class Blaster extends Item {
 
 	public Blaster() {
 		super();
-		setCreativeTab(PackWeapon.proxy.tab_weapons);
+		setCreativeTab(PackWeapon.tab_weapons);
 		setUnlocalizedName("blaster");
 		setFull3D();
 	}

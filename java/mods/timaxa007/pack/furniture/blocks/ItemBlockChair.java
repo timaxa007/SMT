@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEChair;
+import mods.timaxa007.pack.furniture.tile.TileEntityChair;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -37,13 +37,13 @@ public class ItemBlockChair extends ItemBlock{
 			world.setBlock(x, y, z, PackFurniture.proxy.block_chair, 0, 3);
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
-			if (te != null && te instanceof TEChair) {
+			if (te != null && te instanceof TileEntityChair) {
 
 				int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				((TEChair)te).setRotation(l);
+				((TileEntityChair)te).setRotation(l);
 
 				if (tag != null) {
-					if (tag.hasKey("Type")) ((TEChair)te).setType(tag.getInteger("Type"));
+					if (tag.hasKey("Type")) ((TileEntityChair)te).setType(tag.getInteger("Type"));
 				}
 			}
 			return true;

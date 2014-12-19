@@ -31,7 +31,7 @@ public class BlockLampsInvert extends Block{
 			light = "on";
 			powered = true;
 			setLightLevel(1.0F);
-			setCreativeTab(PackFurniture.proxy.tab_furniture);
+			setCreativeTab(PackFurniture.tab_furniture);
 		} else {
 			light = "off";
 			powered =  false;

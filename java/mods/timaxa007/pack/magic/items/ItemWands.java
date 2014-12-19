@@ -14,7 +14,7 @@ public class ItemWands extends Item {
 
 	public ItemWands() {
 		super();
-		setCreativeTab(PackMagic.proxy.tab_magic);
+		setCreativeTab(PackMagic.tab_magic);
 		setTextureName("timaxa007:wands");
 		setUnlocalizedName("wands");
 		setFull3D();

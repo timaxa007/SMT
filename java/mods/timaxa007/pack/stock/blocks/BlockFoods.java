@@ -5,7 +5,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.FoodForBlock;
-import mods.timaxa007.pack.stock.te.TEFoods;
+import mods.timaxa007.pack.stock.tile.TileEntityFoods;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -25,7 +25,7 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 
 	public BlockFoods() {
 		super(Material.glass);
-		setCreativeTab(PackStock.proxy.tab_food);
+		setCreativeTab(PackStock.tab_food);
 		setHardness(0.25F);
 		setResistance(0.5F);
 		setBlockTextureName("planks_oak");
@@ -33,7 +33,7 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TEFoods();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityFoods();}
 
 	public int quantityDropped(Random random) {return 0;}
 
@@ -51,8 +51,8 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEFoods)
-			return addTag(((TEFoods)te).getFoodID(), ((TEFoods)te).getType(), ((TEFoods)te).getColor1(), ((TEFoods)te).getColor2());
+		if (te != null && te instanceof TileEntityFoods)
+			return addTag(((TileEntityFoods)te).getFoodID(), ((TileEntityFoods)te).getType(), ((TileEntityFoods)te).getColor1(), ((TileEntityFoods)te).getColor2());
 		return null;
 	}
 
@@ -60,13 +60,13 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEFoods && tag != null) {
+		if (te != null && te instanceof TileEntityFoods && tag != null) {
 
-			//((TEFoods)te).setRotate((int)entity.rotationYaw);
-			if (tag.hasKey("FoodID")) ((TEFoods)te).setFoodID(tag.getInteger("FoodID"));
-			if (tag.hasKey("Type")) ((TEFoods)te).setType(tag.getInteger("Type"));
-			if (tag.hasKey("Color1")) ((TEFoods)te).setColor1(tag.getInteger("Color1"));
-			if (tag.hasKey("Color2")) ((TEFoods)te).setColor2(tag.getInteger("Color2"));
+			//((TileEntityFoods)te).setRotate((int)entity.rotationYaw);
+			if (tag.hasKey("FoodID")) ((TileEntityFoods)te).setFoodID(tag.getInteger("FoodID"));
+			if (tag.hasKey("Type")) ((TileEntityFoods)te).setType(tag.getInteger("Type"));
+			if (tag.hasKey("Color1")) ((TileEntityFoods)te).setColor1(tag.getInteger("Color1"));
+			if (tag.hasKey("Color2")) ((TileEntityFoods)te).setColor2(tag.getInteger("Color2"));
 
 		}
 	}
@@ -75,8 +75,8 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
-			if (te != null && te instanceof TEFoods && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(((TEFoods)te).getFoodID(), ((TEFoods)te).getType(), ((TEFoods)te).getColor1(), ((TEFoods)te).getColor2()));
+			if (te != null && te instanceof TileEntityFoods && !player.capabilities.isCreativeMode) {
+				dropBlockAsItem(world, x, y, z, addTag(((TileEntityFoods)te).getFoodID(), ((TileEntityFoods)te).getType(), ((TileEntityFoods)te).getColor1(), ((TileEntityFoods)te).getColor2()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}

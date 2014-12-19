@@ -1,5 +1,7 @@
 package mods.timaxa007.pack.magic;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -22,14 +24,20 @@ public class PackMagic {
 	@SidedProxy(clientSide = "mods.timaxa007.pack.magic.ProxyClient", serverSide = "mods.timaxa007.pack.magic.ProxyServer")
 	public static ProxyServer proxy;
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		proxy.init();
-	}
-
+	public static CreativeTabs tab_magic = new CreativeTabs("tab_magic") {
+		public Item getTabIconItem() {
+			return PackMagic.proxy.items_for_magic;
+		}
+	};
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
+	}
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.init();
 	}
 
 }

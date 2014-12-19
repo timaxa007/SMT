@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-
+@Deprecated
 public class ArmorTestModel extends ModelBiped {
 	private static ModelRenderer head2;
 	private static ModelRenderer body2;

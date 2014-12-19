@@ -3,7 +3,7 @@ package mods.timaxa007.pack.techno.blocks;
 import java.util.Random;
 
 import mods.timaxa007.pack.techno.PackTechno;
-import mods.timaxa007.pack.techno.te.TEElectricMachines;
+import mods.timaxa007.pack.techno.tile.TileEntityElectricMachines;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,7 +18,7 @@ public class BlockElectricMachines extends BlockContainer {
 
 	public BlockElectricMachines() {
 		super(Material.iron);
-		setCreativeTab(PackTechno.proxy.tab_techno);
+		setCreativeTab(PackTechno.tab_techno);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockTextureName("planks_oak");
@@ -27,23 +27,23 @@ public class BlockElectricMachines extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEElectricMachines();
+		return new TileEntityElectricMachines();
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEElectricMachines) {
+		if (te != null && te instanceof TileEntityElectricMachines) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			((TEElectricMachines)te).setRot(l);
+			((TileEntityElectricMachines)te).setRot(l);
 
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TEElectricMachines)te).setType(tag.getInteger("Type"));
+				if (tag.hasKey("Type")) ((TileEntityElectricMachines)te).setType(tag.getInteger("Type"));
 			}
 			/*
 			if (is.hasDisplayName()) {
-				((TEElectricMachines)te).setGuiDisplayName(is.getDisplayName());
+				((TileEntityElectricMachines)te).setGuiDisplayName(is.getDisplayName());
 			}
 			 */
 		}
@@ -79,7 +79,7 @@ public class BlockElectricMachines extends BlockContainer {
 			return false;
 		}
 
-		if (te != null && te instanceof TEElectricMachines) {
+		if (te != null && te instanceof TileEntityElectricMachines) {
 			player.openGui(PackTechno.instance, PackTechno.proxy.gui_electric_machines, world, x, y, z);
 			return true;
 		}

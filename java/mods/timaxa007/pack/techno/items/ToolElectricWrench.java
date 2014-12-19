@@ -7,7 +7,7 @@ public class ToolElectricWrench extends Item {
 
 	public ToolElectricWrench() {
 		super();
-		setCreativeTab(PackTechno.proxy.tab_techno);
+		setCreativeTab(PackTechno.tab_techno);
 		setTextureName("timaxa007:test_item");
 		setUnlocalizedName("electric.wrench");
 	}

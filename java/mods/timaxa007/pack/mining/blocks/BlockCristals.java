@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.mining.PackMining;
-import mods.timaxa007.pack.mining.te.TECristals;
+import mods.timaxa007.pack.mining.tile.TileEntityCristals;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -23,7 +23,7 @@ public class BlockCristals extends Block implements ITileEntityProvider {
 
 	public BlockCristals() {
 		super(Material.glass);
-		setCreativeTab(PackMining.proxy.tab_mining);
+		setCreativeTab(PackMining.tab_mining);
 		setHardness(0.25F);
 		setLightOpacity(0);
 		setBlockTextureName("glass");
@@ -32,7 +32,7 @@ public class BlockCristals extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TECristals();
+		return new TileEntityCristals();
 	}
 
 	public int getRenderType() {
@@ -53,8 +53,8 @@ public class BlockCristals extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TECristals)
-			return addTag(((TECristals)te).getType(), ((TECristals)te).getColor(), ((TECristals)te).getSize());
+		if (te != null && te instanceof TileEntityCristals)
+			return addTag(((TileEntityCristals)te).getType(), ((TileEntityCristals)te).getColor(), ((TileEntityCristals)te).getSize());
 		return null;
 	}
 
@@ -63,15 +63,15 @@ public class BlockCristals extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TECristals) {
+		if (te != null && te instanceof TileEntityCristals) {
 			/*
 			int l=MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
-			((TECristals)te).setRot(l);
+			((TileEntityCristals)te).setRot(l);
 			 */
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TECristals)te).setType(tag.getInteger("Type"));
-				if (tag.hasKey("Color")) ((TECristals)te).setColor(tag.getInteger("Color"));
-				if (tag.hasKey("Size")) ((TECristals)te).setSize(tag.getInteger("Size"));
+				if (tag.hasKey("Type")) ((TileEntityCristals)te).setType(tag.getInteger("Type"));
+				if (tag.hasKey("Color")) ((TileEntityCristals)te).setColor(tag.getInteger("Color"));
+				if (tag.hasKey("Size")) ((TileEntityCristals)te).setSize(tag.getInteger("Size"));
 			}
 
 		}

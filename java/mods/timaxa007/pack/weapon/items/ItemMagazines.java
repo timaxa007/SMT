@@ -26,7 +26,7 @@ public class ItemMagazines extends Item {
 	public ItemMagazines() {
 		super();
 		setMaxStackSize(1);
-		setCreativeTab(PackWeapon.proxy.tab_weapons);
+		setCreativeTab(PackWeapon.tab_weapons);
 		setTextureName("timaxa007:item_magazines");
 		setUnlocalizedName("item_magazines");
 	}
@@ -34,7 +34,7 @@ public class ItemMagazines extends Item {
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("MagazineID")) {
-			return "magazine." + MagazineFor.magazine_list[tag.getInteger("MagazineID")].getName();
+			return "magazine." + MagazineFor.list[tag.getInteger("MagazineID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
@@ -54,8 +54,8 @@ public class ItemMagazines extends Item {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		for (int i = 0; i < MagazineFor.magazine_list.length; i++) {
-			if (MagazineFor.magazine_list[i] != null) {
+		for (int i = 0; i < MagazineFor.list.length; i++) {
+			if (MagazineFor.list[i] != null) {
 				list.add(addTag(i));
 			}
 		}
@@ -93,9 +93,9 @@ public class ItemMagazines extends Item {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("MagazineID")) {
 			if (pass == 0) {
-				return MagazineFor.magazine_list[tag.getInteger("MagazineID")].getColor1();
+				return MagazineFor.list[tag.getInteger("MagazineID")].getColor1();
 			} else {
-				return MagazineFor.magazine_list[tag.getInteger("MagazineID")].getColor2();
+				return MagazineFor.list[tag.getInteger("MagazineID")].getColor2();
 			}
 		} else {
 			return 16777215;
@@ -106,21 +106,21 @@ public class ItemMagazines extends Item {
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);
 		itemIcon = ir.registerIcon("timaxa007:" + "magazines");
-		icon_tex = new IIcon[MagazineFor.magazine_list.length];
-		icon_ovl = new IIcon[MagazineFor.magazine_list.length];
-		for (int i = 0; i < MagazineFor.magazine_list.length; i++) {
-			/*if (MagazineFor.magazine_list[i] != null) {
-				icon_tex[i] = ir.registerIcon("timaxa007:" + "magazines/" + MagazineFor.magazine_list[i].getTexture1Name());
-				if (MagazineFor.magazine_list[i].getTexture2Name() == MagazineFor.magazine_list[i].getTexture1Name()) {
+		icon_tex = new IIcon[MagazineFor.list.length];
+		icon_ovl = new IIcon[MagazineFor.list.length];
+		for (int i = 0; i < MagazineFor.list.length; i++) {
+			/*if (MagazineFor.list[i] != null) {
+				icon_tex[i] = ir.registerIcon("timaxa007:" + "magazines/" + MagazineFor.list[i].getTexture1Name());
+				if (MagazineFor.list[i].getTexture2Name() == MagazineFor.list[i].getTexture1Name()) {
 					icon_ovl[i] = ir.registerIcon("timaxa007:" + "empty");
 				} else {
-					icon_ovl[i] = ir.registerIcon("timaxa007:" + "magazines/" + MagazineFor.magazine_list[i].getTexture2Name());
+					icon_ovl[i] = ir.registerIcon("timaxa007:" + "magazines/" + MagazineFor.list[i].getTexture2Name());
 				}
 			} else {*/
-				icon_tex[i] = itemIcon;
-				icon_ovl[i] = itemIcon;
-				//}
-			}
+			icon_tex[i] = itemIcon;
+			icon_ovl[i] = itemIcon;
+			//}
 		}
-
 	}
+
+}

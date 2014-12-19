@@ -2,6 +2,7 @@ package mods.timaxa007.pack.weapon.lib;
 
 import net.minecraft.util.StatCollector;
 /**
+ * Use in <b>ItemsWeapons</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -9,12 +10,12 @@ import net.minecraft.util.StatCollector;
  */
 public class ItemForWeapon {
 
-	public static final ItemForWeapon[] item_list = new ItemForWeapon[2048];
+	public static final ItemForWeapon[] list = new ItemForWeapon[2048];
 
 	public static ItemForWeapon item_empty = new ItemForWeapon(0);
 
-	public int itemID;
-	public String nameID;
+	public int id;
+	public String tag;
 	private String name;
 	private String type;
 
@@ -27,70 +28,62 @@ public class ItemForWeapon {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForWeapon() {
-		item_list[nextID()] = this;
-		itemID = nextID();
+		id = nextID();
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForWeapon(int id) {
-		item_list[id] = this;
-		itemID = id;
-	}
-
-	public ItemForWeapon(String tag_name) {
-		checkNameID(tag_name);//OFF
-		item_list[nextID()] = this;
-		itemID = nextID();
-		nameID = tag_name;
+		this.id = id;
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public ItemForWeapon(int id, String tag_name) {
-		checkNameID(tag_name);//OFF
-		item_list[id] = this;
-		itemID = id;
-		nameID = tag_name;
+	public ItemForWeapon(int id, String tag) {
+		this.id = id;
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
+	}
+
+	public ItemForWeapon(String tag) {
+		id = nextID();
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < item_list.length; i++) {
-			if (item_list[i] == null) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-			}
-		}
-		return item_list.length - 1;
+		return list.length - 1;
 	}
 
-	public static boolean hasNameID(String str) {
-		for (int i = 0; i < item_list.length; i++) {
-			if (str.equalsIgnoreCase(item_list[i].nameID)) {
+	public static boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public static int getID_name(String str) {
-		for (int i = 0; i < item_list.length; i++) {
-			if (str.equalsIgnoreCase(item_list[i].nameID)) {
+	public static int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
-			}
-		}
 		return 0;
 	}
 
-	private void checkNameID(String str) {
-		for (int i = 0; i < item_list.length; i++) {
-			if (item_list[i] != null && item_list[i].nameID == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public ItemForWeapon setName(String str) {
-		name = str;
+	public ItemForWeapon setName(String name) {
+		this.name = name;
 		return this;
 	}
 
@@ -102,8 +95,8 @@ public class ItemForWeapon {
 		return StatCollector.translateToLocal("item." + getName() + ".name");
 	}
 
-	public ItemForWeapon setType(String str) {
-		type = str;
+	public ItemForWeapon setType(String type) {
+		this.type = type;
 		return this;
 	}
 
@@ -115,20 +108,20 @@ public class ItemForWeapon {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
 
-	public ItemForWeapon setColors(int i) {
-		color_hex1 = i;
-		color_hex2 = i;
+	public ItemForWeapon setColors(int color) {
+		color_hex1 = color;
+		color_hex2 = color;
 		return this;
 	}
 
-	public ItemForWeapon setColors(int i1, int i2) {
-		color_hex1 = i1;
-		color_hex2 = i2;
+	public ItemForWeapon setColors(int color1, int color2) {
+		color_hex1 = color1;
+		color_hex2 = color2;
 		return this;
 	}
 
-	public ItemForWeapon setColor1(int i) {
-		color_hex1 = i;
+	public ItemForWeapon setColor1(int color1) {
+		color_hex1 = color1;
 		return this;
 	}
 
@@ -136,8 +129,8 @@ public class ItemForWeapon {
 		return color_hex1 == 0 ? 0xFFFFFF : color_hex1;
 	}
 
-	public ItemForWeapon setColor2(int i) {
-		color_hex2 = i;
+	public ItemForWeapon setColor2(int color2) {
+		color_hex2 = color2;
 		return this;
 	}
 
@@ -145,20 +138,20 @@ public class ItemForWeapon {
 		return color_hex2 == 0 ? 0xFFFFFF : color_hex2;
 	}
 
-	public ItemForWeapon setTextures(String str) {
-		texture1Name = str;
-		texture2Name = str + "_overlay";
+	public ItemForWeapon setTextures(String path) {
+		texture1Name = path;
+		texture2Name = path + "_overlay";
 		return this;
 	}
 
-	public ItemForWeapon setTextures(String str1, String str2) {
-		texture1Name = str1;
-		texture2Name = str2;
+	public ItemForWeapon setTextures(String path1, String path2) {
+		texture1Name = path1;
+		texture2Name = path2;
 		return this;
 	}
 
-	public ItemForWeapon setTexture1(String str) {
-		texture1Name = str;
+	public ItemForWeapon setTexture1(String path1) {
+		texture1Name = path1;
 		return this;
 	}
 
@@ -166,8 +159,8 @@ public class ItemForWeapon {
 		return texture1Name == null ? getName() : texture1Name;
 	}
 
-	public ItemForWeapon setTexture2(String str) {
-		texture2Name = str;
+	public ItemForWeapon setTexture2(String path2) {
+		texture2Name = path2;
 		return this;
 	}
 

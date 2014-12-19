@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEWardrobe;
+import mods.timaxa007.pack.furniture.tile.TileEntityWardrobe;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -37,13 +37,13 @@ public class ItemBlockWardrobe extends ItemBlock{
 			world.setBlock(x, y, z, PackFurniture.proxy.block_wardrobe, 0, 3);
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
-			if (te != null && te instanceof TEWardrobe) {
+			if (te != null && te instanceof TileEntityWardrobe) {
 
 				int l=MathHelper.floor_double((double)(player.rotationYaw*4.0F/360.0F)+0.5D)&3;
-				((TEWardrobe)te).setRotation(l);
+				((TileEntityWardrobe)te).setRotation(l);
 
 				if (tag != null) {
-					if (tag.hasKey("Type")) ((TEWardrobe)te).setType(tag.getInteger("Type"));
+					if (tag.hasKey("Type")) ((TileEntityWardrobe)te).setType(tag.getInteger("Type"));
 				}
 			}
 			return true;

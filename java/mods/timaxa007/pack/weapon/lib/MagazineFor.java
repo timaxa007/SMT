@@ -3,6 +3,7 @@ package mods.timaxa007.pack.weapon.lib;
 import net.minecraft.util.StatCollector;
 
 /**
+ * Use in <b>ItemMagazines</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -10,12 +11,12 @@ import net.minecraft.util.StatCollector;
  */
 public class MagazineFor {
 
-	public static final MagazineFor[] magazine_list = new MagazineFor[1024];
+	public static final MagazineFor[] list = new MagazineFor[1024];
 
-	public static final MagazineFor magazine_empty = new MagazineFor(0);
+	public static final MagazineFor empty = new MagazineFor(0);
 
-	public int magazineID;
-	public String tagID;
+	public int id;
+	public String tag;
 	private String name;
 	private String type;
 
@@ -25,8 +26,8 @@ public class MagazineFor {
 	private float temperature_min;
 	private float temperature_max;
 
-	protected String texture1Name;
-	protected String texture2Name;
+	private String texture1Name;
+	private String texture2Name;
 
 	private AmmoFor bullet;
 	private int size;
@@ -34,70 +35,62 @@ public class MagazineFor {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public MagazineFor() {
-		magazine_list[nextID()] = this;
-		magazineID = nextID();
+		id = nextID();
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public MagazineFor(int id) {
-		magazine_list[id] = this;
-		magazineID = id;
-	}
-
-	public MagazineFor(String str) {
-		checkTagID(str);//OFF
-		magazine_list[nextID()] = this;
-		magazineID = nextID();
-		tagID = str;
+		this.id = id;
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public MagazineFor(int id, String str) {
-		checkTagID(str);//OFF
-		magazine_list[id] = this;
-		magazineID = id;
-		tagID = str;
+	public MagazineFor(int id, String tag) {
+		this.id = id;
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
+	}
+
+	public MagazineFor(String tag) {
+		id = nextID();
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < magazine_list.length; i++) {
-			if (magazine_list[i] == null) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-			}
-		}
-		return magazine_list.length-1;
+		return list.length-1;
 	}
 
-	public static boolean hasTagID(String str) {
-		for (int i = 0; i < magazine_list.length; i++) {
-			if (str.equalsIgnoreCase(magazine_list[i].tagID)) {
+	public static boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public static int getID_tag(String str) {
-		for (int i = 0; i < magazine_list.length; i++) {
-			if (str.equalsIgnoreCase(magazine_list[i].tagID)) {
+	public static int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
-			}
-		}
 		return 0;
 	}
 
-	private void checkTagID(String str) {
-		for (int i = 0; i < magazine_list.length; i++) {
-			if (magazine_list[i] != null && magazine_list[i].tagID == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public MagazineFor setName(String str) {
-		name = str;
+	public MagazineFor setName(String name) {
+		this.name = name;
 		return this;
 	}
 
@@ -109,8 +102,8 @@ public class MagazineFor {
 		return StatCollector.translateToLocal("magazine." + getName() + ".name");
 	}
 
-	public MagazineFor setType(String str) {
-		type = str;
+	public MagazineFor setType(String type) {
+		this.type = type;
 		return this;
 	}
 

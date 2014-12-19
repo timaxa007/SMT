@@ -3,6 +3,7 @@ package mods.timaxa007.pack.mining.lib;
 import net.minecraft.util.StatCollector;
 
 /**
+ * Use in <b>OreOres</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -39,59 +40,51 @@ public class OreFake {
 		list[id] = this;
 	}
 
-	public OreFake(String tag) {
-		checkTag(tag);//OFF
-		id = nextID();
-		list[id] = this;
-		this.tag = tag;
-	}
-
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public OreFake(int id, String tag) {
-		checkTag(tag);//OFF
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
+		checkTag(tag);//OFF
+	}
+
+	public OreFake(String tag) {
+		id = nextID();
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] == null) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-			}
-		}
 		return list.length - 1;
 	}
 
-	public static boolean hasTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public static boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public static int getID_tag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public static int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
-			}
-		}
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] != null && list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public OreFake setName(String str) {
-		name = str;
+	public OreFake setName(String name) {
+		this.name = name;
 		return this;
 	}
 
@@ -103,8 +96,8 @@ public class OreFake {
 		return StatCollector.translateToLocal("ore." + getName() + ".name");
 	}
 
-	public OreFake setType(String str) {
-		type = str;
+	public OreFake setType(String type) {
+		this.type = type;
 		return this;
 	}
 
@@ -116,8 +109,8 @@ public class OreFake {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
 
-	public OreFake setColor(int i) {
-		color_hex = i;
+	public OreFake setColor(int color) {
+		color_hex = color;
 		return this;
 	}
 
@@ -159,13 +152,13 @@ public class OreFake {
 		return temperature_max == 0 ? 0.0F : temperature_max;
 	}
 
-	public OreFake setTexture(String str) {
-		textureName = str;
+	public OreFake setTexture(String path) {
+		textureName = path;
 		return this;
 	}
 
-	public OreFake setTextureOre(String str) {
-		textureName = "ore/" + str;
+	public OreFake setTextureOre(String path) {
+		textureName = "ore/" + path;
 		return this;
 	}
 

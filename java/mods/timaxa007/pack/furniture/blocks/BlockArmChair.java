@@ -22,7 +22,7 @@ public class BlockArmChair extends Block implements ITileEntityProvider {
 
 	public BlockArmChair() {
 		super(Material.wood);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setResistance(2.5F);
 		setStepSound(soundTypeWood);
@@ -53,10 +53,10 @@ public class BlockArmChair extends Block implements ITileEntityProvider {
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if ((te != null && te instanceof TileEntityArmChair)) {
-			TileEntityArmChair tile = (TileEntityArmChair) te;
+		if (te != null && te instanceof TileEntityArmChair) {
+			TileEntityArmChair tile = (TileEntityArmChair)te;
 			return addTag(tile.getType(), tile.getSize());
-		} else return addTag("minecraft:air", 0);
+		} else return null;
 	}
 
 	@Override
@@ -82,8 +82,8 @@ public class BlockArmChair extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(String par1, int par2) {
-		ItemStack is=new ItemStack(PackFurniture.proxy.block_arm_chair, 1, 0);
-		NBTTagCompound tag=new NBTTagCompound();
+		ItemStack is = new ItemStack(PackFurniture.proxy.block_arm_chair, 1, 0);
+		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("Type", par1);
 		tag.setInteger("Size", par2);
 		is.setTagCompound(tag);

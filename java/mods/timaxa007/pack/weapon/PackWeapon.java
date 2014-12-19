@@ -1,5 +1,7 @@
 package mods.timaxa007.pack.weapon;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -22,14 +24,20 @@ public class PackWeapon {
 	@SidedProxy(clientSide = "mods.timaxa007.pack.weapon.ProxyClient", serverSide = "mods.timaxa007.pack.weapon.ProxyServer")
 	public static ProxyServer proxy;
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		proxy.init();
-	}
+	public static CreativeTabs tab_weapons = new CreativeTabs("tab_weapons") {
+		public Item getTabIconItem() {
+			return PackWeapon.proxy.items_for_weapons;
+		}
+	};
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
+	}
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.init();
 	}
 
 }

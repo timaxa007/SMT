@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.magic.gui;
 
+import mods.timaxa007.pack.magic.tile.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -11,7 +12,7 @@ public class HandlerGuiMagic implements IGuiHandler {
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(id) {
-		//case 1:return new ContainerMagicMachines(player, (TEMagicMachines)te);
+		//case 1:return new ContainerMagicMachines(player, (TileEntityMagicMachines)te);
 		default:return null;
 		}
 	}
@@ -20,7 +21,7 @@ public class HandlerGuiMagic implements IGuiHandler {
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(id) {
-		//case 1:return new GuiMagicMachines(player, (TEMagicMachines)te);
+		//case 1:return new GuiMagicMachines(player, (TileEntityMagicMachines)te);
 		default:return null;
 		}
 	}

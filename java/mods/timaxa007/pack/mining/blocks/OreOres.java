@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.mining.PackMining;
-import mods.timaxa007.pack.mining.te.TEOreOres;
+import mods.timaxa007.pack.mining.tile.TileEntityOreOres;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -45,7 +45,7 @@ public class OreOres extends Block implements ITileEntityProvider {
 
 	public OreOres() {
 		super(Material.rock);
-		setCreativeTab(PackMining.proxy.tab_mining);
+		setCreativeTab(PackMining.tab_mining);
 		setStepSound(soundTypeStone);
 		setHardness(1.0F);
 		setResistance(5.0F);
@@ -54,7 +54,7 @@ public class OreOres extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TEOreOres();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityOreOres();}
 	//public int getRenderType() {return -1;}
 	//public boolean renderAsNormalBlock() {return false;}
 	//public boolean isOpaqueCube() {return false;}
@@ -62,8 +62,8 @@ public class OreOres extends Block implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
 		TileEntity te = block_access.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEOreOres) {
-			return ((TEOreOres)te).getColorBlock();
+		if (te != null && te instanceof TileEntityOreOres) {
+			return ((TileEntityOreOres)te).getColorBlock();
 		}
 		return 0xFFFFFF;
 	}
@@ -71,7 +71,7 @@ public class OreOres extends Block implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
 		TileEntity te = block_access.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEOreOres) {
+		if (te != null && te instanceof TileEntityOreOres) {
 			if (this == PackMining.proxy.ore_rock_ores) {return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
 			if (this == PackMining.proxy.ore_nether_ores) {return Blocks.netherrack.getIcon(side, block_access.getBlockMetadata(x, y, z));}
 			if (this == PackMining.proxy.ore_ender_ores) {return Blocks.end_stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
@@ -84,8 +84,8 @@ public class OreOres extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEOreOres)
-			return addTag(world.getBlock(x, y, z), ((TEOreOres)te).getType(), ((TEOreOres)te).getColorBlock());
+		if (te != null && te instanceof TileEntityOreOres)
+			return addTag(world.getBlock(x, y, z), ((TileEntityOreOres)te).getType(), ((TileEntityOreOres)te).getColorBlock());
 		return null;
 	}
 
@@ -93,9 +93,9 @@ public class OreOres extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEOreOres && tag != null) {
-			if (tag.hasKey("Type")) ((TEOreOres)te).setType((int)tag.getByte("Type"));
-			if (tag.hasKey("ColorBlock")) ((TEOreOres)te).setColorBlock(tag.getInteger("ColorBlock"));
+		if (te != null && te instanceof TileEntityOreOres && tag != null) {
+			if (tag.hasKey("Type")) ((TileEntityOreOres)te).setType((int)tag.getByte("Type"));
+			if (tag.hasKey("ColorBlock")) ((TileEntityOreOres)te).setColorBlock(tag.getInteger("ColorBlock"));
 		}
 	}
 

@@ -3,7 +3,7 @@ package mods.timaxa007.pack.techno.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.techno.PackTechno;
-import mods.timaxa007.pack.techno.te.TEModuleMovement;
+import mods.timaxa007.pack.techno.tile.TileEntityModuleMovement;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -29,7 +29,7 @@ public class BlockModuleMovement extends Block implements ITileEntityProvider {
 
 	public BlockModuleMovement() {
 		super(Material.circuits);
-		setCreativeTab(PackTechno.proxy.tab_techno);
+		setCreativeTab(PackTechno.tab_techno);
 		setHardness(0.5F);
 		setResistance(0.1F);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
@@ -39,7 +39,7 @@ public class BlockModuleMovement extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEModuleMovement();
+		return new TileEntityModuleMovement();
 	}
 
 	public int getRenderType() {
@@ -60,7 +60,7 @@ public class BlockModuleMovement extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEModuleMovement) return addTag(((TEModuleMovement)te).getType());
+		if (te != null && te instanceof TileEntityModuleMovement) return addTag(((TileEntityModuleMovement)te).getType());
 		return null;
 	}
 
@@ -72,30 +72,30 @@ public class BlockModuleMovement extends Block implements ITileEntityProvider {
 	 */
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEModuleMovement) {
-			if (((TEModuleMovement)te).getType() == 0) {
+		if (te != null && te instanceof TileEntityModuleMovement) {
+			if (((TileEntityModuleMovement)te).getType() == 0) {
 
-				if (((TEModuleMovement)te).getRot() == 3) {entity.motionX += 0.1D;}
-				else if (((TEModuleMovement)te).getRot() == 1) {entity.motionX -= 0.1D;}
-				else if (((TEModuleMovement)te).getRot() == 0) {entity.motionZ += 0.1D;}
-				else if (((TEModuleMovement)te).getRot() == 2) {entity.motionZ -= 0.1D;}
+				if (((TileEntityModuleMovement)te).getRot() == 3) {entity.motionX += 0.1D;}
+				else if (((TileEntityModuleMovement)te).getRot() == 1) {entity.motionX -= 0.1D;}
+				else if (((TileEntityModuleMovement)te).getRot() == 0) {entity.motionZ += 0.1D;}
+				else if (((TileEntityModuleMovement)te).getRot() == 2) {entity.motionZ -= 0.1D;}
 				else {entity.motionY += 0.1D;}
 
-			} else if (((TEModuleMovement)te).getType() == 1) {
+			} else if (((TileEntityModuleMovement)te).getType() == 1) {
 				//entity.motionX *= 2.0D;
-				if (((TEModuleMovement)te).getRot() == 3) {
+				if (((TileEntityModuleMovement)te).getRot() == 3) {
 					if (entity.motionX > 0 && entity.motionX < 3.0D) {
 						entity.motionX *= 2.1D;}
 				}
-				else if (((TEModuleMovement)te).getRot() == 1) {
+				else if (((TileEntityModuleMovement)te).getRot() == 1) {
 					if (entity.motionX < 0 && entity.motionX > -3.0D) {
 						entity.motionX *= 2.1D;}
 				}
-				else if (((TEModuleMovement)te).getRot() == 0) {
+				else if (((TileEntityModuleMovement)te).getRot() == 0) {
 					if (entity.motionZ > 0 && entity.motionZ < 3.0D) {
 						entity.motionZ *= 2.1D;}
 				}
-				else if (((TEModuleMovement)te).getRot() == 2) {
+				else if (((TileEntityModuleMovement)te).getRot() == 2) {
 					if (entity.motionZ < 0 && entity.motionZ > -3.0D) {
 						entity.motionZ *= 2.1D;}
 				}
@@ -103,23 +103,23 @@ public class BlockModuleMovement extends Block implements ITileEntityProvider {
 					entity.motionY *= 0.1D;
 				}
 
-			} else if (((TEModuleMovement)te).getType() == 2) {
+			} else if (((TileEntityModuleMovement)te).getType() == 2) {
 
 				if (entity.motionY >= 0.0D && entity.motionY < 10.0D) {
 					entity.motionY += 0.1D;
 					//entity.motionY *= 0.1D;
 				}
 
-				if (((TEModuleMovement)te).getRot() == 3) {
+				if (((TileEntityModuleMovement)te).getRot() == 3) {
 					entity.motionX += 0.01D;
 				}
-				else if (((TEModuleMovement)te).getRot() == 1) {
+				else if (((TileEntityModuleMovement)te).getRot() == 1) {
 					entity.motionX -= 0.01D;
 				}
-				else if (((TEModuleMovement)te).getRot() == 0) {
+				else if (((TileEntityModuleMovement)te).getRot() == 0) {
 					entity.motionZ += 0.01D;
 				}
-				else if (((TEModuleMovement)te).getRot() == 2) {
+				else if (((TileEntityModuleMovement)te).getRot() == 2) {
 					entity.motionZ -= 0.01D;
 				}
 				else {entity.motionY += 0.1D;}
@@ -139,7 +139,7 @@ public class BlockModuleMovement extends Block implements ITileEntityProvider {
 			return false;
 		}
 
-		if (te != null && te instanceof TEModuleMovement) {
+		if (te != null && te instanceof TileEntityModuleMovement) {
 			return true;
 		}
 

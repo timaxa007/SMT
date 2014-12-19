@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TECnstorDoors;
+import mods.timaxa007.pack.furniture.tile.TileEntityCnstorDoors;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -28,7 +28,7 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 	public BlockCnstorDoor() {
 		super(Material.glass);
 		setStepSound(soundTypeWood);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setLightOpacity(0);
@@ -38,7 +38,7 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TECnstorDoors();
+		return new TileEntityCnstorDoors();
 	}
 
 	public int idPicked(World world, int x, int y, int z) {
@@ -47,8 +47,8 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TECnstorDoors) {
-			return addTag(world.getBlock(x, y, z), ((TECnstorDoors)te).getSubID(), ((TECnstorDoors)te).getColorBlock());
+		if (te != null && te instanceof TileEntityCnstorDoors) {
+			return addTag(world.getBlock(x, y, z), ((TileEntityCnstorDoors)te).getSubID(), ((TileEntityCnstorDoors)te).getColorBlock());
 		} else {
 			return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
 		}
@@ -60,18 +60,18 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
 		
-		if (te != null && te instanceof TECnstorDoors && tag != null) {
+		if (te != null && te instanceof TileEntityCnstorDoors && tag != null) {
 		
 			if (tag.hasKey("SubID")) {
-				((TECnstorDoors)te).setSubID((int)tag.getByte("SubID"));
+				((TileEntityCnstorDoors)te).setSubID((int)tag.getByte("SubID"));
 			}
 			
 			if (tag.hasKey("ColorBlock")) {
-				((TECnstorDoors)te).setColorBlock(tag.getInteger("ColorBlock"));
+				((TileEntityCnstorDoors)te).setColorBlock(tag.getInteger("ColorBlock"));
 			}
 			
 			if (entity instanceof EntityPlayer) {
-				((TECnstorDoors)te).setOwner(((EntityPlayer)entity).getDisplayName());
+				((TileEntityCnstorDoors)te).setOwner(((EntityPlayer)entity).getDisplayName());
 			}
 		
 		}
@@ -84,7 +84,7 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 		//if (!world.isRemote) {return false;}
 		if (te == null || player.isSneaking()) {return false;}
 
-		if (te != null && te instanceof TECnstorDoors) {
+		if (te != null && te instanceof TileEntityCnstorDoors) {
 			ItemStack current = player.getCurrentEquippedItem();
 
 			if (ib == 0) {//
@@ -94,7 +94,7 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 					NBTTagCompound tag = current.getTagCompound();
 					if (tag != null && tag.hasKey("CordX") && tag.hasKey("CordY") && tag.hasKey("CordZ")) {
 						if (tag.getInteger("CordX") == x && tag.getInteger("CordY") == y && tag.getInteger("CordZ") == z) {
-							((TECnstorDoors)te).openDoor(true);
+							((TileEntityCnstorDoors)te).openDoor(true);
 						} else {
 							//if (world.isRemote) {player.addChatMessage("This key does not fit into this door.");}
 							return false;
@@ -113,20 +113,20 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 			if (ib == 1) {//
 
 				if (world.provider.isDaytime()) {
-					if (player.getDisplayName().equals(((TECnstorDoors)te).getOwner())) {
-						((TECnstorDoors)te).openDoor(true);
+					if (player.getDisplayName().equals(((TileEntityCnstorDoors)te).getOwner())) {
+						((TileEntityCnstorDoors)te).openDoor(true);
 					} else {
 						return false;
 					}
 				} else {
-					((TECnstorDoors)te).openDoor(true);
+					((TileEntityCnstorDoors)te).openDoor(true);
 				}
 
 			}//
 
 			if (current != null && current.getItem() instanceof ItemAxe) {
 				current.setItemDamage(current.getItemDamage() + 1);
-				((TECnstorDoors)te).breakDoor(true);
+				((TileEntityCnstorDoors)te).breakDoor(true);
 			}
 
 			return true;
@@ -139,8 +139,8 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
-			if (te != null && te instanceof TECnstorDoors && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TECnstorDoors)te).getSubID(), ((TECnstorDoors)te).getColorBlock()));
+			if (te != null && te instanceof TileEntityCnstorDoors && !player.capabilities.isCreativeMode) {
+				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TileEntityCnstorDoors)te).getSubID(), ((TileEntityCnstorDoors)te).getColorBlock()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}

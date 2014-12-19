@@ -46,7 +46,7 @@ public ItemPaintCan() {
 super();
 this.setMaxStackSize(1);
 this.setMaxDamage(15);
-this.setCreativeTab(PackMining.proxy.tab_tools);
+this.setCreativeTab(PackMining.tab_tools);
 this.setUnlocalizedName("ItemPaintCan");
 }
 

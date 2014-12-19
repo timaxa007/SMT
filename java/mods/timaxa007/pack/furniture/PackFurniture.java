@@ -1,5 +1,7 @@
 package mods.timaxa007.pack.furniture;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -22,14 +24,20 @@ public class PackFurniture {
 	@SidedProxy(clientSide = "mods.timaxa007.pack.furniture.ProxyClient", serverSide = "mods.timaxa007.pack.furniture.ProxyServer")
 	public static ProxyServer proxy;
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		proxy.init();
-	}
+	public static CreativeTabs tab_furniture = new CreativeTabs("tab_furniture") {
+		public Item getTabIconItem() {
+			return Item.getItemFromBlock(PackFurniture.proxy.block_cnstor_block);
+		}
+	};
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
+	}
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.init();
 	}
 
 }

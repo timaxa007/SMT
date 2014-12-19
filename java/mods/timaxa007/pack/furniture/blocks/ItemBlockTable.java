@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TETable;
+import mods.timaxa007.pack.furniture.tile.TileEntityTable;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -37,14 +37,14 @@ public class ItemBlockTable extends ItemBlock{
 			world.setBlock(x, y, z, PackFurniture.proxy.block_table, 0, 3);
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
-			if (te != null && te instanceof TETable) {
+			if (te != null && te instanceof TileEntityTable) {
 
 				int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				((TETable)te).setRotation(l);
+				((TileEntityTable)te).setRotation(l);
 
 				if (tag != null) {
-					if (tag.hasKey("Type")) ((TETable)te).setType(tag.getInteger("Type"));
-					if (tag.hasKey("Size")) ((TETable)te).setSize(tag.getInteger("Size"));
+					if (tag.hasKey("Type")) ((TileEntityTable)te).setType(tag.getInteger("Type"));
+					if (tag.hasKey("Size")) ((TileEntityTable)te).setSize(tag.getInteger("Size"));
 				}
 			}
 			return true;

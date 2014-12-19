@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 import mods.timaxa007.lib.GetColors;
-import mods.timaxa007.pack.furniture.tile.TELights;
+import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.pack.furniture.tile.TileEntityLights;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -39,7 +40,7 @@ public class BlockLight extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TELights();
+		return new TileEntityLights();
 	}
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
@@ -72,8 +73,8 @@ public class BlockLight extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TELights)
-			return addTag(world.getBlock(x, y, z), ((TELights)te).getType(), ((TELights)te).getColorHex1());
+		if (te != null && te instanceof TileEntityLights)
+			return addTag(world.getBlock(x, y, z), ((TileEntityLights)te).getType(), ((TileEntityLights)te).getColorHex1());
 		return null;
 	}
 
@@ -81,9 +82,9 @@ public class BlockLight extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TELights && tag != null) {
-			if (tag.hasKey("Type")) ((TELights)te).setType(tag.getString("Type"));
-			if (tag.hasKey("ColorHex1")) ((TELights)te).setColorHex1(tag.getInteger("ColorHex1"));
+		if (te != null && te instanceof TileEntityLights && tag != null) {
+			if (tag.hasKey("Type")) ((TileEntityLights)te).setType(tag.getString("Type"));
+			if (tag.hasKey("ColorHex1")) ((TileEntityLights)te).setColorHex1(tag.getInteger("ColorHex1"));
 		}
 	}
 
@@ -91,8 +92,8 @@ public class BlockLight extends Block implements ITileEntityProvider {
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
-			if (te != null && te instanceof TELights && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TELights)te).getType(), ((TELights)te).getColorHex1()));
+			if (te != null && te instanceof TileEntityLights && !player.capabilities.isCreativeMode) {
+				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TileEntityLights)te).getType(), ((TileEntityLights)te).getColorHex1()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}

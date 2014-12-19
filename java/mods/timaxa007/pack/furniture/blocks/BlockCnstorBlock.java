@@ -6,7 +6,7 @@ import java.util.Random;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.TileTexture;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TECnstorBlock;
+import mods.timaxa007.pack.furniture.tile.TileEntityCnstorBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -26,7 +26,7 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 
 	public BlockCnstorBlock() {
 		super(Material.glass);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setLightOpacity(0);
@@ -36,7 +36,7 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TECnstorBlock();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityCnstorBlock();}
 	public int quantityDropped(Random radom) {return 0;}
 	public int getRenderType() {return PackFurniture.proxy.render_block_cnstor_block_modelID;}
 	public boolean isOpaqueCube() {return false;}
@@ -45,8 +45,8 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TECnstorBlock) {
-			return addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor());
+		if (te != null && te instanceof TileEntityCnstorBlock) {
+			return addTag(((TileEntityCnstorBlock)te).getType(), ((TileEntityCnstorBlock)te).getColor());
 		} else {
 			return addTag(0, 0);
 		}
@@ -58,9 +58,9 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
 		
-		if (te != null && te instanceof TECnstorBlock && tag != null) {
-			if (tag.hasKey("Type")) ((TECnstorBlock)te).setType(tag.getInteger("Type"));
-			if (tag.hasKey("Color")) ((TECnstorBlock)te).setColor(tag.getInteger("Color"));
+		if (te != null && te instanceof TileEntityCnstorBlock && tag != null) {
+			if (tag.hasKey("Type")) ((TileEntityCnstorBlock)te).setType(tag.getInteger("Type"));
+			if (tag.hasKey("Color")) ((TileEntityCnstorBlock)te).setColor(tag.getInteger("Color"));
 		}
 		
 	}
@@ -69,8 +69,8 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
-			if (te != null && te instanceof TECnstorBlock && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(((TECnstorBlock)te).getType(), ((TECnstorBlock)te).getColor()));
+			if (te != null && te instanceof TileEntityCnstorBlock && !player.capabilities.isCreativeMode) {
+				dropBlockAsItem(world, x, y, z, addTag(((TileEntityCnstorBlock)te).getType(), ((TileEntityCnstorBlock)te).getColor()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}

@@ -2,7 +2,6 @@ package mods.timaxa007.pack.furniture.lib;
 
 import mods.timaxa007.lib.FluidFake;
 import mods.timaxa007.lib.GetColors;
-import mods.timaxa007.pack.furniture.lib.ItemForFurniture;
 
 public class ListFurniture {
 	//Colored Liquid

@@ -3,7 +3,7 @@ package mods.timaxa007.pack.stock.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.stock.PackStock;
-import mods.timaxa007.pack.stock.te.TEHealing;
+import mods.timaxa007.pack.stock.tile.TileEntityHealing;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -42,7 +42,7 @@ public class BlockHealing extends Block implements ITileEntityProvider {
 
 	public BlockHealing() {
 		super(Material.wood);
-		setCreativeTab(PackStock.proxy.tab_medical);
+		setCreativeTab(PackStock.tab_medical);
 		setStepSound(soundTypeWood);
 		setHardness(0.1F);
 		setResistance(0.01F);
@@ -51,7 +51,7 @@ public class BlockHealing extends Block implements ITileEntityProvider {
 	}
 
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEHealing();
+		return new TileEntityHealing();
 	}
 
 	@SideOnly(Side.CLIENT)

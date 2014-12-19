@@ -35,8 +35,8 @@ import java.io.IOException;
 
 public class Core {
 
-	public static final boolean OBFUSCATED = isObfuscated();
-	public static final String MODID = "00tms";
+	public static final boolean OBFUSCATileEntityD = isObfuscated();
+	public static final String MODID = "timaxa007";
 	public static final String MODNAME = "TMS";
 	public static final String VERSION = "0.2a";
 	public static final String[] AUTHORS = new String[] {"timaxa007", "Dragon2488"};

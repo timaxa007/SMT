@@ -1,8 +1,10 @@
 package mods.timaxa007.pack.furniture;
 
-import mods.timaxa007.pack.furniture.render.block.*;
-import mods.timaxa007.pack.furniture.render.item.*;
-import mods.timaxa007.pack.furniture.event.sound.EventSoundFurniture;
+import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.pack.furniture.ProxyServer;
+import mods.timaxa007.pack.furniture.render.blocks.*;
+import mods.timaxa007.pack.furniture.render.items.*;
+import mods.timaxa007.pack.furniture.event.EventFurnitureClient;
 import mods.timaxa007.pack.furniture.tile.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -39,29 +41,26 @@ public class ProxyClient extends ProxyServer {
 		render_block_mashine_waiter_modelID = RenderingRegistry.getNextAvailableRenderId();
 
 		//Blocks
-		ClientRegistry.bindTileEntitySpecialRenderer(TECnstorBlock.class, new BlockRenderCnstorBlock());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEAngleMod.class, new BlockRenderAngleMod());
-		ClientRegistry.bindTileEntitySpecialRenderer(TECnstorFence.class, new BlockRenderCnstorFence());
-		ClientRegistry.bindTileEntitySpecialRenderer(TELights.class, new BlockRenderLights());
-		ClientRegistry.bindTileEntitySpecialRenderer(TECrystals.class, new BlockRenderCrystals());
-		ClientRegistry.bindTileEntitySpecialRenderer(TECandle.class, new BlockRenderCandle());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEBarrels.class, new BlockRenderBarrels());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEBookshelf.class, new BlockRenderBookshelf());
-		ClientRegistry.bindTileEntitySpecialRenderer(TETable.class, new BlockRenderTable());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEChair.class, new BlockRenderChair());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEWardrobe.class, new BlockRenderWardrobe());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEMincer.class, new BlockRenderMincer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEArmChair.class, new BlockRenderArmChair());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEBlender.class, new BlockRenderBlender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEGrills.class, new BlockRenderGrills());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEBoxParticles.class, new BlockRenderBoxParticles());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEJar01.class, new RenderBlockJar01());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEPipes.class, new RenderBlockPipes());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEMashineWater.class, new RenderBlockMashineWater());
-		//ClientRegistry.bindTileEntitySpecialRenderer(TEWoodBlocks.class, new RenderBlockWoodBlocks());
-
-		//Items
-
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCnstorBlock.class, new BlockRenderCnstorBlock());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAngleMod.class, new BlockRenderAngleMod());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCnstorFence.class, new BlockRenderCnstorFence());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLights.class, new BlockRenderLights());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrystals.class, new BlockRenderCrystals());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCandle.class, new BlockRenderCandle());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBarrels.class, new BlockRenderBarrels());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBookshelf.class, new BlockRenderBookshelf());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTable.class, new BlockRenderTable());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChair.class, new BlockRenderChair());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWardrobe.class, new BlockRenderWardrobe());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMincer.class, new BlockRenderMincer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityArmChair.class, new BlockRenderArmChair());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlender.class, new BlockRenderBlender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGrills.class, new BlockRenderGrills());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBoxParticles.class, new BlockRenderBoxParticles());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJar01.class, new RenderBlockJar01());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPipes.class, new RenderBlockPipes());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMashineWater.class, new RenderBlockMashineWater());
+		//ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodBlocks.class, new RenderBlockWoodBlocks());
 
 		//Blocks
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.proxy.block_cnstor_block), new ItemRenderCnstorBlock());
@@ -109,7 +108,9 @@ public class ProxyClient extends ProxyServer {
 
 		//Items
 
-		MinecraftForge.EVENT_BUS.register(new EventSoundFurniture());
+		//Entity
+
+		MinecraftForge.EVENT_BUS.register(new EventFurnitureClient());
 
 	}
 

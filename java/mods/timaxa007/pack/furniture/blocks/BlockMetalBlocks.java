@@ -6,7 +6,7 @@ import java.util.Random;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.lib.AddBlockMetal;
-import mods.timaxa007.pack.furniture.tile.TEMetalBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntityMetalBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -40,7 +40,7 @@ public class BlockMetalBlocks extends Block implements ITileEntityProvider {
 
 	public BlockMetalBlocks() {
 		super(Material.iron);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(5.0F);
 		setResistance(10.0F);
 		setStepSound(soundTypeMetal);
@@ -50,7 +50,7 @@ public class BlockMetalBlocks extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEMetalBlocks();
+		return new TileEntityMetalBlocks();
 	}
 
 	public int quantityDropped(Random random) {
@@ -60,8 +60,8 @@ public class BlockMetalBlocks extends Block implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
 		TileEntity te = block_access.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEMetalBlocks) {
-			return ((TEMetalBlocks)te).getColorBlock();
+		if (te != null && te instanceof TileEntityMetalBlocks) {
+			return ((TileEntityMetalBlocks)te).getColorBlock();
 		}
 		return 0xFFFFFF;
 	}
@@ -69,8 +69,8 @@ public class BlockMetalBlocks extends Block implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
 		TileEntity te = block_access.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEMetalBlocks) {
-			return icon_array[((TEMetalBlocks)te).getSubID()];
+		if (te != null && te instanceof TileEntityMetalBlocks) {
+			return icon_array[((TileEntityMetalBlocks)te).getSubID()];
 		}
 		return getIcon(side, block_access.getBlockMetadata(x, y, z));
 	}
@@ -79,8 +79,8 @@ public class BlockMetalBlocks extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEMetalBlocks) {
-			return addTag(world.getBlock(x, y, z), ((TEMetalBlocks)te).getSubID(), ((TEMetalBlocks)te).getColorBlock());
+		if (te != null && te instanceof TileEntityMetalBlocks) {
+			return addTag(world.getBlock(x, y, z), ((TileEntityMetalBlocks)te).getSubID(), ((TileEntityMetalBlocks)te).getColorBlock());
 		}
 		return null;
 	}
@@ -89,9 +89,9 @@ public class BlockMetalBlocks extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEMetalBlocks && tag != null) {
-			if (tag.hasKey("SubID")) ((TEMetalBlocks)te).setSubID((int)tag.getByte("SubID"));
-			if (tag.hasKey("ColorBlock")) ((TEMetalBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));
+		if (te != null && te instanceof TileEntityMetalBlocks && tag != null) {
+			if (tag.hasKey("SubID")) ((TileEntityMetalBlocks)te).setSubID((int)tag.getByte("SubID"));
+			if (tag.hasKey("ColorBlock")) ((TileEntityMetalBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));
 		}
 	}
 
@@ -99,8 +99,8 @@ public class BlockMetalBlocks extends Block implements ITileEntityProvider {
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
-			if (te != null && te instanceof TEMetalBlocks && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TEMetalBlocks)te).getSubID(), ((TEMetalBlocks)te).getColorBlock()));
+			if (te != null && te instanceof TileEntityMetalBlocks && !player.capabilities.isCreativeMode) {
+				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TileEntityMetalBlocks)te).getSubID(), ((TileEntityMetalBlocks)te).getColorBlock()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
@@ -114,16 +114,16 @@ public class BlockMetalBlocks extends Block implements ITileEntityProvider {
 			//--------------------------------
 			if (current.getItem() == PackFurniture.proxy.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 				if (!player.capabilities.isCreativeMode) {--current.stackSize;}
-				//((TEMetalBlocks)te).setColorBlock(GetColors.getHexColors[current.getItemDamage()]);
-				((TEMetalBlocks)te).setColorBlock(GetColors.getColorMix(GetColors.getHexColors[current.getItemDamage()], ((TEMetalBlocks)te).getColorBlock()));
+				//((TileEntityMetalBlocks)te).setColorBlock(GetColors.getHexColors[current.getItemDamage()]);
+				((TileEntityMetalBlocks)te).setColorBlock(GetColors.getColorMix(GetColors.getHexColors[current.getItemDamage()], ((TileEntityMetalBlocks)te).getColorBlock()));
 				//world.scheduleBlockUpdate(x, y, z, world.getBlock(x, y, z), 4);
 				return true;
 			}
 			//--------------------------------
 			else if (current.getItem() == Items.dye && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 				if (!player.capabilities.isCreativeMode) {--current.stackSize;}
-				//((TEMetalBlocks)te).setColorBlock(ItemDye.dyeColors[current.getItemDamage()]);
-				((TEMetalBlocks)te).setColorBlock(GetColors.getColorMix(ItemDye.field_150922_c[current.getItemDamage()], ((TEMetalBlocks)te).getColorBlock()));
+				//((TileEntityMetalBlocks)te).setColorBlock(ItemDye.dyeColors[current.getItemDamage()]);
+				((TileEntityMetalBlocks)te).setColorBlock(GetColors.getColorMix(ItemDye.field_150922_c[current.getItemDamage()], ((TileEntityMetalBlocks)te).getColorBlock()));
 				//world.scheduleBlockUpdate(x, y, z, world.getBlock(x, y, z), 4);
 				return true;
 			}

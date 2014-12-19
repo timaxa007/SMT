@@ -29,7 +29,7 @@ public class ToolElectricDrills extends Item {
 
 	public ToolElectricDrills() {
 		super();
-		setCreativeTab(PackTechno.proxy.tab_techno);
+		setCreativeTab(PackTechno.tab_techno);
 		setMaxDamage(1000);
 		setMaxStackSize(1);
 		setNoRepair();

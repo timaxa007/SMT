@@ -20,7 +20,7 @@ public class ItemGlobular extends Item {
 
 	public ItemGlobular() {
 		super();
-		setCreativeTab(PackMagic.proxy.tab_magic);
+		setCreativeTab(PackMagic.tab_magic);
 		setTextureName("timaxa007:test_item");
 		setUnlocalizedName("globular");
 	}

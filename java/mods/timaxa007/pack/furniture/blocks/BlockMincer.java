@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEMincer;
+import mods.timaxa007.pack.furniture.tile.TileEntityMincer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -24,7 +24,7 @@ public class BlockMincer extends BlockContainer{
 	public BlockMincer() {
 		super(Material.iron);
 		setStepSound(soundTypeMetal);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("iron_block");
 		setBlockName("mincer");
@@ -32,7 +32,7 @@ public class BlockMincer extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEMincer();
+		return new TileEntityMincer();
 	}
 	
 	public int getRenderType() {
@@ -51,7 +51,7 @@ public class BlockMincer extends BlockContainer{
 		int i1 = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 		world.setBlock(x, y, z, this, i1, 3);
 		/*if (is.hasDisplayName()) {
-		((TEMincer)world.getTileEntity(x, y, z)).setGuiDisplayName(is.getDisplayName());
+		((TileEntityMincer)world.getTileEntity(x, y, z)).setGuiDisplayName(is.getDisplayName());
 		}*/
 	}
 
@@ -60,7 +60,7 @@ public class BlockMincer extends BlockContainer{
 		TileEntity te = world.getTileEntity(x, y, z);
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
-		if (te != null && te instanceof TEMincer) {
+		if (te != null && te instanceof TileEntityMincer) {
 			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_mincer, world, x, y, z);
 			return true;
 		}
@@ -69,7 +69,7 @@ public class BlockMincer extends BlockContainer{
 
 	public void breakBlock(World world, int x, int y, int z, Block blkid, int blkmeta) {
 		if (!keepFurnaceInventory) {
-			TEMincer tileentityfurnace = (TEMincer)world.getTileEntity(x, y, z);
+			TileEntityMincer tileentityfurnace = (TileEntityMincer)world.getTileEntity(x, y, z);
 
 			if (tileentityfurnace != null) {
 				for (int j1 = 0; j1 < tileentityfurnace.getSizeInventory(); ++j1) {

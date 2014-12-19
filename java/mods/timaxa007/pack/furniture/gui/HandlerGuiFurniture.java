@@ -11,11 +11,11 @@ public class HandlerGuiFurniture implements IGuiHandler {
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(id) {
-		//case 1:return new ContainerFurnitureMachines(player, (TEFurnitureMachines)te);
-		//case 16:return new ContainerBookshelf(player, (TEBookshelf)te);
-		//case 17:return new ContainerMincer(player, (TEMincer)te);
-		//case 18:return new ContainerGrills(player, (TEGrills)te);
-		//case 19:return new ContainerMashineWater(player, (TEMashineWater)te);
+		//case 1:return new ContainerFurnitureMachines(player, (TileEntityFurnitureMachines)te);
+		//case 16:return new ContainerBookshelf(player, (TileEntityBookshelf)te);
+		//case 17:return new ContainerMincer(player, (TileEntityMincer)te);
+		//case 18:return new ContainerGrills(player, (TileEntityGrills)te);
+		//case 19:return new ContainerMashineWater(player, (TileEntityMashineWater)te);
 		//case 20:return new ContainerBackpack(player);
 		default:return null;
 		}
@@ -25,11 +25,11 @@ public class HandlerGuiFurniture implements IGuiHandler {
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(id) {
-		//case 1:return new GuiFurnitureMachines(player, (TEFurnitureMachines)te);
-		//case 16:return new GuiBookshelf(player, (TEBookshelf)te);
-		//case 17:return new GuiMincer(player, (TEMincer)te);
-		//case 18:return new GuiGrills(player, (TEGrills)te);
-		//case 19:return new GuiMashineWater(player, (TEMashineWater)te);
+		//case 1:return new GuiFurnitureMachines(player, (TileEntityFurnitureMachines)te);
+		//case 16:return new GuiBookshelf(player, (TileEntityBookshelf)te);
+		//case 17:return new GuiMincer(player, (TileEntityMincer)te);
+		//case 18:return new GuiGrills(player, (TileEntityGrills)te);
+		//case 19:return new GuiMashineWater(player, (TileEntityMashineWater)te);
 		//case 20:return new GuiBackpack(player);
 		default:return null;
 		}

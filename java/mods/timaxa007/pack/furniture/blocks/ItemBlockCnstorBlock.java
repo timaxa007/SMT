@@ -32,23 +32,23 @@ public class ItemBlockCnstorBlock extends ItemBlock {
 			world.setBlock(x, y, z, PackFurniture.proxy.blockCnstorBlock, 0, 3);
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
-			if (te != null && te instanceof TECnstorBlock) {
+			if (te != null && te instanceof TileEntityCnstorBlock) {
 
 				if (tag != null) {
 					if (tag.hasKey("Type")) {
-						((TECnstorBlock)te).setType(tag.getInteger("Type"));
+						((TileEntityCnstorBlock)te).setType(tag.getInteger("Type"));
 					} else {
-						((TECnstorBlock)te).setType(0);
+						((TileEntityCnstorBlock)te).setType(0);
 					}
 					if (tag.hasKey("Color")) {
-						((TECnstorBlock)te).setColor(tag.getInteger("Color"));
+						((TileEntityCnstorBlock)te).setColor(tag.getInteger("Color"));
 					} else {
-						((TECnstorBlock)te).setColor(0);
+						((TileEntityCnstorBlock)te).setColor(0);
 					}
 
 				} else {
-					((TECnstorBlock)te).setType(0);
-					((TECnstorBlock)te).setColor(0);
+					((TileEntityCnstorBlock)te).setType(0);
+					((TileEntityCnstorBlock)te).setColor(0);
 				}
 			}
 			return true;

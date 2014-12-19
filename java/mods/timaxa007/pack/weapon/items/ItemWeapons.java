@@ -33,7 +33,7 @@ public class ItemWeapons extends Item {
 	public ItemWeapons() {
 		super();
 		setMaxStackSize(1);
-		setCreativeTab(PackWeapon.proxy.tab_weapons);
+		setCreativeTab(PackWeapon.tab_weapons);
 		setTextureName("timaxa007:weapons");
 		setUnlocalizedName("weapons");
 	}
@@ -75,7 +75,7 @@ public class ItemWeapons extends Item {
 					}
 					//----------------------------------------------------------------------------------------------------------------
 					/*if (Keyboard.isKeyDown(KeyBindingHandler.reload_key_bind.getKeyCode())) {
-						if (WeaponFor.weapon_list[tag.getInteger("WeaponID")] != null) {
+						if (WeaponFor.list[tag.getInteger("WeaponID")] != null) {
 							if (!world.isRemote) {
 
 							} else {
@@ -205,7 +205,7 @@ public class ItemWeapons extends Item {
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("WeaponID")) {
-			return "weapon." + WeaponFor.weapon_list[tag.getInteger("WeaponID")].getName();
+			return "weapon." + WeaponFor.list[tag.getInteger("WeaponID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
@@ -217,7 +217,7 @@ public class ItemWeapons extends Item {
 
 				if (tag.hasKey("WeaponID")) {
 					list.add("WeaponID: " + tag.getInteger("WeaponID") + "/" + 
-							WeaponFor.weapon_list[tag.getInteger("WeaponID")].getName() + ".");
+							WeaponFor.list[tag.getInteger("WeaponID")].getName() + ".");
 				}
 
 			}
@@ -228,8 +228,8 @@ public class ItemWeapons extends Item {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		for (int i = 0; i < WeaponFor.weapon_list.length; i++) {
-			if (WeaponFor.weapon_list[i] != null) {
+		for (int i = 0; i < WeaponFor.list.length; i++) {
+			if (WeaponFor.list[i] != null) {
 				list.add(addTag(i));
 			}
 		}
@@ -243,18 +243,18 @@ public class ItemWeapons extends Item {
 		tag.setBoolean("Aim", false);
 		tag.setInteger("Shooted", 0);
 
-		if (WeaponFor.weapon_list[par1].getMagazine() != null) {
-			tag.setInteger("MagazineID", WeaponFor.weapon_list[par1].getMagazine().magazineID);
-			tag.setInteger("AmmoAtm", WeaponFor.weapon_list[par1].getMagazine().getSize());
+		if (WeaponFor.list[par1].getMagazine() != null) {
+			tag.setInteger("MagazineID", WeaponFor.list[par1].getMagazine().id);
+			tag.setInteger("AmmoAtm", WeaponFor.list[par1].getMagazine().getSize());
 		} 
-		if (WeaponFor.weapon_list[par1].getAmmo() != null) {
-			tag.setInteger("AmmoID", WeaponFor.weapon_list[par1].getAmmo().ammoID);
-			tag.setInteger("AmmoAtm", WeaponFor.weapon_list[par1].getSizeAmmo());
+		if (WeaponFor.list[par1].getAmmo() != null) {
+			tag.setInteger("AmmoID", WeaponFor.list[par1].getAmmo().id);
+			tag.setInteger("AmmoAtm", WeaponFor.list[par1].getSizeAmmo());
 		}
 
-		//tag.setInteger("AmmoID", WeaponFor.weapon_list[par1].getAmmo().ammoID);
-		/*if (WeaponFor.weapon_list[par1].getMagazine() != null) {
-			tag.setInteger("MagazineID", WeaponFor.weapon_list[par1].getMagazine().magazineID);
+		//tag.setInteger("AmmoID", WeaponFor.list[par1].getAmmo().ammoID);
+		/*if (WeaponFor.list[par1].getMagazine() != null) {
+			tag.setInteger("MagazineID", WeaponFor.list[par1].getMagazine().magazineID);
 		}*/
 		//tag.setInteger("MagazineID", par2);
 		is.setTagCompound(tag);
@@ -282,9 +282,9 @@ public class ItemWeapons extends Item {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("WeaponID")) {
 			if (pass == 0) {
-				return WeaponFor.weapon_list[tag.getInteger("WeaponID")].getColor1();
+				return WeaponFor.list[tag.getInteger("WeaponID")].getColor1();
 			} else {
-				return WeaponFor.weapon_list[tag.getInteger("WeaponID")].getColor2();
+				return WeaponFor.list[tag.getInteger("WeaponID")].getColor2();
 			}
 		} else {
 			return 16777215;
@@ -295,21 +295,21 @@ public class ItemWeapons extends Item {
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);
 		itemIcon = ir.registerIcon("timaxa007:" + "weapons");
-		icon_tex = new IIcon[WeaponFor.weapon_list.length];
-		icon_ovl = new IIcon[WeaponFor.weapon_list.length];
-		for (int i = 0; i < WeaponFor.weapon_list.length; i++) {
-			/*if (WeaponFor.weapon_list[i] != null) {
-				icon_tex[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[i].getTexture1Name());
-				if (WeaponFor.weapon_list[i].getTexture2Name() == WeaponFor.weapon_list[i].getTexture1Name()) {
+		icon_tex = new IIcon[WeaponFor.list.length];
+		icon_ovl = new IIcon[WeaponFor.list.length];
+		for (int i = 0; i < WeaponFor.list.length; i++) {
+			/*if (WeaponFor.list[i] != null) {
+				icon_tex[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.list[i].getTexture1Name());
+				if (WeaponFor.list[i].getTexture2Name() == WeaponFor.list[i].getTexture1Name()) {
 					icon_ovl[i] = ir.registerIcon("timaxa007:" + "empty");
 				} else {
-					icon_ovl[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[i].getTexture2Name());
+					icon_ovl[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.list[i].getTexture2Name());
 				}
 			} else {*/
-				icon_tex[i] = itemIcon;
-				icon_ovl[i] = itemIcon;
-				//}
-			}
+			icon_tex[i] = itemIcon;
+			icon_ovl[i] = itemIcon;
+			//}
 		}
-
 	}
+
+}

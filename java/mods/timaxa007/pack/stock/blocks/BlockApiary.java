@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import mods.timaxa007.pack.stock.PackStock;
-import mods.timaxa007.pack.stock.te.TEApiary;
+import mods.timaxa007.pack.stock.tile.TileEntityApiary;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -30,7 +30,7 @@ public class BlockApiary extends BlockContainer {
 
 	public BlockApiary() {
 		super(Material.glass);
-		setCreativeTab(PackStock.proxy.tab_apis);
+		setCreativeTab(PackStock.tab_apis);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockTextureName("planks_oak");
@@ -39,7 +39,7 @@ public class BlockApiary extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEApiary();
+		return new TileEntityApiary();
 	}
 
 	public int getRenderType() {return PackStock.proxy.render_block_apiary_modelID;}
@@ -62,8 +62,8 @@ public class BlockApiary extends BlockContainer {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEApiary)
-			return addTag(((TEApiary)te).getName(), ((TEApiary)te).getType());
+		if (te != null && te instanceof TileEntityApiary)
+			return addTag(((TileEntityApiary)te).getName(), ((TileEntityApiary)te).getType());
 		return null;
 	}
 
@@ -72,10 +72,10 @@ public class BlockApiary extends BlockContainer {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
 
-		if (te != null && te instanceof TEApiary) {
+		if (te != null && te instanceof TileEntityApiary) {
 			if (tag != null) {
-				if (tag.hasKey("NameID")) ((TEApiary)te).setName(tag.getString("NameID"));
-				if (tag.hasKey("TypeID")) ((TEApiary)te).setType(tag.getInteger("TypeID"));
+				if (tag.hasKey("NameID")) ((TileEntityApiary)te).setName(tag.getString("NameID"));
+				if (tag.hasKey("TypeID")) ((TileEntityApiary)te).setType(tag.getInteger("TypeID"));
 			}
 
 		}

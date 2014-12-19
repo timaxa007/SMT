@@ -4,12 +4,10 @@ import mods.timaxa007.pack.magic.blocks.*;
 import mods.timaxa007.pack.magic.event.EventMagic;
 import mods.timaxa007.pack.magic.gui.HandlerGuiMagic;
 import mods.timaxa007.pack.magic.items.*;
-import mods.timaxa007.pack.magic.list.ListMagic;
-import mods.timaxa007.pack.magic.recipe.RecipesMagic;
+import mods.timaxa007.pack.magic.lib.ListMagic;
 import mods.timaxa007.pack.magic.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -18,8 +16,6 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
-
-	public static CreativeTabs tab_magic = new TabMagic("tab_magic");
 
 	public static final Material ore_magic = new MaterialOreMagic();
 
@@ -103,15 +99,15 @@ public class ProxyServer {
 		GameRegistry.registerItem(item_globular, "ItemGlobular");
 
 		//Blocks
-		GameRegistry.registerTileEntity(TEMagicMachines.class, "TEMagicMachines");
-		GameRegistry.registerTileEntity(TEMagicCauldron.class, "TEMagicCauldron");
-		GameRegistry.registerTileEntity(TEBlockLocked.class, "TEBlockLocked");
+		GameRegistry.registerTileEntity(TileEntityMagicMachines.class, "TileEntityMagicMachines");
+		GameRegistry.registerTileEntity(TileEntityMagicCauldron.class, "TileEntityMagicCauldron");
+		GameRegistry.registerTileEntity(TileEntityBlockLocked.class, "TileEntityBlockLocked");
 
 		render_block_magic_cauldron_modelID = -1;
 
 		MinecraftForge.EVENT_BUS.register(new EventMagic());
 
-		RecipesMagic.list();
+		Recipes_Magic.list();
 
 	}
 

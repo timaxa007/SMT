@@ -2,6 +2,7 @@ package mods.timaxa007.pack.magic.lib;
 
 import net.minecraft.util.StatCollector;
 /**
+ * Use in <b>ItemsMagic</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -39,59 +40,51 @@ public class ItemForMagic {
 		list[id] = this;
 	}
 
-	public ItemForMagic(String tag) {
-		checkTag(tag);//OFF
-		id = nextID();
-		list[id] = this;
-		this.tag = tag;
-	}
-
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForMagic(int id, String tag) {
-		checkTag(tag);//OFF
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
+		checkTag(tag);//OFF
+	}
+
+	public ItemForMagic(String tag) {
+		id = nextID();
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] == null) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-			}
-		}
 		return list.length - 1;
 	}
 
-	public static boolean hasTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public static boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public static int getID_tag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public static int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
-			}
-		}
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] != null && list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public ItemForMagic setName(String str) {
-		name = str;
+	public ItemForMagic setName(String name) {
+		this.name = name;
 		return this;
 	}
 
@@ -103,8 +96,8 @@ public class ItemForMagic {
 		return StatCollector.translateToLocal("item." + getName() + ".name");
 	}
 
-	public ItemForMagic setType(String str) {
-		type = str;
+	public ItemForMagic setType(String type) {
+		this.type = type;
 		return this;
 	}
 
@@ -116,20 +109,20 @@ public class ItemForMagic {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
 
-	public ItemForMagic setColors(int i) {
-		color_hex1 = i;
-		color_hex2 = i;
+	public ItemForMagic setColors(int color) {
+		color_hex1 = color;
+		color_hex2 = color;
 		return this;
 	}
 
-	public ItemForMagic setColors(int i1, int i2) {
-		color_hex1 = i1;
-		color_hex2 = i2;
+	public ItemForMagic setColors(int color1, int color2) {
+		color_hex1 = color1;
+		color_hex2 = color2;
 		return this;
 	}
 
-	public ItemForMagic setColor1(int i) {
-		color_hex1 = i;
+	public ItemForMagic setColor1(int color1) {
+		color_hex1 = color1;
 		return this;
 	}
 
@@ -137,8 +130,8 @@ public class ItemForMagic {
 		return color_hex1 == 0 ? 0xFFFFFF : color_hex1;
 	}
 
-	public ItemForMagic setColor2(int i) {
-		color_hex2 = i;
+	public ItemForMagic setColor2(int color2) {
+		color_hex2 = color2;
 		return this;
 	}
 
@@ -146,20 +139,20 @@ public class ItemForMagic {
 		return color_hex2 == 0 ? 0xFFFFFF : color_hex2;
 	}
 
-	public ItemForMagic setTextures(String str) {
-		texture1Name = str;
-		texture2Name = str + "_overlay";
+	public ItemForMagic setTextures(String path) {
+		texture1Name = path;
+		texture2Name = path + "_overlay";
 		return this;
 	}
 
-	public ItemForMagic setTextures(String str1, String str2) {
-		texture1Name = str1;
-		texture2Name = str2;
+	public ItemForMagic setTextures(String path1, String path2) {
+		texture1Name = path1;
+		texture2Name = path2;
 		return this;
 	}
 
-	public ItemForMagic setTexture1(String str) {
-		texture1Name = str;
+	public ItemForMagic setTexture1(String path1) {
+		texture1Name = path1;
 		return this;
 	}
 
@@ -167,8 +160,8 @@ public class ItemForMagic {
 		return texture1Name == null ? getName() : texture1Name;
 	}
 
-	public ItemForMagic setTexture2(String str) {
-		texture2Name = str;
+	public ItemForMagic setTexture2(String path2) {
+		texture2Name = path2;
 		return this;
 	}
 

@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEBlender;
+import mods.timaxa007.pack.furniture.tile.TileEntityBlender;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,7 +21,7 @@ public class BlockBlender extends BlockContainer{
 
 	public BlockBlender() {
 		super(Material.wood);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("planks_oak");
 		setBlockName("blender");
@@ -29,7 +29,7 @@ public class BlockBlender extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEBlender();
+		return new TileEntityBlender();
 	}
 
 	public int getRenderType() {
@@ -50,8 +50,8 @@ public class BlockBlender extends BlockContainer{
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEBlender) {
-			return addTag(0, ((TEBlender)te).getType(), 0, ((TEBlender)te).getTypeGlass(), ((TEBlender)te).getTypeSize());
+		if (te != null && te instanceof TileEntityBlender) {
+			return addTag(0, ((TileEntityBlender)te).getType(), 0, ((TileEntityBlender)te).getTypeGlass(), ((TileEntityBlender)te).getTypeSize());
 		}
 		return addTag(0, 0, 0, 0, 0);
 	}

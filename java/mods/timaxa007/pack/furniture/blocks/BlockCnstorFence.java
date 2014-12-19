@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TECnstorFence;
+import mods.timaxa007.pack.furniture.tile.TileEntityCnstorFence;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -22,7 +22,7 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 
 	public BlockCnstorFence() {
 		super(Material.glass);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setLightOpacity(0);
@@ -33,7 +33,7 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TECnstorFence();
+		return new TileEntityCnstorFence();
 	}
 	
 	public int getRenderType() {
@@ -50,8 +50,8 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TECnstorFence) {
-			return addTag(((TECnstorFence)te).getTypes());
+		if (te != null && te instanceof TileEntityCnstorFence) {
+			return addTag(((TileEntityCnstorFence)te).getTypes());
 		}
 		return addTag(0);
 	}
@@ -60,9 +60,9 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TECnstorFence) {
+		if (te != null && te instanceof TileEntityCnstorFence) {
 			if (tag != null) {
-				((TECnstorFence)te).setTypes(tag.getInteger("Type"));
+				((TileEntityCnstorFence)te).setTypes(tag.getInteger("Type"));
 			}
 		}
 	}

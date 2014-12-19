@@ -26,7 +26,7 @@ public class ItemAmmos extends Item {
 	public ItemAmmos() {
 		super();
 		setMaxStackSize(1);
-		setCreativeTab(PackWeapon.proxy.tab_weapons);
+		setCreativeTab(PackWeapon.tab_weapons);
 		setTextureName("timaxa007:item_ammos");
 		setUnlocalizedName("item_ammos");
 	}
@@ -34,7 +34,7 @@ public class ItemAmmos extends Item {
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("AmmoID")) {
-			return "ammo." + AmmoFor.ammo_list[tag.getInteger("AmmoID")].getName();
+			return "ammo." + AmmoFor.list[tag.getInteger("AmmoID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
@@ -54,8 +54,8 @@ public class ItemAmmos extends Item {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		for (int i = 0; i < AmmoFor.ammo_list.length; i++) {
-			if (AmmoFor.ammo_list[i] != null) {
+		for (int i = 0; i < AmmoFor.list.length; i++) {
+			if (AmmoFor.list[i] != null) {
 				list.add(addTag(i));
 			}
 		}
@@ -93,9 +93,9 @@ public class ItemAmmos extends Item {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("AmmoID")) {
 			if (pass == 0) {
-				return AmmoFor.ammo_list[tag.getInteger("AmmoID")].getColor1();
+				return AmmoFor.list[tag.getInteger("AmmoID")].getColor1();
 			} else {
-				return AmmoFor.ammo_list[tag.getInteger("AmmoID")].getColor2();
+				return AmmoFor.list[tag.getInteger("AmmoID")].getColor2();
 			}
 		} else {
 			return 16777215;
@@ -106,15 +106,15 @@ public class ItemAmmos extends Item {
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);
 		itemIcon = ir.registerIcon("timaxa007:" + "ammos");
-		icon_tex = new IIcon[AmmoFor.ammo_list.length];
-		icon_ovl = new IIcon[AmmoFor.ammo_list.length];
-		for (int i = 0; i < AmmoFor.ammo_list.length; i++) {
-			/*if (AmmoFor.ammo_list[i] != null) {
-				icon_tex[i] = ir.registerIcon("timaxa007:" + "ammos/" + AmmoFor.ammo_list[i].getTexture1Name());
-				if (AmmoFor.ammo_list[i].getTexture2Name() == AmmoFor.ammo_list[i].getTexture1Name()) {
+		icon_tex = new IIcon[AmmoFor.list.length];
+		icon_ovl = new IIcon[AmmoFor.list.length];
+		for (int i = 0; i < AmmoFor.list.length; i++) {
+			/*if (AmmoFor.list[i] != null) {
+				icon_tex[i] = ir.registerIcon("timaxa007:" + "ammos/" + AmmoFor.list[i].getTexture1Name());
+				if (AmmoFor.list[i].getTexture2Name() == AmmoFor.list[i].getTexture1Name()) {
 					icon_ovl[i] = ir.registerIcon("timaxa007:" + "empty");
 				} else {
-					icon_ovl[i] = ir.registerIcon("timaxa007:" + "ammos/" + AmmoFor.ammo_list[i].getTexture2Name());
+					icon_ovl[i] = ir.registerIcon("timaxa007:" + "ammos/" + AmmoFor.list[i].getTexture2Name());
 				}
 			} else {*/
 			icon_tex[i] = itemIcon;

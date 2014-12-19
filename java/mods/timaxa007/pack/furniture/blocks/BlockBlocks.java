@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEBlockBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntityBlockBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -34,19 +34,19 @@ public class BlockBlocks extends Block implements ITileEntityProvider {
 
 	public BlockBlocks(int id, Material mat) {
 		super(mat);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setBlockTextureName("planks_oak");
 		setBlockName("block_blocks");
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TEBlockBlocks();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityBlockBlocks();}
 
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
 		TileEntity te = block_access.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEBlockBlocks) {
-			return ((TEBlockBlocks)te).getColorBlock();
+		if (te != null && te instanceof TileEntityBlockBlocks) {
+			return ((TileEntityBlockBlocks)te).getColorBlock();
 		}
 		return 0xFFFFFF;
 	}
@@ -54,8 +54,8 @@ public class BlockBlocks extends Block implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
 		TileEntity te = block_access.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEBlockBlocks) {
-			return icon_array[((TEBlockBlocks)te).getSubID()];
+		if (te != null && te instanceof TileEntityBlockBlocks) {
+			return icon_array[((TileEntityBlockBlocks)te).getSubID()];
 		}
 		return getIcon(side, block_access.getBlockMetadata(x, y, z));
 	}
@@ -64,8 +64,8 @@ public class BlockBlocks extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEBlockBlocks)
-			return addTag(world.getBlock(x, y, z), ((TEBlockBlocks)te).getSubID(), ((TEBlockBlocks)te).getColorBlock());
+		if (te != null && te instanceof TileEntityBlockBlocks)
+			return addTag(world.getBlock(x, y, z), ((TileEntityBlockBlocks)te).getSubID(), ((TileEntityBlockBlocks)te).getColorBlock());
 		return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
 	}
 
@@ -73,9 +73,9 @@ public class BlockBlocks extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEBlockBlocks && tag != null) {
-			if (tag.hasKey("SubID")) ((TEBlockBlocks)te).setSubID((int)tag.getByte("SubID"));
-			if (tag.hasKey("ColorBlock")) ((TEBlockBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));
+		if (te != null && te instanceof TileEntityBlockBlocks && tag != null) {
+			if (tag.hasKey("SubID")) ((TileEntityBlockBlocks)te).setSubID((int)tag.getByte("SubID"));
+			if (tag.hasKey("ColorBlock")) ((TileEntityBlockBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));
 		}
 	}
 

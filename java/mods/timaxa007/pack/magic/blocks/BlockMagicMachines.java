@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.magic.blocks;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.pack.magic.tile.TEMagicMachines;
+import mods.timaxa007.pack.magic.tile.TileEntityMagicMachines;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,7 +16,7 @@ public class BlockMagicMachines extends BlockContainer{
 
 	public BlockMagicMachines() {
 		super(Material.rock);
-		setCreativeTab(PackMagic.proxy.tab_magic);
+		setCreativeTab(PackMagic.tab_magic);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockTextureName("planks_oak");
@@ -25,23 +25,23 @@ public class BlockMagicMachines extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEMagicMachines();
+		return new TileEntityMagicMachines();
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEMagicMachines) {
+		if (te != null && te instanceof TileEntityMagicMachines) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
-			((TEMagicMachines)te).setRot(l);
+			((TileEntityMagicMachines)te).setRot(l);
 
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TEMagicMachines)te).setType(tag.getInteger("Type"));
+				if (tag.hasKey("Type")) ((TileEntityMagicMachines)te).setType(tag.getInteger("Type"));
 			}
 			/*
 			if (is.hasDisplayName()) {
-				((TEMagicMachines)te).setGuiDisplayName(is.getDisplayName());
+				((TileEntityMagicMachines)te).setGuiDisplayName(is.getDisplayName());
 			}
 			 */
 		}
@@ -52,7 +52,7 @@ public class BlockMagicMachines extends BlockContainer{
 
 		if (player.isSneaking()) return false;
 
-		if (te != null && te instanceof TEMagicMachines) {
+		if (te != null && te instanceof TileEntityMagicMachines) {
 			player.openGui(PackMagic.instance, PackMagic.proxy.gui_magic_machines, world, x, y, z);
 			return true;
 		}

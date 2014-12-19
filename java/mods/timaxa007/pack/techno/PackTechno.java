@@ -1,5 +1,7 @@
 package mods.timaxa007.pack.techno;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -22,14 +24,20 @@ public class PackTechno {
 	@SidedProxy(clientSide = "mods.timaxa007.pack.techno.ProxyClient", serverSide = "mods.timaxa007.pack.techno.ProxyServer")
 	public static ProxyServer proxy;
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		proxy.init();
-	}
+	public static CreativeTabs tab_techno = new CreativeTabs("tab_techno") {
+		public Item getTabIconItem() {
+			return PackTechno.proxy.tool_electric_wrench;
+		}
+	};
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
+	}
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.init();
 	}
 
 }

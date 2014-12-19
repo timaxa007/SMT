@@ -38,7 +38,7 @@ public class BlockGenerators extends Block {
 
 	public BlockGenerators() {
 		super(Material.iron);
-		setCreativeTab(PackTechno.proxy.tab_techno);
+		setCreativeTab(PackTechno.tab_techno);
 		setStepSound(soundTypeMetal);
 		setBlockTextureName("planks_oak");
 		setBlockName("generators");

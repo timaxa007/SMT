@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.furniture.blocks;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEFurnitureMachines;
+import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureMachines;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,7 +16,7 @@ public class BlockFurnitureMachines extends BlockContainer {
 
 	public BlockFurnitureMachines() {
 		super(Material.rock);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setBlockTextureName("stone");
@@ -25,23 +25,23 @@ public class BlockFurnitureMachines extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEFurnitureMachines();
+		return new TileEntityFurnitureMachines();
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEFurnitureMachines) {
+		if (te != null && te instanceof TileEntityFurnitureMachines) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			((TEFurnitureMachines)te).setRot(l);
+			((TileEntityFurnitureMachines)te).setRot(l);
 
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TEFurnitureMachines)te).setTypes(tag.getInteger("Type"));
+				if (tag.hasKey("Type")) ((TileEntityFurnitureMachines)te).setTypes(tag.getInteger("Type"));
 			}
 			/*
 			if (is.hasDisplayName()) {
-				((TEFurnitureMachines)te).setGuiDisplayName(is.getDisplayName());
+				((TileEntityFurnitureMachines)te).setGuiDisplayName(is.getDisplayName());
 			}
 			 */
 		}
@@ -51,7 +51,7 @@ public class BlockFurnitureMachines extends BlockContainer {
 		TileEntity te = world.getTileEntity(x, y, z);
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
-		if (te != null && te instanceof TEFurnitureMachines) {
+		if (te != null && te instanceof TileEntityFurnitureMachines) {
 			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_furniture_machines, world, x, y, z);
 			return true;
 		}

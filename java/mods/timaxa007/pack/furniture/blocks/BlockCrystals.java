@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TECrystals;
+import mods.timaxa007.pack.furniture.tile.TileEntityCrystals;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,14 +22,14 @@ public class BlockCrystals extends BlockContainer{
 	public BlockCrystals() {
 		super(Material.glass);
 		setHardness(0.5F);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setBlockTextureName("glass");
 		setBlockName("crystals");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TECrystals();
+		return new TileEntityCrystals();
 	}
 
 	public int getRenderType() {
@@ -48,14 +48,14 @@ public class BlockCrystals extends BlockContainer{
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TECrystals) {
+		if (te != null && te instanceof TileEntityCrystals) {
 
 			int l=MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			((TECrystals)te).setRot(l);
+			((TileEntityCrystals)te).setRot(l);
 
 			if (tag != null) {
-				if (tag.hasKey("Amount")) ((TECrystals)te).setAmount(tag.getInteger("Amount"));
-				if (tag.hasKey("Type")) ((TECrystals)te).setTypes(tag.getInteger("Type"));
+				if (tag.hasKey("Amount")) ((TileEntityCrystals)te).setAmount(tag.getInteger("Amount"));
+				if (tag.hasKey("Type")) ((TileEntityCrystals)te).setTypes(tag.getInteger("Type"));
 			}
 
 		}

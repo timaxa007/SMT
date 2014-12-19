@@ -12,7 +12,7 @@ public class BlockCnstorWall extends Block implements ITileEntityProvider {
 	public BlockCnstorWall() {
 		super(Material.glass);
 		setStepSound(soundTypeWood);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setLightOpacity(0);

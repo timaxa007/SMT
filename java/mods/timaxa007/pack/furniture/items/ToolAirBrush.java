@@ -4,13 +4,13 @@ import java.util.List;
 
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
-import mods.timaxa007.pack.furniture.tile.TEClothBlocks;
-import mods.timaxa007.pack.furniture.tile.TEGlassBlocks;
-import mods.timaxa007.pack.furniture.tile.TEGroundBlocks;
-import mods.timaxa007.pack.furniture.tile.TEMetalBlocks;
-import mods.timaxa007.pack.furniture.tile.TERockBlocks;
-import mods.timaxa007.pack.furniture.tile.TESandBlocks;
-import mods.timaxa007.pack.furniture.tile.TEWoodBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntityClothBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntityGlassBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntityGroundBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntityMetalBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntityRockBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntitySandBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntityWoodBlocks;
 import mods.timaxa007.pack.mining.PackMining;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -68,7 +68,7 @@ public static final String[] airbrushColorType = new String[] {
 */
 public ToolAirBrush() {
 super();
-setCreativeTab(PackMining.proxy.tab_tools);
+setCreativeTab(PackMining.tab_tools);
 setMaxStackSize(1);
 setMaxDamage(10000);
 setTextureName("timaxa007:colors/tool_airbrush");
@@ -82,20 +82,20 @@ return false;
 TileEntity te = world.getTileEntity(x, y, z);
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("ColorHex2")) {
-if (te != null && te instanceof TERockBlocks) {
-((TERockBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
-} else if (te != null && te instanceof TEGlassBlocks) {
-((TEGlassBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
-} else if (te != null && te instanceof TEWoodBlocks) {
-((TEWoodBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
-} else if (te != null && te instanceof TEGroundBlocks) {
-((TEGroundBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
-} else if (te != null && te instanceof TESandBlocks) {
-((TESandBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
-} else if (te != null && te instanceof TEClothBlocks) {
-((TEClothBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
-} else if (te != null && te instanceof TEMetalBlocks) {
-((TEMetalBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
+if (te != null && te instanceof TileEntityRockBlocks) {
+((TileEntityRockBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
+} else if (te != null && te instanceof TileEntityGlassBlocks) {
+((TileEntityGlassBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
+} else if (te != null && te instanceof TileEntityWoodBlocks) {
+((TileEntityWoodBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
+} else if (te != null && te instanceof TileEntityGroundBlocks) {
+((TileEntityGroundBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
+} else if (te != null && te instanceof TileEntitySandBlocks) {
+((TileEntitySandBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
+} else if (te != null && te instanceof TileEntityClothBlocks) {
+((TileEntityClothBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
+} else if (te != null && te instanceof TileEntityMetalBlocks) {
+((TileEntityMetalBlocks)te).setColorBlock(tag.getInteger("ColorHex2"));is.damageItem(1, player);return true;
 } else {return false;}
 } else {return false;}
 /*

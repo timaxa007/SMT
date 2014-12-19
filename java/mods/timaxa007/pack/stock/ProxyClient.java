@@ -1,8 +1,11 @@
 package mods.timaxa007.pack.stock;
 
-import mods.timaxa007.pack.stock.rb.*;
-import mods.timaxa007.pack.stock.ri.*;
-import mods.timaxa007.pack.stock.te.*;
+import mods.timaxa007.pack.stock.PackStock;
+import mods.timaxa007.pack.stock.ProxyServer;
+import mods.timaxa007.pack.stock.render.blocks.*;
+import mods.timaxa007.pack.stock.render.items.*;
+import mods.timaxa007.pack.stock.event.EventStockClient;
+import mods.timaxa007.pack.stock.tile.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,14 +24,10 @@ public class ProxyClient extends ProxyServer {
 		render_block_foods_modelID = RenderingRegistry.getNextAvailableRenderId();
 		render_block_apiary_modelID = RenderingRegistry.getNextAvailableRenderId();
 
-		//Items
-
 		//Blocks
-		ClientRegistry.bindTileEntitySpecialRenderer(TEGerminationPlants.class, new RenderBlockGerminationPlants());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEFoods.class, new RenderBlockFoods());
-		ClientRegistry.bindTileEntitySpecialRenderer(TEApiary.class, new RenderBlockApiary());
-
-		//Items
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGerminationPlants.class, new RenderBlockGerminationPlants());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFoods.class, new RenderBlockFoods());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityApiary.class, new RenderBlockApiary());
 
 		//Blocks
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_germination_plants), new ItemRenderBlockGerminationPlants());
@@ -37,7 +36,9 @@ public class ProxyClient extends ProxyServer {
 
 		//Items
 
-		MinecraftForge.EVENT_BUS.register(new EventSoundStock());
+		//Entity
+
+		MinecraftForge.EVENT_BUS.register(new EventStockClient());
 
 	}
 

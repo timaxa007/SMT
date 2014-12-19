@@ -27,7 +27,7 @@ public class ItemDrinks extends Item {
 
 	public ItemDrinks() {
 		super();
-		//setCreativeTab(PackStock.proxy.tab_food);
+		//setCreativeTab(PackStock.tab_food);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setUnlocalizedName("drinks");

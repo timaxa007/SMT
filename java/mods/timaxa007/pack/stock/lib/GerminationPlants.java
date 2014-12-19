@@ -2,6 +2,7 @@ package mods.timaxa007.pack.stock.lib;
 
 import net.minecraft.util.StatCollector;
 /**
+ * Use in <b>ItemGerminationPlants</b> and <b>BlockGerminationPlants</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -9,7 +10,7 @@ import net.minecraft.util.StatCollector;
  */
 public class GerminationPlants {
 
-	public static final GerminationPlants[] plant_list = new GerminationPlants[4096];
+	public static final GerminationPlants[] list = new GerminationPlants[4096];
 
 	public static final GerminationPlants empty = new GerminationPlants(0);
 
@@ -31,71 +32,63 @@ public class GerminationPlants {
 	private float humidity_min;
 	private float humidity_max;
 
-	protected String texture;
+	private String texture;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public GerminationPlants() {
 		id = nextID();
-		plant_list[id] = this;
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public GerminationPlants(int id) {
 		this.id = id;
-		plant_list[id] = this;
-	}
-
-	public GerminationPlants(String str) {
-		checkTag(str);//OFF
-		id = nextID();
-		plant_list[id] = this;
-		tag = str;
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public GerminationPlants(int id, String str) {
-		checkTag(str);//OFF
+	public GerminationPlants(int id, String tag) {
 		this.id = id;
-		plant_list[id] = this;
-		tag = str;
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
+	}
+
+	public GerminationPlants(String tag) {
+		id = nextID();
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < plant_list.length; i++) {
-			if (plant_list[i] == null) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-			}
-		}
-		return plant_list.length - 1;
+		return list.length - 1;
 	}
 
-	public static boolean hasTag(String str) {
-		for (int i = 0; i < plant_list.length; i++) {
-			if (str.equalsIgnoreCase(plant_list[i].tag)) {
+	public static boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public static int getID_tag(String str) {
-		for (int i = 0; i < plant_list.length; i++) {
-			if (str.equalsIgnoreCase(plant_list[i].tag)) {
+	public static int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
-			}
-		}
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < plant_list.length; i++) {
-			if (plant_list[i] != null && plant_list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 	/*
 	public int isTypeInt(String ttt) {
@@ -132,13 +125,31 @@ public class GerminationPlants {
 		}
 	}
 
-	public GerminationPlants setName(String str) {name = str;return this;}
-	public String getName() {return name == null ? "unnamed" : name;}
-	public String getLocalizedName() {return StatCollector.translateToLocal("plant." + getName() + ".name");}
+	public GerminationPlants setName(String name) {
+		this.name = name;
+		return this;
+	}
 
-	public GerminationPlants setType(String str) {type = str;return this;}
-	public String getType() {return type == null ? "untype" : type;}
-	public String getLocalizedType() {return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");}
+	public String getName() {
+		return name == null ? "unnamed" : name;
+	}
+
+	public String getLocalizedName() {
+		return StatCollector.translateToLocal("plant." + getName() + ".name");
+	}
+
+	public GerminationPlants setType(String type) {
+		this.type = type;
+		return this;
+	}
+
+	public String getType() {
+		return type == null ? "untype" : type;
+	}
+
+	public String getLocalizedType() {
+		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
+	}
 	/*
 	public GerminationPlants setColor(int i) {
 		color_hex = i;
@@ -156,8 +167,8 @@ public class GerminationPlants {
 		return this;
 	}
 
-	public GerminationPlants setGrowth(int i) {
-		growth = i;
+	public GerminationPlants setGrowth(int gro) {
+		growth = gro;
 		return this;
 	}
 
@@ -165,8 +176,8 @@ public class GerminationPlants {
 		return growth == 0 ? 0 : growth;
 	}
 
-	public GerminationPlants setFertility(int i) {
-		fertility = i;
+	public GerminationPlants setFertility(int fer) {
+		fertility = fer;
 		return this;
 	}
 
@@ -174,8 +185,8 @@ public class GerminationPlants {
 		return fertility == 0 ? 0 : fertility;
 	}
 
-	public GerminationPlants setResistance(int i) {
-		resistance = i;
+	public GerminationPlants setResistance(int res) {
+		resistance = res;
 		return this;
 	}
 

@@ -2,6 +2,7 @@ package mods.timaxa007.pack.stock.lib;
 
 import net.minecraft.util.StatCollector;
 /**
+ * Use in <b>ItemsStock</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -28,7 +29,7 @@ public class ItemForStock {
 	@Deprecated
 	public ItemForStock() {
 		id = nextID();
-		list[nextID()] = this;
+		list[id] = this;
 		//tag = "";
 	}
 
@@ -40,139 +41,131 @@ public class ItemForStock {
 		//tag = "";
 	}
 
-	public ItemForStock(String tag_name) {
-		checkTag(tag_name);//OFF
-		id = nextID();
-		list[nextID()] = this;
-		tag = tag_name;
-	}
-
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public ItemForStock(int id, String tag_name) {
-		checkTag(tag_name);//OFF
+	public ItemForStock(int id, String tag) {
 		this.id = id;
 		list[id] = this;
-		tag = tag_name;
+		this.tag = tag;
+		checkTag(tag);//OFF
+	}
+
+	public ItemForStock(String tag) {
+		id = nextID();
+		list[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] == null) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-			}
-		}
 		return list.length - 1;
 	}
 
-	public static boolean hasTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public static boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public static int getID_tag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public static int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
-			}
-		}
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] != null && list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public ItemForStock setName(String str) {
-		name = str;
-	return this;
+	public ItemForStock setName(String name) {
+		this.name = name;
+		return this;
 	}
-	
+
 	public String getName() {
 		return name == null ? "unnamed" : name;
 	}
-	
+
 	public String getLocalizedName() {
 		return StatCollector.translateToLocal("item." + getName() + ".name");
 	}
 
-	public ItemForStock setType(String str) {
-		type = str;
+	public ItemForStock setType(String type) {
+		this.type = type;
 		return this;
 	}
-	
+
 	public String getType() {
 		return type == null ? "untyped" : type;
 	}
-	
+
 	public String getLocalizedType() {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
 
-	public ItemForStock setColors(int i) {
-		color_hex1 = i;
-		color_hex2 = i;
-		return this;
-	}
-	
-	public ItemForStock setColors(int i1, int i2) {
-		color_hex1 = i1;
-		color_hex2 = i2;
+	public ItemForStock setColors(int color) {
+		color_hex1 = color;
+		color_hex2 = color;
 		return this;
 	}
 
-	public ItemForStock setColor1(int i) {
-		color_hex1 = i;
+	public ItemForStock setColors(int color1, int color2) {
+		color_hex1 = color1;
+		color_hex2 = color2;
 		return this;
 	}
-	
+
+	public ItemForStock setColor1(int color1) {
+		color_hex1 = color1;
+		return this;
+	}
+
 	public int getColor1() {
 		return color_hex1 == 0 ? 0xFFFFFF : color_hex1;
 	}
 
-	public ItemForStock setColor2(int i) {
-		color_hex2 = i;
+	public ItemForStock setColor2(int color2) {
+		color_hex2 = color2;
 		return this;
 	}
-	
+
 	public int getColor2() {
 		return color_hex2 == 0 ? 0xFFFFFF : color_hex2;
 	}
 
-	public ItemForStock setTextures(String str) {
-		texture1Name = str;
-		texture2Name = str + "_overlay";
-		return this;
-	}
-	
-	public ItemForStock setTextures(String str1, String str2) {
-		texture1Name = str1;
-		texture2Name = str2;
+	public ItemForStock setTextures(String path) {
+		texture1Name = path;
+		texture2Name = path + "_overlay";
 		return this;
 	}
 
-	public ItemForStock setTexture1(String str) {
-		texture1Name = str;
+	public ItemForStock setTextures(String path1, String path2) {
+		texture1Name = path1;
+		texture2Name = path2;
 		return this;
 	}
-	
+
+	public ItemForStock setTexture1(String path1) {
+		texture1Name = path1;
+		return this;
+	}
+
 	public String getTexture1() {
 		return texture1Name == null ? getName() : texture1Name;
 	}
 
-	public ItemForStock setTexture2(String str) {
-		texture2Name = str;
+	public ItemForStock setTexture2(String path2) {
+		texture2Name = path2;
 		return this;
 	}
-	
+
 	public String getTexture2() {
 		return texture2Name == null ? getTexture1() : texture2Name;
 	}

@@ -28,7 +28,7 @@ public class ItemHoneycombs extends Item {
 
 	public ItemHoneycombs() {
 		super();
-		setCreativeTab(PackStock.proxy.tab_apis);
+		setCreativeTab(PackStock.tab_apis);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setUnlocalizedName("honeycombs");
@@ -104,7 +104,7 @@ public class ItemHoneycombs extends Item {
 
 		player.removePotionEffect(Potion.wither.id);
 		player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 20*5, 0));
-		world.playSoundAtEntity(player, "vodka", 1F, 1F);
+		world.playSoundAtEntity(player, "timaxa007:vodka", 1F, 1F);
 
 		return is;
 	}

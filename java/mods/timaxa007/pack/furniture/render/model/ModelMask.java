@@ -11,6 +11,7 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
+@Deprecated
 public class ModelMask extends ModelBiped {
 
 	private static ModelRenderer mask;

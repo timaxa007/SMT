@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEChair;
+import mods.timaxa007.pack.furniture.tile.TileEntityChair;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +20,7 @@ public class BlockChair extends BlockContainer {
 
 	public BlockChair() {
 		super(Material.wood);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("planks_oak");
 		setBlockName("chairs");
@@ -28,7 +28,7 @@ public class BlockChair extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEChair();
+		return new TileEntityChair();
 	}
 	public int getRenderType() {
 		return PackFurniture.proxy.render_block_chair_modelID;
@@ -48,8 +48,8 @@ public class BlockChair extends BlockContainer {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEChair) {
-			return addTag(0, ((TEChair)te).getType());
+		if (te != null && te instanceof TileEntityChair) {
+			return addTag(0, ((TileEntityChair)te).getType());
 		}
 	return addTag(0, 0);
 	}

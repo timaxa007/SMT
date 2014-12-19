@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEBarrels;
+import mods.timaxa007.pack.furniture.tile.TileEntityBarrels;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -37,16 +37,16 @@ public class ItemBlockBarrels extends ItemBlock{
 			world.setBlock(x, y, z, PackFurniture.proxy.block_barrels, 0, 3);
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
-			if (te != null && te instanceof TEBarrels) {
+			if (te != null && te instanceof TileEntityBarrels) {
 
 				int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				((TEBarrels)te).setRotation(l);
+				((TileEntityBarrels)te).setRotation(l);
 
 				if (tag != null) {
-					if (tag.hasKey("TypeB")) ((TEBarrels)te).setTypeB(tag.getInteger("TypeB"));
-					if (tag.hasKey("TypeP")) ((TEBarrels)te).setTypeP(tag.getInteger("TypeP"));
-					if (tag.hasKey("TypeCD")) ((TEBarrels)te).setTypeCD(tag.getInteger("TypeCD"));
-					if (tag.hasKey("Lie")) ((TEBarrels)te).setLie(tag.getBoolean("Lie"));
+					if (tag.hasKey("TypeB")) ((TileEntityBarrels)te).setTypeB(tag.getInteger("TypeB"));
+					if (tag.hasKey("TypeP")) ((TileEntityBarrels)te).setTypeP(tag.getInteger("TypeP"));
+					if (tag.hasKey("TypeCD")) ((TileEntityBarrels)te).setTypeCD(tag.getInteger("TypeCD"));
+					if (tag.hasKey("Lie")) ((TileEntityBarrels)te).setLie(tag.getBoolean("Lie"));
 				}
 			}
 			return true;

@@ -2,10 +2,9 @@ package mods.timaxa007.pack.mining;
 
 import mods.timaxa007.pack.mining.blocks.*;
 import mods.timaxa007.pack.mining.items.*;
-import mods.timaxa007.pack.mining.list.ListMining;
-import mods.timaxa007.pack.mining.te.*;
+import mods.timaxa007.pack.mining.lib.ListMining;
+import mods.timaxa007.pack.mining.tile.*;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -17,11 +16,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
 
-	public static CreativeTabs tab_mining = new TabMining("tab_mining");
-	public static CreativeTabs tab_tools = new TabTools("tab_tools");
-
-	public static ArmorMaterial METALSMATERIAL = EnumHelper.addArmorMaterial("METALSMATERIAL", 15, new int[] {3, 7, 5, 3}, 10);
-	public static ArmorMaterial GEMSMATERIAL = EnumHelper.addArmorMaterial("GEMSMATERIAL", 15, new int[] {5, 10, 7, 4}, 12);
+	public static ArmorMaterial METALSMATileEntityRIAL = EnumHelper.addArmorMaterial("METALSMATileEntityRIAL", 15, new int[] {3, 7, 5, 3}, 10);
+	public static ArmorMaterial GEMSMATileEntityRIAL = EnumHelper.addArmorMaterial("GEMSMATileEntityRIAL", 15, new int[] {5, 10, 7, 4}, 12);
 
 	public static final ToolMaterial TOOLGEMS = EnumHelper.addToolMaterial("TOOLGEMS", 3, 512, 7.0F, 3, 7);
 	public static final ToolMaterial TOOLMETALS = EnumHelper.addToolMaterial("TOOLMETALS", 2, 300, 6.0F, 2, 11);
@@ -74,8 +70,8 @@ public class ProxyServer {
 		//Items
 		GameRegistry.registerItem(items_for_mining, "ItemsMining");
 
-		GameRegistry.registerTileEntity(TECristals.class, "TECristals");
-		GameRegistry.registerTileEntity(TEOreOres.class, "TEOreOres");
+		GameRegistry.registerTileEntity(TileEntityCristals.class, "TileEntityCristals");
+		GameRegistry.registerTileEntity(TileEntityOreOres.class, "TileEntityOreOres");
 
 		render_block_cristals_modelID = -1;
 

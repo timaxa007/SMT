@@ -1,11 +1,11 @@
 package mods.timaxa007.pack.stock;
 
 import mods.timaxa007.pack.stock.blocks.*;
+import mods.timaxa007.pack.stock.event.EventPackStock;
 import mods.timaxa007.pack.stock.items.*;
-import mods.timaxa007.pack.stock.list.ListStock;
-import mods.timaxa007.pack.stock.te.*;
+import mods.timaxa007.pack.stock.lib.ListStock;
+import mods.timaxa007.pack.stock.tile.*;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -13,12 +13,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyServer {
-
-	public static CreativeTabs tab_stock = new TabStock("tab_stock");
-	public static CreativeTabs tab_plant = new TabPlant("tab_plant");
-	public static CreativeTabs tab_food = new TabFood("tab_food");
-	public static CreativeTabs tab_medical = new TabMedical("tab_medical");
-	public static CreativeTabs tab_apis = new TabApis("tab_apis");
 
 	//Blocks
 	public static Block block_germination_plants;
@@ -88,10 +82,10 @@ public class ProxyServer {
 		//GameRegistry.registerItem(item_food_dog, "ItemFoodDog");
 
 		//Blocks
-		GameRegistry.registerTileEntity(TEGerminationPlants.class, "TEGerminationPlants");
-		GameRegistry.registerTileEntity(TEFoods.class, "TEFoods");
-		GameRegistry.registerTileEntity(TEHealing.class, "TEHealing");
-		GameRegistry.registerTileEntity(TEApiary.class, "TEApiary");
+		GameRegistry.registerTileEntity(TileEntityGerminationPlants.class, "TileEntityGerminationPlants");
+		GameRegistry.registerTileEntity(TileEntityFoods.class, "TileEntityFoods");
+		GameRegistry.registerTileEntity(TileEntityHealing.class, "TileEntityHealing");
+		GameRegistry.registerTileEntity(TileEntityApiary.class, "TileEntityApiary");
 
 		//Blocks
 		render_block_germination_plants_modelID = -1;

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEBoxParticles;
+import mods.timaxa007.pack.furniture.tile.TileEntityBoxParticles;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -23,7 +23,7 @@ public class BlockBoxParticles extends BlockContainer{
 
 	public BlockBoxParticles() {
 		super(Material.rock);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.35F);
 		setBlockTextureName("planks_oak");
 		setBlockName("boxParticles");
@@ -31,7 +31,7 @@ public class BlockBoxParticles extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEBoxParticles();
+		return new TileEntityBoxParticles();
 	}
 
 	public int getRenderType() {
@@ -52,8 +52,8 @@ public class BlockBoxParticles extends BlockContainer{
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te=world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEBoxParticles) {
-			return addTag(0, ((TEBoxParticles)te).getTypes());
+		if (te != null && te instanceof TileEntityBoxParticles) {
+			return addTag(0, ((TileEntityBoxParticles)te).getTypes());
 		}
 		return addTag(0, 0);
 	}
@@ -66,13 +66,13 @@ public class BlockBoxParticles extends BlockContainer{
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEBoxParticles) {
+		if (te != null && te instanceof TileEntityBoxParticles) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			((TEBoxParticles)te).setRot(l);
+			((TileEntityBoxParticles)te).setRot(l);
 
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TEBoxParticles)te).setTypes(tag.getInteger("Type"));
+				if (tag.hasKey("Type")) ((TileEntityBoxParticles)te).setTypes(tag.getInteger("Type"));
 			}
 
 		}
@@ -126,8 +126,8 @@ public class BlockBoxParticles extends BlockContainer{
 
 				if (f2<0.0F) {f2=0.0F;}
 				if (f3<0.0F) {f3=0.0F;}
-				if (((TEBoxParticles)te).getTypes() < listP.length) {
-					world.spawnParticle(listP[((TEBoxParticles)te).getTypes()], d0, d1, d2, (double)f2, (double)f1, (double)f3);
+				if (((TileEntityBoxParticles)te).getTypes() < listP.length) {
+					world.spawnParticle(listP[((TileEntityBoxParticles)te).getTypes()], d0, d1, d2, (double)f2, (double)f1, (double)f3);
 				}
 			}
 		}

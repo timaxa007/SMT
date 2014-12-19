@@ -16,6 +16,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.UseHoeEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -36,7 +37,7 @@ public class BlockLampsClicked extends Block{
 		} else {
 			light="off";
 			setLightLevel(0.0F);
-			setCreativeTab(PackFurniture.proxy.tab_furniture);
+			setCreativeTab(PackFurniture.tab_furniture);
 		}
 		setBlockTextureName("planks_oak");
 	}

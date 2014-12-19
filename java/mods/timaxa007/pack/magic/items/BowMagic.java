@@ -35,7 +35,7 @@ public class BowMagic extends Item {
 		super();
 		setMaxStackSize(1);
 		setMaxDamage(1000);
-		setCreativeTab(PackMagic.proxy.tab_magic);
+		setCreativeTab(PackMagic.tab_magic);
 		setUnlocalizedName("magic.bow");
 	}
 
@@ -58,7 +58,7 @@ public class BowMagic extends Item {
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack is, EntityPlayer player, EntityLivingBase entity) {
-		if (entity.worldObj.isRemote) return false;
+		if (entity.worldObj.isRemote) {return false;}
 		else if (entity instanceof EntityLivingBase) {
 			entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20*15, 254));
 			entity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 20*15, 254));
@@ -71,6 +71,14 @@ public class BowMagic extends Item {
 			entity.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 20*15, 254));
 			entity.addPotionEffect(new PotionEffect(Potion.weakness.id, 20*15, 254));
 			entity.addPotionEffect(new PotionEffect(Potion.blindness.id, 20*15, 254));
+			//entity.motionZ = 0.0D;
+			//entity.motionZ = 0.0D;
+			/*
+			entity.removePotionEffect(Potion.moveSlowdown.id);
+			entity.removePotionEffect(Potion.digSlowdown.id);
+			entity.removePotionEffect(Potion.weakness.id);
+			entity.removePotionEffect(Potion.blindness.id);
+			 */
 			return true;
 		} else {
 			return false;

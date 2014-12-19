@@ -1,5 +1,7 @@
 package mods.timaxa007.pack.stock;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -22,14 +24,40 @@ public class PackStock {
 	@SidedProxy(clientSide="mods.timaxa007.pack.stock.ProxyClient", serverSide="mods.timaxa007.pack.stock.ProxyServer")
 	public static ProxyServer proxy;
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		proxy.init();
-	}
+	public static CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
+		public Item getTabIconItem() {
+			return PackStock.proxy.items_for_stock;
+		}
+	};
+	public static CreativeTabs tab_plant = new CreativeTabs("tab_plant") {
+		public Item getTabIconItem() {
+			return PackStock.proxy.item_germination_plants;
+		}
+	};
+	public static CreativeTabs tab_food = new CreativeTabs("tab_food") {
+		public Item getTabIconItem() {
+			return PackStock.proxy.item_foods;
+		}
+	};
+	public static CreativeTabs tab_medical = new CreativeTabs("tab_medical") {
+		public Item getTabIconItem() {
+			return PackStock.proxy.item_medicals;
+		}
+	};
+	public static CreativeTabs tab_apis = new CreativeTabs("tab_apis") {
+		public Item getTabIconItem() {
+			return PackStock.proxy.item_bees;
+		}
+	};
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
+	}
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.init();
 	}
 
 }

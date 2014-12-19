@@ -3,6 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.tms.Core;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -16,7 +17,7 @@ public class AirLight extends Block {
 		setHardness(0F);
 		setResistance(0F);
 		setLightLevel(15F);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setBlockBounds(0F, 0F, 0F, 0F, 0F, 0F);
 		setBlockTextureName("glass");
 		setBlockName("air_light");

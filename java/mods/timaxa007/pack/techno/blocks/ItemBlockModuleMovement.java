@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.techno.PackTechno;
-import mods.timaxa007.pack.techno.te.TEModuleMovement;
+import mods.timaxa007.pack.techno.tile.TileEntityModuleMovement;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -39,12 +39,12 @@ public class ItemBlockModuleMovement extends ItemBlock {
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
 
-			if (te != null && te instanceof TEModuleMovement) {
+			if (te != null && te instanceof TileEntityModuleMovement) {
 
 				int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				((TEModuleMovement)te).setRot(l);
+				((TileEntityModuleMovement)te).setRot(l);
 
-				if (tag != null) ((TEModuleMovement)te).setType(tag.getInteger("Type"));
+				if (tag != null) ((TileEntityModuleMovement)te).setType(tag.getInteger("Type"));
 
 			}
 			return true;

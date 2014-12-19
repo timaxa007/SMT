@@ -2,6 +2,7 @@ package mods.timaxa007.pack.techno.lib;
 
 import net.minecraft.util.StatCollector;
 /**
+ * Use in <b>ItemsTechno</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -9,9 +10,9 @@ import net.minecraft.util.StatCollector;
  */
 public class ItemForTechno {
 
-	public static final ItemForTechno[] item_list = new ItemForTechno[2048];
+	public static final ItemForTechno[] item_ = new ItemForTechno[2048];
 
-	public static ItemForTechno item_empty = new ItemForTechno(0);
+	public static ItemForTechno empty = new ItemForTechno(0);
 
 	public int id;
 	public String tag;
@@ -21,76 +22,68 @@ public class ItemForTechno {
 	private int color_hex1;
 	private int color_hex2;
 
-	protected String texture1Name;
-	protected String texture2Name;
+	private String texture1Name;
+	private String texture2Name;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForTechno() {
 		id = nextID();
-		item_list[id] = this;
+		item_[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForTechno(int id) {
 		this.id = id;
-		item_list[id] = this;
-	}
-
-	public ItemForTechno(String tag_name) {
-		checkTag(tag_name);//OFF
-		id = nextID();
-		item_list[id] = this;
-		tag = tag_name;
+		item_[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public ItemForTechno(int id, String tag_name) {
-		checkTag(tag_name);//OFF
+	public ItemForTechno(int id, String tag) {
 		this.id = id;
-		item_list[id] = this;
-		tag = tag_name;
+		item_[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
+	}
+
+	public ItemForTechno(String tag) {
+		id = nextID();
+		item_[id] = this;
+		this.tag = tag;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < item_list.length; i++) {
-			if (item_list[i] == null) {
+		for (int i = 0; i < item_.length; i++)
+			if (item_[i] == null)
 				return i;
-			}
-		}
-		return item_list.length - 1;
+		return item_.length - 1;
 	}
 
-	public static boolean hasTag(String str) {
-		for (int i = 0; i < item_list.length; i++) {
-			if (str.equalsIgnoreCase(item_list[i].tag)) {
+	public static boolean hasTag(String tag) {
+		for (int i = 0; i < item_.length; i++)
+			if (tag.equalsIgnoreCase(item_[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public static int getID_name(String str) {
-		for (int i = 0; i < item_list.length; i++) {
-			if (str.equalsIgnoreCase(item_list[i].tag)) {
+	public static int getID_name(String tag) {
+		for (int i = 0; i < item_.length; i++)
+			if (tag.equalsIgnoreCase(item_[i].tag))
 				return i;
-			}
-		}
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < item_list.length; i++) {
-			if (item_list[i] != null && item_list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < item_.length; i++)
+			if (item_[i] != null && item_[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public ItemForTechno setName(String str) {
-		name = str;
+	public ItemForTechno setName(String name) {
+		this.name = name;
 		return this;
 	}
 
@@ -102,8 +95,8 @@ public class ItemForTechno {
 		return StatCollector.translateToLocal("item." + getName() + ".name");
 	}
 
-	public ItemForTechno setType(String str) {
-		type = str;
+	public ItemForTechno setType(String type) {
+		this.type = type;
 		return this;
 	}
 
@@ -115,20 +108,20 @@ public class ItemForTechno {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
 
-	public ItemForTechno setColors(int i) {
-		color_hex1 = i;
-		color_hex2 = i;
+	public ItemForTechno setColors(int color) {
+		color_hex1 = color;
+		color_hex2 = color;
 		return this;
 	}
 
-	public ItemForTechno setColors(int i1, int i2) {
-		color_hex1 = i1;
-		color_hex2 = i2;
+	public ItemForTechno setColors(int color1, int color2) {
+		color_hex1 = color1;
+		color_hex2 = color2;
 		return this;
 	}
 
-	public ItemForTechno setColor1(int i) {
-		color_hex1 = i;
+	public ItemForTechno setColor1(int color1) {
+		color_hex1 = color1;
 		return this;
 	}
 
@@ -136,8 +129,8 @@ public class ItemForTechno {
 		return color_hex1 == 0 ? 0xFFFFFF : color_hex1;
 	}
 
-	public ItemForTechno setColor2(int i) {
-		color_hex2 = i;
+	public ItemForTechno setColor2(int color2) {
+		color_hex2 = color2;
 		return this;
 	}
 
@@ -145,20 +138,20 @@ public class ItemForTechno {
 		return color_hex2 == 0 ? 0xFFFFFF : color_hex2;
 	}
 
-	public ItemForTechno setTextures(String str) {
-		texture1Name = str;
-		texture2Name = str + "_overlay";
+	public ItemForTechno setTextures(String path) {
+		texture1Name = path;
+		texture2Name = path + "_overlay";
 		return this;
 	}
 
-	public ItemForTechno setTextures(String str1, String str2) {
-		texture1Name = str1;
-		texture2Name = str2;
+	public ItemForTechno setTextures(String path1, String path2) {
+		texture1Name = path1;
+		texture2Name = path2;
 		return this;
 	}
 
-	public ItemForTechno setTexture1(String str) {
-		texture1Name = str;
+	public ItemForTechno setTexture1(String path1) {
+		texture1Name = path1;
 		return this;
 	}
 
@@ -166,8 +159,8 @@ public class ItemForTechno {
 		return texture1Name == null ? getName() : texture1Name;
 	}
 
-	public ItemForTechno setTexture2(String str) {
-		texture2Name = str;
+	public ItemForTechno setTexture2(String path2) {
+		texture2Name = path2;
 		return this;
 	}
 

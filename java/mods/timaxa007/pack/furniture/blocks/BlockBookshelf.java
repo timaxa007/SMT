@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEBookshelf;
+import mods.timaxa007.pack.furniture.tile.TileEntityBookshelf;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -25,7 +25,7 @@ public class BlockBookshelf extends BlockContainer {
 
 	public BlockBookshelf() {
 		super(Material.wood);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("bookshelf");
 		setBlockName("bookshelf");
@@ -33,7 +33,7 @@ public class BlockBookshelf extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEBookshelf();
+		return new TileEntityBookshelf();
 	}
 	
 	public int getRenderType() {
@@ -54,8 +54,8 @@ public class BlockBookshelf extends BlockContainer {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEBookshelf) {
-			return addTag(0, ((TEBookshelf)te).getType());
+		if (te != null && te instanceof TileEntityBookshelf) {
+			return addTag(0, ((TileEntityBookshelf)te).getType());
 		}
 		return addTag(0, 0);
 	}
@@ -65,7 +65,7 @@ public class BlockBookshelf extends BlockContainer {
 		TileEntity te = world.getTileEntity(x, y, z);
 		//if (!world.isRemote) {return false;}
 		if (te == null || player.isSneaking()) {return false;}
-		if (te != null && te instanceof TEBookshelf) {
+		if (te != null && te instanceof TileEntityBookshelf) {
 			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_bookshelf, world, x, y, z);
 			return true;
 		}
@@ -74,11 +74,11 @@ public class BlockBookshelf extends BlockContainer {
 
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block id, int meta) {
-		TEBookshelf TEBookshelf = (TEBookshelf)world.getTileEntity(x, y, z);
+		TileEntityBookshelf TileEntityBookshelf = (TileEntityBookshelf)world.getTileEntity(x, y, z);
 
-		if (TEBookshelf!=null) {
-			for(int j1=0;j1<TEBookshelf.getSizeInventory();++j1) {
-				ItemStack itemstack=TEBookshelf.getStackInSlot(j1);
+		if (TileEntityBookshelf!=null) {
+			for(int j1=0;j1<TileEntityBookshelf.getSizeInventory();++j1) {
+				ItemStack itemstack=TileEntityBookshelf.getStackInSlot(j1);
 
 				if (itemstack!=null) {
 					float f=random.nextFloat()*0.8F+0.1F;

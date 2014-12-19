@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEAngleMod;
+import mods.timaxa007.pack.furniture.tile.TileEntityAngleMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -20,7 +20,7 @@ public class BlockCnstorAngle extends Block implements ITileEntityProvider {
 
 	public BlockCnstorAngle() {
 		super(Material.glass);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(5.0F);
 		setLightOpacity(0);
@@ -32,7 +32,7 @@ public class BlockCnstorAngle extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEAngleMod();
+		return new TileEntityAngleMod();
 	}
 	
 	public int getRenderType() {
@@ -57,15 +57,15 @@ public class BlockCnstorAngle extends Block implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
 		
-		if (te != null && te instanceof TEAngleMod) {
+		if (te != null && te instanceof TileEntityAngleMod) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			((TEAngleMod)te).rotation = l;
+			((TileEntityAngleMod)te).rotation = l;
 
 			if (tag != null) {
-				((TEAngleMod)te).setType(tag.getInteger("Type"));
-				((TEAngleMod)te).setSize(tag.getInteger("Size"));
-				((TEAngleMod)te).setRotation(tag.getBoolean("UPing"));
+				((TileEntityAngleMod)te).setType(tag.getInteger("Type"));
+				((TileEntityAngleMod)te).setSize(tag.getInteger("Size"));
+				((TileEntityAngleMod)te).setRotation(tag.getBoolean("UPing"));
 			}
 
 		}

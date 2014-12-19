@@ -112,7 +112,7 @@ public class ItemGerminationPlants extends Item {
 
 	public ItemGerminationPlants() {
 		super();
-		setCreativeTab(PackStock.proxy.tab_plant);
+		setCreativeTab(PackStock.tab_plant);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setTextureName("timaxa007:base_seed");
@@ -125,15 +125,15 @@ public class ItemGerminationPlants extends Item {
 
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
-			if (te != null && te instanceof TEGerminationPlants) {
+			if (te != null && te instanceof TileEntityGerminationPlants) {
 
 				if (tag != null) {
-					if (((TEGerminationPlants)te).getPlant() == 0) {
-						((TEGerminationPlants)te).setPlant(tag.getInteger("PlantID"));
+					if (((TileEntityGerminationPlants)te).getPlant() == 0) {
+						((TileEntityGerminationPlants)te).setPlant(tag.getInteger("PlantID"));
 					}
 					return true;
 				} else {
-					//((TEGrower)te).plant = 0;
+					//((TileEntityGrower)te).plant = 0;
 					return false;
 				}
 			} else {
@@ -157,7 +157,7 @@ public class ItemGerminationPlants extends Item {
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("PlantID")) {
-			return "plant." + GerminationPlants.plant_list[tag.getInteger("PlantID")].getName();
+			return "plant." + GerminationPlants.list[tag.getInteger("PlantID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
@@ -179,14 +179,14 @@ public class ItemGerminationPlants extends Item {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		for (int i = 0; i < GerminationPlants.plant_list.length; ++i) {
-			if (GerminationPlants.plant_list[i] != null) {
+		for (int i = 0; i < GerminationPlants.list.length; ++i) {
+			if (GerminationPlants.list[i] != null) {
 				list.add(addTag(
 						i, 
-						GerminationPlants.plant_list[i].getType(), 
-						GerminationPlants.plant_list[i].getGrowth(), 
-						GerminationPlants.plant_list[i].getFertility(), 
-						GerminationPlants.plant_list[i].getResistance()
+						GerminationPlants.list[i].getType(), 
+						GerminationPlants.list[i].getGrowth(), 
+						GerminationPlants.list[i].getFertility(), 
+						GerminationPlants.list[i].getResistance()
 						));
 			}
 		}

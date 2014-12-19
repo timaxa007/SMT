@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.blocks;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEBarrels;
+import mods.timaxa007.pack.furniture.tile.TileEntityBarrels;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +20,7 @@ public class BlockBarrels extends BlockContainer{
 
 	public BlockBarrels() {
 		super(Material.clay);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("planks_oak");
 		setBlockName("barrels");
@@ -28,7 +28,7 @@ public class BlockBarrels extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEBarrels();
+		return new TileEntityBarrels();
 	}
 
 	public int getRenderType() {
@@ -49,8 +49,8 @@ public class BlockBarrels extends BlockContainer{
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEBarrels) {
-			return addTag(((TEBarrels)te).getTypeB(), ((TEBarrels)te).getTypeP(), ((TEBarrels)te).getTypeCD(), ((TEBarrels)te).getLie());
+		if (te != null && te instanceof TileEntityBarrels) {
+			return addTag(((TileEntityBarrels)te).getTypeB(), ((TileEntityBarrels)te).getTypeP(), ((TileEntityBarrels)te).getTypeCD(), ((TileEntityBarrels)te).getLie());
 		}
 		return addTag(0, 0, 0, false);
 	}

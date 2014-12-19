@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.tile.TEJar01;
+import mods.timaxa007.pack.furniture.tile.TileEntityJar01;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -24,7 +24,7 @@ public class BlockJar01 extends Block implements ITileEntityProvider {
 
 	public BlockJar01() {
 		super(Material.glass);
-		setCreativeTab(PackFurniture.proxy.tab_furniture);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.25F);
 		setLightOpacity(0);
 		setBlockTextureName("glass");
@@ -33,7 +33,7 @@ public class BlockJar01 extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TEJar01();
+		return new TileEntityJar01();
 	}
 
 	public int getRenderType() {
@@ -54,8 +54,8 @@ public class BlockJar01 extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TEJar01) {
-			return addTag(((TEJar01)te).getColorWater());
+		if (te != null && te instanceof TileEntityJar01) {
+			return addTag(((TileEntityJar01)te).getColorWater());
 		}
 		return null;
 	}
@@ -65,9 +65,9 @@ public class BlockJar01 extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TEJar01) {
+		if (te != null && te instanceof TileEntityJar01) {
 			if (tag != null) {
-				if (tag.hasKey("ColorWater")) ((TEJar01)te).setColorWater(tag.getInteger("ColorWater"));
+				if (tag.hasKey("ColorWater")) ((TileEntityJar01)te).setColorWater(tag.getInteger("ColorWater"));
 			}
 		}
 	}
@@ -79,7 +79,7 @@ public class BlockJar01 extends Block implements ITileEntityProvider {
 			//--------------------------------
 			/*if (current.getItem() == PackFurniture.proxy.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 				--current.stackSize;
-				((TEJar01)te).setColorWater(GetColors.getHexColors[current.getItemDamage()]);
+				((TileEntityJar01)te).setColorWater(GetColors.getHexColors[current.getItemDamage()]);
 				return true;
 			} else return false;*/
 			//--------------------------------

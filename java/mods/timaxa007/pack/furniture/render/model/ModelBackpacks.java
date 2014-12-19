@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.model;
 
-import mods.timaxa007.pack.stock.rb.RenderBlockApiary;
+import mods.timaxa007.pack.stock.render.blocks.RenderBlockApiary;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
@@ -8,9 +8,11 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+@Deprecated
 public class ModelBackpacks extends ModelBiped {
 
 	public ModelBackpacks(int i) {
+		
 	}
 
 	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {

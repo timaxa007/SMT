@@ -2,6 +2,7 @@ package mods.timaxa007.pack.stock.lib;
 
 import net.minecraft.util.StatCollector;
 /**
+ * Use in <b>BlockFoods</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -27,8 +28,8 @@ public class FoodForBlock {
 	private float temperature_min;
 	private float temperature_max;
 
-	protected String texture1Name;
-	protected String texture2Name;
+	private String texture1Name;
+	private String texture2Name;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
@@ -48,63 +49,55 @@ public class FoodForBlock {
 		color_hex2 = 0;
 	}
 
-	public FoodForBlock(String str) {
-		checkTag(str);//OFF
-		id = nextID();
-		list[id] = this;
-		tag = str;
-		color_hex1 = 0;
-		color_hex2 = 0;
-	}
-
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public FoodForBlock(int id, String str) {
-		checkTag(str);//OFF
+	public FoodForBlock(int id, String tag) {
 		this.id = id;
 		list[id] = this;
-		tag = str;
+		this.tag = tag;
 		color_hex1 = 0;
 		color_hex2 = 0;
+		checkTag(tag);//OFF
+	}
+
+	public FoodForBlock(String tag) {
+		id = nextID();
+		list[id] = this;
+		this.tag = tag;
+		color_hex1 = 0;
+		color_hex2 = 0;
+		checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] == null) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-			}
-		}
 		return list.length - 1;
 	}
 
-	public static boolean hasTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public static boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public static int getID_tag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public static int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
-			}
-		}
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] != null && list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public FoodForBlock setName(String str) {
-		name = str;
+	public FoodForBlock setName(String name) {
+		this.name = name;
 		return this;
 	}
 
@@ -116,8 +109,8 @@ public class FoodForBlock {
 		return StatCollector.translateToLocal("food." + getName() + ".name");
 	}
 
-	public FoodForBlock setType(String str) {
-		type = str;
+	public FoodForBlock setType(String type) {
+		this.type = type;
 		return this;
 	}
 
@@ -140,7 +133,9 @@ public class FoodForBlock {
 		return this;
 	}
 
-	public int getFoodLevel() {return level == 0 ? 0 : level;}
+	public int getFoodLevel() {
+		return level == 0 ? 0 : level;
+	}
 
 	public FoodForBlock setFoodSaturation(float f) {
 		saturation = f;
@@ -151,20 +146,20 @@ public class FoodForBlock {
 		return saturation == 0 ? 0.0F : saturation;
 	}
 
-	public FoodForBlock setColors(int i) {
-		color_hex1 = i;
-		color_hex2 = i;
+	public FoodForBlock setColors(int color) {
+		color_hex1 = color;
+		color_hex2 = color;
 		return this;
 	}
 
-	public FoodForBlock setColors(int i1, int i2) {
-		color_hex1 = i1;
-		color_hex2 = i2;
+	public FoodForBlock setColors(int color1, int color2) {
+		color_hex1 = color1;
+		color_hex2 = color2;
 		return this;
 	}
 
-	public FoodForBlock setColor1(int i) {
-		color_hex1 = i;
+	public FoodForBlock setColor1(int color1) {
+		color_hex1 = color1;
 		return this;
 	}
 
@@ -172,8 +167,8 @@ public class FoodForBlock {
 		return color_hex1 == 0 ? 0xFFFFFF : color_hex1;
 	}
 
-	public FoodForBlock setColor2(int i) {
-		color_hex2 = i;
+	public FoodForBlock setColor2(int color2) {
+		color_hex2 = color2;
 		return this;
 	}
 
@@ -215,37 +210,37 @@ public class FoodForBlock {
 		return temperature_max == 0 ? 0.0F : temperature_max;
 	}
 
-	public FoodForBlock setTextures(String str) {
-		texture1Name = str;
-		texture2Name = str + "_overlay";
+	public FoodForBlock setTextures(String path) {
+		texture1Name = path;
+		texture2Name = path + "_overlay";
 		return this;
 	}
 
-	public FoodForBlock setTextures(String str1, String str2) {
-		texture1Name = str1;
-		texture2Name = str2;
+	public FoodForBlock setTextures(String path1, String path2) {
+		texture1Name = path1;
+		texture2Name = path2;
 		return this;
 	}
 
-	public FoodForBlock setTexturesFood(String str) {
-		texture1Name = str;
-		texture2Name = str + "_overlay";
+	public FoodForBlock setTexturesFood(String path) {
+		texture1Name = path;
+		texture2Name = path + "_overlay";
 		return this;
 	}
 
-	public FoodForBlock setTexturesFood(String str1, String str2) {
-		texture1Name = str1;
-		texture2Name = str2;
+	public FoodForBlock setTexturesFood(String path1, String path2) {
+		texture1Name = path1;
+		texture2Name = path2;
 		return this;
 	}
 
-	public FoodForBlock setTexture1(String str) {
-		texture1Name = str;
+	public FoodForBlock setTexture1(String path1) {
+		texture1Name = path1;
 		return this;
 	}
 
-	public FoodForBlock setTexture1Food(String str) {
-		texture1Name = str;
+	public FoodForBlock setTexture1Food(String path1) {
+		texture1Name = path1;
 		return this;
 	}
 
@@ -253,13 +248,13 @@ public class FoodForBlock {
 		return texture1Name == null ? getName() : texture1Name;
 	}
 
-	public FoodForBlock setTexture2(String str) {
-		texture2Name = str;
+	public FoodForBlock setTexture2(String path2) {
+		texture2Name = path2;
 		return this;
 	}
 
-	public FoodForBlock setTexture2Food(String str) {
-		texture2Name = str;
+	public FoodForBlock setTexture2Food(String path2) {
+		texture2Name = path2;
 		return this;
 	}
 

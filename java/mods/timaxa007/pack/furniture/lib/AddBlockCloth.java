@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.furniture.lib;
 /**
+ * Use in <b>BlockCloth</b>.
  * @author timaxa007
  * @param 
  * @param 
@@ -15,84 +16,116 @@ public class AddBlockCloth {
 	private int color_hex;
 	private String texture;
 
+	/**It is not recommended to use this method.**/
+	@Deprecated
 	public AddBlockCloth() {
-		list[nextID()] = this;
 		id = nextID();
+		list[id] = this;
 		tag = "";
 		color_hex = 0xFFFFFF;
 		texture = "";
 	}
 
-	public AddBlockCloth(int i) {
-		list[i] = this;
-		id = i;
+	/**It is not recommended to use this method.**/
+	@Deprecated
+	public AddBlockCloth(int id) {
+		this.id = id;
+		list[id] = this;
 		tag = "";
 		color_hex = 0xFFFFFF;
 		texture = "";
 	}
 
-	public AddBlockCloth(int i, String str) {
-		checkTag(str);//OFF
-		list[i] = this;
-		id = i;
-		tag = str;
+	/**It is not recommended to use this method.**/
+	@Deprecated
+	public AddBlockCloth(int id, String tag) {
+		this.id = id;
+		list[id] = this;
+		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
+		checkTag(tag);//OFF
 	}
 
-	public AddBlockCloth(String str) {
-		checkTag(str);//OFF
-		list[nextID()] = this;
+	public AddBlockCloth(String tag) {
 		id = nextID();
-		tag = str;
+		list[id] = this;
+		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
+		checkTag(tag);//OFF
 	}
 
 	public int nextID() {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] == null) {return i;}
-		}
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
+				return i;
 		return list.length - 1;
 	}
 
-	public boolean hasTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {
+	public boolean hasTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
-			}
-		}
 		return false;
 	}
 
-	public int getID_tag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (str.equalsIgnoreCase(list[i].tag)) {return i;}
-		}
+	public int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
+				return i;
 		return 0;
 	}
 
-	private void checkTag(String str) {
-		for (int i = 0; i < list.length; i++) {
-			if (list[i] != null && list[i].tag == str) {
-				System.out.println("!Duplicate: " + str);
-			}
-		}
+	private void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
-	public AddBlockCloth setID(int i) {id = i;return this;}
-	public int getID() {return id;}
+	public AddBlockCloth setID(int id) {
+		this.id = id;
+		return this;
+	}
 
-	public AddBlockCloth setTag(String str) {tag = str;return this;}
-	public String getTag() {return tag;}
+	public int getID() {
+		return id;
+	}
 
-	public AddBlockCloth setName(String str) {name = str;return this;}
-	public String getName() {return name;}
+	public AddBlockCloth setTag(String tag) {
+		this.tag = tag;
+		return this;
+	}
 
-	public AddBlockCloth setColor(int i) {color_hex = i;return this;}
-	public int getColor() {return color_hex;}
+	public String getTag() {
+		return tag;
+	}
 
-	public AddBlockCloth setTexture(String str) {texture = str;return this;}
-	public String getTexture() {return texture;}
+	public AddBlockCloth setName(String name) {
+		this.name = name;
+		return this;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public AddBlockCloth setColor(int color) {
+		color_hex = color;
+		return this;
+	}
+
+	public int getColor() {
+		return color_hex;
+	}
+
+	public AddBlockCloth setTexture(String path) {
+		texture = path;
+		return this;
+	}
+
+	public String getTexture() {
+		return texture;
+	}
 
 }
