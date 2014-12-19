@@ -5,6 +5,7 @@ import mods.timaxa007.pack.weapon.event.EventWeapon;
 import mods.timaxa007.pack.weapon.gui.HandlerGuiWeapons;
 import mods.timaxa007.pack.weapon.item.*;
 import mods.timaxa007.pack.weapon.lib.ListWeapon;
+import mods.timaxa007.pack.weapon.recipe.Recipes_Weapon;
 import mods.timaxa007.pack.weapon.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

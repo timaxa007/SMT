@@ -5,6 +5,7 @@ import mods.timaxa007.pack.magic.event.EventMagic;
 import mods.timaxa007.pack.magic.gui.HandlerGuiMagic;
 import mods.timaxa007.pack.magic.item.*;
 import mods.timaxa007.pack.magic.lib.ListMagic;
+import mods.timaxa007.pack.magic.recipe.Recipes_Magic;
 import mods.timaxa007.pack.magic.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

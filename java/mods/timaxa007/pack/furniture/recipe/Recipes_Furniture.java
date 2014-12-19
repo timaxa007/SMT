@@ -1,6 +1,7 @@
-package mods.timaxa007.pack.furniture;
+package mods.timaxa007.pack.furniture.recipe;
 
 import mods.timaxa007.lib.GetColors;
+import mods.timaxa007.pack.furniture.PackFurniture;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

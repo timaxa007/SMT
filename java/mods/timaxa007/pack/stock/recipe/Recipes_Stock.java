@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.stock;
+package mods.timaxa007.pack.stock.recipe;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;

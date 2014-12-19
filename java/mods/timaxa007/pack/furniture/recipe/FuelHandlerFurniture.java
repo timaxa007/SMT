@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.furniture;
+package mods.timaxa007.pack.furniture.recipe;
 
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.IFuelHandler;

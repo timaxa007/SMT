@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.weapon;
+package mods.timaxa007.pack.weapon.recipe;
 
 import mods.timaxa007.lib.GetColors;
 import net.minecraft.block.Block;

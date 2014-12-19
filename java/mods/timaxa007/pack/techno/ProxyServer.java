@@ -5,6 +5,7 @@ import mods.timaxa007.pack.techno.event.EventTechno;
 import mods.timaxa007.pack.techno.gui.HandlerGuiTechno;
 import mods.timaxa007.pack.techno.item.*;
 import mods.timaxa007.pack.techno.lib.ListTechno;
+import mods.timaxa007.pack.techno.recipe.Recipes_Techno;
 import mods.timaxa007.pack.techno.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

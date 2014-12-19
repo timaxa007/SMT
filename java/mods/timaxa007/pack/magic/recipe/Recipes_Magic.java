@@ -1,5 +1,6 @@
-package mods.timaxa007.pack.magic;
+package mods.timaxa007.pack.magic.recipe;
 
+import mods.timaxa007.pack.magic.PackMagic;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

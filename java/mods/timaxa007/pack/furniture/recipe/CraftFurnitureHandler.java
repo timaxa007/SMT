@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.furniture;
+package mods.timaxa007.pack.furniture.recipe;
 
 
 public class CraftFurnitureHandler /*implements ICraftingHandler*/ {

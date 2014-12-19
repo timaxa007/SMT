@@ -1,7 +1,8 @@
-package mods.timaxa007.pack.stock;
+package mods.timaxa007.pack.stock.recipe;
 
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.pack.stock.PackStock;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;

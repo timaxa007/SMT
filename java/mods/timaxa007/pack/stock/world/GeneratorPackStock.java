@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.stock;
+package mods.timaxa007.pack.stock.world;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.techno;
+package mods.timaxa007.pack.techno.recipe;
 
 import java.util.Iterator;
 

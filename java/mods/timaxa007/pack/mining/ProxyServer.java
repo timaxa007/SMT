@@ -4,6 +4,7 @@ import mods.timaxa007.pack.mining.block.*;
 import mods.timaxa007.pack.mining.event.EventMining;
 import mods.timaxa007.pack.mining.item.*;
 import mods.timaxa007.pack.mining.lib.ListMining;
+import mods.timaxa007.pack.mining.recipe.Recipes_Mining;
 import mods.timaxa007.pack.mining.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
