@@ -55,11 +55,25 @@ public class BlockVegetableFace extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityVegetableFace();}
-	//public int getRenderType() {return -1;}
-	public int quantityDropped(Random random) {return 0;}
-	public boolean renderAsNormalBlock() {return false;}
-	public boolean isOpaqueCube() {return false;}
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityVegetableFace();
+	}
+	
+	/*public int getRenderType() {
+		return -1;
+	}*/
+	
+	public int quantityDropped(Random random) {
+		return 0;
+	}
+	
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+	
+	public boolean isOpaqueCube() {
+		return false;
+	}
 
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {

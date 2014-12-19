@@ -54,11 +54,22 @@ public class OreOres extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityOreOres();}
-	//public int getRenderType() {return -1;}
-	//public boolean renderAsNormalBlock() {return false;}
-	//public boolean isOpaqueCube() {return false;}
-
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityOreOres();
+	}
+	/*
+	public int getRenderType() {
+		return -1;
+	}
+	
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+	
+	public boolean isOpaqueCube() {
+		return false;
+	}
+	*/
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
 		TileEntity te = block_access.getTileEntity(x, y, z);

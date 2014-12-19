@@ -33,13 +33,21 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityFoods();}
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityFoods();
+	}
 
-	public int quantityDropped(Random random) {return 0;}
+	public int quantityDropped(Random random) {
+		return 0;
+	}
 
-	public int getRenderType() {return PackStock.proxy.render_block_foods_modelID;}
+	public int getRenderType() {
+		return PackStock.proxy.render_block_foods_modelID;
+	}
 
-	public boolean isOpaqueCube() {return false;}
+	public boolean isOpaqueCube() {
+		return false;
+	}
 
 	/*public boolean renderAsNormalBlock() {
 		return false;

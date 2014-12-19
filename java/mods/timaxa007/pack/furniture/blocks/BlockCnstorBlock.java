@@ -36,20 +36,35 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityCnstorBlock();}
-	public int quantityDropped(Random radom) {return 0;}
-	public int getRenderType() {return PackFurniture.proxy.render_block_cnstor_block_modelID;}
-	public boolean isOpaqueCube() {return false;}
-	//public boolean renderAsNormalBlock() {return false;}
-	public int idPicked(World world, int x, int y, int z) {return 0;}
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityCnstorBlock();
+	}
+	
+	public int quantityDropped(Random radom) {
+		return 0;
+	}
+	
+	public int getRenderType() {
+		return PackFurniture.proxy.render_block_cnstor_block_modelID;
+	}
+	
+	public boolean isOpaqueCube() {
+		return false;
+	}
+	
+	/*public boolean renderAsNormalBlock() {
+		return false;
+	}*/
+	
+	public int idPicked(World world, int x, int y, int z) {
+		return 0;
+	}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TileEntityCnstorBlock) {
+		if (te != null && te instanceof TileEntityCnstorBlock)
 			return addTag(((TileEntityCnstorBlock)te).getType(), ((TileEntityCnstorBlock)te).getColor());
-		} else {
-			return addTag(0, 0);
-		}
+		return null;
 	}
 
 	@Override
