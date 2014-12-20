@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.weapon.lib;
 
-import mods.timaxa007.pack.weapon.PackWeapon;
+import mods.timaxa007.tms.Core;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>ItemAmmos</b>.
@@ -49,14 +49,14 @@ public class AmmoFor {
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public AmmoFor(String tag) {
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {

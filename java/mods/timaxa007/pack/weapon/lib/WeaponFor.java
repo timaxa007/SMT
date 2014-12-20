@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.weapon.lib;
 
+import mods.timaxa007.tms.Core;
 import net.minecraft.util.StatCollector;
 
 /**
@@ -53,14 +54,14 @@ public class WeaponFor {
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public WeaponFor(String tag) {
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {

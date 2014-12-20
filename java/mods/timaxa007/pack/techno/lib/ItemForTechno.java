@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.techno.lib;
 
+import mods.timaxa007.tms.Core;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>ItemsTechno</b>.
@@ -45,14 +46,14 @@ public class ItemForTechno {
 		this.id = id;
 		item_[id] = this;
 		this.tag = tag;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public ItemForTechno(String tag) {
 		id = nextID();
 		item_[id] = this;
 		this.tag = tag;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {

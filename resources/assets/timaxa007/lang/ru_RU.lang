@@ -1,4 +1,4 @@
-﻿
+﻿# text
 text.material=Материал
 text.type=Тип
 text.tag=Тег
@@ -93,7 +93,7 @@ itemGroup.tab_apis=Таблица Пчеловодства
 
 itemGroup.tab_techno=Таблица Техно
 
-itemGroup.tab_weapon=Таблица Оружия
+itemGroup.tab_weapons=Таблица Оружия
 
 tile.furniture.machines.name=Машина
 tile.cnstor.block.name=Конструктор Блок

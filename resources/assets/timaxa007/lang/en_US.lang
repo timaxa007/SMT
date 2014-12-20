@@ -1,4 +1,4 @@
-﻿
+﻿# text
 text.material=Material
 text.type=Type
 text.tag=Tag
@@ -93,7 +93,7 @@ itemGroup.tab_apis=Tab Apiculture's
 
 itemGroup.tab_techno=Tab Techno
 
-itemGroup.tab_weapon=Tab Weapon's
+itemGroup.tab_weapons=Tab Weapon's
 
 tile.furniture.machines.name=Machine
 tile.cnstor.block.name=Constructor Block

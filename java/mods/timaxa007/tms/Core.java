@@ -95,7 +95,7 @@ public class Core {
 	private static void syncConfig(Configuration config) {
 		config.load();
 		debug = config.get("debugging", "debug", false).getBoolean(false);
-		show_tip_info_testing = config.get("debugging", "size_quest_items", false).getBoolean(false);
+		show_tip_info_testing = config.get("debugging", "show_tip_info_testing", false).getBoolean(false);
 		disable_sub_mod_furniture = config.get("configs", "disable_sub_mod_furniture", false).getBoolean(false);
 		disable_sub_mod_magic = config.get("configs", "disable_sub_mod_magic", false).getBoolean(false);
 		disable_sub_mod_mining = config.get("configs", "disable_sub_mod_mining", false).getBoolean(false);

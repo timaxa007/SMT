@@ -14,7 +14,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventMagic {
 	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent e) {
 		ItemStack helmet = ((EntityPlayer)e.entityLiving).getCurrentArmor(0);
 		ItemStack chestplate = ((EntityPlayer)e.entityLiving).getCurrentArmor(1);
@@ -27,21 +27,6 @@ public class EventMagic {
 		ItemStack bootsI;
 		if (helmet != null && chestplate != null && leggings != null && boots != null) {
 			//--------------------------------------------------------------
-			/*
-			helmetI=new ItemStack(Item.bootsIron);
-			chestplateI=new ItemStack(Item.legsIron);
-			leggingsI=new ItemStack(Item.plateIron);
-			bootsI=new ItemStack(Item.helmetIron);
-			if ((boots.getItem()==helmetI.getItem())&&(leggings.getItem()==chestplateI.getItem())&&(chestplate.getItem()==leggingsI.getItem())&&(helmet.getItem()==bootsI.getItem())) {
-				float health=e.entityLiving.getHealth();
-				float baseRegen=0.2F;
-				float regenStreght=3;
-				float willRegen=baseRegen*regenStreght;
-				e.entityLiving.setHealth(health+willRegen);
-			}
-			 */
-			//--------------------------------------------------------------
-
 			helmetI = new ItemStack(PackFurniture.proxy.armor_new_helmet);
 			chestplateI = new ItemStack(PackFurniture.proxy.armor_new_chest);
 			leggingsI = new ItemStack(PackFurniture.proxy.armor_new_leggin);
@@ -70,7 +55,7 @@ public class EventMagic {
 			//--------------------------------------------------------------
 
 		}
-	}
+	}*/
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void onHitEntity(LivingHurtEvent e) {

@@ -6,6 +6,7 @@ import mods.timaxa007.pack.mining.item.*;
 import mods.timaxa007.pack.mining.lib.ListMining;
 import mods.timaxa007.pack.mining.recipe.Recipes_Mining;
 import mods.timaxa007.pack.mining.tile.*;
+import mods.timaxa007.pack.mining.world.Generator_Mining;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -81,8 +82,9 @@ public class ProxyServer {
 		//OreDictionary.registerOre("ignotCopper", new ItemStack(itemMetals, 1, 64));
 
 		//ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(itemMetals, 1, 64), 10, 70, 2));
+		
+		GameRegistry.registerWorldGenerator(new Generator_Mining(), 0);
 		/*
-		GameRegistry.registerWorldGenerator(new Generator_Mining());
 		biome_test = new BiomeTest(30);
 		biome_hot = new BiomeHot(31);
 		GameRegistry.addBiome(biome_test);

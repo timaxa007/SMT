@@ -2,7 +2,11 @@ package mods.timaxa007.pack.stock.world;
 
 import java.util.Random;
 
+import mods.timaxa007.pack.stock.PackStock;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import cpw.mods.fml.common.IWorldGenerator;
 
@@ -21,10 +25,29 @@ public class GeneratorPackStock implements IWorldGenerator {
 
 	}
 
-	private void generateSurface(World world, Random random, int x, int y) {
+	private void generateSurface(World world, Random random, int x, int z) {
 
-		int x1 = x + random.nextInt(16);
-		int y1 = y + random.nextInt(16);
+		/*Block[] block_random = new Block[] {
+
+		};*/
+		//if (world.getBiomeGenForCoords(x, z).biomeID == BiomeGenBase.extremeHills.biomeID || world.getBiomeGenForCoords(x, z).biomeID == BiomeGenBase.extremeHillsEdge.biomeID) {
+		for (int y = 0; y < world.provider.getHeight(); y++) {
+			int x1 = 8 + (x + random.nextInt(8));
+			int z1 = 8 + (z + random.nextInt(8));
+				for (int j = 0; j < 16; j++) {
+					for (int x2 = -2; x2 <= 2; ++x2) {
+						for (int z2 = -2; z2 <= 2; ++z2) {
+							if (world.getBlock(x1 + x2, y - 1, z1 + z2) == Blocks.grass && world.isAirBlock(x1 + x2, y, z1 + z2)) {
+							if (random.nextInt(25) == 5) {
+								world.setBlock(x1 + x2, y, z1 + z2, PackStock.proxy.block_healing/*block_random[random.nextInt(block_random.length - 1)]*/, random.nextInt(15), 3);
+							}
+						}
+					}
+				}
+			}
+		}
+		//}
+
 		/*
 		if (world.getBiomeGenForCoords(x, y).biomeID == BiomeGenBase.forest.biomeID || world.getBiomeGenForCoords(x, y).biomeID == BiomeGenBase.forestHills.biomeID) {
 			for (int z = 1; z < world.getHeight(); ++z) {

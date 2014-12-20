@@ -3,6 +3,7 @@ package mods.timaxa007.pack.stock.block;
 import java.util.List;
 import java.util.Random;
 
+import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.FoodForBlock;
 import mods.timaxa007.pack.stock.tile.TileEntityFoods;
@@ -24,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockFoods extends Block implements ITileEntityProvider {
 
 	public BlockFoods() {
-		super(Material.glass);
+		super(Material.cake);
 		setCreativeTab(PackStock.tab_food);
 		setHardness(0.25F);
 		setResistance(0.5F);
@@ -49,9 +50,9 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 		return false;
 	}
 
-	/*public boolean renderAsNormalBlock() {
+	public boolean renderAsNormalBlock() {
 		return false;
-	}*/
+	}
 
 	public int idPicked(World world, int x, int y, int z) {
 		return 0;
@@ -59,8 +60,10 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TileEntityFoods)
-			return addTag(((TileEntityFoods)te).getFoodID(), ((TileEntityFoods)te).getType(), ((TileEntityFoods)te).getColor1(), ((TileEntityFoods)te).getColor2());
+		if (te != null && te instanceof TileEntityFoods) {
+			TileEntityFoods tile = (TileEntityFoods)te;
+			return addTag(tile.getTag(), tile.getColor1(), tile.getColor2());
+		}
 		return null;
 	}
 
@@ -68,15 +71,17 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TileEntityFoods && tag != null) {
 
-			//((TileEntityFoods)te).setRotate((int)entity.rotationYaw);
-			if (tag.hasKey("FoodID")) ((TileEntityFoods)te).setFoodID(tag.getInteger("FoodID"));
-			if (tag.hasKey("Type")) ((TileEntityFoods)te).setType(tag.getInteger("Type"));
-			if (tag.hasKey("Color1")) ((TileEntityFoods)te).setColor1(tag.getInteger("Color1"));
-			if (tag.hasKey("Color2")) ((TileEntityFoods)te).setColor2(tag.getInteger("Color2"));
+		if (te != null && te instanceof TileEntityFoods && tag != null) {
+			TileEntityFoods tile = (TileEntityFoods)te;
+
+			if (tag.hasKey("NameID")) tile.setTag(tag.getString("NameID"));
+			if (tag.hasKey("Color1")) tile.setColor1(tag.getInteger("Color1"));
+			if (tag.hasKey("Color2")) tile.setColor2(tag.getInteger("Color2"));
+			tile.setRotation(ActionModel.rotation_model_8sides(entity.rotationYaw));
 
 		}
+
 	}
 
 	@Override
@@ -84,7 +89,8 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityFoods && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(((TileEntityFoods)te).getFoodID(), ((TileEntityFoods)te).getType(), ((TileEntityFoods)te).getColor1(), ((TileEntityFoods)te).getColor2()));
+				TileEntityFoods tile = (TileEntityFoods)te;
+				dropBlockAsItem(world, x, y, z, addTag(tile.getTag(), tile.getColor1(), tile.getColor2()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
@@ -95,19 +101,22 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 1; j < FoodForBlock.list.length; ++j) {
 			if (FoodForBlock.list[j] != null) {
-				list.add(addTag(j, 0, FoodForBlock.list[j].getColor1(), FoodForBlock.list[j].getColor2()));
+				list.add(addTag(
+						FoodForBlock.list[j].tag, 
+						FoodForBlock.list[j].getColor1(), 
+						FoodForBlock.list[j].getColor2()
+						));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2, int par3, int par4) {
+	private static ItemStack addTag(String par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackStock.proxy.block_foods, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("FoodID", par1);
-		tag.setInteger("Type", par2);
-		tag.setInteger("Color1", par3);
-		tag.setInteger("Color2", par4);
+		tag.setString("NameID", par1);
+		tag.setInteger("Color1", par2);
+		tag.setInteger("Color2", par3);
 		is.setTagCompound(tag);
 		return is;
 	}

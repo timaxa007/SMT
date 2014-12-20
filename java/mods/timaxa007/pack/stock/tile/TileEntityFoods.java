@@ -8,79 +8,71 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityFoods extends TileEntity {
 
-	private int foodID;
-	private int type;
+	private String tag;
 	private int color1;
 	private int color2;
-	private int rotate;
+	private int rotation;
 
 	public TileEntityFoods() {
-		foodID = 0;
-		type = 0;
+		tag = null;
 		color1 = 0;
 		color2 = 0;
-		rotate = 0;
+		rotation = 0;
 	}
 
-	public void setFoodID(int i) {
-		foodID = i;
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
-	
-	public void setType(int i) {
-		type = i;
+
+	public String getTag() {
+		return tag;
 	}
-	
+
 	public void setColor1(int i) {
 		color1 = i;
 	}
-	
-	public void setColor2(int i) {
-		color2 = i;
-	}
-	
-	public void setRotate(int i) {
-		rotate = i;
-	}
 
-	public int getFoodID() {
-		return foodID;
-	}
-	
-	public int getType() {
-		return type;
-	}
-	
 	public int getColor1() {
 		return color1;
 	}
-	
+
+	public void setColor2(int i) {
+		color2 = i;
+	}
+
 	public int getColor2() {
 		return color2;
 	}
-	
-	public int getRotate() {
-		return rotate;
+
+	public void setRotation(int i) {
+		rotation = i;
 	}
-	
+
+	public int getRotation() {
+		return rotation;
+	}
+
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		if (nbt.hasKey("FoodID")) foodID = nbt.getInteger("FoodID");
-		if (nbt.hasKey("Type")) type = nbt.getInteger("Type");
+		if (nbt.hasKey("NameID")) tag = nbt.getString("NameID");
 		if (nbt.hasKey("Color1")) color1 = nbt.getInteger("Color1");
 		if (nbt.hasKey("Color2")) color2 = nbt.getInteger("Color2");
-		if (nbt.hasKey("Rotate")) rotate = nbt.getInteger("Rotate");
+		if (nbt.hasKey("Rotation")) rotation = nbt.getByte("Rotation");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		nbt.setInteger("FoodID", foodID);
-		nbt.setInteger("Type", type);
+		if (tag == null) {
+			worldObj.removeTileEntity(xCoord, yCoord, zCoord);
+			worldObj.setBlockToAir(xCoord, yCoord, zCoord);
+		}
+		nbt.setString("NameID", tag);
 		nbt.setInteger("Color1", color1);
 		nbt.setInteger("Color2", color2);
-		nbt.setInteger("Rotate", rotate);
+		nbt.setByte("Rotation", (byte)rotation);
 	}
 
 	//public boolean canUpdate() {return false;}

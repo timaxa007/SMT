@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.stock.lib;
 
+import mods.timaxa007.tms.Core;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>ItemsStock</b>.
@@ -47,14 +48,14 @@ public class ItemForStock {
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public ItemForStock(String tag) {
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {

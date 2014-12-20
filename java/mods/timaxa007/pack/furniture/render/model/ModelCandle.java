@@ -4,10 +4,12 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+@Deprecated
 public class ModelCandle extends ModelBase {
 	private static ModelRenderer g_main;
 	private static ModelRenderer f_main;
 
+@Deprecated
 	public ModelCandle() {
 		textureWidth = 16;
 		textureHeight = 8;

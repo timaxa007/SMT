@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.stock.lib;
 
+import mods.timaxa007.tms.Core;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>BlockFoods</b>.
@@ -57,7 +58,7 @@ public class FoodForBlock {
 		this.tag = tag;
 		color_hex1 = 0;
 		color_hex2 = 0;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public FoodForBlock(String tag) {
@@ -66,7 +67,7 @@ public class FoodForBlock {
 		this.tag = tag;
 		color_hex1 = 0;
 		color_hex2 = 0;
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {

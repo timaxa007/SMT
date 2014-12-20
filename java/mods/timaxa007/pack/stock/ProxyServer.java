@@ -7,6 +7,7 @@ import mods.timaxa007.pack.stock.lib.ListStock;
 import mods.timaxa007.pack.stock.recipe.RecipeFoodsColors;
 import mods.timaxa007.pack.stock.recipe.Recipes_Stock;
 import mods.timaxa007.pack.stock.tile.*;
+import mods.timaxa007.pack.stock.world.GeneratorPackStock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -96,7 +97,7 @@ public class ProxyServer {
 
 		//EntityList.addMapping(EntityTest.class, "Test", 111, 0x0033FF, 0x00CCFF);
 
-		//GameRegistry.registerWorldGenerator(new GeneratorPackStock());
+		GameRegistry.registerWorldGenerator(new GeneratorPackStock(), 0);
 
 		GameRegistry.addRecipe(new RecipeFoodsColors());
 

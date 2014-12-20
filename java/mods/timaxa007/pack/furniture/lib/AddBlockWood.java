@@ -1,4 +1,7 @@
 package mods.timaxa007.pack.furniture.lib;
+
+import mods.timaxa007.tms.Core;
+
 /**
  * Use in <b>BlockWood</b>.
  * @author timaxa007
@@ -39,21 +42,21 @@ public class AddBlockWood {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public AddBlockWood(int id, String tag) {
-		checkTag(tag);//OFF
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public AddBlockWood(String tag) {
-		checkTag(tag);//OFF
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public int nextID() {

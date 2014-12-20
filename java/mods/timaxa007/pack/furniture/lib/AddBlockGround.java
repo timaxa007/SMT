@@ -1,4 +1,7 @@
 package mods.timaxa007.pack.furniture.lib;
+
+import mods.timaxa007.tms.Core;
+
 /**
  * Use in <b>BlockGround</b>.
  * @author timaxa007
@@ -44,7 +47,7 @@ public class AddBlockGround {
 		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public AddBlockGround(String tag) {
@@ -53,7 +56,7 @@ public class AddBlockGround {
 		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
-		checkTag(tag);//OFF
+		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public int nextID() {

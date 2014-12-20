@@ -12,6 +12,14 @@ public class RenderBlockFoods extends TileEntitySpecialRenderer {
 	}
 
 	private void renderTileEntity(TileEntityFoods te, double dx, double dy, double dz, float f) {
+		String nameID = null;
+		int color1 = 0xFFFFFF;
+		int color2 = 0xFFFFFF;
+		if (te !=null) {
+			nameID = te.getTag();
+			color1 = te.getColor1();
+			color2 = te.getColor2();
+		}
 
 	}
 

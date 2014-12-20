@@ -50,16 +50,16 @@ Tessellator tessellator = Tessellator.instance;
 tessellator.startDrawingQuads();
 //tessellator.setColorOpaque_I(clr);
 
-//Down
-tessellator.addVertexWithUV(b_x, a_y, b_z, b_x, b_z);
-tessellator.addVertexWithUV(a_x, a_y, b_z, a_x, b_z);
-tessellator.addVertexWithUV(a_x, a_y, a_z, a_x, a_z);
-tessellator.addVertexWithUV(b_x, a_y, a_z, b_x, a_z);
 //Up
 tessellator.addVertexWithUV(b_x, b_y, a_z, b_x, a_z);
 tessellator.addVertexWithUV(a_x, b_y, a_z, a_x, a_z);
 tessellator.addVertexWithUV(a_x, b_y, b_z, a_x, b_z);
 tessellator.addVertexWithUV(b_x, b_y, b_z, b_x, b_z);
+//Down
+tessellator.addVertexWithUV(b_x, a_y, b_z, b_x, b_z);
+tessellator.addVertexWithUV(a_x, a_y, b_z, a_x, b_z);
+tessellator.addVertexWithUV(a_x, a_y, a_z, a_x, a_z);
+tessellator.addVertexWithUV(b_x, a_y, a_z, b_x, a_z);
 //North
 tessellator.addVertexWithUV(b_x, a_y, a_z, b_x, 1.0D - a_y);
 tessellator.addVertexWithUV(a_x, a_y, a_z, a_x, 1.0D - a_y);
