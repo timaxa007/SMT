@@ -45,19 +45,17 @@ public class ArmorMasks extends ItemArmor {
 
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMask")) {
+		if (tag != null && tag.hasKey("TypeMask"))
 			return super.getUnlocalizedName() + "." + type_mask[tag.getInteger("TypeMask")];
-		} else {
+		else
 			return super.getUnlocalizedName();
-		}
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMask")) {
-			list.add("TypeMask: " + tag.getInteger("TypeMask") + "/" + type_mask[tag.getInteger("TypeMask")]);
-		} else {
-
+		if (tag != null) {
+			if (tag.hasKey("TypeMask"))
+				list.add("TypeMask: " + tag.getInteger("TypeMask") + "/" + type_mask[tag.getInteger("TypeMask")]);
 		}
 	}
 
@@ -129,18 +127,20 @@ public class ArmorMasks extends ItemArmor {
 
 	public IIcon getIcon(ItemStack is, int pass) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMask")) {
+		if (tag != null && tag.hasKey("TypeMask"))
 			return iconArray[tag.getInteger("TypeMask")];
-		} else {
+		else
 			return itemIcon;
-		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);
+
 		itemIcon = ir.registerIcon(getIconString());
+
 		iconArray = new IIcon[type_mask.length];
+
 		for (int i = 0; i < type_mask.length; ++i) {
 			iconArray[i] = ir.registerIcon(getIconString() + "_" + type_mask[i]);
 		}

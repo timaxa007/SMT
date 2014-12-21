@@ -40,11 +40,10 @@ public class ArmorMedieval extends ItemArmor {
 
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMedieval")) {
+		if (tag != null && tag.hasKey("TypeMedieval"))
 			return super.getUnlocalizedName() + "." + type_medieval[tag.getInteger("TypeMedieval")];
-		} else {
+		else
 			return super.getUnlocalizedName();
-		}
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
@@ -77,6 +76,7 @@ public class ArmorMedieval extends ItemArmor {
 		} else {*/
 		return "timaxa007:textures/armor/mask.png";
 		//}
+		//" + (armorType == 2 ? 2 : 1) + "
 	}
 
 	//int type = ((ItemArmor)itemStack.getItem()).armorType;

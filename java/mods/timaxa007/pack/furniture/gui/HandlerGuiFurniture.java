@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.furniture.gui;
 
+import mods.timaxa007.pack.furniture.tile.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -12,6 +13,7 @@ public class HandlerGuiFurniture implements IGuiHandler {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(id) {
 		//case 1:return new ContainerFurnitureMachines(player, (TileEntityFurnitureMachines)te);
+		case 15:return new ContainerFurnitureChest(player, (TileEntityFurnitureChest)te);
 		//case 16:return new ContainerBookshelf(player, (TileEntityBookshelf)te);
 		//case 17:return new ContainerMincer(player, (TileEntityMincer)te);
 		//case 18:return new ContainerGrills(player, (TileEntityGrills)te);
@@ -26,6 +28,7 @@ public class HandlerGuiFurniture implements IGuiHandler {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(id) {
 		//case 1:return new GuiFurnitureMachines(player, (TileEntityFurnitureMachines)te);
+		case 15:return new GuiFurnitureChest(player, (TileEntityFurnitureChest)te);
 		//case 16:return new GuiBookshelf(player, (TileEntityBookshelf)te);
 		//case 17:return new GuiMincer(player, (TileEntityMincer)te);
 		//case 18:return new GuiGrills(player, (TileEntityGrills)te);

@@ -8,18 +8,18 @@ import net.minecraft.item.ItemStack;
 
 public class ItemFilterCharcoal extends Item {
 
-public ItemFilterCharcoal() {
-super();
-setMaxStackSize(1);
-setMaxDamage(8);
-//setCreativeTab(PackFurniture.tab_furniture);
-//setTextureName(PackInfo.MODID+":filter_charcoal");
-setTextureName("timaxa007:filter_charcoal");
-setUnlocalizedName("filter_charcoal");
-}
+	public ItemFilterCharcoal() {
+		super();
+		setMaxStackSize(1);
+		setMaxDamage(8);
+		//setCreativeTab(PackFurniture.tab_furniture);
+		//setTextureName(PackInfo.MODID + ":filter_charcoal");
+		setTextureName("timaxa007:filter_charcoal");
+		setUnlocalizedName("filter_charcoal");
+	}
 
-public void getSubItems(Item id, CreativeTabs table, List list) {
-list.add(new ItemStack(id, 1, 0));
-}
+	public void getSubItems(Item id, CreativeTabs table, List list) {
+		list.add(new ItemStack(id, 1, 0));
+	}
 
 }

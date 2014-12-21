@@ -39,6 +39,7 @@ public class ArmorNew extends ItemArmor {
 	}
 
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type) {
+		//" + (armorType == 2 ? 2 : 1) + "
 		return "timaxa007:textures/armor/new.png";
 	}
 

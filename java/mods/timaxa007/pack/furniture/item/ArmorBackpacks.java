@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArmorBackpacks extends ItemArmor {
 
-	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
+	@SideOnly(Side.CLIENT) private IIcon[] icon_b;
 
 	public static String[] type_packpacks = new String[] {
 		"test", 
@@ -41,9 +41,8 @@ public class ArmorBackpacks extends ItemArmor {
 
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeBackpack")) {
+		if (tag != null && tag.hasKey("TypeBackpack"))
 			return super.getUnlocalizedName() + "." + tag.getInteger("TypeBackpack");
-		}
 		return super.getUnlocalizedName();
 	}
 
@@ -73,11 +72,10 @@ public class ArmorBackpacks extends ItemArmor {
 
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeBackpack")) {
+		if (tag != null && tag.hasKey("TypeBackpack"))
 			return "timaxa007:textures/armor/backpack_" + tag.getInteger("TypeBackpack") + ".png";
-		} else {
+		else
 			return "timaxa007:textures/armor/backpack.png";
-		}
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -121,20 +119,22 @@ public class ArmorBackpacks extends ItemArmor {
 
 	public IIcon getIcon(ItemStack is, int pass) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeBackpack")) {
-			return iconArray[tag.getInteger("TypeBackpack")];
-		} else {
+		if (tag != null && tag.hasKey("TypeBackpack"))
+			return icon_b[tag.getInteger("TypeBackpack")];
+		else
 			return itemIcon;
-		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);
+
 		itemIcon = ir.registerIcon(getIconString());
-		iconArray = new IIcon[type_packpacks.length];
+
+		icon_b = new IIcon[type_packpacks.length];
+
 		for (int i = 0; i < type_packpacks.length; ++i) {
-			iconArray[i] = ir.registerIcon(getIconString() + "_" + type_packpacks[i]);
+			icon_b[i] = ir.registerIcon(getIconString() + "_" + type_packpacks[i]);
 		}
 	}
 

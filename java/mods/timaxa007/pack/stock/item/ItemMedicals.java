@@ -233,8 +233,7 @@ public class ItemMedicals extends Item {
 
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int meta) {
-		int j = MathHelper.clamp_int(meta, 0, (medicalNames.length)-1);
-		return iconArray[j];
+		return iconArray[meta];
 	}
 
 	public String getUnlocalizedName(ItemStack is) {

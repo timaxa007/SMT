@@ -111,6 +111,7 @@ public class ProxyServer {
 	public static Block block_cloth_blocks;
 	public static Block block_metal_blocks;
 	public static Block block_vegetable_face;
+	public static Block block_furniture_chest;
 
 	//Items
 	public static Item items_for_furniture;
@@ -165,10 +166,12 @@ public class ProxyServer {
 	public static int render_block_jar01_modelID;
 	public static int render_block_pipes_modelID;
 	public static int render_block_mashine_waiter_modelID;
+	public static int render_block_furniture_chest_modelID;
 
 	//GUI
 	//public static int guiID = 0;
 	public static int gui_furniture_machines = 1;
+	public static int gui_furniture_chest = 15;
 	public static int gui_bookshelf = 16;
 	public static int gui_mincer = 17;
 	public static int gui_grills = 18;
@@ -265,6 +268,7 @@ public class ProxyServer {
 		block_cloth_blocks = new BlockClothBlocks();
 		block_metal_blocks = new BlockMetalBlocks();
 		block_vegetable_face = new BlockVegetableFace();
+		block_furniture_chest = new BlockFurnitureChest();
 
 		//Items
 		items_for_furniture = new ItemsFurniture();
@@ -319,6 +323,7 @@ public class ProxyServer {
 		render_block_jar01_modelID = -1;
 		render_block_pipes_modelID = -1;
 		render_block_mashine_waiter_modelID = -1;
+		render_block_furniture_chest_modelID = -1;
 
 		//Blocks
 		GameRegistry.registerBlock(block_furniture_machines, "BlockMachines");
@@ -401,6 +406,7 @@ public class ProxyServer {
 		GameRegistry.registerBlock(block_cloth_blocks, ItemBlockClothBlocks.class, "BlockClothBlocks");
 		GameRegistry.registerBlock(block_metal_blocks, ItemBlockMetalBlocks.class, "BlockMetalBlocks");
 		GameRegistry.registerBlock(block_vegetable_face, "BlockVegetableFace");
+		GameRegistry.registerBlock(block_furniture_chest, "BlockFurnitureChest");
 
 		//Items
 		GameRegistry.registerItem(items_for_furniture, "ItemsFurniture");
@@ -461,6 +467,7 @@ public class ProxyServer {
 		GameRegistry.registerTileEntity(TileEntityClothBlocks.class, "TileEntityClothBlocks");
 		GameRegistry.registerTileEntity(TileEntityMetalBlocks.class, "TileEntityMetalBlocks");
 		GameRegistry.registerTileEntity(TileEntityVegetableFace.class, "TileEntityVegetableFace");
+		GameRegistry.registerTileEntity(TileEntityFurnitureChest.class, "TileEntityFurnitureChest");
 
 		OreDictionary.registerOre("dyeBlack", new ItemStack(item_colored, 1, 0));
 		OreDictionary.registerOre("dyeBlue", new ItemStack(item_colored, 1, 1));

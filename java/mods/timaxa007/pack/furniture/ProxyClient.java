@@ -39,6 +39,7 @@ public class ProxyClient extends ProxyServer {
 		render_block_jar01_modelID = RenderingRegistry.getNextAvailableRenderId();
 		render_block_pipes_modelID = RenderingRegistry.getNextAvailableRenderId();
 		render_block_mashine_waiter_modelID = RenderingRegistry.getNextAvailableRenderId();
+		render_block_furniture_chest_modelID = RenderingRegistry.getNextAvailableRenderId();
 
 		//Blocks
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCnstorBlock.class, new BlockRenderCnstorBlock());

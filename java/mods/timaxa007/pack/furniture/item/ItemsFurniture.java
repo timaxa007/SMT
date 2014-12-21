@@ -13,15 +13,15 @@ import net.minecraft.world.World;
 
 public class ItemsFurniture extends Item {
 
-public ItemsFurniture() {
-super();
-setCreativeTab(PackFurniture.tab_furniture);
-setUnlocalizedName("items_furniture");
-}
+	public ItemsFurniture() {
+		super();
+		setCreativeTab(PackFurniture.tab_furniture);
+		setUnlocalizedName("items_furniture");
+	}
 
-public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-if (!world.isRemote) player.addChatMessage(new ChatComponentText("F - " + ActionModel.rotation_model_8sides_invert(player)));
-return is;
-}
+	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
+		if (!world.isRemote) player.addChatMessage(new ChatComponentText("F - " + ActionModel.rotation_model_8sides_invert(player)));
+		return is;
+	}
 
 }

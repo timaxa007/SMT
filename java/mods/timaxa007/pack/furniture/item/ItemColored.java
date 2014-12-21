@@ -22,18 +22,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemColored extends Item {
 
-@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
-@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
+	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
+	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-public ItemColored() {
-super();
-setCreativeTab(PackFurniture.tab_furniture);
-//setHasSubtypes(true);
-//setMaxDamage(0);
-setTextureName("timaxa007:");
-setUnlocalizedName("item_colored");
-}
-/*
+	public ItemColored() {
+		super();
+		setCreativeTab(PackFurniture.tab_furniture);
+		//setHasSubtypes(true);
+		//setMaxDamage(0);
+		setTextureName("timaxa007:");
+		setUnlocalizedName("item_colored");
+	}
+	/*
 public String getUnlocalizedName(ItemStack is) {
 NBTTagCompound tag = is.getTagCompound();
 if (tag != null && tag.hasKey("NameID")) {
@@ -169,5 +169,5 @@ icon_ovl[i] = itemIcon;
 }
 }
 }
-*/
+	 */
 }
