@@ -2,7 +2,7 @@ package mods.timaxa007.pack.techno.block;
 
 import java.util.List;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.tile.TileEntityElectricWires;
 import net.minecraft.block.Block;
@@ -51,8 +51,10 @@ public class BlockElectricWires extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TileEntityElectricWires)
-			return addTag(((TileEntityElectricWires)te).getType(), ((TileEntityElectricWires)te).getSize(), ((TileEntityElectricWires)te).getColor());
+		if (te != null && te instanceof TileEntityElectricWires) {
+			TileEntityElectricWires tile = (TileEntityElectricWires)te;
+			return addTag(tile.getStyle(), tile.getSize(), tile.getColor());
+		}
 		return null;
 	}
 
@@ -63,14 +65,16 @@ public class BlockElectricWires extends Block implements ITileEntityProvider {
 		NBTTagCompound tag = is.getTagCompound();
 
 		if (te != null && te instanceof TileEntityElectricWires) {
+			TileEntityElectricWires tile = (TileEntityElectricWires)te;
 
 			//int l=MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
 			//((TileEntityJar01)te).setRot(l);
 
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TileEntityElectricWires)te).setType(tag.getInteger("Type"));
-				if (tag.hasKey("Size")) ((TileEntityElectricWires)te).setSize(tag.getInteger("Size"));
-				if (tag.hasKey("Color")) ((TileEntityElectricWires)te).setColor(tag.getInteger("Color"));
+				//if (tag.hasKey("Type")) tile.setType(tag.getInteger("Type"));
+				if (tag.hasKey("Style")) tile.setStyle(tag.getString("Style"));
+				if (tag.hasKey("Size")) tile.setSize(tag.getInteger("Size"));
+				if (tag.hasKey("Color")) tile.setColor(tag.getInteger("Color"));
 			}
 
 		}
@@ -79,23 +83,25 @@ public class BlockElectricWires extends Block implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		for (int j = 0; j < TileTexture.texTest01.length; ++j) {
-			list.add(addTag(j, 1, 0xFFFFFF));
-			list.add(addTag(j, 2, 0xFFFFFF));
-			list.add(addTag(j, 3, 0xFFFFFF));
-			list.add(addTag(j, 4, 0xFFFFFF));
-			list.add(addTag(j, 5, 0xFFFFFF));
-			list.add(addTag(j, 6, 0xFFFFFF));
-			list.add(addTag(j, 7, 0xFFFFFF));
-			list.add(addTag(j, 8, 0xFFFFFF));
+		for (int j = 0; j < AddTextureModel.list.length; ++j) {
+			if (AddTextureModel.list[j] != null && AddTextureModel.list[j].tag != null) {
+				list.add(addTag(AddTextureModel.list[j].tag, 1, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 2, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 3, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 4, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 5, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 6, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 7, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 8, 0xFFFFFF));
+			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2, int par3) {
+	private static ItemStack addTag(String par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackTechno.proxy.block_electric_wires, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par1);
+		tag.setString("Style", par1);
 		tag.setInteger("Size", par2);
 		tag.setInteger("Color", par3);
 		is.setTagCompound(tag);

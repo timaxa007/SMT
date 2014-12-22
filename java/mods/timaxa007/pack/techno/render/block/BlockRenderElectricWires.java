@@ -1,11 +1,10 @@
 package mods.timaxa007.pack.techno.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.techno.tile.TileEntityElectricWires;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
@@ -18,12 +17,14 @@ public class BlockRenderElectricWires extends TileEntitySpecialRenderer {
 
 	private void renderTileEntity(TileEntityElectricWires te, double dx, double dy, double dz, float f) {
 		//int meta = te.getBlockMetadata();
-		int tex = 0;
+		//int tex = 0;
+		String tex = null;
 		int siz = 1;
 		int clr = 0xFFFFFF;
 
 		if (te != null) {
-			tex = te.getType();
+			//tex = te.getType();
+			tex = te.getStyle();
 			siz = te.getSize();
 			//clr = te.getColor();
 		}
@@ -42,7 +43,7 @@ public class BlockRenderElectricWires extends TileEntitySpecialRenderer {
 		GL11.glRotatef(90.0F, 1.0F, 0.0F, 0.0F);
 		GL11.glTranslatef(0.0F, 0.0F, -1.0F);
 
-		bindTexture(new ResourceLocation((String)TileTexture.texTest01[tex][0], (String)TileTexture.texTest01[tex][1]));
+		bindTexture(AddTextureModel.get(tex).getTexture());
 
 		Tessellator tessellator = Tessellator.instance;
 		//-------------------------------------------------------------------

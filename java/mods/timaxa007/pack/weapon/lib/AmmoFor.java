@@ -46,17 +46,17 @@ public class AmmoFor {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public AmmoFor(int id, String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public AmmoFor(String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
@@ -66,24 +66,24 @@ public class AmmoFor {
 		return list.length - 1;
 	}
 
-	public static boolean hasTag(String str) {
+	public static boolean hasTag(String tag) {
 		for (int i = 0; i < list.length; i++)
-			if (str.equalsIgnoreCase(list[i].tag))
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
 		return false;
 	}
 
-	public static int getID_tag(String str) {
+	public static int getID_tag(String tag) {
 		for (int i = 0; i < list.length; i++)
-			if (str.equalsIgnoreCase(list[i].tag))
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
 		return 0;
 	}
 
-	private void checkTag(String str) {
+	private void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == str)
-				System.out.println("!Duplicate: " + str);
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
 	public AmmoFor setName(String name) {

@@ -53,17 +53,17 @@ public class FoodForItem {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public FoodForItem(int id, String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public FoodForItem(String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {

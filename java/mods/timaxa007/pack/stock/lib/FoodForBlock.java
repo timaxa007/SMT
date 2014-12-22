@@ -53,21 +53,21 @@ public class FoodForBlock {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public FoodForBlock(int id, String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
 		color_hex1 = 0;
 		color_hex2 = 0;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public FoodForBlock(String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
 		color_hex1 = 0;
 		color_hex2 = 0;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {

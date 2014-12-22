@@ -43,17 +43,17 @@ public class ItemForMining {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForMining(int id, String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public ItemForMining(String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {

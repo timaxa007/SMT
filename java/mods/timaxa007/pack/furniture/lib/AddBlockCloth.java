@@ -42,21 +42,21 @@ public class AddBlockCloth {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public AddBlockCloth(int id, String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public AddBlockCloth(String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
 		color_hex = 0xFFFFFF;
 		texture = "";
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public int nextID() {

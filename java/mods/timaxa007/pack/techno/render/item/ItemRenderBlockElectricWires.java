@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.techno.render.item;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.techno.render.block.BlockRenderElectricWires;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
@@ -32,12 +32,14 @@ public class ItemRenderBlockElectricWires implements IItemRenderer {
 
 		NBTTagCompound tag = is.getTagCompound();
 
-		int typ = 0;
+		//int typ = 0;
+		String tex = null;
 		int siz = 1;
 		int clr = 0xFFFFFF;
 
 		if (tag != null) {
-			if (tag.hasKey("Type")) typ = tag.getInteger("Type");
+			//if (tag.hasKey("Type")) typ = tag.getInteger("Type");
+			if (tag.hasKey("Style")) tex = tag.getString("Style");
 			if (tag.hasKey("Size")) siz = tag.getInteger("Size");
 		}
 
@@ -55,7 +57,7 @@ public class ItemRenderBlockElectricWires implements IItemRenderer {
 
 			Tessellator tessellator = Tessellator.instance;
 
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[typ][0], (String)TileTexture.texTest01[typ][1]));
+			Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 
 			tessellator.startDrawingQuads();
 			tessellator.addVertexWithUV(ss_p_m_i, ss_p_p_i, 1.0D, ss_p_m, ss_p_p);
@@ -85,7 +87,7 @@ public class ItemRenderBlockElectricWires implements IItemRenderer {
 			GL11.glDisable(GL11.GL_LIGHTING);
 
 			//--------------------------------------------------
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[typ][0], (String)TileTexture.texTest01[typ][1]));
+			Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 
 			BlockRenderElectricWires.addBox(ss_p_p, 1.0D, ss_p_p, ss_p_m, ss_p_p, ss_p_m);
 			BlockRenderElectricWires.addBox(ss_p_p, ss_p_m, ss_p_p, ss_p_m, 0.0D, ss_p_m);

@@ -153,7 +153,7 @@ liquid_hex = liq_hex;
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("LiquidID")) {
-			return "fluid." + FluidFake.fluid_list[tag.getInteger("LiquidID")].getName();
+			return "fluid." + FluidFake.list[tag.getInteger("LiquidID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
@@ -166,10 +166,10 @@ liquid_hex = liq_hex;
 					list.add("NameID: " + tag.getString("NameID") + ".");
 					list.add("Saturation Level: " + drinks.valueOf(tag.getString("NameID")).lvl + ".");
 				}
-				if (tag.hasKey("LiquidID") && FluidFake.fluid_list[tag.getInteger("LiquidID")] != null) {
+				if (tag.hasKey("LiquidID") && FluidFake.list[tag.getInteger("LiquidID")] != null) {
 					list.add("LiquidID: " + tag.getInteger("LiquidID") + "/" + 
-							FluidFake.fluid_list[tag.getInteger("LiquidID")].getLocalizedName() + ".");
-					list.add("Liquid Type: " + FluidFake.fluid_list[tag.getInteger("LiquidID")].getType() + ".");
+							FluidFake.list[tag.getInteger("LiquidID")].getLocalizedName() + ".");
+					list.add("Liquid Type: " + FluidFake.list[tag.getInteger("LiquidID")].getType() + ".");
 				}
 			}
 		} else {
@@ -180,8 +180,8 @@ liquid_hex = liq_hex;
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (drinks j1 : drinks.values()) {
-			for (int i = 0; i < FluidFake.fluid_list.length; ++i) {
-				if (FluidFake.fluid_list[i] != null) {
+			for (int i = 0; i < FluidFake.list.length; ++i) {
+				if (FluidFake.list[i] != null) {
 					list.add(addTag(j1.toString(), i));
 				}
 			}
@@ -226,7 +226,7 @@ liquid_hex = liq_hex;
 			} else {return 16777215;}
 		} else {
 			if (tag != null && tag.hasKey("LiquidID")) {
-				return FluidFake.fluid_list[tag.getInteger("LiquidID")].getColor();
+				return FluidFake.list[tag.getInteger("LiquidID")].getColor();
 			} else {return 16777215;}
 		}
 	}

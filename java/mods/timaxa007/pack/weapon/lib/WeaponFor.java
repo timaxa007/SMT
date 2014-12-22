@@ -51,17 +51,17 @@ public class WeaponFor {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public WeaponFor(int id, String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public WeaponFor(String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {

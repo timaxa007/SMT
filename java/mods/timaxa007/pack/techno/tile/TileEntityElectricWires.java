@@ -8,9 +8,11 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityElectricWires extends TileEntity {
 
-	private int type;
+	private String style;
+	//private int type;
 	private int size;
 	private int color;
+
 	public boolean up;
 	public boolean down;
 	public boolean north;
@@ -19,7 +21,7 @@ public class TileEntityElectricWires extends TileEntity {
 	public boolean east;
 
 	public TileEntityElectricWires() {
-		type = 0;
+		//type = 0;
 		size = 0;
 		color = 0xFFFFFF;
 		up = true;;
@@ -30,10 +32,22 @@ public class TileEntityElectricWires extends TileEntity {
 		east = true;;
 	}
 
+	public void setStyle(String i) {
+		style = i;
+	}
+
+	public String getStyle() {
+		return style;
+	}
+	/*
 	public void setType(int i) {
 		type = i;
 	}
 
+	public int getType() {
+		return type;
+	}
+	 */
 	public void setSize(int i) {
 		if (i <= 1) {
 			size = 1;
@@ -44,8 +58,16 @@ public class TileEntityElectricWires extends TileEntity {
 		}
 	}
 
+	public int getSize() {
+		return size;
+	}
+
 	public void setColor(int i) {
 		color = i;
+	}
+
+	public int getColor() {
+		return color;
 	}
 
 	public void updateEntity() {
@@ -57,22 +79,11 @@ public class TileEntityElectricWires extends TileEntity {
 		if (worldObj.getTileEntity(xCoord, yCoord, zCoord - 1) instanceof TileEntityElectricWires) {east = true;} else {east = false;}
 	}
 
-	public int getType() {
-		return type;
-	}
-
-	public int getSize() {
-		return size;
-	}
-
-	public int getColor() {
-		return color;
-	}
-
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		if (nbt.hasKey("Type")) type = nbt.getInteger("Type");
+		if (nbt.hasKey("Style")) style = nbt.getString("Style");
+		//if (nbt.hasKey("Type")) type = nbt.getInteger("Type");
 		if (nbt.hasKey("Size")) size = nbt.getInteger("Size");
 		if (nbt.hasKey("Color")) color = nbt.getInteger("Color");
 	}
@@ -80,7 +91,8 @@ public class TileEntityElectricWires extends TileEntity {
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		nbt.setInteger("Type", type);
+		if (style != null) nbt.setString("Style", style);
+		//nbt.setInteger("Type", type);
 		nbt.setInteger("Size", size);
 		nbt.setInteger("Color", color);
 	}

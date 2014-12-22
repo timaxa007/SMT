@@ -45,17 +45,17 @@ public class ItemForStock {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForStock(int id, String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public ItemForStock(String tag) {
+		if (Core.show_tip_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
-		if (Core.show_tip_info_testing) checkTag(tag);//OFF
 	}
 
 	public static int nextID() {
