@@ -29,8 +29,8 @@ public class FoodForBlock {
 	private float temperature_min;
 	private float temperature_max;
 
-	private String texture1Name;
-	private String texture2Name;
+	private String texture1;
+	private String texture2;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
@@ -69,7 +69,7 @@ public class FoodForBlock {
 		color_hex1 = 0;
 		color_hex2 = 0;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -91,12 +91,18 @@ public class FoodForBlock {
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
 
+	public static FoodForBlock get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	public FoodForBlock setName(String name) {
 		this.name = name;
 		return this;
@@ -212,55 +218,55 @@ public class FoodForBlock {
 	}
 
 	public FoodForBlock setTextures(String path) {
-		texture1Name = path;
-		texture2Name = path + "_overlay";
+		texture1 = path;
+		texture2 = path + "_overlay";
 		return this;
 	}
 
 	public FoodForBlock setTextures(String path1, String path2) {
-		texture1Name = path1;
-		texture2Name = path2;
+		texture1 = path1;
+		texture2 = path2;
 		return this;
 	}
 
 	public FoodForBlock setTexturesFood(String path) {
-		texture1Name = path;
-		texture2Name = path + "_overlay";
+		texture1 = path;
+		texture2 = path + "_overlay";
 		return this;
 	}
 
 	public FoodForBlock setTexturesFood(String path1, String path2) {
-		texture1Name = path1;
-		texture2Name = path2;
+		texture1 = path1;
+		texture2 = path2;
 		return this;
 	}
 
 	public FoodForBlock setTexture1(String path1) {
-		texture1Name = path1;
+		texture1 = path1;
 		return this;
 	}
 
 	public FoodForBlock setTexture1Food(String path1) {
-		texture1Name = path1;
+		texture1 = path1;
 		return this;
 	}
 
 	public String getTexture1() {
-		return texture1Name == null ? getName() : texture1Name;
+		return texture1 == null ? getName() : texture1;
 	}
 
 	public FoodForBlock setTexture2(String path2) {
-		texture2Name = path2;
+		texture2 = path2;
 		return this;
 	}
 
 	public FoodForBlock setTexture2Food(String path2) {
-		texture2Name = path2;
+		texture2 = path2;
 		return this;
 	}
 
 	public String getTexture2() {
-		return texture2Name == null ? getTexture1() : texture2Name;
+		return texture2 == null ? getTexture1() : texture2;
 	}
 
 }

@@ -54,7 +54,7 @@ public class FluidFake {
 		list[id] = this;
 		this.tag = tag;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -76,21 +76,27 @@ public class FluidFake {
 		return 0;
 	}
 
-	private void checkTag(String str) {
+	private static void checkTag(String str) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == str)
 				System.out.println("!Duplicate: " + str);
 	}
 
+	public static FluidFake get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	public FluidFake setName(String name) {
 		this.name = name;
 		return this;
 	}
-	
+
 	public String getName() {
 		return name == null ? "unnamed" : name;
 	}
-	
+
 	public String getLocalizedName() {
 		return StatCollector.translateToLocal("fluid." + getName() + ".name");
 	}
@@ -99,11 +105,11 @@ public class FluidFake {
 		this.type = type;
 		return this;
 	}
-	
+
 	public String getType() {
 		return type == null ? "untype" : type;
 	}
-	
+
 	public String getLocalizedType() {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
@@ -112,12 +118,12 @@ public class FluidFake {
 		color_hex = color;
 		return this;
 	}
-	
+
 	public FluidFake setColorMix(int color1, int color2) {
 		color_hex = GetColors.getColorMix(color1, color2);
 		return this;
 	}
-	
+
 	public int getColor() {
 		return color_hex == 0 ? 0xFFFFFF : color_hex;
 	}
@@ -133,7 +139,7 @@ public class FluidFake {
 		temperature = f;
 		return this;
 	}
-	
+
 	public float getTemperature() {
 		return temperature == 0 ? 0.0F : temperature;
 	}
@@ -142,7 +148,7 @@ public class FluidFake {
 		temperature_min = f;
 		return this;
 	}
-	
+
 	public float getTemperatureMin() {
 		return temperature_min == 0 ? 0.0F : temperature_min;
 	}
@@ -151,7 +157,7 @@ public class FluidFake {
 		temperature_max = f;
 		return this;
 	}
-	
+
 	public float getTemperatureMax() {
 		return temperature_max == 0 ? 0.0F : temperature_max;
 	}
@@ -160,7 +166,7 @@ public class FluidFake {
 		texture = path;
 		return this;
 	}
-	
+
 	public String getTexture() {
 		return texture == null ? getName() : texture;
 	}

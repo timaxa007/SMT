@@ -11,7 +11,9 @@ import net.minecraft.util.StatCollector;
 
 public class AddTextureModel {
 
-	public static AddTextureModel[] list = new AddTextureModel[1024];
+	public static final AddTextureModel[] list = new AddTextureModel[1024];
+
+	public static final AddTextureModel empty = new AddTextureModel(0).setTextureBlock("timaxa007", "woodFrame");
 
 	public int id;
 	public String tag;
@@ -22,8 +24,6 @@ public class AddTextureModel {
 
 	private static String tb = "textures/blocks/";
 	private static String ti = "textures/items/";
-
-	public static AddTextureModel empty = new AddTextureModel(0).setTextureBlock("timaxa007", "woodFrame");
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
@@ -58,7 +58,7 @@ public class AddTextureModel {
 		this.tag = tag;
 		metadata = 0;
 	}
-
+	//--------------------------------------------------------
 	private static int getNextID() {
 		for (int i = 0; i < list.length; ++i)
 			if (list[i] == null)
@@ -80,7 +80,7 @@ public class AddTextureModel {
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
@@ -88,10 +88,10 @@ public class AddTextureModel {
 
 	public static AddTextureModel get(String tag) {
 		if (tag != null)
-			return list[AddTextureModel.getID_tag(tag)];
+			return list[getID_tag(tag)];
 		return empty;
 	}
-
+	//--------------------------------------------------------
 	/**Taken from name icon: mod_id and name texture.**/
 	public AddTextureModel setBlock(Block block) {
 		this.block = block;

@@ -64,7 +64,7 @@ public class GerminationPlants {
 		list[id] = this;
 		this.tag = tag;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -86,11 +86,18 @@ public class GerminationPlants {
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
+
+	public static GerminationPlants get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	/*
 	public int isTypeInt(String ttt) {
 		switch (ttt) {

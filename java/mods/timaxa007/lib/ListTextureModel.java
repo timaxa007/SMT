@@ -18,8 +18,8 @@ new AddTextureModel("minecraft" + "_" + "planks_oak").setTextureBlock("minecraft
 new AddTextureModel("minecraft" + "_" + "planks_spruce").setTextureBlock("minecraft", "planks_spruce");
 
 new AddTextureModel("minecraft" + "_" + "bedrock").setBlock(Blocks.bedrock);
-new AddTextureModel("minecraft" + "_" + "water").setBlock(Blocks.water);
-new AddTextureModel("minecraft" + "_" + "lava").setBlock(Blocks.lava);
+//new AddTextureModel("minecraft" + "_" + "water").setBlock(Blocks.water);
+//new AddTextureModel("minecraft" + "_" + "lava").setBlock(Blocks.lava);
 new AddTextureModel("minecraft" + "_" + "sand").setBlock(Blocks.sand);
 new AddTextureModel("minecraft" + "_" + "red_sand").setTextureBlock("minecraft", "red_sand");
 new AddTextureModel("minecraft" + "_" + "gravel").setBlock(Blocks.gravel);
@@ -58,7 +58,6 @@ new AddTextureModel("minecraft" + "_" + "lapis_ore").setBlock(Blocks.lapis_ore);
 new AddTextureModel("minecraft" + "_" + "lapis_block").setBlock(Blocks.lapis_block);
 new AddTextureModel("minecraft" + "_" + "sandstone").setBlock(Blocks.sandstone);
 new AddTextureModel("minecraft" + "_" + "noteblock").setBlock(Blocks.noteblock);
-new AddTextureModel("minecraft" + "_" + "tallgrass").setBlock(Blocks.tallgrass);
 
 new AddTextureModel("minecraft" + "_" + "wool_colored_black").setTextureBlock("minecraft", "wool_colored_black");//1
 new AddTextureModel("minecraft" + "_" + "wool_colored_blue").setTextureBlock("minecraft", "wool_colored_blue");//2

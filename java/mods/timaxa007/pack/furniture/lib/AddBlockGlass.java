@@ -11,7 +11,7 @@ import mods.timaxa007.tms.Core;
  */
 public class AddBlockGlass {
 
-	public AddBlockGlass[] list = new AddBlockGlass[127];
+	public static final AddBlockGlass[] list = new AddBlockGlass[127];
 
 	private int id;
 	private String tag;
@@ -58,34 +58,40 @@ public class AddBlockGlass {
 		color_hex = 0xFFFFFF;
 		texture = "";
 	}
-
-	public int nextID() {
+	//--------------------------------------------------------
+	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
 				return i;
 		return list.length - 1;
 	}
 
-	public boolean hasTag(String tag) {
+	public static boolean hasTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
 		return false;
 	}
 
-	public int getID_tag(String tag) {
+	public static int getID_tag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
 
+	public static AddBlockGlass get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return list[0];
+	}
+	//--------------------------------------------------------
 	public AddBlockGlass setID(int id) {
 		this.id = id;
 		return this;

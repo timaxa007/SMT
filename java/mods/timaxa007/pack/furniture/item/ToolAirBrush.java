@@ -208,14 +208,14 @@ public class ToolAirBrush extends Item {
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);
 
-		itemIcon = ir.registerIcon("timaxa007:colors/tool_airbrush");
+		itemIcon = ir.registerIcon(getIconString());
 
 		icon_tex = new IIcon[airbrush_type.length];
 		icon_ovl = new IIcon[airbrush_type.length];
 
 		for (int i = 0; i < airbrush_type.length; i++) {
-			icon_tex[i] = ir.registerIcon("timaxa007:colors/tool_airbrush");
-			icon_ovl[i] = ir.registerIcon("timaxa007:colors/tool_airbrush" + "_overlay");
+			icon_tex[i] = ir.registerIcon(getIconString());
+			icon_ovl[i] = ir.registerIcon(getIconString() + "_overlay");
 		}
 	}
 

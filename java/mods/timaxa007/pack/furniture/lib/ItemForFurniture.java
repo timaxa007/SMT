@@ -11,9 +11,9 @@ import net.minecraft.util.StatCollector;
  */
 public class ItemForFurniture {
 
-	public static ItemForFurniture[] list = new ItemForFurniture[2048];
+	public static final ItemForFurniture[] list = new ItemForFurniture[2048];
 
-	public static ItemForFurniture empty = new ItemForFurniture(0);
+	public static final ItemForFurniture empty = new ItemForFurniture(0);
 
 	public int id;
 	public String tag;
@@ -23,8 +23,8 @@ public class ItemForFurniture {
 	private int color_hex1;
 	private int color_hex2;
 
-	private String texture1Name;
-	private String texture2Name;
+	private String texture1;
+	private String texture2;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
@@ -55,7 +55,7 @@ public class ItemForFurniture {
 		list[id] = this;
 		this.tag = tag;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -77,12 +77,18 @@ public class ItemForFurniture {
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
 
+	public static ItemForFurniture get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	public ItemForFurniture setName(String name) {
 		this.name = name;
 		return this;
@@ -140,33 +146,33 @@ public class ItemForFurniture {
 	}
 
 	public ItemForFurniture setTextures(String path) {
-		texture1Name = path;
-		texture2Name = path + "_overlay";
+		texture1 = path;
+		texture2 = path + "_overlay";
 		return this;
 	}
 
 	public ItemForFurniture setTextures(String path1, String path2) {
-		texture1Name = path1;
-		texture2Name = path2;
+		texture1 = path1;
+		texture2 = path2;
 		return this;
 	}
 
 	public ItemForFurniture setTexture1(String path1) {
-		texture1Name = path1;
+		texture1 = path1;
 		return this;
 	}
 
 	public String getTexture1() {
-		return texture1Name == null ? getName() : texture1Name;
+		return texture1 == null ? getName() : texture1;
 	}
 
 	public ItemForFurniture setTexture2(String path2) {
-		texture2Name = path2;
+		texture2 = path2;
 		return this;
 	}
 
 	public String getTexture2() {
-		return texture2Name == null ? getTexture1() : texture2Name;
+		return texture2 == null ? getTexture1() : texture2;
 	}
 
 }

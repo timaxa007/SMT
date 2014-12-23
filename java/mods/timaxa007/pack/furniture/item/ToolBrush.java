@@ -13,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -135,9 +134,9 @@ public class ToolBrush extends Item {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);
-		itemIcon = ir.registerIcon("timaxa007:colors/tool_brush");
-		icon_a = ir.registerIcon("timaxa007:colors/tool_brush" + "_overlay");
-		icon_b = ir.registerIcon("timaxa007:colors/tool_brush");
+		itemIcon = ir.registerIcon(getIconString());
+		icon_a = ir.registerIcon(getIconString() + "_overlay");
+		icon_b = ir.registerIcon(getIconString());
 	}
 
 }

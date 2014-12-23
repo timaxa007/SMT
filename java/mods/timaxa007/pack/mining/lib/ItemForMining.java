@@ -13,7 +13,7 @@ public class ItemForMining {
 
 	public static final ItemForMining[] list = new ItemForMining[2048];
 
-	public static ItemForMining empty = new ItemForMining(0);
+	public static final ItemForMining empty = new ItemForMining(0);
 
 	public int id;
 	public String tag;
@@ -23,8 +23,8 @@ public class ItemForMining {
 	private int color_hex1;
 	private int color_hex2;
 
-	private String texture1Name;
-	private String texture2Name;
+	private String texture1;
+	private String texture2;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
@@ -55,7 +55,7 @@ public class ItemForMining {
 		list[id] = this;
 		this.tag = tag;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -77,12 +77,18 @@ public class ItemForMining {
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
 
+	public static ItemForMining get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	public ItemForMining setName(String name) {
 		this.name = name;
 		return this;
@@ -140,33 +146,33 @@ public class ItemForMining {
 	}
 
 	public ItemForMining setTextures(String path) {
-		texture1Name = path;
-		texture2Name = path + "_overlay";
+		texture1 = path;
+		texture2 = path + "_overlay";
 		return this;
 	}
 
 	public ItemForMining setTextures(String path1, String path2) {
-		texture1Name = path1;
-		texture2Name = path2;
+		texture1 = path1;
+		texture2 = path2;
 		return this;
 	}
 
 	public ItemForMining setTexture1(String path1) {
-		texture1Name = path1;
+		texture1 = path1;
 		return this;
 	}
 
 	public String getTexture1() {
-		return texture1Name == null ? getName() : texture1Name;
+		return texture1 == null ? getName() : texture1;
 	}
 
 	public ItemForMining setTexture2(String path2) {
-		texture2Name = path2;
+		texture2 = path2;
 		return this;
 	}
 
 	public String getTexture2() {
-		return texture2Name == null ? getTexture1() : texture2Name;
+		return texture2 == null ? getTexture1() : texture2;
 	}
 
 }

@@ -11,9 +11,9 @@ import net.minecraft.util.StatCollector;
  */
 public class ItemForTechno {
 
-	public static final ItemForTechno[] item_ = new ItemForTechno[2048];
+	public static final ItemForTechno[] list = new ItemForTechno[2048];
 
-	public static ItemForTechno empty = new ItemForTechno(0);
+	public static final ItemForTechno empty = new ItemForTechno(0);
 
 	public int id;
 	public String tag;
@@ -23,21 +23,21 @@ public class ItemForTechno {
 	private int color_hex1;
 	private int color_hex2;
 
-	private String texture1Name;
-	private String texture2Name;
+	private String texture1;
+	private String texture2;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForTechno() {
 		id = nextID();
-		item_[id] = this;
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForTechno(int id) {
 		this.id = id;
-		item_[id] = this;
+		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
@@ -45,44 +45,50 @@ public class ItemForTechno {
 	public ItemForTechno(int id, String tag) {
 		if (Core.show_tip_info_testing) checkTag(tag);
 		this.id = id;
-		item_[id] = this;
+		list[id] = this;
 		this.tag = tag;
 	}
 
 	public ItemForTechno(String tag) {
 		if (Core.show_tip_info_testing) checkTag(tag);
 		id = nextID();
-		item_[id] = this;
+		list[id] = this;
 		this.tag = tag;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
-		for (int i = 0; i < item_.length; i++)
-			if (item_[i] == null)
+		for (int i = 0; i < list.length; i++)
+			if (list[i] == null)
 				return i;
-		return item_.length - 1;
+		return list.length - 1;
 	}
 
 	public static boolean hasTag(String tag) {
-		for (int i = 0; i < item_.length; i++)
-			if (tag.equalsIgnoreCase(item_[i].tag))
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return true;
 		return false;
 	}
 
-	public static int getID_name(String tag) {
-		for (int i = 0; i < item_.length; i++)
-			if (tag.equalsIgnoreCase(item_[i].tag))
+	public static int getID_tag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (tag.equalsIgnoreCase(list[i].tag))
 				return i;
 		return 0;
 	}
 
-	private void checkTag(String tag) {
-		for (int i = 0; i < item_.length; i++)
-			if (item_[i] != null && item_[i].tag == tag)
+	private static void checkTag(String tag) {
+		for (int i = 0; i < list.length; i++)
+			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
 
+	public static ItemForTechno get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	public ItemForTechno setName(String name) {
 		this.name = name;
 		return this;
@@ -140,33 +146,33 @@ public class ItemForTechno {
 	}
 
 	public ItemForTechno setTextures(String path) {
-		texture1Name = path;
-		texture2Name = path + "_overlay";
+		texture1 = path;
+		texture2 = path + "_overlay";
 		return this;
 	}
 
 	public ItemForTechno setTextures(String path1, String path2) {
-		texture1Name = path1;
-		texture2Name = path2;
+		texture1 = path1;
+		texture2 = path2;
 		return this;
 	}
 
 	public ItemForTechno setTexture1(String path1) {
-		texture1Name = path1;
+		texture1 = path1;
 		return this;
 	}
 
 	public String getTexture1() {
-		return texture1Name == null ? getName() : texture1Name;
+		return texture1 == null ? getName() : texture1;
 	}
 
 	public ItemForTechno setTexture2(String path2) {
-		texture2Name = path2;
+		texture2 = path2;
 		return this;
 	}
 
 	public String getTexture2() {
-		return texture2Name == null ? getTexture1() : texture2Name;
+		return texture2 == null ? getTexture1() : texture2;
 	}
 
 }

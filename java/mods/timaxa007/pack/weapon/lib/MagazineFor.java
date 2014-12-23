@@ -27,8 +27,8 @@ public class MagazineFor {
 	private float temperature_min;
 	private float temperature_max;
 
-	private String texture1Name;
-	private String texture2Name;
+	private String texture1;
+	private String texture2;
 
 	private AmmoFor bullet;
 	private int size;
@@ -62,7 +62,7 @@ public class MagazineFor {
 		list[id] = this;
 		this.tag = tag;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -84,12 +84,18 @@ public class MagazineFor {
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
 
+	public static MagazineFor get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	public MagazineFor setName(String name) {
 		this.name = name;
 		return this;
@@ -181,33 +187,33 @@ public class MagazineFor {
 	}
 
 	public MagazineFor setTextures(String str) {
-		texture1Name = str;
-		texture2Name = str + "_overlay";
+		texture1 = str;
+		texture2 = str + "_overlay";
 		return this;
 	}
 
 	public MagazineFor setTextures(String str1, String str2) {
-		texture1Name = str1;
-		texture2Name = str2;
+		texture1 = str1;
+		texture2 = str2;
 		return this;
 	}
 
 	public MagazineFor setTexture1(String str) {
-		texture1Name = str;
+		texture1 = str;
 		return this;
 	}
 
 	public String getTexture1() {
-		return texture1Name == null ? getName() : texture1Name;
+		return texture1 == null ? getName() : texture1;
 	}
 
 	public MagazineFor setTexture2(String str) {
-		texture2Name = str;
+		texture2 = str;
 		return this;
 	}
 
 	public String getTexture2() {
-		return texture2Name == null ? getTexture1() : texture2Name;
+		return texture2 == null ? getTexture1() : texture2;
 	}
 
 	public MagazineFor setSize(int i) {

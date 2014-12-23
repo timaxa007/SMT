@@ -11,9 +11,9 @@ import net.minecraft.util.StatCollector;
  */
 public class ItemForMagic {
 
-	public static ItemForMagic[] list = new ItemForMagic[2048];
+	public static final ItemForMagic[] list = new ItemForMagic[2048];
 
-	public static ItemForMagic empty = new ItemForMagic(0);
+	public static final ItemForMagic empty = new ItemForMagic(0);
 
 	public int id;
 	public String tag;
@@ -23,9 +23,8 @@ public class ItemForMagic {
 	private int color_hex1;
 	private int color_hex2;
 
-	//@SideOnly(Side.CLIENT) protected IIcon icon_item;
-	protected String texture1Name;
-	protected String texture2Name;
+	private String texture1;
+	private String texture2;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
@@ -56,7 +55,7 @@ public class ItemForMagic {
 		list[id] = this;
 		this.tag = tag;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -78,12 +77,18 @@ public class ItemForMagic {
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
 
+	public static ItemForMagic get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	public ItemForMagic setName(String name) {
 		this.name = name;
 		return this;
@@ -141,33 +146,33 @@ public class ItemForMagic {
 	}
 
 	public ItemForMagic setTextures(String path) {
-		texture1Name = path;
-		texture2Name = path + "_overlay";
+		texture1 = path;
+		texture2 = path + "_overlay";
 		return this;
 	}
 
 	public ItemForMagic setTextures(String path1, String path2) {
-		texture1Name = path1;
-		texture2Name = path2;
+		texture1 = path1;
+		texture2 = path2;
 		return this;
 	}
 
 	public ItemForMagic setTexture1(String path1) {
-		texture1Name = path1;
+		texture1 = path1;
 		return this;
 	}
 
 	public String getTexture1() {
-		return texture1Name == null ? getName() : texture1Name;
+		return texture1 == null ? getName() : texture1;
 	}
 
 	public ItemForMagic setTexture2(String path2) {
-		texture2Name = path2;
+		texture2 = path2;
 		return this;
 	}
 
 	public String getTexture2() {
-		return texture2Name == null ? getTexture1() : texture2Name;
+		return texture2 == null ? getTexture1() : texture2;
 	}
 
 }

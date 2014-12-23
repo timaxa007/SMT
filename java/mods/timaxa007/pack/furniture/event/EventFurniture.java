@@ -60,6 +60,20 @@ public class EventFurniture {
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
+	public void onUseCraftHammer(PlayerEvent.ItemCraftedEvent e) {
+		System.out.println("event craft");
+		for (int i = 0; i < e.craftMatrix.getSizeInventory(); i++) { 
+			if (e.craftMatrix.getStackInSlot(i) != null) {
+				ItemStack j = e.craftMatrix.getStackInSlot(i);
+				if (j.getItem() != null && j.getItem() instanceof ToolHammer) {
+					ItemStack k = new ItemStack(PackFurniture.proxy.tool_hammer, 2, (j.getItemDamage() + 1 ));
+					e.craftMatrix.setInventorySlotContents(i, k);
+				}
+			}
+		}
+	}*/
+	//--------------------------------------------------------------------------------------------------------------
+	/*@SubscribeEvent
 	public void onLampOn(PlayerInteractEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		World world = player.worldObj;

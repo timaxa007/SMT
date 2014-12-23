@@ -25,7 +25,7 @@ public class OreFake {
 	private float temperature_min;
 	private float temperature_max;
 
-	protected String textureName;
+	private String texture;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
@@ -56,7 +56,7 @@ public class OreFake {
 		list[id] = this;
 		this.tag = tag;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -78,12 +78,18 @@ public class OreFake {
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
 
+	public static OreFake get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	public OreFake setName(String name) {
 		this.name = name;
 		return this;
@@ -154,17 +160,17 @@ public class OreFake {
 	}
 
 	public OreFake setTexture(String path) {
-		textureName = path;
+		texture = path;
 		return this;
 	}
 
 	public OreFake setTextureOre(String path) {
-		textureName = "ore/" + path;
+		texture = "ore/" + path;
 		return this;
 	}
 
 	public String getTexture() {
-		return textureName == null ? getName() : textureName;
+		return texture == null ? getName() : texture;
 	}
 
 }

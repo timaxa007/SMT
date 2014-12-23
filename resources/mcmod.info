@@ -1,16 +1,15 @@
 [
 {
-  "modid": "TMS",
-  "name": "TMS",
-  "description": "Made by timaxa007. Thanks for the help: anti344, Dragon2488 and Zloi_Kloun",
-  "version": "0.1a",
-  "mcversion": "1.7.10",
-  "logoFile": "/my_face.png",
-  "url": "http://forum.mcmodding.ru/viewtopic.php?id=4",
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "Example placeholder mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
   "updateUrl": "",
-  "authors": ["timaxa007"],
-  "credits": "Made by timaxa007. Thanks for the help: anti344, Dragon2488 and Zloi_Kloun",
-  "parent": "",
+  "authorList": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
   "screenshots": [],
   "dependencies": []
 }

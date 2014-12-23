@@ -14,7 +14,7 @@ public class WeaponFor {
 
 	public static final WeaponFor[] list = new WeaponFor[2048];
 
-	public static final WeaponFor weapon_empty = new WeaponFor(0);
+	public static final WeaponFor empty = new WeaponFor(0);
 
 	public int id;
 	public String tag;
@@ -31,8 +31,8 @@ public class WeaponFor {
 	private float temperature_min;
 	private float temperature_max;
 
-	protected String texture1Name;
-	protected String texture2Name;
+	private String texture1;
+	private String texture2;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
@@ -63,7 +63,7 @@ public class WeaponFor {
 		list[id] = this;
 		this.tag = tag;
 	}
-
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -85,12 +85,18 @@ public class WeaponFor {
 		return 0;
 	}
 
-	private void checkTag(String tag) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
 				System.out.println("!Duplicate: " + tag);
 	}
 
+	public static WeaponFor get(String tag) {
+		if (tag != null)
+			return list[getID_tag(tag)];
+		return empty;
+	}
+	//--------------------------------------------------------
 	public WeaponFor setName(String name) {
 		this.name = name;
 		return this;
@@ -182,33 +188,33 @@ public class WeaponFor {
 	}
 
 	public WeaponFor setTextures(String path) {
-		texture1Name = path;
-		texture2Name = path + "_overlay";
+		texture1 = path;
+		texture2 = path + "_overlay";
 		return this;
 	}
 
 	public WeaponFor setTextures(String path1, String path2) {
-		texture1Name = path1;
-		texture2Name = path2;
+		texture1 = path1;
+		texture2 = path2;
 		return this;
 	}
 
 	public WeaponFor setTexture1(String path1) {
-		texture1Name = path1;
+		texture1 = path1;
 		return this;
 	}
 
 	public String getTexture1() {
-		return texture1Name == null ? getName() : texture1Name;
+		return texture1 == null ? getName() : texture1;
 	}
 
-	public WeaponFor setTexture2Name(String path2) {
-		texture2Name = path2;
+	public WeaponFor setTexture2(String path2) {
+		texture2 = path2;
 		return this;
 	}
 
 	public String getTexture2() {
-		return texture2Name == null ? getTexture1() : texture2Name;
+		return texture2 == null ? getTexture1() : texture2;
 	}
 
 	public WeaponFor setAmmo(MagazineFor magazines) {

@@ -8,6 +8,7 @@ import mods.timaxa007.pack.furniture.lib.ListFurniture;
 import mods.timaxa007.pack.furniture.recipe.FuelHandlerFurniture;
 import mods.timaxa007.pack.furniture.recipe.RecipeArmorColor;
 import mods.timaxa007.pack.furniture.recipe.RecipeCnstorBlockColors;
+import mods.timaxa007.pack.furniture.recipe.RecipeToolHammer;
 import mods.timaxa007.pack.furniture.recipe.Recipes_Armor;
 import mods.timaxa007.pack.furniture.recipe.Recipes_Furniture;
 import mods.timaxa007.pack.furniture.tile.*;
@@ -141,6 +142,16 @@ public class ProxyServer {
 	public static ItemArmor armor_new_chest;
 	public static ItemArmor armor_new_leggin;
 	public static ItemArmor armor_new_boot;
+	public static Item tool_axe;
+	public static Item tool_shovel;
+	public static Item tool_pickaxe;
+	public static Item tool_hoe;
+	public static Item tool_hammer;
+	public static Item tool_sickle;
+	public static Item tool_scythe;
+	public static Item tool_sword;
+	public static Item tool_battle_axe;
+	public static Item tool_battle_hammer;
 
 	//Blocks
 	public static int render_block_cnstor_block_modelID;
@@ -298,6 +309,16 @@ public class ProxyServer {
 		armor_new_chest = (ItemArmor) new ArmorNew(COSTUME, 0, 1).setUnlocalizedName("armor_new_chest");
 		armor_new_leggin = (ItemArmor) new ArmorNew(COSTUME, 0, 2).setUnlocalizedName("armor_new_leggin");
 		armor_new_boot = (ItemArmor) new ArmorNew(COSTUME, 0, 3).setUnlocalizedName("armor_new_boot");
+		tool_axe = new ToolAxe();
+		tool_shovel = new ToolShovel();
+		tool_pickaxe = new ToolPickaxe();
+		tool_hoe = new ToolHoe();
+		tool_hammer = new ToolHammer();
+		tool_sickle = new ToolSickle();
+		tool_scythe = new ToolScythe();
+		tool_sword = new ToolSword();
+		tool_battle_axe = new ToolBattleAxe();
+		tool_battle_hammer = new ToolBattleHammer();
 
 		//Blocks
 		render_block_cnstor_block_modelID = -1;
@@ -436,6 +457,16 @@ public class ProxyServer {
 		GameRegistry.registerItem(armor_new_chest, "ArmorNewChest");
 		GameRegistry.registerItem(armor_new_leggin, "ArmorNewLeggin");
 		GameRegistry.registerItem(armor_new_boot, "ArmorNewBoot");
+		GameRegistry.registerItem(tool_axe, "ToolAxe");
+		GameRegistry.registerItem(tool_shovel, "ToolShovel");
+		GameRegistry.registerItem(tool_pickaxe, "ToolPickaxe");
+		GameRegistry.registerItem(tool_hoe, "ToolHoe");
+		GameRegistry.registerItem(tool_hammer, "ToolHammer");
+		GameRegistry.registerItem(tool_sickle, "ToolSickle");
+		GameRegistry.registerItem(tool_scythe, "ToolScythe");
+		GameRegistry.registerItem(tool_sword, "ToolSword");
+		GameRegistry.registerItem(tool_battle_axe, "ToolBattleAxe");
+		GameRegistry.registerItem(tool_battle_hammer, "ToolBattleHammer");
 
 		GameRegistry.registerTileEntity(TileEntityFurnitureMachines.class, "TileEntityFurnitureMachines");
 		GameRegistry.registerTileEntity(TileEntityCnstorBlock.class, "TileEntityCnstorBlock");
@@ -507,6 +538,7 @@ public class ProxyServer {
 
 		GameRegistry.addRecipe(new RecipeCnstorBlockColors());
 		GameRegistry.addRecipe(new RecipeArmorColor());
+		GameRegistry.addRecipe(new RecipeToolHammer());
 		//GameRegistry.registerCraftingHandler(new CraftFurnitureHandler());
 
 		GameRegistry.registerFuelHandler(new FuelHandlerFurniture());
