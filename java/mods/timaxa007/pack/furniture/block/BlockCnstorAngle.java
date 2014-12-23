@@ -83,7 +83,7 @@ public class BlockCnstorAngle extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(int par1, int par2) {
-		ItemStack is=new ItemStack(PackFurniture.proxy.block_cnstor_angle, 1, 0);
+		ItemStack is=new ItemStack(PackFurniture.proxy.block.cnstor_angle, 1, 0);
 		NBTTagCompound tag=new NBTTagCompound();
 		tag.setInteger("Type", par2);
 		tag.setInteger("Size", par1);

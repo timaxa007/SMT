@@ -79,7 +79,7 @@ public class ItemPaintCan extends Item {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.item_paint_can);
+		ItemStack is = new ItemStack(PackFurniture.proxy.item.paint_can);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Color", par1);
 		//tag.setInteger("HexColor", GetColors.getHexColors[par2]);

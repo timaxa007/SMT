@@ -53,7 +53,7 @@ public class BlockLampsInvert extends Block{
 			if (!powered && !world.isBlockIndirectlyGettingPowered(x, y, z)) {
 				world.scheduleBlockUpdate(x, y, z, this, 4);
 			} else if (powered && world.isBlockIndirectlyGettingPowered(x, y, z)) {
-				world.setBlock(x, y, z, PackFurniture.proxy.block_lamps_off_invert, world.getBlockMetadata(x, y, z), 2);
+				world.setBlock(x, y, z, PackFurniture.proxy.block.lamps_off_invert, world.getBlockMetadata(x, y, z), 2);
 			}
 		}
 	}
@@ -64,21 +64,21 @@ public class BlockLampsInvert extends Block{
 				world.scheduleBlockUpdate(x, y, z, this, 4);
 			}
 			else if (powered && world.isBlockIndirectlyGettingPowered(x, y, z)) {
-				world.setBlock(x, y, z, PackFurniture.proxy.block_lamps_off_invert, world.getBlockMetadata(x, y, z), 2);
+				world.setBlock(x, y, z, PackFurniture.proxy.block.lamps_off_invert, world.getBlockMetadata(x, y, z), 2);
 			}
 		}
 	}
 
 	public void updateTick(World world, int x, int y, int z, Random random) {
 		if (!world.isRemote && !powered && !world.isBlockIndirectlyGettingPowered(x, y, z)) {
-			world.setBlock(x, y, z, PackFurniture.proxy.block_lamps_on_invert, world.getBlockMetadata(x, y, z), 2);
+			world.setBlock(x, y, z, PackFurniture.proxy.block.lamps_on_invert, world.getBlockMetadata(x, y, z), 2);
 		}
 	}
 	/*
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 ArrayList<ItemStack> ret=super.getBlockDropped(world, x, y, z, metadata, fortune);
-ret.add(new ItemStack(PackFurniture.proxy.block_lamps_on_invert, 1, metadata));
+ret.add(new ItemStack(PackFurniture.proxy.block.lamps_on_invert, 1, metadata));
 return ret;
 }
 	 */

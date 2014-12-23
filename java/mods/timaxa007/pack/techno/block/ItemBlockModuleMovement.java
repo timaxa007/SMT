@@ -34,7 +34,7 @@ public class ItemBlockModuleMovement extends ItemBlock {
 			if (hitY == 1.0F) {y++;}
 			if (hitY == 0.0F) {y--;}
 
-			world.setBlock(x, y, z, PackTechno.proxy.block_module_movement, 0, 3);
+			world.setBlock(x, y, z, PackTechno.proxy.block.module_movement, 0, 3);
 
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();

@@ -84,7 +84,7 @@ public class EventStock {
 	public void addNewBucket(FillBucketEvent event) {
 		if (event.current.getItem() == Items.bucket) {
 			if (event.world.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ) == Blocks.stone) {
-				event.result = new ItemStack(PackStock.proxy.item_drinks, 1, 0);
+				event.result = new ItemStack(PackStock.proxy.item.drinks, 1, 0);
 				event.world.setBlockToAir(event.target.blockX, event.target.blockY, event.target.blockZ);
 				event.setResult(Result.ALLOW);
 			}
@@ -99,7 +99,7 @@ public class EventStock {
 		if (player != null && world != null && event.action == event.action.RIGHT_CLICK_BLOCK) {
 			if (current != null && current.getItem() == Items.glass_bottle && world.getBlock(event.x, event.y, event.z) == Blocks.stone) {
 				--current.stackSize;
-				player.inventory.addItemStackToInventory(new ItemStack(PackStock.proxy.item_drinks, 1, 0));
+				player.inventory.addItemStackToInventory(new ItemStack(PackStock.proxy.item.drinks, 1, 0));
 				event.setResult(Result.ALLOW);
 			}
 		}

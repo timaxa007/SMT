@@ -90,7 +90,7 @@ public class BlockCristals extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(int par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackMining.proxy.block_cristals, 1, 0);
+		ItemStack is = new ItemStack(PackMining.proxy.block.cristals, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Type", par1);
 		tag.setInteger("Color", par2);

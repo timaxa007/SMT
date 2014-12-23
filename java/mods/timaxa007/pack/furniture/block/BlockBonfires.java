@@ -25,8 +25,8 @@ public class BlockBonfires extends Block {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			//--------------------------------
-			if ((current.getItem() == Items.flint_and_steel) && (world.getBlock(x, y, z) == PackFurniture.proxy.block_bonfires)) {
-				world.setBlock(x, y, z, PackFurniture.proxy.block_bonfires_burning);
+			if ((current.getItem() == Items.flint_and_steel) && (world.getBlock(x, y, z) == PackFurniture.proxy.block.bonfires)) {
+				world.setBlock(x, y, z, PackFurniture.proxy.block.bonfires_burning);
 				current.setItemDamage(current.getItemDamage() + 1);
 				return true;
 			} else {

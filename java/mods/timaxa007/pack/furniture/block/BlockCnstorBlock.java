@@ -105,7 +105,7 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(int par1, int par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_cnstor_block);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_block);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Type", par1);
 		tag.setInteger("Color", par2);

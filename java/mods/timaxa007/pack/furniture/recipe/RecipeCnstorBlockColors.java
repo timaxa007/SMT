@@ -24,15 +24,15 @@ public class RecipeCnstorBlockColors implements IRecipe {
 		ItemStack cmj = ic.getStackInSlot(0);
 		ItemStack cmh = ic.getStackInSlot(1);
 		if (
-				(cmj != null && cmj.getItem() == new ItemStack(PackFurniture.proxy.block_cnstor_block).getItem() && cmj.getTagCompound() != null) && 
-				(cmh != null && cmh.getItem() == new ItemStack(PackFurniture.proxy.item_colored).getItem()) &&
+				(cmj != null && cmj.getItem() == new ItemStack(PackFurniture.proxy.block.cnstor_block).getItem() && cmj.getTagCompound() != null) && 
+				(cmh != null && cmh.getItem() == new ItemStack(PackFurniture.proxy.item.colored).getItem()) &&
 				(cmj != cmh) && (cmh.getItemDamage() >= 0 && cmh.getItemDamage() < 16)
 				) {
 			return true;
 		}
 
 		if (
-				(cmj != null && cmj.getItem() == new ItemStack(PackFurniture.proxy.block_cnstor_block).getItem() && cmj.getTagCompound() != null) && 
+				(cmj != null && cmj.getItem() == new ItemStack(PackFurniture.proxy.block.cnstor_block).getItem() && cmj.getTagCompound() != null) && 
 				(cmh != null && cmh.getItem() == new ItemStack(Items.dye).getItem()) &&
 				(cmj != cmh) && (cmh.getItemDamage() >= 0 && cmh.getItemDamage() < 16)
 				) {
@@ -55,10 +55,10 @@ public class RecipeCnstorBlockColors implements IRecipe {
 		ItemStack cmh = ic.getStackInSlot(1);
 		if (
 				(cmj != null && cmh != null && cmj != cmh) &&
-				(cmj.getItem() == new ItemStack(PackFurniture.proxy.block_cnstor_block).getItem() && cmj.getTagCompound() != null) && 
-				(cmh.getItem() == new ItemStack(PackFurniture.proxy.item_colored).getItem())
+				(cmj.getItem() == new ItemStack(PackFurniture.proxy.block.cnstor_block).getItem() && cmj.getTagCompound() != null) && 
+				(cmh.getItem() == new ItemStack(PackFurniture.proxy.item.colored).getItem())
 				) {
-			ItemStack is = new ItemStack(PackFurniture.proxy.block_cnstor_block);
+			ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_block);
 			NBTTagCompound tag = new NBTTagCompound();
 
 			int clr1 = GetColors.getHexColors[cmh.getItemDamage()];
@@ -84,10 +84,10 @@ public class RecipeCnstorBlockColors implements IRecipe {
 
 		if (
 				(cmj != null && cmh != null && cmj != cmh) &&
-				(cmj.getItem() == new ItemStack(PackFurniture.proxy.block_cnstor_block).getItem() && cmj.getTagCompound() != null) && 
+				(cmj.getItem() == new ItemStack(PackFurniture.proxy.block.cnstor_block).getItem() && cmj.getTagCompound() != null) && 
 				(cmh.getItem() == new ItemStack(Items.dye).getItem())
 				) {
-			ItemStack is = new ItemStack(PackFurniture.proxy.block_cnstor_block);
+			ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_block);
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setInteger("Type", cmj.getTagCompound().getInteger("Type"));
 			tag.setInteger("Color", ItemDye.field_150922_c[cmh.getItemDamage()]);

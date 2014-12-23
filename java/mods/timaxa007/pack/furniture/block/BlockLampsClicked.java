@@ -59,10 +59,10 @@ public class BlockLampsClicked extends Block{
 		if (MinecraftForge.EVENT_BUS.post(event)) {return false;}
 
 		Block block;
-		if (this == PackFurniture.proxy.block_lamps_click_on) {
-			block = PackFurniture.proxy.block_lamps_click_off;
+		if (this == PackFurniture.proxy.block.lamps_click_on) {
+			block = PackFurniture.proxy.block.lamps_click_off;
 		} else {
-			block = PackFurniture.proxy.block_lamps_click_on;
+			block = PackFurniture.proxy.block.lamps_click_on;
 		}
 
 		if (!world.isRemote && event.getResult() == Result.ALLOW) {
@@ -75,7 +75,7 @@ public class BlockLampsClicked extends Block{
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 ArrayList<ItemStack> ret = super.getBlockDropped(world, x, y, z, metadata, fortune);
-ret.add(new ItemStack(PackFurniture.proxy.block_lamps_click_off, 1, metadata));
+ret.add(new ItemStack(PackFurniture.proxy.block.lamps_click_off, 1, metadata));
 return ret;
 }
 	 */

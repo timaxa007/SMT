@@ -30,9 +30,9 @@ public class ProxyClient extends ProxyServer {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityApiary.class, new RenderBlockApiary());
 
 		//Blocks
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_germination_plants), new ItemRenderBlockGerminationPlants());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_foods), new ItemRenderFoods());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block_apiary), new ItemRenderBlockApiary());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block.germination_plants), new ItemRenderBlockGerminationPlants());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block.foods), new ItemRenderFoods());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block.apiary), new ItemRenderBlockApiary());
 
 		//Items
 

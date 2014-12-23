@@ -27,14 +27,14 @@ public class ItemBlockChair extends ItemBlock{
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		if (!player.canPlayerEdit(x, y, z, side, is)) {return false;}
 		else {
-			if (hitX==1.0F) {x++;}
-			if (hitX==0.0F) {x--;}
-			if (hitZ==1.0F) {z++;}
-			if (hitZ==0.0F) {z--;}
-			if (hitY==1.0F) {y++;}
-			if (hitY==0.0F) {y--;}
+			if (hitX == 1.0F) {x++;}
+			if (hitX == 0.0F) {x--;}
+			if (hitZ == 1.0F) {z++;}
+			if (hitZ == 0.0F) {z--;}
+			if (hitY == 1.0F) {y++;}
+			if (hitY == 0.0F) {y--;}
 
-			world.setBlock(x, y, z, PackFurniture.proxy.block_chair, 0, 3);
+			world.setBlock(x, y, z, PackFurniture.proxy.block.chair, 0, 3);
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
 			if (te != null && te instanceof TileEntityChair) {

@@ -143,7 +143,7 @@ public class BlockBookshelf extends BlockContainer {
 	}
 
 	private static ItemStack addTag(int par1, int par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_bookshelf, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.bookshelf, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Type", par2);
 		is.setTagCompound(tag);

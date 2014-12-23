@@ -140,7 +140,7 @@ public class BlockGrills extends BlockContainer {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_grills, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.grills, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Type", par1);
 		is.setTagCompound(tag);

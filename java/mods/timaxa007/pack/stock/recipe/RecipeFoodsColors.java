@@ -24,8 +24,8 @@ public class RecipeFoodsColors implements IRecipe {
 		ItemStack cmj = ic.getStackInSlot(0);
 		ItemStack cmh = ic.getStackInSlot(1);
 		if (
-				(cmj != null && cmj.getItem() == new ItemStack(PackStock.proxy.item_foods).getItem() && cmj.getTagCompound() != null) && 
-				(cmh != null && cmh.getItem() == new ItemStack(PackFurniture.proxy.item_colored).getItem()) &&
+				(cmj != null && cmj.getItem() == new ItemStack(PackStock.proxy.item.foods).getItem() && cmj.getTagCompound() != null) && 
+				(cmh != null && cmh.getItem() == new ItemStack(PackFurniture.proxy.item.colored).getItem()) &&
 				(cmj != cmh) && (cmh.getItemDamage() >= 16 && cmh.getItemDamage() < 32)
 				) {
 			return true;
@@ -48,10 +48,10 @@ public class RecipeFoodsColors implements IRecipe {
 		ItemStack cmh = ic.getStackInSlot(1);
 		if (
 				(cmj != null && cmh != null && cmj != cmh) &&
-				(cmj.getItem() == new ItemStack(PackStock.proxy.item_foods).getItem() && cmj.getTagCompound() != null) && 
-				(cmh.getItem() == new ItemStack(PackFurniture.proxy.item_colored).getItem())
+				(cmj.getItem() == new ItemStack(PackStock.proxy.item.foods).getItem() && cmj.getTagCompound() != null) && 
+				(cmh.getItem() == new ItemStack(PackFurniture.proxy.item.colored).getItem())
 				) {
-			ItemStack is = new ItemStack(PackStock.proxy.item_foods);
+			ItemStack is = new ItemStack(PackStock.proxy.item.foods);
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setString("NameID", cmj.getTagCompound().getString("NameID"));
 			if (!cmj.getTagCompound().hasKey("ColorHex")) {

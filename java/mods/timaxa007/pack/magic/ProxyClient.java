@@ -26,12 +26,12 @@ public class ProxyClient extends ProxyServer {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicCauldron.class, new BlockRenderMagicCauldron());
 
 		//Block
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMagic.proxy.blockMagicCauldron), new ItemRenderMagicCauldron());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMagic.proxy.block.magic_cauldron), new ItemRenderMagicCauldron());
 
 		//Item
 		//MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.toolMagicSword, new ItemRenderMagicSword());
-		MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemWands, new ItemRenderWands());
-		MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.itemStuffs, new ItemRenderStuffs());
+		MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.item.wands, new ItemRenderWands());
+		MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.item.stuffs, new ItemRenderStuffs());
 
 		//RenderingRegistry.addNewArmourRendererPrefix("TestArmor");
 

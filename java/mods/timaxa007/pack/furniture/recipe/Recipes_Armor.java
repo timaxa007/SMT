@@ -12,10 +12,10 @@ public class Recipes_Armor {
 
 	public static void list() {
 		for (int i = 0; i < 16; ++i) {
-			GameRegistry.addRecipe(addTagArmor(PackFurniture.proxy.armor_wool_colors_helmet, i), new Object[]{"MMM", "M M", 'M', new ItemStack(Blocks.wool, 1, GetColors.convertME_MC(i))});
-			GameRegistry.addRecipe(addTagArmor(PackFurniture.proxy.armor_wool_colors_chest, i), new Object[]{"M M", "MMM", "MMM", 'M', new ItemStack(Blocks.wool, 1, GetColors.convertME_MC(i))});
-			GameRegistry.addRecipe(addTagArmor(PackFurniture.proxy.armor_wool_colors_leggin, i), new Object[]{"MMM", "M M", "M M", 'M', new ItemStack(Blocks.wool, 1, GetColors.convertME_MC(i))});
-			GameRegistry.addRecipe(addTagArmor(PackFurniture.proxy.armor_wool_colors_boot, i), new Object[]{"M M", "M M", 'M', new ItemStack(Blocks.wool, 1, GetColors.convertME_MC(i))});
+			GameRegistry.addRecipe(addTagArmor(PackFurniture.proxy.item.armor_wool_colors_helmet, i), new Object[]{"MMM", "M M", 'M', new ItemStack(Blocks.wool, 1, GetColors.convertME_MC(i))});
+			GameRegistry.addRecipe(addTagArmor(PackFurniture.proxy.item.armor_wool_colors_chest, i), new Object[]{"M M", "MMM", "MMM", 'M', new ItemStack(Blocks.wool, 1, GetColors.convertME_MC(i))});
+			GameRegistry.addRecipe(addTagArmor(PackFurniture.proxy.item.armor_wool_colors_leggin, i), new Object[]{"MMM", "M M", "M M", 'M', new ItemStack(Blocks.wool, 1, GetColors.convertME_MC(i))});
+			GameRegistry.addRecipe(addTagArmor(PackFurniture.proxy.item.armor_wool_colors_boot, i), new Object[]{"M M", "M M", 'M', new ItemStack(Blocks.wool, 1, GetColors.convertME_MC(i))});
 		}
 
 	}

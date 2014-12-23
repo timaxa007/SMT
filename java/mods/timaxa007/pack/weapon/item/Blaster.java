@@ -22,11 +22,11 @@ public class Blaster extends Item {
 	}
 
 	public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
-		if (player.inventory.hasItem(PackFurniture.proxy.item_colored)) {
+		if (player.inventory.hasItem(PackFurniture.proxy.item.colored)) {
 			if (!world.isRemote) {
 				//EntityBlasterBullet blasterBullet = new EntityBlasterBullet(world, player, 2.0F);
 				//world.spawnEntityInWorld(blasterBullet);
-				player.inventory.consumeInventoryItem(PackFurniture.proxy.item_colored);
+				player.inventory.consumeInventoryItem(PackFurniture.proxy.item.colored);
 			}
 		}
 	}
@@ -40,7 +40,7 @@ public class Blaster extends Item {
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-		if (player.inventory.hasItem(PackFurniture.proxy.item_colored)) {
+		if (player.inventory.hasItem(PackFurniture.proxy.item.colored)) {
 			player.setItemInUse(is, getMaxItemUseDuration(is));
 		}
 		return is;

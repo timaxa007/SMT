@@ -99,7 +99,7 @@ public class BlockElectricWires extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(String par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackTechno.proxy.block_electric_wires, 1, 0);
+		ItemStack is = new ItemStack(PackTechno.proxy.block.electric_wires, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("Style", par1);
 		tag.setInteger("Size", par2);

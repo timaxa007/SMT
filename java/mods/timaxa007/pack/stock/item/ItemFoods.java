@@ -508,7 +508,7 @@ sauce_hex = hex_sauce;
 	}
 
 	private static ItemStack addTag(String par1) {
-		ItemStack is = new ItemStack(PackStock.proxy.item_foods, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.item.foods, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("NameID", par1);
 		is.setTagCompound(tag);
@@ -516,7 +516,7 @@ sauce_hex = hex_sauce;
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackStock.proxy.item_foods, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.item.foods, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("ItemID", par1);
 		is.setTagCompound(tag);

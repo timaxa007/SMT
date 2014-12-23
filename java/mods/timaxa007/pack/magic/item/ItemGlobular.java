@@ -40,8 +40,8 @@ public class ItemGlobular extends Item {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("Active")) {
-			list.add("Active: " + tag.getBoolean("Active") + ".");
+		if (tag != null) {
+			if (tag.hasKey("Active")) list.add("Active: " + tag.getBoolean("Active") + ".");
 		}
 	}
 
@@ -51,7 +51,7 @@ public class ItemGlobular extends Item {
 	}
 
 	private static ItemStack addTag() {
-		ItemStack is = new ItemStack(PackMagic.proxy.item_globular, 1, 0);
+		ItemStack is = new ItemStack(PackMagic.proxy.item.globular, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setBoolean("Active", false);
 		is.setTagCompound(tag);

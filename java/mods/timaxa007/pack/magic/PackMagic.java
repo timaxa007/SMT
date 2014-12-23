@@ -26,10 +26,10 @@ public class PackMagic {
 
 	public static CreativeTabs tab_magic = new CreativeTabs("tab_magic") {
 		public Item getTabIconItem() {
-			return PackMagic.proxy.items_for_magic;
+			return PackMagic.proxy.item.items_for_magic;
 		}
 	};
-	
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);

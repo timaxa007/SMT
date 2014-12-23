@@ -129,7 +129,7 @@ public class ItemHoneycombs extends Item {
 	}
 
 	private ItemStack addTag(String par1) {
-		ItemStack is = new ItemStack(PackStock.proxy.item_honeycombs, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.item.honeycombs, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("NameID", par1);
 		is.setTagCompound(tag);

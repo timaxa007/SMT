@@ -82,7 +82,7 @@ public class BlockArmChair extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(String par1, int par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_arm_chair, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.arm_chair, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("Type", par1);
 		tag.setInteger("Size", par2);

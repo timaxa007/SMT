@@ -31,10 +31,10 @@ public class ProxyClient extends ProxyServer {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityClaymore.class, new BlockRenderClaymore());
 
 		//Blocks
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapon.proxy.block_claymore), new ItemRendererClaymore());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapon.proxy.block.claymore), new ItemRendererClaymore());
 		
 		//Item
-		MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.item_weapons, new ItemRendererWeapons());
+		MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.item.weapons, new ItemRendererWeapons());
 
 		//Entity
 		//RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderEntityBullet());

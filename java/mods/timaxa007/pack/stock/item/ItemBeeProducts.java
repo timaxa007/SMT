@@ -148,7 +148,7 @@ public class ItemBeeProducts extends Item {
 	}
 
 	private ItemStack addTag(String par1) {
-		ItemStack is = new ItemStack(PackStock.proxy.item_bee_products, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.item.bee_products, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("NameID", par1);
 		is.setTagCompound(tag);

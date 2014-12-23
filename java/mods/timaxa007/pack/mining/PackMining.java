@@ -26,12 +26,12 @@ public class PackMining {
 
 	public static CreativeTabs tab_mining = new CreativeTabs("tab_mining") {
 		public Item getTabIconItem() {
-			return PackMining.proxy.items_for_mining;
+			return PackMining.proxy.item.items_for_mining;
 		}
 	};
 	public static CreativeTabs tab_tools = new CreativeTabs("tab_tools") {
 		public Item getTabIconItem() {
-			return PackMining.proxy.items_for_mining;
+			return PackMining.proxy.item.items_for_mining;
 		}
 	};
 

@@ -89,7 +89,7 @@ public class BlockApiary extends BlockContainer {
 	}
 
 	private static ItemStack addTag(String par1, int par2) {
-		ItemStack is = new ItemStack(PackStock.proxy.block_apiary, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.block.apiary, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("NameID", par1);
 		tag.setInteger("TypeID", par2);

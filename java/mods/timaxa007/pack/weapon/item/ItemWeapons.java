@@ -237,7 +237,7 @@ public class ItemWeapons extends Item {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackWeapon.proxy.item_weapons, 1, 0);
+		ItemStack is = new ItemStack(PackWeapon.proxy.item.weapons, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("WeaponID", par1);
 		tag.setBoolean("Aim", false);

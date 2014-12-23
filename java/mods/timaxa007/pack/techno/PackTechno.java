@@ -26,7 +26,7 @@ public class PackTechno {
 
 	public static CreativeTabs tab_techno = new CreativeTabs("tab_techno") {
 		public Item getTabIconItem() {
-			return PackTechno.proxy.tool_electric_wrench;
+			return PackTechno.proxy.item.tool_electric_wrench;
 		}
 	};
 

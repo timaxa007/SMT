@@ -96,7 +96,7 @@ public class ItemKitchenware extends Item {
 	}
 
 	private static ItemStack addTag(String par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.item_kitchenware, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.proxy.item.kitchenware, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("NameID", par1);
 		is.setTagCompound(tag);

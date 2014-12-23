@@ -63,7 +63,7 @@ public class ArmorBackpacks extends ItemArmor {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.armor_backpacks, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.proxy.item.armor_backpacks, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("TypeBackpack", par1);
 		is.setTagCompound(tag);

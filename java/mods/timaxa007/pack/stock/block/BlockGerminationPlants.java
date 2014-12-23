@@ -451,7 +451,7 @@ world.spawnEntityInWorld(entityitem2);
 	}
 
 	private static ItemStack addTag(int par1, String par2, int par3, int par4, int par5, int par6, int par7) {
-		ItemStack is = new ItemStack(PackStock.proxy.block_germination_plants, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.block.germination_plants, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("PlantID", par1);
 		tag.setString("PlantType", par2);

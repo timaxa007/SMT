@@ -68,7 +68,7 @@ public class BlockBlender extends BlockContainer{
 	}
 
 	private static ItemStack addTag(int par1, int par2, int par3, int par4, int par5) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_blender, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.blender, 1, par1);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Type", par2);
 		tag.setInteger("TypeCap", par2);

@@ -74,7 +74,7 @@ public class BlockTable extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(int par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_table, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.table, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Type", par2);
 		tag.setInteger("Size", par3);

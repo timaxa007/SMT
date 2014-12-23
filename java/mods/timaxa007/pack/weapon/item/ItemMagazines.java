@@ -63,7 +63,7 @@ public class ItemMagazines extends Item {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackWeapon.proxy.item_magazines, 1, 0);
+		ItemStack is = new ItemStack(PackWeapon.proxy.item.magazines, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("MagazineID", par1);
 		is.setTagCompound(tag);

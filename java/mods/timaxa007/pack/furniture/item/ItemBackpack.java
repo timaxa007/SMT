@@ -50,7 +50,7 @@ public class ItemBackpack extends Item implements IInventory {
 	}
 
 	private static ItemStack addTag() {
-		ItemStack is = new ItemStack(PackFurniture.proxy.item_backpack);
+		ItemStack is = new ItemStack(PackFurniture.proxy.item.backpack);
 		NBTTagCompound tag = new NBTTagCompound();
 		NBTTagList nbttaglist = new NBTTagList();
 		for (int i = 0; i < list_slot.length; ++i) {

@@ -27,7 +27,7 @@ public class ProxyClient extends ProxyServer {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOreOres.class, new RenderBlockOreOres());
 
 		//Block
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMining.proxy.block_cristals), new ItemRenderBlockCristals());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMining.proxy.block.cristals), new ItemRenderBlockCristals());
 
 		//Item
 

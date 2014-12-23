@@ -562,9 +562,9 @@ public class ItemMedicals extends Item {
 					player.addPotionEffect(new PotionEffect(Potion.confusion.id, 160, 1));
 					player.addPotionEffect(new PotionEffect(Potion.hunger.id, 20*12, 1));
 					player.addPotionEffect(new PotionEffect(Potion.wither.id, 40, 1));
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item_medicals, 1, 160), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 160), true);
 				} else {
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item_medicals, 1, 159), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 159), true);
 				}
 			} else if (is.getItemDamage() == 160) {
 				player.addExperienceLevel(1);
@@ -608,9 +608,9 @@ public class ItemMedicals extends Item {
 					player.addPotionEffect(new PotionEffect(Potion.harm.id, 1, 1));
 					player.addPotionEffect(new PotionEffect(Potion.confusion.id, 130, 1));
 					player.addPotionEffect(new PotionEffect(Potion.hunger.id, 150, 1));
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item_medicals, 1, 170), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 170), true);
 				} else {
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item_medicals, 1, 169), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 169), true);
 				}
 			} else if (is.getItemDamage() == 170) {
 				player.addExperienceLevel(1);
@@ -655,9 +655,9 @@ public class ItemMedicals extends Item {
 					player.addExperienceLevel(-1);
 					player.addPotionEffect(new PotionEffect(Potion.confusion.id, 90, 1));
 					player.addPotionEffect(new PotionEffect(Potion.hunger.id, 20*5, 1));
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item_medicals, 1, 180), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 180), true);
 				} else {
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item_medicals, 1, 179), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 179), true);
 				}
 			}
 			else if (is.getItemDamage() == 180) {
@@ -702,9 +702,9 @@ public class ItemMedicals extends Item {
 				if (player.experienceLevel >= 1) {
 					player.addExperienceLevel(-1);
 					player.addPotionEffect(new PotionEffect(Potion.confusion.id, 50, 1));
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item_medicals, 1, 190), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 190), true);
 				} else {
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item_medicals, 1, 189), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 189), true);
 				}
 			} else if (is.getItemDamage() == 190) {
 				player.addExperienceLevel(1);

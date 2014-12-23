@@ -26,7 +26,7 @@ public class PackWeapon {
 
 	public static CreativeTabs tab_weapons = new CreativeTabs("tab_weapons") {
 		public Item getTabIconItem() {
-			return PackWeapon.proxy.items_for_weapons;
+			return PackWeapon.proxy.item.items_for_weapons;
 		}
 	};
 

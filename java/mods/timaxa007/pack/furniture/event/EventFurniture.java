@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.furniture.event;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.pack.furniture.item.ToolHammer;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -9,7 +10,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
 public class EventFurniture {
 	//--------------------------------------------------------------------------------------------------------------
@@ -35,7 +39,7 @@ public class EventFurniture {
 		if (current == null) {
 			if (player != null && world != null && !world.isRemote && event.action == event.action.RIGHT_CLICK_BLOCK) {
 				Block block = world.getBlock(event.x, event.y, event.z);
-				if (block != null && block == PackFurniture.proxy.block_lamps_click_off) {
+				if (block != null && block == PackFurniture.proxy.block.lamps_click_off) {
 					System.out.println("on");
 					event.setResult(Result.ALLOW);
 				}
@@ -51,7 +55,7 @@ public class EventFurniture {
 		if (current == null) {
 			if (player != null && world != null && !world.isRemote && event.action == event.action.RIGHT_CLICK_BLOCK) {
 				Block block = world.getBlock(event.x, event.y, event.z);
-				if (block != null && block == PackFurniture.proxy.block_lamps_click_on) {
+				if (block != null && block == PackFurniture.proxy.block.lamps_click_on) {
 					System.out.println("off");
 					event.setResult(Result.ALLOW);
 				}
@@ -59,19 +63,19 @@ public class EventFurniture {
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/*@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onUseCraftHammer(PlayerEvent.ItemCraftedEvent e) {
 		System.out.println("event craft");
 		for (int i = 0; i < e.craftMatrix.getSizeInventory(); i++) { 
 			if (e.craftMatrix.getStackInSlot(i) != null) {
 				ItemStack j = e.craftMatrix.getStackInSlot(i);
 				if (j.getItem() != null && j.getItem() instanceof ToolHammer) {
-					ItemStack k = new ItemStack(PackFurniture.proxy.tool_hammer, 2, (j.getItemDamage() + 1 ));
+					ItemStack k = new ItemStack(PackFurniture.proxy.item.tool_hammer, 2, (j.getItemDamage() + 1 ));
 					e.craftMatrix.setInventorySlotContents(i, k);
 				}
 			}
 		}
-	}*/
+	}
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
 	public void onLampOn(PlayerInteractEvent event) {

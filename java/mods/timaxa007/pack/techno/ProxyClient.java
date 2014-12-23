@@ -30,9 +30,9 @@ public class ProxyClient extends ProxyServer {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModuleMovement.class, new BlockRenderModuleMovement());
 
 		//Blocks
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block_electric_wires), new ItemRenderBlockElectricWires());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block_chip), new ItemRenderBlockChip());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block_module_movement), new ItemRenderBlockModuleMovement());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.electric_wires), new ItemRenderBlockElectricWires());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.chip), new ItemRenderBlockChip());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.module_movement), new ItemRenderBlockModuleMovement());
 
 		//Items
 

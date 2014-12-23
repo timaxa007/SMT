@@ -194,7 +194,7 @@ public class ItemGerminationPlants extends Item {
 	}
 
 	public static ItemStack addTag(int par1, String par2, int par3, int par4, int par5) {
-		ItemStack is = new ItemStack(PackStock.proxy.item_germination_plants, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.item.germination_plants, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("PlantID", par1);
 		tag.setString("PlantType", par2);

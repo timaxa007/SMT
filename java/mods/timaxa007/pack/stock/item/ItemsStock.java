@@ -104,7 +104,7 @@ public class ItemsStock extends Item {
 	}
 
 	private static ItemStack addTag(String par1) {
-		ItemStack is = new ItemStack(PackStock.proxy.items_for_stock, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.item.items_for_stock, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("NameID", par1);
 		is.setTagCompound(tag);
@@ -112,7 +112,7 @@ public class ItemsStock extends Item {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackStock.proxy.items_for_stock, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.item.items_for_stock, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("ItemID", par1);
 		is.setTagCompound(tag);

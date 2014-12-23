@@ -112,7 +112,7 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(String par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackStock.proxy.block_foods, 1, 0);
+		ItemStack is = new ItemStack(PackStock.proxy.block.foods, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("NameID", par1);
 		tag.setInteger("Color1", par2);

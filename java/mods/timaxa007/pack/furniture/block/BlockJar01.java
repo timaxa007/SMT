@@ -97,7 +97,7 @@ public class BlockJar01 extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_jar01, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.jar01, 1, par1);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("ColorWater", par1);
 		is.setTagCompound(tag);

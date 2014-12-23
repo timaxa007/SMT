@@ -26,27 +26,27 @@ public class PackStock {
 
 	public static CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
 		public Item getTabIconItem() {
-			return PackStock.proxy.items_for_stock;
+			return PackStock.proxy.item.items_for_stock;
 		}
 	};
 	public static CreativeTabs tab_plant = new CreativeTabs("tab_plant") {
 		public Item getTabIconItem() {
-			return PackStock.proxy.item_germination_plants;
+			return PackStock.proxy.item.germination_plants;
 		}
 	};
 	public static CreativeTabs tab_food = new CreativeTabs("tab_food") {
 		public Item getTabIconItem() {
-			return PackStock.proxy.item_foods;
+			return PackStock.proxy.item.foods;
 		}
 	};
 	public static CreativeTabs tab_medical = new CreativeTabs("tab_medical") {
 		public Item getTabIconItem() {
-			return PackStock.proxy.item_medicals;
+			return PackStock.proxy.item.medicals;
 		}
 	};
 	public static CreativeTabs tab_apis = new CreativeTabs("tab_apis") {
 		public Item getTabIconItem() {
-			return PackStock.proxy.item_bees;
+			return PackStock.proxy.item.bees;
 		}
 	};
 

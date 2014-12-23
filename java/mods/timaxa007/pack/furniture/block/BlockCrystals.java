@@ -70,7 +70,7 @@ public class BlockCrystals extends BlockContainer{
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_crystals, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.crystals, 1, par1);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Amount", 8);
 		tag.setInteger("Type", par1);
@@ -81,7 +81,7 @@ public class BlockCrystals extends BlockContainer{
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 ArrayList<ItemStack> ret=super.getBlockDropped(world, x, y, z, metadata, fortune);
-ret.add(new ItemStack(PackFurniture.proxy.block_crystals, 1, metadata));
+ret.add(new ItemStack(PackFurniture.proxy.block.crystals, 1, metadata));
 return ret;
 }
 	 */

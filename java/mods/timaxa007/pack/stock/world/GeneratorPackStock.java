@@ -39,7 +39,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 						for (int z2 = -2; z2 <= 2; ++z2) {
 							if (world.getBlock(x1 + x2, y - 1, z1 + z2) == Blocks.grass && world.isAirBlock(x1 + x2, y, z1 + z2)) {
 							if (random.nextInt(25) == 5) {
-								world.setBlock(x1 + x2, y, z1 + z2, PackStock.proxy.block_healing/*block_random[random.nextInt(block_random.length - 1)]*/, random.nextInt(15), 3);
+								world.setBlock(x1 + x2, y, z1 + z2, PackStock.proxy.block.healing/*block_random[random.nextInt(block_random.length - 1)]*/, random.nextInt(15), 3);
 							}
 						}
 					}
@@ -52,7 +52,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 		if (world.getBiomeGenForCoords(x, y).biomeID == BiomeGenBase.forest.biomeID || world.getBiomeGenForCoords(x, y).biomeID == BiomeGenBase.forestHills.biomeID) {
 			for (int z = 1; z < world.getHeight(); ++z) {
 				if (world.getBlock(x1, z - 1, y1) == Block.grass && world.isAirBlock(x1, z, y1)) {
-					world.setBlock(x1, z, y1, PackStock.proxy.block_saplings);
+					world.setBlock(x1, z, y1, PackStock.proxy.block.saplings);
 					TileEntitySaplings te = new TileEntitySaplings();
 					te.setType("oak");
 					te.setHeight(1);

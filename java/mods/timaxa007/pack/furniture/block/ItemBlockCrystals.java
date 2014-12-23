@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
 //ItemMultiTextureTile
-public class ItemBlockCrystals extends ItemBlock{
+public class ItemBlockCrystals extends ItemBlock {
 
 	public ItemBlockCrystals(Block id) {
 		super(id);
@@ -22,12 +22,10 @@ public class ItemBlockCrystals extends ItemBlock{
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-			list.add(Option.getText("Material")+": Glass.");
-			list.add(Option.getText("Type")+": Crystal.");
-			list.add(Option.getText("Color")+": "+Option.GetColors(is.getItemDamage(), "a")+".");
-		} else {
-			list.add(Option.prshift);
-		}
+			list.add(Option.getText("Material") + ": Glass.");
+			list.add(Option.getText("Type") + ": Crystal.");
+			list.add(Option.getText("Color") + ": "+Option.GetColors(is.getItemDamage(), "a") + ".");
+		} else list.add(Option.prshift);
 	}
 
 }

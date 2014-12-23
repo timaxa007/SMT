@@ -79,7 +79,7 @@ public class BlockWardrobe extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(int par1, int par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_wardrobe, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.wardrobe, 1, par1);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Type", par2);
 		is.setTagCompound(tag);

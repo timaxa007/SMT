@@ -31,7 +31,7 @@ public class ItemWands extends Item {
 	}
 
 	private static ItemStack addTag(int par1, int par2) {
-		ItemStack is = new ItemStack(PackMagic.proxy.itemWands);
+		ItemStack is = new ItemStack(PackMagic.proxy.item.wands);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Type", par1);
 		tag.setInteger("Cap", par2);

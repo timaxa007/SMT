@@ -69,7 +69,7 @@ public class BlockBarrels extends BlockContainer{
 	}
 
 	private static ItemStack addTag(int par1, int par2, int par3, boolean par4) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_barrels, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.barrels, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("TypeB", par1);
 		tag.setInteger("TypeP", par2);

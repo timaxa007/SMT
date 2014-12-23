@@ -113,7 +113,7 @@ public class ToolElectricDrills extends Item {
 	}
 
 	private static ItemStack addTag() {
-		ItemStack is = new ItemStack(PackTechno.proxy.tool_electric_drills, 1, 0);
+		ItemStack is = new ItemStack(PackTechno.proxy.item.tool_electric_drills, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("ModeID", 0);
 		is.setTagCompound(tag);

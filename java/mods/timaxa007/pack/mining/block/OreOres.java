@@ -83,9 +83,9 @@ public class OreOres extends Block implements ITileEntityProvider {
 	public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
 		TileEntity te = block_access.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityOreOres) {
-			if (this == PackMining.proxy.ore_rock_ores) {return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-			if (this == PackMining.proxy.ore_nether_ores) {return Blocks.netherrack.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-			if (this == PackMining.proxy.ore_ender_ores) {return Blocks.end_stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
+			if (this == PackMining.proxy.block.ore_rock_ores) {return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
+			if (this == PackMining.proxy.block.ore_nether_ores) {return Blocks.netherrack.getIcon(side, block_access.getBlockMetadata(x, y, z));}
+			if (this == PackMining.proxy.block.ore_ender_ores) {return Blocks.end_stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
 			return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));
 		}
 		return getIcon(side, block_access.getBlockMetadata(x, y, z));

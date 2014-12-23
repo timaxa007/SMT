@@ -34,7 +34,7 @@ public class ItemBlockBarrels extends ItemBlock{
 			if (hitY==1.0F) {y++;}
 			if (hitY==0.0F) {y--;}
 
-			world.setBlock(x, y, z, PackFurniture.proxy.block_barrels, 0, 3);
+			world.setBlock(x, y, z, PackFurniture.proxy.block.barrels, 0, 3);
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = is.getTagCompound();
 			if (te != null && te instanceof TileEntityBarrels) {

@@ -97,7 +97,7 @@ public class BlockMashineWater extends Block implements ITileEntityProvider {
 	}
 
 	private static ItemStack addTag(int par1, boolean par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block_mashine_waiter, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.mashine_waiter, 1, par1);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("Color", par1);
 		tag.setBoolean("Part", par2);
