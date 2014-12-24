@@ -26,10 +26,6 @@ public class ProxyServer {
 	public static int render_block_cnstor_angle_modelID;
 	public static int render_block_cnstor_fence_modelID;
 	public static int render_block_lights_modelID;
-	public static int render_block_lamps_on_modelID;
-	public static int render_block_lamps_off_modelID;
-	public static int render_block_lamps2_on_modelID;
-	public static int render_block_lamps2_off_modelID;
 	public static int render_block_candle_modelID;
 	public static int render_block_crystals_modelID;
 	public static int render_block_barrels_modelID;
@@ -73,10 +69,6 @@ public class ProxyServer {
 		render_block_cnstor_angle_modelID = -1;
 		render_block_cnstor_fence_modelID = -1;
 		render_block_lights_modelID = -1;
-		render_block_lamps_on_modelID = -1;
-		render_block_lamps_off_modelID = -1;
-		render_block_lamps2_on_modelID = -1;
-		render_block_lamps2_off_modelID = -1;
 		render_block_candle_modelID = -1;
 		render_block_crystals_modelID = -1;
 		render_block_barrels_modelID = -1;

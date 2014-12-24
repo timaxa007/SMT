@@ -1,64 +1,21 @@
 package mods.timaxa007.pack.furniture.block;
 
-import java.util.List;
-import java.util.Random;
-
-import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.lib.AddBlockRock;
-import mods.timaxa007.pack.furniture.tile.TileEntityRockBlocks;
+import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureRockBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemDye;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockRockBlocks extends Block implements ITileEntityProvider {
+public class BlockFurnitureRockBlocks extends Block implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
-	public static AddBlockRock stone_style_1 = new AddBlockRock("stone_style1").setName("stone_style1").setColor(0xFFFFFF).setTexture("stone_style_1");
-	public static AddBlockRock rock_style_1 = new AddBlockRock("rock_style1").setName("rock_style1").setColor(0xFFFFFF).setTexture("rock_style_1");
-
-	public static String[] type_block = new String[] {
-		"stone", 
-		"stone_smooth", 
-		"stone_smooth_dark", 
-		"stone_smooth_light", 
-		"stone_rush", 
-		"stone_smooth_slab", 
-		"stone_smooth_slab_v", 
-		"stone_brick", 
-		"stone_bricks", 
-		"stone_carved", 
-		"stone_chesh", 
-		"stone_chesh2", 
-		"rock", 
-		"rock_rush", 
-		"rock_smooth", 
-		"rock_smooth_dark", 
-		"rock_smooth_light", 
-		"brick_clay", 
-		"brick_new_blank", 
-		"rock_hell", 
-		"beton"
-	};
-
-	public BlockRockBlocks() {
+	public BlockFurnitureRockBlocks() {
 		super(Material.rock);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.5F);
@@ -70,8 +27,9 @@ public class BlockRockBlocks extends Block implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityRockBlocks();
+		return new TileEntityFurnitureRockBlocks();
 	}
+/*
 
 	public int quantityDropped(Random random) {
 		return 0;
@@ -185,4 +143,5 @@ public class BlockRockBlocks extends Block implements ITileEntityProvider {
 		}
 	}
 
+*/
 }

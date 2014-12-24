@@ -46,9 +46,10 @@ public class ProxyServer {
 	public static int render_block_magic_cauldron_modelID;
 
 	public void preInit(FMLPreInitializationEvent event) {
+
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();
-
+		//
 		cfg.save();
 
 		new ListMagic();
@@ -58,9 +59,9 @@ public class ProxyServer {
 
 		render_block_magic_cauldron_modelID = -1;
 
-		MinecraftForge.EVENT_BUS.register(new EventMagic());
-
 		Recipes_Magic.list();
+
+		MinecraftForge.EVENT_BUS.register(new EventMagic());
 
 	}
 

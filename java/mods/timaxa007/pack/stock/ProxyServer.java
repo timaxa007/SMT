@@ -25,7 +25,7 @@ public class ProxyServer {
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();
-
+		//
 		cfg.save();
 
 		new ListStock();

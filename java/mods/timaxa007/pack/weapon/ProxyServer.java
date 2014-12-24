@@ -5,7 +5,7 @@ import mods.timaxa007.pack.weapon.event.EventWeapon;
 import mods.timaxa007.pack.weapon.gui.HandlerGuiWeapons;
 import mods.timaxa007.pack.weapon.item.ItemList;
 import mods.timaxa007.pack.weapon.lib.ListWeapon;
-import mods.timaxa007.pack.weapon.recipe.Recipes_Weapon;
+import mods.timaxa007.pack.weapon.recipe.Recipes_Weapons;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -20,7 +20,7 @@ public class ProxyServer {
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();
-
+		//
 		cfg.save();
 
 		new ListWeapon();
@@ -28,7 +28,7 @@ public class ProxyServer {
 		block.list();
 		item.list();
 
-		Recipes_Weapon.list();
+		Recipes_Weapons.list();
 
 		MinecraftForge.EVENT_BUS.register(new EventWeapon());
 

@@ -8,6 +8,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class BlockList {
 
 	public static Block furniture_machines;
+	public static Block furniture_rock_blocks;
+	public static Block furniture_glass_blocks;
+	public static Block furniture_wood_blocks;
+	public static Block furniture_ground_blocks;
+	public static Block furniture_sand_blocks;
+	public static Block furniture_cloth_blocks;
+	public static Block furniture_metal_blocks;
 	public static Block cnstor_block;
 	public static Block cnstor_angle;
 	public static Block cnstor_half;
@@ -55,12 +62,6 @@ public class BlockList {
 	public static Block light_15;
 	public static Block light_16;
 
-	public static Block lamps_click_on;
-	public static Block lamps_click_off;
-	public static Block lamps_on;
-	public static Block lamps_off;
-	public static Block lamps_on_invert;
-	public static Block lamps_off_invert;
 	public static Block stone_colona1_colors;
 	public static Block candle;
 	public static Block candle_light;
@@ -93,6 +94,13 @@ public class BlockList {
 	public static void list() {
 
 		furniture_machines = new BlockFurnitureMachines();
+		furniture_rock_blocks = new BlockFurnitureRockBlocks();
+		furniture_glass_blocks = new BlockFurnitureGlassBlocks();
+		furniture_wood_blocks = new BlockFurnitureWoodBlocks();
+		furniture_ground_blocks = new BlockFurnitureGroundBlocks();
+		furniture_sand_blocks = new BlockFurnitureSandBlocks();
+		furniture_cloth_blocks = new BlockFurnitureClothBlocks();
+		furniture_metal_blocks = new BlockFurnitureMetalBlocks();
 		cnstor_block = new BlockCnstorBlock();
 		cnstor_angle = new BlockCnstorAngle();
 		cnstor_half = new BlockCnstorHalf();
@@ -140,12 +148,6 @@ public class BlockList {
 		light_15 = new BlockLight().setLightLevel(0.9375F);
 		light_16 = new BlockLight().setLightLevel(1.0F);
 
-		lamps_click_on = new BlockLampsClicked(true).setBlockName("BlockLampsClickedOn");
-		lamps_click_off = new BlockLampsClicked(false).setBlockName("BlockLampsClickedOff");
-		lamps_on = new BlockLamps(true).setBlockName("BlockLampsOn");
-		lamps_off = new BlockLamps(false).setBlockName("BlockLampsOff");
-		lamps_on_invert = new BlockLampsInvert(true).setBlockName("BlockLampsInvertOn");
-		lamps_off_invert = new BlockLampsInvert(false).setBlockName("BlockLampsInvertOff");
 		candle = new BlockCandle().setLightLevel(0.0F);
 		candle_light = new BlockCandle().setLightLevel(0.5F);
 		crystals = new BlockCrystals();
@@ -175,6 +177,13 @@ public class BlockList {
 		furniture_chest = new BlockFurnitureChest();
 
 		GameRegistry.registerBlock(furniture_machines, "BlockMachines");
+		GameRegistry.registerBlock(furniture_rock_blocks, "BlockFurnitureRockBlocks");
+		GameRegistry.registerBlock(furniture_glass_blocks, "BlockFurnitureGlassBlocks");
+		GameRegistry.registerBlock(furniture_wood_blocks, "BlockFurnitureWoodBlocks");
+		GameRegistry.registerBlock(furniture_ground_blocks, "BlockFurnitureGroundBlocks");
+		GameRegistry.registerBlock(furniture_sand_blocks, "BlockFurnitureSandBlocks");
+		GameRegistry.registerBlock(furniture_cloth_blocks, "BlockFurnitureClothBlocks");
+		GameRegistry.registerBlock(furniture_metal_blocks, "BlockFurnitureMetalBlocks");
 		GameRegistry.registerBlock(cnstor_block, ItemBlockCnstorBlock.class, "BlockCnstorBlock");
 		GameRegistry.registerBlock(cnstor_angle, ItemBlockCnstorAngle.class, "BlockCnstorAngle");
 		GameRegistry.registerBlock(cnstor_half, ItemBlockCnstorHalf.class, "BlockCnstorHalf");
@@ -222,12 +231,6 @@ public class BlockList {
 		GameRegistry.registerBlock(light_15, "BlockLight15");
 		GameRegistry.registerBlock(light_16, "BlockLight16");
 
-		GameRegistry.registerBlock(lamps_click_on, "BlockLampsClickOn");
-		GameRegistry.registerBlock(lamps_click_off, "BlockLampsClickOff");
-		GameRegistry.registerBlock(lamps_on, "BlockLampsOn");
-		GameRegistry.registerBlock(lamps_off, "BlockLampsOff");
-		GameRegistry.registerBlock(lamps_on_invert, "BlockLampsOnInvert");
-		GameRegistry.registerBlock(lamps_off_invert, "BlockLampsOffInvert");
 		GameRegistry.registerBlock(candle,"BlockCandle");
 		GameRegistry.registerBlock(candle_light,"BlockCandleLight");
 		GameRegistry.registerBlock(crystals, ItemBlockCrystals.class, "BlockCrystals");
@@ -257,6 +260,13 @@ public class BlockList {
 		GameRegistry.registerBlock(furniture_chest, "BlockFurnitureChest");
 
 		GameRegistry.registerTileEntity(TileEntityFurnitureMachines.class, "TileEntityFurnitureMachines");
+		GameRegistry.registerTileEntity(TileEntityFurnitureRockBlocks.class, "TileEntityFurnitureRockBlocks");
+		GameRegistry.registerTileEntity(TileEntityFurnitureGlassBlocks.class, "TileEntityFurnitureGlassBlocks");
+		GameRegistry.registerTileEntity(TileEntityFurnitureWoodBlocks.class, "TileEntityFurnitureWoodBlocks");
+		GameRegistry.registerTileEntity(TileEntityFurnitureGroundBlocks.class, "TileEntityFurnitureGroundBlocks");
+		GameRegistry.registerTileEntity(TileEntityFurnitureSandBlocks.class, "TileEntityFurnitureSandBlocks");
+		GameRegistry.registerTileEntity(TileEntityFurnitureClothBlocks.class, "TileEntityFurnitureClothBlocks");
+		GameRegistry.registerTileEntity(TileEntityFurnitureMetalBlocks.class, "TileEntityFurnitureMetalBlocks");
 		GameRegistry.registerTileEntity(TileEntityCnstorBlock.class, "TileEntityCnstorBlock");
 		GameRegistry.registerTileEntity(TileEntityAngleMod.class, "TileEntityAngleMod");
 		GameRegistry.registerTileEntity(TileEntityCnstorFence.class, "TileEntityCnstorFence");

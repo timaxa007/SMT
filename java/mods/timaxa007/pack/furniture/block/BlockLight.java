@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -25,6 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockLight extends Block implements ITileEntityProvider {
 
 	public static final String[] block_type = new String[] {
+		"lamp", 
 		"burner", 
 		"flashlight", 
 		"lantern", 
@@ -33,7 +35,8 @@ public class BlockLight extends Block implements ITileEntityProvider {
 	};
 
 	public BlockLight() {
-		super(Material.circuits);
+		super(Material.glass);
+		setStepSound(soundTypeStone);
 		setBlockTextureName("glass");
 		setBlockName("lights");
 	}
@@ -43,20 +46,12 @@ public class BlockLight extends Block implements ITileEntityProvider {
 		return new TileEntityLights();
 	}
 
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
-		return null;
-	}
-/*
-	public int getRenderType() {
-		return 4;
-	}
-*/
-	public int idDropped(int par1, Random random, int par3) {
+	public int quantityDropped(Random random) {
 		return 0;
 	}
 
-	public int quantityDropped(Random random) {
-		return 0;
+	public int getRenderType() {
+		return PackFurniture.proxy.render_block_lights_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {
@@ -73,18 +68,55 @@ public class BlockLight extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TileEntityLights)
-			return addTag(world.getBlock(x, y, z), ((TileEntityLights)te).getType(), ((TileEntityLights)te).getColorHex1());
+		if (te != null && te instanceof TileEntityLights) {
+			TileEntityLights tile = (TileEntityLights)te;
+			return addTag(world.getBlock(x, y, z), tile.getType(), tile.getColorHex1());
+		}
 		return null;
 	}
 
+	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB aabb, List list, Entity entity) {
+
+		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
+		super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+
+		float f = 0.125F;
+
+		setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
+		super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+
+		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
+		super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+
+		setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+
+		setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
+		super.addCollisionBoxesToList(world, x, y, z, aabb, list, entity);
+
+		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+
+	}
+	/*
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if (te != null && te instanceof TileEntityLights) {
+			TileEntityLights tile = (TileEntityLights)te;
+			return null;
+		}
+		return super.getCollisionBoundingBoxFromPool(world, x, y, z);
+	}
+	 */
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TileEntityLights && tag != null) {
-			if (tag.hasKey("Type")) ((TileEntityLights)te).setType(tag.getString("Type"));
-			if (tag.hasKey("ColorHex1")) ((TileEntityLights)te).setColorHex1(tag.getInteger("ColorHex1"));
+		if (te != null && te instanceof TileEntityLights) {
+			TileEntityLights tile = (TileEntityLights)te;
+			if (tag != null) {
+				if (tag.hasKey("Type")) tile.setType(tag.getString("Type"));
+				if (tag.hasKey("ColorHex1")) tile.setColorHex1(tag.getInteger("ColorHex1"));
+			}
 		}
 	}
 
@@ -93,7 +125,8 @@ public class BlockLight extends Block implements ITileEntityProvider {
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityLights && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TileEntityLights)te).getType(), ((TileEntityLights)te).getColorHex1()));
+				TileEntityLights tile = (TileEntityLights)te;
+				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), tile.getType(), tile.getColorHex1()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}

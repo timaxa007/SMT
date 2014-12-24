@@ -31,7 +31,7 @@ public class EventFurniture {
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public void onLampOn(PlayerInteractEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		World world = player.worldObj;
@@ -45,9 +45,9 @@ public class EventFurniture {
 				}
 			}
 		}
-	}
+	}*/
 	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public void onLampOff(PlayerInteractEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		World world = player.worldObj;
@@ -61,9 +61,9 @@ public class EventFurniture {
 				}
 			}
 		}
-	}
+	}*/
 	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent(priority = EventPriority.LOW)
+	/*@SubscribeEvent(priority = EventPriority.LOW)
 	public void onUseCraftHammer(PlayerEvent.ItemCraftedEvent e) {
 		System.out.println("event craft");
 		for (int i = 0; i < e.craftMatrix.getSizeInventory(); i++) { 
@@ -75,7 +75,7 @@ public class EventFurniture {
 				}
 			}
 		}
-	}
+	}*/
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
 	public void onLampOn(PlayerInteractEvent event) {

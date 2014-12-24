@@ -53,6 +53,10 @@ public class BlockClothBlocks extends Block implements ITileEntityProvider {
 		return new TileEntityClothBlocks();
 	}
 
+	public int quantityDropped(Random random) {
+		return 0;
+	}
+
 	public int idPicked(World world, int x, int y, int z) {return 0;}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
@@ -62,10 +66,6 @@ public class BlockClothBlocks extends Block implements ITileEntityProvider {
 		} else {
 			return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
 		}
-	}
-
-	public int quantityDropped(Random random) {
-		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -147,9 +147,6 @@ public class BlockClothBlocks extends Block implements ITileEntityProvider {
 				//int j = 14;
 				list.add(addTag(id, i, GetColors.getHexColors[j]));
 			}
-			/*for (int j = 0; j < (Integer.MAX_VALUE / 1000000); j++) {//int j = 14;
-				list.add(addTag(id, i, (j * 1000000)));
-			}*/
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}

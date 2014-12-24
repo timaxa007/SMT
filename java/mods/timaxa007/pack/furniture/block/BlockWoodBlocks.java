@@ -104,19 +104,15 @@ public class BlockWoodBlocks extends Block implements ITileEntityProvider {
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityWoodBlocks();
 	}
-	
-	/*public int getRenderType() {
-		return -1;
-	}*/
-	
+
 	public int quantityDropped(Random random) {
 		return 0;
 	}
-	
+
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	public boolean isOpaqueCube() {
 		return false;
 	}
@@ -207,10 +203,6 @@ public class BlockWoodBlocks extends Block implements ITileEntityProvider {
 				//int j = 14;
 				list.add(addTag(id, i, GetColors.getHexColors[j]));
 			}
-			/*for (int j = 0; j < (Integer.MAX_VALUE / 1000000); j++) {
-				//int j = 14;
-				list.add(addTag(id, i, (j * 1000000)));
-			}*/
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
