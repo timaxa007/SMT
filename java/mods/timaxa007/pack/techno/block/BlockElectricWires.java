@@ -34,7 +34,7 @@ public class BlockElectricWires extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackTechno.proxy.render_block_electric_wires_modelID;
+		return PackTechno.proxy.render.block_electric_wires_modelID;
 	}
 
 	public boolean isOpaqueCube() {

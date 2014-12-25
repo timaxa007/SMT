@@ -43,7 +43,7 @@ public class BlockModuleMovement extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackTechno.proxy.render_block_module_movement_modelID;
+		return PackTechno.proxy.render.block_module_movement_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {

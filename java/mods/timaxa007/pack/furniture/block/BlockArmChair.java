@@ -37,7 +37,7 @@ public class BlockArmChair extends Block implements ITileEntityProvider {
 
 	@Override
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_armchair_modelID;
+		return PackFurniture.proxy.render.block_armchair_modelID;
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class BlockArmChair extends Block implements ITileEntityProvider {
 		}
 	}
 
-	private static ItemStack addTag(String par1, int par2) {
+	public static ItemStack addTag(String par1, int par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.arm_chair, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setString("Type", par1);

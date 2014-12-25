@@ -33,7 +33,7 @@ public class BlockTable extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_table_modelID;
+		return PackFurniture.proxy.render.block_table_modelID;
 	}
 
 	public boolean isOpaqueCube() {

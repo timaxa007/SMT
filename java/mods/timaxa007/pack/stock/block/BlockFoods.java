@@ -43,7 +43,7 @@ public class BlockFoods extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackStock.proxy.render_block_foods_modelID;
+		return PackStock.proxy.render.block_foods_modelID;
 	}
 
 	public boolean isOpaqueCube() {

@@ -36,7 +36,7 @@ public class BlockMincer extends BlockContainer{
 	}
 	
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_mincer_modelID;
+		return PackFurniture.proxy.render.block_mincer_modelID;
 	}
 	
 	public boolean isOpaqueCube() {

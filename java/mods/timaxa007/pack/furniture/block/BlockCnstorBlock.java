@@ -45,7 +45,7 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 	}
 	
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_cnstor_block_modelID;
+		return PackFurniture.proxy.render.block_cnstor_block_modelID;
 	}
 	
 	public boolean isOpaqueCube() {

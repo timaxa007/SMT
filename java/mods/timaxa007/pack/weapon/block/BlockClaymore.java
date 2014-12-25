@@ -32,7 +32,7 @@ public class BlockClaymore extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return -1;
+		return PackWeapon.proxy.render.block_claymore_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {

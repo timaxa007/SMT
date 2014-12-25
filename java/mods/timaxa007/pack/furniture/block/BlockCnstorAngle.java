@@ -36,7 +36,7 @@ public class BlockCnstorAngle extends Block implements ITileEntityProvider {
 	}
 	
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_cnstor_angle_modelID;
+		return PackFurniture.proxy.render.block_cnstor_angle_modelID;
 	}
 	
 	public boolean isOpaqueCube() {

@@ -33,7 +33,7 @@ public class BlockWardrobe extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_wardrobe_modelID;
+		return PackFurniture.proxy.render.block_wardrobe_modelID;
 	}
 
 	public boolean isOpaqueCube() {

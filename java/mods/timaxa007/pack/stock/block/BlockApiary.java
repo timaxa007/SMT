@@ -42,7 +42,7 @@ public class BlockApiary extends BlockContainer {
 		return new TileEntityApiary();
 	}
 
-	public int getRenderType() {return PackStock.proxy.render_block_apiary_modelID;}
+	public int getRenderType() {return PackStock.proxy.render.block_apiary_modelID;}
 
 	public int quantityDropped(Random random) {
 		return 0;

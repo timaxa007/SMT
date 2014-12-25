@@ -41,7 +41,7 @@ public class BlockCandle extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_candle_modelID;
+		return PackFurniture.proxy.render.block_candle_modelID;
 	}
 
 	public boolean isOpaqueCube() {

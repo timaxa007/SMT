@@ -6,6 +6,7 @@ import mods.timaxa007.pack.techno.gui.HandlerGuiTechno;
 import mods.timaxa007.pack.techno.item.ItemList;
 import mods.timaxa007.pack.techno.lib.ListTechno;
 import mods.timaxa007.pack.techno.recipe.Recipes_Techno;
+import mods.timaxa007.pack.techno.render.RenderMain;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -15,15 +16,11 @@ public class ProxyServer {
 
 	public static BlockList block;
 	public static ItemList item;
+	public static RenderMain render;
 
 	//GUI
 	//public static int guiID=0;
 	public static int gui_electric_machines = 1;
-
-	//Render Model ID
-	public static int render_block_electric_wires_modelID;
-	public static int render_block_chip_modelID;
-	public static int render_block_module_movement_modelID;
 
 	public void preInit(FMLPreInitializationEvent event) {
 
@@ -36,10 +33,7 @@ public class ProxyServer {
 
 		block.list();
 		item.list();
-
-		render_block_electric_wires_modelID = -1;
-		render_block_chip_modelID = -1;
-		render_block_module_movement_modelID = -1;
+		render.preInit();
 
 		Recipes_Techno.list();
 

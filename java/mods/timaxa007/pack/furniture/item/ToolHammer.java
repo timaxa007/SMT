@@ -12,6 +12,7 @@ public class ToolHammer extends Item {
 	public ToolHammer() {
 		super();
 		setCreativeTab(PackFurniture.tab_furniture);
+		setNoRepair();
 		setMaxStackSize(1);
 		setMaxDamage(10);
 		setTextureName("timaxa007:tool/hammer");

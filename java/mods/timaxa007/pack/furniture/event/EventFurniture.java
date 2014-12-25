@@ -1,19 +1,17 @@
 package mods.timaxa007.pack.furniture.event;
 
-import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.furniture.item.ToolHammer;
-import net.minecraft.block.Block;
+import mods.timaxa007.pack.furniture.block.BlockArmChair;
+import mods.timaxa007.pack.furniture.tile.TileEntityArmChair;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
 public class EventFurniture {
 	//--------------------------------------------------------------------------------------------------------------
@@ -106,5 +104,13 @@ public class EventFurniture {
 			}
 		}
 	}*/
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void dropCobblestone(BlockEvent.HarvestDropsEvent e) {
+		if (e.block instanceof BlockArmChair) {
+			e.drops.clear();
+			e.setResult(Result.ALLOW);
+		}
+	}
 	//--------------------------------------------------------------------------------------------------------------
 }

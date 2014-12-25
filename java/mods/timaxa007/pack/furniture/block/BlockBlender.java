@@ -33,7 +33,7 @@ public class BlockBlender extends BlockContainer{
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_blender_modelID;
+		return PackFurniture.proxy.render.block_blender_modelID;
 	}
 
 	public boolean isOpaqueCube() {

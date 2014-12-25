@@ -36,7 +36,7 @@ public class BlockCristals extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackMining.proxy.render_block_cristals_modelID;
+		return PackMining.proxy.render.block_cristals_modelID;
 	}
 
 	public boolean isOpaqueCube() {

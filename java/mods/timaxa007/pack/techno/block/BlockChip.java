@@ -38,7 +38,7 @@ public class BlockChip extends Block implements ITileEntityProvider{
 	}
 
 	public int getRenderType() {
-		return PackTechno.proxy.render_block_chip_modelID;
+		return PackTechno.proxy.render.block_chip_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {

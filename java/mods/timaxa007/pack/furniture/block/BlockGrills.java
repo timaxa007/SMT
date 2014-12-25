@@ -41,7 +41,7 @@ public class BlockGrills extends BlockContainer {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_grills_modelID;
+		return PackFurniture.proxy.render.block_grills_modelID;
 	}
 	
 	public boolean renderAsNormalBlock() {

@@ -33,7 +33,7 @@ public class BlockCrystals extends BlockContainer{
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_crystals_modelID;
+		return PackFurniture.proxy.render.block_crystals_modelID;
 	}
 	
 	public boolean isOpaqueCube() {

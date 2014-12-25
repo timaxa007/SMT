@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.magic.block;
 
+import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.tile.TileEntityMagicCauldron;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -18,6 +19,10 @@ public class BlockMagicCauldron extends Block implements ITileEntityProvider {
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityMagicCauldron();
+	}
+
+	public int getRenderType() {
+		return PackMagic.proxy.render.block_magic_cauldron_modelID;
 	}
 
 }

@@ -37,7 +37,7 @@ public class BlockFurnitureChest extends BlockContainer {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_furniture_chest_modelID;
+		return PackFurniture.proxy.render.block_furniture_chest_modelID;
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {

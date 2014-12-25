@@ -11,6 +11,7 @@ import mods.timaxa007.pack.furniture.recipe.RecipeCnstorBlockColors;
 import mods.timaxa007.pack.furniture.recipe.RecipeToolHammer;
 import mods.timaxa007.pack.furniture.recipe.Recipes_Armor;
 import mods.timaxa007.pack.furniture.recipe.Recipes_Furniture;
+import mods.timaxa007.pack.furniture.render.RenderMain;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -21,27 +22,7 @@ public class ProxyServer {
 
 	public static BlockList block;
 	public static ItemList item;
-
-	public static int render_block_cnstor_block_modelID;
-	public static int render_block_cnstor_angle_modelID;
-	public static int render_block_cnstor_fence_modelID;
-	public static int render_block_lights_modelID;
-	public static int render_block_candle_modelID;
-	public static int render_block_crystals_modelID;
-	public static int render_block_barrels_modelID;
-	public static int render_block_bookshelf_modelID;
-	public static int render_block_table_modelID;
-	public static int render_block_chair_modelID;
-	public static int render_block_wardrobe_modelID;
-	public static int render_block_mincer_modelID;
-	public static int render_block_armchair_modelID;
-	public static int render_block_blender_modelID;
-	public static int render_block_grills_modelID;
-	public static int render_block_box_particles_modelID;
-	public static int render_block_jar01_modelID;
-	public static int render_block_pipes_modelID;
-	public static int render_block_mashine_waiter_modelID;
-	public static int render_block_furniture_chest_modelID;
+	public static RenderMain render;
 
 	//GUI
 	//public static int guiID = 0;
@@ -64,27 +45,7 @@ public class ProxyServer {
 
 		block.list();
 		item.list();
-
-		render_block_cnstor_block_modelID = -1;
-		render_block_cnstor_angle_modelID = -1;
-		render_block_cnstor_fence_modelID = -1;
-		render_block_lights_modelID = -1;
-		render_block_candle_modelID = -1;
-		render_block_crystals_modelID = -1;
-		render_block_barrels_modelID = -1;
-		render_block_bookshelf_modelID = -1;
-		render_block_table_modelID = -1;
-		render_block_chair_modelID = -1;
-		render_block_wardrobe_modelID = -1;
-		render_block_mincer_modelID = -1;
-		render_block_armchair_modelID = -1;
-		render_block_blender_modelID = -1;
-		render_block_grills_modelID = -1;
-		render_block_box_particles_modelID = -1;
-		render_block_jar01_modelID = -1;
-		render_block_pipes_modelID = -1;
-		render_block_mashine_waiter_modelID = -1;
-		render_block_furniture_chest_modelID = -1;
+		render.preInit();
 		/*
 		OreDictionary.registerOre("dyeBlack", new ItemStack(item_colored, 1, 0));
 		OreDictionary.registerOre("dyeBlue", new ItemStack(item_colored, 1, 1));

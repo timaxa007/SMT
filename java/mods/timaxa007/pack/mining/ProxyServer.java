@@ -5,6 +5,7 @@ import mods.timaxa007.pack.mining.event.EventMining;
 import mods.timaxa007.pack.mining.item.ItemList;
 import mods.timaxa007.pack.mining.lib.ListMining;
 import mods.timaxa007.pack.mining.recipe.Recipes_Mining;
+import mods.timaxa007.pack.mining.render.RenderMain;
 import mods.timaxa007.pack.mining.world.Generator_Mining;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,8 +17,7 @@ public class ProxyServer {
 
 	public static BlockList block;
 	public static ItemList item;
-
-	public static int render_block_cristals_modelID;
+	public static RenderMain render;
 
 	public static BiomeGenBase biome_test;
 	public static BiomeGenBase biome_hot;
@@ -41,8 +41,7 @@ public class ProxyServer {
 
 		block.list();
 		item.list();
-
-		render_block_cristals_modelID = -1;
+		render.preInit();
 
 		//OreDictionary.registerOre("ignotCopper", new ItemStack(itemMetals, 1, 64));
 

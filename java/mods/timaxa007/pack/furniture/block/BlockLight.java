@@ -51,7 +51,7 @@ public class BlockLight extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_lights_modelID;
+		return PackFurniture.proxy.render.block_lights_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {

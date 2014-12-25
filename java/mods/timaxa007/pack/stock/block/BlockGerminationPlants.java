@@ -38,7 +38,7 @@ public class BlockGerminationPlants extends BlockContainer {
 	}
 
 	public int getRenderType() {
-		return PackStock.proxy.render_block_germination_plants_modelID;
+		return PackStock.proxy.render.block_germination_plants_modelID;
 	}
 	
 	public boolean renderAsNormalBlock() {

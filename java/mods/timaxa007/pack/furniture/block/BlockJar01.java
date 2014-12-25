@@ -37,7 +37,7 @@ public class BlockJar01 extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_jar01_modelID;
+		return PackFurniture.proxy.render.block_jar01_modelID;
 	}
 
 	public boolean isOpaqueCube() {

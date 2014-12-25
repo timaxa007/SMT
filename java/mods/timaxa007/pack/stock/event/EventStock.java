@@ -1,5 +1,7 @@
 package mods.timaxa007.pack.stock.event;
 
+import java.util.Random;
+
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.item.ItemsStock;
 import net.minecraft.entity.Entity;
@@ -26,6 +28,7 @@ import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventStock {
+	private static Random random;
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
 	public void onUseBonemeal(BonemealEvent event) {
@@ -132,6 +135,97 @@ public class EventStock {
 
 		}
 
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void dropCobblestone(LivingDropsEvent event) {
+		if (event.source.getDamageType().equals("player")) {
+			random = new Random();
+			if (event.entityLiving instanceof EntityZombie) {
+				random = new Random();
+				System.out.println(random);
+				if (random.nextInt(100) < 60) {
+					random = new Random();
+					System.out.println(random);
+					event.entityLiving.entityDropItem(new ItemStack(Blocks.cobblestone, 1 + random.nextInt(5), 0), 0.0F);
+				}
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void dropMossyCobblestone(LivingDropsEvent event) {
+		if (event.source.getDamageType().equals("player")) {
+			if (event.entityLiving instanceof EntityZombie) {
+				random = new Random();
+				System.out.println(random);
+				if (random.nextInt(100) < 25) {
+					random = new Random();
+					System.out.println(random);
+					event.entityLiving.entityDropItem(new ItemStack(Blocks.mossy_cobblestone, 1 + random.nextInt(2), 0), 0.0F);
+				}
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void dropIronOre(LivingDropsEvent event) {
+		if (event.source.getDamageType().equals("player")) {
+			if (event.entityLiving instanceof EntityZombie) {
+				random = new Random();
+				System.out.println(random);
+				if (random.nextInt(100) < 3) {
+					random = new Random();
+					System.out.println(random);
+					event.entityLiving.entityDropItem(new ItemStack(Blocks.iron_ore, 1 + random.nextInt(1), 0), 0.0F);
+				}
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void dropCoalOre(LivingDropsEvent event) {
+		if (event.source.getDamageType().equals("player")) {
+			if (event.entityLiving instanceof EntityZombie) {
+				random = new Random();
+				System.out.println(random);
+				if (random.nextInt(100) < 7) {
+					random = new Random();
+					System.out.println(random);
+					event.entityLiving.entityDropItem(new ItemStack(Blocks.coal_ore, 1 + random.nextInt(2), 0), 0.0F);
+				}
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void dropLapisOre(LivingDropsEvent event) {
+		if (event.source.getDamageType().equals("player")) {
+			if (event.entityLiving instanceof EntityZombie) {
+				random = new Random();
+				System.out.println(random);
+				if (random.nextInt(100) < 2) {
+					random = new Random();
+					System.out.println(random);
+					event.entityLiving.entityDropItem(new ItemStack(Blocks.lapis_ore, 3 + random.nextInt(5), 0), 0.0F);
+				}
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void dropGoldOre(LivingDropsEvent event) {
+		if (event.source.getDamageType().equals("player")) {
+			if (event.entityLiving instanceof EntityZombie) {
+				random = new Random();
+				System.out.println(random);
+				if (random.nextInt(1000) < 8) {
+					random = new Random();
+					System.out.println(random);
+					event.entityLiving.entityDropItem(new ItemStack(Blocks.gold_ore, 1 + random.nextInt(1), 0), 0.0F);
+				}
+			}
+		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

@@ -6,6 +6,7 @@ import mods.timaxa007.pack.weapon.gui.HandlerGuiWeapons;
 import mods.timaxa007.pack.weapon.item.ItemList;
 import mods.timaxa007.pack.weapon.lib.ListWeapon;
 import mods.timaxa007.pack.weapon.recipe.Recipes_Weapons;
+import mods.timaxa007.pack.weapon.render.RenderMain;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -15,6 +16,7 @@ public class ProxyServer {
 
 	public static BlockList block;
 	public static ItemList item;
+	public static RenderMain render;
 
 	public void preInit(FMLPreInitializationEvent event) {
 
@@ -27,6 +29,7 @@ public class ProxyServer {
 
 		block.list();
 		item.list();
+		render.preInit();
 
 		Recipes_Weapons.list();
 

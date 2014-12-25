@@ -35,7 +35,7 @@ public class BlockBoxParticles extends BlockContainer{
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render_block_box_particles_modelID;
+		return PackFurniture.proxy.render.block_box_particles_modelID;
 	}
 
 	public boolean isOpaqueCube() {
