@@ -27,8 +27,8 @@ public class ProxyServer {
 
 		new ListWeapon();
 
-		block.list();
-		item.list();
+		block.preInit();
+		item.preInit();
 		render.preInit();
 
 		Recipes_Weapons.list();

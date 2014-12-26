@@ -11,7 +11,7 @@ public class BlockList {
 	public static Block healing;
 	public static Block apiary;
 
-	public static void list() {
+	public static void preInit() {
 
 		germination_plants = new BlockGerminationPlants();
 		foods = new BlockFoods();

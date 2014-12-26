@@ -7,7 +7,6 @@ import mods.timaxa007.pack.stock.tile.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -28,10 +27,11 @@ public class RenderMain {
 	@SideOnly(Side.CLIENT)
 	public static void init() {
 
+		/**Useless. Need for RenderingRegistry.registerBlockHandler**/
 		//Blocks
-		block_germination_plants_modelID = RenderingRegistry.getNextAvailableRenderId();
+		/*block_germination_plants_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_foods_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_apiary_modelID = RenderingRegistry.getNextAvailableRenderId();
+		block_apiary_modelID = RenderingRegistry.getNextAvailableRenderId();*/
 
 		//Blocks
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGerminationPlants.class, new RenderBlockGerminationPlants());

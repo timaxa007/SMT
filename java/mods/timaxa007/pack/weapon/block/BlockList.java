@@ -8,7 +8,7 @@ public class BlockList {
 
 	public static Block claymore;
 
-	public static void list() {
+	public static void preInit() {
 
 		claymore = new BlockClaymore();
 

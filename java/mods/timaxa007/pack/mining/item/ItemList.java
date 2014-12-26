@@ -7,7 +7,7 @@ public class ItemList {
 
 	public static Item items_for_mining;
 
-	public static void list() {
+	public static void preInit() {
 
 		items_for_mining = new ItemsMining();
 

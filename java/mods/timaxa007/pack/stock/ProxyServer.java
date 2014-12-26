@@ -28,8 +28,8 @@ public class ProxyServer {
 
 		new ListStock();
 
-		block.list();
-		item.list();
+		block.preInit();
+		item.preInit();
 		render.preInit();
 
 		//EntityList.addMapping(EntityTest.class, "Test", 111, 0x0033FF, 0x00CCFF);

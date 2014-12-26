@@ -91,7 +91,7 @@ public class BlockList {
 	public static Block vegetable_face;
 	public static Block furniture_chest;
 
-	public static void list() {
+	public static void preInit() {
 
 		furniture_machines = new BlockFurnitureMachines();
 		furniture_rock_blocks = new BlockFurnitureRockBlocks();

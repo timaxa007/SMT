@@ -1,19 +1,12 @@
 package mods.timaxa007.pack.techno.render;
 
 import mods.timaxa007.pack.techno.PackTechno;
-import mods.timaxa007.pack.techno.render.block.BlockRenderChip;
-import mods.timaxa007.pack.techno.render.block.BlockRenderElectricWires;
-import mods.timaxa007.pack.techno.render.block.BlockRenderModuleMovement;
-import mods.timaxa007.pack.techno.render.item.ItemRenderBlockChip;
-import mods.timaxa007.pack.techno.render.item.ItemRenderBlockElectricWires;
-import mods.timaxa007.pack.techno.render.item.ItemRenderBlockModuleMovement;
-import mods.timaxa007.pack.techno.tile.TileEntityChip;
-import mods.timaxa007.pack.techno.tile.TileEntityElectricWires;
-import mods.timaxa007.pack.techno.tile.TileEntityModuleMovement;
+import mods.timaxa007.pack.techno.render.block.*;
+import mods.timaxa007.pack.techno.render.item.*;
+import mods.timaxa007.pack.techno.tile.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -35,10 +28,11 @@ public class RenderMain {
 	@SideOnly(Side.CLIENT)
 	public static void init() {
 
+		/**Useless. Need for RenderingRegistry.registerBlockHandler**/
 		//Blocks
-		block_electric_wires_modelID = RenderingRegistry.getNextAvailableRenderId();
+		/*block_electric_wires_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_chip_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_module_movement_modelID = RenderingRegistry.getNextAvailableRenderId();
+		block_module_movement_modelID = RenderingRegistry.getNextAvailableRenderId();*/
 
 		//Blocks
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElectricWires.class, new BlockRenderElectricWires());

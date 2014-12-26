@@ -7,7 +7,6 @@ import mods.timaxa007.pack.furniture.tile.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -62,8 +61,9 @@ public class RenderMain {
 	@SideOnly(Side.CLIENT)
 	public static void init() {
 
+		/**Useless. Need for RenderingRegistry.registerBlockHandler**/
 		//Blocks
-		block_cnstor_block_modelID = RenderingRegistry.getNextAvailableRenderId();
+		/*block_cnstor_block_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_cnstor_angle_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_cnstor_fence_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_lights_modelID = RenderingRegistry.getNextAvailableRenderId();
@@ -82,7 +82,10 @@ public class RenderMain {
 		block_jar01_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_pipes_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_mashine_waiter_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_furniture_chest_modelID = RenderingRegistry.getNextAvailableRenderId();
+		block_furniture_chest_modelID = RenderingRegistry.getNextAvailableRenderId();*/
+
+		/**Useless**/
+		//RenderingRegistry.registerBlockHandler(block_cnstor_block_modelID, new HandlerBlockLampsOn());
 
 		//Blocks
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCnstorBlock.class, new BlockRenderCnstorBlock());

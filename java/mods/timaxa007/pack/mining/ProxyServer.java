@@ -39,8 +39,8 @@ public class ProxyServer {
 
 		new ListMining();
 
-		block.list();
-		item.list();
+		block.preInit();
+		item.preInit();
 		render.preInit();
 
 		//OreDictionary.registerOre("ignotCopper", new ItemStack(itemMetals, 1, 64));

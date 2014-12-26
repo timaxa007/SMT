@@ -9,7 +9,7 @@ import mods.timaxa007.pack.furniture.recipe.FuelHandlerFurniture;
 import mods.timaxa007.pack.furniture.recipe.RecipeArmorColor;
 import mods.timaxa007.pack.furniture.recipe.RecipeCnstorBlockColors;
 import mods.timaxa007.pack.furniture.recipe.RecipeToolHammer;
-import mods.timaxa007.pack.furniture.recipe.Recipes_Armor;
+import mods.timaxa007.pack.furniture.recipe.RecipesArmor;
 import mods.timaxa007.pack.furniture.recipe.Recipes_Furniture;
 import mods.timaxa007.pack.furniture.render.RenderMain;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,8 +43,8 @@ public class ProxyServer {
 
 		new ListFurniture();
 
-		block.list();
-		item.list();
+		block.preInit();
+		item.preInit();
 		render.preInit();
 		/*
 		OreDictionary.registerOre("dyeBlack", new ItemStack(item_colored, 1, 0));
@@ -64,25 +64,8 @@ public class ProxyServer {
 		OreDictionary.registerOre("dyeRed", new ItemStack(item_colored, 1, 13));
 		OreDictionary.registerOre("dyeWhite", new ItemStack(item_colored, 1, 14));
 		OreDictionary.registerOre("dyeYellow", new ItemStack(item_colored, 1, 15));
-
-		OreDictionary.registerOre("dyeBlack", new ItemStack(item_colored, 1, 16));
-		OreDictionary.registerOre("dyeBlue", new ItemStack(item_colored, 1, 17));
-		OreDictionary.registerOre("dyeBrown", new ItemStack(item_colored, 1, 18));
-		OreDictionary.registerOre("dyeCyan", new ItemStack(item_colored, 1, 19));
-		OreDictionary.registerOre("dyeGray", new ItemStack(item_colored, 1, 20));
-		OreDictionary.registerOre("dyeGreen", new ItemStack(item_colored, 1, 21));
-		OreDictionary.registerOre("dyeLightBlue", new ItemStack(item_colored, 1, 22));
-		OreDictionary.registerOre("dyeLightGray", new ItemStack(item_colored, 1, 23));
-		OreDictionary.registerOre("dyeLightGreen", new ItemStack(item_colored, 1, 24));
-		OreDictionary.registerOre("dyeLime", new ItemStack(item_colored, 1, 24));
-		OreDictionary.registerOre("dyeMagenta", new ItemStack(item_colored, 1, 25));
-		OreDictionary.registerOre("dyeOrange", new ItemStack(item_colored, 1, 26));
-		OreDictionary.registerOre("dyePink", new ItemStack(item_colored, 1, 27));
-		OreDictionary.registerOre("dyePurple", new ItemStack(item_colored, 1, 28));
-		OreDictionary.registerOre("dyeRed", new ItemStack(item_colored, 1, 29));
-		OreDictionary.registerOre("dyeWhite", new ItemStack(item_colored, 1, 30));
-		OreDictionary.registerOre("dyeYellow", new ItemStack(item_colored, 1, 31));
 		 */
+		GameRegistry.addRecipe(new RecipesArmor());
 		GameRegistry.addRecipe(new RecipeCnstorBlockColors());
 		GameRegistry.addRecipe(new RecipeArmorColor());
 		GameRegistry.addRecipe(new RecipeToolHammer());
@@ -94,7 +77,6 @@ public class ProxyServer {
 		TickRegistry.registerTickHandler(new TickServerHandler(), Side.SERVER);
 		 */
 		Recipes_Furniture.list();
-		Recipes_Armor.list();
 
 		MinecraftForge.EVENT_BUS.register(new EventFurniture());
 

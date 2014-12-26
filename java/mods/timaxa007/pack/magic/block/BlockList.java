@@ -11,7 +11,7 @@ public class BlockList {
 	public static Block magic_cauldron;
 	public static Block magic_locked;
 
-	public static void list() {
+	public static void preInit() {
 
 		magic_machines = new BlockMagicMachines();
 		magic_slims = new BlockSlims();

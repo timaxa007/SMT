@@ -11,7 +11,7 @@ public class BlockList {
 	public static Block ore_ender_ores;
 	public static Block cristals;
 
-	public static void list() {
+	public static void preInit() {
 
 		ore_rock_ores = new OreOres().setBlockTextureName("stone");
 		ore_nether_ores = new OreOres().setBlockTextureName("netherrack");

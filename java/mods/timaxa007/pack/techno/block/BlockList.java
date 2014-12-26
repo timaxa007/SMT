@@ -14,7 +14,7 @@ public class BlockList {
 	public static Block chip;
 	public static Block module_movement;
 
-	public static void list() {
+	public static void preInit() {
 
 		electric_machines = new BlockElectricMachines();
 		electric_wires = new BlockElectricWires();

@@ -1,14 +1,12 @@
 package mods.timaxa007.pack.weapon.render;
 
 import mods.timaxa007.pack.weapon.PackWeapon;
-import mods.timaxa007.pack.weapon.render.block.BlockRenderClaymore;
-import mods.timaxa007.pack.weapon.render.item.ItemRendererClaymore;
-import mods.timaxa007.pack.weapon.render.item.ItemRendererWeapons;
-import mods.timaxa007.pack.weapon.tile.TileEntityClaymore;
+import mods.timaxa007.pack.weapon.render.block.*;
+import mods.timaxa007.pack.weapon.render.item.*;
+import mods.timaxa007.pack.weapon.tile.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -25,8 +23,9 @@ public class RenderMain {
 	@SideOnly(Side.CLIENT)
 	public static void init() {
 
+		/**Useless. Need for RenderingRegistry.registerBlockHandler**/
 		//Blocks
-		block_claymore_modelID = RenderingRegistry.getNextAvailableRenderId();
+		/*block_claymore_modelID = RenderingRegistry.getNextAvailableRenderId();*/
 
 		//Blocks
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityClaymore.class, new BlockRenderClaymore());

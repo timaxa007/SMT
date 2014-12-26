@@ -9,7 +9,7 @@ public class ItemList {
 	public static Item tool_electric_wrench;
 	public static Item tool_electric_drills;
 
-	public static void list() {
+	public static void preInit() {
 
 		items_for_techno = new ItemsTechno();
 		tool_electric_wrench = new ToolElectricWrench();

@@ -7,7 +7,6 @@ import mods.timaxa007.pack.magic.tile.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -24,8 +23,9 @@ public class RenderMain {
 	@SideOnly(Side.CLIENT)
 	public static void init() {
 
+		/**Useless. Need for RenderingRegistry.registerBlockHandler**/
 		//Block
-		block_magic_cauldron_modelID = RenderingRegistry.getNextAvailableRenderId();
+		/*block_magic_cauldron_modelID = RenderingRegistry.getNextAvailableRenderId();*/
 
 		//Block
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicCauldron.class, new BlockRenderMagicCauldron());

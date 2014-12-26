@@ -13,7 +13,7 @@ public class ItemList {
 	public static Item teleport;
 	public static Item globular;
 
-	public static void list() {
+	public static void preInit() {
 
 		items_for_magic = new ItemsMagic();
 		magic_bow = new BowMagic();

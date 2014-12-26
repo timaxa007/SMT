@@ -31,8 +31,8 @@ public class ProxyServer {
 
 		new ListTechno();
 
-		block.list();
-		item.list();
+		block.preInit();
+		item.preInit();
 		render.preInit();
 
 		Recipes_Techno.list();

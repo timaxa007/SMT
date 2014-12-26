@@ -54,8 +54,8 @@ public class ProxyServer {
 
 		new ListMagic();
 
-		block.list();
-		item.list();
+		block.preInit();
+		item.preInit();
 		render.preInit();
 
 		Recipes_Magic.list();

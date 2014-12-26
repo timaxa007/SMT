@@ -16,7 +16,7 @@ public class ItemList {
 	public static Item bees;
 	//public static Item food_dog;
 
-	public static void list() {
+	public static void preInit() {
 
 		items_for_stock = new ItemsStock();
 		germination_plants = new ItemGerminationPlants();

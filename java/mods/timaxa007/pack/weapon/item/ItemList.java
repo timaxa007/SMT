@@ -11,7 +11,7 @@ public class ItemList {
 	public static Item ammos;
 	public static Item magazines;
 
-	public static void list() {
+	public static void preInit() {
 
 		items_for_weapons = new ItemsWeapons();
 		molotov_cocktail = new MolotovCocktail();
