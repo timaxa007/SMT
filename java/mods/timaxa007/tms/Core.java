@@ -1,33 +1,22 @@
 package mods.timaxa007.tms;
 
-import cpw.mods.fml.client.event.ConfigChangedEvent;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.relauncher.FMLCorePlugin;
-import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import mods.timaxa007.lib.ListTextureModel;
+import mods.timaxa007.tms.util.KeyPacket;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.classloading.FMLForgePlugin;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
-
-import java.io.IOException;
+import cpw.mods.fml.relauncher.Side;
 
 //@Mod (modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION, dependencies = "required-before:01miningpack;required-before:02pmfpack;required-before:03furniturepack;required-before:04technopack;required-before:05magicpack;required-before:06weaponpack")
 @Mod (modid = Core.MODID, name = Core.MODNAME, version = Core.VERSION)
@@ -46,6 +35,7 @@ public class Core {
 
 	@SidedProxy(clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyServer")
 	public static ProxyServer proxy;
+	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_tms = new TabTMS("tab_tms");
 
@@ -69,14 +59,20 @@ public class Core {
 		syncConfig(currectConfig);
 
 		new ListTextureModel();
-		
+
 		block_test = new TestBlock();
 		item_test = new TestItem();
-		
+
 		GameRegistry.registerBlock(block_test, "TestBlock");
 		GameRegistry.registerItem(item_test, "TestItem");
-		
+
 		Recipes_TMS.list();
+
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(Core.MODID);
+		network.registerMessage(KeyPacket.Handler.class, KeyPacket.class, 0, Side.SERVER);
+
+		proxy.preInitialize();
+
 	}
 
 	@EventHandler

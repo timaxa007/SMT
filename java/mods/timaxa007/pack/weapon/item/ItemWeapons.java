@@ -5,6 +5,8 @@ import java.util.List;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapon;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
+import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.ItemPrimary;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -20,12 +22,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWeapons extends Item {
+public class ItemWeapons extends ItemPrimary {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -39,67 +40,100 @@ public class ItemWeapons extends Item {
 	}
 
 	public void onUpdate(ItemStack is, World world, Entity entity, int par4, boolean par5) {
-
 		if (entity instanceof EntityPlayer) {
-
-			ItemStack actHBI = ((EntityPlayer)entity).getCurrentEquippedItem();
-
-			if (actHBI != null && actHBI.getItem() instanceof ItemWeapons && actHBI.getTagCompound() != null) {
-				NBTTagCompound tag = actHBI.getTagCompound();
-
-				if (!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) {//GuiContainer
-					//----------------------------------------------------------------------------------------------------------------
-					if (Mouse.isButtonDown(0)) {
-
-						if (actHBI.getTagCompound().hasKey("WeaponID") && actHBI.getTagCompound().hasKey("Shooted")) {
-							int var1 = tag.getInteger("Shooted");
-							int var2 = tag.getInteger("AmmoAtm");
-
-							if (var1 > 20) {var1 = 0;}
-							if (!Mouse.isButtonDown(0)) {var1 = 0;} else {var1++;}
-
-							if (isFire(var1, 5) && var2 > 0) {
-								if (!world.isRemote) {
-									world.playSoundAtEntity(entity, "timaxa007:ak74_shoot", 1.0F, 1.0F);
-									//world.spawnEntityInWorld(new EntityBullet(world, (EntityPlayer)entity, 2.0F));
-								} else {
-									System.out.println("isFire - n: " + var1);
-								}
-								tag.setInteger("AmmoAtm", var2 - 1);
-							}
-
-							tag.setInteger("Shooted", var1);
-
-						}
-
-					}
-					//----------------------------------------------------------------------------------------------------------------
-					/*if (Keyboard.isKeyDown(KeyBindingHandler.reload_key_bind.getKeyCode())) {
-						if (WeaponFor.list[tag.getInteger("WeaponID")] != null) {
-							if (!world.isRemote) {
-
-							} else {
-								System.out.println("-reload-");
-							}
-
-							//tag.setInteger("AmmoAtm", MagazineFor.magazine_list[tag.getInteger("MagazineID")].getSize());
-							tag.setInteger("AmmoAtm", 20);
-						}
-					}*/
-					//----------------------------------------------------------------------------------------------------------------
-					/*if (Keyboard.isKeyDown(KeyBindingHandler.mode_switch_key_bind.getKeyCode())) {
-						if (!world.isRemote) {
-
-							((EntityPlayer)entity).openGui(PackWeapon.instance, 1, world, (int)entity.posX, (int)entity.posY, (int)entity.posZ);
-							System.out.println("-modify-");
-
-						}
-					}*/
-					//----------------------------------------------------------------------------------------------------------------
-				}
-				actHBI.setTagCompound(tag);
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) {//GuiContainer
 			}
 		}
+	}
+
+	@Override
+	public void onLeftClick(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag.hasKey("WeaponID") && is.getTagCompound().hasKey("Shooted")) {
+			/*int var1 = tag.getInteger("Shooted");
+			int var2 = tag.getInteger("AmmoAtm");
+
+			if (var1 > 20) {var1 = 0;}
+			if (!Mouse.isButtonDown(0)) {var1 = 0;} else {var1++;}
+
+			if (isFire(var1, 5) && var2 > 0) {
+				if (!world.isRemote) {
+					world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
+					//world.spawnEntityInWorld(new EntityBullet(world, (EntityPlayer)entity, 2.0F));
+				} else {
+					System.out.println("isFire - n: " + var1);
+				}
+				tag.setInteger("AmmoAtm", var2 - 1);
+			}
+
+			tag.setInteger("Shooted", var1);
+			 */
+			if (!world.isRemote) {
+				if (tag.hasKey("AmmoAtm") && tag.getInteger("AmmoAtm") > 0) {
+					world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
+					tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
+					if (Core.show_tip_info_testing) System.out.println("fire");
+				}
+			}
+
+			is.setTagCompound(tag);
+		}
+
+	}
+
+	@Override
+	public void onRightClick(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (!world.isRemote) {
+			if (tag != null && tag.hasKey("Aim")) {
+				tag.setBoolean("Aim", true);
+				is.setTagCompound(tag);
+				if (Core.show_tip_info_testing) System.out.println("onScope");
+				//System.out.println("on-scope");
+			}
+		}
+	}
+
+	@Override
+	public void offRightClick(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (!world.isRemote) {
+			if (tag != null && tag.hasKey("Aim")) {
+				tag.setBoolean("Aim", false);
+				is.setTagCompound(tag);
+				if (Core.show_tip_info_testing) System.out.println("offScope");
+				//System.out.println("off-scope");
+			}
+		}
+	}
+
+	@Override
+	public void onReload(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (WeaponFor.list[tag.getInteger("WeaponID")] != null) {
+			if (!world.isRemote) {
+
+			} else {
+				System.out.println("-reload-");
+			}
+
+			//tag.setInteger("AmmoAtm", MagazineFor.magazine_list[tag.getInteger("MagazineID")].getSize());
+			tag.setInteger("AmmoAtm", 20);
+			is.setTagCompound(tag);
+		}
+	}
+
+	@Override
+	public void onCharge(ItemStack is, World world, EntityPlayer player) {
+		if (!world.isRemote) {
+			player.openGui(PackWeapon.instance, 1, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+			System.out.println("-modify-");
+		}
+	}
+
+	@Override
+	public void onMode(ItemStack is, World world, EntityPlayer player) {
+		if (Core.show_tip_info_testing) System.out.println("onMode");
 	}
 
 	private boolean isFire(int i, int type) {
@@ -172,7 +206,7 @@ public class ItemWeapons extends Item {
 		return true;
 	}
 
-	public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
+	/*public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (!world.isRemote) {
 			if (tag != null && tag.hasKey("Aim")) {
@@ -196,7 +230,7 @@ public class ItemWeapons extends Item {
 			}
 		}
 		return is;
-	}
+	}*/
 
 	public int getMaxItemUseDuration(ItemStack is) {return 72000;}
 
