@@ -3,10 +3,10 @@ package mods.timaxa007.pack.weapon.item;
 import java.util.List;
 
 import mods.timaxa007.lib.Option;
-import mods.timaxa007.pack.weapon.PackWeapon;
+import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.ItemPrimary;
+import mods.timaxa007.tms.util.IWeapon;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -26,7 +26,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWeapons extends ItemPrimary {
+public class ItemWeapons extends Item implements IWeapon {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -34,7 +34,7 @@ public class ItemWeapons extends ItemPrimary {
 	public ItemWeapons() {
 		super();
 		setMaxStackSize(1);
-		setCreativeTab(PackWeapon.tab_weapons);
+		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:weapons");
 		setUnlocalizedName("weapons");
 	}
@@ -47,7 +47,7 @@ public class ItemWeapons extends ItemPrimary {
 	}
 
 	@Override
-	public void onLeftClick(ItemStack is, World world, EntityPlayer player) {
+	public void onFire(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag.hasKey("WeaponID") && is.getTagCompound().hasKey("Shooted")) {
 			/*int var1 = tag.getInteger("Shooted");
@@ -68,43 +68,34 @@ public class ItemWeapons extends ItemPrimary {
 
 			tag.setInteger("Shooted", var1);
 			 */
-			if (!world.isRemote) {
+			if (!world.isRemote && isPress) {
 				if (tag.hasKey("AmmoAtm") && tag.getInteger("AmmoAtm") > 0) {
 					world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
 					tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
 					if (Core.show_tip_info_testing) System.out.println("fire");
 				}
-			}
-
-			is.setTagCompound(tag);
-		}
-
-	}
-
-	@Override
-	public void onRightClick(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (!world.isRemote) {
-			if (tag != null && tag.hasKey("Aim")) {
-				tag.setBoolean("Aim", true);
 				is.setTagCompound(tag);
-				if (Core.show_tip_info_testing) System.out.println("onScope");
-				//System.out.println("on-scope");
 			}
+
 		}
 	}
 
 	@Override
-	public void offRightClick(ItemStack is, World world, EntityPlayer player) {
+	public void onScope(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (!world.isRemote) {
 			if (tag != null && tag.hasKey("Aim")) {
-				tag.setBoolean("Aim", false);
+				tag.setBoolean("Aim", isPress);
 				is.setTagCompound(tag);
-				if (Core.show_tip_info_testing) System.out.println("offScope");
-				//System.out.println("off-scope");
+				if (Core.show_tip_info_testing) {
+					if (isPress)
+						System.out.println("onScope");
+					else
+						System.out.println("offScope");
+				}
 			}
 		}
+
 	}
 
 	@Override
@@ -125,15 +116,14 @@ public class ItemWeapons extends ItemPrimary {
 
 	@Override
 	public void onCharge(ItemStack is, World world, EntityPlayer player) {
-		if (!world.isRemote) {
-			player.openGui(PackWeapon.instance, 1, world, (int)player.posX, (int)player.posY, (int)player.posZ);
-			System.out.println("-modify-");
-		}
 	}
 
 	@Override
 	public void onMode(ItemStack is, World world, EntityPlayer player) {
-		if (Core.show_tip_info_testing) System.out.println("onMode");
+		if (!world.isRemote) {
+			player.openGui(PackWeapons.instance, 1, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+			System.out.println("-modify-");
+		}
 	}
 
 	private boolean isFire(int i, int type) {
@@ -271,7 +261,7 @@ public class ItemWeapons extends ItemPrimary {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackWeapon.proxy.item.weapons, 1, 0);
+		ItemStack is = new ItemStack(PackWeapons.proxy.item.weapons, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("WeaponID", par1);
 		tag.setBoolean("Aim", false);

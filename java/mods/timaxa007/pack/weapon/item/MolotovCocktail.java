@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.weapon.item;
 
-import mods.timaxa007.pack.weapon.PackWeapon;
+import mods.timaxa007.pack.weapon.PackWeapons;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
@@ -12,7 +12,7 @@ public class MolotovCocktail extends Item {
 
 	public MolotovCocktail() {
 		super();
-		setCreativeTab(PackWeapon.tab_weapons);
+		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:molotov_cocktail");
 		setUnlocalizedName("molotov_cocktail");
 	}

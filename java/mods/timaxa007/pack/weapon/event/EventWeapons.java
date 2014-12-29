@@ -9,7 +9,7 @@ import org.lwjgl.input.Mouse;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class EventWeapon {
+public class EventWeapons {
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
 	public void onEmpty() {

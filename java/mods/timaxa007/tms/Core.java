@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.Side;
 
 public class Core {
 
-	public static final boolean OBFUSCATileEntityD = isObfuscated();
+	public static final boolean OBFUSCATED = isObfuscated();
 	public static final String MODID = "timaxa007";
 	public static final String MODNAME = "TMS";
 	public static final String VERSION = "0.2a";

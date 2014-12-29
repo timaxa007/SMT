@@ -8,14 +8,12 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class EventWeaponsClient {
 	//--------------------------------------------------------------------------------------------------------------
 	Minecraft mc = Minecraft.getMinecraft();
-
+	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void statusBullet(LivingUpdateEvent p) {
-
 		if ((mc.ingameGUI != null) && (!(mc.ingameGUI instanceof WeaponsIngameGUI))) {
 			mc.ingameGUI = new WeaponsIngameGUI(mc);
 		}
-
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

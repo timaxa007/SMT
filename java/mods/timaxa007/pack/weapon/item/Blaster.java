@@ -3,7 +3,7 @@ package mods.timaxa007.pack.weapon.item;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.pack.weapon.PackWeapon;
+import mods.timaxa007.pack.weapon.PackWeapons;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +16,7 @@ public class Blaster extends Item {
 
 	public Blaster() {
 		super();
-		setCreativeTab(PackWeapon.tab_weapons);
+		setCreativeTab(PackWeapons.tab_weapons);
 		setUnlocalizedName("blaster");
 		setFull3D();
 	}

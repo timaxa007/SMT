@@ -5,59 +5,58 @@ import net.minecraft.item.ItemStack;
 
 public class ActionKey {
 
-	public static void onLeftClick(EntityPlayer player) {
+	public static void onLeftClick(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 
-		if (current != null && current.getItem() instanceof IActionKeyPrimary) {
-			((IActionKeyPrimary)current.getItem()).onLeftClick(current, player.worldObj, player);
+		if (current != null) {
+			if (current.getItem() instanceof IActionKeyPrimary)
+				((IActionKeyPrimary)current.getItem()).onLeftClick(current, player.worldObj, player, buttonstate);
+			if (current.getItem() instanceof IWeapon)
+				((IWeapon)current.getItem()).onFire(current, player.worldObj, player, buttonstate);
 		}
 	}
 
-	public static void onRightClick(EntityPlayer player) {
+	public static void onRightClick(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 
-		if (current != null && current.getItem() instanceof IActionKeyPrimary) {
-			((IActionKeyPrimary)current.getItem()).onRightClick(current, player.worldObj, player);
-		}
-	}
-
-	public static void offLeftClick(EntityPlayer player) {
-		ItemStack current = player.getCurrentEquippedItem();
-
-		if (current != null && current.getItem() instanceof IActionKeyPrimary) {
-			((IActionKeyPrimary)current.getItem()).offLeftClick(current, player.worldObj, player);
-		}
-	}
-
-	public static void offRightClick(EntityPlayer player) {
-		ItemStack current = player.getCurrentEquippedItem();
-
-		if (current != null && current.getItem() instanceof IActionKeyPrimary) {
-			((IActionKeyPrimary)current.getItem()).offRightClick(current, player.worldObj, player);
+		if (current != null) {
+			if (current.getItem() instanceof IActionKeyPrimary)
+				((IActionKeyPrimary)current.getItem()).onRightClick(current, player.worldObj, player, buttonstate);
+			if (current.getItem() instanceof IWeapon)
+				((IWeapon)current.getItem()).onScope(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//0
 	public static void onReload(EntityPlayer player) {
 		ItemStack current = player.getCurrentEquippedItem();
 
-		if (current != null && current.getItem() instanceof IActionKeyPrimary) {
-			((IActionKeyPrimary)current.getItem()).onReload(current, player.worldObj, player);
+		if (current != null) {
+			if (current.getItem() instanceof IActionKeyPrimary)
+				((IActionKeyPrimary)current.getItem()).onReload(current, player.worldObj, player);
+			if (current.getItem() instanceof IWeapon)
+				((IWeapon)current.getItem()).onReload(current, player.worldObj, player);
 		}
 	}
 	//1
 	public static void onCharge(EntityPlayer player) {
 		ItemStack current = player.getCurrentEquippedItem();
 
-		if (current != null && current.getItem() instanceof IActionKeyPrimary) {
-			((IActionKeyPrimary)current.getItem()).onCharge(current, player.worldObj, player);
+		if (current != null) {
+			if (current.getItem() instanceof IActionKeyPrimary)
+				((IActionKeyPrimary)current.getItem()).onCharge(current, player.worldObj, player);
+			if (current.getItem() instanceof IWeapon)
+				((IWeapon)current.getItem()).onCharge(current, player.worldObj, player);
 		}
 	}
 	//2
 	public static void onMode(EntityPlayer player) {
 		ItemStack current = player.getCurrentEquippedItem();
 
-		if (current != null && current.getItem() instanceof IActionKeyPrimary) {
-			((IActionKeyPrimary)current.getItem()).onMode(current, player.worldObj, player);
+		if (current != null) {
+			if (current.getItem() instanceof IActionKeyPrimary)
+				((IActionKeyPrimary)current.getItem()).onMode(current, player.worldObj, player);
+			if (current.getItem() instanceof IWeapon)
+				((IWeapon)current.getItem()).onMode(current, player.worldObj, player);
 		}
 	}
 	//------------------------------------------------------------------------------------------

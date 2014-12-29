@@ -28,33 +28,17 @@ public class EventClientTMS {
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void onLeftClick(MouseEvent m) {
-		if (m.buttonstate && m.button == 0) {
+		if (m.button == 0) {
 			//if (Core.show_tip_info_testing) System.out.println("onLeftClick");
-			Core.network.sendToServer(new KeyPacket(-2));
+			Core.network.sendToServer(new KeyPacket(-2, m.buttonstate));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void onRightClick(MouseEvent m) {
-		if (m.buttonstate && m.button == 1) {
+		if (m.button == 1) {
 			//if (Core.show_tip_info_testing) System.out.println("onRightClick");
-			Core.network.sendToServer(new KeyPacket(-1));
-		}
-	}
-	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
-	public void offLeftClick(MouseEvent m) {
-		if (!m.buttonstate && m.button == 0) {
-			//if (Core.show_tip_info_testing) System.out.println("onLeftClick");
-			Core.network.sendToServer(new KeyPacket(-4));
-		}
-	}
-	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
-	public void offRightClick(MouseEvent m) {
-		if (!m.buttonstate && m.button == 1) {
-			//if (Core.show_tip_info_testing) System.out.println("onRightClick");
-			Core.network.sendToServer(new KeyPacket(-3));
+			Core.network.sendToServer(new KeyPacket(-1, m.buttonstate));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------

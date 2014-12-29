@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.weapon.render;
 
-import mods.timaxa007.pack.weapon.PackWeapon;
+import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.render.block.*;
 import mods.timaxa007.pack.weapon.render.item.*;
 import mods.timaxa007.pack.weapon.tile.*;
@@ -31,10 +31,10 @@ public class RenderMain {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityClaymore.class, new BlockRenderClaymore());
 
 		//Blocks
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapon.proxy.block.claymore), new ItemRendererClaymore());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapons.proxy.block.claymore), new ItemRendererClaymore());
 
 		//Item
-		MinecraftForgeClient.registerItemRenderer(PackWeapon.proxy.item.weapons, new ItemRendererWeapons());
+		MinecraftForgeClient.registerItemRenderer(PackWeapons.proxy.item.weapons, new ItemRendererWeapons());
 
 		//Entity
 		//RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderEntityBullet());

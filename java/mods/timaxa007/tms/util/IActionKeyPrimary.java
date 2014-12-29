@@ -6,10 +6,8 @@ import net.minecraft.world.World;
 
 public interface IActionKeyPrimary {
 
-	public void onLeftClick(ItemStack is, World world, EntityPlayer player);
-	public void onRightClick(ItemStack is, World world, EntityPlayer player);
-	public void offLeftClick(ItemStack is, World world, EntityPlayer player);
-	public void offRightClick(ItemStack is, World world, EntityPlayer player);
+	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress);
 
 	public void onReload(ItemStack is, World world, EntityPlayer player);//0
 	public void onCharge(ItemStack is, World world, EntityPlayer player);//1

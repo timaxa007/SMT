@@ -8,36 +8,39 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 public class KeyPacket implements IMessage {
 
-	public int key;
+	public int button;
+	public boolean buttonstate;
 
 	public KeyPacket() {}
 
-	public KeyPacket(int key) {
-		this.key = key;
+	public KeyPacket(int button, boolean buttonstate) {
+		this.button = button;
+		this.buttonstate = buttonstate;
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
-		buf.writeInt(key);
+		buf.writeInt(button);
+		buf.writeBoolean(buttonstate);
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		key = buf.readInt();
+		button = buf.readInt();
+		buttonstate = buf.readBoolean();
 	}
 
 	public static class Handler implements IMessageHandler<KeyPacket, IMessage> {
 
 		@Override
-		public IMessage onMessage(KeyPacket message, MessageContext context) {
-			int key = message.key;
+		public IMessage onMessage(KeyPacket packet, MessageContext context) {
+			int button = packet.button;
+			boolean buttonstate = packet.buttonstate;
 			EntityPlayerMP player = context.getServerHandler().playerEntity;
 
-			switch(key) {
-			case -4:ActionKey.offLeftClick(player);break;
-			case -3:ActionKey.offRightClick(player);break;
-			case -2:ActionKey.onLeftClick(player);break;
-			case -1:ActionKey.onRightClick(player);break;
+			switch(button) {
+			case -2:ActionKey.onLeftClick(player, buttonstate);break;
+			case -1:ActionKey.onRightClick(player, buttonstate);break;
 			case 0:ActionKey.onReload(player);break;
 			case 1:ActionKey.onCharge(player);break;
 			case 2:ActionKey.onMode(player);break;

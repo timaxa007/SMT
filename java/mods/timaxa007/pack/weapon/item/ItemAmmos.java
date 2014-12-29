@@ -3,7 +3,7 @@ package mods.timaxa007.pack.weapon.item;
 import java.util.List;
 
 import mods.timaxa007.lib.Option;
-import mods.timaxa007.pack.weapon.PackWeapon;
+import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.AmmoFor;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,7 +26,7 @@ public class ItemAmmos extends Item {
 	public ItemAmmos() {
 		super();
 		setMaxStackSize(1);
-		setCreativeTab(PackWeapon.tab_weapons);
+		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:item_ammos");
 		setUnlocalizedName("item_ammos");
 	}
@@ -63,7 +63,7 @@ public class ItemAmmos extends Item {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackWeapon.proxy.item.ammos, 1, 0);
+		ItemStack is = new ItemStack(PackWeapons.proxy.item.ammos, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("AmmoID", par1);
 		is.setTagCompound(tag);

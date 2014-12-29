@@ -3,7 +3,7 @@ package mods.timaxa007.pack.weapon.item;
 import java.util.List;
 
 import mods.timaxa007.lib.Option;
-import mods.timaxa007.pack.weapon.PackWeapon;
+import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.MagazineFor;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,7 +26,7 @@ public class ItemMagazines extends Item {
 	public ItemMagazines() {
 		super();
 		setMaxStackSize(1);
-		setCreativeTab(PackWeapon.tab_weapons);
+		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:item_magazines");
 		setUnlocalizedName("item_magazines");
 	}
@@ -63,7 +63,7 @@ public class ItemMagazines extends Item {
 	}
 
 	private static ItemStack addTag(int par1) {
-		ItemStack is = new ItemStack(PackWeapon.proxy.item.magazines, 1, 0);
+		ItemStack is = new ItemStack(PackWeapons.proxy.item.magazines, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("MagazineID", par1);
 		is.setTagCompound(tag);

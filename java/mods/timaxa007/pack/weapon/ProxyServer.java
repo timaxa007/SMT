@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.weapon;
 
 import mods.timaxa007.pack.weapon.block.BlockList;
-import mods.timaxa007.pack.weapon.event.EventWeapon;
+import mods.timaxa007.pack.weapon.event.EventWeapons;
 import mods.timaxa007.pack.weapon.gui.HandlerGuiWeapons;
 import mods.timaxa007.pack.weapon.item.ItemList;
 import mods.timaxa007.pack.weapon.lib.ListWeapon;
@@ -33,13 +33,13 @@ public class ProxyServer {
 
 		Recipes_Weapons.list();
 
-		MinecraftForge.EVENT_BUS.register(new EventWeapon());
+		MinecraftForge.EVENT_BUS.register(new EventWeapons());
 
 	}
 
 	public void init() {
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(PackWeapon.MODID, new HandlerGuiWeapons());
+		NetworkRegistry.INSTANCE.registerGuiHandler(PackWeapons.MODID, new HandlerGuiWeapons());
 
 	}
 

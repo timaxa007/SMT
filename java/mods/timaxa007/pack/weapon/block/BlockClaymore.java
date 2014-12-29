@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.weapon.block;
 
 import mods.timaxa007.lib.ActionModel;
-import mods.timaxa007.pack.weapon.PackWeapon;
+import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.tile.TileEntityClaymore;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -19,7 +19,7 @@ public class BlockClaymore extends Block implements ITileEntityProvider {
 
 	public BlockClaymore() {
 		super(Material.circuits);
-		setCreativeTab(PackWeapon.tab_weapons);
+		setCreativeTab(PackWeapons.tab_weapons);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockBounds(0.1875F, 0.0F, 0.1875F, 0.8125F, 0.5F, 0.8125F);
@@ -32,7 +32,7 @@ public class BlockClaymore extends Block implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackWeapon.proxy.render.block_claymore_modelID;
+		return PackWeapons.proxy.render.block_claymore_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {

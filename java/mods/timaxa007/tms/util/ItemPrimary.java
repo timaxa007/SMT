@@ -9,23 +9,13 @@ import net.minecraft.world.World;
 public class ItemPrimary extends Item implements IActionKeyPrimary {
 
 	@Override
-	public void onLeftClick(ItemStack is, World world, EntityPlayer player) {
-		if (Core.show_tip_info_testing) System.out.println("onLeftClick");
+	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		if (Core.show_tip_info_testing) System.out.println("onLeftClick_" + (isPress ? "on" : "off"));
 	}
 
 	@Override
-	public void onRightClick(ItemStack is, World world, EntityPlayer player) {
-		if (Core.show_tip_info_testing) System.out.println("onRightClick");
-	}
-
-	@Override
-	public void offLeftClick(ItemStack is, World world, EntityPlayer player) {
-		if (Core.show_tip_info_testing) System.out.println("offLeftClick");
-	}
-
-	@Override
-	public void offRightClick(ItemStack is, World world, EntityPlayer player) {
-		if (Core.show_tip_info_testing) System.out.println("offRightClick");
+	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		if (Core.show_tip_info_testing) System.out.println("onRightClick_" + (isPress ? "on" : "off"));
 	}
 
 	@Override
