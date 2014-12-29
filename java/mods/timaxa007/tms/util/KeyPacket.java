@@ -39,6 +39,8 @@ public class KeyPacket implements IMessage {
 			EntityPlayerMP player = context.getServerHandler().playerEntity;
 
 			switch(button) {
+			case -4:ActionKey.onLeftClickTick(player);break;
+			case -3:ActionKey.onRightClickTick(player);break;
 			case -2:ActionKey.onLeftClick(player, buttonstate);break;
 			case -1:ActionKey.onRightClick(player, buttonstate);break;
 			case 0:ActionKey.onReload(player);break;

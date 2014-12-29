@@ -14,6 +14,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -47,52 +48,64 @@ public class ItemWeapons extends Item implements IWeapon {
 	}
 
 	@Override
-	public void onFire(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onLeftClickTick(ItemStack is, World world, EntityPlayer player) {
+		int rtm = 0;
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag.hasKey("WeaponID") && is.getTagCompound().hasKey("Shooted")) {
-			/*int var1 = tag.getInteger("Shooted");
-			int var2 = tag.getInteger("AmmoAtm");
+		if (tag.hasKey("WeaponID") && tag.hasKey("AmmoAtm")) {
+			if (tag.hasKey("RTM")) {rtm = (int)tag.getByte("RTM");}
+			else {tag.setByte("RTM", (byte)0);}
 
-			if (var1 > 20) {var1 = 0;}
-			if (!Mouse.isButtonDown(0)) {var1 = 0;} else {var1++;}
+			rtm = rtm + 1;
+			if (rtm > 20) rtm = 0;
 
-			if (isFire(var1, 5) && var2 > 0) {
-				if (!world.isRemote) {
-					world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
-					//world.spawnEntityInWorld(new EntityBullet(world, (EntityPlayer)entity, 2.0F));
-				} else {
-					System.out.println("isFire - n: " + var1);
+			if (!world.isRemote) {
+				if (isFire(rtm, 2)) {
+					if (tag.getInteger("AmmoAtm") > 0) {
+						world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
+						EntityArrow entityarrow = new EntityArrow(world, player, 2.0F);
+						world.spawnEntityInWorld(entityarrow);
+						tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
+						if (Core.show_tip_info_testing) System.out.println("fire");
+					}
 				}
-				tag.setInteger("AmmoAtm", var2 - 1);
 			}
+			tag.setInteger("RTM", rtm);
+			is.setTagCompound(tag);
+		}
+	}
 
-			tag.setInteger("Shooted", var1);
-			 */
+	@Override
+	public void onRightClickTick(ItemStack is, World world, EntityPlayer player) {
+
+	}
+
+	@Override
+	public void /*onFire*/onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag.hasKey("WeaponID") && tag.hasKey("Shooted") && tag.hasKey("AmmoAtm")) {
+			if (!isPress) tag.setInteger("Shooted", 0);
+
+			/*
 			if (!world.isRemote && isPress) {
-				if (tag.hasKey("AmmoAtm") && tag.getInteger("AmmoAtm") > 0) {
+				if (tag.getInteger("AmmoAtm") > 0) {
 					world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
 					tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
 					if (Core.show_tip_info_testing) System.out.println("fire");
 				}
 				is.setTagCompound(tag);
 			}
-
+			 */
 		}
 	}
 
 	@Override
-	public void onScope(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void /*onScope*/onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (!world.isRemote) {
 			if (tag != null && tag.hasKey("Aim")) {
 				tag.setBoolean("Aim", isPress);
 				is.setTagCompound(tag);
-				if (Core.show_tip_info_testing) {
-					if (isPress)
-						System.out.println("onScope");
-					else
-						System.out.println("offScope");
-				}
+				if (Core.show_tip_info_testing) System.out.println(isPress ? "onScope" : "offScope");
 			}
 		}
 
@@ -245,9 +258,7 @@ public class ItemWeapons extends Item implements IWeapon {
 				}
 
 			}
-		} else {
-			list.add(Option.prshift);
-		}
+		} else list.add(Option.prshift);
 	}
 
 	@SideOnly(Side.CLIENT)

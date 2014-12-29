@@ -39,11 +39,7 @@ public class PacketWeapons implements IMessage {
 			EntityPlayerMP player = message.getServerHandler().playerEntity;
 
 			switch(button) {
-			case -2:ActionWeapons.onScope(player, buttonstate);;break;
-			case -1:ActionWeapons.onFire(player, buttonstate);break;
-			case 0:ActionWeapons.onReload(player);break;
-			case 1:ActionWeapons.onCharge(player);break;
-			case 2:ActionWeapons.onMode(player);break;
+			//case 0:ActionWeapons.onReload(player);break;
 			}
 
 			return null;

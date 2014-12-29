@@ -2,7 +2,9 @@ package mods.timaxa007.pack.techno.item;
 
 import java.util.List;
 
+import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.techno.PackTechno;
+import mods.timaxa007.tms.util.ItemPrimary;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +21,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolElectricDrills extends Item {
+public class ToolElectricDrills extends ItemPrimary {
 
 	private static String[] modes = new String[] {
 		"Normal", 	//0
@@ -37,11 +39,11 @@ public class ToolElectricDrills extends Item {
 		setUnlocalizedName("tool_electric_drills");
 	}
 
-	public float getStrVsBlock(ItemStack is, Block blk) {
+	public float getDigSpeed(ItemStack is, Block block, int metadata) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (blk == Blocks.web) {
+		if (block == Blocks.web) {
 			return 15.0F;
-		} else if (blk == Blocks.stonebrick) {
+		} else if (block == Blocks.stonebrick) {
 			return 5.0F;
 		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 0) {
 			return 5.0F;
@@ -50,14 +52,28 @@ public class ToolElectricDrills extends Item {
 		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 2) {
 			return 1.0F;
 		} else {
-			Material material=blk.getMaterial();
-			return material!=Material.plants&&material!=Material.vine&&material!=Material.coral&& material!=Material.leaves&&material!=Material.gourd?1.0F:1.5F;
+			Material material = block.getMaterial();
+			return material != Material.plants && 
+					material != Material.vine && 
+					material != Material.coral && 
+					material != Material.leaves && 
+					material != Material.gourd ? 1.0F : 1.5F;
 		}
 	}
 
 	public boolean hitEntity(ItemStack is, EntityLivingBase entity1, EntityLivingBase entity2) {
-		is.damageItem(1, entity2);
-		return true;
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 0) {
+			is.damageItem(5, entity2);
+			return true;
+		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 1) {
+			is.damageItem(10, entity2);
+			return true;
+		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 2) {
+			is.damageItem(1, entity2);
+			return true;
+		}
+		return false;
 	}
 
 	public boolean onBlockDestroyed(ItemStack is, World world, Block block, int x, int y, int z, EntityLivingBase entity) {
@@ -81,29 +97,35 @@ public class ToolElectricDrills extends Item {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
+	public void onMode(ItemStack is, World world, EntityPlayer player) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("ModeID"))
-			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+		if (tag != null && tag.hasKey("ModeID")) {
+			int nbn = tag.getInteger("ModeID");
 
-				int nbn = tag.getInteger("ModeID");
+			if (nbn >= 2) {nbn = 0;} else {nbn = nbn + 1;}
 
-				if (nbn >= 2) {nbn = 0;} else {nbn = nbn + 1;}
+			//if (world.isRemote) {player.addChatMessage("[Drill]: " + modes[nbn] + " ");}
+			tag.setInteger("ModeID", nbn);
+			is.setTagCompound(tag);
+		}
 
-				//if (world.isRemote) {player.addChatMessage("[Drill]: " + modes[nbn] + " ");}
-				tag.setInteger("ModeID", nbn);
-				is.setTagCompound(tag);
-				return is;
-			}
+	}
+
+	@Override
+	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		return is;
-
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("ModeID")) {
-			list.add("ModeID: " + tag.getInteger("ModeID"));
-		}
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+			if (tag != null) {
+				if (tag.hasKey("ModeID")) {
+					list.add("ModeID: " + tag.getInteger("ModeID"));
+				}
+			}
+		} else list.add(Option.prshift);
+
 	}
 
 	@SideOnly(Side.CLIENT)

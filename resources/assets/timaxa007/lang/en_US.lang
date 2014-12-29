@@ -69,6 +69,21 @@ type.skin.name=Skin
 type.leather.name=Leather
 type.fur.name=Fur
 
+key.reload.name=Reload
+key.charge.name=Charge
+key.mode.name=Mode Switch
+key.use.name=Use
+key.yaw_right.name=Yaw Right
+key.up.name=Up
+key.yaw_left.name=Yaw Left
+key.move_right.name=Move Right
+key.stop.name=Stop
+key.move_left.name=Move Left
+key.use2.name=Use 2
+key.down.name=Down
+key.use1.name=Use 1
+category.tms.name=TMS Key Bindings
+
 itemGroup.tab_tms=Tab TMS's
 tile.block_test.name=Test Block
 item.item_test.name=Test Item

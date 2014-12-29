@@ -2,6 +2,7 @@ package mods.timaxa007.tms;
 
 import mods.timaxa007.tms.util.EventClientTMS;
 import mods.timaxa007.tms.util.EventKey;
+import mods.timaxa007.tms.util.EventTick;
 import mods.timaxa007.tms.util.RegKey;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -19,7 +20,7 @@ public class ProxyClient extends ProxyServer {
 
 		MinecraftForge.EVENT_BUS.register(new EventClientTMS());
 		FMLCommonHandler.instance().bus().register(new EventKey());
-
+		FMLCommonHandler.instance().bus().register(new EventTick());
 	}
 
 	@Override
