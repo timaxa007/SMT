@@ -1,11 +1,10 @@
 package mods.timaxa007.pack.furniture.render.item;
 
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.lib.ModelT;
-import mods.timaxa007.lib.TileTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
@@ -25,12 +24,12 @@ public class ItemRenderBlockPipes implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 		NBTTagCompound tag = is.getTagCompound();
-		int typ = 0;
+		String tex = "";
 		int siz = 1;
 		int clr = 0xFFFFFF;
 
 		if (tag != null) {
-			if (tag.hasKey("Type")) typ = tag.getInteger("Type");
+			if (tag.hasKey("Style")) tex = tag.getString("Style");
 			if (tag.hasKey("Size")) siz = tag.getInteger("Size");
 		}
 
@@ -45,7 +44,7 @@ public class ItemRenderBlockPipes implements IItemRenderer {
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glDisable(GL11.GL_LIGHTING);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[typ][0], (String)TileTexture.texTest01[typ][1]));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 
 		ModelT.addBox(ss_p_p, 1.0D, ss_p_p, ss_p_m, ss_p_p, ss_p_m);
 		ModelT.addBox(ss_p_p, ss_p_m, ss_p_p, ss_p_m, 0.0D, ss_p_m);

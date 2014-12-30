@@ -8,9 +8,9 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPipes extends TileEntity {
 
-	private int type;
+	private String style;
 	private int size;
-	private int color;
+	private int color_hex;
 	public boolean up;
 	public boolean down;
 	public boolean north;
@@ -19,9 +19,9 @@ public class TileEntityPipes extends TileEntity {
 	public boolean east;
 
 	public TileEntityPipes() {
-		type = 0;
+		style = "";
 		size = 0;
-		color = 0;
+		color_hex = 0;
 		up = true;
 		down = true;
 		north = true;
@@ -30,8 +30,8 @@ public class TileEntityPipes extends TileEntity {
 		east = true;
 	}
 
-	public void setType(int i) {
-		type = i;
+	public void setStyle(String style) {
+		this.style = style;
 	}
 
 	public void setSize(int i) {
@@ -44,8 +44,8 @@ public class TileEntityPipes extends TileEntity {
 		}
 	}
 
-	public void setColor(int i) {
-		color = i;
+	public void setColor(int color) {
+		color_hex = color;
 	}
 
 	public void updateEntity() {
@@ -57,8 +57,8 @@ public class TileEntityPipes extends TileEntity {
 		if (worldObj.getTileEntity(xCoord, yCoord, zCoord - 1) instanceof TileEntityPipes) {east = true;} else {east = false;}
 	}
 
-	public int getType() {
-		return type;
+	public String getStyle() {
+		return style;
 	}
 
 	public int getSize() {
@@ -66,23 +66,23 @@ public class TileEntityPipes extends TileEntity {
 	}
 
 	public int getColor() {
-		return color;
+		return color_hex;
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		if (nbt.hasKey("Type")) type = nbt.getInteger("Type");
+		if (nbt.hasKey("Style")) style = nbt.getString("Style");
 		if (nbt.hasKey("Size")) size = nbt.getInteger("Size");
-		if (nbt.hasKey("Color")) color = nbt.getInteger("Color");
+		if (nbt.hasKey("Color")) color_hex = nbt.getInteger("Color");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		nbt.setInteger("Type", type);
+		nbt.setString("Style", style);
 		nbt.setInteger("Size", size);
-		nbt.setInteger("Color", color);
+		nbt.setInteger("Color", color_hex);
 	}
 
 	public Packet getDescriptionPacket() {

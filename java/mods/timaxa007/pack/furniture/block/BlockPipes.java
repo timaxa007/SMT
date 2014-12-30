@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.block;
 
 import java.util.List;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityPipes;
 import net.minecraft.block.Block;
@@ -51,8 +51,10 @@ public class BlockPipes extends Block implements ITileEntityProvider {
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TileEntityPipes)
-			return addTag(((TileEntityPipes)te).getType(), ((TileEntityPipes)te).getSize(), ((TileEntityPipes)te).getColor());
+		if (te != null && te instanceof TileEntityPipes) {
+			TileEntityPipes tile = (TileEntityPipes)te;
+			return addTag(tile.getStyle(), tile.getSize(), tile.getColor());
+		}
 		return null;
 	}
 
@@ -61,33 +63,34 @@ public class BlockPipes extends Block implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
 		if (te != null && te instanceof TileEntityPipes) {
+			TileEntityPipes tile = (TileEntityPipes)te;
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TileEntityPipes)te).setType(tag.getInteger("Type"));
-				if (tag.hasKey("Size")) ((TileEntityPipes)te).setSize(tag.getInteger("Size"));
-				if (tag.hasKey("Color")) ((TileEntityPipes)te).setColor(tag.getInteger("Color"));
+				if (tag.hasKey("Style")) tile.setStyle(tag.getString("Style"));
+				if (tag.hasKey("Size")) tile.setSize(tag.getInteger("Size"));
+				if (tag.hasKey("Color")) tile.setColor(tag.getInteger("Color"));
 			}
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		for (int j = 0; j < TileTexture.texTest01.length; ++j) {
-			list.add(addTag(j, 1, 0xFFFFFF));
-			list.add(addTag(j, 2, 0xFFFFFF));
-			list.add(addTag(j, 3, 0xFFFFFF));
-			list.add(addTag(j, 4, 0xFFFFFF));
-			list.add(addTag(j, 5, 0xFFFFFF));
-			list.add(addTag(j, 6, 0xFFFFFF));
-			list.add(addTag(j, 7, 0xFFFFFF));
-			list.add(addTag(j, 8, 0xFFFFFF));
+		for (int j = 0; j < AddTextureModel.list.length; ++j) {
+			list.add(addTag(AddTextureModel.list[j].tag, 1, 0xFFFFFF));
+			list.add(addTag(AddTextureModel.list[j].tag, 2, 0xFFFFFF));
+			list.add(addTag(AddTextureModel.list[j].tag, 3, 0xFFFFFF));
+			list.add(addTag(AddTextureModel.list[j].tag, 4, 0xFFFFFF));
+			list.add(addTag(AddTextureModel.list[j].tag, 5, 0xFFFFFF));
+			list.add(addTag(AddTextureModel.list[j].tag, 6, 0xFFFFFF));
+			list.add(addTag(AddTextureModel.list[j].tag, 7, 0xFFFFFF));
+			list.add(addTag(AddTextureModel.list[j].tag, 8, 0xFFFFFF));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2, int par3) {
+	private static ItemStack addTag(String par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.pipes, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par1);
+		tag.setString("Style", par1);
 		tag.setInteger("Size", par2);
 		tag.setInteger("Color", par3);
 		is.setTagCompound(tag);

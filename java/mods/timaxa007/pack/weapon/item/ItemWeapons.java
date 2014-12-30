@@ -6,7 +6,7 @@ import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.IWeapon;
+import mods.timaxa007.tms.util.IActionKeyPrimary;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -27,7 +27,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWeapons extends Item implements IWeapon {
+public class ItemWeapons extends Item implements IActionKeyPrimary {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -69,6 +69,7 @@ public class ItemWeapons extends Item implements IWeapon {
 					}
 				}
 			}
+
 			tag.setInteger("RTM", rtm);
 			is.setTagCompound(tag);
 		}

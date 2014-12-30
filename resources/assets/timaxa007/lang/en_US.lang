@@ -69,6 +69,7 @@ type.skin.name=Skin
 type.leather.name=Leather
 type.fur.name=Fur
 
+category.tms.name=TMS Key Bindings
 key.reload.name=Reload
 key.charge.name=Charge
 key.mode.name=Mode Switch
@@ -82,7 +83,8 @@ key.move_left.name=Move Left
 key.use2.name=Use 2
 key.down.name=Down
 key.use1.name=Use 1
-category.tms.name=TMS Key Bindings
+key.booster.name=Booster
+key.grab.name=Grab
 
 itemGroup.tab_tms=Tab TMS's
 tile.block_test.name=Test Block

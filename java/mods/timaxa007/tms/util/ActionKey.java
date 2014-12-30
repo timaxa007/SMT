@@ -8,16 +8,16 @@ public class ActionKey {
 	public static void onLeftClickTick(EntityPlayer player) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
-			if (current.getItem() instanceof IWeapon)
-				((IWeapon)current.getItem()).onLeftClickTick(current, player.worldObj, player);
+			if (current.getItem() instanceof IActionKeyPrimary)
+				((IActionKeyPrimary)current.getItem()).onLeftClickTick(current, player.worldObj, player);
 		}
 	}
 
 	public static void onRightClickTick(EntityPlayer player) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
-			if (current.getItem() instanceof IWeapon)
-				((IWeapon)current.getItem()).onRightClickTick(current, player.worldObj, player);
+			if (current.getItem() instanceof IActionKeyPrimary)
+				((IActionKeyPrimary)current.getItem()).onRightClickTick(current, player.worldObj, player);
 		}
 	}
 
@@ -26,8 +26,6 @@ public class ActionKey {
 		if (current != null) {
 			if (current.getItem() instanceof IActionKeyPrimary)
 				((IActionKeyPrimary)current.getItem()).onLeftClick(current, player.worldObj, player, buttonstate);
-			if (current.getItem() instanceof IWeapon)
-				((IWeapon)current.getItem()).onLeftClick(current, player.worldObj, player, buttonstate);
 		}
 	}
 
@@ -36,8 +34,6 @@ public class ActionKey {
 		if (current != null) {
 			if (current.getItem() instanceof IActionKeyPrimary)
 				((IActionKeyPrimary)current.getItem()).onRightClick(current, player.worldObj, player, buttonstate);
-			if (current.getItem() instanceof IWeapon)
-				((IWeapon)current.getItem()).onRightClick(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//0
@@ -46,8 +42,6 @@ public class ActionKey {
 		if (current != null) {
 			if (current.getItem() instanceof IActionKeyPrimary)
 				((IActionKeyPrimary)current.getItem()).onReload(current, player.worldObj, player);
-			if (current.getItem() instanceof IWeapon)
-				((IWeapon)current.getItem()).onReload(current, player.worldObj, player);
 		}
 	}
 	//1
@@ -56,8 +50,6 @@ public class ActionKey {
 		if (current != null) {
 			if (current.getItem() instanceof IActionKeyPrimary)
 				((IActionKeyPrimary)current.getItem()).onCharge(current, player.worldObj, player);
-			if (current.getItem() instanceof IWeapon)
-				((IWeapon)current.getItem()).onCharge(current, player.worldObj, player);
 		}
 	}
 	//2
@@ -66,8 +58,6 @@ public class ActionKey {
 		if (current != null) {
 			if (current.getItem() instanceof IActionKeyPrimary)
 				((IActionKeyPrimary)current.getItem()).onMode(current, player.worldObj, player);
-			if (current.getItem() instanceof IWeapon)
-				((IWeapon)current.getItem()).onMode(current, player.worldObj, player);
 		}
 	}
 	//------------------------------------------------------------------------------------------

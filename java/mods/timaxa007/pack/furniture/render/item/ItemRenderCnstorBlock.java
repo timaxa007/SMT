@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.item;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,11 +34,11 @@ public class ItemRenderCnstorBlock implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 		NBTTagCompound tag = is.getTagCompound();
 
-		int tex = 0;
+		String tex = "";
 		int clr = 0xFFFFFF;
 
 		if (tag != null) {
-			if (tag.hasKey("Type")) tex = tag.getInteger("Type");
+			if (tag.hasKey("Type")) tex = tag.getString("Style");
 			if (tag.hasKey("Color")) clr = tag.getInteger("Color");
 		}
 
@@ -54,7 +54,7 @@ public class ItemRenderCnstorBlock implements IItemRenderer {
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-90F, 0.0F, 0.0F, 1.0F);
 		GL11.glColor4f(red , green , blue, alfa);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[tex][0], (String)TileTexture.texTest01[tex][1]));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdlS.renderAll();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
@@ -66,7 +66,7 @@ public class ItemRenderCnstorBlock implements IItemRenderer {
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(0F, 0.0F, 0.0F, 1.0F);
 		GL11.glColor4f(red , green , blue, alfa);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[tex][0], (String)TileTexture.texTest01[tex][1]));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdlS.renderAll();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
@@ -78,7 +78,7 @@ public class ItemRenderCnstorBlock implements IItemRenderer {
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(90F, 0.0F, 0.0F, 1.0F);
 		GL11.glColor4f(red , green , blue, alfa);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[tex][0], (String)TileTexture.texTest01[tex][1]));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdlS.renderAll();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
@@ -90,7 +90,7 @@ public class ItemRenderCnstorBlock implements IItemRenderer {
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		GL11.glColor4f(red , green , blue, alfa);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[tex][0], (String)TileTexture.texTest01[tex][1]));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdlS.renderAll();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
@@ -101,7 +101,7 @@ public class ItemRenderCnstorBlock implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glColor4f(red , green , blue, alfa);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[tex][0], (String)TileTexture.texTest01[tex][1]));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdlT.renderAll();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
@@ -113,7 +113,7 @@ public class ItemRenderCnstorBlock implements IItemRenderer {
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		GL11.glColor4f(red , green , blue, alfa);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation((String)TileTexture.texTest01[tex][0], (String)TileTexture.texTest01[tex][1]));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdlB.renderAll();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();

@@ -6,6 +6,8 @@ import net.minecraft.world.World;
 
 public interface IActionKeyPrimary {
 
+	public void onLeftClickTick(ItemStack is, World world, EntityPlayer player);
+	public void onRightClickTick(ItemStack is, World world, EntityPlayer player);
 	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress);
 	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress);
 

@@ -1,12 +1,11 @@
 package mods.timaxa007.pack.furniture.render.block;
 
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.lib.ModelT;
-import mods.timaxa007.lib.TileTexture;
 import mods.timaxa007.pack.furniture.tile.TileEntityPipes;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
@@ -19,12 +18,12 @@ public class RenderBlockPipes extends TileEntitySpecialRenderer {
 
 	private void renderTileEntity(TileEntityPipes te, double dx, double dy, double dz, float f) {
 		//int meta = te.getBlockMetadata();
-		int tex = 0;
+		String tex = "";
 		int siz = 1;
 		int clr = 0xFFFFFF;
 
 		if (te != null) {
-			tex = te.getType();
+			tex = te.getStyle();
 			siz = te.getSize();
 			//clr = te.getColor();
 		}
@@ -43,7 +42,7 @@ public class RenderBlockPipes extends TileEntitySpecialRenderer {
 		GL11.glRotatef(90.0F, 1.0F, 0.0F, 0.0F);
 		GL11.glTranslatef(0.0F, 0.0F, -1.0F);
 
-		bindTexture(new ResourceLocation((String)TileTexture.texTest01[tex][0], (String)TileTexture.texTest01[tex][1]));
+		bindTexture(AddTextureModel.get(tex).getTexture());
 
 		Tessellator tessellator = Tessellator.instance;
 		//-------------------------------------------------------------------
@@ -72,7 +71,7 @@ public class RenderBlockPipes extends TileEntitySpecialRenderer {
 		/*
 		tessellator.startDrawingQuads();
 		tessellator.setColorOpaque_I(clr);
-		
+
 		//Up
 		tessellator.addVertexWithUV(1.0D, 1.0D, 0.0D, 1.0D, 0.0D);
 		tessellator.addVertexWithUV(0.0D, 1.0D, 0.0D, 0.0D, 0.0D);
@@ -103,7 +102,7 @@ public class RenderBlockPipes extends TileEntitySpecialRenderer {
 		tessellator.addVertexWithUV(1.0D, 0.0D, 0.0D, 1.0D, 1.0D);
 		tessellator.addVertexWithUV(1.0D, 1.0D, 0.0D, 1.0D, 0.0D);
 		tessellator.addVertexWithUV(1.0D, 1.0D, 1.0D, 0.0D, 0.0D);
-		
+
 		tessellator.draw();
 		 */
 

@@ -11,6 +11,7 @@ public class RegKey {
 	public static final KeyBinding reload = new KeyBinding("key.reload.name", Keyboard.KEY_R, "category.tms.name");//0
 	public static final KeyBinding charge = new KeyBinding("key.charge.name", Keyboard.KEY_T, "category.tms.name");//1
 	public static final KeyBinding mode = new KeyBinding("key.mode.name", Keyboard.KEY_F, "category.tms.name");//2
+
 	public static final KeyBinding use = new KeyBinding("key.use.name", Keyboard.KEY_NUMPAD0, "category.tms.name");//3
 	public static final KeyBinding yaw_right = new KeyBinding("key.yaw_right.name", Keyboard.KEY_NUMPAD9, "category.tms.name");//4
 	public static final KeyBinding up = new KeyBinding("key.up.name", Keyboard.KEY_NUMPAD8, "category.tms.name");//5
@@ -22,11 +23,15 @@ public class RegKey {
 	public static final KeyBinding down = new KeyBinding("key.down.name", Keyboard.KEY_NUMPAD2, "category.tms.name");//11
 	public static final KeyBinding use1 = new KeyBinding("key.use1.name", Keyboard.KEY_NUMPAD1, "category.tms.name");//12
 
+	public static final KeyBinding booster = new KeyBinding("key.booster.name", Keyboard.KEY_V, "category.tms.name");//13
+	public static final KeyBinding grab = new KeyBinding("key.grab.name", Keyboard.KEY_G, "category.tms.name");//14
+
 	public static final KeyBinding[] list_key = new KeyBinding[] {
 		reload, charge, mode, use, 
 		yaw_right, up, yaw_left, 
 		move_right, stop, move_left, 
-		use2, down, use1
+		use2, down, use1,
+		booster, grab
 	};
 
 	public static void preInt() {

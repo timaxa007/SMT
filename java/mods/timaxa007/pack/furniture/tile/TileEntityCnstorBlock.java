@@ -8,42 +8,41 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityCnstorBlock extends TileEntity {
 
-	private int type;
-	private int color;
+	private String style;
+	private int color_hex;
 
 	public TileEntityCnstorBlock() {
-		type = 0;
-		color = 0xFFFFFF;
+		color_hex = 0xFFFFFF;
 	}
 
-	public int getType() {
-		return type;
+	public String getStyle() {
+		return style;
 	}
 
 	public int getColor() {
-		return color;
+		return color_hex;
 	}
 
-	public void setType(int i) {
-		type = i;
+	public void setStyle(String style) {
+		this.style = style;
 	}
 
-	public void setColor(int i) {
-		color = i;
+	public void setColor(int color) {
+		this.color_hex = color;
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		if (nbt.hasKey("Type")) type = nbt.getInteger("Type");
-		if (nbt.hasKey("Color")) color = nbt.getInteger("Color");
+		if (nbt.hasKey("Style")) style = nbt.getString("Style");
+		if (nbt.hasKey("Color")) color_hex = nbt.getInteger("Color");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		nbt.setInteger("Type", type);
-		nbt.setInteger("Color", color);
+		nbt.setString("Style", style);
+		nbt.setInteger("Color", color_hex);
 	}
 
 	//public boolean canUpdate() {return false;}

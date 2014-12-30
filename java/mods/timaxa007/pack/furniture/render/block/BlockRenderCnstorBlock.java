@@ -1,11 +1,10 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorBlock;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
@@ -21,11 +20,11 @@ public class BlockRenderCnstorBlock extends TileEntitySpecialRenderer {
 
 	private void renderTileEntity(TileEntityCnstorBlock te, double dx, double dy, double dz, float f) {
 		//int meta = te.getBlockMetadata();
-		int tex = 0;
+		String tex = "";
 		int clr = 0xFFFFFF;
 
 		if (te != null) {
-			tex = te.getType();
+			tex = te.getStyle();
 			clr = te.getColor();
 		}
 		/*
@@ -45,7 +44,7 @@ public class BlockRenderCnstorBlock extends TileEntitySpecialRenderer {
 
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glTranslated(dx, dy, dz);
-		bindTexture(new ResourceLocation((String)TileTexture.texTest01[tex][0], (String)TileTexture.texTest01[tex][1]));
+		bindTexture(AddTextureModel.get(tex).getTexture());
 
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
