@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.item;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -36,7 +36,7 @@ public class ItemRenderAngles implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 
-		int tex = 0;
+		String tex = "";
 		int mdl = 0;
 		int rot = 2;
 		boolean uper = false;
@@ -45,7 +45,7 @@ public class ItemRenderAngles implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdl1_l.renderAll();
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -53,7 +53,7 @@ public class ItemRenderAngles implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdl1_r.renderAll();
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -61,7 +61,7 @@ public class ItemRenderAngles implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdl1_1.renderAll();
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -69,7 +69,7 @@ public class ItemRenderAngles implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(0F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -77,7 +77,7 @@ public class ItemRenderAngles implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		//GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		if (!uper) {
 			mdlB.renderAll();
 		} else {

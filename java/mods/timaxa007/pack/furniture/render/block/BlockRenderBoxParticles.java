@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityBoxParticles;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -22,8 +22,13 @@ public class BlockRenderBoxParticles extends TileEntitySpecialRenderer {
 	}
 
 	private void renderTileEntity(TileEntityBoxParticles te, double dx, double dy, double dz, float f) {
-		int tex = te.getTypes();
-		int rot = te.getRot();
+		String tex = "";
+		int rot = 0;
+
+		if (te != null) {
+			tex = te.getStyle();
+			rot = te.getRot();
+		}
 
 		GL11.glPushMatrix();
 		GL11.glTranslated(dx, dy, dz);
@@ -38,7 +43,7 @@ public class BlockRenderBoxParticles extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		bindTexture(AddTextureModel.get(tex).getTexture());
 
 		model.renderAll();
 

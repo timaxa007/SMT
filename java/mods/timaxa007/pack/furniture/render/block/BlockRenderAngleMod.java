@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityAngleMod;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -38,7 +38,7 @@ public class BlockRenderAngleMod extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdl1_l.renderAll();
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -46,7 +46,7 @@ public class BlockRenderAngleMod extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdl1_r.renderAll();
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -54,7 +54,7 @@ public class BlockRenderAngleMod extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdl1_1.renderAll();
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -62,7 +62,7 @@ public class BlockRenderAngleMod extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(0F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -70,12 +70,12 @@ public class BlockRenderAngleMod extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)d1+0.5F, (float)d2, (float)d3+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		//GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		if (!uper) {
 			mdlB.renderAll();
 		} else {
 			mdlT.renderAll();
-			}
+		}
 		GL11.glPopMatrix();
 		//--------------------------------
 

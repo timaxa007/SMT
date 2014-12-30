@@ -27,7 +27,7 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 		setResistance(3.5F);
 		setLightOpacity(0);
 		setStepSound(soundTypeWood);
-		setBlockTextureName("timaxa007:" + "woodFrame");
+		setBlockTextureName("timaxa007:woodFrame");
 		setBlockName("cnstor.fence");
 	}
 
@@ -35,15 +35,15 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityCnstorFence();
 	}
-	
+
 	public int getRenderType() {
 		return PackFurniture.proxy.render.block_cnstor_fence_modelID;
 	}
-	
+
 	public boolean isOpaqueCube() {
 		return false;
 	}
-	
+
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
@@ -51,9 +51,9 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityCnstorFence) {
-			return addTag(((TileEntityCnstorFence)te).getTypes());
+			return addTag(((TileEntityCnstorFence)te).getStyle());
 		}
-		return addTag(0);
+		return null;
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 		NBTTagCompound tag = is.getTagCompound();
 		if (te != null && te instanceof TileEntityCnstorFence) {
 			if (tag != null) {
-				((TileEntityCnstorFence)te).setTypes(tag.getInteger("Type"));
+				((TileEntityCnstorFence)te).setStyle(tag.getString("Style"));
 			}
 		}
 	}
@@ -73,8 +73,8 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		//for (int  j = 0; j < TileTexture.texTest01.length; ++j) {
-		//for (byte i = 0; i < 16; ++i) {
-		int j = 0;
+		//for (int i = 0; i < 16; ++i) {
+		String j = "";
 
 		list.add(addTag(j));
 		//}
@@ -82,10 +82,10 @@ public class BlockCnstorFence extends Block implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addTag(String par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_fence, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par1);
+		tag.setString("Style", par1);
 		is.setTagCompound(tag);
 		return is;
 	}

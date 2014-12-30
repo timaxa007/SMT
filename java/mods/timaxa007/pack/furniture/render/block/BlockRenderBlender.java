@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityBlender;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -48,7 +48,7 @@ public class BlockRenderBlender extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));//tbx
+		bindTexture(AddTextureModel.list[0].getTexture());//tbx
 		mdl1.renderPart("box01");
 		GL11.glPopMatrix();
 		//---------------------------------------------
@@ -65,7 +65,7 @@ public class BlockRenderBlender extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdl1.renderPart("button0");
 		mdl1.renderPart("button1");
 		mdl1.renderPart("button2");
@@ -85,7 +85,7 @@ public class BlockRenderBlender extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));//tc
+		bindTexture(AddTextureModel.list[0].getTexture());//tc
 		mdl1.renderPart("cap");
 		GL11.glPopMatrix();
 		//---------------------------------------------
@@ -102,7 +102,7 @@ public class BlockRenderBlender extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));//thnd
+		bindTexture(AddTextureModel.list[0].getTexture());//thnd
 		mdl1.renderPart("handler");
 		GL11.glPopMatrix();
 		//---------------------------------------------
@@ -119,7 +119,7 @@ public class BlockRenderBlender extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdl1.renderPart("blade");
 		GL11.glPopMatrix();
 		//---------------------------------------------

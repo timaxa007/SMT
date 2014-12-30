@@ -8,24 +8,24 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityBoxParticles extends TileEntity {
 
-	private int types;
+	private String style;
 	private int rot;
 
 	public TileEntityBoxParticles() {
-		types = 0;
+		style = "";
 		rot = 0;
 	}
 
-	public void setTypes(int i) {
-		types = i;
+	public void setStyle(String i) {
+		style = i;
 	}
 
 	public void setRot(int i) {
 		rot = i;
 	}
 
-	public int getTypes() {
-		return types;
+	public String getStyle() {
+		return style;
 	}
 
 	public int getRot() {
@@ -34,13 +34,13 @@ public class TileEntityBoxParticles extends TileEntity {
 
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		if (nbt.hasKey("Type")) types=nbt.getInteger("Type");
-		if (nbt.hasKey("Rot")) rot=nbt.getInteger("Rot");
+		if (nbt.hasKey("Style")) style = nbt.getString("Style");
+		if (nbt.hasKey("Rot")) rot = nbt.getInteger("Rot");
 	}
 
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		nbt.setInteger("Type", types);
+		nbt.setString("Style", style);
 		nbt.setInteger("Rot", rot);
 	}
 

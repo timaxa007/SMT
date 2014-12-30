@@ -8,14 +8,14 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityCnstorFence extends TileEntity {
 
-	private int types;
+	private String style;
 	private boolean stepN;
 	private boolean stepS;
 	private boolean stepW;
 	private boolean stepE;
 
 	public TileEntityCnstorFence() {
-		types = 0;
+		style = "";
 		stepN = false;
 		stepS = false;
 		stepW = false;
@@ -50,8 +50,8 @@ public class TileEntityCnstorFence extends TileEntity {
 
 	}
 
-	public int getTypes() {
-		return types;
+	public String getStyle() {
+		return style;
 	}
 
 	public boolean getStepN() {
@@ -70,8 +70,8 @@ public class TileEntityCnstorFence extends TileEntity {
 		return stepE;
 	}
 
-	public void setTypes(int i) {
-		types = i;
+	public void setStyle(String i) {
+		style = i;
 	}
 	/*
 	public void setStepN(boolean i) {
@@ -93,17 +93,17 @@ public class TileEntityCnstorFence extends TileEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		if (nbt.hasKey("Type")) {types = nbt.getInteger("Type");}
-		//if (nbt.hasKey("StepN")) {stepN = nbt.getBoolean("StepN");}
-		//if (nbt.hasKey("StepS")) {stepS = nbt.getBoolean("StepS");}
-		//if (nbt.hasKey("StepW")) {stepW = nbt.getBoolean("StepW");}
-		//if (nbt.hasKey("StepE")) {stepE = nbt.getBoolean("StepE");}
+		if (nbt.hasKey("Style")) style = nbt.getString("Style");
+		//if (nbt.hasKey("StepN")) stepN = nbt.getBoolean("StepN");
+		//if (nbt.hasKey("StepS")) stepS = nbt.getBoolean("StepS");
+		//if (nbt.hasKey("StepW")) stepW = nbt.getBoolean("StepW");
+		//if (nbt.hasKey("StepE")) stepE = nbt.getBoolean("StepE");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		nbt.setInteger("Type", types);
+		nbt.setString("Style", style);
 		//nbt.setBoolean("StepN", stepN);
 		//nbt.setBoolean("StepS", stepS);
 		//nbt.setBoolean("StepW", stepW);

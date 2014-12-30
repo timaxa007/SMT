@@ -85,11 +85,15 @@ public class OreFake {
 	}
 
 	public static OreFake get(String tag) {
-		if (tag != null)
+		if (tag != null && tag.length() > 0)
 			return list[getID_tag(tag)];
 		return empty;
 	}
 	//--------------------------------------------------------
+	public boolean hasTag() {
+		return tag != null && tag.length() > 0;
+	}
+
 	public OreFake setName(String name) {
 		this.name = name;
 		return this;

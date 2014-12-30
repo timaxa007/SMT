@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.item;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -33,10 +33,10 @@ public class ItemRenderBookshelf implements IItemRenderer{
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 		NBTTagCompound tag = is.getTagCompound();
 
-		int tex=0;
+		String tex = "";
 
 		if (tag != null) {
-			if (tag.hasKey("Type")) tex = tag.getInteger("Type");
+			if (tag.hasKey("Style")) tex = tag.getString("Style");
 		}
 
 		float par1=  0.0625F;
@@ -45,14 +45,14 @@ public class ItemRenderBookshelf implements IItemRenderer{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)0.5F, (float)0.0F, (float)0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdl1.renderAll();
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)0.5F, (float)(par1*7), (float)0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdl2.renderAll();
 		GL11.glPopMatrix();
 

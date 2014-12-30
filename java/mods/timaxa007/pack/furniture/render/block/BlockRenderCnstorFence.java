@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorFence;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -23,18 +23,26 @@ public class BlockRenderCnstorFence extends TileEntitySpecialRenderer {
 
 	private void renderTileEntity(TileEntityCnstorFence te, double dx, double dy, double dz, float f) {
 
-		int tex = te.getTypes();
-		boolean sN = te.getStepN();
-		boolean sS = te.getStepS();
-		boolean sE = te.getStepE();
-		boolean sW = te.getStepW();
+		String tex = "";
+		boolean sN = false;
+		boolean sS = false;
+		boolean sE = false;
+		boolean sW = false;
+
+		if (te != null) {
+			tex = te.getStyle();
+			sN = te.getStepN();
+			sS = te.getStepS();
+			sE = te.getStepE();
+			sW = te.getStepW();
+		}
 
 		GL11.glPushMatrix();
 		GL11.glTranslated(dx, dy, dz);
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-		bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		bindTexture(AddTextureModel.get(tex).getTexture());
 		/*
 		if (sN&&sS&&!sE&&!sW) {
 			model.renderPart("plank_c_2");

@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.item;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -39,7 +39,7 @@ public class ItemRenderMincer implements IItemRenderer{
 		} else {
 			GL11.glRotatef(0F, 0.0F, 0.0F, 1.0F);
 		}
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		model.renderAll();
 		GL11.glPopMatrix();
 	}

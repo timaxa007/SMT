@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityTable;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -23,9 +23,16 @@ public class BlockRenderTable extends TileEntitySpecialRenderer {
 
 	private void renderTileEntity(TileEntityTable te, double dx, double dy, double dz, float f) {
 		//int meta = te.getBlockMetadata();
-		int tex = te.getType();
-		int tpt = te.getSize();
-		int rot = te.getRotation();
+		String tex = "";
+		int tpt = 0;
+		int rot = 0;
+
+		if (te != null) {
+			tex = te.getStyle();
+			tpt = te.getSize();
+			rot = te.getRotation();
+		}
+
 		//int rot = 2;
 		boolean tbm = true;
 
@@ -45,7 +52,7 @@ public class BlockRenderTable extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		bindTexture(AddTextureModel.get(tex).getTexture());
 		mdl1.renderPart("table");
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -63,7 +70,7 @@ public class BlockRenderTable extends TileEntitySpecialRenderer {
 			default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 			}
 
-			bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG1_1");
 				mdl1.renderPart("stickG1_2");
@@ -89,7 +96,7 @@ public class BlockRenderTable extends TileEntitySpecialRenderer {
 			default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 			}
 
-			bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG2_1");
 				mdl1.renderPart("stickG2_2");
@@ -115,7 +122,7 @@ public class BlockRenderTable extends TileEntitySpecialRenderer {
 			default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 			}
 
-			bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG3_1");
 				mdl1.renderPart("stickG3_2");
@@ -141,7 +148,7 @@ public class BlockRenderTable extends TileEntitySpecialRenderer {
 			default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 			}
 
-			bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG4_1");
 				mdl1.renderPart("stickG4_2");
@@ -167,7 +174,7 @@ public class BlockRenderTable extends TileEntitySpecialRenderer {
 			default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 			}
 
-			bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG5_1");
 				mdl1.renderPart("stickG5_2");
@@ -193,7 +200,7 @@ public class BlockRenderTable extends TileEntitySpecialRenderer {
 			default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 			}
 
-			bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG6_1");
 				mdl1.renderPart("stickG6_2");
@@ -219,7 +226,7 @@ public class BlockRenderTable extends TileEntitySpecialRenderer {
 			default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 			}
 
-			bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG7_1");
 				mdl1.renderPart("stickG7_2");

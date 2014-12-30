@@ -87,11 +87,15 @@ public class AddTextureModel {
 	}
 
 	public static AddTextureModel get(String tag) {
-		if (tag != null)
+		if (tag != null && tag.length() > 0)
 			return list[getID_tag(tag)];
 		return empty;
 	}
 	//--------------------------------------------------------
+	public boolean hasTag() {
+		return tag != null && tag.length() > 0;
+	}
+
 	/**Taken from name icon: mod_id and name texture.**/
 	public AddTextureModel setBlock(Block block) {
 		this.block = block;

@@ -98,11 +98,15 @@ public class FoodForBlock {
 	}
 
 	public static FoodForBlock get(String tag) {
-		if (tag != null)
+		if (tag != null && tag.length() > 0)
 			return list[getID_tag(tag)];
 		return empty;
 	}
 	//--------------------------------------------------------
+	public boolean hasTag() {
+		return tag != null && tag.length() > 0;
+	}
+
 	public FoodForBlock setName(String name) {
 		this.name = name;
 		return this;

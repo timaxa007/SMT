@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityBookshelf;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -24,16 +24,22 @@ public class BlockRenderBookshelf extends TileEntitySpecialRenderer {
 	}
 
 	private void renderTileEntity(TileEntityBookshelf te, double dx, double dy, double dz, float f) {
-		int tex = te.getType();
-		int rot = te.getRotation();
-		//int cont = te.getCount();
+		String tex = "";
+		int rot = 0;
 		int cont = 0;
-		//int rot = 2;
+		
+		if (te != null) {
+			tex = te.getStyle();
+			rot = te.getRotation();
+			//int cont = te.getCount();
+		}
+		
 		float par1 = 0.0625F;
 		float par2 = 0.01F;
 
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)dx+0.5F, (float)dy, (float)dz+0.5F);
+		GL11.glTranslated(dx, dy, dz);
+		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
 		switch(rot) {
@@ -44,7 +50,7 @@ public class BlockRenderBookshelf extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		bindTexture(AddTextureModel.get(tex).getTexture());
 		mdl1.renderAll();
 		GL11.glPopMatrix();
 
@@ -60,7 +66,7 @@ public class BlockRenderBookshelf extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		bindTexture(AddTextureModel.get(tex).getTexture());
 		mdl2.renderAll();
 		GL11.glPopMatrix();
 

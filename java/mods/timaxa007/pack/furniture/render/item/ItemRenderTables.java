@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.item;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -32,12 +32,12 @@ public class ItemRenderTables implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 		NBTTagCompound tag = is.getTagCompound();
 
-		int tex = 0;
+		String tex = "";
 		int tpt = 0;
 		boolean tbm = true;
 
 		if (tag != null) {
-			if (tag.hasKey("Type")) tex = tag.getInteger("Type");
+			if (tag.hasKey("Style")) tex = tag.getString("Style");
 			if (tag.hasKey("Size")) tpt = tag.getInteger("Size");
 		}
 
@@ -46,7 +46,7 @@ public class ItemRenderTables implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glTranslatef(0.0F, 0.0F, ((float)tpt*0.125F));
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 		mdl1.renderPart("table");
 		GL11.glPopMatrix();
 		//--------------------------------
@@ -54,7 +54,7 @@ public class ItemRenderTables implements IItemRenderer {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG1_1");
 				mdl1.renderPart("stickG1_2");
@@ -70,7 +70,7 @@ public class ItemRenderTables implements IItemRenderer {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG2_1");
 				mdl1.renderPart("stickG2_2");
@@ -86,7 +86,7 @@ public class ItemRenderTables implements IItemRenderer {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG3_1");
 				mdl1.renderPart("stickG3_2");
@@ -102,7 +102,7 @@ public class ItemRenderTables implements IItemRenderer {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG4_1");
 				mdl1.renderPart("stickG4_2");
@@ -118,7 +118,7 @@ public class ItemRenderTables implements IItemRenderer {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG5_1");
 				mdl1.renderPart("stickG5_2");
@@ -134,7 +134,7 @@ public class ItemRenderTables implements IItemRenderer {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG6_1");
 				mdl1.renderPart("stickG6_2");
@@ -150,7 +150,7 @@ public class ItemRenderTables implements IItemRenderer {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+			Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.get(tex).getTexture());
 			if (tbm) {
 				mdl1.renderPart("stickG7_1");
 				mdl1.renderPart("stickG7_2");

@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityGrills;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -23,7 +23,7 @@ public class BlockRenderGrills extends TileEntitySpecialRenderer {
 
 	private void renderTileEntity(TileEntityGrills te, double dx, double dy, double dz, float f) {
 		//int tex = te.getBlockMetadata();
-		int tex = te.getTypes();
+		String tex = te.getStyle();
 		//int amt = te.getAmount();
 		int rot = te.getRot();
 
@@ -40,7 +40,7 @@ public class BlockRenderGrills extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation(TileTexture.getTexTest01_1(tex), TileTexture.getTexTest01_2(tex)));
+		bindTexture(AddTextureModel.get(tex).getTexture());
 
 		model.renderPart("grill");
 		model.renderPart("grid");

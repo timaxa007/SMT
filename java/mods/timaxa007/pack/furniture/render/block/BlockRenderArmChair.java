@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityArmChair;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -52,7 +52,7 @@ public class BlockRenderArmChair extends TileEntitySpecialRenderer {
 		default:GL11.glRotatef(0F, 0F, 0F, 1F);break;
 		}
 
-		bindTexture(new ResourceLocation(TileTexture.tt, TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 
 		switch(tmdl) {
 		case 0:mdl1.renderAll();break;

@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.item;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -46,7 +46,7 @@ public class ItemRenderBlender implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));//tbx
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());//tbx
 		mdl1.renderPart("box01");
 		GL11.glPopMatrix();
 		//---------------------------------------------
@@ -54,7 +54,7 @@ public class ItemRenderBlender implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));//
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());//
 		mdl1.renderPart("button0");
 		mdl1.renderPart("button1");
 		mdl1.renderPart("button2");
@@ -65,7 +65,7 @@ public class ItemRenderBlender implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));//tc
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());//tc
 		mdl1.renderPart("cap");
 		GL11.glPopMatrix();
 		//---------------------------------------------
@@ -73,7 +73,7 @@ public class ItemRenderBlender implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));//thnd
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());//thnd
 		mdl1.renderPart("handler");
 		GL11.glPopMatrix();
 		//---------------------------------------------
@@ -81,7 +81,7 @@ public class ItemRenderBlender implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));//
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());//
 		mdl1.renderPart("blade");
 		GL11.glPopMatrix();
 		//---------------------------------------------

@@ -5,11 +5,9 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityBookshelf;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -35,7 +33,7 @@ public class BlockBookshelf extends BlockContainer {
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityBookshelf();
 	}
-	
+
 	public int getRenderType() {
 		return -1;
 	}
@@ -55,9 +53,9 @@ public class BlockBookshelf extends BlockContainer {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityBookshelf) {
-			return addTag(0, ((TileEntityBookshelf)te).getType());
+			return addTag(0, ((TileEntityBookshelf)te).getStyle());
 		}
-		return addTag(0, 0);
+		return null;
 	}
 
 	@Override
@@ -72,58 +70,12 @@ public class BlockBookshelf extends BlockContainer {
 		return false;
 	}
 
-	@Override
-	public void breakBlock(World world, int x, int y, int z, Block id, int meta) {
-		TileEntityBookshelf TileEntityBookshelf = (TileEntityBookshelf)world.getTileEntity(x, y, z);
-
-		if (TileEntityBookshelf!=null) {
-			for(int j1=0;j1<TileEntityBookshelf.getSizeInventory();++j1) {
-				ItemStack itemstack=TileEntityBookshelf.getStackInSlot(j1);
-
-				if (itemstack!=null) {
-					float f=random.nextFloat()*0.8F+0.1F;
-					float f1=random.nextFloat()*0.8F+0.1F;
-					float f2=random.nextFloat()*0.8F+0.1F;
-
-					while(itemstack.stackSize>0) {
-						int k1=random.nextInt(21)+10;
-
-						if (k1>itemstack.stackSize) {k1=itemstack.stackSize;}
-
-						itemstack.stackSize-=k1;
-						EntityItem entityitem=new EntityItem(world, (double)((float)x+f), (double)((float)y+f1), (double)((float)z+f2), new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
-
-						if (itemstack.hasTagCompound()) {
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
-						}
-
-						float f3=0.05F;
-						entityitem.motionX=(double)((float)random.nextGaussian()*f3);
-						entityitem.motionY=(double)((float)random.nextGaussian()*f3+0.2F);
-						entityitem.motionZ=(double)((float)random.nextGaussian()*f3);
-						world.spawnEntityInWorld(entityitem);
-					}
-				}
-			}
-
-		}
-
-		super.breakBlock(world, x, y, z, id, meta);
-	}
-
-	public void spawnDropItem(World world, int x, int y, int z, ItemStack is) {
-		if (!world.isRemote && world.getGameRules().getGameRuleBooleanValue("doTileDrops")) {
-			EntityItem entityitem1 = new EntityItem(world, (double)x+0.5D, (double)y+0.5D, (double)z+0.5D, is);
-			world.spawnEntityInWorld(entityitem1);
-		}
-	}
-
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 
 		//for(int j=0;j<TileTexture.tt01.length;++j) {
 		//for(byte i=0;i<16;++i) {
-		int j=0;
+		String j = "";
 
 		list.add(addTag(0, j));
 		//list.add(addTag(1, j));
@@ -142,10 +94,10 @@ public class BlockBookshelf extends BlockContainer {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2) {
+	private static ItemStack addTag(int par1, String par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.bookshelf, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par2);
+		tag.setString("Style", par2);
 		is.setTagCompound(tag);
 		return is;
 	}

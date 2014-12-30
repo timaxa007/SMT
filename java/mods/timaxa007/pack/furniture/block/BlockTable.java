@@ -51,15 +51,15 @@ public class BlockTable extends Block implements ITileEntityProvider {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityTable)
-			return addTag(0, ((TileEntityTable)te).getType(), ((TileEntityTable)te).getSize());
+			return addTag(0, ((TileEntityTable)te).getStyle(), ((TileEntityTable)te).getSize());
 		return null;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		//for(int j=0;j<TileTexture.tt01.length;++j) {
-		//for(byte i=0;i<16;++i) {
-		int j=0;
+		//for(int j = 0; j < TileTexture.tt01.length; ++j) {
+		//for(int i = 0; i < 16; ++i) {
+		String j = "";
 		list.add(addTag(0, j, 0));
 		list.add(addTag(0, j, 1));
 		list.add(addTag(0, j, 2));
@@ -73,10 +73,10 @@ public class BlockTable extends Block implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2, int par3) {
+	private static ItemStack addTag(int par1, String par2, int par3) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.table, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par2);
+		tag.setString("Style", par2);
 		tag.setInteger("Size", par3);
 		is.setTagCompound(tag);
 		return is;

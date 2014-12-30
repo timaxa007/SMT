@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityWardrobe;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -33,7 +33,7 @@ public class BlockRenderWardrobe extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)dx+0.5F, (float)dy, (float)dz+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 
@@ -42,7 +42,7 @@ public class BlockRenderWardrobe extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)dx+0.5F, (float)dy, (float)dz+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-90F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 
@@ -51,7 +51,7 @@ public class BlockRenderWardrobe extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)dx+0.5F, (float)dy, (float)dz+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(0F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 
@@ -60,7 +60,7 @@ public class BlockRenderWardrobe extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)dx+0.5F, (float)dy, (float)dz+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(90F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 
@@ -69,7 +69,7 @@ public class BlockRenderWardrobe extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)dx+0.5F, (float)dy, (float)dz+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdlT.renderAll();
 		GL11.glPopMatrix();
 
@@ -78,7 +78,7 @@ public class BlockRenderWardrobe extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)dx+0.5F, (float)dy, (float)dz+0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdlB.renderAll();
 		GL11.glPopMatrix();
 

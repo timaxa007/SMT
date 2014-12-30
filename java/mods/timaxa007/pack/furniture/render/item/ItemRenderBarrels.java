@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.item;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -49,7 +49,7 @@ public class ItemRenderBarrels implements IItemRenderer {
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		}
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		mdlB.renderAll();
 		GL11.glPopMatrix();
 		/*
@@ -63,7 +63,7 @@ public class ItemRenderBarrels implements IItemRenderer {
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		}
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		mdlP.renderAll();
 		GL11.glPopMatrix();
 		}
@@ -77,7 +77,7 @@ public class ItemRenderBarrels implements IItemRenderer {
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		}*/
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		mdlCD.renderAll();
 		GL11.glPopMatrix();
 

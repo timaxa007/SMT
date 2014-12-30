@@ -8,18 +8,18 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityTable extends TileEntity {
 
-	private int type;
+	private String style;
 	private int size;
 	private int rotation;
 
 	public TileEntityTable() {
-		type = 0;
+		style = "";
 		size = 0;
 		rotation = 0;
 	}
 
-	public void setType(int i) {
-		type = i;
+	public void setStyle(String i) {
+		style = i;
 	}
 
 	public void setSize(int i) {
@@ -30,8 +30,8 @@ public class TileEntityTable extends TileEntity {
 		rotation = i;
 	}
 
-	public int getType() {
-		return type;
+	public String getStyle() {
+		return style;
 	}
 
 	public int getSize() {
@@ -45,7 +45,7 @@ public class TileEntityTable extends TileEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		if (nbt.hasKey("Type")) type = nbt.getInteger("Type");
+		if (nbt.hasKey("Style")) style = nbt.getString("Style");
 		if (nbt.hasKey("Size")) size = nbt.getInteger("Size");
 		if (nbt.hasKey("Rotation")) rotation = nbt.getInteger("Rotation");
 	}
@@ -53,7 +53,7 @@ public class TileEntityTable extends TileEntity {
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		nbt.setInteger("Type", type);
+		nbt.setString("Style", style);
 		nbt.setInteger("Size", size);
 		nbt.setInteger("Rotation", rotation);
 	}

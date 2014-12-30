@@ -43,7 +43,7 @@ public class ItemBlockTable extends ItemBlock{
 				((TileEntityTable)te).setRotation(l);
 
 				if (tag != null) {
-					if (tag.hasKey("Type")) ((TileEntityTable)te).setType(tag.getInteger("Type"));
+					if (tag.hasKey("Style")) ((TileEntityTable)te).setStyle(tag.getString("Style"));
 					if (tag.hasKey("Size")) ((TileEntityTable)te).setSize(tag.getInteger("Size"));
 				}
 			}
@@ -54,11 +54,9 @@ public class ItemBlockTable extends ItemBlock{
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-			if (tag.hasKey("Type")) {list.add("Type: "+tag.getInteger("Type")+".");}
+			if (tag.hasKey("Style")) {list.add("Style: "+tag.getString("Style")+".");}
 			if (tag.hasKey("Size")) {list.add("Size: "+tag.getInteger("Size")+".");}
-		} else {
-			list.add(Option.prshift);
-		}
+		} else list.add(Option.prshift);
 	}
 
 }

@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityBarrels;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -41,7 +41,7 @@ public class BlockRenderBarrels extends TileEntitySpecialRenderer {
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		}
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdlB.renderAll();
 		GL11.glPopMatrix();
 
@@ -55,7 +55,7 @@ public class BlockRenderBarrels extends TileEntitySpecialRenderer {
 				GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 			}
 			GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-			bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+			bindTexture(AddTextureModel.list[0].getTexture());
 			mdlP.renderAll();
 			GL11.glPopMatrix();
 		}
@@ -69,7 +69,7 @@ public class BlockRenderBarrels extends TileEntitySpecialRenderer {
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		}
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		bindTexture(AddTextureModel.list[0].getTexture());
 		mdlCD.renderAll();
 		GL11.glPopMatrix();
 

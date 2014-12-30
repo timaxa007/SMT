@@ -87,11 +87,15 @@ public class AddBlockWood {
 	}
 
 	public static AddBlockWood get(String tag) {
-		if (tag != null)
+		if (tag != null && tag.length() > 0)
 			return list[getID_tag(tag)];
 		return list[0];
 	}
 	//--------------------------------------------------------
+	public boolean hasTag() {
+		return tag != null && tag.length() > 0;
+	}
+
 	public AddBlockWood setID(int id) {
 		this.id = id;
 		return this;

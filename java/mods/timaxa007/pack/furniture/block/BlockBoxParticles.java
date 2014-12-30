@@ -53,9 +53,9 @@ public class BlockBoxParticles extends BlockContainer{
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te=world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityBoxParticles) {
-			return addTag(0, ((TileEntityBoxParticles)te).getTypes());
+			return addTag(0, ((TileEntityBoxParticles)te).getStyle());
 		}
-		return addTag(0, 0);
+		return null;
 	}
 
 	public void updateTick(World world, int x, int y, int z, Random random) {
@@ -72,12 +72,12 @@ public class BlockBoxParticles extends BlockContainer{
 			((TileEntityBoxParticles)te).setRot(l);
 
 			if (tag != null) {
-				if (tag.hasKey("Type")) ((TileEntityBoxParticles)te).setTypes(tag.getInteger("Type"));
+				if (tag.hasKey("Style")) ((TileEntityBoxParticles)te).setStyle(tag.getString("Style"));
 			}
 
 		}
 	}
-
+	/*
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random random) {
 		TileEntity te = world.getTileEntity(x, y, z);
@@ -126,18 +126,18 @@ public class BlockBoxParticles extends BlockContainer{
 
 				if (f2<0.0F) {f2=0.0F;}
 				if (f3<0.0F) {f3=0.0F;}
-				if (((TileEntityBoxParticles)te).getTypes() < listP.length) {
-					world.spawnParticle(listP[((TileEntityBoxParticles)te).getTypes()], d0, d1, d2, (double)f2, (double)f1, (double)f3);
+				if (((TileEntityBoxParticles)te).getStyles() < listP.length) {
+					world.spawnParticle(listP[((TileEntityBoxParticles)te).getStyles()], d0, d1, d2, (double)f2, (double)f1, (double)f3);
 				}
 			}
 		}
 	}
-
+	 */
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		//for(int j=0;j<TileTexture.tt.length;++j) {
-		//for(byte i=0;i<16;++i) {
-		int j=0;
+		//for(int j = 0; j < TileTexture.tt.length; ++j) {
+		//for(int i = 0; i < 16; ++i) {
+		String j = "";
 
 		list.add(addTag(0, j));
 		//}
@@ -145,10 +145,10 @@ public class BlockBoxParticles extends BlockContainer{
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2) {
+	private static ItemStack addTag(int par1, String par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.box_particles, 1, par1);
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par2);
+		tag.setString("Style", par2);
 		is.setTagCompound(tag);
 		return is;
 	}

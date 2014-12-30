@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.render.item;
 
-import mods.timaxa007.lib.TileTexture;
+import mods.timaxa007.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -39,7 +39,7 @@ public class ItemRenderChairs implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 		
@@ -48,7 +48,7 @@ public class ItemRenderChairs implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-90F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 		
@@ -57,7 +57,7 @@ public class ItemRenderChairs implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(0F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 		
@@ -66,7 +66,7 @@ public class ItemRenderChairs implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(90F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		mdlS.renderAll();
 		GL11.glPopMatrix();
 		
@@ -75,7 +75,7 @@ public class ItemRenderChairs implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		mdlT.renderAll();
 		GL11.glPopMatrix();
 		
@@ -84,7 +84,7 @@ public class ItemRenderChairs implements IItemRenderer {
 		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", TileTexture.tt));
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
 		mdlB.renderAll();
 		GL11.glPopMatrix();
 

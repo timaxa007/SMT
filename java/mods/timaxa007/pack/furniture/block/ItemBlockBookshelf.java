@@ -27,12 +27,12 @@ public class ItemBlockBookshelf extends ItemBlock {
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		if (!player.canPlayerEdit(x, y, z, side, is)) {return false;}
 		else {
-			if (hitX==1.0F) {x++;}
-			if (hitX==0.0F) {x--;}
-			if (hitZ==1.0F) {z++;}
-			if (hitZ==0.0F) {z--;}
-			if (hitY==1.0F) {y++;}
-			if (hitY==0.0F) {y--;}
+			if (hitX == 1.0F) {x++;}
+			if (hitX == 0.0F) {x--;}
+			if (hitZ == 1.0F) {z++;}
+			if (hitZ == 0.0F) {z--;}
+			if (hitY == 1.0F) {y++;}
+			if (hitY == 0.0F) {y--;}
 
 			world.setBlock(x, y, z, PackFurniture.proxy.block.bookshelf, 0, 3);
 			TileEntity te = world.getTileEntity(x, y, z);
@@ -44,7 +44,7 @@ public class ItemBlockBookshelf extends ItemBlock {
 				//if (is.hasDisplayName()) ((TileEntityBookshelf)te).setCustomName(is.getDisplayName());
 
 				if (tag != null) {
-					if (tag.hasKey("Type")) ((TileEntityBookshelf)te).setType(tag.getInteger("Type"));
+					if (tag.hasKey("Style")) ((TileEntityBookshelf)te).setStyle(tag.getString("Style"));
 				}
 			}
 			return true;
@@ -55,7 +55,7 @@ public class ItemBlockBookshelf extends ItemBlock {
 		NBTTagCompound tag = is.getTagCompound();
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
 			if (tag != null) {
-				if (tag.hasKey("Type")) list.add("Type: "+tag.getInteger("Type") + ".");
+				if (tag.hasKey("Style")) list.add("Style: "+tag.getInteger("Style") + ".");
 			}
 		} else {
 			list.add(Option.prshift);
