@@ -1,19 +1,20 @@
-package mods.timaxa007.tms.util;
+package mods.timaxa007.tms.packet;
 
 import io.netty.buffer.ByteBuf;
+import mods.timaxa007.tms.util.ActionKey;
 import net.minecraft.entity.player.EntityPlayerMP;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class KeyPacket implements IMessage {
+public class PacketPlayer implements IMessage {
 
 	public int button;
 	public boolean buttonstate;
 
-	public KeyPacket() {}
+	public PacketPlayer() {}
 
-	public KeyPacket(int button, boolean buttonstate) {
+	public PacketPlayer(int button, boolean buttonstate) {
 		this.button = button;
 		this.buttonstate = buttonstate;
 	}
@@ -29,11 +30,11 @@ public class KeyPacket implements IMessage {
 		button = buf.readInt();
 		buttonstate = buf.readBoolean();
 	}
-
-	public static class Handler implements IMessageHandler<KeyPacket, IMessage> {
+	//----------------------------------------------------------------------------------
+	public static class Handler implements IMessageHandler<PacketPlayer, IMessage> {
 
 		@Override
-		public IMessage onMessage(KeyPacket packet, MessageContext context) {
+		public IMessage onMessage(PacketPlayer packet, MessageContext context) {
 			int button = packet.button;
 			boolean buttonstate = packet.buttonstate;
 			EntityPlayerMP player = context.getServerHandler().playerEntity;
@@ -62,5 +63,5 @@ public class KeyPacket implements IMessage {
 		}
 
 	}
-
+	//----------------------------------------------------------------------------------
 }

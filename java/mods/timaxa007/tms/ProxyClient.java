@@ -1,8 +1,8 @@
 package mods.timaxa007.tms;
 
-import mods.timaxa007.tms.util.EventClientTMS;
-import mods.timaxa007.tms.util.EventKey;
-import mods.timaxa007.tms.util.EventTick;
+import mods.timaxa007.tms.event.EventClientTMS;
+import mods.timaxa007.tms.event.EventKey;
+import mods.timaxa007.tms.event.EventTick;
 import mods.timaxa007.tms.util.RegKey;
 import net.minecraftforge.common.MinecraftForge;
 

@@ -36,19 +36,8 @@ public class RegKey {
 
 	public static void preInt() {
 
-		ClientRegistry.registerKeyBinding(reload);
-		ClientRegistry.registerKeyBinding(charge);
-		ClientRegistry.registerKeyBinding(mode);
-		ClientRegistry.registerKeyBinding(use);
-		ClientRegistry.registerKeyBinding(yaw_right);
-		ClientRegistry.registerKeyBinding(up);
-		ClientRegistry.registerKeyBinding(yaw_left);
-		ClientRegistry.registerKeyBinding(move_right);
-		ClientRegistry.registerKeyBinding(stop);
-		ClientRegistry.registerKeyBinding(move_left);
-		ClientRegistry.registerKeyBinding(use2);
-		ClientRegistry.registerKeyBinding(down);
-		ClientRegistry.registerKeyBinding(use1);
+		for (int k = 0; k < list_key.length; k++) 
+			ClientRegistry.registerKeyBinding(list_key[k]);
 
 	}
 

@@ -1,4 +1,4 @@
-package mods.timaxa007.tms.util;
+package mods.timaxa007.tms.event;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;

@@ -1,7 +1,7 @@
 package mods.timaxa007.tms;
 
 import mods.timaxa007.lib.ListTextureModel;
-import mods.timaxa007.tms.util.KeyPacket;
+import mods.timaxa007.tms.packet.RegisterPacket;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -16,7 +16,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 //@Mod (modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION, dependencies = "required-before:01miningpack;required-before:02pmfpack;required-before:03furniturepack;required-before:04technopack;required-before:05magicpack;required-before:06weaponpack")
 @Mod (modid = Core.MODID, name = Core.MODNAME, version = Core.VERSION)
@@ -37,7 +36,11 @@ public class Core {
 	public static ProxyServer proxy;
 	public static SimpleNetworkWrapper network;
 
-	public static CreativeTabs tab_tms = new TabTMS("tab_tms");
+	public static CreativeTabs tab_tms = new CreativeTabs("tab_tms") {
+		public Item getTabIconItem() {
+			return Core.item_test;
+		}
+	};
 
 	public static boolean debug;
 	public static boolean show_tip_info_testing;
@@ -61,15 +64,15 @@ public class Core {
 		new ListTextureModel();
 
 		block_test = new TestBlock();
-		item_test = new TestItem();
-
 		GameRegistry.registerBlock(block_test, "TestBlock");
+
+		item_test = new TestItem();
 		GameRegistry.registerItem(item_test, "TestItem");
 
 		Recipes_TMS.list();
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(Core.MODID);
-		network.registerMessage(KeyPacket.Handler.class, KeyPacket.class, 0, Side.SERVER);
+		RegisterPacket.init(network);
 
 		proxy.preInitialize();
 
@@ -100,4 +103,5 @@ public class Core {
 		disable_sub_mod_weapon = config.get("configs", "disable_sub_mod_weapon", false).getBoolean(false);
 		config.save();
 	}
+
 }

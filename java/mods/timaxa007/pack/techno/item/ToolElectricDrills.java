@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.techno.PackTechno;
-import mods.timaxa007.tms.util.ItemPrimary;
+import mods.timaxa007.tms.util.ItemActionKeyPrimary;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,7 +21,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolElectricDrills extends ItemPrimary {
+public class ToolElectricDrills extends ItemActionKeyPrimary {
 
 	private static String[] modes = new String[] {
 		"Normal", 	//0

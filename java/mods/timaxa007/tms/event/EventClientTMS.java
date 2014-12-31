@@ -1,9 +1,14 @@
-package mods.timaxa007.tms.util;
+package mods.timaxa007.tms.event;
 
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.packet.PacketKey;
+import mods.timaxa007.tms.util.IActionKeyPrimary;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
@@ -40,7 +45,7 @@ public class EventClientTMS {
 				(!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) && 
 				p.entityLiving instanceof EntityPlayer) {
 			//if (Core.show_tip_info_testing) System.out.println("onLeftClickTick");
-			Core.network.sendToServer(new KeyPacket(-4, true));
+			Core.network.sendToServer(new PacketKey(-4, true));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -50,7 +55,7 @@ public class EventClientTMS {
 				(!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) && 
 				p.entityLiving instanceof EntityPlayer) {
 			//if (Core.show_tip_info_testing) System.out.println("onRightClick");
-			Core.network.sendToServer(new KeyPacket(-3, true));
+			Core.network.sendToServer(new PacketKey(-3, true));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -58,7 +63,7 @@ public class EventClientTMS {
 	public void onLeftClick(MouseEvent m) {
 		if (m.button == 0) {
 			//if (Core.show_tip_info_testing) System.out.println("onLeftClick");
-			Core.network.sendToServer(new KeyPacket(-2, m.buttonstate));
+			Core.network.sendToServer(new PacketKey(-2, m.buttonstate));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -66,7 +71,18 @@ public class EventClientTMS {
 	public void onRightClick(MouseEvent m) {
 		if (m.button == 1) {
 			//if (Core.show_tip_info_testing) System.out.println("onRightClick");
-			Core.network.sendToServer(new KeyPacket(-1, m.buttonstate));
+			Core.network.sendToServer(new PacketKey(-1, m.buttonstate));
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void onZoom(FOVUpdateEvent e) {
+		ItemStack current = e.entity.inventory.getCurrentItem();
+		if (current != null && current.getItem() instanceof IActionKeyPrimary) {
+			NBTTagCompound tag = current.getTagCompound();
+			if (tag != null && tag.hasKey("Aim")) {
+				if (tag.getBoolean("Aim")) e.newfov -= 0.5F;
+			}
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------

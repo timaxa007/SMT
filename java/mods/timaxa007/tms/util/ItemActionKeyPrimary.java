@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemPrimary extends Item implements IActionKeyPrimary {
+public class ItemActionKeyPrimary extends Item implements IActionKeyPrimary {
 
 	@Override
 	public void onLeftClickTick(ItemStack is, World world, EntityPlayer player) {
