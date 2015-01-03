@@ -9,26 +9,6 @@ import net.minecraft.world.World;
 public class ItemActionKeyPrimary extends Item implements IActionKeyPrimary {
 
 	@Override
-	public void onLeftClickTick(ItemStack is, World world, EntityPlayer player) {
-		if (Core.show_tip_info_testing) System.out.println("onLeftClickTick");
-	}
-
-	@Override
-	public void onRightClickTick(ItemStack is, World world, EntityPlayer player) {
-		if (Core.show_tip_info_testing) System.out.println("onRightClickTick");
-	}
-
-	@Override
-	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (Core.show_tip_info_testing) System.out.println("onLeftClick_" + (isPress ? "on" : "off"));
-	}
-
-	@Override
-	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (Core.show_tip_info_testing) System.out.println("onRightClick_" + (isPress ? "on" : "off"));
-	}
-
-	@Override
 	public void onReload(ItemStack is, World world, EntityPlayer player) {
 		if (Core.show_tip_info_testing) System.out.println("onReload");
 	}
@@ -41,6 +21,11 @@ public class ItemActionKeyPrimary extends Item implements IActionKeyPrimary {
 	@Override
 	public void onMode(ItemStack is, World world, EntityPlayer player) {
 		if (Core.show_tip_info_testing) System.out.println("onMode");
+	}
+
+	@Override
+	public void onHook(ItemStack is, World world, EntityPlayer player) {
+		if (Core.show_tip_info_testing) System.out.println("onHook");
 	}
 
 }

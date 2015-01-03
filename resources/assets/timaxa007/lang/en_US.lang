@@ -73,6 +73,7 @@ category.tms.name=TMS Key Bindings
 key.reload.name=Reload
 key.charge.name=Charge
 key.mode.name=Mode Switch
+key.hook.name=Throw
 key.use.name=Use
 key.yaw_right.name=Yaw Right
 key.up.name=Up
@@ -85,6 +86,7 @@ key.down.name=Down
 key.use1.name=Use 1
 key.booster.name=Booster
 key.grab.name=Grab
+key.lie.name=Lie Down
 
 itemGroup.tab_tms=Tab TMS's
 tile.block_test.name=Test Block

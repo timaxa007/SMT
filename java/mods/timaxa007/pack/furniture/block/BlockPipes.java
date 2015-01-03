@@ -75,14 +75,16 @@ public class BlockPipes extends Block implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < AddTextureModel.list.length; ++j) {
-			list.add(addTag(AddTextureModel.list[j].tag, 1, 0xFFFFFF));
-			list.add(addTag(AddTextureModel.list[j].tag, 2, 0xFFFFFF));
-			list.add(addTag(AddTextureModel.list[j].tag, 3, 0xFFFFFF));
-			list.add(addTag(AddTextureModel.list[j].tag, 4, 0xFFFFFF));
-			list.add(addTag(AddTextureModel.list[j].tag, 5, 0xFFFFFF));
-			list.add(addTag(AddTextureModel.list[j].tag, 6, 0xFFFFFF));
-			list.add(addTag(AddTextureModel.list[j].tag, 7, 0xFFFFFF));
-			list.add(addTag(AddTextureModel.list[j].tag, 8, 0xFFFFFF));
+			if (AddTextureModel.list[j] != null && AddTextureModel.list[j].tag != null) {
+				list.add(addTag(AddTextureModel.list[j].tag, 1, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 2, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 3, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 4, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 5, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 6, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 7, 0xFFFFFF));
+				list.add(addTag(AddTextureModel.list[j].tag, 8, 0xFFFFFF));
+			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}

@@ -73,6 +73,7 @@ category.tms.name=TMS Сочетания Клавиш
 key.reload.name=Перезарядка
 key.charge.name=Изменение
 key.mode.name=Переключатель Режима
+key.hook.name=Бросать
 key.use.name=Использовать
 key.yaw_right.name=Поворот Вправо
 key.up.name=Вверх
@@ -85,6 +86,7 @@ key.down.name=Ввниз
 key.use1.name=Использовать 1
 key.booster.name=Усилитель
 key.grab.name=Захват
+key.lie.name=Лечь
 
 itemGroup.tab_tms=Таблица TMS
 tile.block_test.name=Тест Блок

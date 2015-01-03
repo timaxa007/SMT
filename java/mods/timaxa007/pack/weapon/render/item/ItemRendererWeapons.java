@@ -87,7 +87,7 @@ public class ItemRendererWeapons implements IItemRenderer {
 			//---------------------------------------
 			if (isAim) {
 				GL11.glRotatef(-10F, 0.0F, 0.0F, 1.0F);
-				GL11.glTranslatef(1.0F, 0.0F, 0.0F);
+				GL11.glTranslatef(1.0F, 0.5F, 0.0F);
 			}
 			Minecraft.getMinecraft().renderEngine.bindTexture(player.getLocationSkin());
 			model_arms.renderPart("leftarm");
@@ -102,7 +102,7 @@ public class ItemRendererWeapons implements IItemRenderer {
 			//---------------------------------------
 			if (isAim) {
 				GL11.glRotatef(-10F, 0.0F, 0.0F, 1.0F);
-				GL11.glTranslatef(1.0F, 0.0F, 0.0F);
+				GL11.glTranslatef(1.0F, 0.5F, 0.0F);
 			}
 			Minecraft.getMinecraft().renderEngine.bindTexture(player.getLocationSkin());
 			model_arms.renderPart("rightarm");
@@ -116,7 +116,7 @@ public class ItemRendererWeapons implements IItemRenderer {
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 			GL11.glRotatef(135F, 0.0F, 0.0F, 1.0F);
 			GL11.glTranslatef(0.0F, 0.30F, 0.0F);
-			if (isAim) {GL11.glTranslatef(0.935F, 0.25F, 0.325F);}
+			if (isAim) {GL11.glTranslatef(0.940F, 0.75F, 0.320F);}
 		} else if (type == type.INVENTORY) {
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);

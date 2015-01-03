@@ -101,10 +101,12 @@ public class BlockCnstorBlock extends Block implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < AddTextureModel.list.length; ++j) {
-			//for (int i = 0; i < 16; ++i) {
-			int i = 14;
-			list.add(addTag(AddTextureModel.list[j].tag, GetColors.getHexColors[i]));
-			//}
+			if (AddTextureModel.list[j] != null && AddTextureModel.list[j].tag != null) {
+				//for (int i = 0; i < 16; ++i) {
+				int i = 14;
+				list.add(addTag(AddTextureModel.list[j].tag, GetColors.getHexColors[i]));
+				//}
+			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}

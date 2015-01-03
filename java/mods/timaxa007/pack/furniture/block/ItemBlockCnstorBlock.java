@@ -59,7 +59,7 @@ public class ItemBlockCnstorBlock extends ItemBlock {
 		NBTTagCompound tag = is.getTagCompound();
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
 			if (tag != null) {
-				if (tag.hasKey("Type")) {list.add("Type: " + tag.getInteger("Type") + ".");}
+				if (tag.hasKey("Style")) {list.add("Style: " + tag.getString("Style") + ".");}
 				if (tag.hasKey("Color")) {list.add("Color: " + tag.getInteger("Color") + ".");}
 			}
 		} else {

@@ -7,6 +7,7 @@ import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.IActionKeyPrimary;
+import mods.timaxa007.tms.util.IActionMouseKey;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -27,7 +28,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWeapons extends Item implements IActionKeyPrimary {
+public class ItemWeapons extends Item implements IActionKeyPrimary, IActionMouseKey {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -59,7 +60,7 @@ public class ItemWeapons extends Item implements IActionKeyPrimary {
 			if (rtm > 20) rtm = 0;
 
 			if (!world.isRemote) {
-				if (isFire(rtm, 2)) {
+				if (isFire(rtm, 4)) {
 					if (tag.getInteger("AmmoAtm") > 0) {
 						world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
 						EntityArrow entityarrow = new EntityArrow(world, player, 2.0F);
@@ -138,6 +139,11 @@ public class ItemWeapons extends Item implements IActionKeyPrimary {
 			player.openGui(PackWeapons.instance, 1, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 			System.out.println("-modify-");
 		}
+	}
+
+	@Override
+	public void onHook(ItemStack is, World world, EntityPlayer player) {
+		
 	}
 
 	private boolean isFire(int i, int type) {

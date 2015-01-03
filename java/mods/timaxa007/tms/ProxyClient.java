@@ -1,5 +1,6 @@
 package mods.timaxa007.tms;
 
+import mods.timaxa007.tms.event.EventActionMouse;
 import mods.timaxa007.tms.event.EventClientTMS;
 import mods.timaxa007.tms.event.EventKey;
 import mods.timaxa007.tms.event.EventTick;
@@ -18,9 +19,6 @@ public class ProxyClient extends ProxyServer {
 
 		RegKey.preInt();
 
-		MinecraftForge.EVENT_BUS.register(new EventClientTMS());
-		FMLCommonHandler.instance().bus().register(new EventKey());
-		FMLCommonHandler.instance().bus().register(new EventTick());
 	}
 
 	@Override
@@ -28,6 +26,12 @@ public class ProxyClient extends ProxyServer {
 		super.initialize();
 
 		if (Core.debug) FMLLog.log(Core.MODID, Level.DEBUG, "Successful initialized client part.");
+
+		MinecraftForge.EVENT_BUS.register(new EventClientTMS());
+		//MinecraftForge.EVENT_BUS.register(new EventMouseBad());
+		FMLCommonHandler.instance().bus().register(new EventActionMouse());
+		FMLCommonHandler.instance().bus().register(new EventKey());
+		FMLCommonHandler.instance().bus().register(new EventTick());
 
 	}
 

@@ -2,6 +2,8 @@ package mods.timaxa007.tms.event;
 
 import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.packet.PacketKey;
+import mods.timaxa007.tms.packet.PacketKeyPrimary;
+import mods.timaxa007.tms.packet.PacketKeySecondary;
 import mods.timaxa007.tms.util.RegKey;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
@@ -9,81 +11,88 @@ import cpw.mods.fml.common.gameevent.InputEvent;
 public class EventKey {
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onReload(InputEvent.KeyInputEvent k) {//0
-		if (RegKey.reload.isPressed()) Core.network.sendToServer(new PacketKey(0, true));
-		//else if (!RegKey.reload.isPressed()) Core.network.sendToServer(new PacketKey(0, false));
+	public void onReload(InputEvent.KeyInputEvent k) {//1
+		if (RegKey.reload.getIsKeyPressed()) Core.network.sendToServer(new PacketKeyPrimary(1));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onCharge(InputEvent.KeyInputEvent k) {//1
-		if (RegKey.charge.isPressed()) Core.network.sendToServer(new PacketKey(1, true));
-		//else if (!RegKey.charge.isPressed()) Core.network.sendToServer(new PacketKey(1, false));
+	public void onCharge(InputEvent.KeyInputEvent k) {//2
+		if (RegKey.charge.getIsKeyPressed()) Core.network.sendToServer(new PacketKeyPrimary(2));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onMode(InputEvent.KeyInputEvent k) {//2
-		if (RegKey.mode.isPressed()) Core.network.sendToServer(new PacketKey(2, true));
-		//else if (!RegKey.mode.isPressed()) Core.network.sendToServer(new PacketKey(2, false));
+	public void onMode(InputEvent.KeyInputEvent k) {//3
+		if (RegKey.mode.getIsKeyPressed()) Core.network.sendToServer(new PacketKeyPrimary(3));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onUse(InputEvent.KeyInputEvent k) {//3
-		if (RegKey.use.isPressed()) Core.network.sendToServer(new PacketKey(3, true));
-		//else if (!RegKey.use.isPressed()) Core.network.sendToServer(new PacketKey(3, false));
+	public void onHook(InputEvent.KeyInputEvent k) {//4
+		if (RegKey.hook.getIsKeyPressed()) Core.network.sendToServer(new PacketKeyPrimary(4));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onYawRight(InputEvent.KeyInputEvent k) {//4
-		if (RegKey.yaw_right.isPressed()) Core.network.sendToServer(new PacketKey(4, true));
-		//else if (!RegKey.yaw_right.isPressed()) Core.network.sendToServer(new PacketKey(4, false));
+	public void onBooster(InputEvent.KeyInputEvent k) {//13
+		if (RegKey.booster.getIsKeyPressed()) Core.network.sendToServer(new PacketKey(13, true));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onUp(InputEvent.KeyInputEvent k) {//5
-		if (RegKey.up.isPressed()) Core.network.sendToServer(new PacketKey(5, true));
-		//else if (!RegKey.up.isPressed()) Core.network.sendToServer(new PacketKey(5, false));
+	public void onGrab(InputEvent.KeyInputEvent k) {//14
+		if (RegKey.grab.getIsKeyPressed()) Core.network.sendToServer(new PacketKey(14, true));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onYawLeft(InputEvent.KeyInputEvent k) {//6
-		if (RegKey.yaw_left.isPressed()) Core.network.sendToServer(new PacketKey(6, true));
-		//else if (!RegKey.yaw_left.isPressed()) Core.network.sendToServer(new PacketKey(6, false));
+	public void onLie(InputEvent.KeyInputEvent k) {//15
+		if (RegKey.lie.getIsKeyPressed()) Core.network.sendToServer(new PacketKey(15, true));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onMoveRight(InputEvent.KeyInputEvent k) {//7
-		if (RegKey.move_right.isPressed()) Core.network.sendToServer(new PacketKey(7, true));
-		//else if (!RegKey.move_right.isPressed()) Core.network.sendToServer(new PacketKey(7, false));
+	public void onUse(InputEvent.KeyInputEvent k) {//1
+		if (RegKey.use.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(1, true));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onStop(InputEvent.KeyInputEvent k) {//8
-		if (RegKey.stop.isPressed()) Core.network.sendToServer(new PacketKey(8, true));
-		//else if (!RegKey.stop.isPressed()) Core.network.sendToServer(new PacketKey(8, false));
+	public void onYawRight(InputEvent.KeyInputEvent k) {//2
+		if (RegKey.yaw_right.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(2, true));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onMoveLeft(InputEvent.KeyInputEvent k) {//9
-		if (RegKey.move_left.isPressed()) Core.network.sendToServer(new PacketKey(9, true));
-		//else if (!RegKey.move_left.isPressed()) Core.network.sendToServer(new PacketKey(9, false));
+	public void onUp(InputEvent.KeyInputEvent k) {//3
+		if (RegKey.up.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(3, true));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onUse2(InputEvent.KeyInputEvent k) {//10
-		if (RegKey.use2.isPressed()) Core.network.sendToServer(new PacketKey(10, true));
-		//else if (!RegKey.use2.isPressed()) Core.network.sendToServer(new PacketKey(10, false));
+	public void onYawLeft(InputEvent.KeyInputEvent k) {//4
+		if (RegKey.yaw_left.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(4, true));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onDown(InputEvent.KeyInputEvent k) {//11
-		if (RegKey.down.isPressed()) Core.network.sendToServer(new PacketKey(11, true));
-		//else if (!RegKey.down.isPressed()) Core.network.sendToServer(new PacketKey(11, false));
+	public void onMoveRight(InputEvent.KeyInputEvent k) {//5
+		if (RegKey.move_right.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(5, true));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onUse1(InputEvent.KeyInputEvent k) {//12
-		if (RegKey.use1.isPressed()) Core.network.sendToServer(new PacketKey(12, true));
-		//else if (!RegKey.use1.isPressed()) Core.network.sendToServer(new PacketKey(12, false));
+	public void onStop(InputEvent.KeyInputEvent k) {//6
+		if (RegKey.stop.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(6, true));
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void onMoveLeft(InputEvent.KeyInputEvent k) {//7
+		if (RegKey.move_left.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(7, true));
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void onUse2(InputEvent.KeyInputEvent k) {//8
+		if (RegKey.use2.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(8, true));
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void onDown(InputEvent.KeyInputEvent k) {//9
+		if (RegKey.down.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(9, true));
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void onUse1(InputEvent.KeyInputEvent k) {//10
+		if (RegKey.use1.getIsKeyPressed()) Core.network.sendToServer(new PacketKeySecondary(10, true));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

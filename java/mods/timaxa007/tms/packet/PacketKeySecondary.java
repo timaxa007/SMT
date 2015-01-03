@@ -2,19 +2,20 @@ package mods.timaxa007.tms.packet;
 
 import io.netty.buffer.ByteBuf;
 import mods.timaxa007.tms.util.ActionKey;
+import mods.timaxa007.tms.util.ActionSecondaryKey;
 import net.minecraft.entity.player.EntityPlayerMP;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketPlayer implements IMessage {
+public class PacketKeySecondary implements IMessage {
 
 	public int button;
 	public boolean buttonstate;
 
-	public PacketPlayer() {}
+	public PacketKeySecondary() {}
 
-	public PacketPlayer(int button, boolean buttonstate) {
+	public PacketKeySecondary(int button, boolean buttonstate) {
 		this.button = button;
 		this.buttonstate = buttonstate;
 	}
@@ -31,16 +32,25 @@ public class PacketPlayer implements IMessage {
 		buttonstate = buf.readBoolean();
 	}
 	//----------------------------------------------------------------------------------
-	public static class Handler implements IMessageHandler<PacketPlayer, IMessage> {
+	public static class Handler implements IMessageHandler<PacketKeySecondary, IMessage> {
 
 		@Override
-		public IMessage onMessage(PacketPlayer packet, MessageContext context) {
+		public IMessage onMessage(PacketKeySecondary packet, MessageContext context) {
 			int button = packet.button;
 			boolean buttonstate = packet.buttonstate;
 			EntityPlayerMP player = context.getServerHandler().playerEntity;
 
 			switch(button) {
-			//case 0:ActionKey.onReload(player);break;
+			case 1:ActionSecondaryKey.onUse(player);break;
+			case 2:ActionSecondaryKey.onYawRight(player);break;
+			case 3:ActionSecondaryKey.onUp(player);break;
+			case 4:ActionSecondaryKey.onYawLeft(player);break;
+			case 5:ActionSecondaryKey.onMoveRight(player);break;
+			case 6:ActionSecondaryKey.onStop(player);break;
+			case 7:ActionSecondaryKey.onMoveLeft(player);break;
+			case 8:ActionSecondaryKey.onUse2(player);break;
+			case 9:ActionSecondaryKey.onDown(player);break;
+			case 10:ActionSecondaryKey.onUse1(player);break;
 			}
 
 			return null;

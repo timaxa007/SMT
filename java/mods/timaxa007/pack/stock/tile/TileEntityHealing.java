@@ -19,10 +19,10 @@ public class TileEntityHealing extends TileEntity {
 	}
 
 	private void addEffectsToPlayers() {
-		if (!worldObj.isRemote) {/*
+		if (!worldObj.isRemote) {
 			double d0 = (double)(50);
 
-			AxisAlignedBB axisalignedbb = AxisAlignedBB.getAABBPool().getAABB((double)xCoord, (double)yCoord, (double)zCoord, (double)(xCoord + 1), (double)(yCoord + 1), (double)(zCoord + 1)).expand(d0, d0, d0);
+			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double)xCoord, (double)yCoord, (double)zCoord, (double)(xCoord + 1), (double)(yCoord + 1), (double)(zCoord + 1)).expand(d0, d0, d0);
 			axisalignedbb.maxY = (double)worldObj.getHeight();
 			List list = worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
 			Iterator iterator = list.iterator();
@@ -36,7 +36,6 @@ public class TileEntityHealing extends TileEntity {
 					entityplayer.addPotionEffect(new PotionEffect(Potion.poison.id, 20 * 1, 0, true));
 				}
 			}
-		 */
 		}
 	}
 

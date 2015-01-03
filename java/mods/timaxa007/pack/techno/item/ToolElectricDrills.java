@@ -39,6 +39,21 @@ public class ToolElectricDrills extends ItemActionKeyPrimary {
 		setUnlocalizedName("tool_electric_drills");
 	}
 
+	@Override
+	public void onMode(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag != null && tag.hasKey("ModeID")) {
+			int nbn = tag.getInteger("ModeID");
+
+			if (nbn >= 2) {nbn = 0;} else {nbn = nbn + 1;}
+
+			//if (world.isRemote) {player.addChatMessage("[Drill]: " + modes[nbn] + " ");}
+			tag.setInteger("ModeID", nbn);
+			is.setTagCompound(tag);
+		}
+
+	}
+
 	public float getDigSpeed(ItemStack is, Block block, int metadata) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (block == Blocks.web) {
@@ -94,21 +109,6 @@ public class ToolElectricDrills extends ItemActionKeyPrimary {
 	@SideOnly(Side.CLIENT)
 	public boolean isFull3D() {
 		return true;
-	}
-
-	@Override
-	public void onMode(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("ModeID")) {
-			int nbn = tag.getInteger("ModeID");
-
-			if (nbn >= 2) {nbn = 0;} else {nbn = nbn + 1;}
-
-			//if (world.isRemote) {player.addChatMessage("[Drill]: " + modes[nbn] + " ");}
-			tag.setInteger("ModeID", nbn);
-			is.setTagCompound(tag);
-		}
-
 	}
 
 	@Override
