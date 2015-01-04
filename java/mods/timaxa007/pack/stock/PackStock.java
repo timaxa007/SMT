@@ -21,8 +21,8 @@ public class PackStock {
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackStock.MODID) public static PackStock instance;
-	@SidedProxy(clientSide="mods.timaxa007.pack.stock.ProxyClient", serverSide="mods.timaxa007.pack.stock.ProxyServer")
-	public static ProxyServer proxy;
+	@SidedProxy(clientSide="mods.timaxa007.pack.stock.ProxyClient", serverSide="mods.timaxa007.pack.stock.ProxyCommon")
+	public static ProxyCommon proxy;
 
 	public static CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
 		public Item getTabIconItem() {

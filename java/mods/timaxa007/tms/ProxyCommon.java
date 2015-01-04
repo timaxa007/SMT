@@ -4,7 +4,7 @@ import org.apache.logging.log4j.Level;
 
 import cpw.mods.fml.common.FMLLog;
 
-public class ProxyServer {
+public class ProxyCommon {
 
 	public void preInitialize() {
 

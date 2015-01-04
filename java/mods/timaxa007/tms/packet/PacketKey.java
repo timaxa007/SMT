@@ -40,9 +40,13 @@ public class PacketKey implements IMessage {
 			EntityPlayerMP player = context.getServerHandler().playerEntity;
 
 			switch(button) {
-			case 13:ActionKey.onBooster(player);break;
-			case 14:ActionKey.onGrab(player);break;
-			case 15:ActionKey.onLie(player);break;
+			case -15:ActionKey.onLieTick(player);break;
+			case -14:ActionKey.onGrabTick(player);break;
+			case -13:ActionKey.onBoosterTick(player);break;
+			
+			case 13:ActionKey.onBooster(player, buttonstate);break;
+			case 14:ActionKey.onGrab(player, buttonstate);break;
+			case 15:ActionKey.onLie(player, buttonstate);break;
 			}
 
 			return null;

@@ -21,8 +21,8 @@ public class PackMining {
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackMining.MODID) public static PackMining instance;
-	@SidedProxy(clientSide = "mods.timaxa007.pack.mining.ProxyClient", serverSide = "mods.timaxa007.pack.mining.ProxyServer")
-	public static ProxyServer proxy;
+	@SidedProxy(clientSide = "mods.timaxa007.pack.mining.ProxyClient", serverSide = "mods.timaxa007.pack.mining.ProxyCommon")
+	public static ProxyCommon proxy;
 
 	public static CreativeTabs tab_mining = new CreativeTabs("tab_mining") {
 		public Item getTabIconItem() {

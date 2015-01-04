@@ -1,14 +1,12 @@
 package mods.timaxa007.pack.magic.event;
 
-import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.pack.magic.util.PlayerMana;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -76,6 +74,16 @@ public class EventMagic {
 					}
 
 				}
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void onHitEntity(EntityEvent.EntityConstructing e) {
+		if (e.entity instanceof EntityPlayer) {
+			if (PlayerMana.get(e.entity) == null) {
+				//PlayerMana.set(e.entity);
+				//new PlayerMana(e.entity).init(e.entity, e.entity.worldObj);
 			}
 		}
 	}

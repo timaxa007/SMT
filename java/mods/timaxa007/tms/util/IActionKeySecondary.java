@@ -6,15 +6,26 @@ import net.minecraft.world.World;
 
 public interface IActionKeySecondary {
 
-	public void onUse(ItemStack is, World world, EntityPlayer player);//3
-	public void onYawRight(ItemStack is, World world, EntityPlayer player);//4
-	public void onUp(ItemStack is, World world, EntityPlayer player);//5
-	public void onYawLeft(ItemStack is, World world, EntityPlayer player);//6
-	public void onMoveRight(ItemStack is, World world, EntityPlayer player);//7
-	public void onStop(ItemStack is, World world, EntityPlayer player);//8
-	public void onMoveLeft(ItemStack is, World world, EntityPlayer player);//9
-	public void onUse2(ItemStack is, World world, EntityPlayer player);//10
-	public void onDown(ItemStack is, World world, EntityPlayer player);//11
-	public void onUse1(ItemStack is, World world, EntityPlayer player);//12
+	public void onUse1Tick(ItemStack is, World world, EntityPlayer player);
+	public void onDownTick(ItemStack is, World world, EntityPlayer player);
+	public void onUse2Tick(ItemStack is, World world, EntityPlayer player);
+	public void onMoveLeftTick(ItemStack is, World world, EntityPlayer player);
+	public void onStopTick(ItemStack is, World world, EntityPlayer player);
+	public void onMoveRightTick(ItemStack is, World world, EntityPlayer player);
+	public void onYawLeftTick(ItemStack is, World world, EntityPlayer player);
+	public void onUpTick(ItemStack is, World world, EntityPlayer player);
+	public void onYawRightTick(ItemStack is, World world, EntityPlayer player);
+	public void onUseTick(ItemStack is, World world, EntityPlayer player);
+
+	public void onUse(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onYawRight(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onUp(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onYawLeft(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onMoveRight(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onStop(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onMoveLeft(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onUse2(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onDown(ItemStack is, World world, EntityPlayer player, boolean isPress);
+	public void onUse1(ItemStack is, World world, EntityPlayer player, boolean isPress);
 
 }

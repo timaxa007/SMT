@@ -10,7 +10,8 @@ public class RegisterPacket {
 		network.registerMessage(PacketKeyPrimary.Handler.class, PacketKeyPrimary.class, 1, Side.SERVER);
 		network.registerMessage(PacketKeySecondary.Handler.class, PacketKeySecondary.class, 2, Side.SERVER);
 		network.registerMessage(PacketMouseKey.Handler.class, PacketMouseKey.class, 3, Side.SERVER);
-		network.registerMessage(PacketPlayer.Handler.class, PacketPlayer.class, 4, Side.SERVER);
+		network.registerMessage(PacketSpawnParticle.Handler.class, PacketSpawnParticle.class, 4, Side.CLIENT);
+		network.registerMessage(PacketPlayer.Handler.class, PacketPlayer.class, 5, Side.SERVER);
 	}
 
 }

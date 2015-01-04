@@ -1,7 +1,10 @@
 package mods.timaxa007.pack.furniture.gui;
 
-import mods.timaxa007.pack.furniture.tile.*;
+import mods.timaxa007.pack.furniture.inventory.InventoryBackpack;
+import mods.timaxa007.pack.furniture.item.ItemBackpack;
+import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -11,6 +14,7 @@ public class HandlerGuiFurniture implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
+		ItemStack current = player.getCurrentEquippedItem();
 		switch(id) {
 		//case 1:return new ContainerFurnitureMachines(player, (TileEntityFurnitureMachines)te);
 		case 15:return new ContainerFurnitureChest(player, (TileEntityFurnitureChest)te);
@@ -18,7 +22,7 @@ public class HandlerGuiFurniture implements IGuiHandler {
 		//case 17:return new ContainerMincer(player, (TileEntityMincer)te);
 		//case 18:return new ContainerGrills(player, (TileEntityGrills)te);
 		//case 19:return new ContainerMashineWater(player, (TileEntityMashineWater)te);
-		//case 20:return new ContainerBackpack(player);
+		case 20:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
 		default:return null;
 		}
 	}
@@ -26,6 +30,7 @@ public class HandlerGuiFurniture implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
+		ItemStack current = player.getCurrentEquippedItem();
 		switch(id) {
 		//case 1:return new GuiFurnitureMachines(player, (TileEntityFurnitureMachines)te);
 		case 15:return new GuiFurnitureChest(player, (TileEntityFurnitureChest)te);
@@ -33,7 +38,7 @@ public class HandlerGuiFurniture implements IGuiHandler {
 		//case 17:return new GuiMincer(player, (TileEntityMincer)te);
 		//case 18:return new GuiGrills(player, (TileEntityGrills)te);
 		//case 19:return new GuiMashineWater(player, (TileEntityMashineWater)te);
-		//case 20:return new GuiBackpack(player);
+		case 20:return new GuiBackpack(player, (ItemBackpack)current.getItem());
 		default:return null;
 		}
 	}

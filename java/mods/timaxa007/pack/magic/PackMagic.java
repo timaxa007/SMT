@@ -21,8 +21,8 @@ public class PackMagic {
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackMagic.MODID) public static PackMagic instance;
-	@SidedProxy(clientSide = "mods.timaxa007.pack.magic.ProxyClient", serverSide = "mods.timaxa007.pack.magic.ProxyServer")
-	public static ProxyServer proxy;
+	@SidedProxy(clientSide = "mods.timaxa007.pack.magic.ProxyClient", serverSide = "mods.timaxa007.pack.magic.ProxyCommon")
+	public static ProxyCommon proxy;
 
 	public static CreativeTabs tab_magic = new CreativeTabs("tab_magic") {
 		public Item getTabIconItem() {

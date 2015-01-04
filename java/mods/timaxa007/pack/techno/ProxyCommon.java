@@ -12,7 +12,7 @@ import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-public class ProxyServer {
+public class ProxyCommon {
 
 	public static BlockList block;
 	public static ItemList item;

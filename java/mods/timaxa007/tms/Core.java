@@ -32,8 +32,8 @@ public class Core {
 	@Instance(Core.MODID)
 	public static Core instance;
 
-	@SidedProxy(clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyServer")
-	public static ProxyServer proxy;
+	@SidedProxy(clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyCommon")
+	public static ProxyCommon proxy;
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_tms = new CreativeTabs("tab_tms") {

@@ -4,7 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.tms.util.IActionKeyPrimary;
+import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.packet.PacketSpawnParticle;
 import mods.timaxa007.tms.util.IActionMouseKey;
 import mods.timaxa007.tms.util.ItemActionKeyPrimary;
 import net.minecraft.client.Minecraft;
@@ -15,6 +16,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -24,6 +26,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -46,10 +49,6 @@ public class ItemStuffs extends ItemActionKeyPrimary implements IActionMouseKey 
 		List list = world.getEntitiesWithinAABB(Entity.class, axisalignedbb);
 		Iterator iterator = list.iterator();
 		Entity entity;
-
-		System.out.println("x = " + ((double)player.posX + (Math.cos(player.rotationYaw) * 5)) + 
-				", y = " + ((double)player.posY) + 
-				", z = " + ((double)player.posZ + (Math.sin(player.rotationYaw) * 5)) + ".");
 
 		while(iterator.hasNext()) {
 			entity = (Entity)iterator.next();
@@ -118,34 +117,30 @@ public class ItemStuffs extends ItemActionKeyPrimary implements IActionMouseKey 
 	@Override
 	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
-		world.spawnParticle("reddust", 
-				((double)player.posX + (Math.cos(player.rotationYaw) * 5)), 
-				((double)player.posY + 0.75D), 
-				((double)player.posZ + (Math.sin(player.rotationYaw) * 5)), 0.0D, 0.0D, 0.0D);
-
 	}
 
 	@Override
 	public void onLeftClickTick(ItemStack is, World world, EntityPlayer player) {
-		
+
 	}
 
 	@Override
 	public void onRightClickTick(ItemStack is, World world, EntityPlayer player) {
-		
+		Core.network.sendToAllAround(new PacketSpawnParticle(1, player.posX, player.posY, player.posZ), 
+				new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 18.5D));
 	}
 
 	@Override
-	public void onHook(ItemStack is, World world, EntityPlayer player) {
+	public void onHook(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		System.out.println("throwing - " + is.getDisplayName());
 	}
 
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-    	list.add(StatCollector.translateToLocal("text.line1"));
-    	list.add(StatCollector.translateToLocal("text.line2"));
-    	list.add(StatCollector.translateToLocal("text.line3"));
-    }
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
+		list.add(StatCollector.translateToLocal("text.line1"));
+		list.add(StatCollector.translateToLocal("text.line2"));
+		list.add(StatCollector.translateToLocal("text.line3"));
+	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {

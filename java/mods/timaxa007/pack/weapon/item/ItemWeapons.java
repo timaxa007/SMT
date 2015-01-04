@@ -6,8 +6,8 @@ import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.IActionKeyPrimary;
 import mods.timaxa007.tms.util.IActionMouseKey;
+import mods.timaxa007.tms.util.ItemActionKeyPrimary;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -28,7 +28,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWeapons extends Item implements IActionKeyPrimary, IActionMouseKey {
+public class ItemWeapons extends ItemActionKeyPrimary implements IActionMouseKey {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -114,7 +114,7 @@ public class ItemWeapons extends Item implements IActionKeyPrimary, IActionMouse
 	}
 
 	@Override
-	public void onReload(ItemStack is, World world, EntityPlayer player) {
+	public void onReload(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (WeaponFor.list[tag.getInteger("WeaponID")] != null) {
 			if (!world.isRemote) {
@@ -130,11 +130,11 @@ public class ItemWeapons extends Item implements IActionKeyPrimary, IActionMouse
 	}
 
 	@Override
-	public void onCharge(ItemStack is, World world, EntityPlayer player) {
+	public void onCharge(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 	}
 
 	@Override
-	public void onMode(ItemStack is, World world, EntityPlayer player) {
+	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (!world.isRemote) {
 			player.openGui(PackWeapons.instance, 1, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 			System.out.println("-modify-");
@@ -142,8 +142,8 @@ public class ItemWeapons extends Item implements IActionKeyPrimary, IActionMouse
 	}
 
 	@Override
-	public void onHook(ItemStack is, World world, EntityPlayer player) {
-		
+	public void onHook(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+
 	}
 
 	private boolean isFire(int i, int type) {

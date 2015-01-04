@@ -25,8 +25,8 @@ public class PackWeapons {
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackWeapons.MODID) public static PackWeapons instance;
-	@SidedProxy(clientSide = "mods.timaxa007.pack.weapon.ProxyClient", serverSide = "mods.timaxa007.pack.weapon.ProxyServer")
-	public static ProxyServer proxy;
+	@SidedProxy(clientSide = "mods.timaxa007.pack.weapon.ProxyClient", serverSide = "mods.timaxa007.pack.weapon.ProxyCommon")
+	public static ProxyCommon proxy;
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_weapons = new CreativeTabs("tab_weapons") {

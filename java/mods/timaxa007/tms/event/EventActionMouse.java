@@ -9,10 +9,8 @@ import cpw.mods.fml.relauncher.Side;
 
 public class EventActionMouse {
 
-	boolean rc = false;
-	boolean rc_last = false;
-	boolean lc = false;
-	boolean lc_last = false;
+	boolean rc, rc_last = false;
+	boolean lc, lc_last = false;
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
 	public void onLeftClick(InputEvent.MouseInputEvent m) {//1
@@ -34,13 +32,13 @@ public class EventActionMouse {
 	public void /*onLeftClickTick*/actionBindAttack(TickEvent.PlayerTickEvent event) {//3
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (Minecraft.getMinecraft().gameSettings.keyBindAttack.getIsKeyPressed()) {
-				Core.network.sendToServer(new PacketMouseKey(3, true));
+				Core.network.sendToServer(new PacketMouseKey(3, true));//Tick
 				lc = true;
-				sendChangedState(lc_last, lc, 1);
+				sendChangedStateMouse(lc_last, lc, 1);//press down
 				lc_last = lc;
 			} else {
 				lc = false;
-				sendChangedState(lc_last, lc, 1);
+				sendChangedStateMouse(lc_last, lc, 1);//unpress down
 				lc_last = lc;
 			}
 		}
@@ -50,20 +48,20 @@ public class EventActionMouse {
 	public void /*onRightClickTick*/actionBindUseItem(TickEvent.PlayerTickEvent event) {//4
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.getIsKeyPressed()) {
-				Core.network.sendToServer(new PacketMouseKey(4, true));
+				Core.network.sendToServer(new PacketMouseKey(4, true));//Tick
 				rc = true;
-				sendChangedState(rc_last, rc, 2);
+				sendChangedStateMouse(rc_last, rc, 2);//press down
 				rc_last = rc;
 			} else {
 				rc = false;
-				sendChangedState(rc_last, rc, 2);
+				sendChangedStateMouse(rc_last, rc, 2);//unpress down
 				rc_last = rc;
 			}
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void sendChangedState(boolean last, boolean now, int pack) {
-		//System.out.println("---");
+	public static void sendChangedStateMouse(boolean last, boolean now, int pack) {
+		//System.out.println("sendChangedStateMouse");
 		if (!last && now) Core.network.sendToServer(new PacketMouseKey(pack, true));
 		if (last && !now) Core.network.sendToServer(new PacketMouseKey(pack, false));
 	}

@@ -21,8 +21,8 @@ public class PackTechno {
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackTechno.MODID) public static PackTechno instance;
-	@SidedProxy(clientSide = "mods.timaxa007.pack.techno.ProxyClient", serverSide = "mods.timaxa007.pack.techno.ProxyServer")
-	public static ProxyServer proxy;
+	@SidedProxy(clientSide = "mods.timaxa007.pack.techno.ProxyClient", serverSide = "mods.timaxa007.pack.techno.ProxyCommon")
+	public static ProxyCommon proxy;
 
 	public static CreativeTabs tab_techno = new CreativeTabs("tab_techno") {
 		public Item getTabIconItem() {

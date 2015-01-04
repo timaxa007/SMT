@@ -4,7 +4,7 @@ import mods.timaxa007.pack.furniture.event.EventFurnitureClient;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-public class ProxyClient extends ProxyServer {
+public class ProxyClient extends ProxyCommon {
 
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);

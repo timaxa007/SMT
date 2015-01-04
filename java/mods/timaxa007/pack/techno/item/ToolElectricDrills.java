@@ -40,7 +40,7 @@ public class ToolElectricDrills extends ItemActionKeyPrimary {
 	}
 
 	@Override
-	public void onMode(ItemStack is, World world, EntityPlayer player) {
+	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("ModeID")) {
 			int nbn = tag.getInteger("ModeID");

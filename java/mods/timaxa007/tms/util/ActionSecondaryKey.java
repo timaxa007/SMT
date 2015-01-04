@@ -4,74 +4,145 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 public class ActionSecondaryKey {
-	//1
-	public static void onUse(EntityPlayer player) {
+	//-10
+	public static void onUse1Tick(EntityPlayer player) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onUse(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onUse1Tick(current, player.worldObj, player);
+		}
+	}
+	//-9
+	public static void onDownTick(EntityPlayer player) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onDownTick(current, player.worldObj, player);
+		}
+	}
+	//-8
+	public static void onUse2Tick(EntityPlayer player) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onUse2Tick(current, player.worldObj, player);
+		}
+	}
+	//-7
+	public static void onMoveLeftTick(EntityPlayer player) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onMoveLeftTick(current, player.worldObj, player);
+		}
+	}
+	//-6
+	public static void onStopTick(EntityPlayer player) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onStopTick(current, player.worldObj, player);
+		}
+	}
+	//-5
+	public static void onMoveRightTick(EntityPlayer player) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onMoveRightTick(current, player.worldObj, player);
+		}
+	}
+	//-4
+	public static void onYawLeftTick(EntityPlayer player) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onYawLeftTick(current, player.worldObj, player);
+		}
+	}
+	//-3
+	public static void onUpTick(EntityPlayer player) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onUpTick(current, player.worldObj, player);
+		}
+	}
+	//-2
+	public static void onYawRightTick(EntityPlayer player) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onYawRightTick(current, player.worldObj, player);
+		}
+	}
+	//-1
+	public static void onUseTick(EntityPlayer player) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onUseTick(current, player.worldObj, player);
+		}
+	}
+	//---------------------------------------------------------------------------------------------------------
+	//1
+	public static void onUse(EntityPlayer player, boolean buttonstate) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null && current.getItem() instanceof IActionKeySecondary) {
+			((IActionKeySecondary)current.getItem()).onUse(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//2
-	public static void onYawRight(EntityPlayer player) {
+	public static void onYawRight(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onYawRight(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onYawRight(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//3
-	public static void onUp(EntityPlayer player) {
+	public static void onUp(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onUp(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onUp(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//4
-	public static void onYawLeft(EntityPlayer player) {
+	public static void onYawLeft(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onYawLeft(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onYawLeft(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//5
-	public static void onMoveRight(EntityPlayer player) {
+	public static void onMoveRight(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onMoveRight(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onMoveRight(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//6
-	public static void onStop(EntityPlayer player) {
+	public static void onStop(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onStop(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onStop(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//7
-	public static void onMoveLeft(EntityPlayer player) {
+	public static void onMoveLeft(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onMoveLeft(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onMoveLeft(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//8
-	public static void onUse2(EntityPlayer player) {
+	public static void onUse2(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onUse2(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onUse2(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//9
-	public static void onDown(EntityPlayer player) {
+	public static void onDown(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onDown(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onDown(current, player.worldObj, player, buttonstate);
 		}
 	}
 	//10
-	public static void onUse1(EntityPlayer player) {
+	public static void onUse1(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IActionKeySecondary) {
-			((IActionKeySecondary)current.getItem()).onUse1(current, player.worldObj, player);
+			((IActionKeySecondary)current.getItem()).onUse1(current, player.worldObj, player, buttonstate);
 		}
 	}
 

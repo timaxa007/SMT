@@ -3,8 +3,11 @@ package mods.timaxa007.pack.furniture.item;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.pack.furniture.util.IBackpack;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,12 +17,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBackpack extends Item implements IInventory {
+public class ItemBackpack extends Item implements IBackpack, IInventory {
 
 	public static ItemStack[] list_slot = new ItemStack[27];
 
 	public ItemBackpack() {
 		super();
+		setMaxStackSize(1);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setTextureName("timaxa007:backpack");
 		setUnlocalizedName("backpack");
@@ -33,25 +37,75 @@ public class ItemBackpack extends Item implements IInventory {
 		}
 		return is;
 	}
-	/*
-	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float hitZ) {
-		if (player.isSneaking()) {
-			return false;
-		} else {
-			player.openGui(PackFurniture.instance, PackFurniture.guiBackpack, world, x, y, z);
-			return true;
-		}
-	}
-	 */
+
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		list.add(addTag());
-		list.add(new ItemStack(id, 1, 0));
+		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag() {
+	private ItemStack addTag() {
 		ItemStack is = new ItemStack(PackFurniture.proxy.item.backpack);
 		NBTTagCompound tag = new NBTTagCompound();
+		writeToNBT(tag);
+		is.setTagCompound(tag);
+		return is;
+	}
+
+	public void readFromNBT(NBTTagCompound nbt) {
+		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
+		list_slot = new ItemStack[getSizeInventory()];
+
+		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			int j = nbttagcompound1.getByte("Slot") & 255;
+
+			if (j >= 0 && j < list_slot.length) {
+				list_slot[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+			}
+		}
+
+	}
+
+	public void writeToNBT(NBTTagCompound nbt) {
+		NBTTagList nbttaglist = new NBTTagList();
+		for (int i = 0; i < list_slot.length; ++i) {
+			if (list_slot[i] != null) {
+				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+				nbttagcompound1.setByte("Slot", (byte)i);
+				list_slot[i].writeToNBT(nbttagcompound1);
+				nbttaglist.appendTag(nbttagcompound1);
+			}
+		}
+		nbt.setTag("Items", nbttaglist);
+	}
+
+	@Override
+	public void openBackpackGui(ItemStack is) {
+		System.out.println("openBackpackGui");
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag == null) tag = new NBTTagCompound();
+
+		NBTTagList nbttaglist = tag.getTagList("Items", 10);
+		list_slot = new ItemStack[getSizeInventory()];
+
+		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			int j = nbttagcompound1.getByte("Slot") & 255;
+
+			if (j >= 0 && j < list_slot.length) {
+				list_slot[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+			}
+		}
+
+	}
+
+	@Override
+	public void closeBackpackGui(ItemStack is) {
+		System.out.println("closeBackpackGui");
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag == null) tag = new NBTTagCompound();
+
 		NBTTagList nbttaglist = new NBTTagList();
 		for (int i = 0; i < list_slot.length; ++i) {
 			if (list_slot[i] != null) {
@@ -62,8 +116,8 @@ public class ItemBackpack extends Item implements IInventory {
 			}
 		}
 		tag.setTag("Items", nbttaglist);
+
 		is.setTagCompound(tag);
-		return is;
 	}
 
 	@Override
@@ -126,7 +180,7 @@ public class ItemBackpack extends Item implements IInventory {
 
 	@Override
 	public String getInventoryName() {
-		return "container.furniture_chest";
+		return "container.furniture_backpack";
 	}
 
 	@Override
@@ -146,12 +200,12 @@ public class ItemBackpack extends Item implements IInventory {
 
 	@Override
 	public void openInventory() {
-
+		System.out.println("openInventory ItemBackpack");
 	}
 
 	@Override
 	public void closeInventory() {
-
+		System.out.println("closeInventory ItemBackpack");
 	}
 
 	@Override
@@ -161,8 +215,9 @@ public class ItemBackpack extends Item implements IInventory {
 
 	@Override
 	public void markDirty() {
-		// TODO Auto-generated method stub
-		
+		if (Minecraft.getMinecraft().theWorld != null) {
+
+		}
 	}
 
 }

@@ -18,7 +18,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ProxyServer {
+public class ProxyCommon {
 
 	public static BlockList block;
 	public static ItemList item;
