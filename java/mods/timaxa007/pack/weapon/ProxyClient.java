@@ -1,10 +1,11 @@
 package mods.timaxa007.pack.weapon;
 
 import mods.timaxa007.pack.weapon.event.EventWeaponsClient;
+import mods.timaxa007.tms.util.IProxy;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-public class ProxyClient extends ProxyCommon {
+public class ProxyClient extends ProxyCommon implements IProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);

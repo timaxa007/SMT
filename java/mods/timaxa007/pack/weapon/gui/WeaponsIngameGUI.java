@@ -29,7 +29,7 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 	/*
 	public WeaponsIngameGUI(Minecraft mc, LivingUpdateEvent p) {
 		super(mc);
-		this.mc = mc;
+		mc = mc;
 		player = (EntityPlayer)p.entity;
 	}
 	 */
@@ -45,11 +45,99 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 		int width = res.getScaledWidth();
 		int height = res.getScaledHeight();
 
+		//renderScope(width, height);
 		if (player != null && !player.capabilities.isCreativeMode) {
 			renderNewHealth(width, height);
 			renderAmmoAmt(width, height);
 		}
 
+	}
+
+	public void renderScope(int width, int height) {
+		ItemStack current = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
+
+		if (current != null && current.getItem() instanceof ItemWeapons && current.getTagCompound() != null) {
+			NBTTagCompound tag = current.getTagCompound();
+			Tessellator tessellator = Tessellator.instance;
+
+			if (tag.hasKey("Aim") && tag.getBoolean("Aim")) {
+
+				GL11.glPushMatrix();
+				GL11.glDisable(GL11.GL_DEPTH_TEST);
+				GL11.glDepthMask(false);
+				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+				GL11.glDisable(GL11.GL_ALPHA_TEST);
+
+				int w_min = 0;
+				int w_max = width;
+				int h_min = 0;
+				int h_max = height;
+
+				if (width > height) {
+					w_min = (width / 2) - (height /2);
+					w_max = (width / 2) + (height /2);
+					//-------------------------------------------------------------
+					mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/gui/scope_blank_null.png"));
+
+					tessellator.startDrawingQuads();
+					tessellator.addVertexWithUV((double)0, (double)h_max, -90.0D, 0.0D, 1.0D);
+					tessellator.addVertexWithUV((double)w_min, (double)h_max, -90.0D, 1.0D, 1.0D);
+					tessellator.addVertexWithUV((double)w_min, (double)h_min, -90.0D, 1.0D, 0.0D);
+					tessellator.addVertexWithUV((double)0, (double)h_min, -90.0D, 0.0D, 0.0D);
+					tessellator.draw();
+					//-------------------------------------------------------------
+					mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/gui/scope_blank_null.png"));
+
+					tessellator.startDrawingQuads();
+					tessellator.addVertexWithUV((double)w_max, (double)h_max, -90.0D, 0.0D, 1.0D);
+					tessellator.addVertexWithUV((double)width, (double)h_max, -90.0D, 1.0D, 1.0D);
+					tessellator.addVertexWithUV((double)width, (double)h_min, -90.0D, 1.0D, 0.0D);
+					tessellator.addVertexWithUV((double)w_max, (double)h_min, -90.0D, 0.0D, 0.0D);
+					tessellator.draw();
+					//-------------------------------------------------------------
+				} else if (height > width) {
+					h_min = (height / 2) - (width /2);
+					h_max = (height / 2) + (width /2);
+					//-------------------------------------------------------------
+					mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/gui/scope_blank_null.png"));
+
+					tessellator.startDrawingQuads();
+					tessellator.addVertexWithUV((double)w_min, (double)h_min, -90.0D, 0.0D, 1.0D);
+					tessellator.addVertexWithUV((double)w_max, (double)h_min, -90.0D, 1.0D, 1.0D);
+					tessellator.addVertexWithUV((double)w_max, (double)0, -90.0D, 1.0D, 0.0D);
+					tessellator.addVertexWithUV((double)w_min, (double)0, -90.0D, 0.0D, 0.0D);
+					tessellator.draw();
+					//-------------------------------------------------------------
+					mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/gui/scope_blank_null.png"));
+
+					tessellator.startDrawingQuads();
+					tessellator.addVertexWithUV((double)w_min, (double)height, -90.0D, 0.0D, 1.0D);
+					tessellator.addVertexWithUV((double)w_max, (double)height, -90.0D, 1.0D, 1.0D);
+					tessellator.addVertexWithUV((double)w_max, (double)h_max, -90.0D, 1.0D, 0.0D);
+					tessellator.addVertexWithUV((double)w_min, (double)h_max, -90.0D, 0.0D, 0.0D);
+					tessellator.draw();
+					//-------------------------------------------------------------
+				}
+
+				//-------------------------------------------------------------
+				mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/gui/scope_bino_2.png"));
+
+				tessellator.startDrawingQuads();
+				tessellator.addVertexWithUV((double)w_min, (double)h_max, -90.0D, 0.0D, 1.0D);
+				tessellator.addVertexWithUV((double)w_max, (double)h_max, -90.0D, 1.0D, 1.0D);
+				tessellator.addVertexWithUV((double)w_max, (double)h_min, -90.0D, 1.0D, 0.0D);
+				tessellator.addVertexWithUV((double)w_min, (double)h_min, -90.0D, 0.0D, 0.0D);
+				tessellator.draw();
+				//-------------------------------------------------------------
+				GL11.glDepthMask(true);
+				GL11.glEnable(GL11.GL_DEPTH_TEST);
+				GL11.glEnable(GL11.GL_ALPHA_TEST);
+				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+				GL11.glPopMatrix();
+
+			}
+		}
 	}
 
 	public void renderNewHealth(int width, int height) {
@@ -63,7 +151,7 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
 		//-------------------------------------------------------------
 		/*
-		this.mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/dot_red.png"));
+		mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/dot_red.png"));
 		tessellator.startDrawingQuads();
 		tessellator.addVertexWithUV(0.0D, (double)height, -90.0D, 0.0D, 1.0D);
 		tessellator.addVertexWithUV((double)width, (double)height, -90.0D, 1.0D, 1.0D);
@@ -72,7 +160,7 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 		tessellator.draw();
 		 */
 		//-------------------------------------------------------------
-		this.mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/dot_white.png"));
+		mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/dot_white.png"));
 
 		tessellator.startDrawingQuads();
 		tessellator.setColorOpaque_I(0xAAAAAA);
@@ -82,7 +170,7 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 		tessellator.addVertexWithUV(5.0D, 5.0D, -90.0D, 0.0D, 0.0D);
 		tessellator.draw();
 		//-------------------------------------------------------------
-		this.mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/load_bar.png"));
+		mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/load_bar.png"));
 
 		tessellator.startDrawingQuads();
 		tessellator.setColorOpaque_I(0xFF2222);
@@ -92,7 +180,7 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 		tessellator.addVertexWithUV(35.0D, 5.0D, -90.0D, 0.0D, 0.0D);
 		tessellator.draw();
 		//-------------------------------------------------------------
-		this.mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/load_bar.png"));
+		mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/load_bar.png"));
 
 		tessellator.startDrawingQuads();
 		tessellator.setColorOpaque_I(0x2288FF);
@@ -102,7 +190,7 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 		tessellator.addVertexWithUV(35.0D, 15.0D, -90.0D, 0.0D, 0.0D);
 		tessellator.draw();
 		//-------------------------------------------------------------
-		this.mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/load_bar.png"));
+		mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/obj/load_bar.png"));
 
 		tessellator.startDrawingQuads();
 		tessellator.setColorOpaque_I(0xFF8800);
@@ -123,10 +211,10 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 	public void renderAmmoAmt(int width, int height) {
 		Tessellator tessellator = Tessellator.instance;
 
-		ItemStack actHBI = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
+		ItemStack current = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
 
-		if (actHBI != null && actHBI.getItem() instanceof ItemWeapons && actHBI.getTagCompound() != null) {
-			NBTTagCompound tag = actHBI.getTagCompound();
+		if (current != null && current.getItem() instanceof ItemWeapons && current.getTagCompound() != null) {
+			NBTTagCompound tag = current.getTagCompound();
 			int var1 = tag.getInteger("AmmoAtm");
 			int vara = 0;
 			int varb = 0;
@@ -153,7 +241,7 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			//-------------------------------------------------------------
 			if (vara != 0) {
-				this.mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/font/" + vara + ".png"));
+				mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/font/" + vara + ".png"));
 				tessellator.startDrawingQuads();
 				tessellator.setColorOpaque_I(0xAAAAAA);
 				tessellator.addVertexWithUV(0.0D+10.0D + ((double)width/2), 8.0D + ((double)height/2), -90.0D, 0.0D, 1.0D);
@@ -163,7 +251,7 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 				tessellator.draw();
 			}
 			//-------------------------------------------------------------
-			this.mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/font/" + varb + ".png"));
+			mc.getTextureManager().bindTexture(new ResourceLocation("timaxa007", "textures/font/" + varb + ".png"));
 			tessellator.startDrawingQuads();
 			tessellator.setColorOpaque_I(0xAAAAAA);
 			tessellator.addVertexWithUV(0.0D+15.0D + ((double)width/2), 8.0D + ((double)height/2), -90.0D, 0.0D, 1.0D);
@@ -178,7 +266,6 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glPopMatrix();
 		}
-
 	}
 
 }

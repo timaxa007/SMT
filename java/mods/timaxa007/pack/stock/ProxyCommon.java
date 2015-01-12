@@ -8,12 +8,13 @@ import mods.timaxa007.pack.stock.recipe.RecipeFoodsColors;
 import mods.timaxa007.pack.stock.recipe.Recipes_Stock;
 import mods.timaxa007.pack.stock.render.RenderMain;
 import mods.timaxa007.pack.stock.world.GeneratorPackStock;
+import mods.timaxa007.tms.util.IProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ProxyCommon {
+public class ProxyCommon implements IProxy {
 
 	public static BlockList block;
 	public static ItemList item;

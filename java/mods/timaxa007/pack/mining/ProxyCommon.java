@@ -7,13 +7,14 @@ import mods.timaxa007.pack.mining.lib.ListMining;
 import mods.timaxa007.pack.mining.recipe.Recipes_Mining;
 import mods.timaxa007.pack.mining.render.RenderMain;
 import mods.timaxa007.pack.mining.world.Generator_Mining;
+import mods.timaxa007.tms.util.IProxy;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ProxyCommon {
+public class ProxyCommon implements IProxy {
 
 	public static BlockList block;
 	public static ItemList item;

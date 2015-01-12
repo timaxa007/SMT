@@ -8,13 +8,14 @@ import mods.timaxa007.pack.magic.lib.ListMagic;
 import mods.timaxa007.pack.magic.recipe.Recipes_Magic;
 import mods.timaxa007.pack.magic.render.RenderMain;
 import mods.timaxa007.pack.magic.util.MaterialOreMagic;
+import mods.timaxa007.tms.util.IProxy;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-public class ProxyCommon {
+public class ProxyCommon implements IProxy {
 
 	public static BlockList block;
 	public static ItemList item;

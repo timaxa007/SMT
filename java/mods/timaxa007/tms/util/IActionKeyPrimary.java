@@ -6,6 +6,8 @@ import net.minecraft.world.World;
 
 public interface IActionKeyPrimary {
 
+	public void onZoomOutTick(ItemStack is, World world, EntityPlayer player);//-6
+	public void onZoomInTick(ItemStack is, World world, EntityPlayer player);//-5
 	public void onHookTick(ItemStack is, World world, EntityPlayer player);//-4
 	public void onModeTick(ItemStack is, World world, EntityPlayer player);//-3
 	public void onChargeTick(ItemStack is, World world, EntityPlayer player);//-2
@@ -15,5 +17,7 @@ public interface IActionKeyPrimary {
 	public void onCharge(ItemStack is, World world, EntityPlayer player, boolean isPress);//2
 	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress);//3
 	public void onHook(ItemStack is, World world, EntityPlayer player, boolean isPress);//4
+	public void onZoomIn(ItemStack is, World world, EntityPlayer player, boolean isPress);//5
+	public void onZoomOut(ItemStack is, World world, EntityPlayer player, boolean isPress);//6
 
 }

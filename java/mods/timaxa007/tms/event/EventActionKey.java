@@ -16,6 +16,8 @@ public class EventActionKey {
 	k_charge, k_charge_last, 
 	k_mode, k_mode_last, 
 	k_hook, k_hook_last, 
+	k_zoom_in, k_zoom_in_last, 
+	k_zoom_out, k_zoom_out_last, 
 	k_booster, k_booster_last, 
 	k_grab, k_grab_last, 
 	k_lie, k_lie_last
@@ -93,6 +95,38 @@ public class EventActionKey {
 				k_hook = false;
 				sendChangedStateKeyPrimary(k_hook_last, k_hook, 4);
 				k_hook_last = k_hook;
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void actionZoomIn(TickEvent.PlayerTickEvent event) {//5
+		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
+			if (RegKey.zoom_in.getIsKeyPressed()) {
+				Core.network.sendToServer(new PacketKeyPrimary(-5, true));
+				k_zoom_in = true;
+				sendChangedStateKeyPrimary(k_zoom_in_last, k_zoom_in, 5);
+				k_zoom_in_last = k_zoom_in;
+			} else {
+				k_zoom_in = false;
+				sendChangedStateKeyPrimary(k_zoom_in_last, k_zoom_in, 5);
+				k_zoom_in_last = k_zoom_in;
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void actionZoomOut(TickEvent.PlayerTickEvent event) {//6
+		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
+			if (RegKey.zoom_out.getIsKeyPressed()) {
+				Core.network.sendToServer(new PacketKeyPrimary(-6, true));
+				k_zoom_out = true;
+				sendChangedStateKeyPrimary(k_zoom_out_last, k_zoom_out, 6);
+				k_zoom_out_last = k_zoom_out;
+			} else {
+				k_zoom_out = false;
+				sendChangedStateKeyPrimary(k_zoom_out_last, k_zoom_out, 6);
+				k_zoom_out_last = k_zoom_out;
 			}
 		}
 	}

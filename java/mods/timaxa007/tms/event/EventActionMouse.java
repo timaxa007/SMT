@@ -32,7 +32,7 @@ public class EventActionMouse {
 	public void /*onLeftClickTick*/actionBindAttack(TickEvent.PlayerTickEvent event) {//3
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (Minecraft.getMinecraft().gameSettings.keyBindAttack.getIsKeyPressed()) {
-				Core.network.sendToServer(new PacketMouseKey(3, true));//Tick
+				Core.network.sendToServer(new PacketMouseKey(-1, true));//Tick
 				lc = true;
 				sendChangedStateMouse(lc_last, lc, 1);//press down
 				lc_last = lc;
@@ -48,7 +48,7 @@ public class EventActionMouse {
 	public void /*onRightClickTick*/actionBindUseItem(TickEvent.PlayerTickEvent event) {//4
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.getIsKeyPressed()) {
-				Core.network.sendToServer(new PacketMouseKey(4, true));//Tick
+				Core.network.sendToServer(new PacketMouseKey(-2, true));//Tick
 				rc = true;
 				sendChangedStateMouse(rc_last, rc, 2);//press down
 				rc_last = rc;

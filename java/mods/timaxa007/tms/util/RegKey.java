@@ -12,6 +12,8 @@ public class RegKey {
 	public static final KeyBinding charge = new KeyBinding("key.charge.name", Keyboard.KEY_T, "category.tms.name");//2
 	public static final KeyBinding mode = new KeyBinding("key.mode.name", Keyboard.KEY_F, "category.tms.name");//3
 	public static final KeyBinding hook = new KeyBinding("key.hook.name", Keyboard.KEY_G, "category.tms.name");//4
+	public static final KeyBinding zoom_in = new KeyBinding("key.zoom_in.name", Keyboard.KEY_EQUALS, "category.tms.name");//5
+	public static final KeyBinding zoom_out = new KeyBinding("key.zoom_out.name", Keyboard.KEY_MINUS, "category.tms.name");//6
 
 	public static final KeyBinding use = new KeyBinding("key.use.name", Keyboard.KEY_NUMPAD0, "category.tms.name");//1
 	public static final KeyBinding yaw_right = new KeyBinding("key.yaw_right.name", Keyboard.KEY_NUMPAD9, "category.tms.name");//2
@@ -29,12 +31,12 @@ public class RegKey {
 	public static final KeyBinding lie = new KeyBinding("key.lie.name", Keyboard.KEY_C, "category.tms.name");//15
 
 	public static final KeyBinding[] list_key = new KeyBinding[] {
-		reload, charge, mode, hook,
+		reload, charge, mode, hook, zoom_in, zoom_out, 
 		use, yaw_right, up, yaw_left, move_right, stop, move_left, use2, down, use1,
 		booster, grab, lie
 	};
 
-	public static void preInt() {
+	public static void preInit() {
 
 		for (int k = 0; k < list_key.length; k++) 
 			ClientRegistry.registerKeyBinding(list_key[k]);

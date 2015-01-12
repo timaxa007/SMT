@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.mining.lib;
 
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.util.StatCollector;
 
 /**
@@ -44,14 +45,14 @@ public class OreFake {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public OreFake(int id, String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
 	}
 
 	public OreFake(String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -85,22 +86,18 @@ public class OreFake {
 	}
 
 	public static OreFake get(String tag) {
-		if (tag != null && tag.length() > 0)
+		if (UtilTMS.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
 	//--------------------------------------------------------
-	public boolean hasTag() {
-		return tag != null && tag.length() > 0;
-	}
-
 	public OreFake setName(String name) {
 		this.name = name;
 		return this;
 	}
 
 	public String getName() {
-		return name == null ? "unnamed" : name;
+		return UtilTMS.hasString(name) ? name : UtilTMS.hasString(tag) ? tag : "unname";
 	}
 
 	public String getLocalizedName() {
@@ -113,7 +110,7 @@ public class OreFake {
 	}
 
 	public String getType() {
-		return type == null ? "untype" : type;
+		return UtilTMS.hasString(type) ? type : "untype";
 	}
 
 	public String getLocalizedType() {

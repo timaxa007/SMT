@@ -141,12 +141,12 @@ public class BowMagic extends Item {
 	public int getItemEnchantability() {return 1;}
 
 	public IIcon getIcon(ItemStack is, int renderPass, EntityPlayer player, ItemStack useItm, int useRem) {
-		BowMagic itm = PackMagic.proxy.item.magic_bow;
+		Item itm = PackMagic.proxy.item.magic_bow;
 		if (useItm != null && is.getItem() == itm) {
 			int j = is.getMaxItemUseDuration()-useRem;
-			if (j >= 18) {return itm.getItemIIconForUseDuration(2);}
-			if (j>13) {return itm.getItemIIconForUseDuration(1);}
-			if (j>0) {return itm.getItemIIconForUseDuration(0);}
+			if (j >= 18) {return ((BowMagic)itm).getItemIIconForUseDuration(2);}
+			if (j>13) {return ((BowMagic)itm).getItemIIconForUseDuration(1);}
+			if (j>0) {return ((BowMagic)itm).getItemIIconForUseDuration(0);}
 		}
 		return getIcon(is, renderPass);
 	}

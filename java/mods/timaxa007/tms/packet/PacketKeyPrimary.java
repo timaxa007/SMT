@@ -40,6 +40,8 @@ public class PacketKeyPrimary implements IMessage {
 			EntityPlayerMP player = context.getServerHandler().playerEntity;
 
 			switch(button) {
+			case -6:ActionPrimaryKey.onZoomOutTick(player);break;
+			case -5:ActionPrimaryKey.onZoomInTick(player);break;
 			case -4:ActionPrimaryKey.onHookTick(player);break;
 			case -3:ActionPrimaryKey.onModeTick(player);break;
 			case -2:ActionPrimaryKey.onChargeTick(player);break;
@@ -48,6 +50,8 @@ public class PacketKeyPrimary implements IMessage {
 			case 2:ActionPrimaryKey.onCharge(player, buttonstate);break;
 			case 3:ActionPrimaryKey.onMode(player, buttonstate);break;
 			case 4:ActionPrimaryKey.onHook(player, buttonstate);break;
+			case 5:ActionPrimaryKey.onZoomIn(player, buttonstate);break;
+			case 6:ActionPrimaryKey.onZoomOut(player, buttonstate);break;
 			}
 
 			return null;

@@ -7,16 +7,21 @@ import mods.timaxa007.pack.weapon.item.ItemList;
 import mods.timaxa007.pack.weapon.lib.ListWeapon;
 import mods.timaxa007.pack.weapon.recipe.Recipes_Weapons;
 import mods.timaxa007.pack.weapon.render.RenderMain;
+import mods.timaxa007.tms.util.IProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-public class ProxyCommon {
+public class ProxyCommon implements IProxy {
 
 	public static BlockList block;
 	public static ItemList item;
 	public static RenderMain render;
+
+	//GUI
+	public static int gui_scope_1 = 1;
+	public static int gui_modify = 19;
 
 	public void preInit(FMLPreInitializationEvent event) {
 

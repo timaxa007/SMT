@@ -12,6 +12,7 @@ public class HandlerGuiWeapons implements IGuiHandler {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(id) {
 		case 1:return new ContainerModifyWeapons(player);
+		//case 2:return new ContainerScope1(player);
 		//case 1:return new ContainerModifyWeapons(player, (TileEntityElectricMachines)te);
 		default:return null;
 		}
@@ -22,6 +23,7 @@ public class HandlerGuiWeapons implements IGuiHandler {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(id) {
 		case 1:return new GuiModifyWeapons(player);
+		case 2:return new GuiScope1(player);
 		//case 1:return new GuiModifyWeapons(player, (TileEntityElectricMachines)te);
 		default:return null;
 		}

@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.stock;
 
+import mods.timaxa007.pack.stock.packet.RegisterPacket;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
@@ -8,6 +9,8 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 @Mod (modid = PackStock.MODID, name = PackStock.MODNAME, version = PackStock.VERSION, dependencies = "required-after:01miningpack")
 //@NetworkMod (clientSideRequired = true, serverSideRequired = false, versionBounds = PackInfo.VERSION)
@@ -21,8 +24,9 @@ public class PackStock {
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackStock.MODID) public static PackStock instance;
-	@SidedProxy(clientSide="mods.timaxa007.pack.stock.ProxyClient", serverSide="mods.timaxa007.pack.stock.ProxyCommon")
+	@SidedProxy(modId = PackStock.MODID, clientSide="mods.timaxa007.pack.stock.ProxyClient", serverSide="mods.timaxa007.pack.stock.ProxyCommon")
 	public static ProxyCommon proxy;
+	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
 		public Item getTabIconItem() {
@@ -53,6 +57,10 @@ public class PackStock {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
+
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackStock.MODID);
+		RegisterPacket.init(network);
+
 	}
 
 	@EventHandler

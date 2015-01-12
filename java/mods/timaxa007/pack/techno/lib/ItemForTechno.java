@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.techno.lib;
 
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>ItemsTechno</b>.
@@ -43,14 +44,14 @@ public class ItemForTechno {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public ItemForTechno(int id, String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
 	}
 
 	public ItemForTechno(String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -84,22 +85,18 @@ public class ItemForTechno {
 	}
 
 	public static ItemForTechno get(String tag) {
-		if (tag != null && tag.length() > 0)
+		if (UtilTMS.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
 	//--------------------------------------------------------
-	public boolean hasTag() {
-		return tag != null && tag.length() > 0;
-	}
-
 	public ItemForTechno setName(String name) {
 		this.name = name;
 		return this;
 	}
 
 	public String getName() {
-		return name == null ? "unnamed" : name;
+		return UtilTMS.hasString(name) ? name : UtilTMS.hasString(tag) ? tag : "unname";
 	}
 
 	public String getLocalizedName() {
@@ -112,7 +109,7 @@ public class ItemForTechno {
 	}
 
 	public String getType() {
-		return type == null ? "untyped" : type;
+		return UtilTMS.hasString(type) ? "untyped" : type;
 	}
 
 	public String getLocalizedType() {

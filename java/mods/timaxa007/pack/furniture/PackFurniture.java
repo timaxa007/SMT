@@ -24,7 +24,7 @@ public class PackFurniture {
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackFurniture.MODID) public static PackFurniture instance;
-	@SidedProxy(clientSide = "mods.timaxa007.pack.furniture.ProxyClient", serverSide = "mods.timaxa007.pack.furniture.ProxyCommon")
+	@SidedProxy(modId = PackFurniture.MODID, clientSide = "mods.timaxa007.pack.furniture.ProxyClient", serverSide = "mods.timaxa007.pack.furniture.ProxyCommon")
 	public static ProxyCommon proxy;
 	public static SimpleNetworkWrapper network;
 

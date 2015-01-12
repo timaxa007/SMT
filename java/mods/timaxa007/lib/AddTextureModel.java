@@ -3,6 +3,7 @@ package mods.timaxa007.lib;
 import java.io.IOException;
 
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.IIcon;
@@ -44,7 +45,7 @@ public class AddTextureModel {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public AddTextureModel(int id, String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
@@ -52,7 +53,7 @@ public class AddTextureModel {
 	}
 
 	public AddTextureModel(String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		id = getNextID();
 		list[id] = this;
 		this.tag = tag;
@@ -87,15 +88,11 @@ public class AddTextureModel {
 	}
 
 	public static AddTextureModel get(String tag) {
-		if (tag != null && tag.length() > 0)
+		if (UtilTMS.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
 	//--------------------------------------------------------
-	public boolean hasTag() {
-		return tag != null && tag.length() > 0;
-	}
-
 	/**Taken from name icon: mod_id and name texture.**/
 	public AddTextureModel setBlock(Block block) {
 		this.block = block;

@@ -41,10 +41,10 @@ public class PacketMouseKey implements IMessage {
 			EntityPlayerMP player = context.getServerHandler().playerEntity;
 
 			switch(button) {
+			case -2:ActionMouseKey.onRightClickTick(player);break;
+			case -1:ActionMouseKey.onLeftClickTick(player);break;
 			case 1:ActionMouseKey.onLeftClick(player, buttonstate);break;
 			case 2:ActionMouseKey.onRightClick(player, buttonstate);break;
-			case 3:ActionMouseKey.onLeftClickTick(player);break;
-			case 4:ActionMouseKey.onRightClickTick(player);break;
 			}
 
 			return null;

@@ -1,12 +1,13 @@
 package mods.timaxa007.pack.weapon.lib;
 
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.util.StatCollector;
 
 /**
  * Use in <b>ItemWeapons</b>.
  * @author timaxa007
- * @param ammo or magazine
+ * @param Useing ammo or magazine
  * @param 
  * @param 
  */
@@ -16,6 +17,14 @@ public class WeaponFor {
 
 	public static final WeaponFor empty = new WeaponFor(0);
 
+	public static final String[] weapon_type = new String[] {
+		"pistol", 
+		"shotgun", 
+		"avtomat", 
+		"pulemet", 
+		"sniper"
+	};
+	
 	public int id;
 	public String tag;
 	private String name;
@@ -24,13 +33,13 @@ public class WeaponFor {
 	private MagazineFor magazine;
 	private AmmoFor ammo;
 	private int size_ammo;
-
+/*
 	private int color_hex1;
 	private int color_hex2;
 	private float temperature;
 	private float temperature_min;
 	private float temperature_max;
-
+*/
 	private String texture1;
 	private String texture2;
 
@@ -51,14 +60,14 @@ public class WeaponFor {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public WeaponFor(int id, String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
 	}
 
 	public WeaponFor(String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -92,22 +101,18 @@ public class WeaponFor {
 	}
 
 	public static WeaponFor get(String tag) {
-		if (tag != null && tag.length() > 0)
+		if (UtilTMS.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
 	//--------------------------------------------------------
-	public boolean hasTag() {
-		return tag != null && tag.length() > 0;
-	}
-
 	public WeaponFor setName(String name) {
 		this.name = name;
 		return this;
 	}
 
 	public String getName() {
-		return name == null ? "unnamed" : name;
+		return UtilTMS.hasString(name) ? name : UtilTMS.hasString(tag) ? tag : "unname";
 	}
 
 	public String getLocalizedName() {
@@ -120,13 +125,13 @@ public class WeaponFor {
 	}
 
 	public String getType() {
-		return type == null ? "untype" : type;
+		return UtilTMS.hasString(type) ? type : "untype";
 	}
 
 	public String getLocalizedType() {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
-
+/*
 	public WeaponFor setColors(int color) {
 		color_hex1 = color;
 		color_hex2 = color;
@@ -220,7 +225,7 @@ public class WeaponFor {
 	public String getTexture2() {
 		return texture2 == null ? getTexture1() : texture2;
 	}
-
+*/
 	public WeaponFor setAmmo(MagazineFor magazines) {
 		ammo = null;
 		magazine = magazines;

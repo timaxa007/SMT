@@ -32,7 +32,7 @@ public class Core {
 	@Instance(Core.MODID)
 	public static Core instance;
 
-	@SidedProxy(clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyCommon")
+	@SidedProxy(modId = Core.MODID, clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyCommon")
 	public static ProxyCommon proxy;
 	public static SimpleNetworkWrapper network;
 
@@ -44,6 +44,7 @@ public class Core {
 
 	public static boolean debug;
 	public static boolean show_tip_info_testing;
+	public static boolean show_system_info_testing;
 	public static boolean disable_sub_mod_furniture;
 	public static boolean disable_sub_mod_magic;
 	public static boolean disable_sub_mod_mining;
@@ -95,6 +96,7 @@ public class Core {
 		config.load();
 		debug = config.get("debugging", "debug", false).getBoolean(false);
 		show_tip_info_testing = config.get("debugging", "show_tip_info_testing", false).getBoolean(false);
+		show_system_info_testing = config.get("debugging", "show_system_info_testing", false).getBoolean(false);
 		disable_sub_mod_furniture = config.get("configs", "disable_sub_mod_furniture", false).getBoolean(false);
 		disable_sub_mod_magic = config.get("configs", "disable_sub_mod_magic", false).getBoolean(false);
 		disable_sub_mod_mining = config.get("configs", "disable_sub_mod_mining", false).getBoolean(false);

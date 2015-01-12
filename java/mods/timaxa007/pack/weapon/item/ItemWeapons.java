@@ -6,11 +6,10 @@ import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.IActionMouseKey;
-import mods.timaxa007.tms.util.ItemActionKeyPrimary;
+import mods.timaxa007.tms.util.ItemActionBase;
+import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,7 +27,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWeapons extends ItemActionKeyPrimary implements IActionMouseKey {
+public class ItemWeapons extends ItemActionBase {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -43,35 +42,41 @@ public class ItemWeapons extends ItemActionKeyPrimary implements IActionMouseKey
 
 	public void onUpdate(ItemStack is, World world, Entity entity, int par4, boolean par5) {
 		if (entity instanceof EntityPlayer) {
-			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) {//GuiContainer
-			}
+
 		}
 	}
 
 	@Override
 	public void onLeftClickTick(ItemStack is, World world, EntityPlayer player) {
-		int rtm = 0;
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag.hasKey("WeaponID") && tag.hasKey("AmmoAtm")) {
-			if (tag.hasKey("RTM")) {rtm = (int)tag.getByte("RTM");}
-			else {tag.setByte("RTM", (byte)0);}
 
-			rtm = rtm + 1;
-			if (rtm > 20) rtm = 0;
+		if (tag != null) {
+			int rtm = 0;
 
-			if (!world.isRemote) {
-				if (isFire(rtm, 4)) {
-					if (tag.getInteger("AmmoAtm") > 0) {
-						world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
-						EntityArrow entityarrow = new EntityArrow(world, player, 2.0F);
-						world.spawnEntityInWorld(entityarrow);
-						tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
-						if (Core.show_tip_info_testing) System.out.println("fire");
+			if (tag.hasKey("Weapon") && tag.hasKey("AmmoAtm")) {
+				if (tag.hasKey("RTM")) {
+					rtm = (int)tag.getByte("RTM"); 
+				} else {
+					tag.setByte("RTM", (byte)0);
+					rtm = 0;
+				}
+
+				rtm += 1;
+				if (rtm > 20) rtm = 0;
+
+				if (tag.getInteger("AmmoAtm") > 0) {
+					if (isFire(rtm, 2)) {
+						if (!world.isRemote) {
+							world.playSoundAtEntity(player, "timaxa007:scout_fire-1", 1.0F, 1.0F);
+							EntityArrow entityarrow = new EntityArrow(world, player, 2.0F);
+							world.spawnEntityInWorld(entityarrow);
+							tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
+							if (Core.show_system_info_testing) System.out.println("fire");
+						}
 					}
 				}
+				tag.setByte("RTM", (byte)rtm);
 			}
-
-			tag.setInteger("RTM", rtm);
 			is.setTagCompound(tag);
 		}
 	}
@@ -82,41 +87,49 @@ public class ItemWeapons extends ItemActionKeyPrimary implements IActionMouseKey
 	}
 
 	@Override
-	public void /*onFire*/onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag.hasKey("WeaponID") && tag.hasKey("Shooted") && tag.hasKey("AmmoAtm")) {
-			if (!isPress) tag.setInteger("Shooted", 0);
+		if (tag != null) {
+			if (tag.hasKey("RTM")) {
+				if (!isPress) tag.setByte("RTM", (byte)0);
+			}
+		}
+		//if (tag.hasKey("Weapon") && tag.hasKey("AmmoAtm")) {
+		//if (!isPress) tag.removeTag("RTM");
 
-			/*
+		/*
 			if (!world.isRemote && isPress) {
 				if (tag.getInteger("AmmoAtm") > 0) {
 					world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
 					tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
-					if (Core.show_tip_info_testing) System.out.println("fire");
+					if (Core.show_system_info_testing) System.out.println("fire");
 				}
-				is.setTagCompound(tag);
 			}
-			 */
-		}
+		 */
+		//is.setTagCompound(tag);
+		//}
 	}
 
 	@Override
-	public void /*onScope*/onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (!world.isRemote) {
 			if (tag != null && tag.hasKey("Aim")) {
 				tag.setBoolean("Aim", isPress);
 				is.setTagCompound(tag);
-				if (Core.show_tip_info_testing) System.out.println(isPress ? "onScope" : "offScope");
+				if (Core.show_system_info_testing) System.out.println(isPress ? "onScope" : "offScope");
 			}
+
 		}
+
+		//if (isPress) PackWeapons.network.sendTo(new PacketOpenGui(1), (EntityPlayerMP)player);
 
 	}
 
 	@Override
 	public void onReload(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (WeaponFor.list[tag.getInteger("WeaponID")] != null) {
+		if (tag != null && tag.hasKey("Weapon")) {
 			if (!world.isRemote) {
 
 			} else {
@@ -136,14 +149,65 @@ public class ItemWeapons extends ItemActionKeyPrimary implements IActionMouseKey
 	@Override
 	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (!world.isRemote) {
-			player.openGui(PackWeapons.instance, 1, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+			player.openGui(PackWeapons.instance, PackWeapons.proxy.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 			System.out.println("-modify-");
 		}
 	}
 
 	@Override
-	public void onHook(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onZoomOutTick(ItemStack is, World world, EntityPlayer player) {
+		if (isRightClick) {
+			NBTTagCompound tag = is.getTagCompound();
+			if (tag.hasKey("ZoomFov")) {
+				int get_zoom = tag.getByte("ZoomFov");
+				if (get_zoom > -119) {
+					tag.setByte("ZoomFov", (byte)(get_zoom - 8));
+					is.setTagCompound(tag);
+				}
+			}
+		}
+	}
 
+	@Override
+	public void onZoomInTick(ItemStack is, World world, EntityPlayer player) {
+		if (isRightClick) {
+			NBTTagCompound tag = is.getTagCompound();
+			if (tag.hasKey("ZoomFov")) {
+				int get_zoom = tag.getByte("ZoomFov");
+				if (get_zoom < 119) {
+					tag.setByte("ZoomFov", (byte)(get_zoom + 8));
+					is.setTagCompound(tag);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void onZoomIn(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (isPress) {
+			if (tag.hasKey("ZoomFov")) {
+				int get_zoom = tag.getByte("ZoomFov");
+				if (get_zoom < 127) {
+					tag.setByte("ZoomFov", (byte)(get_zoom + 1));
+					is.setTagCompound(tag);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void onZoomOut(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (isPress) {
+			if (tag.hasKey("ZoomFov")) {
+				int get_zoom = tag.getByte("ZoomFov");
+				if (get_zoom > -127) {
+					tag.setByte("ZoomFov", (byte)(get_zoom - 1));
+					is.setTagCompound(tag);
+				}
+			}
+		}
 	}
 
 	private boolean isFire(int i, int type) {
@@ -242,14 +306,18 @@ public class ItemWeapons extends ItemActionKeyPrimary implements IActionMouseKey
 		return is;
 	}*/
 
-	public int getMaxItemUseDuration(ItemStack is) {return 72000;}
+	public int getMaxItemUseDuration(ItemStack is) {
+		return 72000;
+	}
 
-	public EnumAction getItemUseAction(ItemStack is) {return EnumAction.none;}
+	public EnumAction getItemUseAction(ItemStack is) {
+		return EnumAction.none;
+	}
 
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("WeaponID")) {
-			return "weapon." + WeaponFor.list[tag.getInteger("WeaponID")].getName();
+		if (tag != null && tag.hasKey("Weapon")) {
+			return "weapon." + WeaponFor.get(tag.getString("Weapon")).getName();
 		}
 		return super.getUnlocalizedName();
 	}
@@ -259,9 +327,10 @@ public class ItemWeapons extends ItemActionKeyPrimary implements IActionMouseKey
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
 			if (tag != null) {
 
-				if (tag.hasKey("WeaponID")) {
-					list.add("WeaponID: " + tag.getInteger("WeaponID") + "/" + 
-							WeaponFor.list[tag.getInteger("WeaponID")].getName() + ".");
+				if (tag.hasKey("Weapon")) {
+					list.add("Weapon: " + tag.getString("Weapon") + "/" + WeaponFor.get(tag.getString("Weapon")).getLocalizedName() + ".");
+					list.add("Weapon: " + WeaponFor.get(tag.getString("Weapon")).getType() + 
+							"/" + WeaponFor.get(tag.getString("Weapon")).getName() + ".");
 				}
 
 			}
@@ -272,86 +341,24 @@ public class ItemWeapons extends ItemActionKeyPrimary implements IActionMouseKey
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (int i = 0; i < WeaponFor.list.length; i++) {
 			if (WeaponFor.list[i] != null) {
-				list.add(addTag(i));
+				if (WeaponFor.list[i].tag != null) {
+					list.add(addTag(WeaponFor.list[i].tag));
+				}
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addTag(String par1) {
 		ItemStack is = new ItemStack(PackWeapons.proxy.item.weapons, 1, 0);
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("WeaponID", par1);
+		tag.setString("Weapon", par1);
+
 		tag.setBoolean("Aim", false);
-		tag.setInteger("Shooted", 0);
+		tag.setByte("ZoomFov", (byte)0);
 
-		if (WeaponFor.list[par1].getMagazine() != null) {
-			tag.setInteger("MagazineID", WeaponFor.list[par1].getMagazine().id);
-			tag.setInteger("AmmoAtm", WeaponFor.list[par1].getMagazine().getSize());
-		} 
-		if (WeaponFor.list[par1].getAmmo() != null) {
-			tag.setInteger("AmmoID", WeaponFor.list[par1].getAmmo().id);
-			tag.setInteger("AmmoAtm", WeaponFor.list[par1].getSizeAmmo());
-		}
-
-		//tag.setInteger("AmmoID", WeaponFor.list[par1].getAmmo().ammoID);
-		/*if (WeaponFor.list[par1].getMagazine() != null) {
-			tag.setInteger("MagazineID", WeaponFor.list[par1].getMagazine().magazineID);
-		}*/
-		//tag.setInteger("MagazineID", par2);
 		is.setTagCompound(tag);
 		return is;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public boolean requiresMultipleRenderPasses() {return true;}
-
-	public IIcon getIcon(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("WeaponID")) {
-			if (pass == 0) {
-				return icon_tex[tag.getInteger("WeaponID")];
-			} else {
-				return icon_ovl[tag.getInteger("WeaponID")];
-			}
-		} else {
-			return itemIcon;
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("WeaponID")) {
-			if (pass == 0) {
-				return WeaponFor.list[tag.getInteger("WeaponID")].getColor1();
-			} else {
-				return WeaponFor.list[tag.getInteger("WeaponID")].getColor2();
-			}
-		} else {
-			return 16777215;
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir) {
-		super.registerIcons(ir);
-		itemIcon = ir.registerIcon("timaxa007:" + "weapons");
-		icon_tex = new IIcon[WeaponFor.list.length];
-		icon_ovl = new IIcon[WeaponFor.list.length];
-		for (int i = 0; i < WeaponFor.list.length; i++) {
-			/*if (WeaponFor.list[i] != null) {
-				icon_tex[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.list[i].getTexture1Name());
-				if (WeaponFor.list[i].getTexture2Name() == WeaponFor.list[i].getTexture1Name()) {
-					icon_ovl[i] = ir.registerIcon("timaxa007:" + "empty");
-				} else {
-					icon_ovl[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.list[i].getTexture2Name());
-				}
-			} else {*/
-			icon_tex[i] = itemIcon;
-			icon_ovl[i] = itemIcon;
-			//}
-		}
 	}
 
 }

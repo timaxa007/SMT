@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.furniture.lib;
 
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.UtilTMS;
 
 /**
  * Use in <b>BlockGround</b>.
@@ -42,7 +43,7 @@ public class AddBlockGround {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public AddBlockGround(int id, String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
@@ -51,7 +52,7 @@ public class AddBlockGround {
 	}
 
 	public AddBlockGround(String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -87,15 +88,11 @@ public class AddBlockGround {
 	}
 
 	public static AddBlockGround get(String tag) {
-		if (tag != null && tag.length() > 0)
+		if (UtilTMS.hasString(tag))
 			return list[getID_tag(tag)];
 		return list[0];
 	}
 	//--------------------------------------------------------
-	public boolean hasTag() {
-		return tag != null && tag.length() > 0;
-	}
-
 	public AddBlockGround setID(int id) {
 		this.id = id;
 		return this;

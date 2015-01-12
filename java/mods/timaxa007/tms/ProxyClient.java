@@ -14,7 +14,7 @@ public class ProxyClient extends ProxyCommon {
 	public void preInitialize() {
 		super.preInitialize();
 
-		RegKey.preInt();
+		RegKey.preInit();
 
 	}
 

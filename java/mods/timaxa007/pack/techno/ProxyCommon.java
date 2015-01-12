@@ -7,12 +7,13 @@ import mods.timaxa007.pack.techno.item.ItemList;
 import mods.timaxa007.pack.techno.lib.ListTechno;
 import mods.timaxa007.pack.techno.recipe.Recipes_Techno;
 import mods.timaxa007.pack.techno.render.RenderMain;
+import mods.timaxa007.tms.util.IProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-public class ProxyCommon {
+public class ProxyCommon implements IProxy {
 
 	public static BlockList block;
 	public static ItemList item;

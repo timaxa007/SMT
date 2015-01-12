@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.weapon.lib;
 
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>ItemsWeapons</b>.
@@ -9,11 +10,11 @@ import net.minecraft.util.StatCollector;
  * @param 
  * @param 
  */
-public class ItemForWeapon {
+public class ItemForWeapons {
 
-	public static final ItemForWeapon[] list = new ItemForWeapon[2048];
+	public static final ItemForWeapons[] list = new ItemForWeapons[2048];
 
-	public static final ItemForWeapon empty = new ItemForWeapon(0);
+	public static final ItemForWeapons empty = new ItemForWeapons(0);
 
 	public int id;
 	public String tag;
@@ -28,29 +29,29 @@ public class ItemForWeapon {
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public ItemForWeapon() {
+	public ItemForWeapons() {
 		id = nextID();
 		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public ItemForWeapon(int id) {
+	public ItemForWeapons(int id) {
 		this.id = id;
 		list[id] = this;
 	}
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
-	public ItemForWeapon(int id, String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+	public ItemForWeapons(int id, String tag) {
+		if (Core.show_system_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
 	}
 
-	public ItemForWeapon(String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+	public ItemForWeapons(String tag) {
+		if (Core.show_system_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -83,55 +84,51 @@ public class ItemForWeapon {
 				System.out.println("!Duplicate: " + tag);
 	}
 
-	public static ItemForWeapon get(String tag) {
-		if (tag != null && tag.length() > 0)
+	public static ItemForWeapons get(String tag) {
+		if (UtilTMS.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
 	//--------------------------------------------------------
-	public boolean hasTag() {
-		return tag != null && tag.length() > 0;
-	}
-
-	public ItemForWeapon setName(String name) {
+	public ItemForWeapons setName(String name) {
 		this.name = name;
 		return this;
 	}
 
 	public String getName() {
-		return name == null ? "unnamed" : name;
+		return UtilTMS.hasString(name) ? name : UtilTMS.hasString(tag) ? tag : "unname";
 	}
 
 	public String getLocalizedName() {
 		return StatCollector.translateToLocal("item." + getName() + ".name");
 	}
 
-	public ItemForWeapon setType(String type) {
+	public ItemForWeapons setType(String type) {
 		this.type = type;
 		return this;
 	}
 
 	public String getType() {
-		return type == null ? "untype" : type;
+		return UtilTMS.hasString(type) ? type : "untype";
 	}
 
 	public String getLocalizedType() {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
 
-	public ItemForWeapon setColors(int color) {
+	public ItemForWeapons setColors(int color) {
 		color_hex1 = color;
 		color_hex2 = color;
 		return this;
 	}
 
-	public ItemForWeapon setColors(int color1, int color2) {
+	public ItemForWeapons setColors(int color1, int color2) {
 		color_hex1 = color1;
 		color_hex2 = color2;
 		return this;
 	}
 
-	public ItemForWeapon setColor1(int color1) {
+	public ItemForWeapons setColor1(int color1) {
 		color_hex1 = color1;
 		return this;
 	}
@@ -140,7 +137,7 @@ public class ItemForWeapon {
 		return color_hex1 == 0 ? 0xFFFFFF : color_hex1;
 	}
 
-	public ItemForWeapon setColor2(int color2) {
+	public ItemForWeapons setColor2(int color2) {
 		color_hex2 = color2;
 		return this;
 	}
@@ -149,19 +146,19 @@ public class ItemForWeapon {
 		return color_hex2 == 0 ? 0xFFFFFF : color_hex2;
 	}
 
-	public ItemForWeapon setTextures(String path) {
+	public ItemForWeapons setTextures(String path) {
 		texture1 = path;
 		texture2 = path + "_overlay";
 		return this;
 	}
 
-	public ItemForWeapon setTextures(String path1, String path2) {
+	public ItemForWeapons setTextures(String path1, String path2) {
 		texture1 = path1;
 		texture2 = path2;
 		return this;
 	}
 
-	public ItemForWeapon setTexture1(String path1) {
+	public ItemForWeapons setTexture1(String path1) {
 		texture1 = path1;
 		return this;
 	}
@@ -170,7 +167,7 @@ public class ItemForWeapon {
 		return texture1 == null ? getName() : texture1;
 	}
 
-	public ItemForWeapon setTexture2(String path2) {
+	public ItemForWeapons setTexture2(String path2) {
 		texture2 = path2;
 		return this;
 	}

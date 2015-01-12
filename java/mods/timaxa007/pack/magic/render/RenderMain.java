@@ -31,7 +31,7 @@ public class RenderMain {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicCauldron.class, new BlockRenderMagicCauldron());
 
 		//Block
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMagic.proxy.block.magic_cauldron), new ItemRenderMagicCauldron());
+		//MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMagic.proxy.block.magic_cauldron), new ItemRenderMagicCauldron());
 
 		//Item
 		//MinecraftForgeClient.registerItemRenderer(PackMagic.proxy.toolMagicSword, new ItemRenderMagicSword());

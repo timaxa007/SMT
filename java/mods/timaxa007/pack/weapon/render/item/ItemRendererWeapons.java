@@ -116,7 +116,8 @@ public class ItemRendererWeapons implements IItemRenderer {
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 			GL11.glRotatef(135F, 0.0F, 0.0F, 1.0F);
 			GL11.glTranslatef(0.0F, 0.30F, 0.0F);
-			if (isAim) {GL11.glTranslatef(0.940F, 0.75F, 0.320F);}
+			//if (isAim) GL11.glTranslatef(0.940F, 0.75F, 0.320F);
+			if (isAim) GL11.glTranslatef(-2.5F, 0.0F, -2.5F);
 		} else if (type == type.INVENTORY) {
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);

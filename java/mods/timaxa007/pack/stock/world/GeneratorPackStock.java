@@ -34,10 +34,10 @@ public class GeneratorPackStock implements IWorldGenerator {
 		for (int y = 0; y < world.provider.getHeight(); y++) {
 			int x1 = 8 + (x + random.nextInt(8));
 			int z1 = 8 + (z + random.nextInt(8));
-				for (int j = 0; j < 16; j++) {
-					for (int x2 = -2; x2 <= 2; ++x2) {
-						for (int z2 = -2; z2 <= 2; ++z2) {
-							if (world.getBlock(x1 + x2, y - 1, z1 + z2) == Blocks.grass && world.isAirBlock(x1 + x2, y, z1 + z2)) {
+			for (int j = 0; j < 16; j++) {
+				for (int x2 = -2; x2 <= 2; ++x2) {
+					for (int z2 = -2; z2 <= 2; ++z2) {
+						if (world.getBlock(x1 + x2, y - 1, z1 + z2) == Blocks.grass && world.isAirBlock(x1 + x2, y, z1 + z2)) {
 							if (random.nextInt(25) == 5) {
 								world.setBlock(x1 + x2, y, z1 + z2, PackStock.proxy.block.healing/*block_random[random.nextInt(block_random.length - 1)]*/, random.nextInt(15), 3);
 							}
@@ -48,22 +48,34 @@ public class GeneratorPackStock implements IWorldGenerator {
 		}
 		//}
 
+
+		if (world.getBiomeGenForCoords(x, z) == BiomeGenBase.forest || world.getBiomeGenForCoords(x, z) == BiomeGenBase.forestHills) {
+			for (int y = 1; y < world.getHeight(); ++y) {
+				for (int x1 = x; x < x + 16; x1++) {
+					for (int z1 = z; z < z + 16; z1++) {
+						if (world.getBlock(x1, y - 1, z1) == Blocks.grass && world.isAirBlock(x1, y, z1)) {
+							world.setBlock(x1, y, z1, PackStock.proxy.block.germination_plants);
+						}
+					}
+				}
+			}
+		}
 		/*
-		if (world.getBiomeGenForCoords(x, y).biomeID == BiomeGenBase.forest.biomeID || world.getBiomeGenForCoords(x, y).biomeID == BiomeGenBase.forestHills.biomeID) {
-			for (int z = 1; z < world.getHeight(); ++z) {
-				if (world.getBlock(x1, z - 1, y1) == Block.grass && world.isAirBlock(x1, z, y1)) {
-					world.setBlock(x1, z, y1, PackStock.proxy.block.saplings);
+		 * if (world.getBiomeGenForCoords(x, z).biomeID == BiomeGenBase.forest.biomeID || world.getBiomeGenForCoords(x, z).biomeID == BiomeGenBase.forestHills.biomeID) {
+			for (int y = 1; y < world.getHeight(); ++y) {
+				if (world.getBlock(x1, y - 1, z1) == Blocks.grass && world.isAirBlock(x1, y, z1)) {
+					world.setBlock(x1, y, z1, PackStock.proxy.block.saplings);
 					TileEntitySaplings te = new TileEntitySaplings();
 					te.setType("oak");
 					te.setHeight(1);
 					te.setThickness(1);
-					world.setTileEntity(x1, z, y1, te);
+					world.setTileEntity(x1, y, y1, te);
 				}
 			}
 		}
 		 */
 		/*
-		if (world.getBiomeGenForCoords(x, y).biomeID == BiomeGenBase.ocean.biomeID) {
+		if (world.getBiomeGenForCoords(x, y) == BiomeGenBase.ocean) {
 			for (int z = 1; z < world.getHeight(); ++z) {
 				if (world.getBlock(x1, z - 1, y1) == Block.sand && world.getBlockMaterial(x1, z, y1) == Material.water) {
 					world.setBlock(x1, z, y1, PackStock.proxy.blockSapling2);

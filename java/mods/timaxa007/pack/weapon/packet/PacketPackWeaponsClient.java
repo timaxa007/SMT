@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.weapon.util;
+package mods.timaxa007.pack.weapon.packet;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -6,14 +6,14 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketWeapons implements IMessage {
+public class PacketPackWeaponsClient implements IMessage {
 
 	public int button;
 	public boolean buttonstate;
 
-	public PacketWeapons() {}
+	public PacketPackWeaponsClient() {}
 
-	public PacketWeapons(int button, boolean buttonstate) {
+	public PacketPackWeaponsClient(int button, boolean buttonstate) {
 		this.button = button;
 		this.buttonstate = buttonstate;
 	}
@@ -30,10 +30,10 @@ public class PacketWeapons implements IMessage {
 		buttonstate = buf.readBoolean();
 	}
 
-	public static class Handler implements IMessageHandler<PacketWeapons, IMessage> {
+	public static class Handler implements IMessageHandler<PacketPackWeaponsClient, IMessage> {
 
 		@Override
-		public IMessage onMessage(PacketWeapons packet, MessageContext message) {
+		public IMessage onMessage(PacketPackWeaponsClient packet, MessageContext message) {
 			int button = packet.button;
 			boolean buttonstate = packet.buttonstate;
 			EntityPlayerMP player = message.getServerHandler().playerEntity;

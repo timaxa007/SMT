@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.weapon;
 
-import mods.timaxa007.pack.weapon.util.PacketWeapons;
+import mods.timaxa007.pack.weapon.packet.RegisterPacket;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
@@ -11,7 +11,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.relauncher.Side;
 
 @Mod (modid = PackWeapons.MODID, name = PackWeapons.MODNAME, version = PackWeapons.VERSION, dependencies = "required-after:05magicpack")
 //@NetworkMod (clientSideRequired = true, serverSideRequired = false, versionBounds = PackInfo.VERSION)
@@ -25,7 +24,7 @@ public class PackWeapons {
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackWeapons.MODID) public static PackWeapons instance;
-	@SidedProxy(clientSide = "mods.timaxa007.pack.weapon.ProxyClient", serverSide = "mods.timaxa007.pack.weapon.ProxyCommon")
+	@SidedProxy(modId = PackWeapons.MODID, clientSide = "mods.timaxa007.pack.weapon.ProxyClient", serverSide = "mods.timaxa007.pack.weapon.ProxyCommon")
 	public static ProxyCommon proxy;
 	public static SimpleNetworkWrapper network;
 
@@ -39,7 +38,7 @@ public class PackWeapons {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackWeapons.MODID);
-		network.registerMessage(PacketWeapons.Handler.class, PacketWeapons.class, 0, Side.SERVER);
+		RegisterPacket.init(network);
 
 		proxy.preInit(event);
 	}

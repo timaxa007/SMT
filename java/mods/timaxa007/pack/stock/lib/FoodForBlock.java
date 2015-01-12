@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.stock.lib;
 
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>BlockFoods</b>.
@@ -53,7 +54,7 @@ public class FoodForBlock {
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public FoodForBlock(int id, String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
@@ -62,7 +63,7 @@ public class FoodForBlock {
 	}
 
 	public FoodForBlock(String tag) {
-		if (Core.show_tip_info_testing) checkTag(tag);
+		if (Core.show_system_info_testing) checkTag(tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -98,22 +99,18 @@ public class FoodForBlock {
 	}
 
 	public static FoodForBlock get(String tag) {
-		if (tag != null && tag.length() > 0)
+		if (UtilTMS.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
 	//--------------------------------------------------------
-	public boolean hasTag() {
-		return tag != null && tag.length() > 0;
-	}
-
 	public FoodForBlock setName(String name) {
 		this.name = name;
 		return this;
 	}
 
 	public String getName() {
-		return name == null ? "unnamed" : name;
+		return UtilTMS.hasString(name) ? name : UtilTMS.hasString(tag) ? tag : "unname";
 	}
 
 	public String getLocalizedName() {
@@ -126,7 +123,7 @@ public class FoodForBlock {
 	}
 
 	public String getType() {
-		return type == null ? "untype" : type;
+		return UtilTMS.hasString(type) ? type : "untype";
 	}
 
 	public String getLocalizedType() {
