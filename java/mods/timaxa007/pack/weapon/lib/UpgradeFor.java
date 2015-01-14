@@ -17,9 +17,9 @@ public class UpgradeFor {
 
 	private int color_hex1;
 	private int color_hex2;
-	private float temperature;
+	/*private float temperature;
 	private float temperature_min;
-	private float temperature_max;
+	private float temperature_max;*/
 
 	private String texture1;
 	private String texture2;
@@ -142,7 +142,7 @@ public class UpgradeFor {
 	public int getColor2() {
 		return color_hex2 == 0 ? 0xFFFFFF : color_hex2;
 	}
-
+/*
 	public UpgradeFor setTemperatures(float temp, float temp_min, float temp_max) {
 		temperature = temp;
 		temperature_min = temp_min;
@@ -176,7 +176,7 @@ public class UpgradeFor {
 	public float getTemperatureMax() {
 		return temperature_max == 0 ? 0.0F : temperature_max;
 	}
-
+*/
 	public UpgradeFor setTextures(String path) {
 		texture1 = path;
 		texture2 = path + "_overlay";

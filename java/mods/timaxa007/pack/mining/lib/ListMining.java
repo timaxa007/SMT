@@ -4,10 +4,10 @@ import mods.timaxa007.lib.FluidFake;
 
 public class ListMining {
 
-	public static FluidFake fluid_air = new FluidFake("air").setName("air").setType("Gas").setColor(0xFFFFFF).setTemperatures(16.0F, -10.0F, 100.0F);
-	public static FluidFake fluid_water = new FluidFake("water").setName("water").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -10.0F, 100.0F);
-	public static FluidFake fluid_gas_smoke = new FluidFake("gas_smoke").setName("smoke").setType("Gas").setColor(0xFFFFFF).setTemperatures(18.0F, -32.0F, 120.0F);
-	public static FluidFake fluid_gas_steam = new FluidFake("gas_steam").setName("steam").setType("Gas").setColor(0xFFFFFF).setTemperatures(48.0F, 0.0F, 180.0F);
+	public static final FluidFake fluid_air = new FluidFake("air").setName("air").setType(FluidFake.TypeFluid.air).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water = new FluidFake("water").setName("water").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_gas_smoke = new FluidFake("gas_smoke").setName("smoke").setType(FluidFake.TypeFluid.smoke).setColor(0xFFFFFF).setTemperature(18.0F);
+	public static final FluidFake fluid_gas_steam = new FluidFake("gas_steam").setName("steam").setType(FluidFake.TypeFluid.gas).setColor(0xFFFFFF).setTemperature(48.0F);
 
 	public ListMining() {
 	}

@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.magic;
 
-import mods.timaxa007.pack.magic.block.BlockList;
+import mods.timaxa007.pack.magic.block.ListBlock;
 import mods.timaxa007.pack.magic.event.EventMagic;
 import mods.timaxa007.pack.magic.gui.HandlerGuiMagic;
-import mods.timaxa007.pack.magic.item.ItemList;
+import mods.timaxa007.pack.magic.item.ListItem;
 import mods.timaxa007.pack.magic.lib.ListMagic;
 import mods.timaxa007.pack.magic.recipe.Recipes_Magic;
 import mods.timaxa007.pack.magic.render.RenderMain;
@@ -17,8 +17,8 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class ProxyCommon implements IProxy {
 
-	public static BlockList block;
-	public static ItemList item;
+	public static ListBlock block;
+	public static ListItem item;
 	public static RenderMain render;
 
 	public static final Material ore_magic = new MaterialOreMagic();

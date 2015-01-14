@@ -3,6 +3,9 @@ package mods.timaxa007.pack.magic;
 import mods.timaxa007.pack.magic.packet.RegisterPacket;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+
+import org.apache.logging.log4j.Logger;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -12,20 +15,19 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
-@Mod (modid = PackMagic.MODID, name = PackMagic.MODNAME, version = PackMagic.VERSION, dependencies = "required-after:04technopack")
-//@NetworkMod (clientSideRequired = true, serverSideRequired = false, versionBounds = PackInfo.VERSION)
-//@NetworkMod (channels = PackInfo.MODID, clientSideRequired = true, serverSideRequired = true, versionBounds = PackInfo.VERSION)
+@Mod (modid = PackMagic.MODID, name = PackMagic.MODNAME, version = PackMagic.VERSION, dependencies = "required-after:timaxa007")
 
 public class PackMagic {
 
-	public static final String MODID = "05magicpack";
-	public static final String MODNAME = "MagicPack";
+	public static final String MODID = "magicpack";
+	public static final String MODNAME = "PackMagic";
 	public static final String VERSION = "0.1a";
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackMagic.MODID) public static PackMagic instance;
 	@SidedProxy(modId = PackMagic.MODID, clientSide = "mods.timaxa007.pack.magic.ProxyClient", serverSide = "mods.timaxa007.pack.magic.ProxyCommon")
 	public static ProxyCommon proxy;
+	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_magic = new CreativeTabs("tab_magic") {
@@ -36,10 +38,14 @@ public class PackMagic {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit(event);
+
+		log = event.getModLog();
+		log.info("Startimg sub-mod " + PackMagic.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMagic.MODID);
 		RegisterPacket.init(network);
+
+		proxy.preInit(event);
 
 	}
 

@@ -1,8 +1,8 @@
 package mods.timaxa007.pack.stock;
 
-import mods.timaxa007.pack.stock.block.BlockList;
+import mods.timaxa007.pack.stock.block.ListBlock;
 import mods.timaxa007.pack.stock.event.EventStock;
-import mods.timaxa007.pack.stock.item.ItemList;
+import mods.timaxa007.pack.stock.item.ListItem;
 import mods.timaxa007.pack.stock.lib.ListStock;
 import mods.timaxa007.pack.stock.recipe.RecipeFoodsColors;
 import mods.timaxa007.pack.stock.recipe.Recipes_Stock;
@@ -16,8 +16,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyCommon implements IProxy {
 
-	public static BlockList block;
-	public static ItemList item;
+	public static ListBlock block;
+	public static ListItem item;
 	public static RenderMain render;
 
 	public void preInit(FMLPreInitializationEvent event) {

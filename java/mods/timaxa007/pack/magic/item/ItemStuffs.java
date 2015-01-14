@@ -1,9 +1,11 @@
 package mods.timaxa007.pack.magic.item;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
+import mods.timaxa007.pack.magic.lib.ActionMagic;
 import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.packet.PacketSpawnParticle;
 import mods.timaxa007.tms.util.IActionMouseKey;
@@ -51,16 +53,7 @@ public class ItemStuffs extends ItemActionKeyPrimary implements IActionMouseKey 
 			if (obj_entity != null) {
 				Entity entity = obj_entity.entityHit;
 
-				if (entity instanceof EntityItem) {
-					ItemStack drop_item = ((EntityItem)entity).getEntityItem();
-					for (int i = 0; i < player.inventory.mainInventory.length; i++) {
-						if (player.inventory.mainInventory[i] == null || player.inventory.mainInventory[i] == drop_item) {
-							player.inventory.addItemStackToInventory(drop_item);
-							entity.setDead();
-							break;
-						}
-					}
-				}
+				if (entity instanceof EntityItem) ActionMagic.actionTackEntityItem((EntityItem)entity, player);
 
 				if (entity instanceof EntityLivingBase) {
 					((EntityLivingBase)entity).onKillEntity((EntityLivingBase)entity);
@@ -87,13 +80,11 @@ public class ItemStuffs extends ItemActionKeyPrimary implements IActionMouseKey 
 
 				if (block.getMaterial() == Material.wood) {
 					if (block == Blocks.log) {
-						world.spawnEntityInWorld(new EntityItem(world, x, y, z, 
-								new ItemStack(Blocks.planks, 4, world.getBlockMetadata(x, y, z))));
+						UtilTMS.UtilWorld.dropItem(world, x, y, z, new ItemStack(Blocks.planks, 4, world.getBlockMetadata(x, y, z)));
 						world.func_147480_a(x, y, z, false);
 					}
 					if (block == Blocks.log2) {
-						world.spawnEntityInWorld(new EntityItem(world, x, y, z, 
-								new ItemStack(Blocks.planks, 4, 4 + world.getBlockMetadata(x, y, z))));
+						UtilTMS.UtilWorld.dropItem(world, x, y, z, new ItemStack(Blocks.planks, 4, 4 + world.getBlockMetadata(x, y, z)));
 						world.func_147480_a(x, y, z, false);
 					}
 				}
@@ -119,16 +110,7 @@ public class ItemStuffs extends ItemActionKeyPrimary implements IActionMouseKey 
 			if (obj_entity != null) {
 				Entity entity = obj_entity.entityHit;
 
-				if (entity instanceof EntityItem) {
-					ItemStack drop_item = ((EntityItem)entity).getEntityItem();
-					for (int i = 0; i < player.inventory.mainInventory.length; i++) {
-						if (player.inventory.mainInventory[i] == null || player.inventory.mainInventory[i] == drop_item) {
-							player.inventory.addItemStackToInventory(drop_item);
-							entity.setDead();
-							break;
-						}
-					}
-				}
+				if (entity instanceof EntityItem) ActionMagic.actionTackEntityItem((EntityItem)entity, player);
 
 				if (entity instanceof EntityLivingBase) {
 					((EntityLivingBase)entity).onKillEntity((EntityLivingBase)entity);
@@ -192,23 +174,14 @@ public class ItemStuffs extends ItemActionKeyPrimary implements IActionMouseKey 
 					//if (!world.isRemote) ((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.regeneration.id, 20 * 1));
 				}
 
-				if (entity instanceof EntityLivingBase) {
+				else if (entity instanceof EntityLivingBase) {
 					((EntityLivingBase)entity).setFire(10);
 					//entity.posX
 					//entity.posY
 					//entity.posZ
 				}
 
-				if (entity instanceof EntityItem) {
-					ItemStack drop_item = ((EntityItem)entity).getEntityItem();
-					for (int i = 0; i < player.inventory.mainInventory.length; i++) {
-						if (player.inventory.mainInventory[i] == null || player.inventory.mainInventory[i] == drop_item) {
-							player.inventory.addItemStackToInventory(drop_item);
-							entity.setDead();
-							break;
-						}
-					}
-				}
+				if (entity instanceof EntityItem) ActionMagic.actionTackEntityItem((EntityItem)entity, player);
 
 				if (entity instanceof EntityArrow) {
 					for (int i = 0; i < player.inventory.mainInventory.length; i++) {
@@ -234,8 +207,8 @@ public class ItemStuffs extends ItemActionKeyPrimary implements IActionMouseKey 
 
 	@Override
 	public void onLeftClickTick(ItemStack is, World world, EntityPlayer player) {
-
-		MovingObjectPosition obj_block = Minecraft.getMinecraft().renderViewEntity.rayTrace(200.0D, 1.0F);
+		world.spawnParticle("reddust", (double)player.posX, (double)player.posY, (double)player.posZ, 0.0D, 0.0D, 0.0D);
+		MovingObjectPosition obj_block = Minecraft.getMinecraft().renderViewEntity.rayTrace(255.0D, 1.0F);
 		MovingObjectPosition obj_entity = UtilTMS.LookOBJ.getEntityDistance();
 
 		if (obj_entity != null) {
@@ -251,10 +224,21 @@ public class ItemStuffs extends ItemActionKeyPrimary implements IActionMouseKey 
 			//if (block.getMaterial() != Material.air) {}
 
 			if (block.getMaterial() == Material.rock) {
-				world.func_147480_a(x, y, z, true);
+
+				ArrayList<ItemStack> items = world.getBlock(x, y, z).getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+
+				for (ItemStack item : items) {
+					for (int i = 0; i < player.inventory.mainInventory.length; i++) {
+						if (player.inventory.mainInventory[i] == null || (player.inventory.mainInventory[i] == item)) {
+							player.inventory.addItemStackToInventory(item);
+							world.func_147480_a(x, y, z, false);
+							break;
+						}
+					}
+				}
 			}
 
-			if (Core.show_system_info_testing) System.out.println(block.getLocalizedName() + "obj_block - " + obj_block.toString());
+			if (Core.show_system_info_testing) System.out.println(block.getLocalizedName() + " obj_block - " + obj_block.toString());
 		} else {
 			if (Core.show_system_info_testing) System.out.println("Air");
 		}

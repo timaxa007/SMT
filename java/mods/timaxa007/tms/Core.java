@@ -2,11 +2,15 @@ package mods.timaxa007.tms;
 
 import mods.timaxa007.lib.ListTextureModel;
 import mods.timaxa007.tms.packet.RegisterPacket;
+import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
+
+import org.apache.logging.log4j.Logger;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -15,11 +19,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 //@Mod (modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION, dependencies = "required-before:01miningpack;required-before:02pmfpack;required-before:03furniturepack;required-before:04technopack;required-before:05magicpack;required-before:06weaponpack")
 @Mod (modid = Core.MODID, name = Core.MODNAME, version = Core.VERSION)
-//@NetworkMod (clientSideRequired = true, serverSideRequired = true, versionBounds = ModInfo.VERSION)
 
 public class Core {
 
@@ -29,11 +31,10 @@ public class Core {
 	public static final String VERSION = "0.2a";
 	public static final String[] AUTHORS = new String[] {"timaxa007", "Dragon2488"};
 
-	@Instance(Core.MODID)
-	public static Core instance;
-
+	@Instance(Core.MODID) public static Core instance;
 	@SidedProxy(modId = Core.MODID, clientSide = "mods.timaxa007.tms.ProxyClient", serverSide = "mods.timaxa007.tms.ProxyCommon")
 	public static ProxyCommon proxy;
+	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_tms = new CreativeTabs("tab_tms") {
@@ -59,16 +60,20 @@ public class Core {
 
 	@EventHandler
 	public void preInitialize(FMLPreInitializationEvent event) {
+
+		log = event.getModLog();
+		log.info("Startimg core " + Core.MODNAME + ".");
+
 		currectConfig = new Configuration(event.getSuggestedConfigurationFile());
 		syncConfig(currectConfig);
 
 		new ListTextureModel();
 
 		block_test = new TestBlock();
-		GameRegistry.registerBlock(block_test, "TestBlock");
+		UtilTMS.UtilBlock.RegBlock(block_test);
 
 		item_test = new TestItem();
-		GameRegistry.registerItem(item_test, "TestItem");
+		UtilTMS.UtilItem.RegItem(item_test);
 
 		Recipes_TMS.list();
 

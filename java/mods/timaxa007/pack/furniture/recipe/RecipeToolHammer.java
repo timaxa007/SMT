@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.recipe;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.item.ItemsFurniture;
-import mods.timaxa007.pack.furniture.item.ToolHammer;
+import mods.timaxa007.pack.item.item.ToolHammer;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;

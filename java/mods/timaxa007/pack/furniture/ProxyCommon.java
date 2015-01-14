@@ -1,12 +1,11 @@
 package mods.timaxa007.pack.furniture;
 
-import mods.timaxa007.pack.furniture.block.BlockList;
+import mods.timaxa007.pack.furniture.block.ListBlock;
 import mods.timaxa007.pack.furniture.event.EventFurniture;
 import mods.timaxa007.pack.furniture.gui.HandlerGuiFurniture;
-import mods.timaxa007.pack.furniture.item.ItemList;
+import mods.timaxa007.pack.furniture.item.ListItem;
 import mods.timaxa007.pack.furniture.lib.ListFurniture;
 import mods.timaxa007.pack.furniture.recipe.FuelHandlerFurniture;
-import mods.timaxa007.pack.furniture.recipe.RecipeArmorColor;
 import mods.timaxa007.pack.furniture.recipe.RecipeCnstorBlockColors;
 import mods.timaxa007.pack.furniture.recipe.RecipeToolHammer;
 import mods.timaxa007.pack.furniture.recipe.RecipesArmor;
@@ -20,8 +19,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyCommon {
 
-	public static BlockList block;
-	public static ItemList item;
+	public static ListBlock block;
+	public static ListItem item;
 	public static RenderMain render;
 
 	//GUI
@@ -67,7 +66,6 @@ public class ProxyCommon {
 		 */
 		GameRegistry.addRecipe(new RecipesArmor());
 		GameRegistry.addRecipe(new RecipeCnstorBlockColors());
-		GameRegistry.addRecipe(new RecipeArmorColor());
 		GameRegistry.addRecipe(new RecipeToolHammer());
 		//GameRegistry.registerCraftingHandler(new CraftFurnitureHandler());
 

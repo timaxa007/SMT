@@ -4,6 +4,7 @@ import mods.timaxa007.lib.FluidFake;
 import mods.timaxa007.pack.stock.lib.FoodForBlock;
 import mods.timaxa007.pack.stock.lib.FoodForItem;
 import mods.timaxa007.pack.stock.lib.ItemForStock;
+import mods.timaxa007.pack.stock.lib.ListStock;
 
 public class FillForList {
 
@@ -76,16 +77,16 @@ public class FillForList {
 		new FoodForBlock("meat_" + tag + "_pizza_raw").setFoodStats(2, 0.2F).setType("Pizza").setName("meat_" + tag + "_pizza").setColors(0xFFFFFF).setTexture1("meat_" + tag + "_pizza");
 		new FoodForBlock("meat_" + tag + "_pizza_cooked").setFoodStats(2, 0.2F).setType("Pizza").setName("meat_" + tag + "_pizza").setColors(0xFFFFFF).setTexture1("meat_" + tag + "_pizza");
 		//--FluidFake--------------------------------------------------------------------------------------------------------------------------------
-		new FluidFake("minced_meat_" + tag + "_raw").setName("minced_meat_" + tag + "_raw").setType("Liquid").setColor(0xA53526).setTemperatures(24.0F, -16.0F, 80.0F);
-		new FluidFake("broth_meat_" + tag).setName("broth_meat_" + tag).setType("Liquid").setColor(0xA53526).setTemperatures(24.0F, -16.0F, 80.0F);
-		new FluidFake("meat_" + tag + "_sauce").setName("meat_" + tag + "_sauce").setType("Sauce").setColor(hex).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("fat_" + tag).setName("fat_" + tag).setType("Fat").setColorMix(0xA53526, 0xFFFFFF).setTemperatures(28.0F, 0.0F, 80.0F);
-		new FluidFake("icecream_meat_" + tag).setName("icecream_meat_" + tag).setType("Icecream").setColorMix(hex, 0xAAAAAA).setTemperatures(16.0F, -16.0F, 100.0F);
+		new FluidFake("minced_meat_" + tag + "_raw").setName("minced_meat_" + tag + "_raw").setType(FluidFake.TypeFluid.liquid).setColor(0xA53526).setTemperature(24.0F);
+		new FluidFake("broth_meat_" + tag).setName("broth_meat_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xA53526).setTemperature(24.0F);
+		new FluidFake("meat_" + tag + "_sauce").setName("meat_" + tag + "_sauce").setType(ListStock.sauce).setColor(hex).setTemperature(16.0F);
+		new FluidFake("fat_" + tag).setName("fat_" + tag).setType(ListStock.fat).setColorMix(0xA53526, 0xFFFFFF).setTemperature(28.0F);
+		new FluidFake("icecream_meat_" + tag).setName("icecream_meat_" + tag).setType(ListStock.icecream).setColorMix(hex, 0xAAAAAA).setTemperature(16.0F);
 
-		new FluidFake("soul_" + tag).setName("soul_" + tag).setType("Gas").setColor(0xBF9CA4).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("blood_" + tag).setName("blood_" + tag).setType("Liquid").setColor(0xBF0000).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("raw_flesh_" + tag).setName("raw_flesh_" + tag).setType("Liquid").setColor(0xBC3F2F).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("dust_bone_" + tag).setName("bone_" + tag).setType("Dust").setColor(0xDEE5E5).setTemperatures(30.0F, -20.0F, 80.0F);
+		new FluidFake("soul_" + tag).setName("soul_" + tag).setType(FluidFake.TypeFluid.gas).setColor(0xBF9CA4).setTemperature(30.0F);
+		new FluidFake("blood_" + tag).setName("blood_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xBF0000).setTemperature(30.0F);
+		new FluidFake("raw_flesh_" + tag).setName("raw_flesh_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xBC3F2F).setTemperature(30.0F);
+		new FluidFake("dust_bone_" + tag).setName("bone_" + tag).setType(FluidFake.TypeFluid.dust).setColor(0xDEE5E5).setTemperature(30.0F);
 		//-------------------------------------------------------------------------------------------------------------------------------------------
 	}
 
@@ -123,15 +124,15 @@ public class FillForList {
 		new FoodForBlock("meat_" + tag + "_pizza_raw").setFoodStats(2, 0.2F).setType("Pizza").setName("meat_" + tag + "_pizza").setColors(0xFFFFFF).setTexture1("meat_" + tag + "_pizza");
 		new FoodForBlock("meat_" + tag + "_pizza_cooked").setFoodStats(2, 0.2F).setType("Pizza").setName("meat_" + tag + "_pizza").setColors(0xFFFFFF).setTexture1("meat_" + tag + "_pizza");
 		//--FluidFake--------------------------------------------------------------------------------------------------------------------------------
-		new FluidFake("minced_raw_meat_" + tag).setName("minced_raw_meat_" + tag).setType("Liquid").setColor(0xA53526).setTemperatures(24.0F, -16.0F, 80.0F);
-		new FluidFake("broth_meat_" + tag).setName("broth_meat_" + tag).setType("Liquid").setColor(0xA53526).setTemperatures(24.0F, -16.0F, 80.0F);
-		new FluidFake("fat_" + tag).setName("fat_" + tag).setType("Fat").setColorMix(0xA53526, 0xFFFFFF).setTemperatures(28.0F, 0.0F, 80.0F);
-		new FluidFake("icecream_meat_" + tag).setName("icecream_meat_" + tag).setType("Icecream").setColorMix(hex, 0xAAAAAA).setTemperatures(16.0F, -16.0F, 100.0F);
+		new FluidFake("minced_raw_meat_" + tag).setName("minced_raw_meat_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xA53526).setTemperature(24.0F);
+		new FluidFake("broth_meat_" + tag).setName("broth_meat_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xA53526).setTemperature(24.0F);
+		new FluidFake("fat_" + tag).setName("fat_" + tag).setType(ListStock.fat).setColorMix(0xA53526, 0xFFFFFF).setTemperature(28.0F);
+		new FluidFake("icecream_meat_" + tag).setName("icecream_meat_" + tag).setType(ListStock.icecream).setColorMix(hex, 0xAAAAAA).setTemperature(16.0F);
 
-		new FluidFake("soul_" + tag).setName("soul_" + tag).setType("Gas").setColor(0xBF9CA4).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("blood_" + tag).setName("blood_" + tag).setType("Liquid").setColor(0xBF0000).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("raw_flesh_" + tag).setName("raw_flesh_" + tag).setType("Liquid").setColor(0xBC3F2F).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("dust_bone_" + tag).setName("bone_" + tag).setType("Dust").setColor(0xDEE5E5).setTemperatures(30.0F, -20.0F, 80.0F);
+		new FluidFake("soul_" + tag).setName("soul_" + tag).setType(FluidFake.TypeFluid.gas).setColor(0xBF9CA4).setTemperature(30.0F);
+		new FluidFake("blood_" + tag).setName("blood_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xBF0000).setTemperature(30.0F);
+		new FluidFake("raw_flesh_" + tag).setName("raw_flesh_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xBC3F2F).setTemperature(30.0F);
+		new FluidFake("dust_bone_" + tag).setName("bone_" + tag).setType(FluidFake.TypeFluid.dust).setColor(0xDEE5E5).setTemperature(30.0F);
 		//-------------------------------------------------------------------------------------------------------------------------------------------
 	}
 
@@ -176,16 +177,16 @@ public class FillForList {
 		new FoodForBlock("meat_" + tag + "_pizza_raw").setFoodStats(2, 0.2F).setType("Pizza").setName("meat_" + tag + "_pizza").setColors(0xFFFFFF).setTexture1("meat_" + tag + "_pizza");
 		new FoodForBlock("meat_" + tag + "_pizza_cooked").setFoodStats(2, 0.2F).setType("Pizza").setName("meat_" + tag + "_pizza").setColors(0xFFFFFF).setTexture1("meat_" + tag + "_pizza");
 		//--FluidFake--------------------------------------------------------------------------------------------------------------------------------
-		new FluidFake("minced_raw_meat_" + tag).setName("minced_raw_meat_" + tag).setType("Liquid").setColor(0xA53526).setTemperatures(24.0F, -16.0F, 80.0F);
-		new FluidFake("broth_meat_" + tag).setName("broth_meat_" + tag).setType("Liquid").setColor(0xA53526).setTemperatures(24.0F, -16.0F, 80.0F);
-		new FluidFake("meat_" + tag + "_sauce").setName("meat_" + tag + "_sauce").setType("Sauce").setColor(hex).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("fat_" + tag).setName("fat_" + tag).setType("Fat").setColorMix(0xA53526, 0xFFFFFF).setTemperatures(28.0F, 0.0F, 80.0F);
-		new FluidFake("icecream_meat_" + tag).setName("icecream_meat_" + tag).setType("Icecream").setColorMix(hex, 0xAAAAAA).setTemperatures(16.0F, -16.0F, 100.0F);
+		new FluidFake("minced_raw_meat_" + tag).setName("minced_raw_meat_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xA53526).setTemperature(24.0F);
+		new FluidFake("broth_meat_" + tag).setName("broth_meat_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xA53526).setTemperature(24.0F);
+		new FluidFake("meat_" + tag + "_sauce").setName("meat_" + tag + "_sauce").setType(ListStock.sauce).setColor(hex).setTemperature(16.0F);
+		new FluidFake("fat_" + tag).setName("fat_" + tag).setType(ListStock.fat).setColorMix(0xA53526, 0xFFFFFF).setTemperature(28.0F);
+		new FluidFake("icecream_meat_" + tag).setName("icecream_meat_" + tag).setType(ListStock.icecream).setColorMix(hex, 0xAAAAAA).setTemperature(16.0F);
 
-		new FluidFake("soul_" + tag).setName("soul_" + tag).setType("Gas").setColor(0xBF9CA4).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("blood_" + tag).setName("blood_" + tag).setType("Liquid").setColor(0xBF0000).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("raw_flesh_" + tag).setName("raw_flesh_" + tag).setType("Liquid").setColor(0xBC3F2F).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("dust_bone_" + tag).setName("bone_" + tag).setType("Dust").setColor(0xDEE5E5).setTemperatures(30.0F, -20.0F, 80.0F);
+		new FluidFake("soul_" + tag).setName("soul_" + tag).setType(FluidFake.TypeFluid.gas).setColor(0xBF9CA4).setTemperature(30.0F);
+		new FluidFake("blood_" + tag).setName("blood_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xBF0000).setTemperature(30.0F);
+		new FluidFake("raw_flesh_" + tag).setName("raw_flesh_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xBC3F2F).setTemperature(30.0F);
+		new FluidFake("dust_bone_" + tag).setName("bone_" + tag).setType(FluidFake.TypeFluid.dust).setColor(0xDEE5E5).setTemperature(30.0F);
 		//-------------------------------------------------------------------------------------------------------------------------------------------
 		//egg sendwich
 	}
@@ -223,15 +224,15 @@ public class FillForList {
 		new FoodForBlock("meat_" + tag + "_pizza_raw").setFoodStats(2, 0.2F).setType("Pizza").setName("meat_" + tag + "_pizza").setColors(0xFFFFFF).setTexture1("meat_" + tag + "_pizza");
 		new FoodForBlock("meat_" + tag + "_pizza_cooked").setFoodStats(2, 0.2F).setType("Pizza").setName("meat_" + tag + "_pizza").setColors(0xFFFFFF).setTexture1("meat_" + tag + "_pizza");
 		//--FluidFake--------------------------------------------------------------------------------------------------------------------------------
-		new FluidFake("minced_raw_meat_" + tag).setName("minced_raw_meat_" + tag).setType("Liquid").setColor(0xA53526).setTemperatures(24.0F, -16.0F, 80.0F);
-		new FluidFake("broth_meat_" + tag).setName("broth_meat_" + tag).setType("Liquid").setColor(0xA53526).setTemperatures(24.0F, -16.0F, 80.0F);
-		new FluidFake("fat_" + tag).setName("fat_" + tag).setType("Fat").setColorMix(0xA53526, 0xFFFFFF).setTemperatures(28.0F, 0.0F, 80.0F);
-		new FluidFake("icecream_meat_" + tag).setName("icecream_meat_" + tag).setType("Icecream").setColorMix(hex, 0xAAAAAA).setTemperatures(16.0F, -16.0F, 100.0F);
+		new FluidFake("minced_raw_meat_" + tag).setName("minced_raw_meat_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xA53526).setTemperature(24.0F);
+		new FluidFake("broth_meat_" + tag).setName("broth_meat_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xA53526).setTemperature(24.0F);
+		new FluidFake("fat_" + tag).setName("fat_" + tag).setType(ListStock.fat).setColorMix(0xA53526, 0xFFFFFF).setTemperature(28.0F);
+		new FluidFake("icecream_meat_" + tag).setName("icecream_meat_" + tag).setType(ListStock.icecream).setColorMix(hex, 0xAAAAAA).setTemperature(16.0F);
 
-		new FluidFake("soul_" + tag).setName("soul_" + tag).setType("Gas").setColor(0xBF9CA4).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("blood_" + tag).setName("blood_" + tag).setType("Liquid").setColor(0xBF0000).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("raw_flesh_" + tag).setName("raw_flesh_" + tag).setType("Liquid").setColor(0xBC3F2F).setTemperatures(30.0F, -20.0F, 80.0F);
-		new FluidFake("dust_bone_" + tag).setName("bone_" + tag).setType("Dust").setColor(0xDEE5E5).setTemperatures(30.0F, -20.0F, 80.0F);
+		new FluidFake("soul_" + tag).setName("soul_" + tag).setType(FluidFake.TypeFluid.gas).setColor(0xBF9CA4).setTemperature(30.0F);
+		new FluidFake("blood_" + tag).setName("blood_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xBF0000).setTemperature(30.0F);
+		new FluidFake("raw_flesh_" + tag).setName("raw_flesh_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xBC3F2F).setTemperature(30.0F);
+		new FluidFake("dust_bone_" + tag).setName("bone_" + tag).setType(FluidFake.TypeFluid.dust).setColor(0xDEE5E5).setTemperature(30.0F);
 		//-------------------------------------------------------------------------------------------------------------------------------------------
 	}
 
@@ -242,20 +243,20 @@ public class FillForList {
 		//--FoodForBlock-----------------------------------------------------------------------------------------------------------------------------
 
 		//--FluidFake--------------------------------------------------------------------------------------------------------------------------------
-		new FluidFake("milk_" + tag).setName("milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("cream_milk_" + tag).setName("cream_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("sour_cream_milk_" + tag).setName("sour_cream_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("cottage_cheese_milk_" + tag).setName("cottage_cheese_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("koumiss_milk_" + tag).setName("koumiss_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("cheese_milk_" + tag).setName("cheese_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("ryazhenka_milk_" + tag).setName("ryazhenka_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("buttermilk_milk_" + tag).setName("buttermilk_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("serum_milk_" + tag).setName("serum_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("varenets_milk_" + tag).setName("varenets_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("kefir_milk_" + tag).setName("kefir_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("yoghurt_milk_" + tag).setName("yoghurt_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("yogurt_milk_" + tag).setName("yogurt_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("acidophilus_milk_" + tag).setName("acidophilus_milk_" + tag).setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
+		new FluidFake("milk_" + tag).setName("milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("cream_milk_" + tag).setName("cream_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("sour_cream_milk_" + tag).setName("sour_cream_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("cottage_cheese_milk_" + tag).setName("cottage_cheese_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("koumiss_milk_" + tag).setName("koumiss_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("cheese_milk_" + tag).setName("cheese_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("ryazhenka_milk_" + tag).setName("ryazhenka_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("buttermilk_milk_" + tag).setName("buttermilk_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("serum_milk_" + tag).setName("serum_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("varenets_milk_" + tag).setName("varenets_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("kefir_milk_" + tag).setName("kefir_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("yoghurt_milk_" + tag).setName("yoghurt_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("yogurt_milk_" + tag).setName("yogurt_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+		new FluidFake("acidophilus_milk_" + tag).setName("acidophilus_milk_" + tag).setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 		//-------------------------------------------------------------------------------------------------------------------------------------------
 	}
 
@@ -337,21 +338,21 @@ public class FillForList {
 		new FoodForBlock(tag + "_pizza_raw").setFoodStats(2, 0.2F).setType("Pizza").setName(tag + "_pizza_raw").setColors(0xFFFFFF).setTexture1(tag + "_pizza");
 		new FoodForBlock(tag + "_pizza_cooked").setFoodStats(2, 0.2F).setType("Pizza").setName(tag + "_pizza_cooked").setColors(0xFFFFFF).setTexture1(tag + "_pizza");
 		//--FluidFake--------------------------------------------------------------------------------------------------------------------------------
-		new FluidFake(tag + "_decoction").setName(tag + "_decoction").setType("Liquid").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_tea").setName(tag + "_tea").setType("Liquid").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 80.0F);
-		new FluidFake(tag + "_juice").setName(tag + "_juice").setType("Liquid").setColor(hex).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_juice_concentrate").setName(tag + "_juice_concentrate").setType("Liquid").setColor(hex).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_lemonade").setName(tag + "_lemonade").setType("Liquid").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_milkshake").setName(tag + "_milkshake").setType("Liquid").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_tincture").setName(tag + "_tincture").setType("Liquid").setColorMix(hex, 0xAAAAFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_sauce").setName(tag + "_sauce").setType("Sauce").setColor(hex).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_jam").setName(tag + "_jam").setType("Jam").setColorMix(hex, 0xBBBBBB).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_jelly").setName(tag + "_jelly").setType("Jelly").setColorMix(hex, 0xAAAAAA).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("icecream_" + tag).setName("icecream_" + tag).setType("Icecream").setColorMix(hex, 0xAAAAAA).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_flour").setName(tag + "_flour").setType("Dust").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_oil").setName(tag + "_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
+		new FluidFake(tag + "_decoction").setName(tag + "_decoction").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_tea").setName(tag + "_tea").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_juice").setName(tag + "_juice").setType(FluidFake.TypeFluid.liquid).setColor(hex).setTemperature(16.0F);
+		new FluidFake(tag + "_juice_concentrate").setName(tag + "_juice_concentrate").setType(FluidFake.TypeFluid.liquid).setColor(hex).setTemperature(16.0F);
+		new FluidFake(tag + "_lemonade").setName(tag + "_lemonade").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_milkshake").setName(tag + "_milkshake").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_tincture").setName(tag + "_tincture").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xAAAAFF).setTemperature(16.0F);
+		new FluidFake(tag + "_sauce").setName(tag + "_sauce").setType(ListStock.sauce).setColor(hex).setTemperature(16.0F);
+		new FluidFake(tag + "_jam").setName(tag + "_jam").setType(ListStock.jam).setColorMix(hex, 0xBBBBBB).setTemperature(16.0F);
+		new FluidFake(tag + "_jelly").setName(tag + "_jelly").setType(ListStock.jelly).setColorMix(hex, 0xAAAAAA).setTemperature(16.0F);
+		new FluidFake("icecream_" + tag).setName("icecream_" + tag).setType(ListStock.icecream).setColorMix(hex, 0xAAAAAA).setTemperature(16.0F);
+		new FluidFake(tag + "_flour").setName(tag + "_flour").setType(FluidFake.TypeFluid.dust).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_oil").setName(tag + "_oil").setType(ListStock.vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
 	}
-/*
+	/*
 	public static void beListFlower(String tag, int hex) {
 		tag = tag.toLowerCase();
 		//--FoodForItem------------------------------------------------------------------------------------------------------------------------------
@@ -371,20 +372,20 @@ public class FillForList {
 		new FoodForBlock(tag + "_pizza_raw").setFoodStats(2, 0.2F).setType("Pizza").setName(tag + "_pizza_raw").setColors(0xFFFFFF).setTexture1(tag + "_pizza");
 		new FoodForBlock(tag + "_pizza_cooked").setFoodStats(2, 0.2F).setType("Pizza").setName(tag + "_pizza_cooked").setColors(0xFFFFFF).setTexture1(tag + "_pizza");
 		//--FluidFake--------------------------------------------------------------------------------------------------------------------------------
-		new FluidFake(tag + "_decoction").setName(tag + "_decoction").setType("Liquid").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_tea").setName(tag + "_tea").setType("Liquid").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 80.0F);
-		new FluidFake(tag + "_juice").setName(tag + "_juice").setType("Liquid").setColor(hex).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_juice_concentrate").setName(tag + "_juice_concentrate").setType("Liquid").setColor(hex).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_lemonade").setName(tag + "_lemonade").setType("Liquid").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_milkshake").setName(tag + "_milkshake").setType("Liquid").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_tincture").setName(tag + "_tincture").setType("Liquid").setColorMix(hex, 0xAAAAFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_sauce").setName(tag + "_sauce").setType("Sauce").setColor(hex).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_jam").setName(tag + "_jam").setType("Jam").setColorMix(hex, 0xBBBBBB).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_jelly").setName(tag + "_jelly").setType("Jelly").setColorMix(hex, 0xAAAAAA).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake("icecream_" + tag).setName("icecream_" + tag).setType("Icecream").setColorMix(hex, 0xAAAAAA).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_flour").setName(tag + "_flour").setType("Dust").setColorMix(hex, 0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-		new FluidFake(tag + "_oil").setName(tag + "_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
+		new FluidFake(tag + "_decoction").setName(tag + "_decoction").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_tea").setName(tag + "_tea").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_juice").setName(tag + "_juice").setType(FluidFake.TypeFluid.liquid).setColor(hex).setTemperature(16.0F);
+		new FluidFake(tag + "_juice_concentrate").setName(tag + "_juice_concentrate").setType(FluidFake.TypeFluid.liquid).setColor(hex).setTemperature(16.0F);
+		new FluidFake(tag + "_lemonade").setName(tag + "_lemonade").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_milkshake").setName(tag + "_milkshake").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_tincture").setName(tag + "_tincture").setType(FluidFake.TypeFluid.liquid).setColorMix(hex, 0xAAAAFF).setTemperature(16.0F);
+		new FluidFake(tag + "_sauce").setName(tag + "_sauce").setType(ListStock.sauce).setColor(hex).setTemperature(16.0F);
+		new FluidFake(tag + "_jam").setName(tag + "_jam").setType(ListStock.jam).setColorMix(hex, 0xBBBBBB).setTemperature(16.0F);
+		new FluidFake(tag + "_jelly").setName(tag + "_jelly").setType(ListStock.jelly).setColorMix(hex, 0xAAAAAA).setTemperature(16.0F);
+		new FluidFake("icecream_" + tag).setName("icecream_" + tag).setType(ListStock.icecream).setColorMix(hex, 0xAAAAAA).setTemperature(16.0F);
+		new FluidFake(tag + "_flour").setName(tag + "_flour").setType(FluidFake.TypeFluid.dust).setColorMix(hex, 0xFFFFFF).setTemperature(16.0F);
+		new FluidFake(tag + "_oil").setName(tag + "_oil").setType(ListStock.vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
 		//-------------------------------------------------------------------------------------------------------------------------------------------
 	}
-*/
+	 */
 }

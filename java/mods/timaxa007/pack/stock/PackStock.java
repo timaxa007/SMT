@@ -3,6 +3,9 @@ package mods.timaxa007.pack.stock;
 import mods.timaxa007.pack.stock.packet.RegisterPacket;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+
+import org.apache.logging.log4j.Logger;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -12,20 +15,19 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
-@Mod (modid = PackStock.MODID, name = PackStock.MODNAME, version = PackStock.VERSION, dependencies = "required-after:01miningpack")
-//@NetworkMod (clientSideRequired = true, serverSideRequired = false, versionBounds = PackInfo.VERSION)
-//@NetworkMod (channels = PackInfo.MODID, clientSideRequired = true, serverSideRequired = true, versionBounds = PackInfo.VERSION)
+@Mod (modid = PackStock.MODID, name = PackStock.MODNAME, version = PackStock.VERSION, dependencies = "required-after:timaxa007")
 
 public class PackStock {
 
-	public static final String MODID = "02stockpack";
-	public static final String MODNAME = "StockPack";
+	public static final String MODID = "stockpack";
+	public static final String MODNAME = "PackStock";
 	public static final String VERSION = "0.1a";
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackStock.MODID) public static PackStock instance;
 	@SidedProxy(modId = PackStock.MODID, clientSide="mods.timaxa007.pack.stock.ProxyClient", serverSide="mods.timaxa007.pack.stock.ProxyCommon")
 	public static ProxyCommon proxy;
+	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
@@ -56,10 +58,14 @@ public class PackStock {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit(event);
+
+		log = event.getModLog();
+		log.info("Startimg sub-mod " + PackStock.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackStock.MODID);
 		RegisterPacket.init(network);
+
+		proxy.preInit(event);
 
 	}
 

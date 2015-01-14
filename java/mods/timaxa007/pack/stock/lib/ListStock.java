@@ -5,12 +5,19 @@ import mods.timaxa007.pack.stock.lib.list.*;
 
 public class ListStock {
 
-	public static FluidFake fluid_water_clear = new FluidFake("water_clear").setName("water_clear").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -10.0F, 100.0F);
-	public static FluidFake fluid_water_dirt = new FluidFake("water_dirt").setName("water_dirt").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -8.0F, 80.0F);
-	public static FluidFake fluid_water_salt = new FluidFake("water_salt").setName("water_salt").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_water_sweet = new FluidFake("water_sweet").setName("water_sweet").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_water_mineral = new FluidFake("water_mineral").setName("water_mineral").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_water_reed = new FluidFake("water_reed").setName("water_reed").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
+	public static final FluidFake.TypeFluid vegetable_oil = new FluidFake.TypeFluid("vegetable_oil");
+	public static final FluidFake.TypeFluid fat = new FluidFake.TypeFluid("fat");
+	public static final FluidFake.TypeFluid sauce = new FluidFake.TypeFluid("sauce");
+	public static final FluidFake.TypeFluid jam = new FluidFake.TypeFluid("jam");
+	public static final FluidFake.TypeFluid jelly = new FluidFake.TypeFluid("jelly");
+	public static final FluidFake.TypeFluid icecream = new FluidFake.TypeFluid("icecream");
+
+	public static final FluidFake fluid_water_clear = new FluidFake("water_clear").setName("water_clear").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water_dirt = new FluidFake("water_dirt").setName("water_dirt").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water_salt = new FluidFake("water_salt").setName("water_salt").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water_sweet = new FluidFake("water_sweet").setName("water_sweet").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water_mineral = new FluidFake("water_mineral").setName("water_mineral").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water_reed = new FluidFake("water_reed").setName("water_reed").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 
 	public ListStock() {
 		new Beef();
@@ -236,77 +243,92 @@ public class ListStock {
 		//Honey - cake, cookie u t.d.
 	}
 
-	public static FluidFake fluid_catalyst_mix = new FluidFake("catalyst_mix").setName("catalyst_mix").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 64.0F);
-	public static FluidFake fluid_catalyst_sweet = new FluidFake("catalyst_sweet").setName("catalyst_sweet").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 64.0F);
+	public static final FluidFake fluid_catalyst_mix = new FluidFake("catalyst_mix").setName("catalyst_mix").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_catalyst_sweet = new FluidFake("catalyst_sweet").setName("catalyst_sweet").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 
-	public static FluidFake fluid_ferment_mix = new FluidFake("ferment_mix").setName("ferment_mix").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 64.0F);
-	public static FluidFake fluid_ferment_sweet = new FluidFake("ferment_sweet").setName("ferment_sweet").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 64.0F);
-	public static FluidFake fluid_ferment_manure = new FluidFake("ferment_manure").setName("ferment_manure").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 64.0F);
-	public static FluidFake fluid_ferment_mineral = new FluidFake("ferment_mineral").setName("ferment_mineral").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 64.0F);
+	public static final FluidFake fluid_ferment_mix = new FluidFake("ferment_mix").setName("ferment_mix").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_ferment_sweet = new FluidFake("ferment_sweet").setName("ferment_sweet").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_ferment_manure = new FluidFake("ferment_manure").setName("ferment_manure").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_ferment_mineral = new FluidFake("ferment_mineral").setName("ferment_mineral").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 
-	public static FluidFake fluid_honey_mix = new FluidFake("honey_mix").setName("honey").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_molten_chocolate = new FluidFake("molten_chocolate").setName("molten_chocolate").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_molten_caramel = new FluidFake("molten_caramel").setName("molten_caramel").setType("Liquid").setColor(0xFFFFFF).setTemperatures(32.0F, 0.0F, 120.0F);
-	public static FluidFake fluid_molten_butter = new FluidFake("molten_butter").setName("molten_butter").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_molten_nutella = new FluidFake("molten_nutella").setName("molten_nutella").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_beer = new FluidFake("beer").setName("beer").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_beer_dark = new FluidFake("beer_dark").setName("beer_dark").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_beer_light = new FluidFake("beer_light").setName("beer_light").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_soy_sauce = new FluidFake("soy_sauce").setName("soy_sauce").setType("Liquid").setColor(0x5C2010).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_sauce_ketchup = new FluidFake("sauce_ketchup").setName("sause_ketchup").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_sause_mayonnaise = new FluidFake("sause_mayonnaise").setName("sause_mayonnaise").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_sause_chilly = new FluidFake("sause_chilly").setName("sause_chilly").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_sause_hot = new FluidFake("sause_hot").setName("sause_hot").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_cider = new FluidFake("cider").setName("cider").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_wine = new FluidFake("wine").setName("wine").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_moonshine = new FluidFake("moonshine").setName("moonshine").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_vodka = new FluidFake("vodka").setName("vodka").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_water_coffee = new FluidFake("water_coffee").setName("water_coffee").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_water_cappuccino = new FluidFake("water_cappuccino").setName("water_coffee").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_water_latte = new FluidFake("water_latte").setName("water_coffee").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_water_tea = new FluidFake("water_tea").setName("water_tea").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_cocoa_water = new FluidFake("cocoa_water").setName("cocoa_water").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_cocoa_milk = new FluidFake("cocoa_milk").setName("cocoa_milk").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_soda = new FluidFake("soda").setName("soda").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_vinegar = new FluidFake("vinegar").setName("vinegar").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_broth = new FluidFake("broth").setName("broth").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_decoction = new FluidFake("decoction").setName("decoction").setType("Liquid").setColor(0xFFFFFF).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_condensed_milk = new FluidFake("condensed_milk").setName("condensed_milk").setType("Liquid").setColor(0xFFD9A5).setTemperatures(16.0F, -8.0F, 80.0F);
-	public static FluidFake fluid_beaten_egg = new FluidFake("beaten_egg").setName("beaten_egg").setType("Liquid").setColor(0xFFA9A9).setTemperatures(16.0F, -8.0F, 80.0F);
+	public static final FluidFake fluid_honey_mix = new FluidFake("honey_mix").setName("honey").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_molten_chocolate = new FluidFake("molten_chocolate").setName("molten_chocolate").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_molten_caramel = new FluidFake("molten_caramel").setName("molten_caramel").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(32.0F);
+	public static final FluidFake fluid_molten_butter = new FluidFake("molten_butter").setName("molten_butter").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_molten_nutella = new FluidFake("molten_nutella").setName("molten_nutella").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_beer = new FluidFake("beer").setName("beer").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_beer_dark = new FluidFake("beer_dark").setName("beer_dark").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_beer_light = new FluidFake("beer_light").setName("beer_light").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 
-	public static FluidFake fluid_sucrose = new FluidFake("sucrose").setName("sucrose").setType("Dust").setColor(0xFFFFFF).setTemperatures(8.0F, -36.0F, 54.0F);
-	public static FluidFake fluid_glucose = new FluidFake("glucose").setName("glucose").setType("Dust").setColor(0xFFFFFF).setTemperatures(8.0F, -36.0F, 54.0F);
-	public static FluidFake fluid_fructose = new FluidFake("fructose").setName("fructose").setType("Dust").setColor(0xFFFFFF).setTemperatures(8.0F, -36.0F, 54.0F);
+	public static final FluidFake fluid_soy_sauce = new FluidFake("soy_sauce").setName("soy_sauce").setType(sauce).setColor(0x5C2010).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_ketchup = new FluidFake("sauce_ketchup").setName("sauce_ketchup").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_mayonnaise = new FluidFake("sauce_mayonnaise").setName("sauce_mayonnaise").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_chilly = new FluidFake("sauce_chilly").setName("sauce_chilly").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_hot = new FluidFake("sauce_hot").setName("sauce_hot").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_tomato = new FluidFake("sauce_tomato").setName("sauce_tomato").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_mustard = new FluidFake("sauce_mustard").setName("sauce_mustard").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_horseradish = new FluidFake("sauce_horseradish").setName("sauce_horseradish").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_sour_cream = new FluidFake("sauce_sour_cream").setName("sauce_sour_cream").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_cream = new FluidFake("sauce_cream").setName("sauce_cream").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_milky = new FluidFake("sauce_milky").setName("sauce_milky").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_mushroom = new FluidFake("sauce_mushroom").setName("sauce_mushroom").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_cheese = new FluidFake("sauce_cheese").setName("sauce_cheese").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_vanilla = new FluidFake("sauce_vanilla").setName("sauce_vanilla").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_chocolate = new FluidFake("sauce_chocolate").setName("sauce_chocolate").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_lemon = new FluidFake("sauce_lemon").setName("sauce_lemon").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_fruit = new FluidFake("sauce_fruit").setName("sauce_fruit").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_sauce_berry = new FluidFake("sauce_berry").setName("sauce_berry").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+
+	public static final FluidFake fluid_cider = new FluidFake("cider").setName("cider").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_wine = new FluidFake("wine").setName("wine").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_moonshine = new FluidFake("moonshine").setName("moonshine").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_vodka = new FluidFake("vodka").setName("vodka").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water_coffee = new FluidFake("water_coffee").setName("water_coffee").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water_cappuccino = new FluidFake("water_cappuccino").setName("water_coffee").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water_latte = new FluidFake("water_latte").setName("water_coffee").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_water_tea = new FluidFake("water_tea").setName("water_tea").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_cocoa_water = new FluidFake("cocoa_water").setName("cocoa_water").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_cocoa_milk = new FluidFake("cocoa_milk").setName("cocoa_milk").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_soda = new FluidFake("soda").setName("soda").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_vinegar = new FluidFake("vinegar").setName("vinegar").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_broth = new FluidFake("broth").setName("broth").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_decoction = new FluidFake("decoction").setName("decoction").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final FluidFake fluid_condensed_milk = new FluidFake("condensed_milk").setName("condensed_milk").setType(FluidFake.TypeFluid.liquid).setColor(0xFFD9A5).setTemperature(16.0F);
+	public static final FluidFake fluid_beaten_egg = new FluidFake("beaten_egg").setName("beaten_egg").setType(FluidFake.TypeFluid.liquid).setColor(0xFFA9A9).setTemperature(16.0F);
+
+	public static final FluidFake fluid_sucrose = new FluidFake("sucrose").setName("sucrose").setType(FluidFake.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final FluidFake fluid_glucose = new FluidFake("glucose").setName("glucose").setType(FluidFake.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final FluidFake fluid_fructose = new FluidFake("fructose").setName("fructose").setType(FluidFake.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
 	// glucose or fructose from fruit or berry
-	public static FluidFake fluid_sugar_sand_cane = new FluidFake("sugar_sand_cane").setName("sugar_sand_cane").setType("Dust").setColor(0xFFFFFF).setTemperatures(8.0F, -36.0F, 54.0F);
-	public static FluidFake fluid_sugar_sand_beet = new FluidFake("sugar_sand_beet").setName("sugar_sand_beet").setType("Dust").setColor(0xFFFFFF).setTemperatures(8.0F, -36.0F, 54.0F);
-	public static FluidFake fluid_sugar_sand_maple = new FluidFake("sugar_sand_maple").setName("sugar_sand_maple").setType("Dust").setColor(0xFFFFFF).setTemperatures(8.0F, -36.0F, 54.0F);
-	public static FluidFake fluid_sugar_sand_palm = new FluidFake("sugar_sand_palm").setName("sugar_sand_palm").setType("Dust").setColor(0xFFFFFF).setTemperatures(8.0F, -36.0F, 54.0F);
-	public static FluidFake fluid_sugar_sand_sorghum = new FluidFake("sugar_sand_sorghum").setName("sugar_sand_sorghum").setType("Dust").setColor(0xFFFFFF).setTemperatures(8.0F, -36.0F, 54.0F);
-	//public static FluidFake fluid_sugar_ = new FluidFake("sugar_").setName("sugar_").setType("Dust").setColor(0xFFFFFF).setTemperatures(8.0F, -36.0F, 54.0F);
+	public static final FluidFake fluid_sugar_sand_cane = new FluidFake("sugar_sand_cane").setName("sugar_sand_cane").setType(FluidFake.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final FluidFake fluid_sugar_sand_beet = new FluidFake("sugar_sand_beet").setName("sugar_sand_beet").setType(FluidFake.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final FluidFake fluid_sugar_sand_maple = new FluidFake("sugar_sand_maple").setName("sugar_sand_maple").setType(FluidFake.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final FluidFake fluid_sugar_sand_palm = new FluidFake("sugar_sand_palm").setName("sugar_sand_palm").setType(FluidFake.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final FluidFake fluid_sugar_sand_sorghum = new FluidFake("sugar_sand_sorghum").setName("sugar_sand_sorghum").setType(FluidFake.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	//public static final FluidFake fluid_sugar_ = new FluidFake("sugar_").setName("sugar_").setType(FluidFake.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
 	// sugar_sand -> molten_caramel ->
 	//Meat
 	//Gas
-	public static FluidFake fluid_gas_smoke_burned_food = new FluidFake("gas_smoke_burned_food").setName("smoke_burned_food").setType("Gas").setColor(0xFFFFFF).setTemperatures(18.0F, -32.0F, 120.0F);
+	public static final FluidFake fluid_gas_smoke_burned_food = new FluidFake("gas_smoke_burned_food").setName("smoke_burned_food").setType(FluidFake.TypeFluid.smoke).setColor(0xFFFFFF).setTemperature(18.0F);
 
 	//Vegetable
 
 	//Vegetable Oil 0xC2C832 - normal, 0xA7C832 - new, 0xC29332 - old.
-	public static FluidFake fluid_palm_oil = new FluidFake("palm_oil").setName("palm_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	//public static FluidFake fluid_cocoa_oil = new FluidFake("cocoa_oil").setName("cocoa_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_coconut_oil = new FluidFake("coconut_oil").setName("coconut_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_rape_oil = new FluidFake("rape_oil").setName("rape_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_flax_oil = new FluidFake("flax_oil").setName("flax_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_cottonseed_oil = new FluidFake("cottonseed_oil").setName("cottonseed_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_apricot_oil = new FluidFake("apricot_oil").setName("apricot_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_safflower_oil = new FluidFake("safflower_oil").setName("safflower_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_pistachio_oil = new FluidFake("pistachio_oil").setName("pistachio_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_sesame_oil = new FluidFake("sesame_oil").setName("sesame_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_hemp_oil = new FluidFake("hemp_oil").setName("hemp_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_cedar_oil = new FluidFake("cedar_oil").setName("cedar_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_camellia_oil = new FluidFake("camellia_oil").setName("camellia_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_rosehip_oil = new FluidFake("rosehip_oil").setName("rosehip_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_borage_oil = new FluidFake("borage_oil").setName("borage_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
-	public static FluidFake fluid_blackcurrant_oil = new FluidFake("blackcurrant_oil").setName("blackcurrant_oil").setType("Vegetable Oil").setColor(0xC2C832).setTemperatures(16.0F, -16.0F, 100.0F);
+	public static final FluidFake fluid_palm_oil = new FluidFake("palm_oil").setName("palm_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	//public static final FluidFake fluid_cocoa_oil = new FluidFake("cocoa_oil").setName("cocoa_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_coconut_oil = new FluidFake("coconut_oil").setName("coconut_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_rape_oil = new FluidFake("rape_oil").setName("rape_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_flax_oil = new FluidFake("flax_oil").setName("flax_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_cottonseed_oil = new FluidFake("cottonseed_oil").setName("cottonseed_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_apricot_oil = new FluidFake("apricot_oil").setName("apricot_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_safflower_oil = new FluidFake("safflower_oil").setName("safflower_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_pistachio_oil = new FluidFake("pistachio_oil").setName("pistachio_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_sesame_oil = new FluidFake("sesame_oil").setName("sesame_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_hemp_oil = new FluidFake("hemp_oil").setName("hemp_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_cedar_oil = new FluidFake("cedar_oil").setName("cedar_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_camellia_oil = new FluidFake("camellia_oil").setName("camellia_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_rosehip_oil = new FluidFake("rosehip_oil").setName("rosehip_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_borage_oil = new FluidFake("borage_oil").setName("borage_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final FluidFake fluid_blackcurrant_oil = new FluidFake("blackcurrant_oil").setName("blackcurrant_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
 
 }

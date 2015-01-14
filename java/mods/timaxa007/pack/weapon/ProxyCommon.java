@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.weapon;
 
-import mods.timaxa007.pack.weapon.block.BlockList;
+import mods.timaxa007.pack.weapon.block.ListBlock;
 import mods.timaxa007.pack.weapon.event.EventWeapons;
 import mods.timaxa007.pack.weapon.gui.HandlerGuiWeapons;
-import mods.timaxa007.pack.weapon.item.ItemList;
+import mods.timaxa007.pack.weapon.item.ListItem;
 import mods.timaxa007.pack.weapon.lib.ListWeapon;
 import mods.timaxa007.pack.weapon.recipe.Recipes_Weapons;
 import mods.timaxa007.pack.weapon.render.RenderMain;
@@ -15,8 +15,8 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class ProxyCommon implements IProxy {
 
-	public static BlockList block;
-	public static ItemList item;
+	public static ListBlock block;
+	public static ListItem item;
 	public static RenderMain render;
 
 	//GUI

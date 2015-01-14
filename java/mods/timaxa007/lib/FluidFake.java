@@ -18,19 +18,20 @@ public class FluidFake {
 	public int id;
 	public String tag;
 	private String name;
-	private String type;
+	private FluidFake.TypeFluid type;
 	private int color_hex;
 	private float temperature;
-	private float temperature_min;
-	private float temperature_max;
 
-	protected String texture;
+	private String texture;
 
 	/**It is not recommended to use this method.**/
 	@Deprecated
 	public FluidFake() {
 		id = nextID();
 		list[id] = this;
+		tag = "";
+		color_hex = 0;
+		temperature = 0.0F;
 	}
 
 	/**It is not recommended to use this method.**/
@@ -38,6 +39,9 @@ public class FluidFake {
 	public FluidFake(int id) {
 		this.id = id;
 		list[id] = this;
+		tag = "";
+		color_hex = 0;
+		temperature = 0.0F;
 	}
 
 	/**It is not recommended to use this method.**/
@@ -47,6 +51,8 @@ public class FluidFake {
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
+		color_hex = 0;
+		temperature = 0.0F;
 	}
 
 	public FluidFake(String tag) {
@@ -54,6 +60,8 @@ public class FluidFake {
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
+		color_hex = 0;
+		temperature = 0.0F;
 	}
 	//--------------------------------------------------------
 	public static int nextID() {
@@ -102,17 +110,26 @@ public class FluidFake {
 		return StatCollector.translateToLocal("fluid." + getName() + ".name");
 	}
 
-	public FluidFake setType(String type) {
+	public FluidFake setType(FluidFake.TypeFluid type) {
 		this.type = type;
 		return this;
 	}
 
-	public String getType() {
-		return UtilTMS.hasString(type) ? type : "untype";
+	public FluidFake setType(String type) {
+		this.type = FluidFake.TypeFluid.get(type);
+		return this;
+	}
+
+	public FluidFake.TypeFluid getType() {
+		return type != null ? type : FluidFake.TypeFluid.none;
+	}
+
+	public String getTypeName() {
+		return getType().getName();
 	}
 
 	public String getLocalizedType() {
-		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
+		return getType().getLocalizedType();
 	}
 
 	public FluidFake setColor(int color) {
@@ -129,38 +146,13 @@ public class FluidFake {
 		return color_hex == 0 ? 0xFFFFFF : color_hex;
 	}
 
-	public FluidFake setTemperatures(float temp, float temp_min, float temp_max) {
-		temperature = temp;
-		temperature_min = temp_min;
-		temperature_max = temp_max;
-		return this;
-	}
-
 	public FluidFake setTemperature(float f) {
 		temperature = f;
 		return this;
 	}
 
 	public float getTemperature() {
-		return temperature == 0 ? 0.0F : temperature;
-	}
-
-	public FluidFake setTemperatureMin(float f) {
-		temperature_min = f;
-		return this;
-	}
-
-	public float getTemperatureMin() {
-		return temperature_min == 0 ? 0.0F : temperature_min;
-	}
-
-	public FluidFake setTemperatureMax(float f) {
-		temperature_max = f;
-		return this;
-	}
-
-	public float getTemperatureMax() {
-		return temperature_max == 0 ? 0.0F : temperature_max;
+		return temperature;
 	}
 
 	public FluidFake setTexture(String path) {
@@ -171,6 +163,105 @@ public class FluidFake {
 	public String getTexture() {
 		return texture == null ? getName() : texture;
 	}
+	//-------------------------------------------------------------------------------------------
+	public static class TypeFluid {
 
+		public static final TypeFluid[] list_type = new TypeFluid[512];
+
+		public static final TypeFluid none = new TypeFluid(0);
+		//public static final TypeFluid fluid = new TypeFluid("fluid");
+		public static final TypeFluid liquid = new TypeFluid("liquid");
+		public static final TypeFluid air = new TypeFluid("air");
+		public static final TypeFluid gas = new TypeFluid("gas");
+		public static final TypeFluid smoke = new TypeFluid("smoke");
+		public static final TypeFluid oil = new TypeFluid("oil");
+		public static final TypeFluid magic = new TypeFluid("magic");
+		public static final TypeFluid energy = new TypeFluid("energy");
+		public static final TypeFluid molten = new TypeFluid("molten");
+		public static final TypeFluid dust = new TypeFluid("dust");
+
+		public int id;
+		public String type;
+		private float temperature_min;
+		private float temperature_max;
+
+		/**It is not recommended to use this method.**/
+		@Deprecated
+		public TypeFluid(int id) {
+			this.id = id;
+			list_type[id] = this;
+			type = "";
+			temperature_min = 0.0F;
+			temperature_max = 0.0F;
+		}
+
+		public TypeFluid(String type) {
+			id = nextID();
+			list_type[id] = this;
+			this.type = type;
+			temperature_min = 0.0F;
+			temperature_max = 0.0F;
+		}
+
+		public static int nextID() {
+			for (int i = 0; i < list_type.length; i++)
+				if (list_type[i] == null)
+					return i;
+			return list_type.length - 1;
+		}
+
+		public static boolean hasType(String str) {
+			for (int i = 0; i < list_type.length; i++)
+				if (str.equalsIgnoreCase(list_type[i].type))
+					return true;
+			return false;
+		}
+
+		public static int getID_type(String str) {
+			for (int i = 0; i < list_type.length; i++)
+				if (str.equalsIgnoreCase(list_type[i].type))
+					return i;
+			return 0;
+		}
+
+		public static TypeFluid get(String tag) {
+			if (UtilTMS.hasString(tag))
+				return list_type[getID_type(tag)];
+			return none;
+		}
+		public String getName() {
+			return UtilTMS.hasString(type) ? type : "untype";
+		}
+
+		public String getLocalizedType() {
+			return StatCollector.translateToLocal("type." + getName().toLowerCase() + ".name");
+		}
+
+		public TypeFluid setTemperatureMinMax(float min, float max) {
+			temperature_min = min;
+			temperature_max = max;
+			return this;
+		}
+
+		public TypeFluid setTemperatureMin(float min) {
+			temperature_min = min;
+			return this;
+		}
+
+		public float getTemperatureMin() {
+			return temperature_min;
+		}
+
+		public TypeFluid setTemperatureMax(float max) {
+			temperature_max = max;
+			return this;
+		}
+
+		public float getTemperatureMax() {
+			return temperature_max;
+		}
+
+	}
+	//-------------------------------------------------------------------------------------------
 }
 

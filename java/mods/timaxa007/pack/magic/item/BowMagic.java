@@ -139,7 +139,7 @@ public class BowMagic extends Item {
 	}
 
 	public int getItemEnchantability() {return 1;}
-
+/*
 	public IIcon getIcon(ItemStack is, int renderPass, EntityPlayer player, ItemStack useItm, int useRem) {
 		Item itm = PackMagic.proxy.item.magic_bow;
 		if (useItm != null && is.getItem() == itm) {
@@ -150,7 +150,7 @@ public class BowMagic extends Item {
 		}
 		return getIcon(is, renderPass);
 	}
-
+*/
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);

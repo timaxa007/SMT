@@ -1,8 +1,8 @@
 package mods.timaxa007.pack.mining;
 
-import mods.timaxa007.pack.mining.block.BlockList;
+import mods.timaxa007.pack.mining.block.ListBlock;
 import mods.timaxa007.pack.mining.event.EventMining;
-import mods.timaxa007.pack.mining.item.ItemList;
+import mods.timaxa007.pack.mining.item.ListItem;
 import mods.timaxa007.pack.mining.lib.ListMining;
 import mods.timaxa007.pack.mining.recipe.Recipes_Mining;
 import mods.timaxa007.pack.mining.render.RenderMain;
@@ -16,8 +16,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ProxyCommon implements IProxy {
 
-	public static BlockList block;
-	public static ItemList item;
+	public static ListBlock block;
+	public static ListItem item;
 	public static RenderMain render;
 
 	public static BiomeGenBase biome_test;

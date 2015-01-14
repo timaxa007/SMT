@@ -7,7 +7,6 @@ import mods.timaxa007.pack.mining.lib.OreFake;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.FoodForItem;
 import mods.timaxa007.tms.Core;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -240,47 +239,6 @@ hex2 = p_hex2;
 }
 }
 
-foods(int lvl, float p_sat, int[][] efcts, String tex, boolean ren_pass) {
-level = lvl;
-sat = p_sat;
-effects = efcts;
-texture = tex;
-pass = ren_pass;
-hex1 = 0xFFFFFF;
-hex2 = 0xFFFFFF;
-}
-
-foods(int lvl, float p_sat, int[][] efcts, boolean ren_pass) {
-level = lvl;
-sat = p_sat;
-effects = efcts;
-texture = toString().toLowerCase();
-pass = ren_pass;
-hex1 = 0xFFFFFF;
-hex2 = 0xFFFFFF;
-}
-
-foods(int lvl, float p_sat, int[][] efcts) {
-level = lvl;
-sat = p_sat;
-effects = efcts;
-texture = toString().toLowerCase();
-pass = false;
-hex1 = 0xFFFFFF;
-hex2 = 0xFFFFFF;
-}
-
-foods(int lvl, float p_sat) {
-level = lvl;
-sat = p_sat;
-effects = null;
-texture = toString().toLowerCase();
-pass = false;
-hex1 = 0xFFFFFF;
-hex2 = 0xFFFFFF;
-}
-
-}
 //-----------------------------------------------------------------------------------------------
 public enum spices {
 Sugar(0.0F), 
@@ -320,41 +278,6 @@ spices_sat = sat_spices;
 }
 
 }
-//-----------------------------------------------------------------------------------------------
-public enum sauce {
-Sauce_tomato(0.0F, 0xFFFFFF), 
-Sauce_mayo(0.0F, 0xFFFFFF), 
-Sauce_mustard(0.0F, 0xFFFFFF), 
-Sauce_horseradish(0.0F, 0xFFFFFF), 
-Sauce_sour_cream(0.0F, 0xFFFFFF), 
-Sauce_cream(0.0F, 0xFFFFFF), 
-Sauce_milk(0.0F, 0xFFFFFF), 
-Sauce_mushroom(0.0F, 0xFFFFFF), 
-Sauce_cheese(0.0F, 0xFFFFFF), 
-Sauce_vanilla(0.0F, 0xFFFFFF), 
-Sauce_chocolate(0.0F, 0xFFFFFF), 
-Sauce_lemon(0.0F, 0xFFFFFF), 
-Sauce_fruit(0.0F, 0xFFFFFF), 
-Sauce_berry(0.0F, 0xFFFFFF), 
-NONE(0.0F, 0xFFFFFF);
-
-private float sauce_sat;
-private int sauce_hex;
-
-static boolean hasStrCode(String str) {
-for (sauce j : sauce.values()) {
-if (str.equalsIgnoreCase(j.toString())) {
-return true;
-}
-}
-return false;
-}
-
-sauce(float sat_sauce, int hex_sauce) {
-sauce_sat = sat_sauce;
-sauce_hex = hex_sauce;
-}
-
 }
 	 */
 	//-----------------------------------------------------------------------------------------------
@@ -505,11 +428,15 @@ sauce_hex = hex_sauce;
 	//tag.setString("Ingredient_3", "");
 
 	@SideOnly(Side.CLIENT)
-	public boolean requiresMultipleRenderPasses() {return true;}
+	public boolean requiresMultipleRenderPasses() {
+		return true;
+	}
 
 	@SideOnly(Side.CLIENT)
-	public int getRenderPasses(int meta) {return 4;}
-
+	public int getRenderPasses(int meta) {
+		return 4;
+	}
+	/*
 	public IIcon getIcon(ItemStack is, int pass) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("NameID")) {
@@ -518,7 +445,7 @@ sauce_hex = hex_sauce;
 			return itemIcon;
 		}
 	}
-
+	 */
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack is, int pass) {
 		NBTTagCompound tag = is.getTagCompound();
@@ -538,7 +465,7 @@ sauce_hex = hex_sauce;
 			return 16777215;
 		}
 	}
-
+	/*
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);
@@ -546,30 +473,13 @@ sauce_hex = hex_sauce;
 		icon_g = new IIcon[FoodForItem.list.length][4];
 		for (int i = 0; i < FoodForItem.list.length; i++) {
 			for (int j = 0; j < 4; j++) {
-				if ( FoodForItem.list[i] != null) {
+				if (FoodForItem.list[i] != null) {
 					icon_g[i][j] = ir.registerIcon(getIconString() + FoodForItem.list[i].getTexture(j));
 				} else {
 					icon_g[i][j] = itemIcon;
 				}
 			}
 		}
-		/*
-icon_tex = new IIcon[FoodForItem.list.length];
-icon_ovl = new IIcon[FoodForItem.list.length];
-for (int i = 0; i < FoodForItem.list.length; i++) {
-if (FoodForItem.list[i] != null) {
-icon_tex[i] = ir.registerIcon(getIconString() + FoodForItem.list[i].getTexture(0));
-	if (FoodForItem.list[i].getTexture(1) == FoodForItem.list[i].getTexture(0)) {
-	icon_ovl[i] = ir.registerIcon(getIconString() + "empty");
-	} else {
-	icon_ovl[i] = ir.registerIcon(getIconString() + FoodForItem.list[i].getTexture(1));
 	}
-} else {
-icon_tex[i] = itemIcon;
-icon_ovl[i] = itemIcon;
-}
-}
-		 */
-	}
-
+	 */
 }

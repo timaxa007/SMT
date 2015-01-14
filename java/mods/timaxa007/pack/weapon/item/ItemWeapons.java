@@ -133,7 +133,7 @@ public class ItemWeapons extends ItemActionBase {
 			if (!world.isRemote) {
 
 			} else {
-				System.out.println("-reload-");
+				if (Core.show_system_info_testing) System.out.println("-reload-");
 			}
 
 			//tag.setInteger("AmmoAtm", MagazineFor.magazine_list[tag.getInteger("MagazineID")].getSize());
@@ -150,7 +150,7 @@ public class ItemWeapons extends ItemActionBase {
 	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (!world.isRemote) {
 			player.openGui(PackWeapons.instance, PackWeapons.proxy.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
-			System.out.println("-modify-");
+			if (Core.show_system_info_testing) System.out.println("-modify-");
 		}
 	}
 

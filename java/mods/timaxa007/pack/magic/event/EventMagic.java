@@ -56,6 +56,27 @@ public class EventMagic {
 	}*/
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
+	public void disAttack(LivingHurtEvent e) {
+		if (e.source instanceof EntityDamageSource) {
+
+			EntityDamageSource dmgSource = (EntityDamageSource)e.source;
+			Entity ent = dmgSource.getEntity();
+			Entity en = dmgSource.getSourceOfDamage();
+			if (ent instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer)ent;
+				ItemStack current = player.getCurrentEquippedItem();
+
+				if (current != null) {
+					if (current.getItem() == Items.golden_sword) {
+						e.ammount = 0;
+					}
+
+				}
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
 	public void onHitEntity(LivingHurtEvent e) {
 		if (e.source instanceof EntityDamageSource) {
 

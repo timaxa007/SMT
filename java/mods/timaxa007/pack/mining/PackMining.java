@@ -3,6 +3,9 @@ package mods.timaxa007.pack.mining;
 import mods.timaxa007.pack.mining.packet.RegisterPacket;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+
+import org.apache.logging.log4j.Logger;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -13,19 +16,18 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 @Mod (modid = PackMining.MODID, name = PackMining.MODNAME, version = PackMining.VERSION, dependencies = "required-after:timaxa007")
-//@NetworkMod (clientSideRequired = true, serverSideRequired = false, versionBounds = PackInfo.VERSION)
-//@NetworkMod (channels = PackInfo.MODID, clientSideRequired = true, serverSideRequired = true, versionBounds = "1.0.0")
 
 public class PackMining {
 
-	public static final String MODID = "01miningpack";
-	public static final String MODNAME = "MiningPack";
+	public static final String MODID = "miningpack";
+	public static final String MODNAME = "PackMining";
 	public static final String VERSION = "0.1a";
 	public static final String AUTHOR = "timaxa007";
 
 	@Instance(PackMining.MODID) public static PackMining instance;
 	@SidedProxy(modId = PackMining.MODID, clientSide = "mods.timaxa007.pack.mining.ProxyClient", serverSide = "mods.timaxa007.pack.mining.ProxyCommon")
 	public static ProxyCommon proxy;
+	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_mining = new CreativeTabs("tab_mining") {
@@ -41,10 +43,14 @@ public class PackMining {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit(event);
+
+		log = event.getModLog();
+		log.info("Startimg sub-mod " + PackMining.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMining.MODID);
 		RegisterPacket.init(network);
+
+		proxy.preInit(event);
 
 	}
 
