@@ -3,7 +3,8 @@ package mods.timaxa007.pack.furniture.block;
 import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,15 +13,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockFurnitureChest extends BlockContainer {
+public class BlockFurnitureChest extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockFurnitureChest() {
-		super(Material.wood);
+	public BlockFurnitureChest(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setBlockTextureName("stone");
-		setBlockName("furniture.machines");
 	}
 
 	@Override

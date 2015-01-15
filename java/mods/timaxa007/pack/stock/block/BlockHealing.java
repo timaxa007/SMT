@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.tile.TileEntityHealing;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockHealing extends Block implements ITileEntityProvider {
+public class BlockHealing extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
@@ -40,14 +40,13 @@ public class BlockHealing extends Block implements ITileEntityProvider {
 		"healing16"
 	};
 
-	public BlockHealing() {
-		super(Material.wood);
+	public BlockHealing(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackStock.tab_medical);
 		setStepSound(soundTypeWood);
 		setHardness(0.1F);
 		setResistance(0.01F);
 		setBlockTextureName("planks_oak");
-		setBlockName("block_healing");
 	}
 
 	public TileEntity createNewTileEntity(World world, int meta) {

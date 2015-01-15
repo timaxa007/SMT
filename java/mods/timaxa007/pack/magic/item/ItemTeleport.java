@@ -3,6 +3,7 @@ package mods.timaxa007.pack.magic.item;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -12,14 +13,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTeleport extends Item {
+public class ItemTeleport extends ItemFixReg {
 
-	public ItemTeleport() {
-		super();
+	public ItemTeleport(String tag) {
+		super(tag);
+		setCreativeTab(PackMagic.tab_magic);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setCreativeTab(PackMagic.tab_magic);
-		setUnlocalizedName("teleport");
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {

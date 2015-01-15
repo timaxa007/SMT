@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureWoodBlocks;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
@@ -11,25 +11,24 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFurnitureWoodBlocks extends Block implements ITileEntityProvider {
+public class BlockFurnitureWoodBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
-	public BlockFurnitureWoodBlocks() {
-		super(Material.wood);
+	public BlockFurnitureWoodBlocks(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.75F);
 		setResistance(7.0F);
 		setStepSound(soundTypeWood);
 		//setBlockTextureName("wood_oak");
-		setBlockName("block_wood_blocks");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityFurnitureWoodBlocks();
 	}
-/*
+	/*
 	public int quantityDropped(Random random) {
 		return 0;
 	}
@@ -153,5 +152,5 @@ public class BlockFurnitureWoodBlocks extends Block implements ITileEntityProvid
 			icon_array[i] = ir.registerIcon("timaxa007:" + "wood/" + type_block[i] + "_overlay");
 		}
 	}
-*/
+	 */
 }

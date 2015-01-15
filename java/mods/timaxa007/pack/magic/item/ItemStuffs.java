@@ -35,11 +35,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemStuffs extends ItemActionKeyPrimary implements IActionMouseKey {
 
-	public ItemStuffs() {
-		super();
+	public ItemStuffs(String tag) {
+		super(tag);
 		setCreativeTab(PackMagic.tab_magic);
 		setTextureName("timaxa007:stuffs");
-		setUnlocalizedName("stuffs");
 		setFull3D();
 	}
 

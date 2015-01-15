@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.tile.TileEntityModuleMovement;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockModuleMovement extends Block implements ITileEntityProvider {
+public class BlockModuleMovement extends BlockFixReg implements ITileEntityProvider {
 
 	public String typeModule[] = new String[] {
 			"Cursor", 
@@ -27,14 +27,13 @@ public class BlockModuleMovement extends Block implements ITileEntityProvider {
 			"Jump"
 	};
 
-	public BlockModuleMovement() {
-		super(Material.circuits);
+	public BlockModuleMovement(String tag) {
+		super(tag, Material.circuits);
 		setCreativeTab(PackTechno.tab_techno);
 		setHardness(0.5F);
 		setResistance(0.1F);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
 		setBlockTextureName("planks_oak");
-		setBlockName("module.movement");
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.lib.AddBlockRock;
 import mods.timaxa007.pack.furniture.tile.TileEntityRockBlocks;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -27,7 +28,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockRockBlocks extends Block implements ITileEntityProvider {
+public class BlockRockBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
@@ -58,14 +59,13 @@ public class BlockRockBlocks extends Block implements ITileEntityProvider {
 		"beton"
 	};
 
-	public BlockRockBlocks() {
-		super(Material.rock);
+	public BlockRockBlocks(String tag) {
+		super(tag, Material.rock);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setStepSound(soundTypeStone);
 		//setBlockTextureName("stone");
-		setBlockName("block_rock_blocks");
 	}
 
 	@Override

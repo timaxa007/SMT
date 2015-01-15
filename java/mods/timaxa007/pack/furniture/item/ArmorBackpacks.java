@@ -4,6 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.render.model.ModelBackpacks;
+import mods.timaxa007.tms.util.ItemArmorFixReg;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,7 +12,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorBackpacks extends ItemArmor {
+public class ArmorBackpacks extends ItemArmorFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_b;
 
@@ -28,11 +29,10 @@ public class ArmorBackpacks extends ItemArmor {
 		"none"
 	};
 
-	public ArmorBackpacks() {
-		super(ArmorMaterial.IRON, 0, 1);
+	public ArmorBackpacks(String tag) {
+		super(tag, ArmorMaterial.IRON, 0, 1);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setTextureName("timaxa007:armor/backpack");
-		setUnlocalizedName("armor_backpacks");
 	}
 
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack is) {

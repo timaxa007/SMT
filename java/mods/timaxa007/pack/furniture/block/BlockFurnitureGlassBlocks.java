@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureGlassBlocks;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
@@ -11,25 +11,24 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFurnitureGlassBlocks extends Block implements ITileEntityProvider {
+public class BlockFurnitureGlassBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
-	public BlockFurnitureGlassBlocks() {
-		super(Material.glass);
+	public BlockFurnitureGlassBlocks(String tag) {
+		super(tag, Material.glass);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setStepSound(soundTypeGlass);
 		//setBlockTextureName("glass");
-		setBlockName("block_glass_blocks");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityFurnitureGlassBlocks();
 	}
-/*
+	/*
 
 	public int quantityDropped(Random random) {
 		return 0;
@@ -169,5 +168,5 @@ public class BlockFurnitureGlassBlocks extends Block implements ITileEntityProvi
 		}
 	}
 
-*/
+	 */
 }

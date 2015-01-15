@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.tile.TileEntitySlims;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,15 +16,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSlims extends Block implements ITileEntityProvider {
+public class BlockSlims extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
-	public BlockSlims() {
-		super(Material.wood);
+	public BlockSlims(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackMagic.tab_magic);
 		setBlockTextureName("planks_oak");
-		setBlockName("magic.slims");
 	}
 
 	@Override

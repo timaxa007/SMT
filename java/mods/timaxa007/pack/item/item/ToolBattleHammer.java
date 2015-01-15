@@ -1,14 +1,13 @@
 package mods.timaxa007.pack.item.item;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 
-public class ToolBattleHammer extends Item {
+public class ToolBattleHammer extends ItemFixReg {
 
-	public ToolBattleHammer() {
-		super();
+	public ToolBattleHammer(String tag) {
+		super(tag);
 		setCreativeTab(PackFurniture.tab_furniture);
-		setUnlocalizedName("tool.battle_hammer");
 	}
 
 }

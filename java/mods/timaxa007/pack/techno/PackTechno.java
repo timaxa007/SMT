@@ -40,7 +40,7 @@ public class PackTechno {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Startimg sub-mod " + PackTechno.MODNAME + ".");
+		log.info("Starting sub-mod " + PackTechno.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackTechno.MODID);
 		RegisterPacket.init(network);

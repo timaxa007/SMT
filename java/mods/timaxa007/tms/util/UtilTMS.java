@@ -25,7 +25,12 @@ public class UtilTMS {
 	public static class UtilBlock {
 
 		public static void RegBlock(Block block) {
-			GameRegistry.registerBlock(block, block.getUnlocalizedName());
+			if (block instanceof BlockFixReg) {
+				GameRegistry.registerBlock(block, "block_" + ((BlockFixReg)block).getTag());
+			}/* else {
+				System.out.println(block.getClass().toString());
+				GameRegistry.registerBlock(block, block.getUnlocalizedName());//not working
+			}*/
 		}
 
 		@Deprecated
@@ -43,7 +48,11 @@ public class UtilTMS {
 	public static class UtilItem {
 
 		public static void RegItem(Item item) {
-			GameRegistry.registerItem(item, item.getUnlocalizedName());
+			if (item instanceof ItemFixReg || item instanceof ItemArmorFixReg) {
+				GameRegistry.registerItem(item, "item_" + ((ItemFixReg)item).getTag());
+			} else {
+				GameRegistry.registerItem(item, item.getUnlocalizedName());
+			}
 		}
 
 	}

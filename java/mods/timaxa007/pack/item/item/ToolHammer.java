@@ -1,23 +1,22 @@
 package mods.timaxa007.pack.item.item;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.item.ItemStack;
 
-public class ToolHammer extends Item {
+public class ToolHammer extends ItemFixReg {
 	/*
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 	 */
-	public ToolHammer() {
-		super();
+	public ToolHammer(String tag) {
+		super(tag);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setNoRepair();
 		setMaxStackSize(1);
 		setMaxDamage(10);
 		setContainerItem(this);
 		setTextureName("timaxa007:tool/hammer");
-		setUnlocalizedName("tool_hammer");
 	}
 
 	public ItemStack getContainerItem(ItemStack is) {

@@ -4,20 +4,19 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.weapon.PackWeapons;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class Blaster extends Item {
+public class Blaster extends ItemFixReg {
 
-	public Blaster() {
-		super();
+	public Blaster(String tag) {
+		super(tag);
 		setCreativeTab(PackWeapons.tab_weapons);
-		setUnlocalizedName("blaster");
 		setFull3D();
 	}
 

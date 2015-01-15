@@ -12,6 +12,7 @@ import mods.timaxa007.pack.furniture.tile.TileEntityRockBlocks;
 import mods.timaxa007.pack.furniture.tile.TileEntitySandBlocks;
 import mods.timaxa007.pack.furniture.tile.TileEntityWoodBlocks;
 import mods.timaxa007.pack.mining.PackMining;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +28,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolAirBrush extends Item {
+public class ToolAirBrush extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -66,13 +67,12 @@ public class ToolAirBrush extends Item {
 	"AirBrushYellow"
 	};
 	 */
-	public ToolAirBrush() {
-		super();
+	public ToolAirBrush(String tag) {
+		super(tag);
 		setCreativeTab(PackMining.tab_tools);
 		setMaxStackSize(1);
 		setMaxDamage(10000);
 		setTextureName("timaxa007:colors/tool_airbrush");
-		setUnlocalizedName("tool_airbrush");
 	}
 
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {

@@ -2,18 +2,17 @@ package mods.timaxa007.pack.magic.block;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.tile.TileEntityMagicCauldron;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockMagicCauldron extends Block implements ITileEntityProvider {
+public class BlockMagicCauldron extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockMagicCauldron() {
-		super(Material.iron);
+	public BlockMagicCauldron(String tag) {
+		super(tag, Material.iron);
 		setBlockTextureName("iron_block");
-		setBlockName("magic_cauldron");
 	}
 
 	@Override

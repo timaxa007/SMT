@@ -7,7 +7,7 @@ import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.FoodForBlock;
 import mods.timaxa007.pack.stock.tile.TileEntityFoods;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,15 +22,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFoods extends Block implements ITileEntityProvider {
+public class BlockFoods extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockFoods() {
-		super(Material.cake);
+	public BlockFoods(String tag) {
+		super(tag, Material.cake);
 		setCreativeTab(PackStock.tab_food);
 		setHardness(0.25F);
 		setResistance(0.5F);
 		setBlockTextureName("planks_oak");
-		setBlockName("foods");
 	}
 
 	@Override

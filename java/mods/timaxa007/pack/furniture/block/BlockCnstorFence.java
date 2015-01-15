@@ -4,6 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorFence;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -18,17 +19,16 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCnstorFence extends Block implements ITileEntityProvider {
+public class BlockCnstorFence extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockCnstorFence() {
-		super(Material.glass);
+	public BlockCnstorFence(String tag) {
+		super(tag, Material.glass);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setLightOpacity(0);
 		setStepSound(soundTypeWood);
 		setBlockTextureName("timaxa007:woodFrame");
-		setBlockName("cnstor.fence");
 	}
 
 	@Override

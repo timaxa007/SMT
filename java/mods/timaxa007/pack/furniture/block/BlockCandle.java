@@ -5,7 +5,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCandle;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,18 +17,16 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCandle extends Block implements ITileEntityProvider {
+public class BlockCandle extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockCandle() {
-		super(Material.circuits);
+	public BlockCandle(String tag) {
+		super(tag, Material.circuits);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.3F);
 		setResistance(1.0F);
 		setLightOpacity(0);
 		float f = 0.15F;
 		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 3.0F, 0.5F + f);
-		setBlockTextureName("snow");
-		setBlockName("candle");
 	}
 
 	@Override

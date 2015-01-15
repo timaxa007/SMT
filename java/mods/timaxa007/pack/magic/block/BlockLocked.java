@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.tile.TileEntityBlockLocked;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,14 +19,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockLocked extends Block implements ITileEntityProvider {
+public class BlockLocked extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockLocked() {
-		super(Material.iron);
+	public BlockLocked(String tag) {
+		super(tag, Material.iron);
 		setCreativeTab(PackMagic.tab_magic);
 		setBlockUnbreakable();
 		setBlockTextureName("planks_oak");
-		setBlockName("locked");
 	}
 
 	@Override

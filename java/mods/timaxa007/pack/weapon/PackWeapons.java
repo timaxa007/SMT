@@ -40,7 +40,7 @@ public class PackWeapons {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Startimg sub-mod " + PackWeapons.MODNAME + ".");
+		log.info("Starting sub-mod " + PackWeapons.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackWeapons.MODID);
 		RegisterPacket.init(network);

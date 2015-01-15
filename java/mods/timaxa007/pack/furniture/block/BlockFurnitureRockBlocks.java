@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureRockBlocks;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
@@ -11,25 +11,24 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFurnitureRockBlocks extends Block implements ITileEntityProvider {
+public class BlockFurnitureRockBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
-	public BlockFurnitureRockBlocks() {
-		super(Material.rock);
+	public BlockFurnitureRockBlocks(String tag) {
+		super(tag, Material.rock);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setStepSound(soundTypeStone);
 		//setBlockTextureName("stone");
-		setBlockName("block_rock_blocks");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityFurnitureRockBlocks();
 	}
-/*
+	/*
 
 	public int quantityDropped(Random random) {
 		return 0;
@@ -143,5 +142,5 @@ public class BlockFurnitureRockBlocks extends Block implements ITileEntityProvid
 		}
 	}
 
-*/
+	 */
 }

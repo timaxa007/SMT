@@ -5,12 +5,13 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.tms.util.ItemArmorFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -19,10 +20,10 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorWoolColors extends ItemArmor {
+public class ArmorWoolColors extends ItemArmorFixReg {
 
-	public ArmorWoolColors(ArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
-		super(par2EnumArmorMaterial, par3, par4);
+	public ArmorWoolColors(String tag, ArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
+		super(tag, par2EnumArmorMaterial, par3, par4);
 		setCreativeTab(PackFurniture.tab_furniture);
 	}
 

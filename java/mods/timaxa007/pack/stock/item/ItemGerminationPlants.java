@@ -5,6 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.GerminationPlants;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -16,7 +17,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGerminationPlants extends Item {
+public class ItemGerminationPlants extends ItemFixReg {
 	/*
 @SideOnly(Side.CLIENT) private IIcon icon_a;
 @SideOnly(Side.CLIENT) private IIcon icon_b;
@@ -110,15 +111,14 @@ public class ItemGerminationPlants extends Item {
 	public static GerminationPlants crop_coral  = new GerminationPlants("crop_coral").setName("coral").setType("Herbal Water").setTexture("coral").setPlantStats(1, 2, 3).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 	public static GerminationPlants crop_kelp = new GerminationPlants("crop_kelp").setName("kelp").setType("Herbal Water").setTexture("kelp").setPlantStats(1, 2, 3).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
-	public ItemGerminationPlants() {
-		super();
+	public ItemGerminationPlants(String tag) {
+		super(tag);
 		setCreativeTab(PackStock.tab_plant);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setTextureName("timaxa007:base_seed");
-		setUnlocalizedName("ger_plant");
 	}
-/*
+	/*
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float hitZ) {
 		if (!player.canPlayerEdit(x, y, z, meta, is)) {return false;}
 		else {
@@ -141,8 +141,8 @@ public class ItemGerminationPlants extends Item {
 			}
 		}
 	}
-*/
-/*
+	 */
+	/*
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		if (world.isRemote && tag != null) {
 			if (tag.hasKey("PlantID")) {player.addChatMessage(" - " + tag.getInteger("PlantID"));}
@@ -153,7 +153,7 @@ public class ItemGerminationPlants extends Item {
 		}
 		return is;
 	}
-*/
+	 */
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("PlantID")) {

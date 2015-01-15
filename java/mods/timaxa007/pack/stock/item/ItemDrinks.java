@@ -5,6 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.FluidFake;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,17 +21,16 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemDrinks extends Item {
+public class ItemDrinks extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-	public ItemDrinks() {
-		super();
+	public ItemDrinks(String tag) {
+		super(tag);
 		//setCreativeTab(PackStock.tab_food);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setUnlocalizedName("drinks");
 	}
 
 	//tea - flower, tea, 

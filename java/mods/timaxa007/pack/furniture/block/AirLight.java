@@ -3,24 +3,27 @@ package mods.timaxa007.pack.furniture.block;
 import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.Core;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class AirLight extends Block {
+public class AirLight extends BlockFixReg {
 
-	public AirLight() {
-		super(Material.air);
+	public AirLight(String tag) {
+		super(tag, Material.air);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0F);
 		setResistance(0F);
 		setLightLevel(15F);
-		setCreativeTab(PackFurniture.tab_furniture);
 		setBlockBounds(0F, 0F, 0F, 0F, 0F, 0F);
 		setBlockTextureName("glass");
-		setBlockName("air_light");
+	}
+
+	@Override
+	public int getRenderType() {
+		return -1;
 	}
 
 	@Override
@@ -38,9 +41,5 @@ public class AirLight extends Block {
 		return null;
 	}
 
-	@Override
-	public int getRenderType() {
-		return -1;
-	}
 }
 

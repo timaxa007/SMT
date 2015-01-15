@@ -1,15 +1,14 @@
 package mods.timaxa007.pack.techno.item;
 
 import mods.timaxa007.pack.techno.PackTechno;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 
-public class ToolElectricWrench extends Item {
+public class ToolElectricWrench extends ItemFixReg {
 
-	public ToolElectricWrench() {
-		super();
+	public ToolElectricWrench(String tag) {
+		super(tag);
 		setCreativeTab(PackTechno.tab_techno);
 		setTextureName("timaxa007:test_item");
-		setUnlocalizedName("electric.wrench");
 	}
 
 }

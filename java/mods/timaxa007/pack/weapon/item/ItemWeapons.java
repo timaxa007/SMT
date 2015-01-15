@@ -7,9 +7,6 @@ import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.ItemActionBase;
-import mods.timaxa007.tms.util.UtilTMS;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -32,12 +29,11 @@ public class ItemWeapons extends ItemActionBase {
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-	public ItemWeapons() {
-		super();
+	public ItemWeapons(String tag) {
+		super(tag);
 		setMaxStackSize(1);
 		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:weapons");
-		setUnlocalizedName("weapons");
 	}
 
 	public void onUpdate(ItemStack is, World world, Entity entity, int par4, boolean par5) {

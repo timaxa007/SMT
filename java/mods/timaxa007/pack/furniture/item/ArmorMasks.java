@@ -4,6 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.render.model.ModelMask;
+import mods.timaxa007.tms.util.ItemArmorFixReg;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,7 +12,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorMasks extends ItemArmor {
+public class ArmorMasks extends ItemArmorFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
@@ -32,11 +32,10 @@ public class ArmorMasks extends ItemArmor {
 		"test"
 	};
 
-	public ArmorMasks() {
-		super(PackFurniture.proxy.item.COSTUME, 0, 0);
+	public ArmorMasks(String tag) {
+		super(tag, PackFurniture.proxy.item.COSTUME, 0, 0);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setTextureName("timaxa007:armor/mask");
-		setUnlocalizedName("armor_masks");
 	}
 
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack is) {

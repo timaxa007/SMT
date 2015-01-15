@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityTable;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,14 +17,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTable extends Block implements ITileEntityProvider {
+public class BlockTable extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockTable() {
-		super(Material.wood);
+	public BlockTable(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("planks_oak");
-		setBlockName("tables");
 	}
 
 	@Override

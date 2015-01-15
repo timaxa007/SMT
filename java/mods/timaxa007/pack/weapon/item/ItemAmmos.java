@@ -5,6 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.AmmoFor;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,17 +19,16 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemAmmos extends Item {
+public class ItemAmmos extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-	public ItemAmmos() {
-		super();
+	public ItemAmmos(String tag) {
+		super(tag);
 		setMaxStackSize(1);
 		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:item_ammos");
-		setUnlocalizedName("item_ammos");
 	}
 
 	public String getUnlocalizedName(ItemStack is) {

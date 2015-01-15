@@ -3,6 +3,7 @@ package mods.timaxa007.pack.magic.item;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,13 +11,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWands extends Item {
+public class ItemWands extends ItemFixReg {
 
-	public ItemWands() {
-		super();
+	public ItemWands(String tag) {
+		super(tag);
 		setCreativeTab(PackMagic.tab_magic);
 		setTextureName("timaxa007:wands");
-		setUnlocalizedName("wands");
 		setFull3D();
 	}
 

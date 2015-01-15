@@ -7,6 +7,7 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.lib.AddBlockWood;
 import mods.timaxa007.pack.furniture.tile.TileEntityWoodBlocks;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -27,7 +28,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockWoodBlocks extends Block implements ITileEntityProvider {
+public class BlockWoodBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
@@ -90,14 +91,13 @@ public class BlockWoodBlocks extends Block implements ITileEntityProvider {
 		"plywood_style_45_a"	//27
 	};
 
-	public BlockWoodBlocks() {
-		super(Material.wood);
+	public BlockWoodBlocks(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.75F);
 		setResistance(7.0F);
 		setStepSound(soundTypeWood);
 		//setBlockTextureName("wood_oak");
-		setBlockName("block_wood_blocks");
 	}
 
 	@Override

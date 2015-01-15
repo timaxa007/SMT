@@ -4,6 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.magic.PackMagic;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -12,7 +13,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -27,16 +27,15 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BowMagic extends Item {
+public class BowMagic extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
-	public BowMagic() {
-		super();
+	public BowMagic(String tag) {
+		super(tag);
 		setMaxStackSize(1);
 		setMaxDamage(1000);
 		setCreativeTab(PackMagic.tab_magic);
-		setUnlocalizedName("magic.bow");
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
@@ -139,7 +138,7 @@ public class BowMagic extends Item {
 	}
 
 	public int getItemEnchantability() {return 1;}
-/*
+	/*
 	public IIcon getIcon(ItemStack is, int renderPass, EntityPlayer player, ItemStack useItm, int useRem) {
 		Item itm = PackMagic.proxy.item.magic_bow;
 		if (useItm != null && is.getItem() == itm) {
@@ -150,7 +149,7 @@ public class BowMagic extends Item {
 		}
 		return getIcon(is, renderPass);
 	}
-*/
+	 */
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister ir) {
 		super.registerIcons(ir);

@@ -4,7 +4,8 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityChair;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -16,14 +17,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockChair extends BlockContainer {
+public class BlockChair extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockChair() {
-		super(Material.wood);
+	public BlockChair(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("planks_oak");
-		setBlockName("chairs");
 	}
 
 	@Override
@@ -33,15 +33,15 @@ public class BlockChair extends BlockContainer {
 	public int getRenderType() {
 		return PackFurniture.proxy.render.block_chair_modelID;
 	}
-	
+
 	public boolean isOpaqueCube() {
 		return false;
 	}
-	
+
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	public int idPicked(World world, int x, int y, int z) {
 		return 0;
 	}
@@ -51,7 +51,7 @@ public class BlockChair extends BlockContainer {
 		if (te != null && te instanceof TileEntityChair) {
 			return addTag(0, ((TileEntityChair)te).getType());
 		}
-	return addTag(0, 0);
+		return addTag(0, 0);
 	}
 
 	@SideOnly(Side.CLIENT)

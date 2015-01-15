@@ -45,7 +45,7 @@ public class PackMining {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Startimg sub-mod " + PackMining.MODNAME + ".");
+		log.info("Starting sub-mod " + PackMining.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMining.MODID);
 		RegisterPacket.init(network);

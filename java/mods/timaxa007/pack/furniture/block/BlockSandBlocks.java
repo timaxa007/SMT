@@ -7,6 +7,7 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.lib.AddBlockSand;
 import mods.timaxa007.pack.furniture.tile.TileEntitySandBlocks;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -27,7 +28,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSandBlocks extends Block implements ITileEntityProvider {
+public class BlockSandBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
@@ -38,14 +39,13 @@ public class BlockSandBlocks extends Block implements ITileEntityProvider {
 		"stone_smooth"
 	};
 
-	public BlockSandBlocks() {
-		super(Material.sand);
+	public BlockSandBlocks(String tag) {
+		super(tag, Material.sand);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(5.0F);
 		setStepSound(soundTypeSand);
 		//setBlockTextureName("sand");
-		setBlockName("block_sand_blocks");
 	}
 
 	@Override

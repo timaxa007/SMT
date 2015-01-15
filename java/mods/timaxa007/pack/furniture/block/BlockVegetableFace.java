@@ -6,6 +6,7 @@ import java.util.Random;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityVegetableFace;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -26,7 +27,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockVegetableFace extends Block implements ITileEntityProvider {
+public class BlockVegetableFace extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[][] icon_array;
 	@SideOnly(Side.CLIENT) private IIcon[][] icon_face;
@@ -44,33 +45,32 @@ public class BlockVegetableFace extends Block implements ITileEntityProvider {
 		"face6"
 	};
 
-	public BlockVegetableFace() {
-		super(Material.gourd);
+	public BlockVegetableFace(String tag) {
+		super(tag, Material.gourd);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setResistance(2.5F);
 		setStepSound(soundTypeWood);
 		setBlockTextureName("pumpkin_side");
-		setBlockName("block_wood_blocks");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityVegetableFace();
 	}
-	
+
 	/*public int getRenderType() {
 		return -1;
 	}*/
-	
+
 	public int quantityDropped(Random random) {
 		return 0;
 	}
-	
+
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	public boolean isOpaqueCube() {
 		return false;
 	}

@@ -5,13 +5,14 @@ import net.minecraft.item.Item;
 
 public class ListItem {
 
-	public static Item items_for_mining;
+	public static Item 
+	items_for_mining;
 
 	public static Item[] list_item;
 
 	public static void preInit() {
 
-		items_for_mining = new ItemsMining();
+		items_for_mining = new ItemsMining("items_for_mining");
 
 		list_item = new Item[] {
 				items_for_mining

@@ -4,6 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorDoors;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -21,19 +22,18 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCnstorDoor extends Block implements ITileEntityProvider {
+public class BlockCnstorDoor extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
-	public BlockCnstorDoor() {
-		super(Material.glass);
+	public BlockCnstorDoor(String tag) {
+		super(tag, Material.glass);
 		setStepSound(soundTypeWood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setLightOpacity(0);
 		setBlockTextureName("timaxa007:woodFrame");
-		setBlockName("cnstor.door");
 	}
 
 	@Override
@@ -56,24 +56,24 @@ public class BlockCnstorDoor extends Block implements ITileEntityProvider {
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
-		
+
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound tag = is.getTagCompound();
-		
+
 		if (te != null && te instanceof TileEntityCnstorDoors && tag != null) {
-		
+
 			if (tag.hasKey("SubID")) {
 				((TileEntityCnstorDoors)te).setSubID((int)tag.getByte("SubID"));
 			}
-			
+
 			if (tag.hasKey("ColorBlock")) {
 				((TileEntityCnstorDoors)te).setColorBlock(tag.getInteger("ColorBlock"));
 			}
-			
+
 			if (entity instanceof EntityPlayer) {
 				((TileEntityCnstorDoors)te).setOwner(((EntityPlayer)entity).getDisplayName());
 			}
-		
+
 		}
 	}
 

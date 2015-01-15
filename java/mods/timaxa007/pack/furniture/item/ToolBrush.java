@@ -6,6 +6,7 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.mining.PackMining;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +21,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolBrush extends Item {
+public class ToolBrush extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon icon_a;
 	@SideOnly(Side.CLIENT) private IIcon icon_b;
@@ -44,13 +45,12 @@ public class ToolBrush extends Item {
 		"BrushYellow"
 	};
 
-	public ToolBrush() {
-		super();
+	public ToolBrush(String tag) {
+		super(tag);
 		setCreativeTab(PackMining.tab_tools);
 		setMaxStackSize(1);
 		setMaxDamage(8);
 		setTextureName("timaxa007:colors/tool_brush");
-		setUnlocalizedName("tool_brush");
 	}
 
 	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float hitZ) {

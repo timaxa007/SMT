@@ -1,16 +1,15 @@
 package mods.timaxa007.pack.stock.item;
 
 import mods.timaxa007.pack.stock.PackStock;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 
-public class ItemNatureProduct extends Item {
+public class ItemNatureProduct extends ItemFixReg {
 
-	public ItemNatureProduct() {
-		super();
+	public ItemNatureProduct(String tag) {
+		super(tag);
+		setCreativeTab(PackStock.tab_food);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setCreativeTab(PackStock.tab_food);
-		setUnlocalizedName("NatureProduct");
 	}
 
 }

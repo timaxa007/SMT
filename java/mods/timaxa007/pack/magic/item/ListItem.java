@@ -5,24 +5,25 @@ import net.minecraft.item.Item;
 
 public class ListItem {
 
-	public static Item items_for_magic;
-	public static Item wands;
-	public static Item stuffs;
-	public static Item arrow_mini;
-	public static Item teleport;
-	public static Item globular;
+	public static Item 
+	items_for_magic, 
+	wands, 
+	stuffs, 
+	arrow_mini, 
+	teleport, 
+	globular;
 
 	public static Item[] list_item;
 
 	public static void preInit() {
 
-		items_for_magic = new ItemsMagic();
-		//magic_bow = new BowMagic();
-		wands = new ItemWands();
-		stuffs = new ItemStuffs();
-		arrow_mini = new ItemArrowMini();
-		teleport = new ItemTeleport();
-		globular = new ItemGlobular();
+		items_for_magic = new ItemsMagic("items_for_magic");
+		//magic_bow = new BowMagic("magic_bow");
+		wands = new ItemWands("wands");
+		stuffs = new ItemStuffs("stuffs");
+		arrow_mini = new ItemArrowMini("arrow_mini");
+		teleport = new ItemTeleport("teleport");
+		globular = new ItemGlobular("globular");
 
 		list_item = new Item[] {
 				items_for_magic, 

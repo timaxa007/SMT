@@ -5,6 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.MagazineFor;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,17 +19,16 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemMagazines extends Item {
+public class ItemMagazines extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-	public ItemMagazines() {
-		super();
+	public ItemMagazines(String tag) {
+		super(tag);
 		setMaxStackSize(1);
 		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:item_magazines");
-		setUnlocalizedName("item_magazines");
 	}
 
 	public String getUnlocalizedName(ItemStack is) {

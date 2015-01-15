@@ -1,16 +1,15 @@
 package mods.timaxa007.pack.mining.item;
 
 import mods.timaxa007.pack.mining.PackMining;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 
-public class ItemsMining extends Item {
+public class ItemsMining extends ItemFixReg {
 
-	public ItemsMining() {
-		super();
+	public ItemsMining(String tag) {
+		super(tag);
 		setCreativeTab(PackMining.tab_mining);
-		setUnlocalizedName("items_mining");
 	}
-/*
+	/*
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		if (!world.isRemote && player instanceof EntityPlayerMP) {
 			MinecraftServer minecraftserver = MinecraftServer.getServer();
@@ -18,5 +17,5 @@ public class ItemsMining extends Item {
 		}
 		return is;
 	}
-*/
+	 */
 }

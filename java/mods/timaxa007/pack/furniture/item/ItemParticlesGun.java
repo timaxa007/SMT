@@ -4,6 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,17 +20,16 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemParticlesGun extends Item {
+public class ItemParticlesGun extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-	public ItemParticlesGun() {
-		super();
+	public ItemParticlesGun(String tag) {
+		super(tag);
 		setMaxStackSize(1);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setTextureName("timaxa007:item_weapons");
-		setUnlocalizedName("item_weapons");
 	}
 
 	public void onUpdate(ItemStack is, World world, Entity par3Entity, int par4, boolean par5) {

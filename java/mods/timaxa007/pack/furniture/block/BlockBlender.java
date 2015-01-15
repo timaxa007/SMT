@@ -4,7 +4,8 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityBlender;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -17,14 +18,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class BlockBlender extends BlockContainer{
+public class BlockBlender extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockBlender() {
-		super(Material.wood);
+	public BlockBlender(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("planks_oak");
-		setBlockName("blender");
 	}
 
 	@Override

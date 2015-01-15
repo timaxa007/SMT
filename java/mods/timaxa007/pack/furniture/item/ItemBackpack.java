@@ -4,10 +4,10 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.util.IBackpack;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,16 +17,15 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBackpack extends Item implements IBackpack, IInventory {
+public class ItemBackpack extends ItemFixReg implements IBackpack, IInventory {
 
 	public static ItemStack[] list_slot = new ItemStack[27];
 
-	public ItemBackpack() {
-		super();
+	public ItemBackpack(String tag) {
+		super(tag);
 		setMaxStackSize(1);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setTextureName("timaxa007:backpack");
-		setUnlocalizedName("backpack");
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {

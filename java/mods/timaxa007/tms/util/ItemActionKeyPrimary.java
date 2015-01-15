@@ -2,11 +2,14 @@ package mods.timaxa007.tms.util;
 
 import mods.timaxa007.tms.Core;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemActionKeyPrimary extends Item implements IActionKeyPrimary {
+public class ItemActionKeyPrimary extends ItemFixReg implements IActionKeyPrimary {
+
+	public ItemActionKeyPrimary(String tag) {
+		super(tag);
+	}
 
 	public boolean isReload;
 	public boolean isCharge;

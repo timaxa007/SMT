@@ -7,7 +7,6 @@ import mods.timaxa007.pack.furniture.item.ListItem;
 import mods.timaxa007.pack.furniture.lib.ListFurniture;
 import mods.timaxa007.pack.furniture.recipe.FuelHandlerFurniture;
 import mods.timaxa007.pack.furniture.recipe.RecipeCnstorBlockColors;
-import mods.timaxa007.pack.furniture.recipe.RecipeToolHammer;
 import mods.timaxa007.pack.furniture.recipe.RecipesArmor;
 import mods.timaxa007.pack.furniture.recipe.Recipes_Furniture;
 import mods.timaxa007.pack.furniture.render.RenderMain;
@@ -66,7 +65,6 @@ public class ProxyCommon {
 		 */
 		GameRegistry.addRecipe(new RecipesArmor());
 		GameRegistry.addRecipe(new RecipeCnstorBlockColors());
-		GameRegistry.addRecipe(new RecipeToolHammer());
 		//GameRegistry.registerCraftingHandler(new CraftFurnitureHandler());
 
 		GameRegistry.registerFuelHandler(new FuelHandlerFurniture());

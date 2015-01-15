@@ -1,14 +1,13 @@
 package mods.timaxa007.pack.item.item;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 
-public class ToolPickaxe extends Item {
+public class ToolPickaxe extends ItemFixReg {
 
-	public ToolPickaxe() {
-		super();
+	public ToolPickaxe(String tag) {
+		super(tag);
 		setCreativeTab(PackFurniture.tab_furniture);
-		setUnlocalizedName("tool.pickaxe");
 	}
 
 }

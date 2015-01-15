@@ -1,4 +1,4 @@
-package mods.timaxa007.pack.furniture.recipe;
+package mods.timaxa007.pack.item.recipe;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.item.ItemsFurniture;

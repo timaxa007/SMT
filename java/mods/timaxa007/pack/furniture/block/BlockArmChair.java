@@ -5,6 +5,7 @@ import java.util.Set;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityArmChair;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -18,16 +19,15 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockArmChair extends Block implements ITileEntityProvider {
+public class BlockArmChair extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockArmChair() {
-		super(Material.wood);
+	public BlockArmChair(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setResistance(2.5F);
 		setStepSound(soundTypeWood);
 		setBlockTextureName("planks_oak");
-		setBlockName("armchair");
 	}
 
 	@Override

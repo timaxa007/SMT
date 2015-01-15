@@ -1,14 +1,13 @@
 package mods.timaxa007.pack.item.item;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 
-public class ToolScythe extends Item {
+public class ToolScythe extends ItemFixReg {
 
-	public ToolScythe() {
-		super();
+	public ToolScythe(String tag) {
+		super(tag);
 		setCreativeTab(PackFurniture.tab_furniture);
-		setUnlocalizedName("tool.scythe");
 	}
 
 }

@@ -1,14 +1,13 @@
 package mods.timaxa007.pack.item.item;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 
-public class ToolSword extends Item {
+public class ToolSword extends ItemFixReg {
 
-	public ToolSword() {
-		super();
+	public ToolSword(String tag) {
+		super(tag);
 		setCreativeTab(PackFurniture.tab_furniture);
-		setUnlocalizedName("tool.sword");
 	}
 
 }

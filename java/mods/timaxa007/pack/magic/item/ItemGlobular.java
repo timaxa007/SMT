@@ -3,6 +3,7 @@ package mods.timaxa007.pack.magic.item;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,15 +15,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGlobular extends Item {
+public class ItemGlobular extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon icon_overlay;
 
-	public ItemGlobular() {
-		super();
+	public ItemGlobular(String tag) {
+		super(tag);
 		setCreativeTab(PackMagic.tab_magic);
 		setTextureName("timaxa007:test_item");
-		setUnlocalizedName("globular");
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {

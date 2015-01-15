@@ -6,6 +6,7 @@ import java.util.Random;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityLights;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -23,7 +24,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockLight extends Block implements ITileEntityProvider {
+public class BlockLight extends BlockFixReg implements ITileEntityProvider {
 
 	public static final String[] block_type = new String[] {
 		"lamp", 
@@ -34,11 +35,10 @@ public class BlockLight extends Block implements ITileEntityProvider {
 		""
 	};
 
-	public BlockLight() {
-		super(Material.glass);
+	public BlockLight(String tag) {
+		super(tag, Material.glass);
 		setStepSound(soundTypeStone);
 		setBlockTextureName("glass");
-		setBlockName("lights");
 	}
 
 	@Override

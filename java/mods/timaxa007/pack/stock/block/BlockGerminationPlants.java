@@ -5,7 +5,8 @@ import java.util.List;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.item.ItemGerminationPlants;
 import mods.timaxa007.pack.stock.tile.TileEntityGerminationPlants;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,16 +21,15 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockGerminationPlants extends BlockContainer {
+public class BlockGerminationPlants extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockGerminationPlants() {
-		super(Material.glass);
+	public BlockGerminationPlants(String tag) {
+		super(tag, Material.glass);
 		setCreativeTab(PackStock.tab_plant);
 		setHardness(0.25F);
 		setResistance(0.1F);
 		setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 1.0F, 0.875F);
 		setBlockTextureName("plank_oak");
-		setBlockName("germination");
 	}
 
 	@Override
@@ -40,11 +40,11 @@ public class BlockGerminationPlants extends BlockContainer {
 	public int getRenderType() {
 		return PackStock.proxy.render.block_germination_plants_modelID;
 	}
-	
+
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	public boolean isOpaqueCube() {
 		return false;
 	}

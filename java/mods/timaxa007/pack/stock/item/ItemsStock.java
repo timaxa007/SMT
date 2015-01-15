@@ -5,6 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.ItemForStock;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -22,16 +23,15 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemsStock extends Item {
+public class ItemsStock extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-	public ItemsStock() {
-		super();
+	public ItemsStock(String tag) {
+		super(tag);
 		setCreativeTab(PackStock.tab_stock);
 		setTextureName("timaxa007:");
-		setUnlocalizedName("items_stock");
 	}
 
 	public void onUpdate(ItemStack is, World world, Entity entity, int par4, boolean flag) {

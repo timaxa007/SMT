@@ -60,7 +60,7 @@ public class PackStock {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Startimg sub-mod " + PackStock.MODNAME + ".");
+		log.info("Starting sub-mod " + PackStock.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackStock.MODID);
 		RegisterPacket.init(network);

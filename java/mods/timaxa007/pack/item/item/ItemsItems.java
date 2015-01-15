@@ -1,14 +1,13 @@
 package mods.timaxa007.pack.item.item;
 
 import mods.timaxa007.pack.item.PackItems;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 
-public class ItemsItems extends Item {
+public class ItemsItems extends ItemFixReg {
 
-	public ItemsItems() {
-		super();
+	public ItemsItems(String tag) {
+		super(tag);
 		setCreativeTab(PackItems.tab_items);
-		setUnlocalizedName("item_items");
 	}
 
 }

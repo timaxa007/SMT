@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.tile.TileEntityElectricWires;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,13 +19,12 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockElectricWires extends Block implements ITileEntityProvider {
+public class BlockElectricWires extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockElectricWires() {
-		super(Material.glass);
+	public BlockElectricWires(String tag) {
+		super(tag, Material.glass);
 		setCreativeTab(PackTechno.tab_techno);
 		setBlockTextureName("glass");
-		setBlockName("wires");
 	}
 
 	@Override

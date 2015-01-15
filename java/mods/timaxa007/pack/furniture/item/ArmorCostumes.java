@@ -4,12 +4,13 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.tms.util.ItemArmorFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
@@ -20,7 +21,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorCostumes extends ItemArmor {
+public class ArmorCostumes extends ItemArmorFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -32,8 +33,8 @@ public class ArmorCostumes extends ItemArmor {
 		"boot"
 	};
 
-	public ArmorCostumes(ArmorMaterial par2, int par3, int par4) {
-		super(par2, par3, par4);
+	public ArmorCostumes(String tag, ArmorMaterial par2, int par3, int par4) {
+		super(tag, par2, par3, par4);
 		setCreativeTab(PackFurniture.tab_furniture);
 	}
 

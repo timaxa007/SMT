@@ -4,7 +4,8 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCrystals;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,14 +18,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCrystals extends BlockContainer{
+public class BlockCrystals extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockCrystals() {
-		super(Material.glass);
+	public BlockCrystals(String tag) {
+		super(tag, Material.glass);
 		setHardness(0.5F);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setBlockTextureName("glass");
-		setBlockName("crystals");
 	}
 
 	@Override
@@ -35,11 +35,11 @@ public class BlockCrystals extends BlockContainer{
 	public int getRenderType() {
 		return PackFurniture.proxy.render.block_crystals_modelID;
 	}
-	
+
 	public boolean isOpaqueCube() {
 		return false;
 	}
-	
+
 	public boolean renderAsNormalBlock() {
 		return false;
 	}

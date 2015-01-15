@@ -5,6 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,17 +19,16 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBeeProducts extends Item {
+public class ItemBeeProducts extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-	public ItemBeeProducts() {
-		super();
+	public ItemBeeProducts(String tag) {
+		super(tag);
 		setCreativeTab(PackStock.tab_apis);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setUnlocalizedName("bee_products");
 	}
 
 	public enum bee_products {

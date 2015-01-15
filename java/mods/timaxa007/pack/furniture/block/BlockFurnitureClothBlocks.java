@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureClothBlocks;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
@@ -11,25 +11,24 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFurnitureClothBlocks extends Block implements ITileEntityProvider {
+public class BlockFurnitureClothBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
-	public BlockFurnitureClothBlocks() {
-		super(Material.cloth);
+	public BlockFurnitureClothBlocks(String tag) {
+		super(tag, Material.cloth);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setResistance(5.0F);
 		setStepSound(soundTypeCloth);
 		//setBlockTextureName("cloth");
-		setBlockName("block_cloth_blocks");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityFurnitureClothBlocks();
 	}
-/*
+	/*
 	public int quantityDropped(Random random) {
 		return 0;
 	}
@@ -72,7 +71,7 @@ public class BlockFurnitureClothBlocks extends Block implements ITileEntityProvi
 			if (tag.hasKey("SubID")) ((TileEntityClothBlocks)te).setSubID((int)tag.getByte("SubID"));
 			if (tag.hasKey("ColorBlock")) ((TileEntityClothBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));
 		}
-		
+
 	}
 
 	@Override
@@ -149,5 +148,5 @@ public class BlockFurnitureClothBlocks extends Block implements ITileEntityProvi
 			icon_array[i] = ir.registerIcon("timaxa007:" + "cloth/" + type_block[i] + "_overlay");
 		}
 	}
-*/
+	 */
 }

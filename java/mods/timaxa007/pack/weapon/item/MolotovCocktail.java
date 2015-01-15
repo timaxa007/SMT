@@ -1,20 +1,19 @@
 package mods.timaxa007.pack.weapon.item;
 
 import mods.timaxa007.pack.weapon.PackWeapons;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class MolotovCocktail extends Item {
+public class MolotovCocktail extends ItemFixReg {
 
-	public MolotovCocktail() {
-		super();
+	public MolotovCocktail(String tag) {
+		super(tag);
 		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:molotov_cocktail");
-		setUnlocalizedName("molotov_cocktail");
 	}
 
 	public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {

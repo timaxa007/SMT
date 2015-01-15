@@ -1,10 +1,9 @@
 package mods.timaxa007.pack.techno.block;
 
 import java.util.List;
-import java.util.Random;
 
 import mods.timaxa007.pack.techno.PackTechno;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -13,7 +12,7 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockGenerators extends Block {
+public class BlockGenerators extends BlockFixReg {
 
 	public static final String[] generatorNames = new String[] {
 		"Solid", 
@@ -36,12 +35,11 @@ public class BlockGenerators extends Block {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
-	public BlockGenerators() {
-		super(Material.iron);
+	public BlockGenerators(String tag) {
+		super(tag, Material.iron);
 		setCreativeTab(PackTechno.tab_techno);
 		setStepSound(soundTypeMetal);
 		setBlockTextureName("planks_oak");
-		setBlockName("generators");
 	}
 
 	@SideOnly(Side.CLIENT)

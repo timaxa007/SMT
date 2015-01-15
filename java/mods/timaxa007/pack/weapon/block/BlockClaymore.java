@@ -3,7 +3,7 @@ package mods.timaxa007.pack.weapon.block;
 import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.tile.TileEntityClaymore;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -15,15 +15,14 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
-public class BlockClaymore extends Block implements ITileEntityProvider {
+public class BlockClaymore extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockClaymore() {
-		super(Material.circuits);
+	public BlockClaymore(String tag) {
+		super(tag, Material.circuits);
 		setCreativeTab(PackWeapons.tab_weapons);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockBounds(0.1875F, 0.0F, 0.1875F, 0.8125F, 0.5F, 0.8125F);
-		setBlockName("claymore");
 	}
 
 	@Override

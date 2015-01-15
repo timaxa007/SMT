@@ -1,14 +1,13 @@
 package mods.timaxa007.pack.techno.item;
 
 import mods.timaxa007.pack.techno.PackTechno;
-import net.minecraft.item.Item;
+import mods.timaxa007.tms.util.ItemFixReg;
 
-public class ItemsTechno extends Item {
+public class ItemsTechno extends ItemFixReg {
 
-	public ItemsTechno() {
-		super();
+	public ItemsTechno(String tag) {
+		super(tag);
 		setCreativeTab(PackTechno.tab_techno);
-		setUnlocalizedName("items_techno");
 	}
 
 }

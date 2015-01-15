@@ -2,11 +2,14 @@ package mods.timaxa007.tms.util;
 
 import mods.timaxa007.tms.Core;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemActionMouseKey extends Item implements IActionMouseKey {
+public class ItemActionMouseKey extends ItemFixReg implements IActionMouseKey {
+
+	public ItemActionMouseKey(String tag) {
+		super(tag);
+	}
 
 	public boolean isLeftClick;
 	public boolean isRightClick;

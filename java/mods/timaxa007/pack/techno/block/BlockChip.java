@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.tile.TileEntityChip;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,16 +20,15 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockChip extends Block implements ITileEntityProvider{
+public class BlockChip extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockChip() {
-		super(Material.iron);
+	public BlockChip(String tag) {
+		super(tag, Material.iron);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
 		setCreativeTab(PackTechno.tab_techno);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockTextureName("iron_block");
-		setBlockName("electric.chip");
 	}
 
 	@Override

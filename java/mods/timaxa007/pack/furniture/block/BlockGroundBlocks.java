@@ -7,6 +7,7 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.lib.AddBlockGround;
 import mods.timaxa007.pack.furniture.tile.TileEntityGroundBlocks;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -27,7 +28,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockGroundBlocks extends Block implements ITileEntityProvider {
+public class BlockGroundBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
@@ -38,14 +39,13 @@ public class BlockGroundBlocks extends Block implements ITileEntityProvider {
 		"stone_smooth"
 	};
 
-	public BlockGroundBlocks() {
-		super(Material.ground);
+	public BlockGroundBlocks(String tag) {
+		super(tag, Material.ground);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.75F);
 		setResistance(5.0F);
 		setStepSound(soundTypeGrass);
 		//setBlockTextureName("dirt");
-		setBlockName("block_ground_blocks");
 	}
 
 	@Override

@@ -40,7 +40,7 @@ public class PackItems {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Startimg sub-mod " + PackItems.MODNAME + ".");
+		log.info("Starting sub-mod " + PackItems.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackItems.MODID);
 		RegisterPacket.init(network);

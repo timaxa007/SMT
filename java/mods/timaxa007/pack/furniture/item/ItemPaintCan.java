@@ -6,6 +6,7 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.mining.PackMining;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +20,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemPaintCan extends Item {
+public class ItemPaintCan extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon icon_a;
 	@SideOnly(Side.CLIENT) private IIcon icon_b;
@@ -43,12 +44,11 @@ public class ItemPaintCan extends Item {
 		"PaintCanYellow"
 	};
 
-	public ItemPaintCan() {
-		super();
+	public ItemPaintCan(String tag) {
+		super(tag);
 		setMaxStackSize(1);
 		setMaxDamage(15);
 		setCreativeTab(PackMining.tab_tools);
-		setUnlocalizedName("ItemPaintCan");
 	}
 
 	public String getUnlocalizedName(ItemStack is) {

@@ -4,7 +4,8 @@ import java.util.Random;
 
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.tile.TileEntityElectricMachines;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,15 +15,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockElectricMachines extends BlockContainer {
+public class BlockElectricMachines extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockElectricMachines() {
-		super(Material.iron);
+	public BlockElectricMachines(String tag) {
+		super(tag, Material.iron);
 		setCreativeTab(PackTechno.tab_techno);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockTextureName("planks_oak");
-		setBlockName("electric.Machines");
 	}
 
 	@Override

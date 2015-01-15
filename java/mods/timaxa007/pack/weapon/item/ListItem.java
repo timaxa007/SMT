@@ -5,21 +5,22 @@ import net.minecraft.item.Item;
 
 public class ListItem {
 
-	public static Item items_for_weapons;
-	public static Item molotov_cocktail;
-	public static Item weapons;
-	public static Item ammos;
-	public static Item magazines;
+	public static Item 
+	items_for_weapons, 
+	molotov_cocktail, 
+	weapons, 
+	ammos, 
+	magazines;
 
 	public static Item[] list_item;
 
 	public static void preInit() {
 
-		items_for_weapons = new ItemsWeapons();
-		molotov_cocktail = new MolotovCocktail();
-		weapons = new ItemWeapons();
-		ammos = new ItemAmmos();
-		magazines = new ItemMagazines();
+		items_for_weapons = new ItemsWeapons("items_for_weapons");
+		molotov_cocktail = new MolotovCocktail("molotov_cocktail");
+		weapons = new ItemWeapons("weapons");
+		ammos = new ItemAmmos("ammos");
+		magazines = new ItemMagazines("magazines");
 
 		list_item = new Item[] {
 				items_for_weapons, 

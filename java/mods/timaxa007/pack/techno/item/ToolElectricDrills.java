@@ -29,14 +29,13 @@ public class ToolElectricDrills extends ItemActionKeyPrimary {
 		"Low"		//2
 	};
 
-	public ToolElectricDrills() {
-		super();
+	public ToolElectricDrills(String tag) {
+		super(tag);
 		setCreativeTab(PackTechno.tab_techno);
 		setMaxDamage(1000);
 		setMaxStackSize(1);
 		setNoRepair();
 		setTextureName("electric.drills");
-		setUnlocalizedName("tool_electric_drills");
 	}
 
 	@Override

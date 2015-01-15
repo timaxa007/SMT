@@ -5,7 +5,8 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityGrills;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,17 +21,17 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockGrills extends BlockContainer {
+public class BlockGrills extends BlockFixReg implements ITileEntityProvider {
+
 	private static boolean keepFurnaceInventory;
 	private final Random furnaceRand = new Random();
 	private boolean isActive;
 
-	public BlockGrills() {
-		super(Material.iron);
+	public BlockGrills(String tag) {
+		super(tag, Material.iron);
 		setHardness(0.5F);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setBlockTextureName("planks_oak");
-		setBlockName("grills");
 	}
 
 	@Override

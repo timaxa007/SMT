@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureMetalBlocks;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
@@ -11,25 +11,24 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFurnitureMetalBlocks extends Block implements ITileEntityProvider {
+public class BlockFurnitureMetalBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
-	public BlockFurnitureMetalBlocks() {
-		super(Material.iron);
+	public BlockFurnitureMetalBlocks(String tag) {
+		super(tag, Material.iron);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(5.0F);
 		setResistance(10.0F);
 		setStepSound(soundTypeMetal);
 		//setBlockTextureName("stone");
-		setBlockName("block_iron_blocks");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityFurnitureMetalBlocks();
 	}
-/*
+	/*
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
 		TileEntity te = block_access.getTileEntity(x, y, z);
@@ -139,5 +138,5 @@ public class BlockFurnitureMetalBlocks extends Block implements ITileEntityProvi
 			icon_array[i] = ir.registerIcon("timaxa007:" + "metal/" + type_block[i] + "_overlay");
 		}
 	}
-*/
+	 */
 }

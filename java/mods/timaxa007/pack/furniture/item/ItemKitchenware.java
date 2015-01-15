@@ -4,6 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,17 +18,16 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemKitchenware extends Item {
+public class ItemKitchenware extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-	public ItemKitchenware() {
-		super();
+	public ItemKitchenware(String tag) {
+		super(tag);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setUnlocalizedName("kitchenware");
 	}
 
 	public enum kitchenware {

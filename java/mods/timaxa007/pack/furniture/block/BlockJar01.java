@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityJar01;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,15 +20,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockJar01 extends Block implements ITileEntityProvider {
+public class BlockJar01 extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockJar01() {
-		super(Material.glass);
+	public BlockJar01(String tag) {
+		super(tag, Material.glass);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.25F);
 		setLightOpacity(0);
 		setBlockTextureName("glass");
-		setBlockName("jar01");
 	}
 
 	@Override

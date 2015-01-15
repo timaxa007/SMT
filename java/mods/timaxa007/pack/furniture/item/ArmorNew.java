@@ -3,22 +3,23 @@ package mods.timaxa007.pack.furniture.item;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.render.model.ModelNewArmor;
+import mods.timaxa007.tms.util.ItemArmorFixReg;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorNew extends ItemArmor {
+public class ArmorNew extends ItemArmorFixReg {
 
-	public ArmorNew(ArmorMaterial mat, int par3, int par4) {
-		super(mat, par3, par4);
+	public ArmorNew(String tag, ArmorMaterial mat, int par3, int par4) {
+		super(tag, mat, par3, par4);
 	}
 
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack is) {

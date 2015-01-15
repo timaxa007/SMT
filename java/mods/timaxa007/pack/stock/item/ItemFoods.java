@@ -7,6 +7,7 @@ import mods.timaxa007.pack.mining.lib.OreFake;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.FoodForItem;
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +23,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemFoods extends Item {
+public class ItemFoods extends ItemFixReg {
 
 	public static OreFake ore_salt = new OreFake("ore_salt").setName("salt").setType("Rock").setColor(0xFFFFFF).setTemperatures(16.0F, -10.0F, 100.0F);
 	public static OreFake ore_salted = new OreFake("ore_salted").setName("salt").setType("End").setColor(0xFFFFFF).setTemperatures(0.0F, -60.0F, 40.0F);
@@ -184,13 +185,12 @@ public class ItemFoods extends Item {
 	 */
 	@SideOnly(Side.CLIENT) private IIcon[][] icon_g;
 
-	public ItemFoods() {
-		super();
+	public ItemFoods(String tag) {
+		super(tag);
 		setCreativeTab(PackStock.tab_food);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setTextureName("timaxa007:");
-		setUnlocalizedName("foods");
 	}
 	/*
 public enum foods {

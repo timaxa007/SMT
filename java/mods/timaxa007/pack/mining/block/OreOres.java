@@ -5,6 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.pack.mining.tile.TileEntityOreOres;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -22,7 +23,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class OreOres extends Block implements ITileEntityProvider {
+public class OreOres extends BlockFixReg implements ITileEntityProvider {
 
 	public static String[] type_ore = new String[] {
 		"appa", 
@@ -43,14 +44,12 @@ public class OreOres extends Block implements ITileEntityProvider {
 		"shard"
 	};
 
-	public OreOres() {
-		super(Material.rock);
+	public OreOres(String tag) {
+		super(tag, Material.rock);
 		setCreativeTab(PackMining.tab_mining);
 		setStepSound(soundTypeStone);
 		setHardness(1.0F);
 		setResistance(5.0F);
-		setBlockTextureName("stone");
-		setBlockName("ore_ores");
 	}
 
 	@Override
@@ -61,15 +60,15 @@ public class OreOres extends Block implements ITileEntityProvider {
 	public int getRenderType() {
 		return -1;
 	}
-	
+
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	public boolean isOpaqueCube() {
 		return false;
 	}
-	*/
+	 */
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
 		TileEntity te = block_access.getTileEntity(x, y, z);

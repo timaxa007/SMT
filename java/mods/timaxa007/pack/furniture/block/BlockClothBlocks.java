@@ -7,6 +7,7 @@ import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.lib.AddBlockCloth;
 import mods.timaxa007.pack.furniture.tile.TileEntityClothBlocks;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -27,7 +28,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockClothBlocks extends Block implements ITileEntityProvider {
+public class BlockClothBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	public static AddBlockCloth cloth_style1 = new AddBlockCloth("cloth_style1").setName("cloth_style1").setColor(0xFFFFFF).setTexture("cloth_style_1");
 
@@ -38,14 +39,13 @@ public class BlockClothBlocks extends Block implements ITileEntityProvider {
 		"stone_smooth"
 	};
 
-	public BlockClothBlocks() {
-		super(Material.cloth);
+	public BlockClothBlocks(String tag) {
+		super(tag, Material.cloth);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setResistance(5.0F);
 		setStepSound(soundTypeCloth);
 		//setBlockTextureName("cloth");
-		setBlockName("block_cloth_blocks");
 	}
 
 	@Override
@@ -95,7 +95,7 @@ public class BlockClothBlocks extends Block implements ITileEntityProvider {
 			if (tag.hasKey("SubID")) ((TileEntityClothBlocks)te).setSubID((int)tag.getByte("SubID"));
 			if (tag.hasKey("ColorBlock")) ((TileEntityClothBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));
 		}
-		
+
 	}
 
 	@Override

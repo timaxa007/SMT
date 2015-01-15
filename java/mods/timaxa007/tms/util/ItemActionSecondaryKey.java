@@ -2,11 +2,14 @@ package mods.timaxa007.tms.util;
 
 import mods.timaxa007.tms.Core;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemActionSecondaryKey extends Item implements IActionKeySecondary {
+public class ItemActionSecondaryKey extends ItemFixReg implements IActionKeySecondary {
+
+	public ItemActionSecondaryKey(String tag) {
+		super(tag);
+	}
 
 	public boolean isUse;
 	public boolean isYawRight;

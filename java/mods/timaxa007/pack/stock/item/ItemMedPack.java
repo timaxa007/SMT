@@ -1,23 +1,21 @@
 package mods.timaxa007.pack.stock.item;
 
 import mods.timaxa007.pack.stock.PackStock;
-import net.minecraft.entity.SharedMonsterAttributes;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemMedPack extends Item {
+public class ItemMedPack extends ItemFixReg {
 
-	public ItemMedPack() {
-		super();
+	public ItemMedPack(String tag) {
+		super(tag);
 		setCreativeTab(PackStock.tab_medical);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 		setMaxStackSize(1);
 		setTextureName("timaxa007:medpack");
-		setUnlocalizedName("medpack");
 	}
 
 	public ItemStack onEaten(ItemStack is, World world, EntityPlayer player) {

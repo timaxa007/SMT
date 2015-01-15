@@ -2,7 +2,6 @@ package mods.timaxa007.tms;
 
 import mods.timaxa007.lib.ListTextureModel;
 import mods.timaxa007.tms.packet.RegisterPacket;
-import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -19,6 +18,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 //@Mod (modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION, dependencies = "required-before:01miningpack;required-before:02pmfpack;required-before:03furniturepack;required-before:04technopack;required-before:05magicpack;required-before:06weaponpack")
 @Mod (modid = Core.MODID, name = Core.MODNAME, version = Core.VERSION)
@@ -62,7 +62,7 @@ public class Core {
 	public void preInitialize(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Startimg core " + Core.MODNAME + ".");
+		log.info("Starting core " + Core.MODNAME + ".");
 
 		currectConfig = new Configuration(event.getSuggestedConfigurationFile());
 		syncConfig(currectConfig);
@@ -70,10 +70,10 @@ public class Core {
 		new ListTextureModel();
 
 		block_test = new TestBlock();
-		UtilTMS.UtilBlock.RegBlock(block_test);
+		GameRegistry.registerBlock(block_test, "block_test");
 
 		item_test = new TestItem();
-		UtilTMS.UtilItem.RegItem(item_test);
+		GameRegistry.registerItem(item_test, "item_test");
 
 		Recipes_TMS.list();
 

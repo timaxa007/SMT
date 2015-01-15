@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityPipes;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,13 +19,12 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPipes extends Block implements ITileEntityProvider {
+public class BlockPipes extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockPipes() {
-		super(Material.glass);
+	public BlockPipes(String tag) {
+		super(tag, Material.glass);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setBlockTextureName("glass");
-		setBlockName("pipes");
 	}
 
 	@Override

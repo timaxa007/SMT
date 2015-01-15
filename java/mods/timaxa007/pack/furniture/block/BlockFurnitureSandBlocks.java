@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureSandBlocks;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
@@ -11,25 +11,24 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFurnitureSandBlocks extends Block implements ITileEntityProvider {
+public class BlockFurnitureSandBlocks extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
-	public BlockFurnitureSandBlocks() {
-		super(Material.sand);
+	public BlockFurnitureSandBlocks(String tag) {
+		super(tag, Material.sand);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(5.0F);
 		setStepSound(soundTypeSand);
 		//setBlockTextureName("sand");
-		setBlockName("block_sand_blocks");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityFurnitureSandBlocks();
 	}
-/*
+	/*
 	public int quantityDropped(Random random) {
 		return 0;
 	}
@@ -139,5 +138,5 @@ public class BlockFurnitureSandBlocks extends Block implements ITileEntityProvid
 			icon_array[i] = ir.registerIcon("timaxa007:" + "ground/" + type_block[i] + "_overlay");
 		}
 	}
-*/
+	 */
 }

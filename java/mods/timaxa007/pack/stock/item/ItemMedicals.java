@@ -3,6 +3,7 @@ package mods.timaxa007.pack.stock.item;
 import java.util.List;
 
 import mods.timaxa007.pack.stock.PackStock;
+import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +18,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemMedicals extends Item {
+public class ItemMedicals extends ItemFixReg {
+
 	public static final String[] medicalNames = new String[] {
 		"none", 
 
@@ -223,12 +225,11 @@ public class ItemMedicals extends Item {
 	};
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
-	public ItemMedicals() {
-		super();
+	public ItemMedicals(String tag) {
+		super(tag);
+		setCreativeTab(PackStock.tab_medical);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setCreativeTab(PackStock.tab_medical);
-		setUnlocalizedName("medicals");
 	}
 
 	@SideOnly(Side.CLIENT)

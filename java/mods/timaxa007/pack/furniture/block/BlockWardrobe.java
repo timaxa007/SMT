@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityWardrobe;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,14 +17,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockWardrobe extends Block implements ITileEntityProvider {
+public class BlockWardrobe extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockWardrobe() {
-		super(Material.wood);
+	public BlockWardrobe(String tag) {
+		super(tag, Material.wood);
 		setHardness(0.5F);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setBlockTextureName("planks_oak");
-		setBlockName("wardrobes");
 	}
 
 	@Override

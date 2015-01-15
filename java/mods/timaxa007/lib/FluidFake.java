@@ -21,7 +21,6 @@ public class FluidFake {
 	private FluidFake.TypeFluid type;
 	private int color_hex;
 	private float temperature;
-
 	private String texture;
 
 	/**It is not recommended to use this method.**/

@@ -5,7 +5,8 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityBookshelf;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,15 +19,15 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockBookshelf extends BlockContainer {
-	protected Random random = new Random();
+public class BlockBookshelf extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockBookshelf() {
-		super(Material.wood);
+	private Random random = new Random();
+
+	public BlockBookshelf(String tag) {
+		super(tag, Material.wood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("bookshelf");
-		setBlockName("bookshelf");
 	}
 
 	@Override
@@ -62,7 +63,7 @@ public class BlockBookshelf extends BlockContainer {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		//if (!world.isRemote) {return false;}
-		if (te == null || player.isSneaking()) {return false;}
+		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityBookshelf) {
 			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_bookshelf, world, x, y, z);
 			return true;

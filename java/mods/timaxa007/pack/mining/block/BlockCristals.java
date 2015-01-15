@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.pack.mining.tile.TileEntityCristals;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,15 +19,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCristals extends Block implements ITileEntityProvider {
+public class BlockCristals extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockCristals() {
-		super(Material.glass);
+	public BlockCristals(String tag) {
+		super(tag, Material.glass);
 		setCreativeTab(PackMining.tab_mining);
 		setHardness(0.25F);
 		setLightOpacity(0);
 		setBlockTextureName("glass");
-		setBlockName("cristals");
 	}
 
 	@Override

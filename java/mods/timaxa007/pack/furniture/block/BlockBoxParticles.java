@@ -5,7 +5,8 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityBoxParticles;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,14 +20,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockBoxParticles extends BlockContainer{
+public class BlockBoxParticles extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockBoxParticles() {
-		super(Material.rock);
+	public BlockBoxParticles(String tag) {
+		super(tag, Material.rock);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.35F);
 		setBlockTextureName("planks_oak");
-		setBlockName("boxParticles");
 	}
 
 	@Override

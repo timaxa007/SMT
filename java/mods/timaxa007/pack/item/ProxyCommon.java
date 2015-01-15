@@ -6,6 +6,7 @@ import mods.timaxa007.pack.item.gui.HandlerGuiPackItems;
 import mods.timaxa007.pack.item.item.ListItem;
 import mods.timaxa007.pack.item.lib.ListPackItems;
 import mods.timaxa007.pack.item.recipe.RecipeArmorColor;
+import mods.timaxa007.pack.item.recipe.RecipeToolHammer;
 import mods.timaxa007.pack.item.recipe.Recipes_PackItems;
 import mods.timaxa007.pack.item.render.RenderMain;
 import mods.timaxa007.tms.util.IProxy;
@@ -40,6 +41,7 @@ public class ProxyCommon implements IProxy {
 
 		Recipes_PackItems.list();
 		GameRegistry.addRecipe(new RecipeArmorColor());
+		GameRegistry.addRecipe(new RecipeToolHammer());
 
 		MinecraftForge.EVENT_BUS.register(new EventPackItems());
 

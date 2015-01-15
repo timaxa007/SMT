@@ -1,16 +1,16 @@
 package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockCnstorStairs extends Block implements ITileEntityProvider {
+public class BlockCnstorStairs extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockCnstorStairs() {
-		super(Material.glass);
+	public BlockCnstorStairs(String tag) {
+		super(tag, Material.glass);
 		setStepSound(soundTypeWood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
@@ -18,7 +18,6 @@ public class BlockCnstorStairs extends Block implements ITileEntityProvider {
 		setLightOpacity(0);
 		setBlockTextureName("timaxa007:woodFrame");
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-		setBlockName("cnstor.stairs");
 	}
 
 	@Override

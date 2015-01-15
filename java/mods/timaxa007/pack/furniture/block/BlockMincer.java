@@ -4,8 +4,9 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityMincer;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -16,33 +17,32 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockMincer extends BlockContainer{
+public class BlockMincer extends BlockFixReg implements ITileEntityProvider {
 	private static boolean keepFurnaceInventory;
 	private final Random furnaceRand = new Random();
 	private boolean isActive;
 
-	public BlockMincer() {
-		super(Material.iron);
+	public BlockMincer(String tag) {
+		super(tag, Material.iron);
 		setStepSound(soundTypeMetal);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("iron_block");
-		setBlockName("mincer");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityMincer();
 	}
-	
+
 	public int getRenderType() {
 		return PackFurniture.proxy.render.block_mincer_modelID;
 	}
-	
+
 	public boolean isOpaqueCube() {
 		return false;
 	}
-	
+
 	public boolean renderAsNormalBlock() {
 		return false;
 	}

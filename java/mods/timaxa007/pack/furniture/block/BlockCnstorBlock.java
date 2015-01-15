@@ -7,7 +7,7 @@ import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorBlock;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,17 +22,16 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCnstorBlock extends Block implements ITileEntityProvider {
+public class BlockCnstorBlock extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockCnstorBlock() {
-		super(Material.glass);
+	public BlockCnstorBlock(String tag) {
+		super(tag, Material.glass);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(1.0F);
 		setResistance(3.5F);
 		setLightOpacity(0);
 		setStepSound(soundTypeWood);
 		setBlockTextureName("timaxa007:woodFrame");
-		setBlockName("cnstor.block");
 	}
 
 	@Override

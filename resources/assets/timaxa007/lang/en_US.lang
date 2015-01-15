@@ -94,6 +94,8 @@ item.item_test.name=Test Item
 
 itemGroup.tab_furniture=Tab Furniture's
 
+itemGroup.tab_items=Tab Item's
+
 itemGroup.tab_magic=Tab Magic's
 
 itemGroup.tab_mining=Tab Mining's

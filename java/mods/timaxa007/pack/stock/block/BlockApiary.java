@@ -5,7 +5,8 @@ import java.util.Random;
 
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.tile.TileEntityApiary;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockApiary extends BlockContainer {
+public class BlockApiary extends BlockFixReg implements ITileEntityProvider {
 
 	public static String[] type_beehives = new String[] {
 		"Apiary", 
@@ -28,13 +29,12 @@ public class BlockApiary extends BlockContainer {
 		"Drying"
 	};
 
-	public BlockApiary() {
-		super(Material.glass);
+	public BlockApiary(String tag) {
+		super(tag, Material.glass);
 		setCreativeTab(PackStock.tab_apis);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockTextureName("planks_oak");
-		setBlockName("apiary");
 	}
 
 	@Override

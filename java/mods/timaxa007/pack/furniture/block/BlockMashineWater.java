@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityMashineWater;
-import net.minecraft.block.Block;
+import mods.timaxa007.tms.util.BlockFixReg;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,15 +20,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMashineWater extends Block implements ITileEntityProvider {
+public class BlockMashineWater extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockMashineWater() {
-		super(Material.iron);
+	public BlockMashineWater(String tag) {
+		super(tag, Material.iron);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.25F);
 		setLightOpacity(0);
 		setBlockTextureName("glass");
-		setBlockName("masine_water");
 	}
 
 	@Override

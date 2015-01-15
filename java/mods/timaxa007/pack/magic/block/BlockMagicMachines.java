@@ -2,7 +2,8 @@ package mods.timaxa007.pack.magic.block;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.tile.TileEntityMagicMachines;
-import net.minecraft.block.BlockContainer;
+import mods.timaxa007.tms.util.BlockFixReg;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,15 +13,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockMagicMachines extends BlockContainer{
+public class BlockMagicMachines extends BlockFixReg implements ITileEntityProvider {
 
-	public BlockMagicMachines() {
-		super(Material.rock);
+	public BlockMagicMachines(String tag) {
+		super(tag, Material.rock);
 		setCreativeTab(PackMagic.tab_magic);
 		setHardness(0.5F);
 		setResistance(1.0F);
 		setBlockTextureName("planks_oak");
-		setBlockName("magic.machines");
 	}
 
 	@Override
