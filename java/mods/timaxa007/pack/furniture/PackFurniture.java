@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture;
 
-import mods.timaxa007.pack.furniture.packet.RegisterPacket;
+import mods.timaxa007.pack.furniture.packet.RegisterMessage;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -43,7 +43,7 @@ public class PackFurniture {
 		log.info("Starting sub-mod " + PackFurniture.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackFurniture.MODID);
-		RegisterPacket.init(network);
+		RegisterMessage.init(network);
 
 		proxy.preInit(event);
 

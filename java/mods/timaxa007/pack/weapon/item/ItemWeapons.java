@@ -2,11 +2,11 @@ package mods.timaxa007.pack.weapon.item;
 
 import java.util.List;
 
-import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.ItemActionBase;
+import mods.timaxa007.tms.util.ItemPrimaryKey;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,13 +18,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWeapons extends ItemActionBase {
+public class ItemWeapons extends ItemPrimaryKey {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -138,46 +135,57 @@ public class ItemWeapons extends ItemActionBase {
 		}
 	}
 
-	@Override
-	public void onCharge(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	@SideOnly(Side.CLIENT)
+	public boolean onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		if (isPress) {
+			player.openGui(PackWeapons.instance, PackWeapons.proxy.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+			if (Core.show_system_info_testing) System.out.println("-modify-");
+			return true;
+		}
+		return false;
 	}
 
-	@Override
 	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (!world.isRemote) {
+		if (isPress) {
 			player.openGui(PackWeapons.instance, PackWeapons.proxy.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 			if (Core.show_system_info_testing) System.out.println("-modify-");
 		}
 	}
 
-	@Override
-	public void onZoomOutTick(ItemStack is, World world, EntityPlayer player) {
-		if (isRightClick) {
-			NBTTagCompound tag = is.getTagCompound();
-			if (tag.hasKey("ZoomFov")) {
-				int get_zoom = tag.getByte("ZoomFov");
-				if (get_zoom > -119) {
-					tag.setByte("ZoomFov", (byte)(get_zoom - 8));
-					is.setTagCompound(tag);
-				}
+	@SideOnly(Side.CLIENT)
+	public boolean onModeInTickClient(ItemStack is, World world, EntityPlayer player) {
+		if (isRightClick) return true;
+		return false;
+	}
+
+	public void onModeInTick(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag.hasKey("ZoomFov")) {
+			int get_zoom = tag.getByte("ZoomFov");
+			if (get_zoom < 119) {
+				tag.setByte("ZoomFov", (byte)(get_zoom + 8));
+				is.setTagCompound(tag);
 			}
 		}
 	}
 
-	@Override
-	public void onZoomInTick(ItemStack is, World world, EntityPlayer player) {
-		if (isRightClick) {
-			NBTTagCompound tag = is.getTagCompound();
-			if (tag.hasKey("ZoomFov")) {
-				int get_zoom = tag.getByte("ZoomFov");
-				if (get_zoom < 119) {
-					tag.setByte("ZoomFov", (byte)(get_zoom + 8));
-					is.setTagCompound(tag);
-				}
+	@SideOnly(Side.CLIENT)
+	public boolean onModeOutTickClient(ItemStack is, World world, EntityPlayer player) {
+		if (isRightClick) return true;
+		return false;
+	}
+
+	public void onModeOutTick(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag.hasKey("ZoomFov")) {
+			int get_zoom = tag.getByte("ZoomFov");
+			if (get_zoom > -119) {
+				tag.setByte("ZoomFov", (byte)(get_zoom - 8));
+				is.setTagCompound(tag);
 			}
 		}
 	}
-
+	/*
 	@Override
 	public void onZoomIn(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
@@ -205,7 +213,7 @@ public class ItemWeapons extends ItemActionBase {
 			}
 		}
 	}
-
+	 */
 	private boolean isFire(int i, int type) {
 
 		if (type == 20) {switch(i) {default:return true;}}
@@ -276,6 +284,9 @@ public class ItemWeapons extends ItemActionBase {
 		return true;
 	}
 
+	public boolean onLeftClickEntity(ItemStack is, EntityPlayer player, Entity entity) {
+		return true;
+	}
 	/*public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (!world.isRemote) {
@@ -320,7 +331,7 @@ public class ItemWeapons extends ItemActionBase {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+		if (UtilText.isShiftKeyDown()) {
 			if (tag != null) {
 
 				if (tag.hasKey("Weapon")) {
@@ -330,7 +341,7 @@ public class ItemWeapons extends ItemActionBase {
 				}
 
 			}
-		} else list.add(Option.prshift);
+		} else list.add(UtilText.hldshiftinf);
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -2,9 +2,9 @@ package mods.timaxa007.pack.magic.item;
 
 import java.util.List;
 
-import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -21,9 +21,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
-
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -39,12 +36,12 @@ public class BowMagic extends ItemFixReg {
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-			list.add(Option.getText("Material") + ": Wooden.");
-			list.add(Option.getText("Type") + ": Magic.");
+		if (UtilText.isShiftKeyDown()) {
+			list.add(UtilText.getText("Material") + ": Wooden.");
+			list.add(UtilText.getText("Type") + ": Magic.");
 			list.add("D: " + is.getItemDamage() + "/" + is.getMaxDamage() + ".");
 		} else {
-			list.add(Option.prshift);
+			list.add(UtilText.hldshiftinf);
 		}
 	}
 

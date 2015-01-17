@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.mining;
 
-import mods.timaxa007.pack.mining.packet.RegisterPacket;
+import mods.timaxa007.pack.mining.packet.RegisterMessage;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -48,7 +48,7 @@ public class PackMining {
 		log.info("Starting sub-mod " + PackMining.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMining.MODID);
-		RegisterPacket.init(network);
+		RegisterMessage.init(network);
 
 		proxy.preInit(event);
 

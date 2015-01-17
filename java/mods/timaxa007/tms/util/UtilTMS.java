@@ -38,18 +38,26 @@ public class UtilTMS {
 			GameRegistry.registerBlock(block, item, block.getUnlocalizedName());
 		}
 
-		@Deprecated
 		public static void RegTE(Class<? extends TileEntity> te) {
-			GameRegistry.registerTileEntity(te, te.toString());
-		}
+			String tag = te.getName();
 
+			if (tag.startsWith("TileEntity")) 
+				tag.replaceFirst("^TileEntity*", "tile_entity_").toLowerCase();
+			else if (tag.startsWith("TE")) 
+				tag.replaceFirst("^TE*", "tile_entity_").toLowerCase();
+			else ;
+
+			GameRegistry.registerTileEntity(te, tag);
+		}
 	}
 
 	public static class UtilItem {
 
 		public static void RegItem(Item item) {
-			if (item instanceof ItemFixReg || item instanceof ItemArmorFixReg) {
+			if (item instanceof ItemFixReg) {
 				GameRegistry.registerItem(item, "item_" + ((ItemFixReg)item).getTag());
+			} else if (item instanceof ItemArmorFixReg) {
+				GameRegistry.registerItem(item, "item_" + ((ItemArmorFixReg)item).getTag());
 			} else {
 				GameRegistry.registerItem(item, item.getUnlocalizedName());
 			}
@@ -78,6 +86,43 @@ public class UtilTMS {
 	}
 
 	public static class LookOBJ {
+
+		public static MovingObjectPosition getObject() {
+			return getObject(80.0D);
+		}
+
+		public static MovingObjectPosition getObject(double dis) {
+
+			MovingObjectPosition obj_block = Minecraft.getMinecraft().renderViewEntity.rayTrace(dis, 1.0F);
+			double obj_block_x = obj_block.hitVec.xCoord;
+			double obj_block_y = obj_block.hitVec.yCoord;
+			double obj_block_z = obj_block.hitVec.zCoord;
+
+			MovingObjectPosition obj_entity = UtilTMS.LookOBJ.getEntityDistance(dis);
+			double obj_entity_x = obj_entity.hitVec.xCoord;
+			double obj_entity_y = obj_entity.hitVec.yCoord;
+			double obj_entity_z = obj_entity.hitVec.zCoord;
+
+			if (obj_block_x > 0 && obj_entity_x > 0) {
+
+			} else if (obj_block_x < 0 && obj_entity_x < 0) {
+
+			}
+
+			if (obj_block_y > 0 && obj_entity_y > 0) {
+
+			} else if (obj_block_y < 0 && obj_entity_y < 0) {
+
+			}
+
+			if (obj_block_z > 0 && obj_entity_z > 0) {
+
+			} else if (obj_block_z < 0 && obj_entity_z < 0) {
+
+			}
+
+			return null;
+		}
 
 		public static MovingObjectPosition getEntityDistance() {
 			MovingObjectPosition obj_entity = getEntityOBJDistance();

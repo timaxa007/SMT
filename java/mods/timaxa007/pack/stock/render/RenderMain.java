@@ -1,12 +1,15 @@
 package mods.timaxa007.pack.stock.render;
 
 import mods.timaxa007.pack.stock.PackStock;
+import mods.timaxa007.pack.stock.entity.EntityTest;
 import mods.timaxa007.pack.stock.render.block.*;
+import mods.timaxa007.pack.stock.render.entity.*;
 import mods.timaxa007.pack.stock.render.item.*;
 import mods.timaxa007.pack.stock.tile.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -46,6 +49,7 @@ public class RenderMain {
 		//Items
 
 		//Entity
+		RenderingRegistry.registerEntityRenderingHandler(EntityTest.class, new RenderEntityTest());
 
 	}
 

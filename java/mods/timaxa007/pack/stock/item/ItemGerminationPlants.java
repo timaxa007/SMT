@@ -2,18 +2,15 @@ package mods.timaxa007.pack.stock.item;
 
 import java.util.List;
 
-import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.GerminationPlants;
 import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -164,7 +161,7 @@ public class ItemGerminationPlants extends ItemFixReg {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+		if (UtilText.isShiftKeyDown()) {
 			if (tag != null) {
 				if (tag.hasKey("PlantID")) list.add("PlantID: " + tag.getInteger("PlantID") + ".");
 				if (tag.hasKey("PlantType")) list.add("PlantType: " + tag.getString("PlantType") + ".");
@@ -173,7 +170,7 @@ public class ItemGerminationPlants extends ItemFixReg {
 				if (tag.hasKey("Resistance")) list.add("Resistance: " + tag.getInteger("Resistance") + ".");
 			}
 		} else {
-			list.add(Option.prshift);
+			list.add(UtilText.hldshiftinf);
 		}
 	}
 

@@ -3,10 +3,10 @@ package mods.timaxa007.pack.furniture.item;
 import java.util.List;
 
 import mods.timaxa007.lib.GetColors;
-import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,9 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -76,13 +73,13 @@ public class ToolBrush extends ItemFixReg {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-			list.add(Option.getText("Type") + ": Tool / Brush.");
+		if (UtilText.isShiftKeyDown()) {
+			list.add(UtilText.getText("Type") + ": Tool / Brush.");
 			if (tag != null) {
 				if (tag.hasKey("Color"))
-					list.add(Option.getText("Color") + ": " + Option.GetColors(tag.getInteger("Color"), "a") + ".");
+					list.add(UtilText.getText("Color") + ": " + UtilText.getColors(tag.getInteger("Color"), "a") + ".");
 			}
-		} else list.add(Option.prshift);
+		} else list.add(UtilText.hldshiftinf);
 	}
 
 	@SideOnly(Side.CLIENT)

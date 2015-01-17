@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.stock;
 
 import mods.timaxa007.pack.stock.block.ListBlock;
+import mods.timaxa007.pack.stock.entity.EntityTest;
 import mods.timaxa007.pack.stock.event.EventStock;
 import mods.timaxa007.pack.stock.item.ListItem;
 import mods.timaxa007.pack.stock.lib.ListStock;
@@ -9,6 +10,7 @@ import mods.timaxa007.pack.stock.recipe.Recipes_Stock;
 import mods.timaxa007.pack.stock.render.RenderMain;
 import mods.timaxa007.pack.stock.world.GeneratorPackStock;
 import mods.timaxa007.tms.util.IProxy;
+import net.minecraft.entity.EntityList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -33,7 +35,7 @@ public class ProxyCommon implements IProxy {
 		item.preInit();
 		render.preInit();
 
-		//EntityList.addMapping(EntityTest.class, "Test", 111, 0x0033FF, 0x00CCFF);
+		EntityList.addMapping(EntityTest.class, "Test", 111, 0x0033FF, 0x00CCFF);
 
 		GameRegistry.registerWorldGenerator(new GeneratorPackStock(), 0);
 

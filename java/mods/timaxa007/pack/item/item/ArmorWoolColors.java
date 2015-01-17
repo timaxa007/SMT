@@ -3,20 +3,16 @@ package mods.timaxa007.pack.item.item;
 import java.util.List;
 
 import mods.timaxa007.lib.GetColors;
-import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.tms.util.ItemArmorFixReg;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -33,14 +29,14 @@ public class ArmorWoolColors extends ItemArmorFixReg {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-			list.add(Option.getText("Material") + ": " + Option.getText("Wool") + ".");
-			list.add(Option.getText("Type") + ": " + Option.getText("Armor") + ".");
+		if (UtilText.isShiftKeyDown()) {
+			list.add(UtilText.getText("Material") + ": " + UtilText.getText("Wool") + ".");
+			list.add(UtilText.getText("Type") + ": " + UtilText.getText("Armor") + ".");
 			if (tag != null) {
 				if (tag.hasKey("Color"))
-					list.add(Option.getText("Color") + ": " + tag.getInteger("HexColor") + ".");
+					list.add(UtilText.getText("Color") + ": " + tag.getInteger("HexColor") + ".");
 			}
-		} else list.add(Option.prshift);
+		} else list.add(UtilText.hldshiftinf);
 	}
 
 	@SideOnly(Side.CLIENT)

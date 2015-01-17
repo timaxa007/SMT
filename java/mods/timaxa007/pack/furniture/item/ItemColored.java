@@ -31,7 +31,7 @@ return super.getUnlocalizedName();
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 NBTTagCompound tag = is.getTagCompound();
-if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+if (UtilText.isShiftKeyDown()) {
 if (tag != null) {
 //-------------------------------------------------------------------------------------
 if (tag.hasKey("NameID")) {
@@ -60,7 +60,7 @@ list.add("Bag Item is in ItemID: " + tag.getInteger("ItemID") + ".");
 //-------------------------------------------------------------------------------------
 }
 } else {
-list.add(Option.prshift);
+list.add(UtilText.hldshiftinf);
 }
 }
 

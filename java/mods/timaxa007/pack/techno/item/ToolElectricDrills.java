@@ -2,9 +2,9 @@ package mods.timaxa007.pack.techno.item;
 
 import java.util.List;
 
-import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.techno.PackTechno;
-import mods.timaxa007.tms.util.ItemActionKeyPrimary;
+import mods.timaxa007.tms.util.ItemPrimaryKey;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,13 +15,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolElectricDrills extends ItemActionKeyPrimary {
+public class ToolElectricDrills extends ItemPrimaryKey {
 
 	private static String[] modes = new String[] {
 		"Normal", 	//0
@@ -38,7 +35,13 @@ public class ToolElectricDrills extends ItemActionKeyPrimary {
 		setTextureName("electric.drills");
 	}
 
-	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag != null && tag.hasKey("ModeID")) {return true;}
+		return false;
+	}
+
 	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("ModeID")) {
@@ -50,7 +53,6 @@ public class ToolElectricDrills extends ItemActionKeyPrimary {
 			tag.setInteger("ModeID", nbn);
 			is.setTagCompound(tag);
 		}
-
 	}
 
 	public float getDigSpeed(ItemStack is, Block block, int metadata) {
@@ -117,13 +119,13 @@ public class ToolElectricDrills extends ItemActionKeyPrimary {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+		if (UtilText.isShiftKeyDown()) {
 			if (tag != null) {
 				if (tag.hasKey("ModeID")) {
 					list.add("ModeID: " + tag.getInteger("ModeID"));
 				}
 			}
-		} else list.add(Option.prshift);
+		} else list.add(UtilText.hldshiftinf);
 
 	}
 

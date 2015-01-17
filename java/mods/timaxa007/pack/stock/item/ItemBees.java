@@ -3,9 +3,9 @@ package mods.timaxa007.pack.stock.item;
 import java.util.List;
 
 import mods.timaxa007.lib.GetColors;
-import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,9 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
-
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -98,7 +95,7 @@ public class ItemBees extends ItemFixReg {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+		if (UtilText.isShiftKeyDown()) {
 			if (tag != null) {
 				if (tag.hasKey("NameID")) {
 					list.add("NameID: " + tag.getString("NameID") + ".");
@@ -108,7 +105,7 @@ public class ItemBees extends ItemFixReg {
 				}
 			}
 		} else {
-			list.add(Option.prshift);
+			list.add(UtilText.hldshiftinf);
 		}
 	}
 

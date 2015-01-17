@@ -1,7 +1,6 @@
 package mods.timaxa007.tms.event;
 
-import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.packet.PacketMouseKey;
+import mods.timaxa007.tms.util.ActionMouseKey;
 import net.minecraft.client.Minecraft;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
@@ -12,58 +11,36 @@ public class EventActionMouse {
 	boolean rc, rc_last = false;
 	boolean lc, lc_last = false;
 	//--------------------------------------------------------------------------------------------------------------
-	/*@SubscribeEvent
-	public void onLeftClick(InputEvent.MouseInputEvent m) {//1
-		if (Minecraft.getMinecraft().gameSettings.keyBindAttack.getIsKeyPressed())
-			Core.network.sendToServer(new PacketMouseKey(1, true));
-			//It is triggered when any button is pressed, and not after it was released the button.
-		//else Core.network.sendToServer(new PacketMouseKey(1, false));//very bad
-	}*/
-	//--------------------------------------------------------------------------------------------------------------
-	/*@SubscribeEvent
-	public void onRightClick(InputEvent.MouseInputEvent m) {//2
-		if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.getIsKeyPressed())
-			Core.network.sendToServer(new PacketMouseKey(2, true));
-			//It is triggered when any button is pressed, and not after it was released the button.
-		//else Core.network.sendToServer(new PacketMouseKey(2, false));//very bad
-	}*/
-	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void /*onLeftClickTick*/actionBindAttack(TickEvent.PlayerTickEvent event) {//3
+	public void actionBindAttack(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (Minecraft.getMinecraft().gameSettings.keyBindAttack.getIsKeyPressed()) {
-				Core.network.sendToServer(new PacketMouseKey(-1, true));//Tick
+				ActionMouseKey.onLeftClickTickClient(event.player);
 				lc = true;
-				sendChangedStateMouse(lc_last, lc, 1);//press down
+				if (!lc_last && lc) ActionMouseKey.onLeftClickClient(event.player, true);//press down
 				lc_last = lc;
 			} else {
 				lc = false;
-				sendChangedStateMouse(lc_last, lc, 1);//unpress down
+				if (lc_last && !lc) ActionMouseKey.onLeftClickClient(event.player, false);//unpress down
 				lc_last = lc;
 			}
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void /*onRightClickTick*/actionBindUseItem(TickEvent.PlayerTickEvent event) {//4
+	public void actionBindUseItem(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.getIsKeyPressed()) {
-				Core.network.sendToServer(new PacketMouseKey(-2, true));//Tick
+				ActionMouseKey.onRightClickTickClient(event.player);
 				rc = true;
-				sendChangedStateMouse(rc_last, rc, 2);//press down
+				if (!rc_last && rc) ActionMouseKey.onRightClickClient(event.player, true);//press down
 				rc_last = rc;
 			} else {
 				rc = false;
-				sendChangedStateMouse(rc_last, rc, 2);//unpress down
+				if (rc_last && !rc) ActionMouseKey.onRightClickClient(event.player, false);//unpress down
 				rc_last = rc;
 			}
 		}
-	}
-	//--------------------------------------------------------------------------------------------------------------
-	public static void sendChangedStateMouse(boolean last, boolean now, int pack) {
-		//System.out.println("sendChangedStateMouse");
-		if (!last && now) Core.network.sendToServer(new PacketMouseKey(pack, true));
-		if (last && !now) Core.network.sendToServer(new PacketMouseKey(pack, false));
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

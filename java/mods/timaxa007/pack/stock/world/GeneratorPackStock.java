@@ -26,10 +26,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 	}
 
 	private void generateSurface(World world, Random random, int x, int z) {
-
-		/*Block[] block_random = new Block[] {
-
-		};*/
+/*
 		//if (world.getBiomeGenForCoords(x, z).biomeID == BiomeGenBase.extremeHills.biomeID || world.getBiomeGenForCoords(x, z).biomeID == BiomeGenBase.extremeHillsEdge.biomeID) {
 		for (int y = 0; y < world.provider.getHeight(); y++) {
 			int x1 = 8 + (x + random.nextInt(8));
@@ -39,7 +36,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 					for (int z2 = -2; z2 <= 2; ++z2) {
 						if (world.getBlock(x1 + x2, y - 1, z1 + z2) == Blocks.grass && world.isAirBlock(x1 + x2, y, z1 + z2)) {
 							if (random.nextInt(25) == 5) {
-								world.setBlock(x1 + x2, y, z1 + z2, PackStock.proxy.block.healing/*block_random[random.nextInt(block_random.length - 1)]*/, random.nextInt(15), 3);
+								world.setBlock(x1 + x2, y, z1 + z2, PackStock.proxy.block.healing, random.nextInt(15), 3);
 							}
 						}
 					}
@@ -47,7 +44,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 			}
 		}
 		//}
-
+*/
 
 		if (world.getBiomeGenForCoords(x, z) == BiomeGenBase.forest || world.getBiomeGenForCoords(x, z) == BiomeGenBase.forestHills) {
 			for (int y = 1; y < world.getHeight(); ++y) {

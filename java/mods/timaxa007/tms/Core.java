@@ -1,7 +1,7 @@
 package mods.timaxa007.tms;
 
 import mods.timaxa007.lib.ListTextureModel;
-import mods.timaxa007.tms.packet.RegisterPacket;
+import mods.timaxa007.tms.packet.RegisterMessage;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -78,7 +78,7 @@ public class Core {
 		Recipes_TMS.list();
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(Core.MODID);
-		RegisterPacket.init(network);
+		RegisterMessage.init(network);
 
 		proxy.preInitialize();
 

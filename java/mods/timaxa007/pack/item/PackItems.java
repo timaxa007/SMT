@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.item;
 
-import mods.timaxa007.pack.item.packet.RegisterPacket;
+import mods.timaxa007.pack.item.packet.RegisterMessage;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -43,7 +43,7 @@ public class PackItems {
 		log.info("Starting sub-mod " + PackItems.MODNAME + ".");
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackItems.MODID);
-		RegisterPacket.init(network);
+		RegisterMessage.init(network);
 
 		proxy.preInit(event);
 

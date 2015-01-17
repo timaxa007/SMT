@@ -3,7 +3,6 @@ package mods.timaxa007.pack.furniture.item;
 import java.util.List;
 
 import mods.timaxa007.lib.GetColors;
-import mods.timaxa007.lib.Option;
 import mods.timaxa007.pack.furniture.tile.TileEntityClothBlocks;
 import mods.timaxa007.pack.furniture.tile.TileEntityGlassBlocks;
 import mods.timaxa007.pack.furniture.tile.TileEntityGroundBlocks;
@@ -13,6 +12,7 @@ import mods.timaxa007.pack.furniture.tile.TileEntitySandBlocks;
 import mods.timaxa007.pack.furniture.tile.TileEntityWoodBlocks;
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,9 +22,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -140,15 +137,15 @@ public class ToolAirBrush extends ItemFixReg {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-			list.add(Option.getText("Type") + ": Tool / AirBrush.");
+		if (UtilText.isShiftKeyDown()) {
+			list.add(UtilText.getText("Type") + ": Tool / AirBrush.");
 			if (tag != null) {
 				if (tag.hasKey("ColorHex1"))
-					list.add(Option.getText("Color") + " 1: #" + tag.getInteger("ColorHex1") + ".");
+					list.add(UtilText.getText("Color") + " 1: #" + tag.getInteger("ColorHex1") + ".");
 				if (tag.hasKey("ColorHex2"))
-					list.add(Option.getText("Color") + " 2: #" + tag.getInteger("ColorHex2") + ".");
+					list.add(UtilText.getText("Color") + " 2: #" + tag.getInteger("ColorHex2") + ".");
 			}
-		} else list.add(Option.prshift);
+		} else list.add(UtilText.hldshiftinf);
 	}
 
 	@SideOnly(Side.CLIENT)

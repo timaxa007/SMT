@@ -1,7 +1,7 @@
 package mods.timaxa007.tms.event;
 
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.packet.PacketMouseKey;
+import mods.timaxa007.tms.packet.MessageMouseKey;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +23,7 @@ public class EventMouse {
 	public void onLeftClick(MouseEvent m) {
 		if (m.button == 0) {
 			//if (Core.show_system_info_testing) System.out.println("onLeftClick");
-			Core.network.sendToServer(new PacketMouseKey(1, m.buttonstate));
+			Core.network.sendToServer(new MessageMouseKey(1, m.buttonstate));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ public class EventMouse {
 	public void onRightClick(MouseEvent m) {
 		if (m.button == 1) {
 			//if (Core.show_system_info_testing) System.out.println("onRightClick");
-			Core.network.sendToServer(new PacketMouseKey(2, m.buttonstate));
+			Core.network.sendToServer(new MessageMouseKey(2, m.buttonstate));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ public class EventMouse {
 				(!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) && 
 				p.entityLiving instanceof EntityPlayer) {
 			//if (Core.show_system_info_testing) System.out.println("onLeftClickTick");
-			Core.network.sendToServer(new PacketMouseKey(3, true));
+			Core.network.sendToServer(new MessageMouseKey(3, true));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ public class EventMouse {
 				(!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) && 
 				p.entityLiving instanceof EntityPlayer) {
 			//if (Core.show_system_info_testing) System.out.println("onRightClick");
-			Core.network.sendToServer(new PacketMouseKey(4, true));
+			Core.network.sendToServer(new MessageMouseKey(4, true));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -59,7 +59,8 @@ public class EventMouse {
 	public void hasPlayerTool(BlockEvent.BreakEvent e) {
 		ItemStack current = e.getPlayer().getCurrentEquippedItem();
 		if (current != null && current.getItem() == null) {
-			System.out.println("Hello, minecraft!");
+			System.out.println("isBreakBlock " + e.block.getUnlocalizedName() + ".");
 		}
 	}
+	//--------------------------------------------------------------------------------------------------------------
 }
