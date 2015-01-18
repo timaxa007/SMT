@@ -7,9 +7,10 @@ public class BlockFixReg extends Block {
 
 	private String tag;
 
-	protected BlockFixReg(String tag, Material Material) {
+	public BlockFixReg(String tag, Material Material) {
 		super(Material);
 		this.tag = tag;
+		setBlockTextureName("timaxa007:" + tag);
 		setBlockName(tag);
 	}
 

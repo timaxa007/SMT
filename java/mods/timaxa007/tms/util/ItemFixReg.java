@@ -9,6 +9,7 @@ public class ItemFixReg extends Item {
 	public ItemFixReg(String tag) {
 		super();
 		this.tag = tag;
+		setTextureName("timaxa007:" + tag);
 		setUnlocalizedName(tag);
 	}
 

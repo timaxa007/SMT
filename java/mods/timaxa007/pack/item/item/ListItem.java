@@ -67,6 +67,24 @@ public class ListItem {
 		tool_sword = new ToolSword("tool_sword");
 		tool_battle_axe = new ToolBattleAxe("tool_battle_axe");
 		tool_battle_hammer = new ToolBattleHammer("tool_battle_hammer");
+		tool_chisel = new ToolAxe("tool_chisel");
+		tool_cutter = new ToolAxe("tool_cutter");
+		tool_screwdriver = new ToolAxe("tool_screwdriver");
+		tool_wrench = new ToolAxe("tool_wrench");
+		tool_knife = new ToolAxe("tool_knife");
+		tool_fry_pan = new ToolAxe("tool_fry_pan");
+		tool_pan = new ToolAxe("tool_pan");
+		tool_jar = new ToolAxe("tool_jar");
+		tool_saw = new ToolAxe("tool_saw");
+		tool_crowbar = new ToolAxe("tool_crowbar");
+		tool_dagger = new ToolAxe("tool_dagger");
+		tool_cleaver = new ToolAxe("tool_cleaver");
+		tool_greatsword = new ToolAxe("tool_greatsword");
+		tool_spear = new ToolAxe("tool_spear");
+		tool_whip = new ToolAxe("tool_whip");
+		tool_shuriken = new ToolAxe("tool_shuriken");
+		tool_tomahawk = new ToolAxe("tool_tomahawk");
+		tool_shield = new ToolShield("tool_shield");
 
 		list_items = new Item[] {
 				items_for_items, 
@@ -85,7 +103,25 @@ public class ListItem {
 				tool_scythe, 
 				tool_sword, 
 				tool_battle_axe, 
-				tool_battle_hammer
+				tool_battle_hammer, 
+				tool_chisel, 
+				tool_cutter, 
+				tool_screwdriver, 
+				tool_wrench, 
+				tool_knife, 
+				tool_fry_pan, 
+				tool_pan, 
+				tool_jar, 
+				tool_saw, 
+				tool_crowbar, 
+				tool_dagger, 
+				tool_cleaver, 
+				tool_greatsword, 
+				tool_spear, 
+				tool_whip, 
+				tool_shuriken, 
+				tool_tomahawk, 
+				tool_shield
 		};
 
 		for (int i = 0; i < list_items.length; i++)

@@ -40,9 +40,7 @@ public class BowMagic extends ItemFixReg {
 			list.add(UtilText.getText("Material") + ": Wooden.");
 			list.add(UtilText.getText("Type") + ": Magic.");
 			list.add("D: " + is.getItemDamage() + "/" + is.getMaxDamage() + ".");
-		} else {
-			list.add(UtilText.hldshiftinf);
-		}
+		} else list.add(UtilText.hldshiftinf);
 	}
 
 	public void onUpdate(ItemStack is, World world, Entity entity, int par4, boolean par5) {

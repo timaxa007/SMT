@@ -9,10 +9,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemActionMouse extends ItemFixReg {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
-	public boolean isLeftClick;
+	public static boolean isLeftClick;
 
 	@SideOnly(Side.CLIENT)
-	public boolean isRightClick;
+	public static boolean isRightClick;
 	//--------------------------------------------------------------------------------------------------------------
 	public ItemActionMouse(String tag) {
 		super(tag);

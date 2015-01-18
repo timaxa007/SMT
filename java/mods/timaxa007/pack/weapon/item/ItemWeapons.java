@@ -142,7 +142,7 @@ public class ItemWeapons extends ItemPrimaryKey {
 			if (Core.show_system_info_testing) System.out.println("-modify-");
 			return true;
 		}
-		return false;
+		return super.onModeClient(is, world, player, isPress);
 	}
 
 	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
@@ -155,7 +155,7 @@ public class ItemWeapons extends ItemPrimaryKey {
 	@SideOnly(Side.CLIENT)
 	public boolean onModeInTickClient(ItemStack is, World world, EntityPlayer player) {
 		if (isRightClick) return true;
-		return false;
+		return super.onModeInTickClient(is, world, player);
 	}
 
 	public void onModeInTick(ItemStack is, World world, EntityPlayer player) {

@@ -9,22 +9,22 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemPrimaryKey extends ItemActionMouse {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
-	public boolean isReload;
+	public static boolean isReload;
 
 	@SideOnly(Side.CLIENT)
-	public boolean isCharge;
+	public static boolean isCharge;
 
 	@SideOnly(Side.CLIENT)
-	public boolean isMode;
+	public static boolean isMode;
 
 	@SideOnly(Side.CLIENT)
-	public boolean isAction;
+	public static boolean isAction;
 
 	@SideOnly(Side.CLIENT)
-	public boolean isModeIn;
+	public static boolean isModeIn;
 
 	@SideOnly(Side.CLIENT)
-	public boolean isModeOut;
+	public static boolean isModeOut;
 	//--------------------------------------------------------------------------------------------------------------
 	public ItemPrimaryKey(String tag) {
 		super(tag);

@@ -2,6 +2,7 @@ package mods.timaxa007.pack.techno.item;
 
 import java.util.List;
 
+import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.tms.util.ItemPrimaryKey;
 import mods.timaxa007.tms.util.UtilText;
@@ -14,6 +15,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,26 +35,36 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 		setMaxDamage(1000);
 		setMaxStackSize(1);
 		setNoRepair();
-		setTextureName("electric.drills");
+		setTextureName("timaxa007:tool/electric/drill");
 	}
 
 	@SideOnly(Side.CLIENT)
 	public boolean onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("ModeID")) {return true;}
-		return false;
+		if (isPress && !isLeftClick) {
+			NBTTagCompound tag = is.getTagCompound();
+			if (tag != null && tag.hasKey("ModeID")) {
+				int nbn = tag.getInteger("ModeID");
+				if (nbn >= 2) nbn = 0; else nbn++;
+				if (world.isRemote) player.addChatMessage(
+						new ChatComponentText(EnumChatFormatting.GOLD + "[Drill]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
+						);
+				return true;
+			}
+		}
+		return super.onModeClient(is, world, player, isPress);
 	}
 
 	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("ModeID")) {
-			int nbn = tag.getInteger("ModeID");
+		if (isPress) {
+			NBTTagCompound tag = is.getTagCompound();
+			if (tag != null && tag.hasKey("ModeID")) {
+				int nbn = tag.getInteger("ModeID");
 
-			if (nbn >= 2) {nbn = 0;} else {nbn = nbn + 1;}
+				if (nbn >= 2) nbn = 0; else nbn++;
 
-			//if (world.isRemote) {player.addChatMessage("[Drill]: " + modes[nbn] + " ");}
-			tag.setInteger("ModeID", nbn);
-			is.setTagCompound(tag);
+				tag.setInteger("ModeID", nbn);
+				is.setTagCompound(tag);
+			}
 		}
 	}
 
@@ -80,10 +93,10 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 	public boolean hitEntity(ItemStack is, EntityLivingBase entity1, EntityLivingBase entity2) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 0) {
-			is.damageItem(5, entity2);
+			is.damageItem(2, entity2);
 			return true;
 		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 1) {
-			is.damageItem(10, entity2);
+			is.damageItem(8, entity2);
 			return true;
 		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 2) {
 			is.damageItem(1, entity2);

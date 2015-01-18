@@ -11,7 +11,7 @@ public class ActionMouseKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemActionMouse) {
-				((ItemActionMouse)current.getItem()).onLeftClickTickClient(current, player.worldObj, player);
+				//((ItemActionMouse)current.getItem()).onLeftClickTickClient(current, player.worldObj, player);
 				if (((ItemActionMouse)current.getItem()).onLeftClickTickClient(current, player.worldObj, player)) {
 					Core.network.sendToServer(new MessageMouseKey(-1, true));
 				}
@@ -23,7 +23,7 @@ public class ActionMouseKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemActionMouse) {
-				((ItemActionMouse)current.getItem()).onLeftClickClient(current, player.worldObj, player, isPress);
+				//((ItemActionMouse)current.getItem()).onLeftClickClient(current, player.worldObj, player, isPress);
 				((ItemActionMouse)current.getItem()).isLeftClick = isPress;
 				if (((ItemActionMouse)current.getItem()).onLeftClickClient(current, player.worldObj, player, isPress)) {
 					Core.network.sendToServer(new MessageMouseKey(1, isPress));
@@ -54,7 +54,7 @@ public class ActionMouseKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemActionMouse) {
-				((ItemActionMouse)current.getItem()).onRightClickTickClient(current, player.worldObj, player);
+				//((ItemActionMouse)current.getItem()).onRightClickTickClient(current, player.worldObj, player);
 				if (((ItemActionMouse)current.getItem()).onRightClickTickClient(current, player.worldObj, player)) {
 					Core.network.sendToServer(new MessageMouseKey(-2, true));
 				}
@@ -66,7 +66,7 @@ public class ActionMouseKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemActionMouse) {
-				((ItemActionMouse)current.getItem()).onRightClickClient(current, player.worldObj, player, isPress);
+				//((ItemActionMouse)current.getItem()).onRightClickClient(current, player.worldObj, player, isPress);
 				((ItemActionMouse)current.getItem()).isRightClick = isPress;
 				if (((ItemActionMouse)current.getItem()).onRightClickClient(current, player.worldObj, player, isPress)) {
 					Core.network.sendToServer(new MessageMouseKey(2, isPress));

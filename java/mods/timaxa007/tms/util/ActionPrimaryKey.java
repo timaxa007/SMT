@@ -11,7 +11,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onReloadTickClient(current, player.worldObj, player);
+				//((ItemPrimaryKey)current.getItem()).onReloadTickClient(current, player.worldObj, player);
 				if (((ItemPrimaryKey)current.getItem()).onReloadTickClient(current, player.worldObj, player)) {
 					Core.network.sendToServer(new MessagePrimaryKey(-1, true));
 				}
@@ -23,7 +23,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onReloadClient(current, player.worldObj, player, isPress);
+				//((ItemPrimaryKey)current.getItem()).onReloadClient(current, player.worldObj, player, isPress);
 				((ItemPrimaryKey)current.getItem()).isReload = isPress;
 				if (((ItemPrimaryKey)current.getItem()).onReloadClient(current, player.worldObj, player, isPress)) {
 					Core.network.sendToServer(new MessagePrimaryKey(1, isPress));
@@ -54,7 +54,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onChargeTickClient(current, player.worldObj, player);
+				//((ItemPrimaryKey)current.getItem()).onChargeTickClient(current, player.worldObj, player);
 				if (((ItemPrimaryKey)current.getItem()).onChargeTickClient(current, player.worldObj, player)) {
 					Core.network.sendToServer(new MessagePrimaryKey(-2, true));
 				}
@@ -66,7 +66,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onChargeClient(current, player.worldObj, player, isPress);
+				//((ItemPrimaryKey)current.getItem()).onChargeClient(current, player.worldObj, player, isPress);
 				((ItemPrimaryKey)current.getItem()).isCharge = isPress;
 				if (((ItemPrimaryKey)current.getItem()).onChargeClient(current, player.worldObj, player, isPress)) {
 					Core.network.sendToServer(new MessagePrimaryKey(2, isPress));
@@ -97,7 +97,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onModeTickClient(current, player.worldObj, player);
+				//((ItemPrimaryKey)current.getItem()).onModeTickClient(current, player.worldObj, player);
 				if (((ItemPrimaryKey)current.getItem()).onModeTickClient(current, player.worldObj, player)) {
 					Core.network.sendToServer(new MessagePrimaryKey(-3, true));
 				}
@@ -109,7 +109,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onModeClient(current, player.worldObj, player, isPress);
+				//((ItemPrimaryKey)current.getItem()).onModeClient(current, player.worldObj, player, isPress);
 				((ItemPrimaryKey)current.getItem()).isMode = isPress;
 				if (((ItemPrimaryKey)current.getItem()).onModeClient(current, player.worldObj, player, isPress)) {
 					Core.network.sendToServer(new MessagePrimaryKey(3, isPress));
@@ -140,7 +140,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onActionTickClient(current, player.worldObj, player);
+				//((ItemPrimaryKey)current.getItem()).onActionTickClient(current, player.worldObj, player);
 				if (((ItemPrimaryKey)current.getItem()).onActionTickClient(current, player.worldObj, player)) {
 					Core.network.sendToServer(new MessagePrimaryKey(-4, true));
 				}
@@ -152,7 +152,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onActionClient(current, player.worldObj, player, isPress);
+				//((ItemPrimaryKey)current.getItem()).onActionClient(current, player.worldObj, player, isPress);
 				((ItemPrimaryKey)current.getItem()).isAction = isPress;
 				if (((ItemPrimaryKey)current.getItem()).onActionClient(current, player.worldObj, player, isPress)) {
 					Core.network.sendToServer(new MessagePrimaryKey(4, isPress));
@@ -183,7 +183,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onModeInTickClient(current, player.worldObj, player);
+				//((ItemPrimaryKey)current.getItem()).onModeInTickClient(current, player.worldObj, player);
 				if (((ItemPrimaryKey)current.getItem()).onModeInTickClient(current, player.worldObj, player)) {
 					Core.network.sendToServer(new MessagePrimaryKey(-5, true));
 				}
@@ -195,7 +195,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onModeInClient(current, player.worldObj, player, isPress);
+				//((ItemPrimaryKey)current.getItem()).onModeInClient(current, player.worldObj, player, isPress);
 				((ItemPrimaryKey)current.getItem()).isModeIn = isPress;
 				if (((ItemPrimaryKey)current.getItem()).onModeInClient(current, player.worldObj, player, isPress)) {
 					Core.network.sendToServer(new MessagePrimaryKey(5, isPress));
@@ -226,7 +226,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onModeOutTickClient(current, player.worldObj, player);
+				//((ItemPrimaryKey)current.getItem()).onModeOutTickClient(current, player.worldObj, player);
 				if (((ItemPrimaryKey)current.getItem()).onModeOutTickClient(current, player.worldObj, player)) {
 					Core.network.sendToServer(new MessagePrimaryKey(-6, true));
 				}
@@ -238,7 +238,7 @@ public class ActionPrimaryKey {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onModeOutClient(current, player.worldObj, player, isPress);
+				//((ItemPrimaryKey)current.getItem()).onModeOutClient(current, player.worldObj, player, isPress);
 				((ItemPrimaryKey)current.getItem()).isModeOut = isPress;
 				if (((ItemPrimaryKey)current.getItem()).onModeOutClient(current, player.worldObj, player, isPress)) {
 					Core.network.sendToServer(new MessagePrimaryKey(6, isPress));

@@ -29,7 +29,7 @@ public class UtilTMS {
 				GameRegistry.registerBlock(block, "block_" + ((BlockFixReg)block).getTag());
 			}/* else {
 				System.out.println(block.getClass().toString());
-				GameRegistry.registerBlock(block, block.getUnlocalizedName());//not working
+				GameRegistry.registerBlock(block, block.getUnlocalizedName());//not working, crash
 			}*/
 		}
 
@@ -39,7 +39,7 @@ public class UtilTMS {
 		}
 
 		public static void RegTE(Class<? extends TileEntity> te) {
-			String tag = te.getName();
+			String tag = te.toString();
 
 			if (tag.startsWith("TileEntity")) 
 				tag.replaceFirst("^TileEntity*", "tile_entity_").toLowerCase();
@@ -146,58 +146,55 @@ public class UtilTMS {
 
 		public static MovingObjectPosition getEntityOBJDistance(double dis) {
 			Minecraft mc = Minecraft.getMinecraft();
-			if (mc.theWorld != null) {
-				if (mc.renderViewEntity != null) {
-					Entity /*mc.*/entity_hit = null;
-					double d0 = dis;
-					MovingObjectPosition /*mc.*/objectMouseOver = mc.renderViewEntity.rayTrace(dis, 1.0F);
-					double d1 = d0;
-					Vec3 vec3 = mc.renderViewEntity.getPosition(1.0F);
+			if (mc.theWorld != null && mc.renderViewEntity != null) {
+				Entity /*mc.*/entity_hit = null;
+				double d0 = dis;
+				MovingObjectPosition /*mc.*/objectMouseOver = mc.renderViewEntity.rayTrace(dis, 1.0F);
+				double d1 = d0;
+				Vec3 vec3 = mc.renderViewEntity.getPosition(1.0F);
 
-					d0 = d1;
+				d0 = d1;
 
-					if (/*mc.*/objectMouseOver != null) {
-						d1 = /*mc.*/objectMouseOver.hitVec.distanceTo(vec3);
-					}
+				if (/*mc.*/objectMouseOver != null) {
+					d1 = /*mc.*/objectMouseOver.hitVec.distanceTo(vec3);
+				}
 
-					Vec3 vec31 = mc.renderViewEntity.getLook(1.0F);
-					Vec3 vec32 = vec3.addVector(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0);
-					entity_hit = null;
-					Vec3 vec33 = null;
-					float f1 = 1.0F;
-					List list = mc.theWorld.getEntitiesWithinAABBExcludingEntity(mc.renderViewEntity, mc.renderViewEntity.boundingBox.addCoord(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0).expand((double)f1, (double)f1, (double)f1));
-					double d2 = d1;
+				Vec3 vec31 = mc.renderViewEntity.getLook(1.0F);
+				Vec3 vec32 = vec3.addVector(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0);
+				entity_hit = null;
+				Vec3 vec33 = null;
+				float f1 = 1.0F;
+				List list = mc.theWorld.getEntitiesWithinAABBExcludingEntity(mc.renderViewEntity, mc.renderViewEntity.boundingBox.addCoord(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0).expand((double)f1, (double)f1, (double)f1));
+				double d2 = d1;
 
-					for (int i = 0; i < list.size(); ++i) {
-						Entity entity = (Entity)list.get(i);
+				for (int i = 0; i < list.size(); ++i) {
+					Entity entity = (Entity)list.get(i);
 
-						//if (entity.canBeCollidedWith()) {
-						float f2 = entity.getCollisionBorderSize();
-						AxisAlignedBB axisalignedbb = entity.boundingBox.expand((double)f2, (double)f2, (double)f2);
-						MovingObjectPosition movingobjectposition = axisalignedbb.calculateIntercept(vec3, vec32);
-						entity_hit = entity;
+					//if (entity.canBeCollidedWith()) {
+					float f2 = entity.getCollisionBorderSize();
+					AxisAlignedBB axisalignedbb = entity.boundingBox.expand((double)f2, (double)f2, (double)f2);
+					MovingObjectPosition movingobjectposition = axisalignedbb.calculateIntercept(vec3, vec32);
+					entity_hit = entity;
 
-						if (axisalignedbb.isVecInside(vec3)) {
-							if (0.0D < d2 || d2 == 0.0D) {
-								vec33 = movingobjectposition == null ? vec3 : movingobjectposition.hitVec;
-								d2 = 0.0D;
-							}
+					if (axisalignedbb.isVecInside(vec3)) {
+						if (0.0D < d2 || d2 == 0.0D) {
+							vec33 = movingobjectposition == null ? vec3 : movingobjectposition.hitVec;
+							d2 = 0.0D;
 						}
-						else if (movingobjectposition != null) {
-							double d3 = vec3.distanceTo(movingobjectposition.hitVec);
-							//if (entity == mc.renderViewEntity.ridingEntity && !entity.canRiderInteract()) {
-							vec33 = movingobjectposition.hitVec;
-						}
-						//}
 					}
+					else if (movingobjectposition != null) {
+						double d3 = vec3.distanceTo(movingobjectposition.hitVec);
+						//if (entity == mc.renderViewEntity.ridingEntity && !entity.canRiderInteract()) {
+						vec33 = movingobjectposition.hitVec;
+					}
+					//}
+				}
 
-					return new MovingObjectPosition(entity_hit, vec33);
+				return new MovingObjectPosition(entity_hit, vec33);
 
-					/*if (pointedEntity instanceof EntityLivingBase || pointedEntity instanceof EntityItemFrame) {
+				/*if (pointedEntity instanceof EntityLivingBase || pointedEntity instanceof EntityItemFrame) {
 						mc.pointedEntity = pointedEntity;
 					}*/
-
-				}
 			}
 			return null;
 		}

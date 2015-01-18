@@ -14,8 +14,8 @@ public class UtilText {
 	public static final String prs = EnumChatFormatting.GRAY + UtilText.getText("pres_key");
 	public static final String hld = EnumChatFormatting.GRAY + UtilText.getText("hol_key");
 
-	public static final String prshiftinf = prs + " " + t_shift + " " + " " + inf;
-	public static final String hldshiftinf = hld + " " + t_shift + " " + " " + inf;
+	public static final String prshiftinf = prs + " " + t_shift + " " + inf;
+	public static final String hldshiftinf = hld + " " + t_shift + " " + inf;
 
 	public static String getText(String txt) {
 		return StatCollector.translateToLocal("text." + txt.toLowerCase());
