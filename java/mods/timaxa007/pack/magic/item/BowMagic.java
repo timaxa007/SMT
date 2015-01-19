@@ -6,8 +6,6 @@ import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.tms.util.ItemFixReg;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +17,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -78,7 +75,7 @@ public class BowMagic extends ItemFixReg {
 			return false;
 		}
 	}
-
+/*
 	public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
 		int j = getMaxItemUseDuration(is) - par4;
 		ArrowLooseEvent event = new ArrowLooseEvent(player, is, j);
@@ -91,7 +88,7 @@ public class BowMagic extends ItemFixReg {
 			f = (f * f + f * 2.0F) / 3.0F;
 			if ((double)f<0.1D) {return;}
 			if (f > 1.0F) {f = 1.0F;}
-			/*EntityArrowMini entityarrow = new EntityArrowMini(world, player, f*2.0F);
+			EntityArrowMini entityarrow = new EntityArrowMini(world, player, f*2.0F);
 			if (f == 1.0F) {entityarrow.setIsCritical(true);}
 			int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, is);
 			if (k>0) {entityarrow.setDamage(entityarrow.getDamage() + (double)k*0.5D+0.5D);}
@@ -104,10 +101,10 @@ public class BowMagic extends ItemFixReg {
 			else {player.inventory.consumeInventoryItem(PackMagic.proxy.itemArrowMini.getItem());}
 			//if (!world.isRemote) {
 			world.spawnEntityInWorld(entityarrow);
-			}*/
+			}
 		}
 	}
-
+*/
 	public ItemStack onEaten(ItemStack is, World world, EntityPlayer player) {
 		return is;
 	}

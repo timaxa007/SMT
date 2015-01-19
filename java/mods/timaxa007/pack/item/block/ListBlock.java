@@ -6,15 +6,19 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ListBlock {
 
-	//public static Block magic_machines;
+	//public static boolean items_machines_be;
+
+	//public static Block items_machines;
+
+	//public static Block[] list_block;
 
 	public static void preInit() {
 
-		//magic_machines = new BlockMagicMachines();
+		//items_machines = new BlockItemsMachines();
 
-		//GameRegistry.registerBlock(magic_machines, "BlockMagicMachines");
+		//GameRegistry.registerBlock(items_machines, "BlockItemsMachines");
 
-		//GameRegistry.registerTileEntity(TileEntityMagicMachines.class, "TileEntityMagicMachines");
+		//GameRegistry.registerTileEntity(TileEntityItemsMachines.class, "TileEntityItemsMachines");
 
 	}
 

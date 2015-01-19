@@ -27,7 +27,15 @@ public class ProxyCommon implements IProxy {
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();
-		//
+
+		block.claymore_be = cfg.get("block", "claymore", true).getBoolean(true);
+
+		item.items_for_weapons_be = cfg.get("item", "items_for_weapons", true).getBoolean(true);
+		item.molotov_cocktail_be = cfg.get("item", "molotov_cocktail", true).getBoolean(true);
+		item.weapons_be = cfg.get("item", "weapons", true).getBoolean(true);
+		item.ammos_be = cfg.get("item", "ammos", true).getBoolean(true);
+		item.magazines_be = cfg.get("item", "magazines", true).getBoolean(true);
+
 		cfg.save();
 
 		new ListWeapon();

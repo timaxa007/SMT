@@ -22,7 +22,7 @@ public class PackStock {
 	public static final String MODID = "stockpack";
 	public static final String MODNAME = "PackStock";
 	public static final String VERSION = "0.1a";
-	public static final String AUTHOR = "timaxa007";
+	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	@Instance(PackStock.MODID) public static PackStock instance;
 	@SidedProxy(modId = PackStock.MODID, clientSide="mods.timaxa007.pack.stock.ProxyClient", serverSide="mods.timaxa007.pack.stock.ProxyCommon")

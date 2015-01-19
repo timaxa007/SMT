@@ -31,11 +31,18 @@ public class ProxyCommon implements IProxy {
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();
-		/*
-		world_dim_mining_id = cfg.get("configs", "world_dim_mining_id", 30).getInt();
-		world_dim_only_day_id = cfg.get("configs", "world_dim_only_day_id", 31).getInt();
-		world_dim_only_night_id = cfg.get("configs", "world_dim_only_night_id", 32).getInt();
-		 */
+
+		world_dim_mining_id = cfg.get("world", "dimension_mining_id", 30).getInt();
+		world_dim_only_day_id = cfg.get("world", "dimension_only_day_id", 31).getInt();
+		world_dim_only_night_id = cfg.get("world", "dimension_only_night_id", 32).getInt();
+
+		block.ore_rock_ores_be = cfg.get("block", "ore_rock_ores", true).getBoolean(true);
+		block.ore_nether_ores_be = cfg.get("block", "ore_nether_ores", true).getBoolean(true);
+		block.ore_ender_ores_be = cfg.get("block", "ore_ender_ores", true).getBoolean(true);
+		block.cristals_be = cfg.get("block", "cristals", true).getBoolean(true);
+
+		item.items_for_mining_be = cfg.get("item", "items_for_mining", true).getBoolean(true);
+
 		cfg.save();
 
 		new ListMining();

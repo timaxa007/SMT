@@ -25,12 +25,14 @@ public class UtilTMS {
 	public static class UtilBlock {
 
 		public static void RegBlock(Block block) {
-			if (block instanceof BlockFixReg) {
-				GameRegistry.registerBlock(block, "block_" + ((BlockFixReg)block).getTag());
-			}/* else {
-				System.out.println(block.getClass().toString());
-				GameRegistry.registerBlock(block, block.getUnlocalizedName());//not working, crash
-			}*/
+			if (block != null) {
+				if (block instanceof BlockFixReg) {
+					GameRegistry.registerBlock(block, "block_" + ((BlockFixReg)block).getTag());
+				}/* else {
+					System.out.println(block.getClass().toString());
+					GameRegistry.registerBlock(block, block.getUnlocalizedName());//not working, crash
+				}*/
+			}
 		}
 
 		@Deprecated
@@ -39,30 +41,33 @@ public class UtilTMS {
 		}
 
 		public static void RegTE(Class<? extends TileEntity> te) {
-			String tag = te.toString();
+			if (te != null) {
+				String tag = te.toString();
 
-			if (tag.startsWith("TileEntity")) 
-				tag.replaceFirst("^TileEntity*", "tile_entity_").toLowerCase();
-			else if (tag.startsWith("TE")) 
-				tag.replaceFirst("^TE*", "tile_entity_").toLowerCase();
-			else ;
+				if (tag.startsWith("TileEntity")) 
+					tag.replaceFirst("^TileEntity*", "tile_entity_").toLowerCase();
+				else if (tag.startsWith("TE")) 
+					tag.replaceFirst("^TE*", "tile_entity_").toLowerCase();
+				else ;
 
-			GameRegistry.registerTileEntity(te, tag);
+				GameRegistry.registerTileEntity(te, tag);
+			}
 		}
 	}
 
 	public static class UtilItem {
 
 		public static void RegItem(Item item) {
-			if (item instanceof ItemFixReg) {
-				GameRegistry.registerItem(item, "item_" + ((ItemFixReg)item).getTag());
-			} else if (item instanceof ItemArmorFixReg) {
-				GameRegistry.registerItem(item, "item_" + ((ItemArmorFixReg)item).getTag());
-			} else {
-				GameRegistry.registerItem(item, item.getUnlocalizedName());
+			if (item != null) {
+				if (item instanceof ItemFixReg) {
+					GameRegistry.registerItem(item, "item_" + ((ItemFixReg)item).getTag());
+				} else if (item instanceof ItemArmorFixReg) {
+					GameRegistry.registerItem(item, "item_" + ((ItemArmorFixReg)item).getTag());
+				}/* else {
+					GameRegistry.registerItem(item, item.getUnlocalizedName());
+				}*/
 			}
 		}
-
 	}
 
 	public static class UtilEntity {

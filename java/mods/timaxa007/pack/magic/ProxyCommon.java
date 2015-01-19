@@ -41,7 +41,7 @@ public class ProxyCommon implements IProxy {
 		"15", 
 		"16"
 	};
-	//ShardElements = gems
+	//ShardElements ~= gems
 
 	//GUI
 	//public static int guiID = 0;
@@ -51,7 +51,18 @@ public class ProxyCommon implements IProxy {
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();
-		//
+
+		block.magic_machines_be = cfg.get("block", "magic_machines", true).getBoolean(true);
+		block.magic_slims_be = cfg.get("block", "magic_slims", true).getBoolean(true);
+		block.magic_cauldron_be = cfg.get("block", "magic_cauldron", true).getBoolean(true);
+		block.magic_locked_be = cfg.get("block", "magic_locked", true).getBoolean(true);
+
+		item.items_for_magic_be = cfg.get("item", "items_for_magic", true).getBoolean(true);
+		item.wands_be = cfg.get("item", "wands", true).getBoolean(true);
+		item.stuffs_be = cfg.get("item", "stuffs", true).getBoolean(true);
+		item.teleport_be = cfg.get("item", "teleport", true).getBoolean(true);
+		item.globular_be = cfg.get("item", "globular", true).getBoolean(true);
+
 		cfg.save();
 
 		new ListMagic();

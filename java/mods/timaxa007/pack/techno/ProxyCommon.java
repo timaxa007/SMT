@@ -20,14 +20,23 @@ public class ProxyCommon implements IProxy {
 	public static RenderMain render;
 
 	//GUI
-	//public static int guiID=0;
+	//public static int guiID = 0;
 	public static int gui_electric_machines = 1;
 
 	public void preInit(FMLPreInitializationEvent event) {
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();
-		//
+
+		block.electric_machines_be = cfg.get("block", "electric_machines", true).getBoolean(true);
+		block.electric_wires_be = cfg.get("block", "electric_wires", true).getBoolean(true);
+		block.chip_be = cfg.get("block", "chip", true).getBoolean(true);
+		block.module_movement_be = cfg.get("block", "module_movement", true).getBoolean(true);
+
+		item.items_for_techno_be = cfg.get("item", "items_for_techno", true).getBoolean(true);
+		item.tool_electric_wrench_be = cfg.get("item", "tool_electric_wrench", true).getBoolean(true);
+		item.tool_electric_drills_be = cfg.get("item", "tool_electric_drills", true).getBoolean(true);
+
 		cfg.save();
 
 		new ListTechno();

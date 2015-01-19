@@ -22,7 +22,7 @@ public class PackMagic {
 	public static final String MODID = "magicpack";
 	public static final String MODNAME = "PackMagic";
 	public static final String VERSION = "0.1a";
-	public static final String AUTHOR = "timaxa007";
+	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	@Instance(PackMagic.MODID) public static PackMagic instance;
 	@SidedProxy(modId = PackMagic.MODID, clientSide = "mods.timaxa007.pack.magic.ProxyClient", serverSide = "mods.timaxa007.pack.magic.ProxyCommon")

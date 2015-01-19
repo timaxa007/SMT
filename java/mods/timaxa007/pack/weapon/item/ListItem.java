@@ -5,6 +5,13 @@ import net.minecraft.item.Item;
 
 public class ListItem {
 
+	public static boolean 
+	items_for_weapons_be, 
+	molotov_cocktail_be, 
+	weapons_be, 
+	ammos_be, 
+	magazines_be;
+
 	public static Item 
 	items_for_weapons, 
 	molotov_cocktail, 
@@ -16,11 +23,11 @@ public class ListItem {
 
 	public static void preInit() {
 
-		items_for_weapons = new ItemsWeapons("items_for_weapons");
-		molotov_cocktail = new MolotovCocktail("molotov_cocktail");
-		weapons = new ItemWeapons("weapons");
-		ammos = new ItemAmmos("ammos");
-		magazines = new ItemMagazines("magazines");
+		if (items_for_weapons_be) items_for_weapons = new ItemsWeapons("items_for_weapons");
+		if (molotov_cocktail_be) molotov_cocktail = new MolotovCocktail("molotov_cocktail");
+		if (weapons_be) weapons = new ItemWeapons("weapons");
+		if (ammos_be) ammos = new ItemAmmos("ammos");
+		if (magazines_be) magazines = new ItemMagazines("magazines");
 
 		list_item = new Item[] {
 				items_for_weapons, 

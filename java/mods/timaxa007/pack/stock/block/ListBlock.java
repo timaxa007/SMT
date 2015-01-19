@@ -7,6 +7,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ListBlock {
 
+	public static boolean 
+	germination_plants_be, 
+	foods_be, 
+	healing_be, 
+	apiary_be;
+
 	public static Block 
 	germination_plants, 
 	foods, 
@@ -17,10 +23,10 @@ public class ListBlock {
 
 	public static void preInit() {
 
-		germination_plants = new BlockGerminationPlants("germination_plants");
-		foods = new BlockFoods("foods");
-		healing = new BlockHealing("healing");
-		apiary = new BlockApiary("apiary");
+		if (germination_plants_be) germination_plants = new BlockGerminationPlants("germination_plants");
+		if (foods_be) foods = new BlockFoods("foods");
+		if (healing_be) healing = new BlockHealing("healing");
+		if (apiary_be) apiary = new BlockApiary("apiary");
 
 		list_block = new Block[] {
 				germination_plants, 

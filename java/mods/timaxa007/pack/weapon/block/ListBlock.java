@@ -7,6 +7,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ListBlock {
 
+	public static boolean 
+	claymore_be;
+
 	public static Block 
 	claymore;
 
@@ -14,7 +17,7 @@ public class ListBlock {
 
 	public static void preInit() {
 
-		claymore = new BlockClaymore("claymore");
+		if (claymore_be) claymore = new BlockClaymore("claymore");
 
 		list_block = new Block[] {
 				claymore

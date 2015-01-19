@@ -7,6 +7,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ListBlock {
 
+	public static boolean 
+	electric_machines_be, 
+	electric_wires_be, 
+	chip_be, 
+	module_movement_be;
+
 	public static Block 
 	electric_machines, 
 	electric_wires, 
@@ -17,10 +23,10 @@ public class ListBlock {
 
 	public static void preInit() {
 
-		electric_machines = new BlockElectricMachines("electric_machines");
-		electric_wires = new BlockElectricWires("electric_wires");
-		chip = new BlockChip("chip");
-		module_movement = new BlockModuleMovement("module_movement");
+		if (electric_machines_be) electric_machines = new BlockElectricMachines("electric_machines");
+		if (electric_wires_be) electric_wires = new BlockElectricWires("electric_wires");
+		if (chip_be) chip = new BlockChip("chip");
+		if (module_movement_be) module_movement = new BlockModuleMovement("module_movement");
 		//transporter belt
 
 		list_block = new Block[] {

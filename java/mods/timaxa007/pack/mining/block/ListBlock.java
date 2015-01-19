@@ -7,6 +7,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ListBlock {
 
+	public static boolean 
+	ore_rock_ores_be, 
+	ore_nether_ores_be, 
+	ore_ender_ores_be, 
+	cristals_be;
+
 	public static Block 
 	ore_rock_ores, 
 	ore_nether_ores, 
@@ -17,10 +23,10 @@ public class ListBlock {
 
 	public static void preInit() {
 
-		ore_rock_ores = new OreOres("ore_rock_ores").setBlockTextureName("stone");
-		ore_nether_ores = new OreOres("ore_nether_ores").setBlockTextureName("netherrack");
-		ore_ender_ores = new OreOres("ore_ender_ores").setBlockTextureName("end_stone");
-		cristals = new BlockCristals("cristals");
+		if (ore_rock_ores_be) ore_rock_ores = new OreOres("ore_rock_ores").setBlockTextureName("stone");
+		if (ore_nether_ores_be) ore_nether_ores = new OreOres("ore_nether_ores").setBlockTextureName("netherrack");
+		if (ore_ender_ores_be) ore_ender_ores = new OreOres("ore_ender_ores").setBlockTextureName("end_stone");
+		if (cristals_be) cristals = new BlockCristals("cristals");
 
 		list_block = new Block[] {
 				ore_rock_ores, 

@@ -22,7 +22,7 @@ public class PackMining {
 	public static final String MODID = "miningpack";
 	public static final String MODNAME = "PackMining";
 	public static final String VERSION = "0.1a";
-	public static final String AUTHOR = "timaxa007";
+	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	@Instance(PackMining.MODID) public static PackMining instance;
 	@SidedProxy(modId = PackMining.MODID, clientSide = "mods.timaxa007.pack.mining.ProxyClient", serverSide = "mods.timaxa007.pack.mining.ProxyCommon")
