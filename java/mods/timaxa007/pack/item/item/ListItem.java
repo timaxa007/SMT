@@ -161,8 +161,7 @@ public class ListItem {
 				tool_shield
 		};
 
-		for (int i = 0; i < list_items.length; i++)
-			UtilTMS.UtilItem.RegItem(list_items[i]);
+		UtilTMS.UtilItem.RegItem(list_items);
 	}
 
 }

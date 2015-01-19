@@ -15,13 +15,13 @@ public class EventActionMouse {
 	public void actionBindAttack(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (Minecraft.getMinecraft().gameSettings.keyBindAttack.getIsKeyPressed()) {
-				ActionMouseKey.onLeftClickTickClient(event.player);
+				ActionMouseKey.actionLeftClickTickClient(event.player);
 				lc = true;
-				if (!lc_last && lc) ActionMouseKey.onLeftClickClient(event.player, true);//press down
+				if (!lc_last && lc) ActionMouseKey.actionLeftClickClient(event.player, true);//press down
 				lc_last = lc;
 			} else {
 				lc = false;
-				if (lc_last && !lc) ActionMouseKey.onLeftClickClient(event.player, false);//unpress down
+				if (lc_last && !lc) ActionMouseKey.actionLeftClickClient(event.player, false);//unpress down
 				lc_last = lc;
 			}
 		}
@@ -31,13 +31,13 @@ public class EventActionMouse {
 	public void actionBindUseItem(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.getIsKeyPressed()) {
-				ActionMouseKey.onRightClickTickClient(event.player);
+				ActionMouseKey.actionRightClickTickClient(event.player);
 				rc = true;
-				if (!rc_last && rc) ActionMouseKey.onRightClickClient(event.player, true);//press down
+				if (!rc_last && rc) ActionMouseKey.actionRightClickClient(event.player, true);//press down
 				rc_last = rc;
 			} else {
 				rc = false;
-				if (rc_last && !rc) ActionMouseKey.onRightClickClient(event.player, false);//unpress down
+				if (rc_last && !rc) ActionMouseKey.actionRightClickClient(event.player, false);//unpress down
 				rc_last = rc;
 			}
 		}

@@ -23,8 +23,7 @@ public class ListBlock {
 				claymore
 		};
 
-		for (int i = 0; i < list_block.length; i++) 
-			UtilTMS.UtilBlock.RegBlock(list_block[i]);
+		UtilTMS.UtilBlock.RegBlock(list_block);
 
 		GameRegistry.registerTileEntity(TileEntityClaymore.class, "TileEntityClaymore");
 

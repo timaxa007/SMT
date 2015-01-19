@@ -18,15 +18,36 @@ public class ListBlock {
 	magic_cauldron, 
 	magic_locked;
 
+	public static Class 
+	te_magic_machines, 
+	te_magic_slims, 
+	te_magic_cauldron, 
+	te_magic_locked;
+
 	public static Block[] list_block;
 	public static Class[] list_te;
 
 	public static void preInit() {
 
-		if (magic_machines_be) magic_machines = new BlockMagicMachines("magic_machines");
-		if (magic_slims_be) magic_slims = new BlockSlims("magic_slims");
-		if (magic_cauldron_be) magic_cauldron = new BlockMagicCauldron("magic_cauldron");
-		if (magic_locked_be) magic_locked = new BlockLocked("magic_locked");
+		if (magic_machines_be) {
+			magic_machines = new BlockMagicMachines("magic_machines");
+			te_magic_machines = TileEntityMagicMachines.class;
+		}
+
+		if (magic_slims_be) {
+			magic_slims = new BlockSlims("magic_slims");
+			te_magic_slims = TileEntitySlims.class;
+		}
+
+		if (magic_cauldron_be) {
+			magic_cauldron = new BlockMagicCauldron("magic_cauldron");
+			te_magic_cauldron = TileEntityMagicCauldron.class;
+		}
+
+		if (magic_locked_be) {
+			magic_locked = new BlockLocked("magic_locked");
+			te_magic_locked = TileEntityBlockLocked.class;
+		}
 
 		list_block = new Block[] {
 				magic_machines, 
@@ -35,17 +56,17 @@ public class ListBlock {
 				magic_locked
 		};
 
-		for (int i = 0; i < list_block.length; i++) 
-			UtilTMS.UtilBlock.RegBlock(list_block[i]);
+		UtilTMS.UtilBlock.RegBlock(list_block);
+
 
 		list_te = new Class[] {
-				TileEntityMagicMachines.class,
-				TileEntityMagicCauldron.class,
-				TileEntityBlockLocked.class
+				te_magic_machines, 
+				te_magic_slims, 
+				te_magic_cauldron, 
+				te_magic_locked
 		};
 
-		for (int i = 0; i < list_te.length; i++) 
-			UtilTMS.UtilBlock.RegTE(list_te[i]);
+		UtilTMS.UtilBlock.RegTE(list_te);
 
 	}
 

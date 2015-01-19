@@ -8,29 +8,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemActionMouse extends ItemFixReg {
 	//--------------------------------------------------------------------------------------------------------------
-	@SideOnly(Side.CLIENT)
 	public static boolean isLeftClick;
-
-	@SideOnly(Side.CLIENT)
 	public static boolean isRightClick;
 	//--------------------------------------------------------------------------------------------------------------
 	public ItemActionMouse(String tag) {
 		super(tag);
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/**Return boolean: <b>true</b> - working method onLeftClickTick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onLeftClickTickClient(ItemStack is, World world, EntityPlayer player) {
-		return false;
+	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player) {
+
 	}
 
-	/**Return boolean: <b>true</b> - working method onLeftClick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onLeftClickTick(ItemStack is, World world, EntityPlayer player) {
+	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 
@@ -38,19 +29,13 @@ public class ItemActionMouse extends ItemFixReg {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/**Return boolean: <b>true</b> - working method onRightClickTick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onRightClickTickClient(ItemStack is, World world, EntityPlayer player) {
-		return false;
+	public void onRightClickTickClient(ItemStack is, World world, EntityPlayer player) {
+
 	}
 
-	/**Return boolean: <b>true</b> - working method onRightClick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onRightClickTick(ItemStack is, World world, EntityPlayer player) {
+	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 

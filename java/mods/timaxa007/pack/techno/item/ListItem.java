@@ -29,8 +29,7 @@ public class ListItem {
 				tool_electric_drills
 		};
 
-		for (int i = 0; i < list_item.length; i++) 
-			UtilTMS.UtilItem.RegItem(list_item[i]);
+		UtilTMS.UtilItem.RegItem(list_item);
 
 	}
 

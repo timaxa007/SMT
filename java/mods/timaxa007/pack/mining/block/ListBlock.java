@@ -3,7 +3,6 @@ package mods.timaxa007.pack.mining.block;
 import mods.timaxa007.pack.mining.tile.*;
 import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.block.Block;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ListBlock {
 
@@ -19,14 +18,24 @@ public class ListBlock {
 	ore_ender_ores, 
 	cristals;
 
+	public static Class 
+	te_ore_ores, 
+	te_cristals;
+
 	public static Block[] list_block;
+	public static Class[] list_te;
 
 	public static void preInit() {
 
 		if (ore_rock_ores_be) ore_rock_ores = new OreOres("ore_rock_ores").setBlockTextureName("stone");
 		if (ore_nether_ores_be) ore_nether_ores = new OreOres("ore_nether_ores").setBlockTextureName("netherrack");
 		if (ore_ender_ores_be) ore_ender_ores = new OreOres("ore_ender_ores").setBlockTextureName("end_stone");
-		if (cristals_be) cristals = new BlockCristals("cristals");
+		if (ore_rock_ores_be || ore_nether_ores_be || ore_ender_ores_be) te_ore_ores = TileEntityOreOres.class;
+
+		if (cristals_be) {
+			cristals = new BlockCristals("cristals");
+			te_cristals = TileEntityCristals.class;
+		}
 
 		list_block = new Block[] {
 				ore_rock_ores, 
@@ -35,11 +44,14 @@ public class ListBlock {
 				cristals
 		};
 
-		for (int i = 0; i < list_block.length; i++) 
-			UtilTMS.UtilBlock.RegBlock(list_block[i]);
+		UtilTMS.UtilBlock.RegBlock(list_block);
 
-		GameRegistry.registerTileEntity(TileEntityCristals.class, "TileEntityCristals");
-		GameRegistry.registerTileEntity(TileEntityOreOres.class, "TileEntityOreOres");
+		list_te = new Class[] {
+				te_ore_ores, 
+				te_cristals
+		};
+
+		UtilTMS.UtilBlock.RegTE(list_te);
 
 	}
 

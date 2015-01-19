@@ -16,163 +16,124 @@ public class ActionSecondaryKey {
 	 * numpad1 - use1
 	 **/
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad0TickClient(EntityPlayer player) {
+	public static void actionNumpad0TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad0Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad0Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad0Tick(EntityPlayer player) {
 
-	}
-
-	public static void onNumpad0(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad0(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad1TickClient(EntityPlayer player) {
+	public static void actionNumpad1TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad1Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad1Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad1Tick(EntityPlayer player) {
-
-	}
-
-	public static void onNumpad1(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad1(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad2TickClient(EntityPlayer player) {
+	public static void actionNumpad2TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad2Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad2Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad2Tick(EntityPlayer player) {
-
-	}
-
-	public static void onNumpad2(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad2(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad3TickClient(EntityPlayer player) {
+	public static void actionNumpad3TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad3Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad3Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad3Tick(EntityPlayer player) {
-
-	}
-
-	public static void onNumpad3(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad3(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad4TickClient(EntityPlayer player) {
+	public static void actionNumpad4TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad4Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad4Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad4Tick(EntityPlayer player) {
-
-	}
-
-	public static void onNumpad4(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad4(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad5TickClient(EntityPlayer player) {
+	public static void actionNumpad5TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad5Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad5Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad5Tick(EntityPlayer player) {
-
-	}
-
-	public static void onNumpad5(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad5(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad6TickClient(EntityPlayer player) {
+	public static void actionNumpad6TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad6Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad6Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad6Tick(EntityPlayer player) {
-
-	}
-
-	public static void onNumpad6(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad6(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad7TickClient(EntityPlayer player) {
+	public static void actionNumpad7TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad7Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad7Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad7Tick(EntityPlayer player) {
-
-	}
-
-	public static void onNumpad7(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad7(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad8TickClient(EntityPlayer player) {
+	public static void actionNumpad8TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad8Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad8Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad8Tick(EntityPlayer player) {
-
-	}
-
-	public static void onNumpad8(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad8(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public static void onNumpad9TickClient(EntityPlayer player) {
+	public static void actionNumpad9TickClient(EntityPlayer player) {
 
 	}
 
-	public static void onNumpad9Client(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad9Client(EntityPlayer player, boolean buttonstate) {
 
 	}
 
-	public static void onNumpad9Tick(EntityPlayer player) {
-
-	}
-
-	public static void onNumpad9(EntityPlayer player, boolean buttonstate) {
+	public static void actionNumpad9(EntityPlayer player, boolean buttonstate) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------

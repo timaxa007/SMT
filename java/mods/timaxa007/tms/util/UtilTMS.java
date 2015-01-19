@@ -24,6 +24,10 @@ public class UtilTMS {
 
 	public static class UtilBlock {
 
+		public static void RegBlock(Block[] block) {
+			for (int i = 0; i < block.length; i++) RegBlock(block[i]);
+		}
+
 		public static void RegBlock(Block block) {
 			if (block != null) {
 				if (block instanceof BlockFixReg) {
@@ -38,6 +42,10 @@ public class UtilTMS {
 		@Deprecated
 		public static void RegBlock(Block block, Class<? extends ItemBlock> item) {
 			GameRegistry.registerBlock(block, item, block.getUnlocalizedName());
+		}
+
+		public static void RegTE(Class<? extends TileEntity> te[]) {
+			for (int i = 0; i < te.length; i++) RegTE(te[i]);
 		}
 
 		public static void RegTE(Class<? extends TileEntity> te) {
@@ -56,6 +64,10 @@ public class UtilTMS {
 	}
 
 	public static class UtilItem {
+
+		public static void RegItem(Item[] item) {
+			for (int i = 0; i < item.length; i++) RegItem(item[i]);
+		}
 
 		public static void RegItem(Item item) {
 			if (item != null) {
@@ -81,10 +93,12 @@ public class UtilTMS {
 	public static class UtilWorld {
 
 		public static void dropItem(World world, int x, int y, int z, ItemStack is) {
-			if (!world.isRemote/* && world.getGameRules().getGameRuleBooleanValue("doTileDrops")*/) {
-				EntityItem entityitem = new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, is);
-				entityitem.delayBeforeCanPickup = 10;
-				world.spawnEntityInWorld(entityitem);
+			if (world != null && is != null) {
+				if (!world.isRemote/* && world.getGameRules().getGameRuleBooleanValue("doTileDrops")*/) {
+					EntityItem entityitem = new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, is);
+					entityitem.delayBeforeCanPickup = 10;
+					world.spawnEntityInWorld(entityitem);
+				}
 			}
 		}
 

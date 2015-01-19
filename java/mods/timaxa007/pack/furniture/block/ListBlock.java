@@ -189,32 +189,41 @@ public class ListBlock {
 	furniture_chest;
 
 	public static Block[] list_block;
+	public static Class[] list_te;
 
 	public static void preInit() {
 
-		if (furniture_machines_be) furniture_machines = new BlockFurnitureMachines("furniture_machines");
-		if (furniture_rock_blocks_be) furniture_rock_blocks = new BlockFurnitureRockBlocks("furniture_rock_blocks");
-		if (furniture_glass_blocks_be) furniture_glass_blocks = new BlockFurnitureGlassBlocks("furniture_glass_blocks");
-		if (furniture_wood_blocks_be) furniture_wood_blocks = new BlockFurnitureWoodBlocks("furniture_wood_blocks");
-		if (furniture_ground_blocks_be) furniture_ground_blocks = new BlockFurnitureGroundBlocks("furniture_ground_blocks");
-		if (furniture_sand_blocks_be) furniture_sand_blocks = new BlockFurnitureSandBlocks("furniture_sand_blocks");
-		if (furniture_cloth_blocks_be) furniture_cloth_blocks = new BlockFurnitureClothBlocks("furniture_cloth_blocks");
-		if (furniture_metal_blocks_be) furniture_metal_blocks = new BlockFurnitureMetalBlocks("furniture_metal_blocks");
-		if (cnstor_block_be) cnstor_block = new BlockCnstorBlock("cnstor_block");
-		if (cnstor_angle_be) cnstor_angle = new BlockCnstorAngle("cnstor_angle");
-		if (cnstor_half_be) cnstor_half = new BlockCnstorHalf("cnstor_half");
-		if (cnstor_button_be) cnstor_button = new BlockCnstorButton("cnstor_button");
-		if (cnstor_lever_be) cnstor_lever = new BlockCnstorLever("cnstor_lever");
-		if (cnstor_stairs_be) cnstor_stairs = new BlockCnstorStairs("cnstor_stairs");
-		if (cnstor_fence_be) cnstor_fence = new BlockCnstorFence("cnstor_fence");
-		if (cnstor_wall_be) cnstor_wall = new BlockCnstorWall("cnstor_wall");
-		if (cnstor_door_be) cnstor_door = new BlockCnstorDoor("cnstor_door");
-		if (cnstor_bed_be) cnstor_bed = new BlockCnstorBed("cnstor_bed");
+		if (furniture_machines_be) {furniture_machines = new BlockFurnitureMachines("furniture_machines");}
+		if (furniture_rock_blocks_be) {furniture_rock_blocks = new BlockFurnitureRockBlocks("furniture_rock_blocks");}
+		if (furniture_glass_blocks_be) {furniture_glass_blocks = new BlockFurnitureGlassBlocks("furniture_glass_blocks");}
+		if (furniture_wood_blocks_be) {furniture_wood_blocks = new BlockFurnitureWoodBlocks("furniture_wood_blocks");}
+		if (furniture_ground_blocks_be) {furniture_ground_blocks = new BlockFurnitureGroundBlocks("furniture_ground_blocks");}
+		if (furniture_sand_blocks_be) {furniture_sand_blocks = new BlockFurnitureSandBlocks("furniture_sand_blocks");}
+		if (furniture_cloth_blocks_be) {furniture_cloth_blocks = new BlockFurnitureClothBlocks("furniture_cloth_blocks");}
+		if (furniture_metal_blocks_be) {furniture_metal_blocks = new BlockFurnitureMetalBlocks("furniture_metal_blocks");}
+		if (cnstor_block_be) {cnstor_block = new BlockCnstorBlock("cnstor_block");}
+		if (cnstor_angle_be) {cnstor_angle = new BlockCnstorAngle("cnstor_angle");}
+		if (cnstor_half_be) {cnstor_half = new BlockCnstorHalf("cnstor_half");}
+		if (cnstor_button_be) {cnstor_button = new BlockCnstorButton("cnstor_button");}
+		if (cnstor_lever_be) {cnstor_lever = new BlockCnstorLever("cnstor_lever");}
+		if (cnstor_stairs_be) {cnstor_stairs = new BlockCnstorStairs("cnstor_stairs");}
+		if (cnstor_fence_be) {cnstor_fence = new BlockCnstorFence("cnstor_fence");}
+		if (cnstor_wall_be) {cnstor_wall = new BlockCnstorWall("cnstor_wall");}
+		if (cnstor_door_be) {cnstor_door = new BlockCnstorDoor("cnstor_door");}
+		if (cnstor_bed_be) {cnstor_bed = new BlockCnstorBed("cnstor_bed");}
 
-		if (fluid_fake_water_be) fluid_fake_water = new BlockFluidFakeWaterStatic("fluid_fake_water").setLightOpacity(3).setBlockTextureName("water_still");
-		if (fluid_fake_water_flowing_be) fluid_fake_water_flowing = new BlockFluidFakeWaterDynamic("fluid_fake_water_flowing").setLightOpacity(3).setBlockTextureName("water_flow");
-		if (fluid_fake_lava_be) fluid_fake_lava = new BlockFluidFakeLavaStatic("fluid_fake_lava").setLightLevel(1.0F).setBlockTextureName("lava_still");
-		if (fluid_fake_lava_flowing_be) fluid_fake_lava_flowing = new BlockFluidFakeLavaDynamic("fluid_fake_lava_flowing").setLightLevel(1.0F).setBlockTextureName("lava_flow");
+		if (fluid_fake_water_be) {
+			fluid_fake_water = new BlockFluidFakeWaterStatic("fluid_fake_water").setLightOpacity(3).setBlockTextureName("water_still");
+		}
+		if (fluid_fake_water_flowing_be) {
+			fluid_fake_water_flowing = new BlockFluidFakeWaterDynamic("fluid_fake_water_flowing").setLightOpacity(3).setBlockTextureName("water_flow");
+		}
+		if (fluid_fake_lava_be) {
+			fluid_fake_lava = new BlockFluidFakeLavaStatic("fluid_fake_lava").setLightLevel(1.0F).setBlockTextureName("lava_still");
+		}
+		if (fluid_fake_lava_flowing_be) {
+			fluid_fake_lava_flowing = new BlockFluidFakeLavaDynamic("fluid_fake_lava_flowing").setLightLevel(1.0F).setBlockTextureName("lava_flow");
+		}
 
 		if (air_light_0_be) air_light_0 = new AirLight("air_light_0").setLightLevel(0.0F);
 		if (air_light_1_be) air_light_1 = new AirLight("air_light_1").setLightLevel(0.0625F);
@@ -371,8 +380,7 @@ public class ListBlock {
 				furniture_chest
 		};
 
-		for (int i = 0; i < list_block.length; i++) 
-			UtilTMS.UtilBlock.RegBlock(list_block[i]);
+		UtilTMS.UtilBlock.RegBlock(list_block);
 
 		GameRegistry.registerTileEntity(TileEntityFurnitureMachines.class, "TileEntityFurnitureMachines");
 		GameRegistry.registerTileEntity(TileEntityFurnitureRockBlocks.class, "TileEntityFurnitureRockBlocks");

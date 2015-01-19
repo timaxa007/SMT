@@ -21,13 +21,13 @@ public class EventActionKey {
 	public void actionReload(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (RegKey.reload.getIsKeyPressed()) {
-				ActionPrimaryKey.onReloadTickClient(event.player);
+				ActionPrimaryKey.actionReloadTickClient(event.player);
 				k_reload = true;
-				if (!k_reload_last && k_reload) ActionPrimaryKey.onReloadClient(event.player, true);//press down
+				if (!k_reload_last && k_reload) ActionPrimaryKey.actionReloadClient(event.player, true);//press down
 				k_reload_last = k_reload;
 			} else {
 				k_reload = false;
-				if (k_reload_last && !k_reload) ActionPrimaryKey.onReloadClient(event.player, false);//unpress down
+				if (k_reload_last && !k_reload) ActionPrimaryKey.actionReloadClient(event.player, false);//unpress down
 				k_reload_last = k_reload;
 			}
 		}
@@ -37,13 +37,13 @@ public class EventActionKey {
 	public void actionCharge(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (RegKey.charge.getIsKeyPressed()) {
-				ActionPrimaryKey.onChargeTickClient(event.player);
+				ActionPrimaryKey.actionChargeTickClient(event.player);
 				k_charge = true;
-				if (!k_charge_last && k_charge) ActionPrimaryKey.onChargeClient(event.player, true);//press down
+				if (!k_charge_last && k_charge) ActionPrimaryKey.actionChargeClient(event.player, true);//press down
 				k_charge_last = k_charge;
 			} else {
 				k_charge = false;
-				if (k_charge_last && !k_charge) ActionPrimaryKey.onChargeClient(event.player, false);//unpress down
+				if (k_charge_last && !k_charge) ActionPrimaryKey.actionChargeClient(event.player, false);//unpress down
 				k_charge_last = k_charge;
 			}
 		}
@@ -53,13 +53,13 @@ public class EventActionKey {
 	public void actionMode(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (RegKey.mode.getIsKeyPressed()) {
-				ActionPrimaryKey.onModeTickClient(event.player);
+				ActionPrimaryKey.actionModeTickClient(event.player);
 				k_mode = true;
-				if (!k_mode_last && k_mode) ActionPrimaryKey.onModeClient(event.player, true);//press down
+				if (!k_mode_last && k_mode) ActionPrimaryKey.actionModeClient(event.player, true);//press down
 				k_mode_last = k_mode;
 			} else {
 				k_mode = false;
-				if (k_mode_last && !k_mode) ActionPrimaryKey.onModeClient(event.player, false);//unpress down
+				if (k_mode_last && !k_mode) ActionPrimaryKey.actionModeClient(event.player, false);//unpress down
 				k_mode_last = k_mode;
 			}
 		}
@@ -69,13 +69,13 @@ public class EventActionKey {
 	public void actionAction(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (RegKey.action.getIsKeyPressed()) {
-				ActionPrimaryKey.onActionTickClient(event.player);
+				ActionPrimaryKey.actionActionTickClient(event.player);
 				k_action = true;
-				if (!k_action_last && k_action) ActionPrimaryKey.onActionClient(event.player, true);//press down
+				if (!k_action_last && k_action) ActionPrimaryKey.actionActionClient(event.player, true);//press down
 				k_action_last = k_action;
 			} else {
 				k_action = false;
-				if (k_action_last && !k_action) ActionPrimaryKey.onActionClient(event.player, false);//unpress down
+				if (k_action_last && !k_action) ActionPrimaryKey.actionActionClient(event.player, false);//unpress down
 				k_action_last = k_action;
 			}
 		}
@@ -85,13 +85,13 @@ public class EventActionKey {
 	public void actionModeIn(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (RegKey.mode_in.getIsKeyPressed()) {
-				ActionPrimaryKey.onModeInTickClient(event.player);
+				ActionPrimaryKey.actionModeInTickClient(event.player);
 				k_mode_in = true;
-				if (!k_mode_in_last && k_mode_in) ActionPrimaryKey.onModeInClient(event.player, true);//press down
+				if (!k_mode_in_last && k_mode_in) ActionPrimaryKey.actionModeInClient(event.player, true);//press down
 				k_mode_in_last = k_mode_in;
 			} else {
 				k_mode_in = false;
-				if (k_mode_in_last && !k_mode_in) ActionPrimaryKey.onModeInClient(event.player, false);//unpress down
+				if (k_mode_in_last && !k_mode_in) ActionPrimaryKey.actionModeInClient(event.player, false);//unpress down
 				k_mode_in_last = k_mode_in;
 			}
 		}
@@ -101,13 +101,13 @@ public class EventActionKey {
 	public void actionModeOut(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			if (RegKey.mode_out.getIsKeyPressed()) {
-				ActionPrimaryKey.onModeOutTickClient(event.player);
+				ActionPrimaryKey.actionModeOutTickClient(event.player);
 				k_mode_out = true;
-				if (!k_mode_out_last && k_mode_out) ActionPrimaryKey.onModeOutClient(event.player, true);//press down
+				if (!k_mode_out_last && k_mode_out) ActionPrimaryKey.actionModeOutClient(event.player, true);//press down
 				k_mode_out_last = k_mode_out;
 			} else {
 				k_mode_out = false;
-				if (k_mode_out_last && !k_mode_out) ActionPrimaryKey.onModeOutClient(event.player, false);//unpress down
+				if (k_mode_out_last && !k_mode_out) ActionPrimaryKey.actionModeOutClient(event.player, false);//unpress down
 				k_mode_out_last = k_mode_out;
 			}
 		}

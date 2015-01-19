@@ -36,8 +36,7 @@ public class ListBlock {
 				module_movement
 		};
 
-		for (int i = 0; i < list_block.length; i++) 
-			UtilTMS.UtilBlock.RegBlock(list_block[i]);
+		UtilTMS.UtilBlock.RegBlock(list_block);
 
 		GameRegistry.registerTileEntity(TileEntityElectricMachines.class, "TileEntityElectricMachines");
 		GameRegistry.registerTileEntity(TileEntityElectricWires.class, "TileEntityElectricWires");

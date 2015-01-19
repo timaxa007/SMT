@@ -39,20 +39,19 @@ public class MessagePrimaryKey implements IMessage {
 			boolean buttonstate = packet.buttonstate;
 			EntityPlayerMP player = context.getServerHandler().playerEntity;
 
-			switch(button) {
-			case -6:ActionPrimaryKey.onModeOutTick(player);break;
-			case -5:ActionPrimaryKey.onModeInTick(player);break;
-			case -4:ActionPrimaryKey.onActionTick(player);break;
-			case -3:ActionPrimaryKey.onModeTick(player);break;
-			case -2:ActionPrimaryKey.onChargeTick(player);break;
-			case -1:ActionPrimaryKey.onReloadTick(player);break;
-
-			case 1:ActionPrimaryKey.onReload(player, buttonstate);break;
-			case 2:ActionPrimaryKey.onCharge(player, buttonstate);break;
-			case 3:ActionPrimaryKey.onMode(player, buttonstate);break;
-			case 4:ActionPrimaryKey.onAction(player, buttonstate);break;
-			case 5:ActionPrimaryKey.onModeIn(player, buttonstate);break;
-			case 6:ActionPrimaryKey.onModeOut(player, buttonstate);break;
+			switch(button) {/*
+			case -6:ActionPrimaryKey.actionModeOutTick(player);break;
+			case -5:ActionPrimaryKey.actionModeInTick(player);break;
+			case -4:ActionPrimaryKey.actionActionTick(player);break;
+			case -3:ActionPrimaryKey.actionModeTick(player);break;
+			case -2:ActionPrimaryKey.actionChargeTick(player);break;
+			case -1:ActionPrimaryKey.actionReloadTick(player);break;*/
+			case 1:ActionPrimaryKey.actionReload(player, buttonstate);break;
+			case 2:ActionPrimaryKey.actionCharge(player, buttonstate);break;
+			case 3:ActionPrimaryKey.actionMode(player, buttonstate);break;
+			case 4:ActionPrimaryKey.actionAction(player, buttonstate);break;
+			case 5:ActionPrimaryKey.actionModeIn(player, buttonstate);break;
+			case 6:ActionPrimaryKey.actionModeOut(player, buttonstate);break;
 			}
 
 			return null;

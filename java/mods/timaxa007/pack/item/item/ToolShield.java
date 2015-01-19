@@ -10,9 +10,20 @@ import net.minecraft.world.World;
 
 public class ToolShield extends ItemFixReg {
 
+	private int damage;
+
 	public ToolShield(String tag) {
 		super(tag);
 		setCreativeTab(PackFurniture.tab_furniture);
+	}
+
+	public Item setDamage(int damage) {
+		this.damage = damage;
+		return this;
+	}
+
+	public int getDamage() {
+		return damage;
 	}
 
 	public EnumAction getItemUseAction(ItemStack is) {

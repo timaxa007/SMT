@@ -35,8 +35,7 @@ public class ListBlock {
 				apiary
 		};
 
-		for (int i = 0; i < list_block.length; i++) 
-			UtilTMS.UtilBlock.RegBlock(list_block[i]);
+		UtilTMS.UtilBlock.RegBlock(list_block);
 
 		GameRegistry.registerTileEntity(TileEntityGerminationPlants.class, "TileEntityGerminationPlants");
 		GameRegistry.registerTileEntity(TileEntityFoods.class, "TileEntityFoods");

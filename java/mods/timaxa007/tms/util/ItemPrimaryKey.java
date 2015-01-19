@@ -8,41 +8,24 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPrimaryKey extends ItemActionMouse {
 	//--------------------------------------------------------------------------------------------------------------
-	@SideOnly(Side.CLIENT)
 	public static boolean isReload;
-
-	@SideOnly(Side.CLIENT)
 	public static boolean isCharge;
-
-	@SideOnly(Side.CLIENT)
 	public static boolean isMode;
-
-	@SideOnly(Side.CLIENT)
 	public static boolean isAction;
-
-	@SideOnly(Side.CLIENT)
 	public static boolean isModeIn;
-
-	@SideOnly(Side.CLIENT)
 	public static boolean isModeOut;
 	//--------------------------------------------------------------------------------------------------------------
 	public ItemPrimaryKey(String tag) {
 		super(tag);
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/**Return boolean: <b>true</b> - working method onReloadTick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onReloadTickClient(ItemStack is, World world, EntityPlayer player) {
-		return false;
+	public void onReloadTickClient(ItemStack is, World world, EntityPlayer player) {
+
 	}
 
-	/**Return boolean: <b>true</b> - working method onReload (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onReloadTick(ItemStack is, World world, EntityPlayer player) {
+	public void onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 
@@ -50,19 +33,13 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/**Return boolean: <b>true</b> - working method onChargeTick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onChargeTickClient(ItemStack is, World world, EntityPlayer player) {
-		return false;
+	public void onChargeTickClient(ItemStack is, World world, EntityPlayer player) {
+
 	}
 
-	/**Return boolean: <b>true</b> - working method onCharge (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onChargeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onChargeTick(ItemStack is, World world, EntityPlayer player) {
+	public void onChargeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 
@@ -70,19 +47,13 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/**Return boolean: <b>true</b> - working method onModeTick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onModeTickClient(ItemStack is, World world, EntityPlayer player) {
-		return false;
+	public void onModeTickClient(ItemStack is, World world, EntityPlayer player) {
+
 	}
 
-	/**Return boolean: <b>true</b> - working method onMode (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onModeTick(ItemStack is, World world, EntityPlayer player) {
+	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 
@@ -90,19 +61,13 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/**Return boolean: <b>true</b> - working method onActionTick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onActionTickClient(ItemStack is, World world, EntityPlayer player) {
-		return false;
+	public void onActionTickClient(ItemStack is, World world, EntityPlayer player) {
+
 	}
 
-	/**Return boolean: <b>true</b> - working method onAction (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onActionClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onActionTick(ItemStack is, World world, EntityPlayer player) {
+	public void onActionClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 
@@ -110,19 +75,13 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/**Return boolean: <b>true</b> - working method onModeInTick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onModeInTickClient(ItemStack is, World world, EntityPlayer player) {
-		return false;
+	public void onModeInTickClient(ItemStack is, World world, EntityPlayer player) {
+
 	}
 
-	/**Return boolean: <b>true</b> - working method onModeIn (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onModeInClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onModeInTick(ItemStack is, World world, EntityPlayer player) {
+	public void onModeInClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 
@@ -130,19 +89,13 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/**Return boolean: <b>true</b> - working method onModeOutTick (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onModeOutTickClient(ItemStack is, World world, EntityPlayer player) {
-		return false;
+	public void onModeOutTickClient(ItemStack is, World world, EntityPlayer player) {
+
 	}
 
-	/**Return boolean: <b>true</b> - working method onModeOut (side.server) and working this method (side.client).**/
 	@SideOnly(Side.CLIENT)
-	public boolean onModeOutClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onModeOutTick(ItemStack is, World world, EntityPlayer player) {
+	public void onModeOutClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 
