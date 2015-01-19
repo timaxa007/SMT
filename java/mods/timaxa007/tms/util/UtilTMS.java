@@ -39,9 +39,14 @@ public class UtilTMS {
 			}
 		}
 
-		@Deprecated
 		public static void RegBlock(Block block, Class<? extends ItemBlock> item) {
-			GameRegistry.registerBlock(block, item, block.getUnlocalizedName());
+			if (block != null) {
+				if (block instanceof BlockFixReg) {
+					GameRegistry.registerBlock(block, item, "block_" + ((BlockFixReg)block).getTag());
+				}/* else {
+					GameRegistry.registerBlock(block, item, block.getUnlocalizedName());//not working, crash
+				}*/
+			}
 		}
 
 		public static void RegTE(Class<? extends TileEntity> te[]) {

@@ -5,6 +5,7 @@ import java.util.List;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.IScope;
 import mods.timaxa007.tms.util.ItemPrimaryKey;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,7 +22,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWeapons extends ItemPrimaryKey {
+public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -38,7 +39,7 @@ public class ItemWeapons extends ItemPrimaryKey {
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			ItemStack current = player.getCurrentEquippedItem();
-			if (is == current) {
+			if (current != null && current == is) {
 				NBTTagCompound tag = is.getTagCompound();
 				if (tag != null) {
 					//---------------------------------------------------------------
@@ -74,7 +75,7 @@ public class ItemWeapons extends ItemPrimaryKey {
 						if (tag.hasKey("RTM")) tag.setByte("RTM", (byte)0);
 					}
 					//-----------------------------------------------------------------------------------------------
-					if (isModeIn) {
+					if (isRightClick && isModeIn) {
 						if (tag.hasKey("ZoomFov")) {
 							int get_zoom = tag.getByte("ZoomFov");
 							if (get_zoom < 119) {
@@ -84,7 +85,7 @@ public class ItemWeapons extends ItemPrimaryKey {
 						}
 					}
 					//---------------------------------------------------------------
-					if (isModeOut) {
+					if (isRightClick && isModeOut) {
 						if (tag.hasKey("ZoomFov")) {
 							int get_zoom = tag.getByte("ZoomFov");
 							if (get_zoom > -119) {

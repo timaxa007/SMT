@@ -46,8 +46,8 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 
 				if (nbn >= 2) nbn = 0; else nbn++;
 
-				if (world.isRemote) player.addChatMessage(
-						new ChatComponentText(EnumChatFormatting.GOLD + "[Drill]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
+				player.addChatMessage(new ChatComponentText(
+						EnumChatFormatting.GOLD + "[Drill]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
 						);
 
 				tag.setInteger("ModeID", nbn);

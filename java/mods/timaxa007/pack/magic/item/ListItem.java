@@ -19,8 +19,6 @@ public class ListItem {
 	teleport, 
 	globular;
 
-	public static Item[] list_item;
-
 	public static void preInit() {
 
 		if (items_for_magic_be) items_for_magic = new ItemsMagic("items_for_magic");
@@ -31,15 +29,13 @@ public class ListItem {
 		//if (magic_bow_be) magic_bow = new BowMagic("magic_bow");
 		//if (arrow_mini_be) arrow_mini = new ItemArrowMini("arrow_mini");
 
-		list_item = new Item[] {
+		UtilTMS.UtilItem.RegItem(new Item[] {
 				items_for_magic, 
 				wands, 
 				stuffs, 
 				teleport, 
 				globular
-		};
-
-		UtilTMS.UtilItem.RegItem(list_item);
+		});
 
 	}
 

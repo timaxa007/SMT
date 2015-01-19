@@ -3,7 +3,6 @@ package mods.timaxa007.pack.stock.block;
 import mods.timaxa007.pack.stock.tile.*;
 import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.block.Block;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ListBlock {
 
@@ -19,28 +18,47 @@ public class ListBlock {
 	healing, 
 	apiary;
 
-	public static Block[] list_block;
+	public static Class 
+	te_germination_plants, 
+	te_foods, 
+	te_healing, 
+	te_apiary;
 
 	public static void preInit() {
 
-		if (germination_plants_be) germination_plants = new BlockGerminationPlants("germination_plants");
-		if (foods_be) foods = new BlockFoods("foods");
-		if (healing_be) healing = new BlockHealing("healing");
-		if (apiary_be) apiary = new BlockApiary("apiary");
+		if (germination_plants_be) {
+			germination_plants = new BlockGerminationPlants("germination_plants");
+			te_germination_plants = TileEntityGerminationPlants.class;
+		}
 
-		list_block = new Block[] {
+		if (foods_be) {
+			foods = new BlockFoods("foods");
+			te_foods = TileEntityFoods.class;
+		}
+
+		if (healing_be) {
+			healing = new BlockHealing("healing");
+			te_healing = TileEntityHealing.class;
+		}
+
+		if (apiary_be) {
+			apiary = new BlockApiary("apiary");
+			te_apiary = TileEntityApiary.class;
+		}
+
+		UtilTMS.UtilBlock.RegBlock(new Block[] {
 				germination_plants, 
 				foods, 
 				healing, 
 				apiary
-		};
+		});
 
-		UtilTMS.UtilBlock.RegBlock(list_block);
-
-		GameRegistry.registerTileEntity(TileEntityGerminationPlants.class, "TileEntityGerminationPlants");
-		GameRegistry.registerTileEntity(TileEntityFoods.class, "TileEntityFoods");
-		GameRegistry.registerTileEntity(TileEntityHealing.class, "TileEntityHealing");
-		GameRegistry.registerTileEntity(TileEntityApiary.class, "TileEntityApiary");
+		UtilTMS.UtilBlock.RegTE(new Class[] {
+				te_germination_plants, 
+				te_foods, 
+				te_healing, 
+				te_apiary
+		});
 
 	}
 

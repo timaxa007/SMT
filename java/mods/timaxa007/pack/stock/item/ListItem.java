@@ -29,8 +29,6 @@ public class ListItem {
 	bees;
 	//food_dog;
 
-	public static Item[] list_item;
-
 	public static void preInit() {
 
 		if (items_for_stock_be) items_for_stock = new ItemsStock("items_for_stock");
@@ -44,7 +42,7 @@ public class ListItem {
 		if (bees_be) bees = new ItemBees("bees");
 		//if (food_dog_be) food_dog = new ItemFoodDog(food_dog_itemID);
 
-		list_item = new Item[] {
+		UtilTMS.UtilItem.RegItem(new Item[] {
 				items_for_stock, 
 				germination_plants, 
 				nature_product, 
@@ -54,9 +52,7 @@ public class ListItem {
 				honeycombs, 
 				bee_products, 
 				bees
-		};
-
-		UtilTMS.UtilItem.RegItem(list_item);
+		});
 
 	}
 

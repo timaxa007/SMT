@@ -19,8 +19,6 @@ public class ListItem {
 	ammos, 
 	magazines;
 
-	public static Item[] list_item;
-
 	public static void preInit() {
 
 		if (items_for_weapons_be) items_for_weapons = new ItemsWeapons("items_for_weapons");
@@ -29,15 +27,13 @@ public class ListItem {
 		if (ammos_be) ammos = new ItemAmmos("ammos");
 		if (magazines_be) magazines = new ItemMagazines("magazines");
 
-		list_item = new Item[] {
+		UtilTMS.UtilItem.RegItem(new Item[] {
 				items_for_weapons, 
 				molotov_cocktail, 
 				weapons, 
 				ammos, 
 				magazines
-		};
-
-		UtilTMS.UtilItem.RegItem(list_item);
+		});
 
 	}
 

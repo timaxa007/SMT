@@ -3,7 +3,6 @@ package mods.timaxa007.pack.techno.block;
 import mods.timaxa007.pack.techno.tile.*;
 import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.block.Block;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ListBlock {
 
@@ -19,29 +18,49 @@ public class ListBlock {
 	chip, 
 	module_movement;
 
-	public static Block[] list_block;
+	public static Class 
+	te_electric_machines, 
+	te_electric_wires, 
+	te_chip, 
+	te_module_movement;
 
 	public static void preInit() {
 
-		if (electric_machines_be) electric_machines = new BlockElectricMachines("electric_machines");
-		if (electric_wires_be) electric_wires = new BlockElectricWires("electric_wires");
-		if (chip_be) chip = new BlockChip("chip");
-		if (module_movement_be) module_movement = new BlockModuleMovement("module_movement");
+		if (electric_machines_be) {
+			electric_machines = new BlockElectricMachines("electric_machines");
+			te_electric_machines = TileEntityElectricMachines.class;
+		}
+
+		if (electric_wires_be) {
+			electric_wires = new BlockElectricWires("electric_wires");
+			te_electric_wires = TileEntityElectricWires.class;
+		}
+
+		if (chip_be) {
+			chip = new BlockChip("chip");
+			te_chip = TileEntityChip.class;
+		}
+
+		if (module_movement_be) {
+			module_movement = new BlockModuleMovement("module_movement");
+			te_module_movement = TileEntityModuleMovement.class;
+		}
+
 		//transporter belt
 
-		list_block = new Block[] {
+		UtilTMS.UtilBlock.RegBlock(new Block[] {
 				electric_machines, 
 				electric_wires, 
 				chip, 
 				module_movement
-		};
+		});
 
-		UtilTMS.UtilBlock.RegBlock(list_block);
-
-		GameRegistry.registerTileEntity(TileEntityElectricMachines.class, "TileEntityElectricMachines");
-		GameRegistry.registerTileEntity(TileEntityElectricWires.class, "TileEntityElectricWires");
-		GameRegistry.registerTileEntity(TileEntityChip.class, "TileEntityChip");
-		GameRegistry.registerTileEntity(TileEntityModuleMovement.class, "TileEntityModuleMovement");
+		UtilTMS.UtilBlock.RegTE(new Class[] {
+				te_electric_machines, 
+				te_electric_wires, 
+				te_chip, 
+				te_module_movement
+		});
 
 	}
 

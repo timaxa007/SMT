@@ -69,8 +69,6 @@ public class ListItem {
 	armor_new_leggin, 
 	armor_new_boot;
 
-	public static Item[] list_item;
-
 	public static void preInit() {
 
 		if (items_for_furniture_be) items_for_furniture = new ItemsFurniture("items_for_furniture");
@@ -99,7 +97,7 @@ public class ListItem {
 		if (armor_new_leggin_be) armor_new_leggin = new ArmorNew("armor_new_leggin", COSTUME, 0, 2);
 		if (armor_new_boot_be) armor_new_boot = new ArmorNew("armor_new_boot", COSTUME, 0, 3);
 
-		list_item = new Item[] {
+		UtilTMS.UtilItem.RegItem(new Item[] {
 				items_for_furniture, 
 				colored, 
 				paint_can, 
@@ -125,9 +123,7 @@ public class ListItem {
 				armor_new_chest, 
 				armor_new_leggin, 
 				armor_new_boot
-		};
-
-			UtilTMS.UtilItem.RegItem(list_item);
+		});
 
 	}
 

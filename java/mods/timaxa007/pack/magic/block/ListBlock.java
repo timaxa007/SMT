@@ -24,9 +24,6 @@ public class ListBlock {
 	te_magic_cauldron, 
 	te_magic_locked;
 
-	public static Block[] list_block;
-	public static Class[] list_te;
-
 	public static void preInit() {
 
 		if (magic_machines_be) {
@@ -49,24 +46,19 @@ public class ListBlock {
 			te_magic_locked = TileEntityBlockLocked.class;
 		}
 
-		list_block = new Block[] {
+		UtilTMS.UtilBlock.RegBlock(new Block[] {
 				magic_machines, 
 				magic_slims, 
 				magic_cauldron, 
 				magic_locked
-		};
+		});
 
-		UtilTMS.UtilBlock.RegBlock(list_block);
-
-
-		list_te = new Class[] {
+		UtilTMS.UtilBlock.RegTE(new Class[] {
 				te_magic_machines, 
 				te_magic_slims, 
 				te_magic_cauldron, 
 				te_magic_locked
-		};
-
-		UtilTMS.UtilBlock.RegTE(list_te);
+		});
 
 	}
 

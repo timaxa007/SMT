@@ -83,8 +83,6 @@ public class ListItem {
 	tool_tomahawk, 
 	tool_shield;
 
-	public static Item[] list_items;
-
 	public static void preInit() {
 
 		if (items_for_items_be) items_for_items = new ItemsItems("items_for_items");
@@ -123,7 +121,7 @@ public class ListItem {
 		if (tool_tomahawk_be) tool_tomahawk = new ToolAxe("tool_tomahawk");
 		if (tool_shield_be) tool_shield = new ToolShield("tool_shield");
 
-		list_items = new Item[] {
+		UtilTMS.UtilItem.RegItem(new Item[] {
 				items_for_items, 
 
 				armor_wool_colors_helmet, 
@@ -159,9 +157,7 @@ public class ListItem {
 				tool_shuriken, 
 				tool_tomahawk, 
 				tool_shield
-		};
-
-		UtilTMS.UtilItem.RegItem(list_items);
+		});
 	}
 
 }
