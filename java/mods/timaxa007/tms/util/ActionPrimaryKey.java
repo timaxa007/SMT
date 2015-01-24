@@ -13,25 +13,36 @@ public class ActionPrimaryKey {
 			if (current.getItem() instanceof ItemPrimaryKey) {
 				((ItemPrimaryKey)current.getItem()).onReloadTickClient(current, player.worldObj, player);
 			}
-		}
-	}
-
-	public static void actionReloadClient(EntityPlayer player, boolean isPress) {
-		ItemStack current = player.getCurrentEquippedItem();
-		if (current != null) {
-			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onReloadClient(current, player.worldObj, player, isPress);
-				Core.network.sendToServer(new MessagePrimaryKey(1, isPress));
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onReloadTickClient(current, player.worldObj, player);
 			}
 		}
 	}
 
-	public static void actionReload(EntityPlayer player, boolean isPress) {
+	public static void actionReloadClient(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).isReload = isPress;
-				((ItemPrimaryKey)current.getItem()).onReload(current, player.worldObj, player, isPress);
+				((ItemPrimaryKey)current.getItem()).isReload = buttonstate;
+				if (((ItemPrimaryKey)current.getItem()).onReloadClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(1, buttonstate));
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).isReload = buttonstate;
+				if (((ItemArmorPrimaryKey)current.getItem()).onReloadClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(1, buttonstate));
+			}
+		}
+	}
+
+	public static void actionReload(EntityPlayer player, boolean buttonstate) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null) {
+			if (current.getItem() instanceof ItemPrimaryKey) {
+				((ItemPrimaryKey)current.getItem()).onReload(current, player.worldObj, player, buttonstate);
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onReload(current, player.worldObj, player, buttonstate);
 			}
 		}
 	}
@@ -42,25 +53,36 @@ public class ActionPrimaryKey {
 			if (current.getItem() instanceof ItemPrimaryKey) {
 				((ItemPrimaryKey)current.getItem()).onChargeTickClient(current, player.worldObj, player);
 			}
-		}
-	}
-
-	public static void actionChargeClient(EntityPlayer player, boolean isPress) {
-		ItemStack current = player.getCurrentEquippedItem();
-		if (current != null) {
-			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onChargeClient(current, player.worldObj, player, isPress);
-				Core.network.sendToServer(new MessagePrimaryKey(2, isPress));
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onChargeTickClient(current, player.worldObj, player);
 			}
 		}
 	}
 
-	public static void actionCharge(EntityPlayer player, boolean isPress) {
+	public static void actionChargeClient(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).isCharge = isPress;
-				((ItemPrimaryKey)current.getItem()).onCharge(current, player.worldObj, player, isPress);
+				((ItemPrimaryKey)current.getItem()).isCharge = buttonstate;
+				if (((ItemPrimaryKey)current.getItem()).onChargeClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(2, buttonstate));
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).isCharge = buttonstate;
+				if (((ItemArmorPrimaryKey)current.getItem()).onChargeClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(2, buttonstate));
+			}
+		}
+	}
+
+	public static void actionCharge(EntityPlayer player, boolean buttonstate) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null) {
+			if (current.getItem() instanceof ItemPrimaryKey) {
+				((ItemPrimaryKey)current.getItem()).onCharge(current, player.worldObj, player, buttonstate);
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onCharge(current, player.worldObj, player, buttonstate);
 			}
 		}
 	}
@@ -71,25 +93,36 @@ public class ActionPrimaryKey {
 			if (current.getItem() instanceof ItemPrimaryKey) {
 				((ItemPrimaryKey)current.getItem()).onModeTickClient(current, player.worldObj, player);
 			}
-		}
-	}
-
-	public static void actionModeClient(EntityPlayer player, boolean isPress) {
-		ItemStack current = player.getCurrentEquippedItem();
-		if (current != null) {
-			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onModeClient(current, player.worldObj, player, isPress);
-				Core.network.sendToServer(new MessagePrimaryKey(3, isPress));
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onModeTickClient(current, player.worldObj, player);
 			}
 		}
 	}
 
-	public static void actionMode(EntityPlayer player, boolean isPress) {
+	public static void actionModeClient(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).isMode = isPress;
-				((ItemPrimaryKey)current.getItem()).onMode(current, player.worldObj, player, isPress);
+				((ItemPrimaryKey)current.getItem()).isMode = buttonstate;
+				if (((ItemPrimaryKey)current.getItem()).onModeClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(3, buttonstate));
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).isMode = buttonstate;
+				if (((ItemArmorPrimaryKey)current.getItem()).onModeClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(3, buttonstate));
+			}
+		}
+	}
+
+	public static void actionMode(EntityPlayer player, boolean buttonstate) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null) {
+			if (current.getItem() instanceof ItemPrimaryKey) {
+				((ItemPrimaryKey)current.getItem()).onMode(current, player.worldObj, player, buttonstate);
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onMode(current, player.worldObj, player, buttonstate);
 			}
 		}
 	}
@@ -100,25 +133,36 @@ public class ActionPrimaryKey {
 			if (current.getItem() instanceof ItemPrimaryKey) {
 				((ItemPrimaryKey)current.getItem()).onActionTickClient(current, player.worldObj, player);
 			}
-		}
-	}
-
-	public static void actionActionClient(EntityPlayer player, boolean isPress) {
-		ItemStack current = player.getCurrentEquippedItem();
-		if (current != null) {
-			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onActionClient(current, player.worldObj, player, isPress);
-				Core.network.sendToServer(new MessagePrimaryKey(4, isPress));
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onActionTickClient(current, player.worldObj, player);
 			}
 		}
 	}
 
-	public static void actionAction(EntityPlayer player, boolean isPress) {
+	public static void actionActionClient(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).isAction = isPress;
-				((ItemPrimaryKey)current.getItem()).onAction(current, player.worldObj, player, isPress);
+				((ItemPrimaryKey)current.getItem()).isAction = buttonstate;
+				if (((ItemPrimaryKey)current.getItem()).onActionClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(4, buttonstate));
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).isAction = buttonstate;
+				if (((ItemArmorPrimaryKey)current.getItem()).onActionClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(4, buttonstate));
+			}
+		}
+	}
+
+	public static void actionAction(EntityPlayer player, boolean buttonstate) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null) {
+			if (current.getItem() instanceof ItemPrimaryKey) {
+				((ItemPrimaryKey)current.getItem()).onAction(current, player.worldObj, player, buttonstate);
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onAction(current, player.worldObj, player, buttonstate);
 			}
 		}
 	}
@@ -129,25 +173,36 @@ public class ActionPrimaryKey {
 			if (current.getItem() instanceof ItemPrimaryKey) {
 				((ItemPrimaryKey)current.getItem()).onModeInTickClient(current, player.worldObj, player);
 			}
-		}
-	}
-
-	public static void actionModeInClient(EntityPlayer player, boolean isPress) {
-		ItemStack current = player.getCurrentEquippedItem();
-		if (current != null) {
-			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onModeInClient(current, player.worldObj, player, isPress);
-				Core.network.sendToServer(new MessagePrimaryKey(5, isPress));
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onModeInTickClient(current, player.worldObj, player);
 			}
 		}
 	}
 
-	public static void actionModeIn(EntityPlayer player, boolean isPress) {
+	public static void actionModeInClient(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).isModeIn = isPress;
-				((ItemPrimaryKey)current.getItem()).onModeIn(current, player.worldObj, player, isPress);
+				((ItemPrimaryKey)current.getItem()).isModeIn = buttonstate;
+				if (((ItemPrimaryKey)current.getItem()).onModeInClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(5, buttonstate));
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).isModeIn = buttonstate;
+				if (((ItemArmorPrimaryKey)current.getItem()).onModeInClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(5, buttonstate));
+			}
+		}
+	}
+
+	public static void actionModeIn(EntityPlayer player, boolean buttonstate) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null) {
+			if (current.getItem() instanceof ItemPrimaryKey) {
+				((ItemPrimaryKey)current.getItem()).onModeIn(current, player.worldObj, player, buttonstate);
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onModeIn(current, player.worldObj, player, buttonstate);
 			}
 		}
 	}
@@ -158,25 +213,36 @@ public class ActionPrimaryKey {
 			if (current.getItem() instanceof ItemPrimaryKey) {
 				((ItemPrimaryKey)current.getItem()).onModeOutTickClient(current, player.worldObj, player);
 			}
-		}
-	}
-
-	public static void actionModeOutClient(EntityPlayer player, boolean isPress) {
-		ItemStack current = player.getCurrentEquippedItem();
-		if (current != null) {
-			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).onModeOutClient(current, player.worldObj, player, isPress);
-				Core.network.sendToServer(new MessagePrimaryKey(6, isPress));
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onModeOutTickClient(current, player.worldObj, player);
 			}
 		}
 	}
 
-	public static void actionModeOut(EntityPlayer player, boolean isPress) {
+	public static void actionModeOutClient(EntityPlayer player, boolean buttonstate) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			if (current.getItem() instanceof ItemPrimaryKey) {
-				((ItemPrimaryKey)current.getItem()).isModeOut = isPress;
-				((ItemPrimaryKey)current.getItem()).onModeOut(current, player.worldObj, player, isPress);
+				((ItemPrimaryKey)current.getItem()).isModeOut = buttonstate;
+				if (((ItemPrimaryKey)current.getItem()).onModeOutClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(6, buttonstate));
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).isModeOut = buttonstate;
+				if (((ItemArmorPrimaryKey)current.getItem()).onModeOutClient(current, player.worldObj, player, buttonstate))
+					Core.network.sendToServer(new MessagePrimaryKey(6, buttonstate));
+			}
+		}
+	}
+
+	public static void actionModeOut(EntityPlayer player, boolean buttonstate) {
+		ItemStack current = player.getCurrentEquippedItem();
+		if (current != null) {
+			if (current.getItem() instanceof ItemPrimaryKey) {
+				((ItemPrimaryKey)current.getItem()).onModeOut(current, player.worldObj, player, buttonstate);
+			}
+			if (current.getItem() instanceof ItemArmorPrimaryKey) {
+				((ItemArmorPrimaryKey)current.getItem()).onModeOut(current, player.worldObj, player, buttonstate);
 			}
 		}
 	}

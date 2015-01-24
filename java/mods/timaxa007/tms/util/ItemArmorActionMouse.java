@@ -1,12 +1,13 @@
 package mods.timaxa007.tms.util;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemActionMouse extends ItemFixReg {
+public class ItemArmorActionMouse extends ItemArmorFixReg {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public static boolean isLeftClick;
@@ -14,8 +15,8 @@ public class ItemActionMouse extends ItemFixReg {
 	@SideOnly(Side.CLIENT)
 	public static boolean isRightClick;
 	//--------------------------------------------------------------------------------------------------------------
-	public ItemActionMouse(String tag) {
-		super(tag);
+	public ItemArmorActionMouse(String tag, ItemArmor.ArmorMaterial material, int render_id, int armor_type) {
+		super(tag, material, render_id, armor_type);
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)

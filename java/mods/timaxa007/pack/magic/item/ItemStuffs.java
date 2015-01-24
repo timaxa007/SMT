@@ -42,16 +42,11 @@ public class ItemStuffs extends ItemActionMouse {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public boolean onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (isPress) {
 			world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 255.0D);
 		}
-	}
-
-	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (isPress) {
-			world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 68.0D, 255.0D, 0.0D);
-		}
+		return super.onLeftClickClient(is, world, player, isPress);
 	}
 
 	@SideOnly(Side.CLIENT)

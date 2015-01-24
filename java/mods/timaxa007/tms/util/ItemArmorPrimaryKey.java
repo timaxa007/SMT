@@ -1,12 +1,13 @@
 package mods.timaxa007.tms.util;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemPrimaryKey extends ItemActionMouse {
+public class ItemArmorPrimaryKey extends ItemArmorActionMouse {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public static boolean isReload;
@@ -26,8 +27,8 @@ public class ItemPrimaryKey extends ItemActionMouse {
 	@SideOnly(Side.CLIENT)
 	public static boolean isModeOut;
 	//--------------------------------------------------------------------------------------------------------------
-	public ItemPrimaryKey(String tag) {
-		super(tag);
+	public ItemArmorPrimaryKey(String tag, ItemArmor.ArmorMaterial material, int render_id, int armor_type) {
+		super(tag, material, render_id, armor_type);
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)

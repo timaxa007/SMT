@@ -1,6 +1,6 @@
 package mods.timaxa007.tms.event;
 
-import mods.timaxa007.tms.util.IScope;
+import mods.timaxa007.tms.util.ItemPrimaryKey;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,7 +14,7 @@ public class EventClientTMS {
 	@SubscribeEvent
 	public void onZoom(FOVUpdateEvent e) {
 		ItemStack current = e.entity.getCurrentEquippedItem();
-		if (current != null && current.getItem() instanceof IScope) {
+		if (current != null && current.getItem() instanceof ItemPrimaryKey) {
 			NBTTagCompound tag = current.getTagCompound();
 			if (tag != null && tag.hasKey("Aim") && tag.getBoolean("Aim")) {
 				if (tag.hasKey("ZoomFov"))
@@ -29,7 +29,7 @@ public class EventClientTMS {
 	public void onRenderCrosshairs(RenderGameOverlayEvent.Pre e) {
 		ItemStack current = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
 
-		if (current != null && current.getItem() instanceof IScope && current.getTagCompound() != null) {
+		if (current != null && current.getItem() instanceof ItemPrimaryKey && current.getTagCompound() != null) {
 			NBTTagCompound tag = current.getTagCompound();
 			if (e.type.equals(ElementType.CROSSHAIRS)) {
 				if (tag.hasKey("Aim") && tag.getBoolean("Aim")) {

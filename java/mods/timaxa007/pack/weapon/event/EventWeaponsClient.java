@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.weapon.event;
 
 import mods.timaxa007.pack.weapon.gui.WeaponsIngameGUI;
-import mods.timaxa007.pack.weapon.item.ItemWeapons;
+import mods.timaxa007.tms.util.IScope;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
@@ -30,7 +30,7 @@ public class EventWeaponsClient {
 	public void onRenderCrosshairs(RenderGameOverlayEvent.Pre e) {
 		ItemStack current = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
 
-		if (current != null && current.getItem() instanceof ItemWeapons && current.getTagCompound() != null) {
+		if (current != null && current.getItem() instanceof IScope && current.getTagCompound() != null) {
 			NBTTagCompound tag = current.getTagCompound();
 			if (e.type.equals(ElementType.CROSSHAIRS) && tag.hasKey("Aim") && tag.getBoolean("Aim")) {
 

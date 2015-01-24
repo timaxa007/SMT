@@ -12,6 +12,7 @@ import net.minecraft.util.StatCollector;
 public class FluidFake {
 
 	public static final FluidFake[] list = new FluidFake[4096];
+	//private static Map hashMap = new HashMap();
 
 	public static final FluidFake empty = new FluidFake(0);
 

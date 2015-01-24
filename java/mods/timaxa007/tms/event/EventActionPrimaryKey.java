@@ -6,7 +6,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
 
-public class EventActionKey {
+public class EventActionPrimaryKey {
 	//--------------------------------------------------------------------------------------------------------------
 	boolean 
 	k_reload, k_reload_last, 
@@ -112,18 +112,5 @@ public class EventActionKey {
 			}
 		}
 	}
-	//--------------------------------------------------------------------------------------------------------------
-	boolean 
-	k_numpad0, k_k_numpad0_last, 
-	k_numpad9, k_k_numpad9_last, 
-	k_numpad8, k_k_numpad8_last, 
-	k_numpad7, k_k_numpad7_last, 
-	k_numpad6, k_k_numpad6_last, 
-	k_numpad5, k_k_numpad5_last, 
-	k_numpad4, k_k_numpad4_last, 
-	k_numpad3, k_k_numpad3_last, 
-	k_numpad2, k_k_numpad2_last, 
-	k_numpad1, k_k_numpad1_last
-	= false;
 	//--------------------------------------------------------------------------------------------------------------
 }

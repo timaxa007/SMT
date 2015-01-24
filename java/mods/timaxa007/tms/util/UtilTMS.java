@@ -30,22 +30,15 @@ public class UtilTMS {
 
 		public static void RegBlock(Block block) {
 			if (block != null) {
-				if (block instanceof BlockFixReg) {
+				if (block instanceof BlockFixReg)
 					GameRegistry.registerBlock(block, "block_" + ((BlockFixReg)block).getTag());
-				}/* else {
-					System.out.println(block.getClass().toString());
-					GameRegistry.registerBlock(block, block.getUnlocalizedName());//not working, crash
-				}*/
 			}
 		}
 
 		public static void RegBlock(Block block, Class<? extends ItemBlock> item) {
 			if (block != null) {
-				if (block instanceof BlockFixReg) {
+				if (block instanceof BlockFixReg)
 					GameRegistry.registerBlock(block, item, "block_" + ((BlockFixReg)block).getTag());
-				}/* else {
-					GameRegistry.registerBlock(block, item, block.getUnlocalizedName());//not working, crash
-				}*/
 			}
 		}
 
@@ -76,13 +69,10 @@ public class UtilTMS {
 
 		public static void RegItem(Item item) {
 			if (item != null) {
-				if (item instanceof ItemFixReg) {
+				if (item instanceof ItemFixReg)
 					GameRegistry.registerItem(item, "item_" + ((ItemFixReg)item).getTag());
-				} else if (item instanceof ItemArmorFixReg) {
+				else if (item instanceof ItemArmorFixReg)
 					GameRegistry.registerItem(item, "item_" + ((ItemArmorFixReg)item).getTag());
-				}/* else {
-					GameRegistry.registerItem(item, item.getUnlocalizedName());
-				}*/
 			}
 		}
 	}

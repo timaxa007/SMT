@@ -27,7 +27,9 @@ public class ProxyClient extends ProxyCommon {
 		MinecraftForge.EVENT_BUS.register(new EventClientTMS());
 		//MinecraftForge.EVENT_BUS.register(new EventMouse());
 		FMLCommonHandler.instance().bus().register(new EventActionMouse());
-		FMLCommonHandler.instance().bus().register(new EventActionKey());
+		FMLCommonHandler.instance().bus().register(new EventActionPrimaryKey());
+		FMLCommonHandler.instance().bus().register(new EventActionSecondarKey());
+		FMLCommonHandler.instance().bus().register(new EventActionArmorKey());
 
 	}
 

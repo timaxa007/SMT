@@ -24,22 +24,23 @@ public class WeaponFor {
 		"pulemet", 
 		"sniper"
 	};
-	
+
 	public int id;
 	public String tag;
 	private String name;
 	private String type;
+	private int delay;
 
 	private MagazineFor magazine;
 	private AmmoFor ammo;
 	private int size_ammo;
-/*
+	/*
 	private int color_hex1;
 	private int color_hex2;
 	private float temperature;
 	private float temperature_min;
 	private float temperature_max;
-*/
+	 */
 	private String texture1;
 	private String texture2;
 
@@ -48,6 +49,7 @@ public class WeaponFor {
 	public WeaponFor() {
 		id = nextID();
 		list[id] = this;
+		delay = 0;
 	}
 
 	/**It is not recommended to use this method.**/
@@ -55,6 +57,7 @@ public class WeaponFor {
 	public WeaponFor(int id) {
 		this.id = id;
 		list[id] = this;
+		delay = 0;
 	}
 
 	/**It is not recommended to use this method.**/
@@ -64,6 +67,7 @@ public class WeaponFor {
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
+		delay = 0;
 	}
 
 	public WeaponFor(String tag) {
@@ -71,6 +75,7 @@ public class WeaponFor {
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
+		delay = 0;
 	}
 	//--------------------------------------------------------
 	public static int nextID() {
@@ -131,7 +136,16 @@ public class WeaponFor {
 	public String getLocalizedType() {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
-/*
+
+	public WeaponFor setDelay(int delay) {
+		this.delay = delay;
+		return this;
+	}
+
+	public int getDelay() {
+		return delay;
+	}
+	/*
 	public WeaponFor setColors(int color) {
 		color_hex1 = color;
 		color_hex2 = color;
@@ -225,7 +239,7 @@ public class WeaponFor {
 	public String getTexture2() {
 		return texture2 == null ? getTexture1() : texture2;
 	}
-*/
+	 */
 	public WeaponFor setAmmo(MagazineFor magazines) {
 		ammo = null;
 		magazine = magazines;

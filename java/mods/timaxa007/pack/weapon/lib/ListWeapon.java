@@ -16,13 +16,13 @@ public class ListWeapon {
 	public static MagazineFor magazine_pulemet = new MagazineFor("magazine_pulemet").setSize(100).setBullet(bullet_pulemet);
 	public static MagazineFor magazine_sniper = new MagazineFor("magazine_sniper").setSize(20).setBullet(bullet_sniper);
 
-	public static WeaponFor weapon = new WeaponFor("weapon").setAmmo(magazine_bullet);
-	public static WeaponFor weapon_pistol = new WeaponFor("weapon_pistol").setAmmo(magazine_pistol);
-	public static WeaponFor weapon_shotgun_1 = new WeaponFor("weapon_shotgun_1").setAmmo(bullet_shotgun).setSizeAmmo(2);
-	public static WeaponFor weapon_shotgun_2 = new WeaponFor("weapon_shotgun_2").setAmmo(bullet_shotgun).setSizeAmmo(7);
-	public static WeaponFor weapon_avtomat = new WeaponFor("weapon_avtomat").setAmmo(magazine_avtomat);
-	public static WeaponFor weapon_pulemet = new WeaponFor("weapon_pulemet").setAmmo(magazine_pulemet);
-	public static WeaponFor weapon_sniper = new WeaponFor("weapon_sniper").setAmmo(magazine_sniper);
+	public static WeaponFor weapon = new WeaponFor("weapon").setDelay(1).setAmmo(magazine_bullet);
+	public static WeaponFor weapon_pistol = new WeaponFor("weapon_pistol").setDelay(4).setAmmo(magazine_pistol);
+	public static WeaponFor weapon_shotgun_1 = new WeaponFor("weapon_shotgun_1").setDelay(7).setAmmo(bullet_shotgun).setSizeAmmo(2);
+	public static WeaponFor weapon_shotgun_2 = new WeaponFor("weapon_shotgun_2").setDelay(10).setAmmo(bullet_shotgun).setSizeAmmo(7);
+	public static WeaponFor weapon_avtomat = new WeaponFor("weapon_avtomat").setDelay(2).setAmmo(magazine_avtomat);
+	public static WeaponFor weapon_pulemet = new WeaponFor("weapon_pulemet").setDelay(3).setAmmo(magazine_pulemet);
+	public static WeaponFor weapon_sniper = new WeaponFor("weapon_sniper").setDelay(25).setAmmo(magazine_sniper);
 
 
 }

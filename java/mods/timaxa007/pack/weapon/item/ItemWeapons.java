@@ -30,6 +30,8 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	public ItemWeapons(String tag) {
 		super(tag);
 		setMaxStackSize(1);
+		setMaxDamage(1024);
+		setNoRepair();
 		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:weapons");
 	}
@@ -43,23 +45,21 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 				NBTTagCompound tag = is.getTagCompound();
 				if (tag != null) {
 					//---------------------------------------------------------------
-					if (isLeftClick) {
+					if (tag.hasKey("Weapon") && tag.hasKey("AmmoAtm")) {
 
-						int rtm = 0;
+						int rbt/* = 0*/;
+						if (tag.hasKey("RBT")) {
+							rbt = (int)tag.getByte("RBT"); 
+						} else {
+							tag.setByte("RBT", (byte)0);
+							rbt = 0;
+						}
 
-						if (tag.hasKey("Weapon") && tag.hasKey("AmmoAtm")) {
-							if (tag.hasKey("RTM")) {
-								rtm = (int)tag.getByte("RTM"); 
-							} else {
-								tag.setByte("RTM", (byte)0);
-								rtm = 0;
-							}
+						if (rbt > 0) --rbt;
 
-							rtm += 1;
-							if (rtm > 20) rtm = 0;
-
+						if (isLeftClick) {
 							if (tag.getInteger("AmmoAtm") > 0) {
-								if (isFire(rtm, 2)) {
+								if (rbt == 0) {
 									if (!world.isRemote) {
 										world.playSoundAtEntity(player, "timaxa007:scout_fire-1", 1.0F, 1.0F);
 										EntityArrow entityarrow = new EntityArrow(world, player, 2.0F);
@@ -67,30 +67,29 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 										tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
 										if (Core.show_system_info_testing) System.out.println("fire");
 									}
+									rbt = WeaponFor.get(tag.getString("Weapon")).getDelay();
 								}
 							}
-							tag.setByte("RTM", (byte)rtm);
 						}
+						tag.setByte("RBT", (byte)rbt);
 					} else {
-						if (tag.hasKey("RTM")) tag.setByte("RTM", (byte)0);
+						//if (tag.hasKey("RTM")) tag.setByte("RTM", (byte)0);
 					}
 					//-----------------------------------------------------------------------------------------------
-					if (isRightClick && isModeIn) {
+					if (isRightClick && isModeIn && !isModeOut) {
 						if (tag.hasKey("ZoomFov")) {
 							int get_zoom = tag.getByte("ZoomFov");
 							if (get_zoom < 119) {
 								tag.setByte("ZoomFov", (byte)(get_zoom + 8));
-								is.setTagCompound(tag);
 							}
 						}
 					}
 					//---------------------------------------------------------------
-					if (isRightClick && isModeOut) {
+					if (isRightClick && isModeOut && !isModeIn) {
 						if (tag.hasKey("ZoomFov")) {
 							int get_zoom = tag.getByte("ZoomFov");
 							if (get_zoom > -119) {
 								tag.setByte("ZoomFov", (byte)(get_zoom - 8));
-								is.setTagCompound(tag);
 							}
 						}
 					}
@@ -119,20 +118,32 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		//}
 	}
 
+	@SideOnly(Side.CLIENT)
+	public boolean onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag != null && tag.hasKey("Aim")) {
+			return true;
+		}
+		return super.onRightClickClient(is, world, player, isPress);
+	}
+
 	@Override
 	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
-		if (!world.isRemote) {
-			if (tag != null && tag.hasKey("Aim")) {
-				tag.setBoolean("Aim", isPress);
-				is.setTagCompound(tag);
-				if (Core.show_system_info_testing) System.out.println(isPress ? "onScope" : "offScope");
-			}
-
+		if (tag != null && tag.hasKey("Aim")) {
+			tag.setBoolean("Aim", isPress);
+			is.setTagCompound(tag);
+			if (Core.show_system_info_testing) System.out.println(isPress ? "onScope" : "offScope");
 		}
+	}
 
-		//if (isPress) PackWeapons.network.sendTo(new PacketOpenGui(1), (EntityPlayerMP)player);
-
+	@SideOnly(Side.CLIENT)
+	public boolean onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag != null && tag.hasKey("Weapon")) {
+			return true;
+		}
+		return super.onReloadClient(is, world, player, isPress);
 	}
 
 	@Override
@@ -152,11 +163,11 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public boolean onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (isPress) {
-			player.openGui(PackWeapons.instance, PackWeapons.proxy.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
-			if (Core.show_system_info_testing) System.out.println("-modify-");
+			return true;
 		}
+		return super.onModeClient(is, world, player, isPress);
 	}
 
 	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
@@ -194,72 +205,6 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		}
 	}
 	 */
-	private boolean isFire(int i, int type) {
-
-		if (type == 20) {switch(i) {default:return true;}}
-
-		if (type == 10) {
-			switch(i) {
-			case 1:return true;
-			case 3:return true;
-			case 5:return true;
-			case 7:return true;
-			case 9:return true;
-			case 11:return true;
-			case 13:return true;
-			case 15:return true;
-			case 17:return true;
-			case 19:return true;
-			default:return false;
-			}
-		}
-
-		if (type == 5) {
-			switch(i) {
-			case 1:return true;
-			case 5:return true;
-			case 9:return true;
-			case 13:return true;
-			case 17:return true;
-			default:return false;
-			}
-		}
-
-		if (type == 4) {
-			switch(i) {
-			case 1:return true;
-			case 6:return true;
-			case 11:return true;
-			case 16:return true;
-			default:return false;
-			}
-		}
-
-		if (type == 2) {
-			switch(i) {
-			case 1:return true;
-			case 11:return true;
-			default:return false;
-			}
-		}
-
-		if (type == 1) {
-			switch(i) {
-			case 1:return true;
-			default:return false;
-			}
-		}
-
-		if (type == -1) {
-			switch(i) {
-			case 18:return true;
-			default:return false;
-			}
-		}
-
-		return false;
-	}
-
 	public boolean onEntitySwing(EntityLivingBase entity, ItemStack is) {
 		return true;
 	}

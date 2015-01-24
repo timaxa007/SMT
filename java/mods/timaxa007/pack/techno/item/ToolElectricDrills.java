@@ -38,7 +38,8 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 		setTextureName("timaxa007:tool/electric/drill");
 	}
 
-	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	@SideOnly(Side.CLIENT)
+	public boolean onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (isPress && !isLeftClick) {
 			NBTTagCompound tag = is.getTagCompound();
 			if (tag != null && tag.hasKey("ModeID")) {
@@ -49,6 +50,20 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 				player.addChatMessage(new ChatComponentText(
 						EnumChatFormatting.GOLD + "[Drill]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
 						);
+
+				return true;
+			}
+		}
+		return super.onModeClient(is, world, player, isPress);
+	}
+
+	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		if (isPress) {
+			NBTTagCompound tag = is.getTagCompound();
+			if (tag != null && tag.hasKey("ModeID")) {
+				int nbn = tag.getInteger("ModeID");
+
+				if (nbn >= 2) nbn = 0; else nbn++;
 
 				tag.setInteger("ModeID", nbn);
 				is.setTagCompound(tag);

@@ -2,7 +2,8 @@ package mods.timaxa007.tms.util;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-public class ActionSecondaryKey {
+@Deprecated
+public class ActionSecondaryKey_old {
 	/**
 	 * numpad0 - use
 	 * numpad9 - yaw_right
