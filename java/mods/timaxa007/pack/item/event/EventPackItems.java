@@ -13,28 +13,28 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class EventPackItems {
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void onShieldsИдщсл(LivingHurtEvent e) {
+	public void onShieldsBlock(LivingHurtEvent e) {
 		if (e.source instanceof EntityDamageSource) {
 			EntityDamageSource dmgSource = (EntityDamageSource)e.source;
-			Entity from = dmgSource.getEntity();//Кто наносит урон,
-			EntityLivingBase to = e.entityLiving;//Кому наноситься урон,
+			Entity from = dmgSource.getEntity();//РљС‚Рѕ РЅР°РЅРѕСЃРёС‚ СѓСЂРѕРЅ,
+			EntityLivingBase to = e.entityLiving;//РљРѕРјСѓ РЅР°РЅРѕСЃРёС‚СЊСЃСЏ СѓСЂРѕРЅ,
 
 			if (from instanceof EntityPlayer && to instanceof EntityPlayer) {
-				//Если кто наносит урон являеться игрок и кому наноситься урон являеться игрок, то...
+				//Р•СЃР»Рё РєС‚Рѕ РЅР°РЅРѕСЃРёС‚ СѓСЂРѕРЅ СЏРІР»СЏРµС‚СЊСЃСЏ РёРіСЂРѕРє Рё РєРѕРјСѓ РЅР°РЅРѕСЃРёС‚СЊСЃСЏ СѓСЂРѕРЅ СЏРІР»СЏРµС‚СЊСЃСЏ РёРіСЂРѕРє, С‚Рѕ...
 
 				EntityPlayer player_from = (EntityPlayer)from;
-				ItemStack current_from = player_from.getCurrentEquippedItem();//Что дерижит кто наносит урон
+				ItemStack current_from = player_from.getCurrentEquippedItem();//Р§С‚Рѕ РґРµСЂРёР¶РёС‚ РєС‚Рѕ РЅР°РЅРѕСЃРёС‚ СѓСЂРѕРЅ
 
 				EntityPlayer player_to = (EntityPlayer)to;
-				ItemStack current_to = player_to.getCurrentEquippedItem();//Что дерижит кому наносится урон
+				ItemStack current_to = player_to.getCurrentEquippedItem();//Р§С‚Рѕ РґРµСЂРёР¶РёС‚ РєРѕРјСѓ РЅР°РЅРѕСЃРёС‚СЃСЏ СѓСЂРѕРЅ
 
 				if (current_to != null && current_to.getItem() instanceof ToolShield && player_to.getItemInUseDuration() > 0) {
-					//Если рука кому наноситься урон, непуста и находиться щит и приэтом типа ПКМ
-					e.ammount = 0;//Урона нуль
+					//Р•СЃР»Рё СЂСѓРєР° РєРѕРјСѓ РЅР°РЅРѕСЃРёС‚СЊСЃСЏ СѓСЂРѕРЅ, РЅРµРїСѓСЃС‚Р° Рё РЅР°С…РѕРґРёС‚СЊСЃСЏ С‰РёС‚ Рё РїСЂРёСЌС‚РѕРј С‚РёРїР° РџРљРњ
+					e.ammount = 0;//РЈСЂРѕРЅР° РЅСѓР»СЊ
 					if (current_from != null && current_from.getItem() instanceof ItemSword) {
-						//Если рука кто наносит урон не пуста, и имеет в руке меч
+						//Р•СЃР»Рё СЂСѓРєР° РєС‚Рѕ РЅР°РЅРѕСЃРёС‚ СѓСЂРѕРЅ РЅРµ РїСѓСЃС‚Р°, Рё РёРјРµРµС‚ РІ СЂСѓРєРµ РјРµС‡
 						current_from.damageItem(((ToolShield)current_from.getItem()).getDamage(), player_from);
-						//то предмет который в руке будет поврежаться.
+						//С‚Рѕ РїСЂРµРґРјРµС‚ РєРѕС‚РѕСЂС‹Р№ РІ СЂСѓРєРµ Р±СѓРґРµС‚ РїРѕРІСЂРµР¶Р°С‚СЊСЃСЏ.
 					}
 
 				}

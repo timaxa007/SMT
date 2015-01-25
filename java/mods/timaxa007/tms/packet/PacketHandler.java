@@ -14,29 +14,29 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import cpw.mods.fml.relauncher.Side;
 //PacketHandler.init()
-@Sharable//Без этого, кстати, будет краш
+@Sharable//Р‘РµР· СЌС‚РѕРіРѕ, РєСЃС‚Р°С‚Рё, Р±СѓРґРµС‚ РєСЂР°С€
 public class PacketHandler extends SimpleChannelInboundHandler<FMLProxyPacket>{
 
 private static FMLEmbeddedChannel server;
 private static FMLEmbeddedChannel client;
 
 public static void init(){
-EnumMap<Side, FMLEmbeddedChannel> channels = NetworkRegistry.INSTANCE.newChannel("уникальное_название_канала_modid_подойдет", new PacketHandler());
+EnumMap<Side, FMLEmbeddedChannel> channels = NetworkRegistry.INSTANCE.newChannel("СѓРЅРёРєР°Р»СЊРЅРѕРµ_РЅР°Р·РІР°РЅРёРµ_РєР°РЅР°Р»Р°_modid_РїРѕРґРѕР№РґРµС‚", new PacketHandler());
 client = channels.get(Side.CLIENT);
 server = channels.get(Side.SERVER);
 }
 
-public static void sendToServer(ByteBuf data){ //ByteBuf - забавный класс, его методы узреете в IDE, а получить его можно вызовом Unpooled.buffer()
+public static void sendToServer(ByteBuf data){ //ByteBuf - Р·Р°Р±Р°РІРЅС‹Р№ РєР»Р°СЃСЃ, РµРіРѕ РјРµС‚РѕРґС‹ СѓР·СЂРµРµС‚Рµ РІ IDE, Р° РїРѕР»СѓС‡РёС‚СЊ РµРіРѕ РјРѕР¶РЅРѕ РІС‹Р·РѕРІРѕРј Unpooled.buffer()
 client.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.TOSERVER);
-client.writeAndFlush(new FMLProxyPacket(data, "то_самое_название_канала_запихните_в_константу_а_то_забудете")).addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
+client.writeAndFlush(new FMLProxyPacket(data, "С‚Рѕ_СЃР°РјРѕРµ_РЅР°Р·РІР°РЅРёРµ_РєР°РЅР°Р»Р°_Р·Р°РїРёС…РЅРёС‚Рµ_РІ_РєРѕРЅСЃС‚Р°РЅС‚Сѓ_Р°_С‚Рѕ_Р·Р°Р±СѓРґРµС‚Рµ")).addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
 }
 
-//cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper - другие типы "посыла" - игрокам, в измерение и т. д. как в старом добром PacketDispatcher-е.
+//cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper - РґСЂСѓРіРёРµ С‚РёРїС‹ "РїРѕСЃС‹Р»Р°" - РёРіСЂРѕРєР°Рј, РІ РёР·РјРµСЂРµРЅРёРµ Рё С‚. Рґ. РєР°Рє РІ СЃС‚Р°СЂРѕРј РґРѕР±СЂРѕРј PacketDispatcher-Рµ.
 
 @Override
 public void  channelRead0(ChannelHandlerContext ctx, FMLProxyPacket msg){
-ByteBuf data = msg.payload();//Ваша инфа.
-switch(data.readByte()){//Делайте чего хотите, но крайне рекомендую делать так
+ByteBuf data = msg.payload();//Р’Р°С€Р° РёРЅС„Р°.
+switch(data.readByte()){//Р”РµР»Р°Р№С‚Рµ С‡РµРіРѕ С…РѕС‚РёС‚Рµ, РЅРѕ РєСЂР°Р№РЅРµ СЂРµРєРѕРјРµРЅРґСѓСЋ РґРµР»Р°С‚СЊ С‚Р°Рє
 //case 0:doMagic1();break;
 //case 1:doMagic2();break;
 //default:sysout("WRONG PACKET RECEIVED");

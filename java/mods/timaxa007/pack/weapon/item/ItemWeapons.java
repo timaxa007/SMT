@@ -4,6 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.WeaponFor;
+import mods.timaxa007.pack.weapon.packet.MessageActionWeapons;
 import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.IScope;
 import mods.timaxa007.tms.util.ItemPrimaryKey;
@@ -61,11 +62,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 							if (tag.getInteger("AmmoAtm") > 0) {
 								if (rbt == 0) {
 									if (!world.isRemote) {
-										world.playSoundAtEntity(player, "timaxa007:scout_fire-1", 1.0F, 1.0F);
-										EntityArrow entityarrow = new EntityArrow(world, player, 2.0F);
-										world.spawnEntityInWorld(entityarrow);
-										tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
-										if (Core.show_system_info_testing) System.out.println("fire");
+										PackWeapons.network.sendToServer(new MessageActionWeapons(1));
 									}
 									rbt = WeaponFor.get(tag.getString("Weapon")).getDelay();
 								}
@@ -96,6 +93,19 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 					//---------------------------------------------------------------
 					is.setTagCompound(tag);
 				}
+			}
+		}
+	}
+
+	public void onFire(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound tag = is.getTagCompound();
+		if (tag != null) {
+			if (tag.hasKey("Weapon") && tag.hasKey("AmmoAtm")) {
+				world.playSoundAtEntity(player, WeaponFor.get(tag.getString("Weapon")).getSoundFire()[0], 1.0F, 1.0F);
+				EntityArrow entityarrow = new EntityArrow(world, player, 5.0F);
+				world.spawnEntityInWorld(entityarrow);
+				tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
+				if (Core.show_system_info_testing) System.out.println("fire");
 			}
 		}
 	}
@@ -150,14 +160,15 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	public void onReload(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound tag = is.getTagCompound();
 		if (tag != null && tag.hasKey("Weapon")) {
-			if (!world.isRemote) {
-
-			} else {
-				if (Core.show_system_info_testing) System.out.println("-reload-");
+			if (isPress) {
+				if (!world.isRemote) {
+					world.playSoundAtEntity(player, WeaponFor.get(tag.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
+				} else {
+					if (Core.show_system_info_testing) System.out.println("-reload-");
+				}
+				//tag.setInteger("AmmoAtm", WeaponFor.get(tag.getString("Weapon")).getSizeAmmo());
+				tag.setInteger("AmmoAtm", 20);
 			}
-
-			//tag.setInteger("AmmoAtm", MagazineFor.magazine_list[tag.getInteger("MagazineID")].getSize());
-			tag.setInteger("AmmoAtm", 20);
 			is.setTagCompound(tag);
 		}
 	}

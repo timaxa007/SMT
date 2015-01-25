@@ -29,7 +29,10 @@ public class WeaponFor {
 	public String tag;
 	private String name;
 	private String type;
+
 	private int delay;
+	private String[] sound_fire;
+	private String[] sound_reload = new String[3];//deploy, clip-out, clip-in
 
 	private MagazineFor magazine;
 	private AmmoFor ammo;
@@ -145,6 +148,37 @@ public class WeaponFor {
 	public int getDelay() {
 		return delay;
 	}
+
+	public WeaponFor setSoundFire(String[] sound_fire) {
+		this.sound_fire = sound_fire;
+		return this;
+	}
+
+	public WeaponFor setSoundFire(String sound_fire) {
+		this.sound_fire = new String[1];
+		this.sound_fire[0] = sound_fire;
+		return this;
+	}
+
+	public String[] getSoundFire() {
+		return sound_fire;
+	}
+
+	public WeaponFor setSoundReload(String[] sound_reload) {
+		this.sound_reload = sound_reload;
+		return this;
+	}
+
+	public WeaponFor setSoundReload(String sound_reload) {
+		this.sound_reload = new String[1];
+		this.sound_reload[0] = sound_reload;
+		return this;
+	}
+
+	public String[] getSoundReload() {
+		return sound_reload;
+	}
+
 	/*
 	public WeaponFor setColors(int color) {
 		color_hex1 = color;
