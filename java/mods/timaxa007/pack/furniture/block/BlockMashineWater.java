@@ -2,7 +2,6 @@ package mods.timaxa007.pack.furniture.block;
 
 import java.util.List;
 
-import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityMashineWater;
 import mods.timaxa007.tms.util.BlockFixReg;
@@ -87,11 +86,8 @@ public class BlockMashineWater extends BlockFixReg implements ITileEntityProvide
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		//for (int j = 0; j < 16; ++j) {
-		int j = 14;
-		list.add(addTag(GetColors.getHexColors[j], true));
-		list.add(addTag(GetColors.getHexColors[j], false));
-		//}
+		list.add(addTag(0xFFFFFF, true));
+		list.add(addTag(0xFFFFFF, false));
 		//list.add(new ItemStack(id, 1, 0));
 	}
 

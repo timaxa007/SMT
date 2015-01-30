@@ -64,6 +64,18 @@ color.red.s=Красные
 color.white.s=Белые
 color.yellow.s=Жёлтые
 
+convert.text.0=Ноль
+convert.text.1=Один
+convert.text.2=Два
+convert.text.3=Три
+convert.text.4=Четыре
+convert.text.5=Пять
+convert.text.6=Шесть
+convert.text.7=Семь
+convert.text.8=Восемь
+convert.text.9=Девять
+convert.text.10=Десять
+
 type.untype.name=Безтипный
 type.skin.name=Шкура
 type.leather.name=Кожа

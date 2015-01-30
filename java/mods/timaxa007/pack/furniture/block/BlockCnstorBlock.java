@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 
 import mods.timaxa007.lib.AddTextureModel;
-import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorBlock;
 import mods.timaxa007.tms.util.BlockFixReg;
@@ -101,10 +100,7 @@ public class BlockCnstorBlock extends BlockFixReg implements ITileEntityProvider
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < AddTextureModel.list.length; ++j) {
 			if (AddTextureModel.list[j] != null && AddTextureModel.list[j].tag != null) {
-				//for (int i = 0; i < 16; ++i) {
-				int i = 14;
-				list.add(addTag(AddTextureModel.list[j].tag, GetColors.getHexColors[i]));
-				//}
+				list.add(addTag(AddTextureModel.list[j].tag, 0xFFFFFF));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));

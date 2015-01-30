@@ -64,6 +64,18 @@ color.red.c=Red
 color.white.c=White
 color.yellow.c=Yellow
 
+convert.text.0=Zero
+convert.text.1=One
+convert.text.2=Two
+convert.text.3=Three
+convert.text.4=Four
+convert.text.5=Five
+convert.text.6=Six
+convert.text.7=Seven
+convert.text.8=Eight
+convert.text.9=Nine
+convert.text.10=Ten
+
 type.untype.name=Untype
 type.skin.name=Skin
 type.leather.name=Leather

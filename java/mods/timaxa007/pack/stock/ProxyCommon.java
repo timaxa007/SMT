@@ -5,7 +5,6 @@ import mods.timaxa007.pack.stock.entity.EntityTest;
 import mods.timaxa007.pack.stock.event.EventStock;
 import mods.timaxa007.pack.stock.item.ListItem;
 import mods.timaxa007.pack.stock.lib.ListStock;
-import mods.timaxa007.pack.stock.recipe.RecipeFoodsColors;
 import mods.timaxa007.pack.stock.recipe.Recipes_Stock;
 import mods.timaxa007.pack.stock.render.RenderMain;
 import mods.timaxa007.pack.stock.world.GeneratorPackStock;
@@ -55,7 +54,7 @@ public class ProxyCommon implements IProxy {
 
 		GameRegistry.registerWorldGenerator(new GeneratorPackStock(), 0);
 
-		GameRegistry.addRecipe(new RecipeFoodsColors());
+		//GameRegistry.addRecipe(new RecipeFoodsColors());
 
 		Recipes_Stock.list();
 

@@ -2,7 +2,6 @@ package mods.timaxa007.pack.item.item;
 
 import java.util.List;
 
-import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.tms.util.ItemArmorFixReg;
 import mods.timaxa007.tms.util.UtilText;
@@ -41,10 +40,8 @@ public class ArmorWoolColors extends ItemArmorFixReg {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		for (int j = 0; j < 16; ++j) {
-			list.add(addTag(new ItemStack(id, 1, 0), GetColors.getHexColors[j]));
-		}
-		list.add(new ItemStack(id, 1, 0));
+		list.add(addTag(new ItemStack(id, 1, 0), 0xFFFFFF));
+		//list.add(new ItemStack(id, 1, 0));
 	}
 
 	private static ItemStack addTag(ItemStack par1, int par2) {

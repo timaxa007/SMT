@@ -3,7 +3,6 @@ package mods.timaxa007.pack.furniture.block;
 import java.util.List;
 import java.util.Random;
 
-import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityVegetableFace;
 import mods.timaxa007.tms.util.BlockFixReg;
@@ -131,7 +130,7 @@ public class BlockVegetableFace extends BlockFixReg implements ITileEntityProvid
 			}
 		}
 	}
-
+	/*
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
@@ -157,15 +156,12 @@ public class BlockVegetableFace extends BlockFixReg implements ITileEntityProvid
 			//--------------------------------
 		} else return false;
 	}
-
+	 */
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int i1 = 0; i1 < type_block.length; i1++) {
 			for (int i3 = 0; i3 < type_face.length; i3++) {
-				//for (int j = 0; j < 16; j++) {
-				int j = 14;
-				list.add(addTag(id, i1, i3, GetColors.getHexColors[j]));
-				//}
+				list.add(addTag(id, i1, i3, 0xFFFFFF));
 				/*for (int j = 0; j < (Integer.MAX_VALUE / 1000000); j++) {//int j = 14;
 					list.add(addTag(id, i, (j * 1000000)));
 				}*/

@@ -6,7 +6,6 @@ import mods.timaxa007.pack.furniture.gui.HandlerGuiFurniture;
 import mods.timaxa007.pack.furniture.item.ListItem;
 import mods.timaxa007.pack.furniture.lib.ListFurniture;
 import mods.timaxa007.pack.furniture.recipe.FuelHandlerFurniture;
-import mods.timaxa007.pack.furniture.recipe.RecipeCnstorBlockColors;
 import mods.timaxa007.pack.furniture.recipe.RecipesArmor;
 import mods.timaxa007.pack.furniture.recipe.Recipes_Furniture;
 import mods.timaxa007.pack.furniture.render.RenderMain;
@@ -180,7 +179,6 @@ public class ProxyCommon {
 		OreDictionary.registerOre("dyeYellow", new ItemStack(item_colored, 1, 15));
 		 */
 		GameRegistry.addRecipe(new RecipesArmor());
-		GameRegistry.addRecipe(new RecipeCnstorBlockColors());
 		//GameRegistry.registerCraftingHandler(new CraftFurnitureHandler());
 
 		GameRegistry.registerFuelHandler(new FuelHandlerFurniture());

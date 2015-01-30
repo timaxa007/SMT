@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.stock.lib;
 
-import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.util.StatCollector;
@@ -231,40 +230,6 @@ public class FoodForItem {
 	}*/
 
 	//public FoodForItem setColors(int i1, int i2, int i3, int i4) {color_hex[0] = i1;color_hex[1] = i2;color_hex[2] = i3;color_hex[3] = i4;return this;}
-
-	public FoodForItem setColorsMix(int[] clr1, int[] clr2) {
-		setColorsMix(clr1, clr2, new int[] {2, 2, 2, 2}, new boolean[] {true, true, true, true});
-		return this;
-	}
-
-	public FoodForItem setColorsMix(int[] clr1, int[] clr2, int[] p) {
-		setColorsMix(clr1, clr2, p, new boolean[] {true, true, true, true});
-		return this;
-	}
-
-	public FoodForItem setColorsMix(int[] clr1, int[] clr2, int[] p, boolean[] flag) {
-		for (int i = 0; i < color_hex.length;) {
-			color_hex[i] = GetColors.getColorMix(clr1[i], clr2[i], p[i], flag[i]);
-		}
-		return this;
-	}
-
-	public FoodForItem setColorsMix(int i, int clr1, int clr2) {
-		setColorsMix(i, clr1, clr2, 2, true);
-		return this;
-	}
-
-	public FoodForItem setColorsMix(int i, int clr1, int clr2, int p) {
-		setColorsMix(i, clr1, clr2, p, true);
-		return this;
-	}
-
-	public FoodForItem setColorsMix(int i, int clr1, int clr2, int p, boolean flag) {
-		if (i < color_hex.length && i >= 0) {
-			color_hex[i] = GetColors.getColorMix(clr1, clr2, p, flag);
-		}
-		return this;
-	}
 
 	public int[] getColor() {
 		return color_hex;

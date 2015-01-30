@@ -2,7 +2,6 @@ package mods.timaxa007.pack.mining.block;
 
 import java.util.List;
 
-import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.pack.mining.tile.TileEntityOreOres;
 import mods.timaxa007.tms.util.BlockFixReg;
@@ -112,10 +111,7 @@ public class OreOres extends BlockFixReg implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int i = 0; i < type_ore.length; i++) {
-			//for (int j = 0; j < 16; j++) {
-			int j = 14;
-			list.add(addTag(id, i, GetColors.getHexColors[j]));
-			//}
+			list.add(addTag(id, i, 0xFFFFFF));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}

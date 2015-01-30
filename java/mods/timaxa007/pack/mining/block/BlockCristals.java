@@ -2,7 +2,6 @@ package mods.timaxa007.pack.mining.block;
 
 import java.util.List;
 
-import mods.timaxa007.lib.GetColors;
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.pack.mining.tile.TileEntityCristals;
 import mods.timaxa007.tms.util.BlockFixReg;
@@ -79,10 +78,8 @@ public class BlockCristals extends BlockFixReg implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int t = 0; t < 3; ++t) {
-			for (int c = 0; c < GetColors.getHexColors.length; ++c) {
-				for (int s = 1; s < 5; ++s) {
-					list.add(addTag(t, GetColors.getHexColors[c], s));
-				}
+			for (int s = 1; s < 5; ++s) {
+				list.add(addTag(t, 0xFFFFFF, s));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));

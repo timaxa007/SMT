@@ -1,12 +1,11 @@
 package mods.timaxa007.pack.furniture.lib;
 
 import mods.timaxa007.lib.FluidFake;
-import mods.timaxa007.lib.GetColors;
 
 public class ListFurniture {
 	//Colored Liquid
 	public static final FluidFake fluid_ink = new FluidFake("ink").setName("ink").setType(FluidFake.TypeFluid.liquid).setColor(0x222222).setTemperature(16.0F);
-
+/*
 	public static final FluidFake fluid_water_color_black = new FluidFake("water_color_black").setName("water_color_black").setType(FluidFake.TypeFluid.liquid).setColorMix(GetColors.getHexColors[0], 0xBBBBBB).setTemperature(16.0F);
 	public static final FluidFake fluid_water_color_blue = new FluidFake("water_color_blue").setName("water_color_blue").setType(FluidFake.TypeFluid.liquid).setColorMix(GetColors.getHexColors[1], 0xBBBBBB).setTemperature(16.0F);
 	public static final FluidFake fluid_water_color_brown = new FluidFake("water_color_brown").setName("water_color_brown").setType(FluidFake.TypeFluid.liquid).setColorMix(GetColors.getHexColors[2], 0xBBBBBB).setTemperature(16.0F);
@@ -82,5 +81,5 @@ public class ListFurniture {
 	public static final ItemForFurniture rod_red = new ItemForFurniture("rod_red").setName("rod_red").setType("rod").setColor1(GetColors.getHexColors[13]).setTexture1("rod");
 	public static final ItemForFurniture rod_white = new ItemForFurniture("rod_white").setName("rod_white").setType("rod").setColor1(GetColors.getHexColors[14]).setTexture1("rod");
 	public static final ItemForFurniture rod_yellow = new ItemForFurniture("rod_yellow").setName("rod_yellow").setType("rod").setColor1(GetColors.getHexColors[15]).setTexture1("rod");
-
+*/
 }

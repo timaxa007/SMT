@@ -137,11 +137,6 @@ public class FluidFake {
 		return this;
 	}
 
-	public FluidFake setColorMix(int color1, int color2) {
-		color_hex = GetColors.getColorMix(color1, color2);
-		return this;
-	}
-
 	public int getColor() {
 		return color_hex == 0 ? 0xFFFFFF : color_hex;
 	}
@@ -170,20 +165,21 @@ public class FluidFake {
 
 		public static final TypeFluid none = new TypeFluid(0);
 		//public static final TypeFluid fluid = new TypeFluid("fluid");
-		public static final TypeFluid liquid = new TypeFluid("liquid");
-		public static final TypeFluid air = new TypeFluid("air");
-		public static final TypeFluid gas = new TypeFluid("gas");
-		public static final TypeFluid smoke = new TypeFluid("smoke");
-		public static final TypeFluid oil = new TypeFluid("oil");
-		public static final TypeFluid magic = new TypeFluid("magic");
-		public static final TypeFluid energy = new TypeFluid("energy");
-		public static final TypeFluid molten = new TypeFluid("molten");
-		public static final TypeFluid dust = new TypeFluid("dust");
+		public static final TypeFluid liquid = new TypeFluid("liquid").setIgniter(-8);
+		public static final TypeFluid air = new TypeFluid("air").setIgniter(1);
+		public static final TypeFluid gas = new TypeFluid("gas").setIgniter(10);
+		public static final TypeFluid smoke = new TypeFluid("smoke").setIgniter(-1);
+		public static final TypeFluid oil = new TypeFluid("oil").setIgniter(3);
+		public static final TypeFluid magic = new TypeFluid("magic").setIgniter(0);
+		public static final TypeFluid energy = new TypeFluid("energy").setIgniter(0);
+		public static final TypeFluid molten = new TypeFluid("molten").setIgniter(0);
+		public static final TypeFluid dust = new TypeFluid("dust").setIgniter(0);
 
 		public int id;
 		public String type;
 		private float temperature_min;
 		private float temperature_max;
+		private int igniter;
 
 		/**It is not recommended to use this method.**/
 		@Deprecated
@@ -193,6 +189,7 @@ public class FluidFake {
 			type = "";
 			temperature_min = 0.0F;
 			temperature_max = 0.0F;
+			igniter = 0;
 		}
 
 		public TypeFluid(String type) {
@@ -201,6 +198,7 @@ public class FluidFake {
 			this.type = type;
 			temperature_min = 0.0F;
 			temperature_max = 0.0F;
+			igniter = 0;
 		}
 
 		public static int nextID() {
@@ -259,6 +257,18 @@ public class FluidFake {
 
 		public float getTemperatureMax() {
 			return temperature_max;
+		}
+
+		/**If <b>zero</b>, then nothing. <br>
+		 * If less than <b>zero</b>, it does not give ignite near flame or even extinguish. (<i>WIP</i>) <br>
+		 * If greater than <b>zero</b>, then this object (block/entity/item) will burn. (<i>Half-WIP</i>)**/
+		public TypeFluid setIgniter(int igniter) {
+			this.igniter = igniter;
+			return this;
+		}
+
+		public int getIgniter() {
+			return igniter;
 		}
 
 	}

@@ -7,7 +7,7 @@ import mods.timaxa007.pack.stock.lib.ItemForStock;
 import mods.timaxa007.pack.stock.lib.ListStock;
 
 public class FillForList {
-
+/*
 	public static final String[] cooked_name = new String[] {"raw", "boiled", "fried", "jerky", "dried", "stew"};
 
 	public static final int[] cooked_color = new int[] {0xFFFFFF, 0xDEBEBE, 0xC43A21, 0x808080, 0xBFBFBF, 0xBF954C};

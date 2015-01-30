@@ -18,7 +18,7 @@ public class ListStock {
 	public static final FluidFake fluid_water_sweet = new FluidFake("water_sweet").setName("water_sweet").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 	public static final FluidFake fluid_water_mineral = new FluidFake("water_mineral").setName("water_mineral").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 	public static final FluidFake fluid_water_reed = new FluidFake("water_reed").setName("water_reed").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-
+/*
 	public ListStock() {
 		new Beef();
 		FillForList.beListMeat("Beef", 0xCC291A);
@@ -242,7 +242,7 @@ public class ListStock {
 
 		//Honey - cake, cookie u t.d.
 	}
-
+*/
 	public static final FluidFake fluid_catalyst_mix = new FluidFake("catalyst_mix").setName("catalyst_mix").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 	public static final FluidFake fluid_catalyst_sweet = new FluidFake("catalyst_sweet").setName("catalyst_sweet").setType(FluidFake.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 
