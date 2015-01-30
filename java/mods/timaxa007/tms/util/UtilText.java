@@ -20,11 +20,7 @@ public class UtilText {
 	public static String getText(String txt) {
 		return StatCollector.translateToLocal("text." + txt.toLowerCase());
 	}
-	/*
-	public static String getColors(int i, String t) {
-		return StatCollector.translateToLocal("color." + GetColors.getNameColors[i] + "." + t);
-	}
-	 */
+
 	public static boolean isShiftKeyDown() {
 		return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
 	}
@@ -94,10 +90,27 @@ public class UtilText {
 	}
 
 	public static String textColors(int hex) {
+		if (Colors.get(hex) != null) return textColorHex(hex);
+		else return textColorRGB(hex);
+	}
+
+	public static String textColorHex(int hex) {
+		return textColorHex(hex, "a");
+	}
+
+	public static String textColorHex(int hex, String suffix) {
 		if (Colors.get(hex) != null)
-			return StatCollector.translateToLocal(UtilText.getText("Color") + ": " + Colors.get(hex).getName() + ".");
-		else
-			return textColorRGB(hex);
+			return UtilText.getText("Color") + ": " + textNameColor(Colors.get(hex).getName(), suffix) + ".";
+		return null;
+	}
+	/**@param suffix - <br>
+	 * suffix "<b>a</b>" - woman's face, <br>
+	 * suffix "<b>b</b>" - man's face, <br>
+	 * suffix "<b>c</b>" - average's face, <br>
+	 * suffix "<b>s</b>" - plural.
+	 * @param name - Will be transformed into a <b>name.toLowerCase()</b>.**/
+	public static String textNameColor(String name, String suffix) {
+		return StatCollector.translateToLocal("color." + name.toLowerCase() + "." + suffix);
 	}
 
 	public static String textColorRGB(int hex) {
@@ -105,7 +118,7 @@ public class UtilText {
 		String red = EnumChatFormatting.RED + "Red: " + Integer.toString(colors[0]) + EnumChatFormatting.RESET;
 		String green = EnumChatFormatting.GREEN + "Green: " + Integer.toString(colors[1]) + EnumChatFormatting.RESET;
 		String blue = EnumChatFormatting.BLUE + "Blue: " + Integer.toString(colors[2]) + EnumChatFormatting.RESET;
-		return StatCollector.translateToLocal(UtilText.getText("Color") + ": " + red + ", " + green + ", " + blue + ".");
+		return UtilText.getText("Color") + ": " + red + ", " + green + ", " + blue + ".";
 	}
 
 }

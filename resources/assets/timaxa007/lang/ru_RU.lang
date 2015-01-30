@@ -29,6 +29,8 @@ color.purple.a=Фиолетовый
 color.red.a=Красный
 color.white.a=Белый
 color.yellow.a=Жёлтый
+color.silver.a=Серебряный
+color.lime.a=Лаймовый
 
 color.black.b=Чёрная
 color.blue.b=Синия
@@ -46,6 +48,27 @@ color.purple.b=Фиолетовая
 color.red.b=Красная
 color.white.b=Белая
 color.yellow.b=Жёлтая
+color.silver.b=Серебряная
+color.lime.b=Лаймовая
+
+color.black.с=Чёрное
+color.blue.с=Синие
+color.brown.с=Коричневое
+color.cyan.с=Бюрезовое
+color.gray.с=Серое
+color.green.с=Зелёное
+color.light_blue.с=Светло-Синие
+color.light_gray.с=Светло-Серое
+color.light_green.с=Светло-Зелёное
+color.magenta.с=Пурпурное
+color.orange.с=Оранжевое
+color.pink.с=Розовое
+color.purple.с=Фиолетовое
+color.red.с=Красное
+color.white.с=Белое
+color.yellow.с=Жёлтое
+color.silver.с=Серебряное
+color.lime.с=Лаймовое
 
 color.black.s=Чёрные
 color.blue.s=Синии
@@ -63,6 +86,8 @@ color.purple.s=Фиолетовые
 color.red.s=Красные
 color.white.s=Белые
 color.yellow.s=Жёлтые
+color.silver.s=Серебряные
+color.lime.s=Лаймовые
 
 convert.text.0=Ноль
 convert.text.1=Один
