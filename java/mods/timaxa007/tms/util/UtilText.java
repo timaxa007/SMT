@@ -90,7 +90,11 @@ public class UtilText {
 	}
 
 	public static String textColors(int hex) {
-		if (Colors.get(hex) != null) return textColorHex(hex);
+		return textColors(hex, "a");
+	}
+
+	public static String textColors(int hex, String suffix) {
+		if (Colors.get(hex) != null) return textColorHex(hex, suffix);
 		else return textColorRGB(hex);
 	}
 
@@ -103,9 +107,10 @@ public class UtilText {
 			return UtilText.getText("Color") + ": " + textNameColor(Colors.get(hex).getName(), suffix) + ".";
 		return null;
 	}
+
 	/**@param suffix - <br>
-	 * suffix "<b>a</b>" - woman's face, <br>
-	 * suffix "<b>b</b>" - man's face, <br>
+	 * suffix "<b>a</b>" - man's face, <br>
+	 * suffix "<b>b</b>" - woman's face, <br>
 	 * suffix "<b>c</b>" - average's face, <br>
 	 * suffix "<b>s</b>" - plural.
 	 * @param name - Will be transformed into a <b>name.toLowerCase()</b>.**/

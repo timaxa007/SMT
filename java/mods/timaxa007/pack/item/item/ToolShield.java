@@ -1,5 +1,7 @@
 package mods.timaxa007.pack.item.item;
 
+import java.util.List;
+
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.tms.util.ItemFixReg;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +16,9 @@ public class ToolShield extends ItemFixReg {
 
 	public ToolShield(String tag) {
 		super(tag);
+		setDamage(1);
+		setMaxStackSize(1);
+		setMaxDamage(1000);
 		setCreativeTab(PackFurniture.tab_furniture);
 	}
 
@@ -36,11 +41,16 @@ public class ToolShield extends ItemFixReg {
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		player.setItemInUse(is, getMaxItemUseDuration(is));
+		is.damageItem(1, player);
 		return is;
 	}
 
 	public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
 
+	}
+
+	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
+		list.add("Durability: " + (is.getMaxDamage() - is.getItemDamage()) + " / " + is.getMaxDamage() + ".");
 	}
 
 }
