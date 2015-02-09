@@ -1,10 +1,10 @@
 package mods.timaxa007.pack.furniture.util;
 
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class ItemBackpackBase extends ItemFixReg implements IBackpack {
+public class ItemBackpackBase extends ModifiedItem implements IBackpack {
 
 	public ItemBackpackBase(String tag) {
 		super(tag);
@@ -12,15 +12,15 @@ public class ItemBackpackBase extends ItemFixReg implements IBackpack {
 
 	@Override
 	public void openBackpackGui(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag == null) tag = new NBTTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt == null) nbt = new NBTTagCompound();
 
 	}
 
 	@Override
 	public void closeBackpackGui(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag == null) tag = new NBTTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt == null) nbt = new NBTTagCompound();
 
 	}
 

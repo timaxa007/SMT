@@ -1,14 +1,14 @@
 package mods.timaxa007.pack.weapon.item;
 
 import mods.timaxa007.pack.weapon.PackWeapons;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class MolotovCocktail extends ItemFixReg {
+public class MolotovCocktail extends ModifiedItem {
 
 	public MolotovCocktail(String tag) {
 		super(tag);

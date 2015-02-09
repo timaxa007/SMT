@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemArmorActionMouse extends ItemArmorFixReg {
+public class ItemArmorActionMouse extends ModifiedItemArmor {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public static boolean isLeftClick;

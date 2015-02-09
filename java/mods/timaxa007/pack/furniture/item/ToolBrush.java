@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.mining.PackMining;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolBrush extends ItemFixReg {
+public class ToolBrush extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon icon_a;
 	@SideOnly(Side.CLIENT) private IIcon icon_b;

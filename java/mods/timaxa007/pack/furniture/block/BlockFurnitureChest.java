@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.block;
 import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockFurnitureChest extends BlockFixReg implements ITileEntityProvider {
+public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockFurnitureChest(String tag) {
 		super(tag, Material.wood);
@@ -42,14 +42,14 @@ public class BlockFurnitureChest extends BlockFixReg implements ITileEntityProvi
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityFurnitureChest) {
 			TileEntityFurnitureChest tile = (TileEntityFurnitureChest)te;
 
 			tile.setRotation(ActionModel.rotation_model_4sides(entity.rotationYaw));
 
-			if (tag != null) {
-				if (tag.hasKey("NameID")) tile.setTag(tag.getString("NameID"));
+			if (nbt != null) {
+				if (nbt.hasKey("NameID")) tile.setTag(nbt.getString("NameID"));
 			}
 
 			if (entity instanceof EntityPlayer) {

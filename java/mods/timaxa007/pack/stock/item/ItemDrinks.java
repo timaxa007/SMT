@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.lib.FluidFake;
 import mods.timaxa007.pack.stock.PackStock;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemDrinks extends ItemFixReg {
+public class ItemDrinks extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -119,11 +119,11 @@ liquid_hex = liq_hex;
 	}
 
 	public ItemStack onEaten(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (!player.capabilities.isCreativeMode) {--is.stackSize;}
 		if (!world.isRemote) {
-			if (tag != null) {
-				if (tag.hasKey("NameID") && tag.hasKey("LiquidID")) {
+			if (nbt != null) {
+				if (nbt.hasKey("NameID") && nbt.hasKey("LiquidID")) {
 					player.getFoodStats().addStats(2, 0.5F);
 				} else {
 				}
@@ -148,25 +148,25 @@ liquid_hex = liq_hex;
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("LiquidID")) {
-			return "fluid." + FluidFake.list[tag.getInteger("LiquidID")].getName();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("LiquidID")) {
+			return "fluid." + FluidFake.list[nbt.getInteger("LiquidID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
-			if (tag != null) {
-				if (tag.hasKey("NameID")) {
-					list.add("NameID: " + tag.getString("NameID") + ".");
-					list.add("Saturation Level: " + drinks.valueOf(tag.getString("NameID")).lvl + ".");
+			if (nbt != null) {
+				if (nbt.hasKey("NameID")) {
+					list.add("NameID: " + nbt.getString("NameID") + ".");
+					list.add("Saturation Level: " + drinks.valueOf(nbt.getString("NameID")).lvl + ".");
 				}
-				if (tag.hasKey("LiquidID") && FluidFake.list[tag.getInteger("LiquidID")] != null) {
-					list.add("LiquidID: " + tag.getInteger("LiquidID") + "/" + 
-							FluidFake.list[tag.getInteger("LiquidID")].getLocalizedName() + ".");
-					list.add("Liquid Type: " + FluidFake.list[tag.getInteger("LiquidID")].getType() + ".");
+				if (nbt.hasKey("LiquidID") && FluidFake.list[nbt.getInteger("LiquidID")] != null) {
+					list.add("LiquidID: " + nbt.getInteger("LiquidID") + "/" + 
+							FluidFake.list[nbt.getInteger("LiquidID")].getLocalizedName() + ".");
+					list.add("Liquid Type: " + FluidFake.list[nbt.getInteger("LiquidID")].getType() + ".");
 				}
 			}
 		} else {
@@ -179,7 +179,7 @@ liquid_hex = liq_hex;
 		for (drinks j1 : drinks.values()) {
 			for (int i = 0; i < FluidFake.list.length; ++i) {
 				if (FluidFake.list[i] != null) {
-					list.add(addTag(j1.toString(), i));
+					list.add(addNBT(j1.toString(), i));
 				}
 			}
 
@@ -187,14 +187,14 @@ liquid_hex = liq_hex;
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(String par1, int par2) {
+	private static ItemStack addNBT(String par1, int par2) {
 		ItemStack is = new ItemStack(PackStock.proxy.item.drinks, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("NameID", par1);
-		tag.setInteger("LiquidID", par2);
-		tag.setFloat("TempID", 30.0F);
-		//tag.setFloat("Sat", drinks.valueOf(par1).sat);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("NameID", par1);
+		nbt.setInteger("LiquidID", par2);
+		nbt.setFloat("TempID", 30.0F);
+		//nbt.setFloat("Sat", drinks.valueOf(par1).sat);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
@@ -202,12 +202,12 @@ liquid_hex = liq_hex;
 	public boolean requiresMultipleRenderPasses() {return true;}
 
 	public IIcon getIcon(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID")) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID")) {
 			if (pass == 0) {
-				return icon_tex[drinks.valueOf(tag.getString("NameID")).ordinal()];
+				return icon_tex[drinks.valueOf(nbt.getString("NameID")).ordinal()];
 			} else {
-				return icon_ovl[drinks.valueOf(tag.getString("NameID")).ordinal()];
+				return icon_ovl[drinks.valueOf(nbt.getString("NameID")).ordinal()];
 			}
 		} else {
 			return itemIcon;
@@ -216,14 +216,14 @@ liquid_hex = liq_hex;
 
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack is, int renderPass) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (renderPass == 0) {
-			if (tag != null && tag.hasKey("NameID")) {
-				return drinks.valueOf(tag.getString("NameID")).hex1;
+			if (nbt != null && nbt.hasKey("NameID")) {
+				return drinks.valueOf(nbt.getString("NameID")).hex1;
 			} else {return 16777215;}
 		} else {
-			if (tag != null && tag.hasKey("LiquidID")) {
-				return FluidFake.list[tag.getInteger("LiquidID")].getColor();
+			if (nbt != null && nbt.hasKey("LiquidID")) {
+				return FluidFake.list[nbt.getInteger("LiquidID")].getColor();
 			} else {return 16777215;}
 		}
 	}

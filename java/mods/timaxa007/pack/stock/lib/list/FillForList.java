@@ -13,7 +13,7 @@ public class FillForList {
 	public static final int[] cooked_color = new int[] {0xFFFFFF, 0xDEBEBE, 0xC43A21, 0x808080, 0xBFBFBF, 0xBF954C};
 
 	public static void beListMeat(String tag, int hex) {
-		tag = tag.toLowerCase();
+		tag = nbt.toLowerCase();
 		//--ItemForStock-----------------------------------------------------------------------------------------------------------------------------
 		//new ItemForStock("skin_" + tag).setName("skin_" + tag).setType("Skin").setColors(0xFFFFFF).setTexture1("skin_cow");
 		//new ItemForStock("leather_" + tag).setName("leather_" + tag).setType("Leather").setColors(0xEAA159).setTexture1("leather_big");
@@ -91,7 +91,7 @@ public class FillForList {
 	}
 
 	public static void beListMeatAnimal(String tag, int hex) {//, String sub_meat
-		tag = tag.toLowerCase();
+		tag = nbt.toLowerCase();
 		//--ItemForStock-----------------------------------------------------------------------------------------------------------------------------
 		new ItemForStock("skin_" + tag).setName("skin_" + tag).setType("Skin").setColors(0xFFFFFF).setTexture1("skin_cow");
 		new ItemForStock("leather_" + tag).setName("leather_" + tag).setType("Leather").setColors(0xEAA159).setTexture1("leather_big");
@@ -137,7 +137,7 @@ public class FillForList {
 	}
 
 	public static void beListMeatBird(String tag, int hex) {//, String sub_meat
-		tag = tag.toLowerCase();
+		tag = nbt.toLowerCase();
 		//--ItemForStock-----------------------------------------------------------------------------------------------------------------------------
 		new ItemForStock("skin_" + tag).setName("skin_" + tag).setType("Skin").setColors(0xFFFFFF).setTexture1("skin_cow");
 		new ItemForStock("leather_" + tag).setName("leather_" + tag).setType("Leather").setColors(0xEAA159).setTexture1("leather_big");
@@ -192,7 +192,7 @@ public class FillForList {
 	}
 
 	public static void beListMeatSeaAnimal(String tag, int hex) {//, String sub_meat
-		tag = tag.toLowerCase();
+		tag = nbt.toLowerCase();
 		//--ItemForStock-----------------------------------------------------------------------------------------------------------------------------
 		new ItemForStock("skin_" + tag).setName("skin_" + tag).setType("Skin").setColors(0xFFFFFF).setTexture1("skin_cow");
 		new ItemForStock("leather_" + tag).setName("leather_" + tag).setType("Leather").setColors(0xEAA159).setTexture1("leather_big");
@@ -237,7 +237,7 @@ public class FillForList {
 	}
 
 	public static void beListMilk(String tag, int hex) {
-		tag = tag.toLowerCase();
+		tag = nbt.toLowerCase();
 		//--FoodForItem------------------------------------------------------------------------------------------------------------------------------
 
 		//--FoodForBlock-----------------------------------------------------------------------------------------------------------------------------
@@ -261,7 +261,7 @@ public class FillForList {
 	}
 
 	public static void beListVegetable(String tag, int hex) {
-		tag = tag.toLowerCase();
+		tag = nbt.toLowerCase();
 		//--FoodForItem------------------------------------------------------------------------------------------------------------------------------
 		new FoodForItem("roasted_seeds_" + tag).setFoodStats(1, 0.1F).setName("roasted_seeds_" + tag).setColors(0xFFFFFF).setTexture("seeds_" + tag);
 
@@ -354,7 +354,7 @@ public class FillForList {
 	}
 	/*
 	public static void beListFlower(String tag, int hex) {
-		tag = tag.toLowerCase();
+		tag = nbt.toLowerCase();
 		//--FoodForItem------------------------------------------------------------------------------------------------------------------------------
 		new FoodForItem("roasted_seeds_" + tag).setFoodStats(1, 0.1F).setName("roasted_seeds_" + tag).setColors(0xFFFFFF).setTexture("seeds_" + tag);
 		new FoodForItem(tag + "_raw").setFoodStats(2, 0.2F).setName(tag + "_raw").setColors(0xFFFFFF).setTexture(tag + "_raw");

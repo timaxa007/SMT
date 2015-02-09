@@ -43,68 +43,68 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 			EntityPlayer player = (EntityPlayer)entity;
 			ItemStack current = player.getCurrentEquippedItem();
 			if (current != null && current == is) {
-				NBTTagCompound tag = is.getTagCompound();
-				if (tag != null) {
+				NBTTagCompound nbt = is.getTagCompound();
+				if (nbt != null) {
 					//---------------------------------------------------------------
-					if (tag.hasKey("Weapon") && tag.hasKey("AmmoAtm")) {
+					if (nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm")) {
 
 						int rbt/* = 0*/;
-						if (tag.hasKey("RBT")) {
-							rbt = (int)tag.getByte("RBT"); 
+						if (nbt.hasKey("RBT")) {
+							rbt = (int)nbt.getByte("RBT"); 
 						} else {
-							tag.setByte("RBT", (byte)0);
+							nbt.setByte("RBT", (byte)0);
 							rbt = 0;
 						}
 
 						if (rbt > 0) --rbt;
 
 						if (isLeftClick) {
-							if (tag.getInteger("AmmoAtm") > 0) {
+							if (nbt.getInteger("AmmoAtm") > 0) {
 								if (rbt == 0) {
 									if (!world.isRemote) {
 										PackWeapons.network.sendToServer(new MessageActionWeapons(1));
 									}
-									rbt = WeaponFor.get(tag.getString("Weapon")).getDelay();
+									rbt = WeaponFor.get(nbt.getString("Weapon")).getDelay();
 								}
 							}
 						}
-						tag.setByte("RBT", (byte)rbt);
+						nbt.setByte("RBT", (byte)rbt);
 					} else {
-						//if (tag.hasKey("RTM")) tag.setByte("RTM", (byte)0);
+						//if (nbt.hasKey("RTM")) nbt.setByte("RTM", (byte)0);
 					}
 					//-----------------------------------------------------------------------------------------------
 					if (isRightClick && isModeIn && !isModeOut) {
-						if (tag.hasKey("ZoomFov")) {
-							int get_zoom = tag.getByte("ZoomFov");
+						if (nbt.hasKey("ZoomFov")) {
+							int get_zoom = nbt.getByte("ZoomFov");
 							if (get_zoom < 119) {
-								tag.setByte("ZoomFov", (byte)(get_zoom + 8));
+								nbt.setByte("ZoomFov", (byte)(get_zoom + 8));
 							}
 						}
 					}
 					//---------------------------------------------------------------
 					if (isRightClick && isModeOut && !isModeIn) {
-						if (tag.hasKey("ZoomFov")) {
-							int get_zoom = tag.getByte("ZoomFov");
+						if (nbt.hasKey("ZoomFov")) {
+							int get_zoom = nbt.getByte("ZoomFov");
 							if (get_zoom > -119) {
-								tag.setByte("ZoomFov", (byte)(get_zoom - 8));
+								nbt.setByte("ZoomFov", (byte)(get_zoom - 8));
 							}
 						}
 					}
 					//---------------------------------------------------------------
-					is.setTagCompound(tag);
+					is.setTagCompound(nbt);
 				}
 			}
 		}
 	}
 
 	public void onFire(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null) {
-			if (tag.hasKey("Weapon") && tag.hasKey("AmmoAtm")) {
-				world.playSoundAtEntity(player, WeaponFor.get(tag.getString("Weapon")).getSoundFire()[0], 1.0F, 1.0F);
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null) {
+			if (nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm")) {
+				world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundFire()[0], 1.0F, 1.0F);
 				EntityArrow entityarrow = new EntityArrow(world, player, 5.0F);
 				world.spawnEntityInWorld(entityarrow);
-				tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
+				nbt.setInteger("AmmoAtm", nbt.getInteger("AmmoAtm") - 1);
 				if (Core.show_system_info_testing) System.out.println("fire");
 			}
 		}
@@ -112,26 +112,26 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@Override
 	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		//if (tag.hasKey("Weapon") && tag.hasKey("AmmoAtm")) {
-		//if (!isPress) tag.removeTag("RTM");
+		//if (nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm")) {
+		//if (!isPress) nbt.removeTag("RTM");
 
 		/*
 			if (!world.isRemote && isPress) {
-				if (tag.getInteger("AmmoAtm") > 0) {
+				if (nbt.getInteger("AmmoAtm") > 0) {
 					world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
-					tag.setInteger("AmmoAtm", tag.getInteger("AmmoAtm") - 1);
+					nbt.setInteger("AmmoAtm", nbt.getInteger("AmmoAtm") - 1);
 					if (Core.show_system_info_testing) System.out.println("fire");
 				}
 			}
 		 */
-		//is.setTagCompound(tag);
+		//is.setTagCompound(nbt);
 		//}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public boolean onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("Aim")) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Aim")) {
 			return true;
 		}
 		return super.onRightClickClient(is, world, player, isPress);
@@ -139,18 +139,18 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@Override
 	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("Aim")) {
-			tag.setBoolean("Aim", isPress);
-			is.setTagCompound(tag);
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Aim")) {
+			nbt.setBoolean("Aim", isPress);
+			is.setTagCompound(nbt);
 			if (Core.show_system_info_testing) System.out.println(isPress ? "onScope" : "offScope");
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public boolean onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("Weapon")) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Weapon")) {
 			return true;
 		}
 		return super.onReloadClient(is, world, player, isPress);
@@ -158,18 +158,18 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@Override
 	public void onReload(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("Weapon")) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Weapon")) {
 			if (isPress) {
 				if (!world.isRemote) {
-					world.playSoundAtEntity(player, WeaponFor.get(tag.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
+					world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
 				} else {
 					if (Core.show_system_info_testing) System.out.println("-reload-");
 				}
-				//tag.setInteger("AmmoAtm", WeaponFor.get(tag.getString("Weapon")).getSizeAmmo());
-				tag.setInteger("AmmoAtm", 20);
+				//nbt.setInteger("AmmoAtm", WeaponFor.get(nbt.getString("Weapon")).getSizeAmmo());
+				nbt.setInteger("AmmoAtm", 20);
 			}
-			is.setTagCompound(tag);
+			is.setTagCompound(nbt);
 		}
 	}
 
@@ -190,13 +190,13 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	/*
 	@Override
 	public void onZoomIn(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (isPress) {
-			if (tag.hasKey("ZoomFov")) {
-				int get_zoom = tag.getByte("ZoomFov");
+			if (nbt.hasKey("ZoomFov")) {
+				int get_zoom = nbt.getByte("ZoomFov");
 				if (get_zoom < 127) {
-					tag.setByte("ZoomFov", (byte)(get_zoom + 1));
-					is.setTagCompound(tag);
+					nbt.setByte("ZoomFov", (byte)(get_zoom + 1));
+					is.setTagCompound(nbt);
 				}
 			}
 		}
@@ -204,13 +204,13 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@Override
 	public void onZoomOut(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (isPress) {
-			if (tag.hasKey("ZoomFov")) {
-				int get_zoom = tag.getByte("ZoomFov");
+			if (nbt.hasKey("ZoomFov")) {
+				int get_zoom = nbt.getByte("ZoomFov");
 				if (get_zoom > -127) {
-					tag.setByte("ZoomFov", (byte)(get_zoom - 1));
-					is.setTagCompound(tag);
+					nbt.setByte("ZoomFov", (byte)(get_zoom - 1));
+					is.setTagCompound(nbt);
 				}
 			}
 		}
@@ -224,25 +224,25 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		return true;
 	}
 	/*public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (!world.isRemote) {
-			if (tag != null && tag.hasKey("Aim")) {
-				tag.setBoolean("Aim", false);
-				is.setTagCompound(tag);
+			if (nbt != null && nbt.hasKey("Aim")) {
+				nbt.setBoolean("Aim", false);
+				is.setTagCompound(nbt);
 				System.out.println("off-scope");
 			}
 		}
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		//if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.getItem())) {
 		player.setItemInUse(is, getMaxItemUseDuration(is));
 		//}
 		if (!world.isRemote) {
-			if (tag != null && tag.hasKey("Aim")) {
-				tag.setBoolean("Aim", true);
-				is.setTagCompound(tag);
+			if (nbt != null && nbt.hasKey("Aim")) {
+				nbt.setBoolean("Aim", true);
+				is.setTagCompound(nbt);
 				System.out.println("on-scope");
 			}
 		}
@@ -258,22 +258,22 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("Weapon")) {
-			return "weapon." + WeaponFor.get(tag.getString("Weapon")).getName();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Weapon")) {
+			return "weapon." + WeaponFor.get(nbt.getString("Weapon")).getName();
 		}
 		return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
-			if (tag != null) {
+			if (nbt != null) {
 
-				if (tag.hasKey("Weapon")) {
-					list.add("Weapon: " + tag.getString("Weapon") + "/" + WeaponFor.get(tag.getString("Weapon")).getLocalizedName() + ".");
-					list.add("Weapon: " + WeaponFor.get(tag.getString("Weapon")).getType() + 
-							"/" + WeaponFor.get(tag.getString("Weapon")).getName() + ".");
+				if (nbt.hasKey("Weapon")) {
+					list.add("Weapon: " + nbt.getString("Weapon") + "/" + WeaponFor.get(nbt.getString("Weapon")).getLocalizedName() + ".");
+					list.add("Weapon: " + WeaponFor.get(nbt.getString("Weapon")).getType() + 
+							"/" + WeaponFor.get(nbt.getString("Weapon")).getName() + ".");
 				}
 
 			}
@@ -285,22 +285,22 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		for (int i = 0; i < WeaponFor.list.length; i++) {
 			if (WeaponFor.list[i] != null) {
 				if (WeaponFor.list[i].tag != null) {
-					list.add(addTag(WeaponFor.list[i].tag));
+					list.add(addNBT(WeaponFor.list[i].tag));
 				}
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(String par1) {
+	private static ItemStack addNBT(String par1) {
 		ItemStack is = new ItemStack(PackWeapons.proxy.item.weapons, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Weapon", par1);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Weapon", par1);
 
-		tag.setBoolean("Aim", false);
-		tag.setByte("ZoomFov", (byte)0);
+		nbt.setBoolean("Aim", false);
+		nbt.setByte("ZoomFov", (byte)0);
 
-		is.setTagCompound(tag);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

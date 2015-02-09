@@ -5,7 +5,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityBookshelf;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockBookshelf extends BlockFixReg implements ITileEntityProvider {
+public class BlockBookshelf extends ModifiedBlock implements ITileEntityProvider {
 
 	private Random random = new Random();
 
@@ -54,7 +54,7 @@ public class BlockBookshelf extends BlockFixReg implements ITileEntityProvider {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityBookshelf) {
-			return addTag(0, ((TileEntityBookshelf)te).getStyle());
+			return addNBT(0, ((TileEntityBookshelf)te).getStyle());
 		}
 		return null;
 	}
@@ -78,28 +78,28 @@ public class BlockBookshelf extends BlockFixReg implements ITileEntityProvider {
 		//for(byte i=0;i<16;++i) {
 		String j = "";
 
-		list.add(addTag(0, j));
-		//list.add(addTag(1, j));
-		//list.add(addTag(2, j));
-		//list.add(addTag(3, j));
-		//list.add(addTag(4, j));
-		//list.add(addTag(5, j));
-		//list.add(addTag(6, j));
-		//list.add(addTag(7, j));
-		//list.add(addTag(8, j));
-		//list.add(addTag(9, j));
-		//list.add(addTag(10, j));
-		//list.add(addTag(11, j));
+		list.add(addNBT(0, j));
+		//list.add(addNBT(1, j));
+		//list.add(addNBT(2, j));
+		//list.add(addNBT(3, j));
+		//list.add(addNBT(4, j));
+		//list.add(addNBT(5, j));
+		//list.add(addNBT(6, j));
+		//list.add(addNBT(7, j));
+		//list.add(addNBT(8, j));
+		//list.add(addNBT(9, j));
+		//list.add(addNBT(10, j));
+		//list.add(addNBT(11, j));
 		//}
 		//}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, String par2) {
+	private static ItemStack addNBT(int par1, String par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.bookshelf, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Style", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Style", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

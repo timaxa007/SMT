@@ -1,13 +1,13 @@
 package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockCnstorWall extends BlockFixReg implements ITileEntityProvider {
+public class BlockCnstorWall extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockCnstorWall(String tag) {
 		super(tag, Material.glass);

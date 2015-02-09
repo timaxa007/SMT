@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.mining.item;
 
 import mods.timaxa007.pack.mining.PackMining;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 
-public class ItemsMining extends ItemFixReg {
+public class ItemsMining extends ModifiedItem {
 
 	public ItemsMining(String tag) {
 		super(tag);

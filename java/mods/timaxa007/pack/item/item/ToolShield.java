@@ -3,14 +3,14 @@ package mods.timaxa007.pack.item.item;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ToolShield extends ItemFixReg {
+public class ToolShield extends ModifiedItem {
 
 	private int damage;
 

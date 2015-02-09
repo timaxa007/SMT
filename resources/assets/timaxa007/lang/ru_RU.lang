@@ -1,4 +1,4 @@
-﻿# text
+﻿# text's
 text.material=Материал
 text.type=Тип
 text.tag=Тег
@@ -13,6 +13,28 @@ text.hol_key=Удершивай клавишу
 text.pres_key=Нажми на клавишу
 text.for_ifo=для информации.
 
+text.on=Вкл.
+text.off=Выкл.
+text.yes=Да
+text.no=Нет
+text.yup=Ага
+text.nope=Неа
+text.enabled=Включено
+text.disabled=Отключено
+
+convert.text.0=Ноль
+convert.text.1=Один
+convert.text.2=Два
+convert.text.3=Три
+convert.text.4=Четыре
+convert.text.5=Пять
+convert.text.6=Шесть
+convert.text.7=Семь
+convert.text.8=Восемь
+convert.text.9=Девять
+convert.text.10=Десять
+
+# color's
 color.black.a=Чёрный
 color.blue.a=Синий
 color.brown.a=Коричневый
@@ -89,22 +111,14 @@ color.yellow.s=Жёлтые
 color.silver.s=Серебряные
 color.lime.s=Лаймовые
 
-convert.text.0=Ноль
-convert.text.1=Один
-convert.text.2=Два
-convert.text.3=Три
-convert.text.4=Четыре
-convert.text.5=Пять
-convert.text.6=Шесть
-convert.text.7=Семь
-convert.text.8=Восемь
-convert.text.9=Девять
-convert.text.10=Десять
-
+# type's
 type.untype.name=Безтипный
 type.skin.name=Шкура
 type.leather.name=Кожа
 type.fur.name=Мех
+type.woolen.name=Шерстянной
+type.metal.name=Металлический
+type.gems.name=Драгоценый
 
 category.tms.name=TMS Сочетания Клавиш
 key.reload.name=Перезарядка

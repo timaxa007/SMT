@@ -1,12 +1,12 @@
 package mods.timaxa007.pack.furniture.item;
 
 import mods.timaxa007.pack.mining.PackMining;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemPaintCan extends ItemFixReg {
+public class ItemPaintCan extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon icon_a;
 	@SideOnly(Side.CLIENT) private IIcon icon_b;

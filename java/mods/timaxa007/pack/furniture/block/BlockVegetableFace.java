@@ -5,7 +5,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityVegetableFace;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockVegetableFace extends BlockFixReg implements ITileEntityProvider {
+public class BlockVegetableFace extends ModifiedBlock implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[][] icon_array;
 	@SideOnly(Side.CLIENT) private IIcon[][] icon_face;
@@ -104,18 +104,18 @@ public class BlockVegetableFace extends BlockFixReg implements ITileEntityProvid
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityVegetableFace)
-			return addTag(world.getBlock(x, y, z), ((TileEntityVegetableFace)te).getSubID(), ((TileEntityVegetableFace)te).getFace(), ((TileEntityVegetableFace)te).getColorBlock());
+			return addNBT(world.getBlock(x, y, z), ((TileEntityVegetableFace)te).getSubID(), ((TileEntityVegetableFace)te).getFace(), ((TileEntityVegetableFace)te).getColorBlock());
 		return null;
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TileEntityVegetableFace && tag != null) {
-			if (tag.hasKey("SubID")) ((TileEntityVegetableFace)te).setSubID((int)tag.getByte("SubID"));
-			if (tag.hasKey("FaceID")) ((TileEntityVegetableFace)te).setFace((int)tag.getByte("FaceID"));
-			if (tag.hasKey("ColorBlock")) ((TileEntityVegetableFace)te).setColorBlock(tag.getInteger("ColorBlock"));
+		NBTTagCompound nbt = is.getTagCompound();
+		if (te != null && te instanceof TileEntityVegetableFace && nbt != null) {
+			if (nbt.hasKey("SubID")) ((TileEntityVegetableFace)te).setSubID((int)nbt.getByte("SubID"));
+			if (nbt.hasKey("FaceID")) ((TileEntityVegetableFace)te).setFace((int)nbt.getByte("FaceID"));
+			if (nbt.hasKey("ColorBlock")) ((TileEntityVegetableFace)te).setColorBlock(nbt.getInteger("ColorBlock"));
 		}
 	}
 
@@ -124,7 +124,7 @@ public class BlockVegetableFace extends BlockFixReg implements ITileEntityProvid
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityVegetableFace && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TileEntityVegetableFace)te).getSubID(), ((TileEntityVegetableFace)te).getFace(), ((TileEntityVegetableFace)te).getColorBlock()));
+				dropBlockAsItem(world, x, y, z, addNBT(world.getBlock(x, y, z), ((TileEntityVegetableFace)te).getSubID(), ((TileEntityVegetableFace)te).getFace(), ((TileEntityVegetableFace)te).getColorBlock()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
@@ -161,26 +161,26 @@ public class BlockVegetableFace extends BlockFixReg implements ITileEntityProvid
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int i1 = 0; i1 < type_block.length; i1++) {
 			for (int i3 = 0; i3 < type_face.length; i3++) {
-				list.add(addTag(id, i1, i3, 0xFFFFFF));
+				list.add(addNBT(id, i1, i3, 0xFFFFFF));
 				/*for (int j = 0; j < (Integer.MAX_VALUE / 1000000); j++) {//int j = 14;
-					list.add(addTag(id, i, (j * 1000000)));
+					list.add(addNBT(id, i, (j * 1000000)));
 				}*/
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(Block par1, int par2, int par3, int par4) {
-		return addTag(Item.getItemFromBlock(par1), par2, par3, par4);
+	private static ItemStack addNBT(Block par1, int par2, int par3, int par4) {
+		return addNBT(Item.getItemFromBlock(par1), par2, par3, par4);
 	}
 
-	private static ItemStack addTag(Item par1, int par2, int par3, int par4) {
+	private static ItemStack addNBT(Item par1, int par2, int par3, int par4) {
 		ItemStack is = new ItemStack(par1, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setByte("SubID", (byte)par2);
-		tag.setByte("FaceID", (byte)par3);
-		tag.setInteger("ColorBlock", par4);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setByte("SubID", (byte)par2);
+		nbt.setByte("FaceID", (byte)par3);
+		nbt.setInteger("ColorBlock", par4);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

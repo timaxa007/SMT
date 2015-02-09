@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.tile.TileEntitySlims;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSlims extends BlockFixReg implements ITileEntityProvider {
+public class BlockSlims extends ModifiedBlock implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 

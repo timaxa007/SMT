@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityAngleMod;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCnstorAngle extends BlockFixReg implements ITileEntityProvider {
+public class BlockCnstorAngle extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockCnstorAngle(String tag) {
 		super(tag, Material.glass);
@@ -54,17 +54,17 @@ public class BlockCnstorAngle extends BlockFixReg implements ITileEntityProvider
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		if (te != null && te instanceof TileEntityAngleMod) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 			((TileEntityAngleMod)te).rotation = l;
 
-			if (tag != null) {
-				((TileEntityAngleMod)te).setType(tag.getInteger("Type"));
-				((TileEntityAngleMod)te).setSize(tag.getInteger("Size"));
-				((TileEntityAngleMod)te).setRotation(tag.getBoolean("UPing"));
+			if (nbt != null) {
+				((TileEntityAngleMod)te).setType(nbt.getInteger("Type"));
+				((TileEntityAngleMod)te).setSize(nbt.getInteger("Size"));
+				((TileEntityAngleMod)te).setRotation(nbt.getBoolean("UPing"));
 			}
 
 		}
@@ -75,18 +75,18 @@ public class BlockCnstorAngle extends BlockFixReg implements ITileEntityProvider
 		//for (int j = 0; j < TileTexture.consMT.length; ++j) {
 		//for (int i = 0; i < 16; ++i) {
 		//int j = 0;
-		list.add(addTag(0, 0));
+		list.add(addNBT(0, 0));
 		//}
 		//}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2) {
-		ItemStack is=new ItemStack(PackFurniture.proxy.block.cnstor_angle, 1, 0);
-		NBTTagCompound tag=new NBTTagCompound();
-		tag.setInteger("Type", par2);
-		tag.setInteger("Size", par1);
-		is.setTagCompound(tag);
+	private static ItemStack addNBT(int par1, int par2) {
+		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_angle, 1, 0);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("Type", par2);
+		nbt.setInteger("Size", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.render.model.ModelMask;
-import mods.timaxa007.tms.util.ItemArmorFixReg;
+import mods.timaxa007.tms.util.ModifiedItemArmor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorMasks extends ItemArmorFixReg {
+public class ArmorMasks extends ModifiedItemArmor {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
@@ -43,41 +43,41 @@ public class ArmorMasks extends ItemArmorFixReg {
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMask"))
-			return super.getUnlocalizedName() + "." + type_mask[tag.getInteger("TypeMask")];
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("TypeMask"))
+			return super.getUnlocalizedName() + "." + type_mask[nbt.getInteger("TypeMask")];
 		else
 			return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null) {
-			if (tag.hasKey("TypeMask"))
-				list.add("TypeMask: " + tag.getInteger("TypeMask") + "/" + type_mask[tag.getInteger("TypeMask")]);
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null) {
+			if (nbt.hasKey("TypeMask"))
+				list.add("TypeMask: " + nbt.getInteger("TypeMask") + "/" + type_mask[nbt.getInteger("TypeMask")]);
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < type_mask.length; ++j) {
-			list.add(addTag(j));
+			list.add(addNBT(j));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.item.armor_masks, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("TypeMask", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("TypeMask", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMask"))
-			return "timaxa007:textures/armor/mask_" + type_mask[tag.getInteger("TypeMask")] + ".png";
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("TypeMask"))
+			return "timaxa007:textures/armor/mask_" + type_mask[nbt.getInteger("TypeMask")] + ".png";
 		else 
 			return "timaxa007:textures/armor/mask.png";
 	}
@@ -86,15 +86,15 @@ public class ArmorMasks extends ItemArmorFixReg {
 
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack is, int armorSlot) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (armorSlot != 0) return null;
 		if (is != null && is.getItem() instanceof ArmorMasks) {
 			ModelMask model_mask = new ModelMask(0);
 
-			if (tag != null && tag.hasKey("TypeMask")) {
-				if (tag.getInteger("TypeMask") == 1) {model_mask = new ModelMask(1);}
-				else if (tag.getInteger("TypeMask") == 2) {model_mask = new ModelMask(2);}
-				else if (tag.getInteger("TypeMask") == 3) {model_mask = new ModelMask(3);}
+			if (nbt != null && nbt.hasKey("TypeMask")) {
+				if (nbt.getInteger("TypeMask") == 1) {model_mask = new ModelMask(1);}
+				else if (nbt.getInteger("TypeMask") == 2) {model_mask = new ModelMask(2);}
+				else if (nbt.getInteger("TypeMask") == 3) {model_mask = new ModelMask(3);}
 				else {model_mask = new ModelMask(0);}
 			}
 
@@ -125,9 +125,9 @@ public class ArmorMasks extends ItemArmorFixReg {
 	}
 
 	public IIcon getIcon(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMask"))
-			return iconArray[tag.getInteger("TypeMask")];
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("TypeMask"))
+			return iconArray[nbt.getInteger("TypeMask")];
 		else
 			return itemIcon;
 	}

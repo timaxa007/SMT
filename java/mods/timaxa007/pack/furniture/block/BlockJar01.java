@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityJar01;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockJar01 extends BlockFixReg implements ITileEntityProvider {
+public class BlockJar01 extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockJar01(String tag) {
 		super(tag, Material.glass);
@@ -53,7 +53,7 @@ public class BlockJar01 extends BlockFixReg implements ITileEntityProvider {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityJar01) {
-			return addTag(((TileEntityJar01)te).getColorWater());
+			return addNBT(((TileEntityJar01)te).getColorWater());
 		}
 		return null;
 	}
@@ -62,10 +62,10 @@ public class BlockJar01 extends BlockFixReg implements ITileEntityProvider {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityJar01) {
-			if (tag != null) {
-				if (tag.hasKey("ColorWater")) ((TileEntityJar01)te).setColorWater(tag.getInteger("ColorWater"));
+			if (nbt != null) {
+				if (nbt.hasKey("ColorWater")) ((TileEntityJar01)te).setColorWater(nbt.getInteger("ColorWater"));
 			}
 		}
 	}
@@ -87,15 +87,15 @@ public class BlockJar01 extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		list.add(addTag(0xFFFFFF));
+		list.add(addNBT(0xFFFFFF));
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.jar01, 1, par1);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("ColorWater", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("ColorWater", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

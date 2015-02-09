@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCrystals;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCrystals extends BlockFixReg implements ITileEntityProvider {
+public class BlockCrystals extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockCrystals(String tag) {
 		super(tag, Material.glass);
@@ -47,15 +47,15 @@ public class BlockCrystals extends BlockFixReg implements ITileEntityProvider {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityCrystals) {
 
 			int l=MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 			((TileEntityCrystals)te).setRot(l);
 
-			if (tag != null) {
-				if (tag.hasKey("Amount")) ((TileEntityCrystals)te).setAmount(tag.getInteger("Amount"));
-				if (tag.hasKey("Type")) ((TileEntityCrystals)te).setTypes(tag.getInteger("Type"));
+			if (nbt != null) {
+				if (nbt.hasKey("Amount")) ((TileEntityCrystals)te).setAmount(nbt.getInteger("Amount"));
+				if (nbt.hasKey("Type")) ((TileEntityCrystals)te).setTypes(nbt.getInteger("Type"));
 			}
 
 		}
@@ -64,17 +64,17 @@ public class BlockCrystals extends BlockFixReg implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < 16; ++j) {
-			list.add(addTag(j));
+			list.add(addNBT(j));
 		}
 		list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.crystals, 1, par1);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Amount", 8);
-		tag.setInteger("Type", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("Amount", 8);
+		nbt.setInteger("Type", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 	/*

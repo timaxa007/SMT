@@ -41,9 +41,9 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 	@SideOnly(Side.CLIENT)
 	public boolean onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (isPress && !isLeftClick) {
-			NBTTagCompound tag = is.getTagCompound();
-			if (tag != null && tag.hasKey("ModeID")) {
-				int nbn = tag.getInteger("ModeID");
+			NBTTagCompound nbt = is.getTagCompound();
+			if (nbt != null && nbt.hasKey("ModeID")) {
+				int nbn = nbt.getInteger("ModeID");
 
 				if (nbn >= 2) nbn = 0; else nbn++;
 
@@ -59,29 +59,29 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 
 	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (isPress) {
-			NBTTagCompound tag = is.getTagCompound();
-			if (tag != null && tag.hasKey("ModeID")) {
-				int nbn = tag.getInteger("ModeID");
+			NBTTagCompound nbt = is.getTagCompound();
+			if (nbt != null && nbt.hasKey("ModeID")) {
+				int nbn = nbt.getInteger("ModeID");
 
 				if (nbn >= 2) nbn = 0; else nbn++;
 
-				tag.setInteger("ModeID", nbn);
-				is.setTagCompound(tag);
+				nbt.setInteger("ModeID", nbn);
+				is.setTagCompound(nbt);
 			}
 		}
 	}
 
 	public float getDigSpeed(ItemStack is, Block block, int metadata) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (block == Blocks.web) {
 			return 15.0F;
 		} else if (block == Blocks.stonebrick) {
 			return 5.0F;
-		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 0) {
+		} else if (nbt != null && nbt.hasKey("ModeID") && nbt.getInteger("ModeID") == 0) {
 			return 5.0F;
-		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 1) {
+		} else if (nbt != null && nbt.hasKey("ModeID") && nbt.getInteger("ModeID") == 1) {
 			return 10.0F;
-		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 2) {
+		} else if (nbt != null && nbt.hasKey("ModeID") && nbt.getInteger("ModeID") == 2) {
 			return 1.0F;
 		} else {
 			Material material = block.getMaterial();
@@ -94,14 +94,14 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 	}
 
 	public boolean hitEntity(ItemStack is, EntityLivingBase entity1, EntityLivingBase entity2) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 0) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("ModeID") && nbt.getInteger("ModeID") == 0) {
 			is.damageItem(2, entity2);
 			return true;
-		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 1) {
+		} else if (nbt != null && nbt.hasKey("ModeID") && nbt.getInteger("ModeID") == 1) {
 			is.damageItem(8, entity2);
 			return true;
-		} else if (tag != null && tag.hasKey("ModeID") && tag.getInteger("ModeID") == 2) {
+		} else if (nbt != null && nbt.hasKey("ModeID") && nbt.getInteger("ModeID") == 2) {
 			is.damageItem(1, entity2);
 			return true;
 		}
@@ -109,13 +109,13 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 	}
 
 	public boolean onBlockDestroyed(ItemStack is, World world, Block block, int x, int y, int z, EntityLivingBase entity) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (world.getBlock(x, y, z).getBlockHardness(world, x, y, z) != 0.0F) {
 			int es = 10;
-			if (tag != null && tag.hasKey("ModeID")) {
-				if (tag.getInteger("ModeID") == 0) {es = 10;}
-				if (tag.getInteger("ModeID") == 1) {es = 20;}
-				if (tag.getInteger("ModeID") == 2) {es = 5;}
+			if (nbt != null && nbt.hasKey("ModeID")) {
+				if (nbt.getInteger("ModeID") == 0) {es = 10;}
+				if (nbt.getInteger("ModeID") == 1) {es = 20;}
+				if (nbt.getInteger("ModeID") == 2) {es = 5;}
 			}
 			is.damageItem((int)(world.getBlock(x, y, z).getBlockHardness(world, x, y, z) * es), entity);
 			return true;
@@ -134,11 +134,11 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
-			if (tag != null) {
-				if (tag.hasKey("ModeID")) {
-					list.add("ModeID: " + tag.getInteger("ModeID"));
+			if (nbt != null) {
+				if (nbt.hasKey("ModeID")) {
+					list.add("ModeID: " + nbt.getInteger("ModeID"));
 				}
 			}
 		} else list.add(UtilText.hldshiftinf);
@@ -147,15 +147,15 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		list.add(addTag());
+		list.add(addNBT());
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag() {
+	private static ItemStack addNBT() {
 		ItemStack is = new ItemStack(PackTechno.proxy.item.tool_electric_drills, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("ModeID", 0);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("ModeID", 0);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

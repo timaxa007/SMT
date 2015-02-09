@@ -60,18 +60,18 @@ public class ItemStuffs extends ItemActionMouse {
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (int j1 = 0; j1 < 4; ++j1) {
 			for (int j2 = 0; j2 < 4; ++j2) {
-				list.add(addTag(j1, j2));
+				list.add(addNBT(j1, j2));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2) {
+	private static ItemStack addNBT(int par1, int par2) {
 		ItemStack is = new ItemStack(PackMagic.proxy.item.stuffs);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par1);
-		tag.setInteger("Cap", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("Type", par1);
+		nbt.setInteger("Cap", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

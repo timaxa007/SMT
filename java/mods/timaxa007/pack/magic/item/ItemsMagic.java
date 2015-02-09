@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.magic.item;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 
-public class ItemsMagic extends ItemFixReg {
+public class ItemsMagic extends ModifiedItem {
 
 	public ItemsMagic(String tag) {
 		super(tag);

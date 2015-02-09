@@ -30,17 +30,17 @@ public class ItemRenderBlockElectricWires implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		//int typ = 0;
 		String tex = null;
 		int siz = 1;
 		int clr = 0xFFFFFF;
 
-		if (tag != null) {
-			//if (tag.hasKey("Type")) typ = tag.getInteger("Type");
-			if (tag.hasKey("Style")) tex = tag.getString("Style");
-			if (tag.hasKey("Size")) siz = tag.getInteger("Size");
+		if (nbt != null) {
+			//if (nbt.hasKey("Type")) typ = nbt.getInteger("Type");
+			if (nbt.hasKey("Style")) tex = nbt.getString("Style");
+			if (nbt.hasKey("Size")) siz = nbt.getInteger("Size");
 		}
 
 		double s_p = (double) 1 / 16;

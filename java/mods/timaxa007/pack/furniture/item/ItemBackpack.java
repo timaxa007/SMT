@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.util.IBackpack;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBackpack extends ItemFixReg implements IBackpack, IInventory {
+public class ItemBackpack extends ModifiedItem implements IBackpack, IInventory {
 
 	public static ItemStack[] list_slot = new ItemStack[27];
 
@@ -39,15 +39,15 @@ public class ItemBackpack extends ItemFixReg implements IBackpack, IInventory {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		list.add(addTag());
+		list.add(addNBT());
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private ItemStack addTag() {
+	private ItemStack addNBT() {
 		ItemStack is = new ItemStack(PackFurniture.proxy.item.backpack);
-		NBTTagCompound tag = new NBTTagCompound();
-		writeToNBT(tag);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		writeToNBT(nbt);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
@@ -82,10 +82,10 @@ public class ItemBackpack extends ItemFixReg implements IBackpack, IInventory {
 	@Override
 	public void openBackpackGui(ItemStack is) {
 		System.out.println("openBackpackGui");
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag == null) tag = new NBTTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt == null) nbt = new NBTTagCompound();
 
-		NBTTagList nbttaglist = tag.getTagList("Items", 10);
+		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
 		list_slot = new ItemStack[getSizeInventory()];
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
@@ -102,8 +102,8 @@ public class ItemBackpack extends ItemFixReg implements IBackpack, IInventory {
 	@Override
 	public void closeBackpackGui(ItemStack is) {
 		System.out.println("closeBackpackGui");
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag == null) tag = new NBTTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt == null) nbt = new NBTTagCompound();
 
 		NBTTagList nbttaglist = new NBTTagList();
 		for (int i = 0; i < list_slot.length; ++i) {
@@ -114,9 +114,9 @@ public class ItemBackpack extends ItemFixReg implements IBackpack, IInventory {
 				nbttaglist.appendTag(nbttagcompound1);
 			}
 		}
-		tag.setTag("Items", nbttaglist);
+		nbt.setTag("Items", nbttaglist);
 
-		is.setTagCompound(tag);
+		is.setTagCompound(nbt);
 	}
 
 	@Override

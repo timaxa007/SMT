@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.stock.item;
 
 import mods.timaxa007.pack.stock.PackStock;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 
-public class ItemNatureProduct extends ItemFixReg {
+public class ItemNatureProduct extends ModifiedItem {
 
 	public ItemNatureProduct(String tag) {
 		super(tag);

@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureWoodBlocks;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFurnitureWoodBlocks extends BlockFixReg implements ITileEntityProvider {
+public class BlockFurnitureWoodBlocks extends ModifiedBlock implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
@@ -64,20 +64,20 @@ public class BlockFurnitureWoodBlocks extends BlockFixReg implements ITileEntity
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityWoodBlocks) {
-			return addTag(world.getBlock(x, y, z), ((TileEntityWoodBlocks)te).getSubID(), ((TileEntityWoodBlocks)te).getColorBlock());
+			return addNBT(world.getBlock(x, y, z), ((TileEntityWoodBlocks)te).getSubID(), ((TileEntityWoodBlocks)te).getColorBlock());
 		} else {
-			return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
+			return addNBT(world.getBlock(x, y, z), 0, 0xFFFFFF);
 		}
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityWoodBlocks && tag != null) {
-			if (tag.hasKey("SubID")) {((TileEntityWoodBlocks)te).setSubID((int)tag.getByte("SubID"));} 
+			if (nbt.hasKey("SubID")) {((TileEntityWoodBlocks)te).setSubID((int)nbt.getByte("SubID"));} 
 			else {((TileEntityWoodBlocks)te).setSubID(0);}
-			if (tag.hasKey("ColorBlock")) {((TileEntityWoodBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));} 
+			if (nbt.hasKey("ColorBlock")) {((TileEntityWoodBlocks)te).setColorBlock(nbt.getInteger("ColorBlock"));} 
 			else {((TileEntityWoodBlocks)te).setColorBlock(0xFFFFFF);}
 		}
 	}
@@ -87,7 +87,7 @@ public class BlockFurnitureWoodBlocks extends BlockFixReg implements ITileEntity
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityWoodBlocks && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TileEntityWoodBlocks)te).getSubID(), ((TileEntityWoodBlocks)te).getColorBlock()));
+				dropBlockAsItem(world, x, y, z, addNBT(world.getBlock(x, y, z), ((TileEntityWoodBlocks)te).getSubID(), ((TileEntityWoodBlocks)te).getColorBlock()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
@@ -125,21 +125,21 @@ public class BlockFurnitureWoodBlocks extends BlockFixReg implements ITileEntity
 		for (int i = 0; i < type_block.length; i++) {
 			for (int j = 0; j < 16; j++) {
 				//int j = 14;
-				list.add(addTag(id, i, GetColors.getHexColors[j]));
+				list.add(addNBT(id, i, GetColors.getHexColors[j]));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(Block par1, int par2, int par3) {
-		return addTag(Item.getItemFromBlock(par1), par2, par3);
+	private static ItemStack addNBT(Block par1, int par2, int par3) {
+		return addNBT(Item.getItemFromBlock(par1), par2, par3);
 	}
 
-	private static ItemStack addTag(Item par1, int par2, int par3) {
+	private static ItemStack addNBT(Item par1, int par2, int par3) {
 		ItemStack is = new ItemStack(par1, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setByte("SubID", (byte)par2);
-		tag.setInteger("ColorBlock", par3);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setByte("SubID", (byte)par2);
+		nbt.setInteger("ColorBlock", par3);
 		is.setTagCompound(tag);
 		return is;
 	}

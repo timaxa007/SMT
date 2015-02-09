@@ -24,14 +24,14 @@ public class ItemRenderBlockWoodBlocks implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		int tex = 0;
 		int clr = 0xFFFFFF;
 
-		if (tag != null) {
-			if (tag.hasKey("SubID")) tex = tag.getByte("SubID");
-			if (tag.hasKey("ColorBlock")) clr = tag.getInteger("ColorBlock");
+		if (nbt != null) {
+			if (nbt.hasKey("SubID")) tex = nbt.getByte("SubID");
+			if (nbt.hasKey("ColorBlock")) clr = nbt.getInteger("ColorBlock");
 		}
 
 		GL11.glPushMatrix();

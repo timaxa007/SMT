@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.render.model.ModelBackpacks;
-import mods.timaxa007.tms.util.ItemArmorFixReg;
+import mods.timaxa007.tms.util.ModifiedItemArmor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorBackpacks extends ItemArmorFixReg {
+public class ArmorBackpacks extends ModifiedItemArmor {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_b;
 
@@ -40,55 +40,55 @@ public class ArmorBackpacks extends ItemArmorFixReg {
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeBackpack"))
-			return super.getUnlocalizedName() + "." + tag.getInteger("TypeBackpack");
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("TypeBackpack"))
+			return super.getUnlocalizedName() + "." + nbt.getInteger("TypeBackpack");
 		return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null) {
-			if (tag.hasKey("TypeBackpack"))
-				list.add("TypeBackpack: " + tag.getInteger("TypeBackpack") + ".");
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null) {
+			if (nbt.hasKey("TypeBackpack"))
+				list.add("TypeBackpack: " + nbt.getInteger("TypeBackpack") + ".");
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < type_packpacks.length; ++j) {
-			list.add(addTag(j));
+			list.add(addNBT(j));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.item.armor_backpacks, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("TypeBackpack", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("TypeBackpack", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeBackpack"))
-			return "timaxa007:textures/armor/backpack_" + tag.getInteger("TypeBackpack") + ".png";
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("TypeBackpack"))
+			return "timaxa007:textures/armor/backpack_" + nbt.getInteger("TypeBackpack") + ".png";
 		else
 			return "timaxa007:textures/armor/backpack.png";
 	}
 
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack is, int armorSlot) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (armorSlot != 1) return null;
 		if (is != null && is.getItem() instanceof ArmorBackpacks) {
 			ModelBackpacks model_backpack = new ModelBackpacks(0);
 
-			if (tag != null && tag.hasKey("TypeBackpack")) {
-				if (tag.getInteger("TypeBackpack") == 1) {model_backpack = new ModelBackpacks(1);}
-				else if (tag.getInteger("TypeBackpack") == 2) {model_backpack = new ModelBackpacks(2);}
-				else if (tag.getInteger("TypeBackpack") == 3) {model_backpack = new ModelBackpacks(3);}
+			if (nbt != null && nbt.hasKey("TypeBackpack")) {
+				if (nbt.getInteger("TypeBackpack") == 1) {model_backpack = new ModelBackpacks(1);}
+				else if (nbt.getInteger("TypeBackpack") == 2) {model_backpack = new ModelBackpacks(2);}
+				else if (nbt.getInteger("TypeBackpack") == 3) {model_backpack = new ModelBackpacks(3);}
 				else {model_backpack = new ModelBackpacks(0);}
 
 			}
@@ -118,9 +118,9 @@ public class ArmorBackpacks extends ItemArmorFixReg {
 	public boolean requiresMultipleRenderPasses() {return true;}
 
 	public IIcon getIcon(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeBackpack"))
-			return icon_b[tag.getInteger("TypeBackpack")];
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("TypeBackpack"))
+			return icon_b[nbt.getInteger("TypeBackpack")];
 		else
 			return itemIcon;
 	}

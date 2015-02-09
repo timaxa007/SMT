@@ -5,7 +5,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCandle;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCandle extends BlockFixReg implements ITileEntityProvider {
+public class BlockCandle extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockCandle(String tag) {
 		super(tag, Material.circuits);

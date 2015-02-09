@@ -3,7 +3,7 @@ package mods.timaxa007.pack.magic.item;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -21,7 +21,7 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BowMagic extends ItemFixReg {
+public class BowMagic extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 

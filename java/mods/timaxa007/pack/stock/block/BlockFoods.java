@@ -7,7 +7,7 @@ import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.FoodForBlock;
 import mods.timaxa007.pack.stock.tile.TileEntityFoods;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFoods extends BlockFixReg implements ITileEntityProvider {
+public class BlockFoods extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockFoods(String tag) {
 		super(tag, Material.cake);
@@ -61,7 +61,7 @@ public class BlockFoods extends BlockFixReg implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityFoods) {
 			TileEntityFoods tile = (TileEntityFoods)te;
-			return addTag(tile.getTag(), tile.getColor1(), tile.getColor2());
+			return addNBT(tile.getTag(), tile.getColor1(), tile.getColor2());
 		}
 		return null;
 	}
@@ -69,14 +69,14 @@ public class BlockFoods extends BlockFixReg implements ITileEntityProvider {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
-		if (te != null && te instanceof TileEntityFoods && tag != null) {
+		if (te != null && te instanceof TileEntityFoods && nbt != null) {
 			TileEntityFoods tile = (TileEntityFoods)te;
 
-			if (tag.hasKey("NameID")) tile.setTag(tag.getString("NameID"));
-			if (tag.hasKey("Color1")) tile.setColor1(tag.getInteger("Color1"));
-			if (tag.hasKey("Color2")) tile.setColor2(tag.getInteger("Color2"));
+			if (nbt.hasKey("NameID")) tile.setTag(nbt.getString("NameID"));
+			if (nbt.hasKey("Color1")) tile.setColor1(nbt.getInteger("Color1"));
+			if (nbt.hasKey("Color2")) tile.setColor2(nbt.getInteger("Color2"));
 			tile.setRotation(ActionModel.rotation_model_8sides(entity.rotationYaw));
 
 		}
@@ -89,7 +89,7 @@ public class BlockFoods extends BlockFixReg implements ITileEntityProvider {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityFoods && !player.capabilities.isCreativeMode) {
 				TileEntityFoods tile = (TileEntityFoods)te;
-				dropBlockAsItem(world, x, y, z, addTag(tile.getTag(), tile.getColor1(), tile.getColor2()));
+				dropBlockAsItem(world, x, y, z, addNBT(tile.getTag(), tile.getColor1(), tile.getColor2()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
@@ -100,7 +100,7 @@ public class BlockFoods extends BlockFixReg implements ITileEntityProvider {
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 1; j < FoodForBlock.list.length; ++j) {
 			if (FoodForBlock.list[j] != null) {
-				list.add(addTag(
+				list.add(addNBT(
 						FoodForBlock.list[j].tag, 
 						FoodForBlock.list[j].getColor1(), 
 						FoodForBlock.list[j].getColor2()
@@ -110,13 +110,13 @@ public class BlockFoods extends BlockFixReg implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(String par1, int par2, int par3) {
+	private static ItemStack addNBT(String par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackStock.proxy.block.foods, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("NameID", par1);
-		tag.setInteger("Color1", par2);
-		tag.setInteger("Color2", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("NameID", par1);
+		nbt.setInteger("Color1", par2);
+		nbt.setInteger("Color2", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

@@ -33,14 +33,14 @@ public class ItemRendererWeapons implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		boolean isAim = false;
 		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
 		//Render render = RenderManager.instance.getEntityRenderObject(player);
 		//RenderPlayer renderplayer = (RenderPlayer)render;
 
-		if (tag != null) {
-			if (tag.hasKey("Aim")) isAim = tag.getBoolean("Aim");
+		if (nbt != null) {
+			if (nbt.hasKey("Aim")) isAim = nbt.getBoolean("Aim");
 		}
 
 		//if (player.isSwingInProgress) {System.out.println("test");}

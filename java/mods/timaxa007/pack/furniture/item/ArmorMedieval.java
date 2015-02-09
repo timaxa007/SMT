@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.render.model.ModelArmorMedieval;
-import mods.timaxa007.tms.util.ItemArmorFixReg;
+import mods.timaxa007.tms.util.ModifiedItemArmor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorMedieval extends ItemArmorFixReg {
+public class ArmorMedieval extends ModifiedItemArmor {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
@@ -39,40 +39,40 @@ public class ArmorMedieval extends ItemArmorFixReg {
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMedieval"))
-			return super.getUnlocalizedName() + "." + type_medieval[tag.getInteger("TypeMedieval")];
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("TypeMedieval"))
+			return super.getUnlocalizedName() + "." + type_medieval[nbt.getInteger("TypeMedieval")];
 		else
 			return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMedieval")) {
-			list.add("TypeMask: " + tag.getInteger("TypeMedieval") + "/" + type_medieval[tag.getInteger("TypeMedieval")]);
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("TypeMedieval")) {
+			list.add("TypeMask: " + nbt.getInteger("TypeMedieval") + "/" + type_medieval[nbt.getInteger("TypeMedieval")]);
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < type_medieval.length; ++j) {
-			list.add(addTag(new ItemStack(id, 1, 0), j));
+			list.add(addNBT(new ItemStack(id, 1, 0), j));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(ItemStack par1, int par2) {
+	private static ItemStack addNBT(ItemStack par1, int par2) {
 		ItemStack is = par1;
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("TypeMedieval", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("TypeMedieval", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type) {
-		/*NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("TypeMedieval")) {
-			return "timaxa007:textures/armor/mask_" + type_medieval[tag.getInteger("TypeMedieval")] + ".png";
+		/*NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("TypeMedieval")) {
+			return "timaxa007:textures/armor/mask_" + type_medieval[nbt.getInteger("TypeMedieval")] + ".png";
 		} else {*/
 		return "timaxa007:textures/armor/mask.png";
 		//}
@@ -86,11 +86,11 @@ public class ArmorMedieval extends ItemArmorFixReg {
 		if (armorSlot != armorType) return null;
 
 		if (is != null && is.getItem() instanceof ArmorMedieval) {
-			NBTTagCompound tag = is.getTagCompound();
+			NBTTagCompound nbt = is.getTagCompound();
 			ModelArmorMedieval model_armor_medieval;
 
-			if (tag.hasKey("TypeMedieval")) {
-				model_armor_medieval = new ModelArmorMedieval(tag.getInteger("TypeMedieval"), armorType);
+			if (nbt.hasKey("TypeMedieval")) {
+				model_armor_medieval = new ModelArmorMedieval(nbt.getInteger("TypeMedieval"), armorType);
 			} else {
 				model_armor_medieval = new ModelArmorMedieval();
 			}

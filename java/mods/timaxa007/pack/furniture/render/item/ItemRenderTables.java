@@ -30,15 +30,15 @@ public class ItemRenderTables implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		String tex = "";
 		int tpt = 0;
 		boolean tbm = true;
 
-		if (tag != null) {
-			if (tag.hasKey("Style")) tex = tag.getString("Style");
-			if (tag.hasKey("Size")) tpt = tag.getInteger("Size");
+		if (nbt != null) {
+			if (nbt.hasKey("Style")) tex = nbt.getString("Style");
+			if (nbt.hasKey("Size")) tpt = nbt.getInteger("Size");
 		}
 
 		//--------------------------------

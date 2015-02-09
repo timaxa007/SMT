@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.tile.TileEntityHealing;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockHealing extends BlockFixReg implements ITileEntityProvider {
+public class BlockHealing extends ModifiedBlock implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityPipes;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPipes extends BlockFixReg implements ITileEntityProvider {
+public class BlockPipes extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockPipes(String tag) {
 		super(tag, Material.glass);
@@ -52,7 +52,7 @@ public class BlockPipes extends BlockFixReg implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityPipes) {
 			TileEntityPipes tile = (TileEntityPipes)te;
-			return addTag(tile.getStyle(), tile.getSize(), tile.getColor());
+			return addNBT(tile.getStyle(), tile.getSize(), tile.getColor());
 		}
 		return null;
 	}
@@ -60,13 +60,13 @@ public class BlockPipes extends BlockFixReg implements ITileEntityProvider {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityPipes) {
 			TileEntityPipes tile = (TileEntityPipes)te;
-			if (tag != null) {
-				if (tag.hasKey("Style")) tile.setStyle(tag.getString("Style"));
-				if (tag.hasKey("Size")) tile.setSize(tag.getInteger("Size"));
-				if (tag.hasKey("Color")) tile.setColor(tag.getInteger("Color"));
+			if (nbt != null) {
+				if (nbt.hasKey("Style")) tile.setStyle(nbt.getString("Style"));
+				if (nbt.hasKey("Size")) tile.setSize(nbt.getInteger("Size"));
+				if (nbt.hasKey("Color")) tile.setColor(nbt.getInteger("Color"));
 			}
 		}
 	}
@@ -75,26 +75,26 @@ public class BlockPipes extends BlockFixReg implements ITileEntityProvider {
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < AddTextureModel.list.length; ++j) {
 			if (AddTextureModel.list[j] != null && AddTextureModel.list[j].tag != null) {
-				list.add(addTag(AddTextureModel.list[j].tag, 1, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 2, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 3, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 4, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 5, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 6, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 7, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 8, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 1, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 2, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 3, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 4, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 5, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 6, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 7, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 8, 0xFFFFFF));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(String par1, int par2, int par3) {
+	private static ItemStack addNBT(String par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.pipes, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Style", par1);
-		tag.setInteger("Size", par2);
-		tag.setInteger("Color", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Style", par1);
+		nbt.setInteger("Size", par2);
+		nbt.setInteger("Color", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

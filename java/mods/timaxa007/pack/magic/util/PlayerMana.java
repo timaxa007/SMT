@@ -24,15 +24,15 @@ public class PlayerMana implements IExtendedEntityProperties {
 	}
 
 	@Override
-	public void saveNBTData(NBTTagCompound tag) {
-		tag.setInteger("Mana", mana);
-		tag.setInteger("ManaMax", mana_max);
+	public void saveNBTData(NBTTagCompound nbt) {
+		nbt.setInteger("Mana", mana);
+		nbt.setInteger("ManaMax", mana_max);
 	}
 
 	@Override
-	public void loadNBTData(NBTTagCompound tag) {
-		mana = tag.getInteger("Mana");
-		mana_max = tag.getInteger("ManaMax");
+	public void loadNBTData(NBTTagCompound nbt) {
+		mana = nbt.getInteger("Mana");
+		mana_max = nbt.getInteger("ManaMax");
 	}
 
 	@Override

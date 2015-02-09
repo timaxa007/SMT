@@ -1,6 +1,6 @@
 package mods.timaxa007.tms.util;
 
-public class ItemTool extends ItemFixReg {
+public class ItemTool extends ModifiedItem {
 	//--------------------------------------------------------------------------------------------------------------
 	public ItemTool(String tag) {
 		super(tag);

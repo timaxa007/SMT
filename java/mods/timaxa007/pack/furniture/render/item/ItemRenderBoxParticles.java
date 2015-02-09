@@ -30,12 +30,12 @@ public class ItemRenderBoxParticles implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		String tex = "";
 
-		if (tag != null) {
-			if (tag.hasKey("Style")) tex = tag.getString("Style");
+		if (nbt != null) {
+			if (nbt.hasKey("Style")) tex = nbt.getString("Style");
 		}
 
 		GL11.glPushMatrix();

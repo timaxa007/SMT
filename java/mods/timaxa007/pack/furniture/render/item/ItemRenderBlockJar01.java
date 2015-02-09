@@ -29,12 +29,12 @@ public class ItemRenderBlockJar01 implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		int crl_w = 0xFFFFFF;
 
-		if (tag != null) {
-			if (tag.hasKey("ColorWater")) crl_w = tag.getInteger("ColorWater");
+		if (nbt != null) {
+			if (nbt.hasKey("ColorWater")) crl_w = nbt.getInteger("ColorWater");
 		}
 		//--------------------------------------------------
 		GL11.glPushMatrix();

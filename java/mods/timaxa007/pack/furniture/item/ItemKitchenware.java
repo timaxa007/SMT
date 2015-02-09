@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.item;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,7 +15,7 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemKitchenware extends ItemFixReg {
+public class ItemKitchenware extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -68,18 +68,18 @@ public class ItemKitchenware extends ItemFixReg {
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID"))
-			return super.getUnlocalizedName() + "." + tag.getString("NameID").toLowerCase();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID"))
+			return super.getUnlocalizedName() + "." + nbt.getString("NameID").toLowerCase();
 		return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
-			if (tag != null) {
-				if (tag.hasKey("NameID"))
-					list.add("NameID: " + tag.getString("NameID") + ".");
+			if (nbt != null) {
+				if (nbt.hasKey("NameID"))
+					list.add("NameID: " + nbt.getString("NameID") + ".");
 			}
 		} else list.add(UtilText.hldshiftinf);
 	}
@@ -87,26 +87,26 @@ public class ItemKitchenware extends ItemFixReg {
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (kitchenware j : kitchenware.values()) {
-			list.add(addTag(j.toString()));
+			list.add(addNBT(j.toString()));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(String par1) {
+	private static ItemStack addNBT(String par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.item.kitchenware, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("NameID", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("NameID", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
 	public IIcon getIcon(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID") && kitchenware.hasStrCode(tag.getString("NameID"))) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID") && kitchenware.hasStrCode(nbt.getString("NameID"))) {
 			if (pass == 0)
-				return icon_tex[kitchenware.valueOf(tag.getString("NameID")).ordinal()];
+				return icon_tex[kitchenware.valueOf(nbt.getString("NameID")).ordinal()];
 			else
-				return icon_ovl[kitchenware.valueOf(tag.getString("NameID")).ordinal()];
+				return icon_ovl[kitchenware.valueOf(nbt.getString("NameID")).ordinal()];
 		} else return itemIcon;
 	}
 
@@ -117,12 +117,12 @@ public class ItemKitchenware extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID") && kitchenware.hasStrCode(tag.getString("NameID"))) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID") && kitchenware.hasStrCode(nbt.getString("NameID"))) {
 			if (pass == 0)
-				return kitchenware.valueOf(tag.getString("NameID")).color_hex1;
+				return kitchenware.valueOf(nbt.getString("NameID")).color_hex1;
 			else
-				return kitchenware.valueOf(tag.getString("NameID")).color_hex2;
+				return kitchenware.valueOf(nbt.getString("NameID")).color_hex2;
 		} else return 16777215;
 	}
 

@@ -32,15 +32,15 @@ public class ItemRenderBlockCristals implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		int typ = 0;
 		int crl = 0xFFFFFF;
 		int siz = 1;
 
-		if (tag != null) {
-			if (tag.hasKey("Type")) typ = tag.getInteger("Type");
-			if (tag.hasKey("Color")) crl = tag.getInteger("Color");
-			if (tag.hasKey("Size")) siz = tag.getInteger("Size");
+		if (nbt != null) {
+			if (nbt.hasKey("Type")) typ = nbt.getInteger("Type");
+			if (nbt.hasKey("Color")) crl = nbt.getInteger("Color");
+			if (nbt.hasKey("Size")) siz = nbt.getInteger("Size");
 		}
 
 		//--------------------------------------------------

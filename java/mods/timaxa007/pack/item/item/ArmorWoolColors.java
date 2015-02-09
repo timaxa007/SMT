@@ -3,19 +3,20 @@ package mods.timaxa007.pack.item.item;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.ItemArmorFixReg;
+import mods.timaxa007.tms.util.ModifiedItemArmor;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorWoolColors extends ItemArmorFixReg {
+public class ArmorWoolColors extends ModifiedItemArmor {
 
 	public ArmorWoolColors(String tag, ArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
 		super(tag, par2EnumArmorMaterial, par3, par4);
@@ -27,29 +28,29 @@ public class ArmorWoolColors extends ItemArmorFixReg {
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
 			list.add(UtilText.getText("Material") + ": " + UtilText.getText("Wool") + ".");
 			list.add(UtilText.getText("Type") + ": " + UtilText.getText("Armor") + ".");
-			if (tag != null) {
-				if (tag.hasKey("Color"))
-					list.add(UtilText.getText("Color") + ": " + tag.getInteger("HexColor") + ".");
+			if (nbt != null) {
+				if (nbt.hasKey("Color"))
+					list.add(UtilText.getText("Color") + ": " + nbt.getInteger("HexColor") + ".");
 			}
 		} else list.add(UtilText.hldshiftinf);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		list.add(addTag(new ItemStack(id, 1, 0), 0xFFFFFF));
+		list.add(addNBT(new ItemStack(id, 1, 0), 0xFFFFFF));
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(ItemStack par1, int par2) {
+	private static ItemStack addNBT(ItemStack par1, int par2) {
 		ItemStack is = par1;
-		NBTTagCompound tag = new NBTTagCompound();
-		//tag.setInteger("Color", par2);
-		tag.setInteger("HexColor", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		//nbt.setInteger("Color", par2);
+		nbt.setInteger("HexColor", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
 	/*
@@ -60,18 +61,18 @@ public class ArmorWoolColors extends ItemArmorFixReg {
 	 */
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("HexColor"))
-			return tag.getInteger("HexColor");
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("HexColor"))
+			return nbt.getInteger("HexColor");
 		else
 			return 16777215;
 	}
 	/*
 	public int getColor(ItemStack is) {
 		super.getColor(is);
-		NBTTagCompound tag = is.getTagCompound();
-			if (tag != null && tag.hasKey("HexColor")) {
-				return tag.getInteger("HexColor");
+		NBTTagCompound nbt = is.getTagCompound();
+			if (nbt != null && nbt.hasKey("HexColor")) {
+				return nbt.getInteger("HexColor");
 			} else {
 				return 0xFF0000;
 			}

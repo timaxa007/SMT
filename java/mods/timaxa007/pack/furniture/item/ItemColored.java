@@ -1,12 +1,12 @@
 package mods.timaxa007.pack.furniture.item;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemColored extends ItemFixReg {
+public class ItemColored extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -20,41 +20,41 @@ public class ItemColored extends ItemFixReg {
 	}
 	/*
 public String getUnlocalizedName(ItemStack is) {
-NBTTagCompound tag = is.getTagCompound();
-if (tag != null && tag.hasKey("NameID")) {
-return super.getUnlocalizedName() + "." + ItemForStock.item_list[ItemForStock.getID_name(tag.getString("NameID"))].getName();
-} else if (tag != null && tag.hasKey("ItemID")) {
-return super.getUnlocalizedName() + "." + ItemForStock.item_list[tag.getInteger("ItemID")].getName();
+NBTTagCompound nbt = is.getTagCompound();
+if (tag != null && nbt.hasKey("NameID")) {
+return super.getUnlocalizedName() + "." + ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))].getName();
+} else if (tag != null && nbt.hasKey("ItemID")) {
+return super.getUnlocalizedName() + "." + ItemForStock.item_list[nbt.getInteger("ItemID")].getName();
 }
 return super.getUnlocalizedName();
 }
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-NBTTagCompound tag = is.getTagCompound();
+NBTTagCompound nbt = is.getTagCompound();
 if (UtilText.isShiftKeyDown()) {
 if (tag != null) {
 //-------------------------------------------------------------------------------------
-if (tag.hasKey("NameID")) {
-if (ItemForStock.item_list[ItemForStock.getID_name(tag.getString("NameID"))] != null) {
-list.add("NameID: " + tag.getString("NameID") + " / [-] ID: " + ItemForStock.getID_name(tag.getString("NameID")) + ".");
-	if (ItemForStock.item_list[ItemForStock.getID_name(tag.getString("NameID"))].getType() != "none") {
-	list.add(Option.getText("Type") + ": " + ItemForStock.item_list[ItemForStock.getID_name(tag.getString("NameID"))].getLocalizedType() + ".");
+if (nbt.hasKey("NameID")) {
+if (ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))] != null) {
+list.add("NameID: " + nbt.getString("NameID") + " / [-] ID: " + ItemForStock.getID_name(nbt.getString("NameID")) + ".");
+	if (ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))].getType() != "none") {
+	list.add(Option.getText("Type") + ": " + ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))].getLocalizedType() + ".");
 	}
 } else {
-list.add("Bag Item is in NameID: " + tag.getString("NameID") + ".");
+list.add("Bag Item is in NameID: " + nbt.getString("NameID") + ".");
 }
 }
 //-------------------------------------------------------------------------------------
-if (tag.hasKey("ItemID")) {
-if (ItemForStock.item_list[tag.getInteger("ItemID")] != null) {
-if (ItemForStock.item_list[tag.getInteger("ItemID")].nameID != null) {
-list.add("NameID: " + ItemForStock.item_list[tag.getInteger("ItemID")].nameID + " [-] / ID: " + tag.getInteger("ItemID") + ".");
+if (nbt.hasKey("ItemID")) {
+if (ItemForStock.item_list[nbt.getInteger("ItemID")] != null) {
+if (ItemForStock.item_list[nbt.getInteger("ItemID")].nameID != null) {
+list.add("NameID: " + ItemForStock.item_list[nbt.getInteger("ItemID")].nameID + " [-] / ID: " + nbt.getInteger("ItemID") + ".");
 }
-	if (ItemForStock.item_list[tag.getInteger("ItemID")].getType() != "none") {
-	list.add(Option.getText("Type") + ": " + ItemForStock.item_list[tag.getInteger("ItemID")].getLocalizedType() + ".");
+	if (ItemForStock.item_list[nbt.getInteger("ItemID")].getType() != "none") {
+	list.add(Option.getText("Type") + ": " + ItemForStock.item_list[nbt.getInteger("ItemID")].getLocalizedType() + ".");
 	}
 } else {
-list.add("Bag Item is in ItemID: " + tag.getInteger("ItemID") + ".");
+list.add("Bag Item is in ItemID: " + nbt.getInteger("ItemID") + ".");
 }
 }
 //-------------------------------------------------------------------------------------
@@ -68,26 +68,26 @@ list.add(UtilText.hldshiftinf);
 public void getSubItems(Item id, CreativeTabs table, List list) {
 for (int i = 1; i < ItemForStock.item_list.length; i++) {
 if (ItemForStock.item_list[i] != null && ItemForStock.item_list[i].nameID != "") {
-list.add(addTag(ItemForStock.item_list[i].nameID));
+list.add(addNBT(ItemForStock.item_list[i].nameID));
 } else if (ItemForStock.item_list[i] != null && ItemForStock.item_list[i].nameID == "") {
-list.add(addTag(i));
+list.add(addNBT(i));
 }
 }
 //list.add(new ItemStack(id, 1, 0));
 }
 
-private static ItemStack addTag(String par1) {
+private static ItemStack addNBT(String par1) {
 ItemStack is = new ItemStack(PackFurniture.proxy.item_colored, 1, 0);
-NBTTagCompound tag = new NBTTagCompound();
-tag.setString("NameID", par1);
+NBTTagCompound nbt = new NBTTagCompound();
+nbt.setString("NameID", par1);
 is.setTagCompound(tag);
 return is;
 }
 
-private static ItemStack addTag(int par1) {
+private static ItemStack addNBT(int par1) {
 ItemStack is = new ItemStack(PackFurniture.proxy.item_colored, 1, 0);
-NBTTagCompound tag = new NBTTagCompound();
-tag.setInteger("ItemID", par1);
+NBTTagCompound nbt = new NBTTagCompound();
+nbt.setInteger("ItemID", par1);
 is.setTagCompound(tag);
 return is;
 }
@@ -96,18 +96,18 @@ return is;
 public boolean requiresMultipleRenderPasses() {return true;}
 
 public IIcon getIcon(ItemStack is, int pass) {
-NBTTagCompound tag = is.getTagCompound();
-if (tag != null && tag.hasKey("NameID")) {
+NBTTagCompound nbt = is.getTagCompound();
+if (tag != null && nbt.hasKey("NameID")) {
 if (pass == 0) {
-return icon_tex[ItemForStock.getID_name(tag.getString("NameID"))];
+return icon_tex[ItemForStock.getID_name(nbt.getString("NameID"))];
 } else {
-return icon_ovl[ItemForStock.getID_name(tag.getString("NameID"))];
+return icon_ovl[ItemForStock.getID_name(nbt.getString("NameID"))];
 }
-} else if (tag != null && tag.hasKey("ItemID")) {
+} else if (tag != null && nbt.hasKey("ItemID")) {
 if (pass == 0) {
-return icon_tex[tag.getInteger("ItemID")];
+return icon_tex[nbt.getInteger("ItemID")];
 } else {
-return icon_ovl[tag.getInteger("ItemID")];
+return icon_ovl[nbt.getInteger("ItemID")];
 }
 } else {
 return itemIcon;
@@ -116,18 +116,18 @@ return itemIcon;
 
 @SideOnly(Side.CLIENT)
 public int getColorFromItemStack(ItemStack is, int pass) {
-NBTTagCompound tag = is.getTagCompound();
-if (tag != null && tag.hasKey("NameID")) {
+NBTTagCompound nbt = is.getTagCompound();
+if (tag != null && nbt.hasKey("NameID")) {
 if (pass == 0) {
-return ItemForStock.item_list[ItemForStock.getID_name(tag.getString("NameID"))].getColor1();
+return ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))].getColor1();
 } else {
-return ItemForStock.item_list[ItemForStock.getID_name(tag.getString("NameID"))].getColor2();
+return ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))].getColor2();
 }
-} else if (tag != null && tag.hasKey("ItemID")) {
+} else if (tag != null && nbt.hasKey("ItemID")) {
 if (pass == 0) {
-return ItemForStock.item_list[tag.getInteger("ItemID")].getColor1();
+return ItemForStock.item_list[nbt.getInteger("ItemID")].getColor1();
 } else {
-return ItemForStock.item_list[tag.getInteger("ItemID")].getColor2();
+return ItemForStock.item_list[nbt.getInteger("ItemID")].getColor2();
 }
 } else {
 return 16777215;

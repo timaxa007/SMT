@@ -5,7 +5,7 @@ import java.util.Set;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityArmChair;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockArmChair extends BlockFixReg implements ITileEntityProvider {
+public class BlockArmChair extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockArmChair(String tag) {
 		super(tag, Material.wood);
@@ -55,7 +55,7 @@ public class BlockArmChair extends BlockFixReg implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityArmChair) {
 			TileEntityArmChair tile = (TileEntityArmChair)te;
-			return addTag(tile.getType(), tile.getSize());
+			return addNBT(tile.getType(), tile.getSize());
 		} else return null;
 	}
 
@@ -65,28 +65,28 @@ public class BlockArmChair extends BlockFixReg implements ITileEntityProvider {
 		for (String type : (Set<String>) Block.blockRegistry.getKeys()) {
 			Block b = (Block) Block.blockRegistry.getObject(type);
 			if (b.getIcon(1, 0) != null && !(b instanceof ITileEntityProvider)) {
-				list.add(addTag(type, 0));
-				list.add(addTag(type, 1));
-				list.add(addTag(type, 2));
-				list.add(addTag(type, 3));
-				list.add(addTag(type, 4));
-				list.add(addTag(type, 5));
-				list.add(addTag(type, 6));
-				list.add(addTag(type, 7));
-				list.add(addTag(type, 8));
-				list.add(addTag(type, 9));
-				list.add(addTag(type, 10));
-				list.add(addTag(type, 11));
+				list.add(addNBT(type, 0));
+				list.add(addNBT(type, 1));
+				list.add(addNBT(type, 2));
+				list.add(addNBT(type, 3));
+				list.add(addNBT(type, 4));
+				list.add(addNBT(type, 5));
+				list.add(addNBT(type, 6));
+				list.add(addNBT(type, 7));
+				list.add(addNBT(type, 8));
+				list.add(addNBT(type, 9));
+				list.add(addNBT(type, 10));
+				list.add(addNBT(type, 11));
 			}
 		}
 	}
 
-	public static ItemStack addTag(String par1, int par2) {
+	public static ItemStack addNBT(String par1, int par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.arm_chair, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Type", par1);
-		tag.setInteger("Size", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Type", par1);
+		nbt.setInteger("Size", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

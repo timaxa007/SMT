@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.pack.mining.tile.TileEntityOreOres;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class OreOres extends BlockFixReg implements ITileEntityProvider {
+public class OreOres extends ModifiedBlock implements ITileEntityProvider {
 
 	public static String[] type_ore = new String[] {
 		"appa", 
@@ -94,38 +94,38 @@ public class OreOres extends BlockFixReg implements ITileEntityProvider {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityOreOres)
-			return addTag(world.getBlock(x, y, z), ((TileEntityOreOres)te).getType(), ((TileEntityOreOres)te).getColorBlock());
+			return addNBT(world.getBlock(x, y, z), ((TileEntityOreOres)te).getType(), ((TileEntityOreOres)te).getColorBlock());
 		return null;
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
-		if (te != null && te instanceof TileEntityOreOres && tag != null) {
-			if (tag.hasKey("Type")) ((TileEntityOreOres)te).setType((int)tag.getByte("Type"));
-			if (tag.hasKey("ColorBlock")) ((TileEntityOreOres)te).setColorBlock(tag.getInteger("ColorBlock"));
+		NBTTagCompound nbt = is.getTagCompound();
+		if (te != null && te instanceof TileEntityOreOres && nbt != null) {
+			if (nbt.hasKey("Type")) ((TileEntityOreOres)te).setType((int)nbt.getByte("Type"));
+			if (nbt.hasKey("ColorBlock")) ((TileEntityOreOres)te).setColorBlock(nbt.getInteger("ColorBlock"));
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int i = 0; i < type_ore.length; i++) {
-			list.add(addTag(id, i, 0xFFFFFF));
+			list.add(addNBT(id, i, 0xFFFFFF));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(Block par1, int par2, int par3) {
-		return addTag(Item.getItemFromBlock(par1), par2, par3);
+	private static ItemStack addNBT(Block par1, int par2, int par3) {
+		return addNBT(Item.getItemFromBlock(par1), par2, par3);
 	}
 
-	private static ItemStack addTag(Item par1, int par2, int par3) {
+	private static ItemStack addNBT(Item par1, int par2, int par3) {
 		ItemStack is = new ItemStack(par1, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setByte("Type", (byte)par2);
-		tag.setInteger("ColorBlock", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setByte("Type", (byte)par2);
+		nbt.setInteger("ColorBlock", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

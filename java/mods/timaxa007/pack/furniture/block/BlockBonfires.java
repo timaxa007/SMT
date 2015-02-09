@@ -1,14 +1,14 @@
 package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class BlockBonfires extends BlockFixReg {
+public class BlockBonfires extends ModifiedBlock {
 
 	public BlockBonfires(String tag) {
 		super(tag, Material.wood);

@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityBarrels;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockBarrels extends BlockFixReg implements ITileEntityProvider {
+public class BlockBarrels extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockBarrels(String tag) {
 		super(tag, Material.clay);
@@ -50,9 +50,9 @@ public class BlockBarrels extends BlockFixReg implements ITileEntityProvider {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityBarrels) {
-			return addTag(((TileEntityBarrels)te).getTypeB(), ((TileEntityBarrels)te).getTypeP(), ((TileEntityBarrels)te).getTypeCD(), ((TileEntityBarrels)te).getLie());
+			return addNBT(((TileEntityBarrels)te).getTypeB(), ((TileEntityBarrels)te).getTypeP(), ((TileEntityBarrels)te).getTypeCD(), ((TileEntityBarrels)te).getLie());
 		}
-		return addTag(0, 0, 0, false);
+		return addNBT(0, 0, 0, false);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -62,20 +62,20 @@ public class BlockBarrels extends BlockFixReg implements ITileEntityProvider {
 		int j1=68;
 		int j2=3;
 		int j3=75;
-		list.add(addTag(j1, j2, j3, false));
+		list.add(addNBT(j1, j2, j3, false));
 		//
 		//}
 		//list.add(new ItemStack(PackFurniture.toolAirBrush, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2, int par3, boolean par4) {
+	private static ItemStack addNBT(int par1, int par2, int par3, boolean par4) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.barrels, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("TypeB", par1);
-		tag.setInteger("TypeP", par2);
-		tag.setInteger("TypeCD", par3);
-		tag.setBoolean("Lie", par4);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("TypeB", par1);
+		nbt.setInteger("TypeP", par2);
+		nbt.setInteger("TypeCD", par3);
+		nbt.setBoolean("Lie", par4);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

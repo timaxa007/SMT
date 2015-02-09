@@ -3,7 +3,7 @@ package mods.timaxa007.pack.magic.item;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTeleport extends ItemFixReg {
+public class ItemTeleport extends ModifiedItem {
 
 	public ItemTeleport(String tag) {
 		super(tag);
@@ -23,14 +23,14 @@ public class ItemTeleport extends ItemFixReg {
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (player.worldObj.provider.isSurfaceWorld()) {
-			if (tag == null) {
+			if (nbt == null) {
 				--is.stackSize;
-				player.inventory.addItemStackToInventory(addTag(player.posX, player.posY, player.posZ));
+				player.inventory.addItemStackToInventory(addNBT(player.posX, player.posY, player.posZ));
 			} else {
-				if (tag.hasKey("CordX") && tag.hasKey("CordY") && tag.hasKey("CordZ")) {
-					player.setPosition(tag.getDouble("CordX"), tag.getDouble("CordY") + 2.0D, tag.getDouble("CordZ"));
+				if (nbt.hasKey("CordX") && nbt.hasKey("CordY") && nbt.hasKey("CordZ")) {
+					player.setPosition(nbt.getDouble("CordX"), nbt.getDouble("CordY") + 2.0D, nbt.getDouble("CordZ"));
 				}
 			}
 		}
@@ -38,9 +38,9 @@ public class ItemTeleport extends ItemFixReg {
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("CordX") && tag.hasKey("CordY") && tag.hasKey("CordZ")) {
-			list.add("CordX - " + tag.getDouble("CordX") + ", CordY - " + tag.getDouble("CordY") + ", CordZ - " + tag.getDouble("CordXZ"));
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("CordX") && nbt.hasKey("CordY") && nbt.hasKey("CordZ")) {
+			list.add("CordX - " + nbt.getDouble("CordX") + ", CordY - " + nbt.getDouble("CordY") + ", CordZ - " + nbt.getDouble("CordXZ"));
 		}
 	}
 
@@ -49,14 +49,14 @@ public class ItemTeleport extends ItemFixReg {
 		list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(double x, double y, double z) {
+	private static ItemStack addNBT(double x, double y, double z) {
 		ItemStack is = new ItemStack(PackMagic.proxy.item.teleport, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		//tag.setBoolean("SurfaceWorld", true);
-		tag.setDouble("CordX", x);
-		tag.setDouble("CordY", y);
-		tag.setDouble("CordZ", z);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		//nbt.setBoolean("SurfaceWorld", true);
+		nbt.setDouble("CordX", x);
+		nbt.setDouble("CordY", y);
+		nbt.setDouble("CordZ", z);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

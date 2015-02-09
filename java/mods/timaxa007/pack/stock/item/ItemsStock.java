@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.ItemForStock;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemsStock extends ItemFixReg {
+public class ItemsStock extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -44,41 +44,41 @@ public class ItemsStock extends ItemFixReg {
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID")) {
-			return super.getUnlocalizedName() + "." + ItemForStock.list[ItemForStock.getID_tag(tag.getString("NameID"))].getName();
-		} else if (tag != null && tag.hasKey("ItemID")) {
-			return super.getUnlocalizedName() + "." + ItemForStock.list[tag.getInteger("ItemID")].getName();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID")) {
+			return super.getUnlocalizedName() + "." + ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))].getName();
+		} else if (nbt != null && nbt.hasKey("ItemID")) {
+			return super.getUnlocalizedName() + "." + ItemForStock.list[nbt.getInteger("ItemID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
-			if (tag != null) {
+			if (nbt != null) {
 				//-------------------------------------------------------------------------------------
-				if (tag.hasKey("NameID")) {
-					if (ItemForStock.list[ItemForStock.getID_tag(tag.getString("NameID"))] != null) {
-						list.add("NameID: " + tag.getString("NameID") + " / [-] ID: " + ItemForStock.getID_tag(tag.getString("NameID")) + ".");
-						if (ItemForStock.list[ItemForStock.getID_tag(tag.getString("NameID"))].getType() != "none") {
-							list.add(UtilText.getText("Type") + ": " + ItemForStock.list[ItemForStock.getID_tag(tag.getString("NameID"))].getLocalizedType() + ".");
+				if (nbt.hasKey("NameID")) {
+					if (ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))] != null) {
+						list.add("NameID: " + nbt.getString("NameID") + " / [-] ID: " + ItemForStock.getID_tag(nbt.getString("NameID")) + ".");
+						if (ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))].getType() != "none") {
+							list.add(UtilText.getText("Type") + ": " + ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))].getLocalizedType() + ".");
 						}
 					} else {
-						list.add("Bag Item is in NameID: " + tag.getString("NameID") + ".");
+						list.add("Bag Item is in NameID: " + nbt.getString("NameID") + ".");
 					}
 				}
 				//-------------------------------------------------------------------------------------
-				if (tag.hasKey("ItemID")) {
-					if (ItemForStock.list[tag.getInteger("ItemID")] != null) {
-						if (ItemForStock.list[tag.getInteger("ItemID")].tag != null) {
-							list.add("NameID: " + ItemForStock.list[tag.getInteger("ItemID")].tag + " [-] / ID: " + tag.getInteger("ItemID") + ".");
+				if (nbt.hasKey("ItemID")) {
+					if (ItemForStock.list[nbt.getInteger("ItemID")] != null) {
+						if (ItemForStock.list[nbt.getInteger("ItemID")].tag != null) {
+							list.add("NameID: " + ItemForStock.list[nbt.getInteger("ItemID")].tag + " [-] / ID: " + nbt.getInteger("ItemID") + ".");
 						}
-						if (ItemForStock.list[tag.getInteger("ItemID")].getType() != "none") {
-							list.add(UtilText.getText("Type") + ": " + ItemForStock.list[tag.getInteger("ItemID")].getLocalizedType() + ".");
+						if (ItemForStock.list[nbt.getInteger("ItemID")].getType() != "none") {
+							list.add(UtilText.getText("Type") + ": " + ItemForStock.list[nbt.getInteger("ItemID")].getLocalizedType() + ".");
 						}
 					} else {
-						list.add("Bag Item is in ItemID: " + tag.getInteger("ItemID") + ".");
+						list.add("Bag Item is in ItemID: " + nbt.getInteger("ItemID") + ".");
 					}
 				}
 				//-------------------------------------------------------------------------------------
@@ -92,27 +92,27 @@ public class ItemsStock extends ItemFixReg {
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (int i = 1; i < ItemForStock.list.length; i++) {
 			if (ItemForStock.list[i] != null && ItemForStock.list[i].tag != "") {
-				list.add(addTag(ItemForStock.list[i].tag));
+				list.add(addNBT(ItemForStock.list[i].tag));
 			} else if (ItemForStock.list[i] != null && ItemForStock.list[i].tag == "") {
-				list.add(addTag(i));
+				list.add(addNBT(i));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(String par1) {
+	private static ItemStack addNBT(String par1) {
 		ItemStack is = new ItemStack(PackStock.proxy.item.items_for_stock, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("NameID", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("NameID", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackStock.proxy.item.items_for_stock, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("ItemID", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("ItemID", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
@@ -120,18 +120,18 @@ public class ItemsStock extends ItemFixReg {
 	public boolean requiresMultipleRenderPasses() {return true;}
 
 	public IIcon getIcon(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID")) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID")) {
 			if (pass == 0) {
-				return icon_tex[ItemForStock.getID_tag(tag.getString("NameID"))];
+				return icon_tex[ItemForStock.getID_tag(nbt.getString("NameID"))];
 			} else {
-				return icon_ovl[ItemForStock.getID_tag(tag.getString("NameID"))];
+				return icon_ovl[ItemForStock.getID_tag(nbt.getString("NameID"))];
 			}
-		} else if (tag != null && tag.hasKey("ItemID")) {
+		} else if (nbt != null && nbt.hasKey("ItemID")) {
 			if (pass == 0) {
-				return icon_tex[tag.getInteger("ItemID")];
+				return icon_tex[nbt.getInteger("ItemID")];
 			} else {
-				return icon_ovl[tag.getInteger("ItemID")];
+				return icon_ovl[nbt.getInteger("ItemID")];
 			}
 		} else {
 			return itemIcon;
@@ -140,18 +140,18 @@ public class ItemsStock extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID")) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID")) {
 			if (pass == 0) {
-				return ItemForStock.list[ItemForStock.getID_tag(tag.getString("NameID"))].getColor1();
+				return ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))].getColor1();
 			} else {
-				return ItemForStock.list[ItemForStock.getID_tag(tag.getString("NameID"))].getColor2();
+				return ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))].getColor2();
 			}
-		} else if (tag != null && tag.hasKey("ItemID")) {
+		} else if (nbt != null && nbt.hasKey("ItemID")) {
 			if (pass == 0) {
-				return ItemForStock.list[tag.getInteger("ItemID")].getColor1();
+				return ItemForStock.list[nbt.getInteger("ItemID")].getColor1();
 			} else {
-				return ItemForStock.list[tag.getInteger("ItemID")].getColor2();
+				return ItemForStock.list[nbt.getInteger("ItemID")].getColor2();
 			}
 		} else {
 			return 16777215;

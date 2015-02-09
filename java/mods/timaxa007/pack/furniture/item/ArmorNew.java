@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.item;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.render.model.ModelNewArmor;
-import mods.timaxa007.tms.util.ItemArmorFixReg;
+import mods.timaxa007.tms.util.ModifiedItemArmor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorNew extends ItemArmorFixReg {
+public class ArmorNew extends ModifiedItemArmor {
 
 	public ArmorNew(String tag, ArmorMaterial mat, int par3, int par4) {
 		super(tag, mat, par3, par4);
@@ -51,10 +51,10 @@ public class ArmorNew extends ItemArmorFixReg {
 		if (armorSlot != armorType) return null;
 
 		if (is != null && is.getItem() instanceof ArmorNew) {
-			//NBTTagCompound tag = is.getTagCompound();
+			//NBTTagCompound nbt = is.getTagCompound();
 			ModelNewArmor model_new_armor;
 
-			//if (tag.hasKey("TypeMedieval")) {
+			//if (nbt.hasKey("TypeMedieval")) {
 			model_new_armor = new ModelNewArmor(armorType);
 			//} else {model_armor_medieval = new ModelNewArmor();}
 

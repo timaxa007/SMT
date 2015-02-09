@@ -3,7 +3,7 @@ package mods.timaxa007.pack.techno.block;
 import java.util.List;
 
 import mods.timaxa007.pack.techno.PackTechno;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -12,7 +12,7 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockGenerators extends BlockFixReg {
+public class BlockGenerators extends ModifiedBlock {
 
 	public static final String[] generatorNames = new String[] {
 		"Solid", 

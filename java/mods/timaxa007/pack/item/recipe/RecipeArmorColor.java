@@ -39,9 +39,9 @@ public class RecipeArmorColor implements IRecipe {
 				(cmh.getItem() == new ItemStack(PackFurniture.proxy.item.colored).getItem())
 				) {
 			ItemStack is = new ItemStack(PackItems.proxy.item.armor_wool_colors_helmet);
-			NBTTagCompound tag = new NBTTagCompound();
-			tag.setInteger("Color", cmh.getItemDamage());
-			is.setTagCompound(tag);
+			NBTTagCompound nbt = new NBTTagCompound();
+			nbt.setInteger("Color", cmh.getItemDamage());
+			is.setTagCompound(nbt);
 			return is;
 		}
 

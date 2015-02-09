@@ -3,24 +3,22 @@ package mods.timaxa007.pack.furniture.item;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.ItemArmorFixReg;
+import mods.timaxa007.tms.util.ModifiedItemArmor;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorCostumes extends ItemArmorFixReg {
+public class ArmorCostumes extends ModifiedItemArmor {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -80,18 +78,18 @@ public class ArmorCostumes extends ItemArmorFixReg {
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID"))
-			return super.getUnlocalizedName() + "." + tag.getString("NameID").toLowerCase();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID"))
+			return super.getUnlocalizedName() + "." + nbt.getString("NameID").toLowerCase();
 		return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
-			if (tag != null) {
-				if (tag.hasKey("NameID"))
-					list.add("NameID: " + tag.getString("NameID") + ".");
+			if (nbt != null) {
+				if (nbt.hasKey("NameID"))
+					list.add("NameID: " + nbt.getString("NameID") + ".");
 			}
 		} else list.add(UtilText.hldshiftinf);
 	}
@@ -99,34 +97,34 @@ public class ArmorCostumes extends ItemArmorFixReg {
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (costumes j : costumes.values()) {
-			list.add(addTag(id, j.toString()));
+			list.add(addNBT(id, j.toString()));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private ItemStack addTag(Item id, String par2) {
+	private ItemStack addNBT(Item id, String par2) {
 		ItemStack is = new ItemStack(id, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("NameID", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("NameID", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, String type) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID") && costumes.hasStrCode(tag.getString("NameID")))
-			return "timaxa007:textures/armor/" + tag.getString("NameID") + "_" + (armorType == 2 ? 2 : 1) + ".png";
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID") && costumes.hasStrCode(nbt.getString("NameID")))
+			return "timaxa007:textures/armor/" + nbt.getString("NameID") + "_" + (armorType == 2 ? 2 : 1) + ".png";
 		else
 			return "timaxa007:textures/armor/none_1.png";
 	}
 
 	public IIcon getIcon(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID") && costumes.hasStrCode(tag.getString("NameID"))) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID") && costumes.hasStrCode(nbt.getString("NameID"))) {
 			if (pass == 0)
-				return icon_tex[costumes.valueOf(tag.getString("NameID")).ordinal()];
+				return icon_tex[costumes.valueOf(nbt.getString("NameID")).ordinal()];
 			else
-				return icon_ovl[costumes.valueOf(tag.getString("NameID")).ordinal()];
+				return icon_ovl[costumes.valueOf(nbt.getString("NameID")).ordinal()];
 		} else return itemIcon;
 	}
 
@@ -137,12 +135,12 @@ public class ArmorCostumes extends ItemArmorFixReg {
 
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("NameID") && costumes.hasStrCode(tag.getString("NameID"))) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("NameID") && costumes.hasStrCode(nbt.getString("NameID"))) {
 			if (pass == 0)
-				return costumes.valueOf(tag.getString("NameID")).hex1;
+				return costumes.valueOf(nbt.getString("NameID")).hex1;
 			else
-				return costumes.valueOf(tag.getString("NameID")).hex2;
+				return costumes.valueOf(nbt.getString("NameID")).hex2;
 		} else return 16777215;
 	}
 

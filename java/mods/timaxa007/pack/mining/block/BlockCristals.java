@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.pack.mining.tile.TileEntityCristals;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCristals extends BlockFixReg implements ITileEntityProvider {
+public class BlockCristals extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockCristals(String tag) {
 		super(tag, Material.glass);
@@ -52,7 +52,7 @@ public class BlockCristals extends BlockFixReg implements ITileEntityProvider {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityCristals)
-			return addTag(((TileEntityCristals)te).getType(), ((TileEntityCristals)te).getColor(), ((TileEntityCristals)te).getSize());
+			return addNBT(((TileEntityCristals)te).getType(), ((TileEntityCristals)te).getColor(), ((TileEntityCristals)te).getSize());
 		return null;
 	}
 
@@ -60,16 +60,16 @@ public class BlockCristals extends BlockFixReg implements ITileEntityProvider {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityCristals) {
 			/*
 			int l=MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
 			((TileEntityCristals)te).setRot(l);
 			 */
-			if (tag != null) {
-				if (tag.hasKey("Type")) ((TileEntityCristals)te).setType(tag.getInteger("Type"));
-				if (tag.hasKey("Color")) ((TileEntityCristals)te).setColor(tag.getInteger("Color"));
-				if (tag.hasKey("Size")) ((TileEntityCristals)te).setSize(tag.getInteger("Size"));
+			if (nbt != null) {
+				if (nbt.hasKey("Type")) ((TileEntityCristals)te).setType(nbt.getInteger("Type"));
+				if (nbt.hasKey("Color")) ((TileEntityCristals)te).setColor(nbt.getInteger("Color"));
+				if (nbt.hasKey("Size")) ((TileEntityCristals)te).setSize(nbt.getInteger("Size"));
 			}
 
 		}
@@ -79,19 +79,19 @@ public class BlockCristals extends BlockFixReg implements ITileEntityProvider {
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int t = 0; t < 3; ++t) {
 			for (int s = 1; s < 5; ++s) {
-				list.add(addTag(t, 0xFFFFFF, s));
+				list.add(addNBT(t, 0xFFFFFF, s));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2, int par3) {
+	private static ItemStack addNBT(int par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackMining.proxy.block.cristals, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par1);
-		tag.setInteger("Color", par2);
-		tag.setInteger("Size", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("Type", par1);
+		nbt.setInteger("Color", par2);
+		nbt.setInteger("Size", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

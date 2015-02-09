@@ -7,7 +7,10 @@ import net.minecraft.item.ItemStack;
 
 public class Colors {
 
-	public static Colors[] list;
+	public static Colors[] list = new Colors[0xFFFFFF];
+	
+	public static final Colors not_use_black = new Colors(0x000000, "1");// int = 0
+	public static final Colors not_use_white = new Colors(0xFFFFFF, "0");// int = 16777215
 
 	public static final Colors black = new Colors(0x181818, "Black");// int = 1579032
 	public static final Colors blue = new Colors(0x0000FF, "Blue");// int = 255

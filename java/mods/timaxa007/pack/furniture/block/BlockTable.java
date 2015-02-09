@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityTable;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTable extends BlockFixReg implements ITileEntityProvider {
+public class BlockTable extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockTable(String tag) {
 		super(tag, Material.wood);
@@ -50,7 +50,7 @@ public class BlockTable extends BlockFixReg implements ITileEntityProvider {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityTable)
-			return addTag(0, ((TileEntityTable)te).getStyle(), ((TileEntityTable)te).getSize());
+			return addNBT(0, ((TileEntityTable)te).getStyle(), ((TileEntityTable)te).getSize());
 		return null;
 	}
 
@@ -59,25 +59,25 @@ public class BlockTable extends BlockFixReg implements ITileEntityProvider {
 		//for(int j = 0; j < TileTexture.tt01.length; ++j) {
 		//for(int i = 0; i < 16; ++i) {
 		String j = "";
-		list.add(addTag(0, j, 0));
-		list.add(addTag(0, j, 1));
-		list.add(addTag(0, j, 2));
-		list.add(addTag(0, j, 3));
-		list.add(addTag(0, j, 4));
-		list.add(addTag(0, j, 5));
-		list.add(addTag(0, j, 6));
-		list.add(addTag(0, j, 7));
+		list.add(addNBT(0, j, 0));
+		list.add(addNBT(0, j, 1));
+		list.add(addNBT(0, j, 2));
+		list.add(addNBT(0, j, 3));
+		list.add(addNBT(0, j, 4));
+		list.add(addNBT(0, j, 5));
+		list.add(addNBT(0, j, 6));
+		list.add(addNBT(0, j, 7));
 		//}
 		//}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, String par2, int par3) {
+	private static ItemStack addNBT(int par1, String par2, int par3) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.table, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Style", par2);
-		tag.setInteger("Size", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Style", par2);
+		nbt.setInteger("Size", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

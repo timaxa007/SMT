@@ -1,14 +1,14 @@
 package mods.timaxa007.pack.item.item;
 
 import mods.timaxa007.pack.item.PackItems;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemsItems extends ItemFixReg {
+public class ItemsItems extends ModifiedItem {
 
 	public ItemsItems(String tag) {
 		super(tag);

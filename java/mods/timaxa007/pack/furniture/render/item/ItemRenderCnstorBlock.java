@@ -32,14 +32,14 @@ public class ItemRenderCnstorBlock implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		String tex = "";
 		int clr = 0xFFFFFF;
 
-		if (tag != null) {
-			if (tag.hasKey("Type")) tex = tag.getString("Style");
-			if (tag.hasKey("Color")) clr = tag.getInteger("Color");
+		if (nbt != null) {
+			if (nbt.hasKey("Type")) tex = nbt.getString("Style");
+			if (nbt.hasKey("Color")) clr = nbt.getInteger("Color");
 		}
 
 		float red = (float)(clr >> 16 & 255)/255;

@@ -3,13 +3,13 @@ package mods.timaxa007.pack.furniture.block;
 import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class AirLight extends BlockFixReg {
+public class AirLight extends ModifiedBlock {
 
 	public AirLight(String tag) {
 		super(tag, Material.air);

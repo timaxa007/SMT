@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.AmmoFor;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,7 +16,7 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemAmmos extends ItemFixReg {
+public class ItemAmmos extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -29,19 +29,19 @@ public class ItemAmmos extends ItemFixReg {
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("AmmoID")) {
-			return "ammo." + AmmoFor.list[tag.getInteger("AmmoID")].getName();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("AmmoID")) {
+			return "ammo." + AmmoFor.list[nbt.getInteger("AmmoID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
-			if (tag != null) {
+			if (nbt != null) {
 
-				if (tag.hasKey("AmmoID")) list.add("AmmoID: " + tag.getInteger("AmmoID") + ".");
+				if (nbt.hasKey("AmmoID")) list.add("AmmoID: " + nbt.getInteger("AmmoID") + ".");
 
 			}
 		} else {
@@ -53,17 +53,17 @@ public class ItemAmmos extends ItemFixReg {
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (int i = 0; i < AmmoFor.list.length; i++) {
 			if (AmmoFor.list[i] != null) {
-				list.add(addTag(i));
+				list.add(addNBT(i));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackWeapons.proxy.item.ammos, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("AmmoID", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("AmmoID", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
@@ -73,12 +73,12 @@ public class ItemAmmos extends ItemFixReg {
 	}
 
 	public IIcon getIcon(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("AmmoID")) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("AmmoID")) {
 			if (pass == 0) {
-				return icon_tex[tag.getInteger("AmmoID")];
+				return icon_tex[nbt.getInteger("AmmoID")];
 			} else {
-				return icon_ovl[tag.getInteger("AmmoID")];
+				return icon_ovl[nbt.getInteger("AmmoID")];
 			}
 		} else {
 			return itemIcon;
@@ -87,12 +87,12 @@ public class ItemAmmos extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("AmmoID")) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("AmmoID")) {
 			if (pass == 0) {
-				return AmmoFor.list[tag.getInteger("AmmoID")].getColor1();
+				return AmmoFor.list[nbt.getInteger("AmmoID")].getColor1();
 			} else {
-				return AmmoFor.list[tag.getInteger("AmmoID")].getColor2();
+				return AmmoFor.list[nbt.getInteger("AmmoID")].getColor2();
 			}
 		} else {
 			return 16777215;

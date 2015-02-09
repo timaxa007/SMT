@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorDoors;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCnstorDoor extends BlockFixReg implements ITileEntityProvider {
+public class BlockCnstorDoor extends ModifiedBlock implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_array;
 
@@ -48,9 +48,9 @@ public class BlockCnstorDoor extends BlockFixReg implements ITileEntityProvider 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityCnstorDoors) {
-			return addTag(world.getBlock(x, y, z), ((TileEntityCnstorDoors)te).getSubID(), ((TileEntityCnstorDoors)te).getColorBlock());
+			return addNBT(world.getBlock(x, y, z), ((TileEntityCnstorDoors)te).getSubID(), ((TileEntityCnstorDoors)te).getColorBlock());
 		} else {
-			return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
+			return addNBT(world.getBlock(x, y, z), 0, 0xFFFFFF);
 		}
 	}
 
@@ -58,16 +58,16 @@ public class BlockCnstorDoor extends BlockFixReg implements ITileEntityProvider 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
-		if (te != null && te instanceof TileEntityCnstorDoors && tag != null) {
+		if (te != null && te instanceof TileEntityCnstorDoors && nbt != null) {
 
-			if (tag.hasKey("SubID")) {
-				((TileEntityCnstorDoors)te).setSubID((int)tag.getByte("SubID"));
+			if (nbt.hasKey("SubID")) {
+				((TileEntityCnstorDoors)te).setSubID((int)nbt.getByte("SubID"));
 			}
 
-			if (tag.hasKey("ColorBlock")) {
-				((TileEntityCnstorDoors)te).setColorBlock(tag.getInteger("ColorBlock"));
+			if (nbt.hasKey("ColorBlock")) {
+				((TileEntityCnstorDoors)te).setColorBlock(nbt.getInteger("ColorBlock"));
 			}
 
 			if (entity instanceof EntityPlayer) {
@@ -91,20 +91,20 @@ public class BlockCnstorDoor extends BlockFixReg implements ITileEntityProvider 
 
 				if (current != null && current.getItem() == PackFurniture.proxy.item.items_for_furniture) {
 					//if (!player.capabilities.isCreativeMode) {--current.stackSize;}
-					NBTTagCompound tag = current.getTagCompound();
-					if (tag != null && tag.hasKey("CordX") && tag.hasKey("CordY") && tag.hasKey("CordZ")) {
-						if (tag.getInteger("CordX") == x && tag.getInteger("CordY") == y && tag.getInteger("CordZ") == z) {
+					NBTTagCompound nbt = current.getTagCompound();
+					if (nbt != null && nbt.hasKey("CordX") && nbt.hasKey("CordY") && nbt.hasKey("CordZ")) {
+						if (nbt.getInteger("CordX") == x && nbt.getInteger("CordY") == y && nbt.getInteger("CordZ") == z) {
 							((TileEntityCnstorDoors)te).openDoor(true);
 						} else {
 							//if (world.isRemote) {player.addChatMessage("This key does not fit into this door.");}
 							return false;
 						}
 					} else {
-						if (tag == null) {tag = new NBTTagCompound();}
-						tag.setInteger("CordX", x);
-						tag.setInteger("CordY", y);
-						tag.setInteger("CordZ", z);
-						current.setTagCompound(tag);
+						if (nbt == null) {nbt = new NBTTagCompound();}
+						nbt.setInteger("CordX", x);
+						nbt.setInteger("CordY", y);
+						nbt.setInteger("CordZ", z);
+						current.setTagCompound(nbt);
 					}
 				}
 
@@ -140,7 +140,7 @@ public class BlockCnstorDoor extends BlockFixReg implements ITileEntityProvider 
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityCnstorDoors && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TileEntityCnstorDoors)te).getSubID(), ((TileEntityCnstorDoors)te).getColorBlock()));
+				dropBlockAsItem(world, x, y, z, addNBT(world.getBlock(x, y, z), ((TileEntityCnstorDoors)te).getSubID(), ((TileEntityCnstorDoors)te).getColorBlock()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
@@ -150,21 +150,21 @@ public class BlockCnstorDoor extends BlockFixReg implements ITileEntityProvider 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 
-		list.add(addTag(id, 0, 0xFFFFFF));
+		list.add(addNBT(id, 0, 0xFFFFFF));
 
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(Block par1, int par2, int par3) {
-		return addTag(Item.getItemFromBlock(par1), par2, par3);
+	private static ItemStack addNBT(Block par1, int par2, int par3) {
+		return addNBT(Item.getItemFromBlock(par1), par2, par3);
 	}
 
-	private static ItemStack addTag(Item par1, int par2, int par3) {
+	private static ItemStack addNBT(Item par1, int par2, int par3) {
 		ItemStack is = new ItemStack(par1, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setByte("SubID", (byte)par2);
-		tag.setInteger("ColorBlock", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setByte("SubID", (byte)par2);
+		nbt.setInteger("ColorBlock", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 	/*

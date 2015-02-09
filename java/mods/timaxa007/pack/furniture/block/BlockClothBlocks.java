@@ -6,7 +6,7 @@ import java.util.Random;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.lib.AddBlockCloth;
 import mods.timaxa007.pack.furniture.tile.TileEntityClothBlocks;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockClothBlocks extends BlockFixReg implements ITileEntityProvider {
+public class BlockClothBlocks extends ModifiedBlock implements ITileEntityProvider {
 
 	public static AddBlockCloth cloth_style1 = new AddBlockCloth("cloth_style1").setName("cloth_style1").setColor(0xFFFFFF).setTexture("cloth_style_1");
 
@@ -61,9 +61,9 @@ public class BlockClothBlocks extends BlockFixReg implements ITileEntityProvider
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityClothBlocks) {
-			return addTag(world.getBlock(x, y, z), ((TileEntityClothBlocks)te).getSubID(), ((TileEntityClothBlocks)te).getColorBlock());
+			return addNBT(world.getBlock(x, y, z), ((TileEntityClothBlocks)te).getSubID(), ((TileEntityClothBlocks)te).getColorBlock());
 		} else {
-			return addTag(world.getBlock(x, y, z), 0, 0xFFFFFF);
+			return addNBT(world.getBlock(x, y, z), 0, 0xFFFFFF);
 		}
 	}
 
@@ -88,11 +88,11 @@ public class BlockClothBlocks extends BlockFixReg implements ITileEntityProvider
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
-		if (te != null && te instanceof TileEntityClothBlocks && tag != null) {
-			if (tag.hasKey("SubID")) ((TileEntityClothBlocks)te).setSubID((int)tag.getByte("SubID"));
-			if (tag.hasKey("ColorBlock")) ((TileEntityClothBlocks)te).setColorBlock(tag.getInteger("ColorBlock"));
+		if (te != null && te instanceof TileEntityClothBlocks && nbt != null) {
+			if (nbt.hasKey("SubID")) ((TileEntityClothBlocks)te).setSubID((int)nbt.getByte("SubID"));
+			if (nbt.hasKey("ColorBlock")) ((TileEntityClothBlocks)te).setColorBlock(nbt.getInteger("ColorBlock"));
 		}
 
 	}
@@ -102,7 +102,7 @@ public class BlockClothBlocks extends BlockFixReg implements ITileEntityProvider
 		if (!world.isRemote) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityClothBlocks && !player.capabilities.isCreativeMode) {
-				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), ((TileEntityClothBlocks)te).getSubID(), ((TileEntityClothBlocks)te).getColorBlock()));
+				dropBlockAsItem(world, x, y, z, addNBT(world.getBlock(x, y, z), ((TileEntityClothBlocks)te).getSubID(), ((TileEntityClothBlocks)te).getColorBlock()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
@@ -142,21 +142,21 @@ public class BlockClothBlocks extends BlockFixReg implements ITileEntityProvider
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int i = 0; i < type_block.length; i++) {
-			list.add(addTag(id, i, 0xFFFFFF));
+			list.add(addNBT(id, i, 0xFFFFFF));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(Block par1, int par2, int par3) {
-		return addTag(Item.getItemFromBlock(par1), par2, par3);
+	private static ItemStack addNBT(Block par1, int par2, int par3) {
+		return addNBT(Item.getItemFromBlock(par1), par2, par3);
 	}
 
-	private static ItemStack addTag(Item par1, int par2, int par3) {
+	private static ItemStack addNBT(Item par1, int par2, int par3) {
 		ItemStack is = new ItemStack(par1, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setByte("SubID", (byte)par2);
-		tag.setInteger("ColorBlock", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setByte("SubID", (byte)par2);
+		nbt.setInteger("ColorBlock", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

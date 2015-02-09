@@ -15,10 +15,10 @@ public class EventClientTMS {
 	public void onZoom(FOVUpdateEvent e) {
 		ItemStack current = e.entity.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof ItemPrimaryKey) {
-			NBTTagCompound tag = current.getTagCompound();
-			if (tag != null && tag.hasKey("Aim") && tag.getBoolean("Aim")) {
-				if (tag.hasKey("ZoomFov"))
-					e.newfov -= ((float)(tag.getByte("ZoomFov") + 224) / (384.0F));
+			NBTTagCompound nbt = current.getTagCompound();
+			if (nbt != null && nbt.hasKey("Aim") && nbt.getBoolean("Aim")) {
+				if (nbt.hasKey("ZoomFov"))
+					e.newfov -= ((float)(nbt.getByte("ZoomFov") + 224) / (384.0F));
 				else 
 					e.newfov -= 0.25F;
 			}
@@ -30,9 +30,9 @@ public class EventClientTMS {
 		ItemStack current = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
 
 		if (current != null && current.getItem() instanceof ItemPrimaryKey && current.getTagCompound() != null) {
-			NBTTagCompound tag = current.getTagCompound();
+			NBTTagCompound nbt = current.getTagCompound();
 			if (e.type.equals(ElementType.CROSSHAIRS)) {
-				if (tag.hasKey("Aim") && tag.getBoolean("Aim")) {
+				if (nbt.hasKey("Aim") && nbt.getBoolean("Aim")) {
 					e.setCanceled(true);
 				}
 			}

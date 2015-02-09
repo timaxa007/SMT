@@ -6,7 +6,7 @@ import java.util.Random;
 import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorBlock;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCnstorBlock extends BlockFixReg implements ITileEntityProvider {
+public class BlockCnstorBlock extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockCnstorBlock(String tag) {
 		super(tag, Material.glass);
@@ -62,7 +62,7 @@ public class BlockCnstorBlock extends BlockFixReg implements ITileEntityProvider
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityCnstorBlock) {
 			TileEntityCnstorBlock tile = (TileEntityCnstorBlock)te;
-			return addTag(tile.getStyle(), tile.getColor());
+			return addNBT(tile.getStyle(), tile.getColor());
 		}
 		return null;
 	}
@@ -71,13 +71,13 @@ public class BlockCnstorBlock extends BlockFixReg implements ITileEntityProvider
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		if (te != null && te instanceof TileEntityCnstorBlock) {
 			TileEntityCnstorBlock tile = (TileEntityCnstorBlock)te;
-			if (tag != null) {
-				if (tag.hasKey("Style")) tile.setStyle(tag.getString("Style"));
-				if (tag.hasKey("Color")) tile.setColor(tag.getInteger("Color"));
+			if (nbt != null) {
+				if (nbt.hasKey("Style")) tile.setStyle(nbt.getString("Style"));
+				if (nbt.hasKey("Color")) tile.setColor(nbt.getInteger("Color"));
 			}
 		}
 
@@ -89,7 +89,7 @@ public class BlockCnstorBlock extends BlockFixReg implements ITileEntityProvider
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityCnstorBlock && !player.capabilities.isCreativeMode) {
 				TileEntityCnstorBlock tile = (TileEntityCnstorBlock)te;
-				dropBlockAsItem(world, x, y, z, addTag(tile.getStyle(), tile.getColor()));
+				dropBlockAsItem(world, x, y, z, addNBT(tile.getStyle(), tile.getColor()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
@@ -100,18 +100,18 @@ public class BlockCnstorBlock extends BlockFixReg implements ITileEntityProvider
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < AddTextureModel.list.length; ++j) {
 			if (AddTextureModel.list[j] != null && AddTextureModel.list[j].tag != null) {
-				list.add(addTag(AddTextureModel.list[j].tag, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 0xFFFFFF));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(String par1, int par2) {
+	private static ItemStack addNBT(String par1, int par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_block);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Style", par1);
-		tag.setInteger("Color", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Style", par1);
+		nbt.setInteger("Color", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

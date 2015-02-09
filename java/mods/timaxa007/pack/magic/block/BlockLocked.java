@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.tile.TileEntityBlockLocked;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockLocked extends BlockFixReg implements ITileEntityProvider {
+public class BlockLocked extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockLocked(String tag) {
 		super(tag, Material.iron);
@@ -37,7 +37,7 @@ public class BlockLocked extends BlockFixReg implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityBlockLocked) {
 			TileEntityBlockLocked tile = (TileEntityBlockLocked)te;
-			addTag(tile.getType());
+			addNBT(tile.getType());
 		}
 		return null;
 	}
@@ -45,12 +45,12 @@ public class BlockLocked extends BlockFixReg implements ITileEntityProvider {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityBlockLocked) {
 			TileEntityBlockLocked tile = (TileEntityBlockLocked)te;
 
-			if (tag != null) {
-				if (tag.hasKey("Type")) tile.setType(tag.getInteger("Type"));
+			if (nbt != null) {
+				if (nbt.hasKey("Type")) tile.setType(nbt.getInteger("Type"));
 			}
 
 			if (entity instanceof EntityPlayer) {
@@ -73,7 +73,7 @@ public class BlockLocked extends BlockFixReg implements ITileEntityProvider {
 			if (!world.isRemote) {
 				if (player.getDisplayName().equals(tile.getOwner())) {
 					//world.setBlockToAir(x, y, z);
-					//world.spawnEntityInWorld(new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, addTag(((TileEntityBlockLocked)te).getType())));
+					//world.spawnEntityInWorld(new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, addNBT(((TileEntityBlockLocked)te).getType())));
 				}
 			}
 		}
@@ -103,14 +103,14 @@ public class BlockLocked extends BlockFixReg implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		list.add(addTag(0));
+		list.add(addNBT(0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackMagic.proxy.block.magic_locked, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("Type", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

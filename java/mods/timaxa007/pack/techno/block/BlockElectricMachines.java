@@ -4,7 +4,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.tile.TileEntityElectricMachines;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockElectricMachines extends BlockFixReg implements ITileEntityProvider {
+public class BlockElectricMachines extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockElectricMachines(String tag) {
 		super(tag, Material.iron);
@@ -32,14 +32,14 @@ public class BlockElectricMachines extends BlockFixReg implements ITileEntityPro
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityElectricMachines) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 			((TileEntityElectricMachines)te).setRot(l);
 
-			if (tag != null) {
-				if (tag.hasKey("Type")) ((TileEntityElectricMachines)te).setType(tag.getInteger("Type"));
+			if (nbt != null) {
+				if (nbt.hasKey("Type")) ((TileEntityElectricMachines)te).setType(nbt.getInteger("Type"));
 			}
 			/*
 			if (is.hasDisplayName()) {

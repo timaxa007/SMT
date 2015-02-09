@@ -29,12 +29,12 @@ public class ItemRenderBlockModuleMovement implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		int tps = 0;
 
-		if (tag != null) {
-			if (tag.hasKey("Type")) tps=tag.getInteger("Type");
+		if (nbt != null) {
+			if (nbt.hasKey("Type")) tps=nbt.getInteger("Type");
 		}
 
 		GL11.glPushMatrix();

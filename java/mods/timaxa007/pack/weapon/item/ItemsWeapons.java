@@ -1,9 +1,9 @@
 package mods.timaxa007.pack.weapon.item;
 
 import mods.timaxa007.pack.weapon.PackWeapons;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 
-public class ItemsWeapons extends ItemFixReg {
+public class ItemsWeapons extends ModifiedItem {
 
 	public ItemsWeapons(String tag) {
 		super(tag);

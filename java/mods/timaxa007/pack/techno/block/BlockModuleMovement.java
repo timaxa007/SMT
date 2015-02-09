@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.tile.TileEntityModuleMovement;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockModuleMovement extends BlockFixReg implements ITileEntityProvider {
+public class BlockModuleMovement extends ModifiedBlock implements ITileEntityProvider {
 
 	public String typeModule[] = new String[] {
 			"Cursor", 
@@ -59,7 +59,7 @@ public class BlockModuleMovement extends BlockFixReg implements ITileEntityProvi
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TileEntityModuleMovement) return addTag(((TileEntityModuleMovement)te).getType());
+		if (te != null && te instanceof TileEntityModuleMovement) return addNBT(((TileEntityModuleMovement)te).getType());
 		return null;
 	}
 
@@ -148,16 +148,16 @@ public class BlockModuleMovement extends BlockFixReg implements ITileEntityProvi
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < typeModule.length; ++j) {
-			list.add(addTag(j));
+			list.add(addNBT(j));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackTechno.proxy.block.module_movement, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("Type", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

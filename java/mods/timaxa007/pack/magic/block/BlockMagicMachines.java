@@ -2,7 +2,7 @@ package mods.timaxa007.pack.magic.block;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.tile.TileEntityMagicMachines;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,7 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockMagicMachines extends BlockFixReg implements ITileEntityProvider {
+public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockMagicMachines(String tag) {
 		super(tag, Material.rock);
@@ -30,14 +30,14 @@ public class BlockMagicMachines extends BlockFixReg implements ITileEntityProvid
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityMagicMachines) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
 			((TileEntityMagicMachines)te).setRot(l);
 
-			if (tag != null) {
-				if (tag.hasKey("Type")) ((TileEntityMagicMachines)te).setType(tag.getInteger("Type"));
+			if (nbt != null) {
+				if (nbt.hasKey("Type")) ((TileEntityMagicMachines)te).setType(nbt.getInteger("Type"));
 			}
 			/*
 			if (is.hasDisplayName()) {

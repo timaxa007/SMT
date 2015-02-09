@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.GerminationPlants;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGerminationPlants extends ItemFixReg {
+public class ItemGerminationPlants extends ModifiedItem {
 	/*
 @SideOnly(Side.CLIENT) private IIcon icon_a;
 @SideOnly(Side.CLIENT) private IIcon icon_b;
@@ -121,12 +121,12 @@ public class ItemGerminationPlants extends ItemFixReg {
 		else {
 
 			TileEntity te = world.getTileEntity(x, y, z);
-			NBTTagCompound tag = is.getTagCompound();
+			NBTTagCompound nbt = is.getTagCompound();
 			if (te != null && te instanceof TileEntityGerminationPlants) {
 
-				if (tag != null) {
+				if (nbt != null) {
 					if (((TileEntityGerminationPlants)te).getPlant() == 0) {
-						((TileEntityGerminationPlants)te).setPlant(tag.getInteger("PlantID"));
+						((TileEntityGerminationPlants)te).setPlant(nbt.getInteger("PlantID"));
 					}
 					return true;
 				} else {
@@ -141,33 +141,33 @@ public class ItemGerminationPlants extends ItemFixReg {
 	 */
 	/*
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-		if (world.isRemote && tag != null) {
-			if (tag.hasKey("PlantID")) {player.addChatMessage(" - " + tag.getInteger("PlantID"));}
-			if (tag.hasKey("PlantType")) {player.addChatMessage(" - " + tag.getString("PlantType"));}
-			if (tag.hasKey("Growth")) {player.addChatMessage(" - " + tag.getInteger("Growth"));}
-			if (tag.hasKey("Fertility")) {player.addChatMessage(" - " + tag.getInteger("Fertility"));}
-			if (tag.hasKey("Resistance")) {player.addChatMessage(" - " + tag.getInteger("Resistance"));}
+		if (world.isRemote && nbt != null) {
+			if (nbt.hasKey("PlantID")) {player.addChatMessage(" - " + nbt.getInteger("PlantID"));}
+			if (nbt.hasKey("PlantType")) {player.addChatMessage(" - " + nbt.getString("PlantType"));}
+			if (nbt.hasKey("Growth")) {player.addChatMessage(" - " + nbt.getInteger("Growth"));}
+			if (nbt.hasKey("Fertility")) {player.addChatMessage(" - " + nbt.getInteger("Fertility"));}
+			if (nbt.hasKey("Resistance")) {player.addChatMessage(" - " + nbt.getInteger("Resistance"));}
 		}
 		return is;
 	}
 	 */
 	public String getUnlocalizedName(ItemStack is) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("PlantID")) {
-			return "plant." + GerminationPlants.list[tag.getInteger("PlantID")].getName();
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("PlantID")) {
+			return "plant." + GerminationPlants.list[nbt.getInteger("PlantID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
-			if (tag != null) {
-				if (tag.hasKey("PlantID")) list.add("PlantID: " + tag.getInteger("PlantID") + ".");
-				if (tag.hasKey("PlantType")) list.add("PlantType: " + tag.getString("PlantType") + ".");
-				if (tag.hasKey("Growth")) list.add("Growth: " + tag.getInteger("Growth") + ".");
-				if (tag.hasKey("Fertility")) list.add("Fertility: " + tag.getInteger("Fertility") + ".");
-				if (tag.hasKey("Resistance")) list.add("Resistance: " + tag.getInteger("Resistance") + ".");
+			if (nbt != null) {
+				if (nbt.hasKey("PlantID")) list.add("PlantID: " + nbt.getInteger("PlantID") + ".");
+				if (nbt.hasKey("PlantType")) list.add("PlantType: " + nbt.getString("PlantType") + ".");
+				if (nbt.hasKey("Growth")) list.add("Growth: " + nbt.getInteger("Growth") + ".");
+				if (nbt.hasKey("Fertility")) list.add("Fertility: " + nbt.getInteger("Fertility") + ".");
+				if (nbt.hasKey("Resistance")) list.add("Resistance: " + nbt.getInteger("Resistance") + ".");
 			}
 		} else {
 			list.add(UtilText.hldshiftinf);
@@ -178,7 +178,7 @@ public class ItemGerminationPlants extends ItemFixReg {
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (int i = 0; i < GerminationPlants.list.length; ++i) {
 			if (GerminationPlants.list[i] != null) {
-				list.add(addTag(
+				list.add(addNBT(
 						i, 
 						GerminationPlants.list[i].getType(), 
 						GerminationPlants.list[i].getGrowth(), 
@@ -190,15 +190,15 @@ public class ItemGerminationPlants extends ItemFixReg {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	public static ItemStack addTag(int par1, String par2, int par3, int par4, int par5) {
+	public static ItemStack addNBT(int par1, String par2, int par3, int par4, int par5) {
 		ItemStack is = new ItemStack(PackStock.proxy.item.germination_plants, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("PlantID", par1);
-		tag.setString("PlantType", par2);
-		tag.setInteger("Growth", par3);
-		tag.setInteger("Fertility", par4);
-		tag.setInteger("Resistance", par5);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("PlantID", par1);
+		nbt.setString("PlantType", par2);
+		nbt.setInteger("Growth", par3);
+		nbt.setInteger("Fertility", par4);
+		nbt.setInteger("Resistance", par5);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
@@ -207,7 +207,7 @@ public class ItemGerminationPlants extends ItemFixReg {
 public boolean requiresMultipleRenderPasses() {return true;}
 
 public IIcon getIcon(ItemStack is, int pass) {
-if (tag != null && tag.hasKey("PlantID")) {
+if (tag != null && nbt.hasKey("PlantID")) {
 if (pass == 0) {
 return icon_a;
 } else {
@@ -220,11 +220,11 @@ return itemIcon;
 
 @SideOnly(Side.CLIENT)
 public int getColorFromItemStack(ItemStack is, int pass) {
-if (tag != null && tag.hasKey("PlantID") && base_seed.hasStrCode(tag.getInteger("PlantID"))) {
+if (tag != null && nbt.hasKey("PlantID") && base_seed.hasStrCode(nbt.getInteger("PlantID"))) {
 if (pass == 0) {
-return base_seed.valueOf(tag.getInteger("PlantID")).hex1;
+return base_seed.valueOf(nbt.getInteger("PlantID")).hex1;
 } else {
-return base_seed.valueOf(tag.getInteger("PlantID")).hex2;
+return base_seed.valueOf(nbt.getInteger("PlantID")).hex2;
 }
 } else {
 return 16777215;

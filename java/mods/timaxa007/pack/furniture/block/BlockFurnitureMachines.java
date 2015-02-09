@@ -2,7 +2,7 @@ package mods.timaxa007.pack.furniture.block;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureMachines;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,7 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockFurnitureMachines extends BlockFixReg implements ITileEntityProvider {
+public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockFurnitureMachines(String tag) {
 		super(tag, Material.rock);
@@ -30,14 +30,14 @@ public class BlockFurnitureMachines extends BlockFixReg implements ITileEntityPr
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityFurnitureMachines) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 			((TileEntityFurnitureMachines)te).setRotation(l);
 
-			if (tag != null) {
-				if (tag.hasKey("Type")) ((TileEntityFurnitureMachines)te).setType(tag.getInteger("Type"));
+			if (nbt != null) {
+				if (nbt.hasKey("Type")) ((TileEntityFurnitureMachines)te).setType(nbt.getInteger("Type"));
 			}
 			/*
 			if (is.hasDisplayName()) {

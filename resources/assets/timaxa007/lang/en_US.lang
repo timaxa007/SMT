@@ -13,6 +13,28 @@ text.hol_key=Hold key
 text.pres_key=Press on key
 text.for_ifo=for info.
 
+text.on=On
+text.off=Off
+text.yes=Yes
+text.no=No
+text.yup=Yup
+text.nope=Nope
+text.enabled=Enabled
+text.disabled=Disabled
+
+convert.text.0=Zero
+convert.text.1=One
+convert.text.2=Two
+convert.text.3=Three
+convert.text.4=Four
+convert.text.5=Five
+convert.text.6=Six
+convert.text.7=Seven
+convert.text.8=Eight
+convert.text.9=Nine
+convert.text.10=Ten
+
+# color's
 color.black.a=Black
 color.blue.a=Blue
 color.brown.a=Brown
@@ -89,22 +111,14 @@ color.yellow.s=Yellow
 color.silver.s=Silver
 color.lime.s=Lime
 
-convert.text.0=Zero
-convert.text.1=One
-convert.text.2=Two
-convert.text.3=Three
-convert.text.4=Four
-convert.text.5=Five
-convert.text.6=Six
-convert.text.7=Seven
-convert.text.8=Eight
-convert.text.9=Nine
-convert.text.10=Ten
-
+# type's
 type.untype.name=Untype
 type.skin.name=Skin
 type.leather.name=Leather
 type.fur.name=Fur
+type.woolen.name=Woolen
+type.metal.name=Metal
+type.gems.name=Gems
 
 category.tms.name=TMS Key Bindings
 key.reload.name=Reload

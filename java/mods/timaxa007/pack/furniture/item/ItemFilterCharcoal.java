@@ -2,12 +2,12 @@ package mods.timaxa007.pack.furniture.item;
 
 import java.util.List;
 
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemFilterCharcoal extends ItemFixReg {
+public class ItemFilterCharcoal extends ModifiedItem {
 
 	public ItemFilterCharcoal(String tag) {
 		super(tag);

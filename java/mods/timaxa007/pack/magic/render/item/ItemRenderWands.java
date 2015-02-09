@@ -30,14 +30,14 @@ public class ItemRenderWands implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		//int tex = is.getItemDamage();
 		int texS = 0;
 		int texC = 0;
 
-		if (tag != null) {
-			if (tag.hasKey("Type")) texS = tag.getInteger("Type");
-			if (tag.hasKey("Cap")) texC = tag.getInteger("Cap");
+		if (nbt != null) {
+			if (nbt.hasKey("Type")) texS = nbt.getInteger("Type");
+			if (nbt.hasKey("Cap")) texC = nbt.getInteger("Cap");
 		}
 
 		GL11.glPushMatrix();

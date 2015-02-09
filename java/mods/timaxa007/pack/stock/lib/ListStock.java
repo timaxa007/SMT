@@ -1,7 +1,6 @@
 package mods.timaxa007.pack.stock.lib;
 
 import mods.timaxa007.lib.FluidFake;
-import mods.timaxa007.pack.stock.lib.list.*;
 
 public class ListStock {
 

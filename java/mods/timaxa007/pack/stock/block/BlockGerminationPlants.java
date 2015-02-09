@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.item.ItemGerminationPlants;
 import mods.timaxa007.pack.stock.tile.TileEntityGerminationPlants;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockGerminationPlants extends BlockFixReg implements ITileEntityProvider {
+public class BlockGerminationPlants extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockGerminationPlants(String tag) {
 		super(tag, Material.glass);
@@ -52,14 +52,14 @@ public class BlockGerminationPlants extends BlockFixReg implements ITileEntityPr
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityGerminationPlants) {
-			/*return addTag(
+			/*return addNBT(
 					((TileEntityGerminationPlants)te).getPlant(), 
 					((TileEntityGerminationPlants)te).getSticks(), 
 					((TileEntityGerminationPlants)te).getGrowth(), 
 					((TileEntityGerminationPlants)te).getFertility(), 
 					((TileEntityGerminationPlants)te).getResistance()
 					);*/
-			/*return ItemGerminationPlants.addTag(
+			/*return ItemGerminationPlants.addNBT(
 					((TileEntityGerminationPlants)te).getPlant(), 
 					(byte)((TileEntityGerminationPlants)te).getTypePlant(), 
 					(byte)((TileEntityGerminationPlants)te).getGrowth(), 
@@ -411,26 +411,26 @@ world.spawnEntityInWorld(entityitem2);
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityGerminationPlants) {
 
 			if (
-					tag != null && 
-					tag.hasKey("PlantID") && 
-					tag.hasKey("PlantType") && 
-					tag.hasKey("Width") && 
-					tag.hasKey("Height") && 
-					tag.hasKey("Growth") && 
-					tag.hasKey("Fertility") && 
-					tag.hasKey("Resistance")
+					nbt != null && 
+					nbt.hasKey("PlantID") && 
+					nbt.hasKey("PlantType") && 
+					nbt.hasKey("Width") && 
+					nbt.hasKey("Height") && 
+					nbt.hasKey("Growth") && 
+					nbt.hasKey("Fertility") && 
+					nbt.hasKey("Resistance")
 					) {
-				((TileEntityGerminationPlants)te).setPlantID(tag.getInteger("PlantID"));
-				((TileEntityGerminationPlants)te).setPlantType(tag.getString("PlantType"));
-				((TileEntityGerminationPlants)te).setWidth(tag.getInteger("Width"));
-				((TileEntityGerminationPlants)te).setHeight(tag.getInteger("Height"));
-				((TileEntityGerminationPlants)te).setGrowth(tag.getInteger("Growth"));
-				((TileEntityGerminationPlants)te).setFertility(tag.getInteger("Fertility"));
-				((TileEntityGerminationPlants)te).setResistance(tag.getInteger("Resistance"));
+				((TileEntityGerminationPlants)te).setPlantID(nbt.getInteger("PlantID"));
+				((TileEntityGerminationPlants)te).setPlantType(nbt.getString("PlantType"));
+				((TileEntityGerminationPlants)te).setWidth(nbt.getInteger("Width"));
+				((TileEntityGerminationPlants)te).setHeight(nbt.getInteger("Height"));
+				((TileEntityGerminationPlants)te).setGrowth(nbt.getInteger("Growth"));
+				((TileEntityGerminationPlants)te).setFertility(nbt.getInteger("Fertility"));
+				((TileEntityGerminationPlants)te).setResistance(nbt.getInteger("Resistance"));
 			} else {
 				((TileEntityGerminationPlants)te).setPlantID(0);
 				((TileEntityGerminationPlants)te).setPlantType("");
@@ -446,21 +446,21 @@ world.spawnEntityInWorld(entityitem2);
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		list.add(addTag(0, "", 0, 0, 0, 0, 0));
+		list.add(addNBT(0, "", 0, 0, 0, 0, 0));
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, String par2, int par3, int par4, int par5, int par6, int par7) {
+	private static ItemStack addNBT(int par1, String par2, int par3, int par4, int par5, int par6, int par7) {
 		ItemStack is = new ItemStack(PackStock.proxy.block.germination_plants, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("PlantID", par1);
-		tag.setString("PlantType", par2);
-		tag.setInteger("Width", par3);
-		tag.setInteger("Height", par4);
-		tag.setInteger("Growth", par5);
-		tag.setInteger("Fertility", par6);
-		tag.setInteger("Resistance", par7);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("PlantID", par1);
+		nbt.setString("PlantType", par2);
+		nbt.setInteger("Width", par3);
+		nbt.setInteger("Height", par4);
+		nbt.setInteger("Growth", par5);
+		nbt.setInteger("Fertility", par6);
+		nbt.setInteger("Resistance", par7);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

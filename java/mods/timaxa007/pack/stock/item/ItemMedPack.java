@@ -1,13 +1,13 @@
 package mods.timaxa007.pack.stock.item;
 
 import mods.timaxa007.pack.stock.PackStock;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemMedPack extends ItemFixReg {
+public class ItemMedPack extends ModifiedItem {
 
 	public ItemMedPack(String tag) {
 		super(tag);

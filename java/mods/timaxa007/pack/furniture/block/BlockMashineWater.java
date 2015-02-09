@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityMashineWater;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMashineWater extends BlockFixReg implements ITileEntityProvider {
+public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockMashineWater(String tag) {
 		super(tag, Material.iron);
@@ -53,7 +53,7 @@ public class BlockMashineWater extends BlockFixReg implements ITileEntityProvide
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityMashineWater) {
-			return addTag(((TileEntityMashineWater)te).getColor(), ((TileEntityMashineWater)te).getPart());
+			return addNBT(((TileEntityMashineWater)te).getColor(), ((TileEntityMashineWater)te).getPart());
 		}
 		return null;
 	}
@@ -61,15 +61,15 @@ public class BlockMashineWater extends BlockFixReg implements ITileEntityProvide
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityMashineWater) {
 			/*
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 			((TileEntityMashineWater)te).setRot(l);
 			 */
-			if (tag != null) {
-				if (tag.hasKey("Color")) ((TileEntityMashineWater)te).setColor(tag.getInteger("Color"));
-				if (tag.hasKey("Part")) ((TileEntityMashineWater)te).setPart(tag.getBoolean("Part"));
+			if (nbt != null) {
+				if (nbt.hasKey("Color")) ((TileEntityMashineWater)te).setColor(nbt.getInteger("Color"));
+				if (nbt.hasKey("Part")) ((TileEntityMashineWater)te).setPart(nbt.getBoolean("Part"));
 			}
 
 		}
@@ -86,17 +86,17 @@ public class BlockMashineWater extends BlockFixReg implements ITileEntityProvide
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		list.add(addTag(0xFFFFFF, true));
-		list.add(addTag(0xFFFFFF, false));
+		list.add(addNBT(0xFFFFFF, true));
+		list.add(addNBT(0xFFFFFF, false));
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, boolean par2) {
+	private static ItemStack addNBT(int par1, boolean par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.mashine_waiter, 1, par1);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Color", par1);
-		tag.setBoolean("Part", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("Color", par1);
+		nbt.setBoolean("Part", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

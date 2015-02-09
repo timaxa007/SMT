@@ -1,15 +1,15 @@
 package mods.timaxa007.tms.util;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 
-public class ItemFixReg extends Item {
+public class ModifiedItemArmor extends ItemArmor {
 
 	private String tag;
 
-	public ItemFixReg(String tag) {
-		super();
+	public ModifiedItemArmor(String tag, ItemArmor.ArmorMaterial material, int render_id, int armor_type) {
+		super(material, render_id, armor_type);
 		this.tag = tag;
-		setTextureName("timaxa007:" + tag);
 		setUnlocalizedName(tag);
 	}
 

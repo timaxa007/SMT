@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.stock.lib;
 
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.UtilTMS;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>ItemFoods</b>.
@@ -95,7 +95,7 @@ public class FoodForItem {
 	}
 
 	public static FoodForItem get(String tag) {
-		if (UtilTMS.hasString(tag))
+		if (UtilText.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
@@ -106,7 +106,7 @@ public class FoodForItem {
 	}
 
 	public String getName() {
-		return UtilTMS.hasString(name) ? name : UtilTMS.hasString(tag) ? tag : "unname";
+		return UtilText.hasString(name) ? name : UtilText.hasString(tag) ? tag : "unname";
 	}
 
 	public String getLocalizedName() {
@@ -119,7 +119,7 @@ public class FoodForItem {
 	}
 
 	public String getShortName() {
-		return UtilTMS.hasString(name_short) ? name_short : "unnamed";
+		return UtilText.hasString(name_short) ? name_short : "unnamed";
 	}
 
 	public String getLocalizedShortName() {
@@ -132,7 +132,7 @@ public class FoodForItem {
 	}
 
 	public String getType() {
-		return UtilTMS.hasString(type) ? type : "untype";
+		return UtilText.hasString(type) ? type : "untype";
 	}
 
 	public String getLocalizedType() {

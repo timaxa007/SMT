@@ -19,16 +19,16 @@ public class ItemRenderFoods implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		String nameID = null;
 		int color1 = 0xFFFFFF;
 		int color2 = 0xFFFFFF;
 
-		if (tag != null) {
-			if (tag.hasKey("NameID")) nameID = tag.getString("NameID");
-			if (tag.hasKey("Color1")) color1 = tag.getInteger("Color1");
-			if (tag.hasKey("Color2")) color2 = tag.getInteger("Color2");
+		if (nbt != null) {
+			if (nbt.hasKey("NameID")) nameID = nbt.getString("NameID");
+			if (nbt.hasKey("Color1")) color1 = nbt.getInteger("Color1");
+			if (nbt.hasKey("Color2")) color2 = nbt.getInteger("Color2");
 		}
 
 	}

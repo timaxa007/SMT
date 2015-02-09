@@ -3,7 +3,7 @@ package mods.timaxa007.pack.furniture.item;
 import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemParticlesGun extends ItemFixReg {
+public class ItemParticlesGun extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -44,20 +44,13 @@ public class ItemParticlesGun extends ItemFixReg {
 	public EnumAction getItemUseAction(ItemStack is) {
 		return EnumAction.none;
 	}
-	/*
-	public String getUnlocalizedName(ItemStack is) {
-		if (tag != null && tag.hasKey("WeaponID")) {
-			return "weapon." + WeaponFor.weapon_list[tag.getInteger("WeaponID")].getName();
-		}
-		return super.getUnlocalizedName();
-	}
-	 */
+
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilText.isShiftKeyDown()) {
-			if (tag != null) {
-				if (tag.hasKey("WeaponID"))
-					list.add("WeaponID: " + tag.getInteger("WeaponID") + ".");
+			if (nbt != null) {
+				if (nbt.hasKey("WeaponID"))
+					list.add("WeaponID: " + nbt.getInteger("WeaponID") + ".");
 			}
 		} else list.add(UtilText.hldshiftinf);
 	}
@@ -67,65 +60,14 @@ public class ItemParticlesGun extends ItemFixReg {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1) {
+	private static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.item.particles_gun, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("WeaponID", par1);
-		//tag.setInteger("AmmoID", par2);
-		//tag.setInteger("MagazineID", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("WeaponID", par1);
+		//nbt.setInteger("AmmoID", par2);
+		//nbt.setInteger("MagazineID", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
-	/*
-	@SideOnly(Side.CLIENT)
-	public boolean requiresMultipleRenderPasses() {
-		return true;
-	}
-
-	public IIcon getIcon(ItemStack is, int pass) {
-		if (tag != null && tag.hasKey("WeaponID")) {
-			if (pass == 0) {
-				return icon_tex[WeaponFor.weapon_list[tag.getInteger("WeaponID")].weaponID];
-			} else {
-				return icon_ovl[WeaponFor.weapon_list[tag.getInteger("WeaponID")].weaponID];
-			}
-		} else {
-			return itemIcon;
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack is, int pass) {
-		if (tag != null && tag.hasKey("WeaponID")) {
-			if (pass == 0) {
-				return WeaponFor.weapon_list[tag.getInteger("WeaponID")].getColor1();
-			} else {
-				return WeaponFor.weapon_list[tag.getInteger("WeaponID")].getColor2();
-			}
-		} else {
-			return 16777215;
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister ir) {
-	super.registerIcons(ir);
-	itemIcon = ir.registerIcon("timaxa007:" + "weapons");
-	icon_tex = new IIcon[WeaponFor.weapon_list.length];
-	icon_ovl = new IIcon[WeaponFor.weapon_list.length];
-	for (int i = 0; i < WeaponFor.weapon_list.length; i++) {
-	/*if (WeaponFor.weapon_list[i] != null) {
-	icon_tex[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[i].getTexture1Name());
-		if (WeaponFor.weapon_list[i].getTexture2Name() == WeaponFor.weapon_list[i].getTexture1Name()) {
-		icon_ovl[i] = ir.registerIcon("timaxa007:" + "empty");
-		} else {
-		icon_ovl[i] = ir.registerIcon("timaxa007:" + "weapons/" + WeaponFor.weapon_list[i].getTexture2Name());
-		}
-	} else {*/
-	//icon_tex[i] = itemIcon;
-	//icon_ovl[i] = itemIcon;
-	//}
-	//}
-	//}
 
 }

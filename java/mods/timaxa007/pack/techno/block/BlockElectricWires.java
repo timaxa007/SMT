@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.tile.TileEntityElectricWires;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockElectricWires extends BlockFixReg implements ITileEntityProvider {
+public class BlockElectricWires extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockElectricWires(String tag) {
 		super(tag, Material.glass);
@@ -52,7 +52,7 @@ public class BlockElectricWires extends BlockFixReg implements ITileEntityProvid
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityElectricWires) {
 			TileEntityElectricWires tile = (TileEntityElectricWires)te;
-			return addTag(tile.getStyle(), tile.getSize(), tile.getColor());
+			return addNBT(tile.getStyle(), tile.getSize(), tile.getColor());
 		}
 		return null;
 	}
@@ -61,7 +61,7 @@ public class BlockElectricWires extends BlockFixReg implements ITileEntityProvid
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		if (te != null && te instanceof TileEntityElectricWires) {
 			TileEntityElectricWires tile = (TileEntityElectricWires)te;
@@ -69,11 +69,11 @@ public class BlockElectricWires extends BlockFixReg implements ITileEntityProvid
 			//int l=MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
 			//((TileEntityJar01)te).setRot(l);
 
-			if (tag != null) {
-				//if (tag.hasKey("Type")) tile.setType(tag.getInteger("Type"));
-				if (tag.hasKey("Style")) tile.setStyle(tag.getString("Style"));
-				if (tag.hasKey("Size")) tile.setSize(tag.getInteger("Size"));
-				if (tag.hasKey("Color")) tile.setColor(tag.getInteger("Color"));
+			if (nbt != null) {
+				//if (nbt.hasKey("Type")) tile.setType(nbt.getInteger("Type"));
+				if (nbt.hasKey("Style")) tile.setStyle(nbt.getString("Style"));
+				if (nbt.hasKey("Size")) tile.setSize(nbt.getInteger("Size"));
+				if (nbt.hasKey("Color")) tile.setColor(nbt.getInteger("Color"));
 			}
 
 		}
@@ -84,26 +84,26 @@ public class BlockElectricWires extends BlockFixReg implements ITileEntityProvid
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int j = 0; j < AddTextureModel.list.length; ++j) {
 			if (AddTextureModel.list[j] != null && AddTextureModel.list[j].tag != null) {
-				list.add(addTag(AddTextureModel.list[j].tag, 1, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 2, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 3, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 4, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 5, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 6, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 7, 0xFFFFFF));
-				list.add(addTag(AddTextureModel.list[j].tag, 8, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 1, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 2, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 3, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 4, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 5, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 6, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 7, 0xFFFFFF));
+				list.add(addNBT(AddTextureModel.list[j].tag, 8, 0xFFFFFF));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(String par1, int par2, int par3) {
+	private static ItemStack addNBT(String par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackTechno.proxy.block.electric_wires, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Style", par1);
-		tag.setInteger("Size", par2);
-		tag.setInteger("Color", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Style", par1);
+		nbt.setInteger("Size", par2);
+		nbt.setInteger("Color", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

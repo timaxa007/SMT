@@ -19,9 +19,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 public class UtilTMS {
-
 	//Minecraft mc = Minecraft.getMinecraft();
-
+	//-----------------------------------------------------------------------------------------------
 	public static class UtilBlock {
 
 		public static void RegBlock(Block[] block) {
@@ -30,15 +29,15 @@ public class UtilTMS {
 
 		public static void RegBlock(Block block) {
 			if (block != null) {
-				if (block instanceof BlockFixReg)
-					GameRegistry.registerBlock(block, "block_" + ((BlockFixReg)block).getTag());
+				if (block instanceof ModifiedBlock)
+					GameRegistry.registerBlock(block, "block_" + ((ModifiedBlock)block).getTag());
 			}
 		}
 
 		public static void RegBlock(Block block, Class<? extends ItemBlock> item) {
 			if (block != null) {
-				if (block instanceof BlockFixReg)
-					GameRegistry.registerBlock(block, item, "block_" + ((BlockFixReg)block).getTag());
+				if (block instanceof ModifiedBlock)
+					GameRegistry.registerBlock(block, item, "block_" + ((ModifiedBlock)block).getTag());
 			}
 		}
 
@@ -60,7 +59,7 @@ public class UtilTMS {
 			}
 		}
 	}
-
+	//-----------------------------------------------------------------------------------------------
 	public static class UtilItem {
 
 		public static void RegItem(Item[] item) {
@@ -69,14 +68,14 @@ public class UtilTMS {
 
 		public static void RegItem(Item item) {
 			if (item != null) {
-				if (item instanceof ItemFixReg)
-					GameRegistry.registerItem(item, "item_" + ((ItemFixReg)item).getTag());
-				else if (item instanceof ItemArmorFixReg)
-					GameRegistry.registerItem(item, "item_" + ((ItemArmorFixReg)item).getTag());
+				if (item instanceof ModifiedItem)
+					GameRegistry.registerItem(item, "item_" + ((ModifiedItem)item).getTag());
+				else if (item instanceof ModifiedItemArmor)
+					GameRegistry.registerItem(item, "item_" + ((ModifiedItemArmor)item).getTag());
 			}
 		}
 	}
-
+	//-----------------------------------------------------------------------------------------------
 	public static class UtilEntity {
 
 		public static void RegEntity() {
@@ -84,7 +83,7 @@ public class UtilTMS {
 		}
 
 	}
-
+	//-----------------------------------------------------------------------------------------------
 	public static class UtilWorld {
 
 		public static void dropItem(World world, int x, int y, int z, ItemStack is) {
@@ -98,7 +97,7 @@ public class UtilTMS {
 		}
 
 	}
-
+	//-----------------------------------------------------------------------------------------------
 	public static class LookOBJ {
 
 		public static MovingObjectPosition getObject() {
@@ -214,17 +213,13 @@ public class UtilTMS {
 		}
 
 	}
-
+	//-----------------------------------------------------------------------------------------------
 	public static boolean isServerSide() {
 		return FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER;
 	}
 
 	public static boolean isClientSide() {
 		return FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT;
-	}
-
-	public static boolean hasString(String str) {
-		return str != null && str.length() > 0;
 	}
 
 	/*public static boolean isGUI(String str) {

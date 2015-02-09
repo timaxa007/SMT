@@ -41,13 +41,13 @@ public class ItemRenderArmChair implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		String tex = "";
 		int tmdl = 0;
 
-		if (tag != null) {
-			if (tag.hasKey("Style")) tex = tag.getString("Style");
-			if (tag.hasKey("Size")) tmdl = tag.getInteger("Size");
+		if (nbt != null) {
+			if (nbt.hasKey("Style")) tex = nbt.getString("Style");
+			if (nbt.hasKey("Size")) tmdl = nbt.getInteger("Size");
 		}
 
 		GL11.glPushMatrix();

@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorFence;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCnstorFence extends BlockFixReg implements ITileEntityProvider {
+public class BlockCnstorFence extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockCnstorFence(String tag) {
 		super(tag, Material.glass);
@@ -51,7 +51,7 @@ public class BlockCnstorFence extends BlockFixReg implements ITileEntityProvider
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityCnstorFence) {
-			return addTag(((TileEntityCnstorFence)te).getStyle());
+			return addNBT(((TileEntityCnstorFence)te).getStyle());
 		}
 		return null;
 	}
@@ -59,10 +59,10 @@ public class BlockCnstorFence extends BlockFixReg implements ITileEntityProvider
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityCnstorFence) {
-			if (tag != null) {
-				((TileEntityCnstorFence)te).setStyle(tag.getString("Style"));
+			if (nbt != null) {
+				((TileEntityCnstorFence)te).setStyle(nbt.getString("Style"));
 			}
 		}
 	}
@@ -76,17 +76,17 @@ public class BlockCnstorFence extends BlockFixReg implements ITileEntityProvider
 		//for (int i = 0; i < 16; ++i) {
 		String j = "";
 
-		list.add(addTag(j));
+		list.add(addNBT(j));
 		//}
 		//}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(String par1) {
+	private static ItemStack addNBT(String par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_fence, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Style", par1);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Style", par1);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

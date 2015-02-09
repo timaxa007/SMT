@@ -5,7 +5,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityLights;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockLight extends BlockFixReg implements ITileEntityProvider {
+public class BlockLight extends ModifiedBlock implements ITileEntityProvider {
 
 	public static final String[] block_type = new String[] {
 		"lamp", 
@@ -69,7 +69,7 @@ public class BlockLight extends BlockFixReg implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityLights) {
 			TileEntityLights tile = (TileEntityLights)te;
-			return addTag(world.getBlock(x, y, z), tile.getType(), tile.getColorHex1());
+			return addNBT(world.getBlock(x, y, z), tile.getType(), tile.getColorHex1());
 		}
 		return null;
 	}
@@ -109,12 +109,12 @@ public class BlockLight extends BlockFixReg implements ITileEntityProvider {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityLights) {
 			TileEntityLights tile = (TileEntityLights)te;
-			if (tag != null) {
-				if (tag.hasKey("Type")) tile.setType(tag.getString("Type"));
-				if (tag.hasKey("ColorHex1")) tile.setColorHex1(tag.getInteger("ColorHex1"));
+			if (nbt != null) {
+				if (nbt.hasKey("Type")) tile.setType(nbt.getString("Type"));
+				if (nbt.hasKey("ColorHex1")) tile.setColorHex1(nbt.getInteger("ColorHex1"));
 			}
 		}
 	}
@@ -125,7 +125,7 @@ public class BlockLight extends BlockFixReg implements ITileEntityProvider {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityLights && !player.capabilities.isCreativeMode) {
 				TileEntityLights tile = (TileEntityLights)te;
-				dropBlockAsItem(world, x, y, z, addTag(world.getBlock(x, y, z), tile.getType(), tile.getColorHex1()));
+				dropBlockAsItem(world, x, y, z, addNBT(world.getBlock(x, y, z), tile.getType(), tile.getColorHex1()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
@@ -151,21 +151,21 @@ public class BlockLight extends BlockFixReg implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (int i = 0; i < block_type.length; i++) {
-			list.add(addTag(id, block_type[i], 0xFFFFFF));
+			list.add(addNBT(id, block_type[i], 0xFFFFFF));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(Block par1, String par2, int par3) {
-		return addTag(Item.getItemFromBlock(par1), par2, par3);
+	private static ItemStack addNBT(Block par1, String par2, int par3) {
+		return addNBT(Item.getItemFromBlock(par1), par2, par3);
 	}
 
-	private static ItemStack addTag(Item par1, String par2, int par3) {
+	private static ItemStack addNBT(Item par1, String par2, int par3) {
 		ItemStack is = new ItemStack(par1, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Type", par2);
-		tag.setInteger("ColorHex1", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Type", par2);
+		nbt.setInteger("ColorHex1", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

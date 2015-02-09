@@ -3,7 +3,7 @@ package mods.timaxa007.pack.magic.item;
 import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGlobular extends ItemFixReg {
+public class ItemGlobular extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT) private IIcon icon_overlay;
 
@@ -26,35 +26,35 @@ public class ItemGlobular extends ItemFixReg {
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("Active")) {
-			tag.setBoolean("Active", tag.getBoolean("Active") ? false : true);
-			is.setTagCompound(tag);
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Active")) {
+			nbt.setBoolean("Active", nbt.getBoolean("Active") ? false : true);
+			is.setTagCompound(nbt);
 			return is;
 		}/* else {
 			--is.stackSize;
-			addTag();
+			addNBT();
 		}*/
 		return is;
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null) {
-			if (tag.hasKey("Active")) list.add("Active: " + tag.getBoolean("Active") + ".");
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null) {
+			if (nbt.hasKey("Active")) list.add("Active: " + nbt.getBoolean("Active") + ".");
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		list.add(addTag());
+		list.add(addNBT());
 	}
 
-	private static ItemStack addTag() {
+	private static ItemStack addNBT() {
 		ItemStack is = new ItemStack(PackMagic.proxy.item.globular, 1, 0);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setBoolean("Active", false);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setBoolean("Active", false);
+		is.setTagCompound(nbt);
 		return is;
 	}
 
@@ -65,11 +65,11 @@ public class ItemGlobular extends ItemFixReg {
 
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(ItemStack is, int pass) {
-		NBTTagCompound tag = is.getTagCompound();
-		if (tag != null && tag.hasKey("Active")) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Active")) {
 
 			if (pass == 0) {
-				return tag.getBoolean("Active")?icon_overlay:itemIcon;
+				return nbt.getBoolean("Active")?icon_overlay:itemIcon;
 			} else {
 				return itemIcon;
 			}

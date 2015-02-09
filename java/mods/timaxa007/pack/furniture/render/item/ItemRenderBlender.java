@@ -30,15 +30,15 @@ public class ItemRenderBlender implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		/*
-		int tex=tag.getInteger("Type");
-		int tc=tag.getInteger("TypeCap");
-		int thnd=tag.getInteger("TypeHandler");
-		int tbx=tag.getInteger("TypeBox");
-		int tgls=tag.getInteger("TypeGlass");
-		int tvml=tag.getInteger("TypeSize");
-		int vml=tag.getInteger("Size");
+		int tex=nbt.getInteger("Type");
+		int tc=nbt.getInteger("TypeCap");
+		int thnd=nbt.getInteger("TypeHandler");
+		int tbx=nbt.getInteger("TypeBox");
+		int tgls=nbt.getInteger("TypeGlass");
+		int tvml=nbt.getInteger("TypeSize");
+		int vml=nbt.getInteger("Size");
 		 */
 		int vml = 10;
 		//---------------------------------------------

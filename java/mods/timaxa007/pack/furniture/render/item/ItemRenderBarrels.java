@@ -32,13 +32,13 @@ public class ItemRenderBarrels implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		int rot=2;/*
-		int texB = tag.getInteger("TypeB");
-		int texP = tag.getInteger("TypeP");
-		int texCD = tag.getInteger("TypeCD");
-		boolean lie = tag.getBoolean("Lie");*/
+		int texB = nbt.getInteger("TypeB");
+		int texP = nbt.getInteger("TypeP");
+		int texCD = nbt.getInteger("TypeCD");
+		boolean lie = nbt.getBoolean("Lie");*/
 		boolean lie = false;
 		GL11.glPushMatrix();
 		if (lie) {

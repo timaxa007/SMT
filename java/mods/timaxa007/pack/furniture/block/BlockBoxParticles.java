@@ -5,7 +5,7 @@ import java.util.Random;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityBoxParticles;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockBoxParticles extends BlockFixReg implements ITileEntityProvider {
+public class BlockBoxParticles extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockBoxParticles(String tag) {
 		super(tag, Material.rock);
@@ -53,7 +53,7 @@ public class BlockBoxParticles extends BlockFixReg implements ITileEntityProvide
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te=world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityBoxParticles) {
-			return addTag(0, ((TileEntityBoxParticles)te).getStyle());
+			return addNBT(0, ((TileEntityBoxParticles)te).getStyle());
 		}
 		return null;
 	}
@@ -65,14 +65,14 @@ public class BlockBoxParticles extends BlockFixReg implements ITileEntityProvide
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityBoxParticles) {
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 			((TileEntityBoxParticles)te).setRot(l);
 
-			if (tag != null) {
-				if (tag.hasKey("Style")) ((TileEntityBoxParticles)te).setStyle(tag.getString("Style"));
+			if (nbt != null) {
+				if (nbt.hasKey("Style")) ((TileEntityBoxParticles)te).setStyle(nbt.getString("Style"));
 			}
 
 		}
@@ -139,17 +139,17 @@ public class BlockBoxParticles extends BlockFixReg implements ITileEntityProvide
 		//for(int i = 0; i < 16; ++i) {
 		String j = "";
 
-		list.add(addTag(0, j));
+		list.add(addNBT(0, j));
 		//}
 		//}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, String par2) {
+	private static ItemStack addNBT(int par1, String par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.box_particles, 1, par1);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("Style", par2);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("Style", par2);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

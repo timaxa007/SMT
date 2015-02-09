@@ -1,7 +1,7 @@
 package mods.timaxa007.lib;
 
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.UtilTMS;
+import mods.timaxa007.tms.util.UtilText;
 import net.minecraft.util.StatCollector;
 /**
  * @author timaxa007
@@ -130,7 +130,7 @@ public class Effects {
 	}
 
 	public static Effects get(String tag) {
-		if (UtilTMS.hasString(tag))
+		if (UtilText.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
@@ -141,7 +141,7 @@ public class Effects {
 	}
 
 	public String getName() {
-		return UtilTMS.hasString(name) ? name : UtilTMS.hasString(tag) ? tag : "unname";
+		return UtilText.hasString(name) ? name : UtilText.hasString(tag) ? tag : "unname";
 	}
 
 	public String getLocalizedName() {
@@ -154,7 +154,7 @@ public class Effects {
 	}
 
 	public String getType() {
-		return UtilTMS.hasString(type) ? type : "untype";
+		return UtilText.hasString(type) ? type : "untype";
 	}
 
 	public String getLocalizedType() {

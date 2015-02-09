@@ -31,8 +31,8 @@ public class EventWeaponsClient {
 		ItemStack current = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
 
 		if (current != null && current.getItem() instanceof IScope && current.getTagCompound() != null) {
-			NBTTagCompound tag = current.getTagCompound();
-			if (e.type.equals(ElementType.CROSSHAIRS) && tag.hasKey("Aim") && tag.getBoolean("Aim")) {
+			NBTTagCompound nbt = current.getTagCompound();
+			if (e.type.equals(ElementType.CROSSHAIRS) && nbt.hasKey("Aim") && nbt.getBoolean("Aim")) {
 
 				Tessellator tessellator = Tessellator.instance;
 

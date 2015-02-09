@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityBlender;
-import mods.timaxa007.tms.util.BlockFixReg;
+import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class BlockBlender extends BlockFixReg implements ITileEntityProvider {
+public class BlockBlender extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockBlender(String tag) {
 		super(tag, Material.wood);
@@ -51,9 +51,9 @@ public class BlockBlender extends BlockFixReg implements ITileEntityProvider {
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityBlender) {
-			return addTag(0, ((TileEntityBlender)te).getType(), 0, ((TileEntityBlender)te).getTypeGlass(), ((TileEntityBlender)te).getTypeSize());
+			return addNBT(0, ((TileEntityBlender)te).getType(), 0, ((TileEntityBlender)te).getTypeGlass(), ((TileEntityBlender)te).getTypeSize());
 		}
-		return addTag(0, 0, 0, 0, 0);
+		return addNBT(0, 0, 0, 0, 0);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -61,23 +61,23 @@ public class BlockBlender extends BlockFixReg implements ITileEntityProvider {
 		//for(int j=0;j<TileTexture.getTexturesConstructionCount;++j) {
 		for (byte i = 0; i < 16; ++i) {
 			int j=0;
-			list.add(addTag(0, j, 0, i, 1));
+			list.add(addNBT(0, j, 0, i, 1));
 		}
 		//}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addTag(int par1, int par2, int par3, int par4, int par5) {
+	private static ItemStack addNBT(int par1, int par2, int par3, int par4, int par5) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.blender, 1, par1);
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("Type", par2);
-		tag.setInteger("TypeCap", par2);
-		tag.setInteger("TypeHandler", par2);
-		tag.setInteger("TypeBox", par2);
-		tag.setInteger("TypeGlass", par4);
-		tag.setInteger("TypeSize", par5);
-		tag.setInteger("Size", par3);
-		is.setTagCompound(tag);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("Type", par2);
+		nbt.setInteger("TypeCap", par2);
+		nbt.setInteger("TypeHandler", par2);
+		nbt.setInteger("TypeBox", par2);
+		nbt.setInteger("TypeGlass", par4);
+		nbt.setInteger("TypeSize", par5);
+		nbt.setInteger("Size", par3);
+		is.setTagCompound(nbt);
 		return is;
 	}
 

@@ -1,10 +1,10 @@
 package mods.timaxa007.pack.item.item;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
-import mods.timaxa007.tms.util.ItemFixReg;
+import mods.timaxa007.tms.util.ModifiedItem;
 import net.minecraft.item.ItemStack;
 
-public class ToolHammer extends ItemFixReg {
+public class ToolHammer extends ModifiedItem {
 	/*
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;

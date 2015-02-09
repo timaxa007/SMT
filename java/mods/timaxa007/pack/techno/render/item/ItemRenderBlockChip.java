@@ -30,14 +30,14 @@ public class ItemRenderBlockChip implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 
-		NBTTagCompound tag = is.getTagCompound();
+		NBTTagCompound nbt = is.getTagCompound();
 
 		int tex = 0;
 		//int tmdl = 0;
 
-		if (tag != null) {
-			if (tag.hasKey("Type")) tex=tag.getInteger("Type");
-			//if (tag.hasKey("Size")) tmdl=tag.getInteger("Size");
+		if (nbt != null) {
+			if (nbt.hasKey("Type")) tex=nbt.getInteger("Type");
+			//if (nbt.hasKey("Size")) tmdl=nbt.getInteger("Size");
 		}
 
 		GL11.glPushMatrix();
