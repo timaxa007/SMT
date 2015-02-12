@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import mods.timaxa007.lib.Spells;
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.pack.magic.lib.ActionMagic;
 import mods.timaxa007.tms.Core;
@@ -37,6 +38,8 @@ public class ItemStuffs extends ItemActionMouse {
 	public ItemStuffs(String tag) {
 		super(tag);
 		setCreativeTab(PackMagic.tab_magic);
+		setMaxStackSize(1);
+		setMaxDamage(1024);
 		setTextureName("timaxa007:stuffs");
 		setFull3D();
 	}
@@ -69,6 +72,10 @@ public class ItemStuffs extends ItemActionMouse {
 	private static ItemStack addNBT(int par1, int par2) {
 		ItemStack is = new ItemStack(PackMagic.proxy.item.stuffs);
 		NBTTagCompound nbt = new NBTTagCompound();
+		Spells.addSpell(nbt, Spells.efficient_mining, 0, -1);
+		Spells.addSpell(nbt, Spells.efficient_digging, 1, 0);
+		Spells.addSpell(nbt, Spells.efficient_chopping, 50, 64);
+		Spells.addSpell(nbt, Spells.efficient_trimming, 127, 32767);
 		nbt.setInteger("Type", par1);
 		nbt.setInteger("Cap", par2);
 		is.setTagCompound(nbt);

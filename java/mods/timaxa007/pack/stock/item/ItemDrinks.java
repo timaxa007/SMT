@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.FluidFake;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.tms.util.ModifiedItem;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -157,7 +157,7 @@ liquid_hex = liq_hex;
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilText.isShiftKeyDown()) {
+		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 				if (nbt.hasKey("NameID")) {
 					list.add("NameID: " + nbt.getString("NameID") + ".");
@@ -170,7 +170,7 @@ liquid_hex = liq_hex;
 				}
 			}
 		} else {
-			list.add(UtilText.hldshiftinf);
+			list.add(UtilString.hldshiftinf);
 		}
 	}
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.tms.util.ModifiedItemArmor;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -86,12 +86,12 @@ public class ArmorCostumes extends ModifiedItemArmor {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilText.isShiftKeyDown()) {
+		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 				if (nbt.hasKey("NameID"))
 					list.add("NameID: " + nbt.getString("NameID") + ".");
 			}
-		} else list.add(UtilText.hldshiftinf);
+		} else list.add(UtilString.hldshiftinf);
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.ItemForStock;
 import mods.timaxa007.tms.util.ModifiedItem;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -55,14 +55,14 @@ public class ItemsStock extends ModifiedItem {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilText.isShiftKeyDown()) {
+		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 				//-------------------------------------------------------------------------------------
 				if (nbt.hasKey("NameID")) {
 					if (ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))] != null) {
 						list.add("NameID: " + nbt.getString("NameID") + " / [-] ID: " + ItemForStock.getID_tag(nbt.getString("NameID")) + ".");
 						if (ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))].getType() != "none") {
-							list.add(UtilText.getText("Type") + ": " + ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))].getLocalizedType() + ".");
+							list.add(UtilString.getText("Type") + ": " + ItemForStock.list[ItemForStock.getID_tag(nbt.getString("NameID"))].getLocalizedType() + ".");
 						}
 					} else {
 						list.add("Bag Item is in NameID: " + nbt.getString("NameID") + ".");
@@ -75,7 +75,7 @@ public class ItemsStock extends ModifiedItem {
 							list.add("NameID: " + ItemForStock.list[nbt.getInteger("ItemID")].tag + " [-] / ID: " + nbt.getInteger("ItemID") + ".");
 						}
 						if (ItemForStock.list[nbt.getInteger("ItemID")].getType() != "none") {
-							list.add(UtilText.getText("Type") + ": " + ItemForStock.list[nbt.getInteger("ItemID")].getLocalizedType() + ".");
+							list.add(UtilString.getText("Type") + ": " + ItemForStock.list[nbt.getInteger("ItemID")].getLocalizedType() + ".");
 						}
 					} else {
 						list.add("Bag Item is in ItemID: " + nbt.getInteger("ItemID") + ".");
@@ -84,7 +84,7 @@ public class ItemsStock extends ModifiedItem {
 				//-------------------------------------------------------------------------------------
 			}
 		} else {
-			list.add(UtilText.hldshiftinf);
+			list.add(UtilString.hldshiftinf);
 		}
 	}
 

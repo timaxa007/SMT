@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.tms.util.ModifiedItem;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,11 +33,11 @@ public class BowMagic extends ModifiedItem {
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
-		if (UtilText.isShiftKeyDown()) {
-			list.add(UtilText.getText("Material") + ": Wooden.");
-			list.add(UtilText.getText("Type") + ": Magic.");
+		if (UtilString.isShiftKeyDown()) {
+			list.add(UtilString.getText("Material") + ": Wooden.");
+			list.add(UtilString.getText("Type") + ": Magic.");
 			list.add("D: " + is.getItemDamage() + "/" + is.getMaxDamage() + ".");
-		} else list.add(UtilText.hldshiftinf);
+		} else list.add(UtilString.hldshiftinf);
 	}
 
 	public void onUpdate(ItemStack is, World world, Entity entity, int par4, boolean par5) {

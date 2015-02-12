@@ -7,7 +7,7 @@ import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.FoodForItem;
 import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.ModifiedItem;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -341,7 +341,7 @@ spices_sat = sat_spices;
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilText.isShiftKeyDown()) {
+		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 
 				if (Core.show_tip_info_testing) {
@@ -350,7 +350,7 @@ spices_sat = sat_spices;
 						if (FoodForItem.list[FoodForItem.getID_tag(nbt.getString("NameID"))] != null) {
 							list.add("NameID: " + nbt.getString("NameID") + " / [-] ID:" + FoodForItem.getID_tag(nbt.getString("NameID")) + ".");
 							//if (FoodForItem.list[FoodForItem.getID_tag(nbt.getString("NameID"))].getType() != null) {
-							list.add(UtilText.getText("Type") + ": " + FoodForItem.list[FoodForItem.getID_tag(nbt.getString("NameID"))].getLocalizedType() + ".");
+							list.add(UtilString.getText("Type") + ": " + FoodForItem.list[FoodForItem.getID_tag(nbt.getString("NameID"))].getLocalizedType() + ".");
 							//}
 						} else {
 							list.add("Bag Item is in NameID: " + nbt.getString("NameID") + ".");
@@ -396,7 +396,7 @@ spices_sat = sat_spices;
 
 			}
 		} else {
-			list.add(UtilText.hldshiftinf);
+			list.add(UtilString.hldshiftinf);
 		}
 	}
 

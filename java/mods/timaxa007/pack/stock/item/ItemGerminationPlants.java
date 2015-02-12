@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.GerminationPlants;
 import mods.timaxa007.tms.util.ModifiedItem;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -161,7 +161,7 @@ public class ItemGerminationPlants extends ModifiedItem {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilText.isShiftKeyDown()) {
+		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 				if (nbt.hasKey("PlantID")) list.add("PlantID: " + nbt.getInteger("PlantID") + ".");
 				if (nbt.hasKey("PlantType")) list.add("PlantType: " + nbt.getString("PlantType") + ".");
@@ -170,7 +170,7 @@ public class ItemGerminationPlants extends ModifiedItem {
 				if (nbt.hasKey("Resistance")) list.add("Resistance: " + nbt.getInteger("Resistance") + ".");
 			}
 		} else {
-			list.add(UtilText.hldshiftinf);
+			list.add(UtilString.hldshiftinf);
 		}
 	}
 

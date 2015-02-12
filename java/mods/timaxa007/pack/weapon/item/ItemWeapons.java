@@ -8,7 +8,7 @@ import mods.timaxa007.pack.weapon.packet.MessageActionWeapons;
 import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.IScope;
 import mods.timaxa007.tms.util.ItemPrimaryKey;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -267,7 +267,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilText.isShiftKeyDown()) {
+		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 
 				if (nbt.hasKey("Weapon")) {
@@ -277,7 +277,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 				}
 
 			}
-		} else list.add(UtilText.hldshiftinf);
+		} else list.add(UtilString.hldshiftinf);
 	}
 
 	@SideOnly(Side.CLIENT)

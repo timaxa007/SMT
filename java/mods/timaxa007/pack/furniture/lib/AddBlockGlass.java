@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.furniture.lib;
 
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 
 /**
  * Use in <b>BlockGlass</b>.
@@ -88,7 +88,7 @@ public class AddBlockGlass {
 	}
 
 	public static AddBlockGlass get(String tag) {
-		if (UtilText.hasString(tag))
+		if (UtilString.hasString(tag))
 			return list[getID_tag(tag)];
 		return list[0];
 	}

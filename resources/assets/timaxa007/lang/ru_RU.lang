@@ -11,7 +11,8 @@ text.stone=Камень
 text.magic=Магический
 text.hol_key=Удершивай клавишу
 text.pres_key=Нажми на клавишу
-text.for_ifo=для информации.
+text.for_ifo=для инфы
+text.for_ifo_abt=для инфы о
 
 text.on=Вкл.
 text.off=Выкл.
@@ -21,6 +22,18 @@ text.yup=Ага
 text.nope=Неа
 text.enabled=Включено
 text.disabled=Отключено
+
+text.spells=Заклинания
+text.spells.spells=Заклинаниях
+text.spells.spell=Заклинание
+text.spells.power=Мощность
+text.spells.duration=Длительность
+text.spells.permanent=Постоянный
+
+spell.efficient_mining.name=Эффективная Добыча
+spell.efficient_digging.name=Эффективное Копание
+spell.efficient_chopping.name=Эффективная Рубка
+spell.efficient_trimming.name=Эффективная Стрижка
 
 convert.text.0=Ноль
 convert.text.1=Один

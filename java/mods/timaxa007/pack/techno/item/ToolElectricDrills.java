@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.tms.util.ItemPrimaryKey;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -135,13 +135,13 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilText.isShiftKeyDown()) {
+		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 				if (nbt.hasKey("ModeID")) {
 					list.add("ModeID: " + nbt.getInteger("ModeID"));
 				}
 			}
-		} else list.add(UtilText.hldshiftinf);
+		} else list.add(UtilString.hldshiftinf);
 
 	}
 

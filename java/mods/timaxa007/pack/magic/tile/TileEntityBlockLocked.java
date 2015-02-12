@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.magic.tile;
 
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -48,7 +48,7 @@ public class TileEntityBlockLocked extends TileEntity {
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
 		nbt.setInteger("Type", type);
-		if (UtilText.hasString(owner)) nbt.setString("Owner", owner);
+		if (UtilString.hasString(owner)) nbt.setString("Owner", owner);
 	}
 
 	public Packet getDescriptionPacket() {

@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.mining.lib;
 
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.util.StatCollector;
 
 /**
@@ -86,7 +86,7 @@ public class OreFake {
 	}
 
 	public static OreFake get(String tag) {
-		if (UtilText.hasString(tag))
+		if (UtilString.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
@@ -97,7 +97,7 @@ public class OreFake {
 	}
 
 	public String getName() {
-		return UtilText.hasString(name) ? name : UtilText.hasString(tag) ? tag : "unname";
+		return UtilString.hasString(name) ? name : UtilString.hasString(tag) ? tag : "unname";
 	}
 
 	public String getLocalizedName() {
@@ -110,7 +110,7 @@ public class OreFake {
 	}
 
 	public String getType() {
-		return UtilText.hasString(type) ? type : "untype";
+		return UtilString.hasString(type) ? type : "untype";
 	}
 
 	public String getLocalizedType() {

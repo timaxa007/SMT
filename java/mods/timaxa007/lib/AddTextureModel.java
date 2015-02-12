@@ -3,7 +3,7 @@ package mods.timaxa007.lib;
 import java.io.IOException;
 
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.IIcon;
@@ -88,7 +88,7 @@ public class AddTextureModel {
 	}
 
 	public static AddTextureModel get(String tag) {
-		if (UtilText.hasString(tag))
+		if (UtilString.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}

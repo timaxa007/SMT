@@ -6,7 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public class UtilNBT {
 	//------------------------------------------------------------------------------------------------------
 	public static NBTTagCompound setStyle(NBTTagCompound nbt, String style) {
-		checkTag(nbt);
+		checkNBT(nbt);
 		nbt.setString("Style", style);
 		return nbt;
 	}
@@ -20,7 +20,7 @@ public class UtilNBT {
 	}
 	//-----------------------------------------------------------------------------
 	public static NBTTagCompound setColorHex(NBTTagCompound nbt, int color_hex) {
-		checkTag(nbt);
+		checkNBT(nbt);
 		nbt.setInteger("ColorHex", color_hex);
 		return nbt;
 	}
@@ -34,7 +34,7 @@ public class UtilNBT {
 	}
 	//-----------------------------------------------------------------------------
 	public static NBTTagCompound setRotation(NBTTagCompound nbt, byte rotation) {
-		checkTag(nbt);
+		checkNBT(nbt);
 		nbt.setByte("Rotation", rotation);
 		return nbt;
 	}
@@ -56,14 +56,12 @@ public class UtilNBT {
 	}
 
 	public ItemStack saveNBTData(ItemStack is) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt == null) {nbt = new NBTTagCompound();}
+		checkNBT(is);
 		return is;
 	}
 
 	public ItemStack loadNBTData(ItemStack is) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt == null) {nbt = new NBTTagCompound();}
+		checkNBT(is);
 		return is;
 	}
 
@@ -75,8 +73,15 @@ public class UtilNBT {
 
 	}
 
-	public static void checkTag(NBTTagCompound nbt) {
-		if (nbt == null) {nbt = new NBTTagCompound();}
+	public static void checkNBT(NBTTagCompound nbt) {
+		if (nbt == null) nbt = new NBTTagCompound();
 	}
+	
+	public static NBTTagCompound checkNBT(ItemStack is) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt == null) nbt = new NBTTagCompound();
+		return nbt;
+	}
+	//------------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------------
 }

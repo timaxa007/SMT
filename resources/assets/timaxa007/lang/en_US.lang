@@ -11,7 +11,8 @@ text.stone=Stone
 text.magic=Magic
 text.hol_key=Hold key
 text.pres_key=Press on key
-text.for_ifo=for info.
+text.for_ifo=for info
+text.for_ifo_abt=for info about
 
 text.on=On
 text.off=Off
@@ -21,6 +22,18 @@ text.yup=Yup
 text.nope=Nope
 text.enabled=Enabled
 text.disabled=Disabled
+
+text.spells=Spells
+text.spells.spells=Spell's
+text.spells.spell=Spell
+text.spells.power=Power
+text.spells.duration=Duration
+text.spells.permanent=Permanent
+
+spell.efficient_mining.name=Efficient Mining
+spell.efficient_digging.name=Efficient Digging
+spell.efficient_chopping.name=Efficient Chopping
+spell.efficient_trimming.name=Efficient Trimming
 
 convert.text.0=Zero
 convert.text.1=One

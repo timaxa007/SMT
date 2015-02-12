@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.lib.AmmoFor;
 import mods.timaxa007.tms.util.ModifiedItem;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,14 +38,14 @@ public class ItemAmmos extends ModifiedItem {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilText.isShiftKeyDown()) {
+		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 
 				if (nbt.hasKey("AmmoID")) list.add("AmmoID: " + nbt.getInteger("AmmoID") + ".");
 
 			}
 		} else {
-			list.add(UtilText.hldshiftinf);
+			list.add(UtilString.hldshiftinf);
 		}
 	}
 

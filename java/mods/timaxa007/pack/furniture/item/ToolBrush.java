@@ -5,7 +5,7 @@ import java.util.List;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.mining.PackMining;
 import mods.timaxa007.tms.util.ModifiedItem;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;

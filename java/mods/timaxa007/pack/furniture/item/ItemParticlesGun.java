@@ -4,7 +4,7 @@ import java.util.List;
 
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.tms.util.ModifiedItem;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,12 +47,12 @@ public class ItemParticlesGun extends ModifiedItem {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilText.isShiftKeyDown()) {
+		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 				if (nbt.hasKey("WeaponID"))
 					list.add("WeaponID: " + nbt.getInteger("WeaponID") + ".");
 			}
-		} else list.add(UtilText.hldshiftinf);
+		} else list.add(UtilString.hldshiftinf);
 	}
 
 	@SideOnly(Side.CLIENT)

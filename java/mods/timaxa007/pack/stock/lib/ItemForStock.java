@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.stock.lib;
 
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.UtilText;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>ItemsStock</b>.
@@ -87,7 +87,7 @@ public class ItemForStock {
 	}
 
 	public static ItemForStock get(String tag) {
-		if (UtilText.hasString(tag))
+		if (UtilString.hasString(tag))
 			return list[getID_tag(tag)];
 		return empty;
 	}
@@ -98,7 +98,7 @@ public class ItemForStock {
 	}
 
 	public String getName() {
-		return UtilText.hasString(name) ? name : UtilText.hasString(tag) ? tag : "unname";
+		return UtilString.hasString(name) ? name : UtilString.hasString(tag) ? tag : "unname";
 	}
 
 	public String getLocalizedName() {
@@ -111,7 +111,7 @@ public class ItemForStock {
 	}
 
 	public String getType() {
-		return UtilText.hasString(type) ? "untyped" : type;
+		return UtilString.hasString(type) ? "untyped" : type;
 	}
 
 	public String getLocalizedType() {

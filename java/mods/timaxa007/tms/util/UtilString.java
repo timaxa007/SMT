@@ -6,16 +6,27 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.input.Keyboard;
 
-public class UtilText {
+public class UtilString {
 	//------------------------------------------------------------------------------------------------
 	public static final String t_shift = EnumChatFormatting.AQUA + "SHIFT";
-	public static final String inf = EnumChatFormatting.GRAY + UtilText.getText("for_ifo");
+	public static final String t_ctrl = EnumChatFormatting.AQUA + "Ctrl";
 
-	public static final String prs = EnumChatFormatting.GRAY + UtilText.getText("pres_key");
-	public static final String hld = EnumChatFormatting.GRAY + UtilText.getText("hol_key");
+	public static final String prs = EnumChatFormatting.GRAY + UtilString.getText("pres_key");
+	public static final String hld = EnumChatFormatting.GRAY + UtilString.getText("hol_key");
+	public static final String inf = EnumChatFormatting.GRAY + UtilString.getText("for_ifo");
+	public static final String infabt = EnumChatFormatting.GRAY + UtilString.getText("for_ifo_abt");
 
 	public static final String prshiftinf = prs + " " + t_shift + " " + inf + EnumChatFormatting.RESET;
 	public static final String hldshiftinf = hld + " " + t_shift + " " + inf + EnumChatFormatting.RESET;
+
+	public static final String prshiftinfab = prs + " " + t_shift + " " + infabt + EnumChatFormatting.RESET;
+	public static final String hldshiftinfab = hld + " " + t_shift + " " + infabt + EnumChatFormatting.RESET;
+
+	public static final String prsctrltinf = prs + " " + t_ctrl + " " + inf + EnumChatFormatting.RESET;
+	public static final String hldctrltinf = hld + " " + t_ctrl + " " + inf + EnumChatFormatting.RESET;
+
+	public static final String prsctrltinfab = prs + " " + t_ctrl + " " + infabt + EnumChatFormatting.RESET;
+	public static final String hldctrltinfab = hld + " " + t_ctrl + " " + infabt + EnumChatFormatting.RESET;
 
 	public static String getText(String txt) {
 		return StatCollector.translateToLocal("text." + txt.toLowerCase());
@@ -126,7 +137,7 @@ public class UtilText {
 
 	public static String textColorHex(int hex, String suffix) {
 		if (Colors.get(hex) != null)
-			return UtilText.getText("Color") + ": " + textNameColor(Colors.get(hex).getName(), suffix) + ".";
+			return UtilString.getText("Color") + ": " + textNameColor(Colors.get(hex).getName(), suffix) + ".";
 		return null;
 	}
 
@@ -145,7 +156,7 @@ public class UtilText {
 		String red = EnumChatFormatting.RED + "Red: " + Integer.toString(colors[0]) + EnumChatFormatting.RESET;
 		String green = EnumChatFormatting.GREEN + "Green: " + Integer.toString(colors[1]) + EnumChatFormatting.RESET;
 		String blue = EnumChatFormatting.BLUE + "Blue: " + Integer.toString(colors[2]) + EnumChatFormatting.RESET;
-		return UtilText.getText("Color") + ": " + red + ", " + green + ", " + blue + ".";
+		return UtilString.getText("Color") + ": " + red + ", " + green + ", " + blue + ".";
 	}
 	//------------------------------------------------------------------------------------------------
 }
