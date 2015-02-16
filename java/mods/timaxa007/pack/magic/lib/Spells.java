@@ -1,8 +1,6 @@
-package mods.timaxa007.lib;
+package mods.timaxa007.pack.magic.lib;
 
-import mods.timaxa007.pack.magic.PackMagic;
 import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.util.UtilNBT;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -15,6 +13,8 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.EnumDifficulty;
+import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -28,9 +28,8 @@ public class Spells {
 	//-----------------------------------------------------------------------------
 	public static final Spells[] list = new Spells[2048];
 
-	public static final Spells empty = new Spells(0);
-	public static final Spells test = new Spells("test");
-	public static final Spells test2 = new Spells("test2");
+	public static final Spells empty = new Spells(0, "");
+
 	public static final Spells efficient_mining = new Spells("efficient_mining");
 	public static final Spells efficient_digging = new Spells("efficient_digging");
 	public static final Spells efficient_chopping = new Spells("efficient_chopping");
@@ -80,15 +79,16 @@ public class Spells {
 
 	public static boolean hasTag(String tag) {
 		for (int i = 0; i < list.length; i++)
-			if (tag.equalsIgnoreCase(list[i].tag))
+			if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
 				return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (tag.equalsIgnoreCase(list[i].tag))
-				return i;
+		if (UtilString.hasString(tag))
+			for (int i = 0; i < list.length; i++)
+				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+					return i;
 		return 0;
 	}
 
@@ -99,9 +99,15 @@ public class Spells {
 	}
 
 	public static Spells get(String tag) {
-		if (UtilString.hasString(tag))
-			return list[getID_tag(tag)];
-		return empty;
+		return list[getID_tag(tag)];
+	}
+
+	public static boolean isNull(String tag) {
+		return isNull(get(tag));
+	}
+
+	public static boolean isNull(Spells spell) {
+		return spell == null || spell == empty;
 	}
 	//-----------------------------------------------------------------------------
 	public String getTag() {
@@ -158,7 +164,7 @@ public class Spells {
 
 	}
 	//-----------------------------------------------------------------------------
-	public static class TipSpells {
+	public static class EventSpellsClient {
 
 		@SubscribeEvent
 		public void tipSpellsTag(ItemTooltipEvent e) {
@@ -176,13 +182,18 @@ public class Spells {
 
 						if (UtilString.isControlKeyDown() && isShowPeace(e.entityPlayer)) {
 
+							//if (!Spells.isNull(spell)) {
+
 							e.toolTip.add("");
 
-							e.toolTip.add(UtilString.getText("spells." + "Spell") + ": " + Spells.get(spell).getLocalizedName() + ", ");
+							e.toolTip.add(UtilString.getText("spells." + "Spell") + ": " + 
+									Spells.get(spell).getLocalizedName() + ", ");
 
 							e.toolTip.add(UtilString.getText("spells." + "Power") + ": " + power + ", " + 
 									UtilString.getText("spells." + "Duration") + ": " + 
 									(times >= 0 ? times : UtilString.getText("spells." + "Permanent")) + ".");
+
+							//}
 
 						} else {
 
@@ -192,12 +203,17 @@ public class Spells {
 										UtilString.getText("spells.spells") + 
 										EnumChatFormatting.RESET);
 
+							//if (!Spells.isNull(spell)) {
+
 							e.toolTip.add(Spells.get(spell).getLocalizedName() + 
-									(isShowPeaceEasyNormal(e.entityPlayer) ? (" (" + power + ") ") : "") + 
-									((times >= 0 && isShowPeaceEasy(e.entityPlayer)) ? times : "")
+									(" (" + power + ") ") + 
+									(times >= 0 ? times : "")
 									);
 
+							//}
+
 						}
+
 					}
 				}
 
@@ -210,10 +226,12 @@ public class Spells {
 					(Core.show_tip_info_testing || player.worldObj.difficultySetting != EnumDifficulty.HARD));
 		}
 
+		@Deprecated
 		public static boolean isShowPeaceEasyNormal(EntityPlayer player) {
 			return (isShowPeaceEasy(player) || player.worldObj.difficultySetting == EnumDifficulty.NORMAL);
 		}
 
+		@Deprecated
 		public static boolean isShowPeaceEasy(EntityPlayer player) {
 			return (isShowPeace(player) || player.worldObj.difficultySetting == EnumDifficulty.EASY);
 		}
@@ -225,19 +243,70 @@ public class Spells {
 
 	}
 	//-----------------------------------------------------------------------------
-	/**Not work.**/
-	@Deprecated
-	public static void addSpell(ItemStack is, Spells spell, int power, int times) {
-		addSpell(is, spell.getTag(), power, times);
+	public static class EventSpellsCommon {
+
+		@SubscribeEvent
+		public void updateSpells(LivingUpdateEvent e) {
+			if (e.entityLiving instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer)e.entityLiving;
+				World world = player.worldObj;
+
+				if (!world.isRemote) {
+					//---------------------------------------------------------------------
+					ItemStack[] main = player.inventory.mainInventory;
+
+					for (int j = 0; j < main.length; j++) {
+						if (main[j] != null) {
+							//-------------------------------------------------------------
+							NBTTagList nbttaglist = Spells.getSpellsTagList(main[j]);
+
+							if (nbttaglist != null) {
+								for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+
+									NBTTagCompound tagAt = nbttaglist.getCompoundTagAt(i);
+
+									Spells spell = Spells.get(tagAt.getString("spell"));
+									int power = (int)tagAt.getByte("power");
+									int times = (int)tagAt.getShort("times");
+
+									int updt = 1;
+
+									if (world.getWorldTime() % (20 * updt) == 0) {
+										if (times == 0) spell = Spells.empty;
+										if (times > 0) --times;
+
+										tagAt.setString("spell", spell.getTag());
+										//tagAt.setByte("power", (byte)power);
+										tagAt.setShort("times", (short)times);
+
+									}
+
+								}
+							}
+							//-------------------------------------------------------------
+						}
+					}
+					//---------------------------------------------------------------------
+					ItemStack[] armor = player.inventory.armorInventory;
+
+					for (int j = 0; j < armor.length; j++) {
+						if (armor[j] != null) {
+
+						}
+					}
+					//---------------------------------------------------------------------
+				}
+			}
+		}
+
+	}
+	//-----------------------------------------------------------------------------
+	public static void addSpell(NBTTagCompound nbt, Spells spell) {
+		addSpell(nbt, spell.getTag(), 1, -1);
 	}
 
-	/**Not work.**/
-	@Deprecated
-	public static void addSpell(ItemStack is, String spell, int power, int times) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt == null) nbt = new NBTTagCompound();
-		addSpell(nbt, spell, power, times);
-		//is.setTagCompound(nbt);
+	public static void addSpell(NBTTagCompound nbt, Spells spell, int power) {
+		addSpell(nbt, spell.getTag(), power, -1);
 	}
 
 	public static void addSpell(NBTTagCompound nbt, Spells spell, int power, int times) {
@@ -245,9 +314,9 @@ public class Spells {
 	}
 
 	public static void addSpell(NBTTagCompound nbt, String spell, int power, int times) {
-		if (!nbt.hasKey("spel", 9)) nbt.setTag("spel", new NBTTagList());
+		if (!nbt.hasKey("spells", 9)) nbt.setTag("spells", new NBTTagList());
 
-		NBTTagList nbttaglist = nbt.getTagList("spel", 10);
+		NBTTagList nbttaglist = nbt.getTagList("spells", 10);
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		nbttagcompound.setString("spell", spell);
 		nbttagcompound.setByte("power", (byte)power);
@@ -256,11 +325,11 @@ public class Spells {
 	}
 
 	public static NBTTagList getSpellsTagList(ItemStack is) {
-		return is.getTagCompound() == null ? null : is.getTagCompound().getTagList("spel", 10);
+		return is.getTagCompound() == null ? null : is.getTagCompound().getTagList("spells", 10);
 	}
 
-	public static boolean isItemSpell(ItemStack is) {
-		return is.getTagCompound() != null && is.getTagCompound().hasKey("spel", 9);
+	public static boolean isSpell(ItemStack is) {
+		return is.getTagCompound() != null && is.getTagCompound().hasKey("spells", 9);
 	}
 	//-----------------------------------------------------------------------------
 }

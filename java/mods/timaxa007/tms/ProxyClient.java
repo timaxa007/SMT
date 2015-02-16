@@ -1,6 +1,5 @@
 package mods.timaxa007.tms;
 
-import mods.timaxa007.lib.Spells;
 import mods.timaxa007.tms.event.*;
 import mods.timaxa007.tms.util.RegKey;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,7 +25,6 @@ public class ProxyClient extends ProxyCommon {
 		if (Core.debug) FMLLog.log(Core.MODID, Level.DEBUG, "Successful initialized client part.");
 
 		MinecraftForge.EVENT_BUS.register(new EventClientTMS());
-		MinecraftForge.EVENT_BUS.register(new Spells.TipSpells());
 		//MinecraftForge.EVENT_BUS.register(new EventMouse());
 		FMLCommonHandler.instance().bus().register(new EventActionMouse());
 		FMLCommonHandler.instance().bus().register(new EventActionPrimaryKey());

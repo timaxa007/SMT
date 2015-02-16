@@ -71,30 +71,38 @@ public class FluidFake {
 		return list.length - 1;
 	}
 
-	public static boolean hasTag(String str) {
-		for (int i = 0; i < list.length; i++)
-			if (str.equalsIgnoreCase(list[i].tag))
-				return true;
+	public static boolean hasTag(String tag) {
+		if (UtilString.hasString(tag))
+			for (int i = 0; i < list.length; i++)
+				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+					return true;
 		return false;
 	}
 
-	public static int getID_tag(String str) {
-		for (int i = 0; i < list.length; i++)
-			if (str.equalsIgnoreCase(list[i].tag))
-				return i;
+	public static int getID_tag(String tag) {
+		if (UtilString.hasString(tag))
+			for (int i = 0; i < list.length; i++)
+				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+					return i;
 		return 0;
 	}
 
-	private static void checkTag(String str) {
+	private static void checkTag(String tag) {
 		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == str)
-				System.out.println("!Duplicate: " + str);
+			if (list[i] != null && list[i].tag == tag)
+				System.out.println("!Duplicate: " + tag);
 	}
 
 	public static FluidFake get(String tag) {
-		if (UtilString.hasString(tag))
-			return list[getID_tag(tag)];
-		return empty;
+		return list[getID_tag(tag)];
+	}
+
+	public static boolean isNull(String tag) {
+		return isNull(get(tag));
+	}
+
+	public static boolean isNull(FluidFake fluid) {
+		return fluid == null || fluid == empty;
 	}
 	//--------------------------------------------------------
 	public FluidFake setName(String name) {

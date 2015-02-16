@@ -68,16 +68,18 @@ public class AddBlockSand {
 	}
 
 	public static boolean hasTag(String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (tag.equalsIgnoreCase(list[i].tag))
-				return true;
+		if (UtilString.hasString(tag))
+			for (int i = 0; i < list.length; i++)
+				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (tag.equalsIgnoreCase(list[i].tag))
-				return i;
+		if (UtilString.hasString(tag))
+			for (int i = 0; i < list.length; i++)
+				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+					return i;
 		return 0;
 	}
 
@@ -88,9 +90,7 @@ public class AddBlockSand {
 	}
 
 	public static AddBlockSand get(String tag) {
-		if (UtilString.hasString(tag))
-			return list[getID_tag(tag)];
-		return list[0];
+		return list[getID_tag(tag)];
 	}
 	//--------------------------------------------------------
 	public AddBlockSand setID(int id) {

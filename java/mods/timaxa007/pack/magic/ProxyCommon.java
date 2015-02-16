@@ -5,6 +5,7 @@ import mods.timaxa007.pack.magic.event.EventMagic;
 import mods.timaxa007.pack.magic.gui.HandlerGuiMagic;
 import mods.timaxa007.pack.magic.item.ListItem;
 import mods.timaxa007.pack.magic.lib.ListMagic;
+import mods.timaxa007.pack.magic.lib.Spells;
 import mods.timaxa007.pack.magic.recipe.Recipes_Magic;
 import mods.timaxa007.pack.magic.render.RenderMain;
 import mods.timaxa007.pack.magic.util.MaterialOreMagic;
@@ -74,6 +75,7 @@ public class ProxyCommon implements IProxy {
 		Recipes_Magic.list();
 
 		MinecraftForge.EVENT_BUS.register(new EventMagic());
+		MinecraftForge.EVENT_BUS.register(new Spells.EventSpellsCommon());
 
 	}
 

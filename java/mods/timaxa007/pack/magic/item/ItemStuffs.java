@@ -1,35 +1,16 @@
 package mods.timaxa007.pack.magic.item;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import mods.timaxa007.lib.Spells;
 import mods.timaxa007.pack.magic.PackMagic;
-import mods.timaxa007.pack.magic.lib.ActionMagic;
-import mods.timaxa007.tms.Core;
-import mods.timaxa007.tms.packet.MessageSpawnParticle;
+import mods.timaxa007.pack.magic.lib.Spells;
 import mods.timaxa007.tms.util.ItemActionMouse;
-import mods.timaxa007.tms.util.UtilTMS;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

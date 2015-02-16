@@ -65,16 +65,18 @@ public class ItemForPackItems {
 	}
 
 	public static boolean hasTag(String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (tag.equalsIgnoreCase(list[i].tag))
-				return true;
+		if (UtilString.hasString(tag))
+			for (int i = 0; i < list.length; i++)
+				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (tag.equalsIgnoreCase(list[i].tag))
-				return i;
+		if (UtilString.hasString(tag))
+			for (int i = 0; i < list.length; i++)
+				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+					return i;
 		return 0;
 	}
 
@@ -85,9 +87,15 @@ public class ItemForPackItems {
 	}
 
 	public static ItemForPackItems get(String tag) {
-		if (UtilString.hasString(tag))
-			return list[getID_tag(tag)];
-		return empty;
+		return list[getID_tag(tag)];
+	}
+
+	public static boolean isNull(String tag) {
+		return isNull(get(tag));
+	}
+
+	public static boolean isNull(ItemForPackItems ifpi) {
+		return ifpi == null || ifpi == empty;
 	}
 	//--------------------------------------------------------
 	public ItemForPackItems setName(String name) {

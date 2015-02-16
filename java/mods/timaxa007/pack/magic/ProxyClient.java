@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.magic;
 
 import mods.timaxa007.pack.magic.event.EventMagicClient;
+import mods.timaxa007.pack.magic.lib.Spells;
 import mods.timaxa007.tms.util.IProxy;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -11,12 +12,13 @@ public class ProxyClient extends ProxyCommon implements IProxy {
 		super.preInit(event);
 
 		MinecraftForge.EVENT_BUS.register(new EventMagicClient());
+		MinecraftForge.EVENT_BUS.register(new Spells.EventSpellsClient());
 
 	}
 
 	public void init() {
 		super.init();
-
+		
 		render.init();
 
 	}
