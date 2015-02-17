@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.weapon.lib;
 
-import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.util.StatCollector;
 
@@ -8,7 +7,7 @@ public class UpgradeFor {
 
 	public static final UpgradeFor[] list = new UpgradeFor[2048];
 
-	public static final UpgradeFor empty = new UpgradeFor(0);
+	public static final UpgradeFor empty = new UpgradeFor("");
 
 	public int id;
 	public String tag;
@@ -24,31 +23,20 @@ public class UpgradeFor {
 	private String texture1;
 	private String texture2;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public UpgradeFor() {
-		id = nextID();
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public UpgradeFor() {id = nextID();list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public UpgradeFor(int id) {
-		this.id = id;
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public UpgradeFor(int id) {checkID(this, id);this.id = id;list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public UpgradeFor(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;
 	}
 
 	public UpgradeFor(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -77,10 +65,15 @@ public class UpgradeFor {
 		return 0;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(UpgradeFor upgradeFor, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + upgradeFor.getClass() + ".");
+	}
+
+	private static void checkTag(UpgradeFor upgradeFor, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + upgradeFor.getClass() + ".");
 	}
 
 	public static UpgradeFor get(String tag) {

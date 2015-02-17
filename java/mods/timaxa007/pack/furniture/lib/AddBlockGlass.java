@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.lib;
 
-import mods.timaxa007.tms.Core;
+import mods.timaxa007.pack.magic.lib.Spells;
 import mods.timaxa007.tms.util.UtilString;
 
 /**
@@ -14,45 +14,30 @@ public class AddBlockGlass {
 
 	public static final AddBlockGlass[] list = new AddBlockGlass[127];
 
+	public static final AddBlockGlass empty = new AddBlockGlass("");
+
 	private int id;
 	private String tag;
 	private String name;
 	private int color_hex;
 	private String texture;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public AddBlockGlass() {
-		id = nextID();
-		list[id] = this;
-		tag = "";
-		color_hex = 0xFFFFFF;
-		texture = "";
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public AddBlockGlass() {id = nextID();list[id] = this;color_hex = 0xFFFFFF;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public AddBlockGlass(int id) {
-		this.id = id;
-		list[id] = this;
-		tag = "";
-		color_hex = 0xFFFFFF;
-		texture = "";
+		checkID(this, id);this.id = id;list[id] = this;color_hex = 0xFFFFFF;
 	}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public AddBlockGlass(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
-		color_hex = 0xFFFFFF;
-		texture = "";
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;color_hex = 0xFFFFFF;
 	}
 
 	public AddBlockGlass(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -80,17 +65,30 @@ public class AddBlockGlass {
 			for (int i = 0; i < list.length; i++)
 				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
 					return i;
-		return 0;
+		return empty.id;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(AddBlockGlass addBlockGlass, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + addBlockGlass.getClass() + ".");
+	}
+
+	private static void checkTag(AddBlockGlass addBlockGlass, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + addBlockGlass.getClass() + ".");
 	}
 
 	public static AddBlockGlass get(String tag) {
 		return list[getID_tag(tag)];
+	}
+
+	public static boolean isNull(String tag) {
+		return isNull(get(tag));
+	}
+
+	public static boolean isNull(AddBlockGlass addBlockGlass) {
+		return addBlockGlass == null || addBlockGlass == empty;
 	}
 	//--------------------------------------------------------
 	public AddBlockGlass setID(int id) {

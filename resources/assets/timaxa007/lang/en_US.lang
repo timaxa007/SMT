@@ -34,6 +34,8 @@ spell.efficient_mining.name=Efficient Mining
 spell.efficient_digging.name=Efficient Digging
 spell.efficient_chopping.name=Efficient Chopping
 spell.efficient_trimming.name=Efficient Trimming
+spell.repair_item.name=Repair Item's
+spell.damage_item.name=Damage Item's
 
 convert.text.0=Zero
 convert.text.1=One

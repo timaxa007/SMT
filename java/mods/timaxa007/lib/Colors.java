@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 public class Colors {
 
 	public static Colors[] list = new Colors[0xFFFFFF];
-	
+
 	public static final Colors not_use_black = new Colors(0x000000, "1");// int = 0
 	public static final Colors not_use_white = new Colors(0xFFFFFF, "0");// int = 16777215
 
@@ -52,7 +52,7 @@ public class Colors {
 	private String name;
 
 	public Colors(int hex, String name) {
-		if (Core.show_system_info_testing) checkHex(hex);
+		if (Core.show_system_info_testing) checkHex(this, hex);
 		this.hex = hex;
 		list[hex] = this;
 		this.name = name;
@@ -80,14 +80,13 @@ public class Colors {
 		return null;
 	}
 
-	private static void checkHex(int hex) {
+	private static void checkHex(Colors colors, int hex) {
 		if (list[hex] != null)
-			System.out.println("!Duplicate: " + hex);
+			throw new IllegalArgumentException("Duplicate: " + hex + " in " + colors.getClass() + ".");
 	}
 
 	public static Colors get(int hex) {
-		if (list[hex] != null)
-			return list[hex];
+		if (list[hex] != null) return list[hex];
 		return null;
 	}
 	//--------------------------------------------------------

@@ -34,6 +34,8 @@ spell.efficient_mining.name=Эффективная Добыча
 spell.efficient_digging.name=Эффективное Копание
 spell.efficient_chopping.name=Эффективная Рубка
 spell.efficient_trimming.name=Эффективная Стрижка
+spell.repair_item.name=Ремонт Предмета
+spell.damage_item.name=Повреждение Предмета
 
 convert.text.0=Ноль
 convert.text.1=Один

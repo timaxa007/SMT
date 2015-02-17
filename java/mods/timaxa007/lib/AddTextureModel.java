@@ -2,7 +2,6 @@ package mods.timaxa007.lib;
 
 import java.io.IOException;
 
-import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -12,9 +11,9 @@ import net.minecraft.util.StatCollector;
 
 public class AddTextureModel {
 
-	public static final AddTextureModel[] list = new AddTextureModel[1024];
+	public static final AddTextureModel[] list = new AddTextureModel[2048];
 
-	public static final AddTextureModel empty = new AddTextureModel(0).setTextureBlock("timaxa007", "woodFrame");
+	public static final AddTextureModel empty = new AddTextureModel("").setTextureBlock("timaxa007", "woodFrame");
 
 	public int id;
 	public String tag;
@@ -23,37 +22,23 @@ public class AddTextureModel {
 	private String texture;
 	private String custom_mod;
 
-	private static String tb = "textures/blocks/";
-	private static String ti = "textures/items/";
+	private static final String tb = "textures/blocks/";
+	private static final String ti = "textures/items/";
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public AddTextureModel() {
-		id = getNextID();
-		list[id] = this;
-		metadata = 0;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public AddTextureModel() {id = getNextID();list[id] = this;metadata = 0;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public AddTextureModel(int id) {
-		this.id = id;
-		list[id] = this;
-		metadata = 0;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public AddTextureModel(int id) {checkID(this, id);this.id = id;list[id] = this;metadata = 0;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public AddTextureModel(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
-		metadata = 0;
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;metadata = 0;
 	}
 
 	public AddTextureModel(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = getNextID();
 		list[id] = this;
 		this.tag = tag;
@@ -80,13 +65,18 @@ public class AddTextureModel {
 			for (int i = 0; i < list.length; i++)
 				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
 					return i;
-		return 0;
+		return empty.id;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(AddTextureModel texture_model, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + texture_model.getClass() + ".");
+	}
+
+	private static void checkTag(AddTextureModel texture_model, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + texture_model.getClass() + ".");
 	}
 
 	public static AddTextureModel get(String tag) {

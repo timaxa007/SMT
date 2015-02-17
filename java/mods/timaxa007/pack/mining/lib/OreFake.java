@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.mining.lib;
 
-import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.util.StatCollector;
 
@@ -15,7 +14,7 @@ public class OreFake {
 
 	public static final OreFake[] list = new OreFake[4096];
 
-	public static final OreFake empty = new OreFake(0);
+	public static final OreFake empty = new OreFake("");
 
 	public int id;
 	public String tag;
@@ -28,31 +27,20 @@ public class OreFake {
 
 	private String texture;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public OreFake() {
-		id = nextID();
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public OreFake() {id = nextID();list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public OreFake(int id) {
-		this.id = id;
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public OreFake(int id) {checkID(this, id);this.id = id;list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public OreFake(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;
 	}
 
 	public OreFake(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -81,10 +69,15 @@ public class OreFake {
 		return 0;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(OreFake oreFake, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + oreFake.getClass() + ".");
+	}
+
+	private static void checkTag(OreFake oreFake, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + oreFake.getClass() + ".");
 	}
 
 	public static OreFake get(String tag) {

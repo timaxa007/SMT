@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.weapon.lib;
 
-import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.util.StatCollector;
 /**
@@ -14,7 +13,7 @@ public class ItemForWeapons {
 
 	public static final ItemForWeapons[] list = new ItemForWeapons[2048];
 
-	public static final ItemForWeapons empty = new ItemForWeapons(0);
+	public static final ItemForWeapons empty = new ItemForWeapons("");
 
 	public int id;
 	public String tag;
@@ -27,31 +26,20 @@ public class ItemForWeapons {
 	private String texture1;
 	private String texture2;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public ItemForWeapons() {
-		id = nextID();
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public ItemForWeapons() {id = nextID();list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public ItemForWeapons(int id) {
-		this.id = id;
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public ItemForWeapons(int id) {checkID(this, id);this.id = id;list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public ItemForWeapons(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;
 	}
 
 	public ItemForWeapons(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -80,10 +68,15 @@ public class ItemForWeapons {
 		return 0;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(ItemForWeapons itemForWeapons, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + itemForWeapons.getClass() + ".");
+	}
+
+	private static void checkTag(ItemForWeapons itemForWeapons, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + itemForWeapons.getClass() + ".");
 	}
 
 	public static ItemForWeapons get(String tag) {

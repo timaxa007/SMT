@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.stock.lib;
 
-import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.util.StatCollector;
 /**
@@ -14,7 +13,7 @@ public class FoodForItem {
 
 	public static final FoodForItem[] list = new FoodForItem[32767];
 
-	public static final FoodForItem empty = new FoodForItem(0);
+	public static final FoodForItem empty = new FoodForItem("");
 
 	public int id;
 	public String tag;
@@ -36,31 +35,20 @@ public class FoodForItem {
 	private int[] clr_tmp = color_hex;
 	private String[] txr_tmp = texture_name;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public FoodForItem() {
-		id = nextID();
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public FoodForItem() {id = nextID();list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public FoodForItem(int id) {
-		this.id = id;
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public FoodForItem(int id) {checkID(this, id);this.id = id;list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public FoodForItem(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;
 	}
 
 	public FoodForItem(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -89,10 +77,15 @@ public class FoodForItem {
 		return 0;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(FoodForItem foodForItem, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + foodForItem.getClass() + ".");
+	}
+
+	private static void checkTag(FoodForItem foodForItem, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + foodForItem.getClass() + ".");
 	}
 
 	public static FoodForItem get(String tag) {

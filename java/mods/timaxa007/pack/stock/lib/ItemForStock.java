@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.stock.lib;
 
-import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.util.StatCollector;
 /**
@@ -14,7 +13,7 @@ public class ItemForStock {
 
 	public static final ItemForStock[] list = new ItemForStock[2048];
 
-	public static final ItemForStock empty = new ItemForStock(0);
+	public static final ItemForStock empty = new ItemForStock("");
 
 	public int id;
 	public String tag;
@@ -27,33 +26,20 @@ public class ItemForStock {
 	private String texture1;
 	private String texture2;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public ItemForStock() {
-		id = nextID();
-		list[id] = this;
-		//tag = "";
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public ItemForStock() {id = nextID();list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public ItemForStock(int id) {
-		this.id = id;
-		list[id] = this;
-		//tag = "";
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public ItemForStock(int id) {checkID(this, id);this.id = id;list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public ItemForStock(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;
 	}
 
 	public ItemForStock(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -82,10 +68,15 @@ public class ItemForStock {
 		return 0;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(ItemForStock itemForStock, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + itemForStock + ".");
+	}
+
+	private static void checkTag(ItemForStock itemForStock, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + itemForStock + ".");
 	}
 
 	public static ItemForStock get(String tag) {

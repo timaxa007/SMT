@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.furniture.lib;
 
-import mods.timaxa007.tms.Core;
+import mods.timaxa007.pack.magic.lib.Spells;
 import mods.timaxa007.tms.util.UtilString;
 
 /**
@@ -14,45 +14,30 @@ public class AddBlockGround {
 
 	public static final AddBlockGround[] list = new AddBlockGround[127];
 
+	public static final AddBlockGround empty = new AddBlockGround("");
+
 	private int id;
 	private String tag;
 	private String name;
 	private int color_hex;
 	private String texture;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public AddBlockGround() {
-		id = nextID();
-		list[id] = this;
-		tag = "";
-		color_hex = 0xFFFFFF;
-		texture = "";
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public AddBlockGround() {id = nextID();list[id] = this;color_hex = 0xFFFFFF;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public AddBlockGround(int id) {
-		this.id = id;
-		list[id] = this;
-		tag = "";
-		color_hex = 0xFFFFFF;
-		texture = "";
+		checkID(this, id);this.id = id;list[id] = this;color_hex = 0xFFFFFF;
 	}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public AddBlockGround(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
-		color_hex = 0xFFFFFF;
-		texture = "";
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;color_hex = 0xFFFFFF;
 	}
 
 	public AddBlockGround(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -80,17 +65,30 @@ public class AddBlockGround {
 			for (int i = 0; i < list.length; i++)
 				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
 					return i;
-		return 0;
+		return empty.id;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(AddBlockGround addBlockGround, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + addBlockGround.getClass() + ".");
+	}
+
+	private static void checkTag(AddBlockGround addBlockGround, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + addBlockGround.getClass() + ".");
 	}
 
 	public static AddBlockGround get(String tag) {
 		return list[getID_tag(tag)];
+	}
+
+	public static boolean isNull(String tag) {
+		return isNull(get(tag));
+	}
+
+	public static boolean isNull(AddBlockGround addBlockGround) {
+		return addBlockGround == null || addBlockGround == empty;
 	}
 	//--------------------------------------------------------
 	public AddBlockGround setID(int id) {

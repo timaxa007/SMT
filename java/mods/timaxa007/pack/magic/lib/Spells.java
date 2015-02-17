@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.magic.lib;
 
 import mods.timaxa007.tms.Core;
+import mods.timaxa007.tms.util.UtilInteger;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -28,43 +29,64 @@ public class Spells {
 	//-----------------------------------------------------------------------------
 	public static final Spells[] list = new Spells[2048];
 
-	public static final Spells empty = new Spells(0, "");
+	public static final Spells empty = new Spells("");
 
 	public static final Spells efficient_mining = new Spells("efficient_mining");
 	public static final Spells efficient_digging = new Spells("efficient_digging");
 	public static final Spells efficient_chopping = new Spells("efficient_chopping");
 	public static final Spells efficient_trimming = new Spells("efficient_trimming");
 
+	public static final Spells armor_head = new Spells("armor_head");
+	public static final Spells armor_torso = new Spells("armor_torso");
+	public static final Spells armor_legs = new Spells("armor_legs");
+	public static final Spells armor_feet = new Spells("armor_feet");
+
+	public static final Spells repair_item = new Spells("repair_item") {
+
+		public void functioning(ItemStack is, EntityPlayer player, TypeFunctioning type) {
+			if (type == type.item) {
+				if (is.isItemStackDamageable()) {
+					if (is.getItemDamage() > 0 && is.getItemDamage() < is.getMaxDamage()) is.setItemDamage(is.getItemDamage() - 1);
+				}
+			}
+		}
+
+	};
+
+	public static final Spells damage_item = new Spells("damage_item") {
+
+		public void functioning(ItemStack is, EntityPlayer player, TypeFunctioning type) {
+			if (type == type.item) {
+				if (is.isItemStackDamageable()) {
+					if (is.getItemDamage() > 0 && is.getItemDamage() < is.getMaxDamage()) is.setItemDamage(is.getItemDamage() + 1);
+				}
+			}
+		}
+
+	};
+
+	public static final Spells slow_spell = new Spells("slow_spell");
+	public static final Spells fast_spell = new Spells("fast_spell");
+
 	public int id;
 	public String tag;
 	private String name;
 	private String type;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public Spells() {
-		id = nextID();
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public Spells() {id = nextID();list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public Spells(int id) {
-		this.id = id;
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public Spells(int id) {checkID(this, id);this.id = id;list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public Spells(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;
 	}
 
 	public Spells(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -89,13 +111,18 @@ public class Spells {
 			for (int i = 0; i < list.length; i++)
 				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
 					return i;
-		return 0;
+		return empty.id;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(Spells spell, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + spell.getClass() + ".");
+	}
+
+	private static void checkTag(Spells spell, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + spell.getClass() + ".");
 	}
 
 	public static Spells get(String tag) {
@@ -140,28 +167,48 @@ public class Spells {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
 	//-----------------------------------------------------------------------------
+	@Deprecated
 	public void forPlayer(EntityPlayer player) {
 
 	}
 
+	@Deprecated
 	public void forEntity(Entity entity) {
 
 	}
 
+	@Deprecated
 	public void forEntityLiving(EntityLivingBase entity) {
 
 	}
 
+	@Deprecated
 	public void forBlock(Block block) {
 
 	}
 
+	@Deprecated
 	public void forItem(Item item) {
 
 	}
 
+	@Deprecated
 	public void forItem(ItemStack is) {
 
+	}
+
+	public void functioning(ItemStack is, EntityPlayer player, TypeFunctioning type) {
+
+	}
+
+	public enum TypeFunctioning {
+		//armor_all,
+		armor_head,
+		armor_torso,
+		armor_legs,
+		armor_feet,
+		//other,
+		item;
 	}
 	//-----------------------------------------------------------------------------
 	public static class EventSpellsClient {
@@ -177,8 +224,8 @@ public class Spells {
 					for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 
 						String spell = nbttaglist.getCompoundTagAt(i).getString("spell");
-						byte power = nbttaglist.getCompoundTagAt(i).getByte("power");
-						short times = nbttaglist.getCompoundTagAt(i).getShort("times");
+						int power = UtilInteger.getMaxByte((int)nbttaglist.getCompoundTagAt(i).getByte("power"));
+						int times = (int)nbttaglist.getCompoundTagAt(i).getShort("times");
 
 						if (UtilString.isControlKeyDown() && isShowPeace(e.entityPlayer)) {
 
@@ -197,7 +244,7 @@ public class Spells {
 
 						} else {
 
-							if (isShowPeace(e.entityPlayer) && i == 0) 
+							if (isShowPeace(e.entityPlayer) && i == 0)
 								e.toolTip.add(UtilString.hldctrltinfab + " " + 
 										EnumChatFormatting.LIGHT_PURPLE + 
 										UtilString.getText("spells.spells") + 
@@ -251,7 +298,7 @@ public class Spells {
 				EntityPlayer player = (EntityPlayer)e.entityLiving;
 				World world = player.worldObj;
 
-				if (!world.isRemote) {
+				if (!world.isRemote && !player.capabilities.isCreativeMode) {
 					//---------------------------------------------------------------------
 					ItemStack[] main = player.inventory.mainInventory;
 
@@ -266,20 +313,23 @@ public class Spells {
 									NBTTagCompound tagAt = nbttaglist.getCompoundTagAt(i);
 
 									Spells spell = Spells.get(tagAt.getString("spell"));
-									int power = (int)tagAt.getByte("power");
+									int power = UtilInteger.getMaxByte((int)tagAt.getByte("power"));
 									int times = (int)tagAt.getShort("times");
 
-									int updt = 1;
-
-									if (world.getWorldTime() % (20 * updt) == 0) {
+									if (world.getWorldTime() % (20) == 0) {
 										if (times == 0) spell = Spells.empty;
 										if (times > 0) --times;
-
-										tagAt.setString("spell", spell.getTag());
-										//tagAt.setByte("power", (byte)power);
-										tagAt.setShort("times", (short)times);
-
 									}
+
+									if (times != 0) {
+										if (power > 0 && world.getWorldTime() % (int)(255 / power) == 0) {
+											spell.functioning(main[j], player, Spells.TypeFunctioning.item);
+										}
+									}
+
+									tagAt.setString("spell", spell.getTag());
+									tagAt.setByte("power", (byte)UtilInteger.setMaxByte(power));
+									tagAt.setShort("times", (short)times);
 
 								}
 							}
@@ -291,7 +341,49 @@ public class Spells {
 
 					for (int j = 0; j < armor.length; j++) {
 						if (armor[j] != null) {
+							//-------------------------------------------------------------
+							NBTTagList nbttaglist = Spells.getSpellsTagList(armor[j]);
 
+							if (nbttaglist != null) {
+								for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+
+									NBTTagCompound tagAt = nbttaglist.getCompoundTagAt(i);
+
+									Spells spell = Spells.get(tagAt.getString("spell"));
+									int power = UtilInteger.getMaxByte((int)tagAt.getByte("power"));
+									int times = (int)tagAt.getShort("times");
+
+									if (world.getWorldTime() % (20) == 0) {
+										if (times == 0) spell = Spells.empty;
+										if (times > 0) --times;
+									}
+
+									if (times != 0) {
+										if (power > 0 && world.getWorldTime() % (int)(255 / power) == 0) {
+											spell.functioning(armor[j], player, Spells.TypeFunctioning.item);
+
+											if (j == 3)
+												spell.functioning(armor[j], player, Spells.TypeFunctioning.armor_head);
+
+											if (j == 2)
+												spell.functioning(armor[j], player, Spells.TypeFunctioning.armor_torso);
+
+											if (j == 1)
+												spell.functioning(armor[j], player, Spells.TypeFunctioning.armor_legs);
+
+											if (j == 0)
+												spell.functioning(armor[j], player, Spells.TypeFunctioning.armor_feet);
+
+										}
+									}
+
+									tagAt.setString("spell", spell.getTag());
+									tagAt.setByte("power", (byte)UtilInteger.setMaxByte(power));
+									tagAt.setShort("times", (short)times);
+
+								}
+							}
+							//-------------------------------------------------------------
 						}
 					}
 					//---------------------------------------------------------------------
@@ -319,7 +411,7 @@ public class Spells {
 		NBTTagList nbttaglist = nbt.getTagList("spells", 10);
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		nbttagcompound.setString("spell", spell);
-		nbttagcompound.setByte("power", (byte)power);
+		nbttagcompound.setByte("power", (byte)UtilInteger.setMaxByte(power));
 		nbttagcompound.setShort("times", (short)times);
 		nbttaglist.appendTag(nbttagcompound);
 	}

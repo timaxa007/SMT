@@ -75,13 +75,13 @@ public class ProxyCommon implements IProxy {
 		Recipes_Magic.list();
 
 		MinecraftForge.EVENT_BUS.register(new EventMagic());
-		MinecraftForge.EVENT_BUS.register(new Spells.EventSpellsCommon());
 
 	}
 
 	public void init() {
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(PackMagic.MODID, new HandlerGuiMagic());
+		MinecraftForge.EVENT_BUS.register(new Spells.EventSpellsCommon());
 
 	}
 

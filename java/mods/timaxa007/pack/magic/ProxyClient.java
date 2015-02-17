@@ -12,7 +12,6 @@ public class ProxyClient extends ProxyCommon implements IProxy {
 		super.preInit(event);
 
 		MinecraftForge.EVENT_BUS.register(new EventMagicClient());
-		MinecraftForge.EVENT_BUS.register(new Spells.EventSpellsClient());
 
 	}
 
@@ -20,6 +19,7 @@ public class ProxyClient extends ProxyCommon implements IProxy {
 		super.init();
 		
 		render.init();
+		MinecraftForge.EVENT_BUS.register(new Spells.EventSpellsClient());
 
 	}
 

@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.weapon.lib;
 
-import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.util.StatCollector;
 
@@ -15,7 +14,7 @@ public class MagazineFor {
 
 	public static final MagazineFor[] list = new MagazineFor[1024];
 
-	public static final MagazineFor empty = new MagazineFor(0);
+	public static final MagazineFor empty = new MagazineFor("");
 
 	public int id;
 	public String tag;
@@ -34,31 +33,20 @@ public class MagazineFor {
 	private AmmoFor bullet;
 	private int size;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public MagazineFor() {
-		id = nextID();
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public MagazineFor() {id = nextID();list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
-	public MagazineFor(int id) {
-		this.id = id;
-		list[id] = this;
-	}
+	/**It is not recommended to use this method.**/@Deprecated
+	public MagazineFor(int id) {checkID(this, id);this.id = id;list[id] = this;}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public MagazineFor(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
-		this.id = id;
-		list[id] = this;
-		this.tag = tag;
+		checkID(this, id);checkTag(this, tag);
+		this.id = id;this.tag = tag;list[id] = this;
 	}
 
 	public MagazineFor(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -87,10 +75,15 @@ public class MagazineFor {
 		return 0;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkID(MagazineFor magazineFor, int id) {
+		if (list[id] != null)
+			throw new IllegalArgumentException("Duplicate id: " + id + " in " + magazineFor.getClass() + ".");
+	}
+
+	private static void checkTag(MagazineFor magazineFor, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + magazineFor.getClass() + ".");
 	}
 
 	public static MagazineFor get(String tag) {

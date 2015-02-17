@@ -1,6 +1,5 @@
 package mods.timaxa007.lib;
 
-import mods.timaxa007.tms.Core;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.util.StatCollector;
 /**
@@ -24,8 +23,7 @@ public class FluidFake {
 	private float temperature;
 	private String texture;
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public FluidFake() {
 		id = nextID();
 		list[id] = this;
@@ -34,8 +32,7 @@ public class FluidFake {
 		temperature = 0.0F;
 	}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public FluidFake(int id) {
 		this.id = id;
 		list[id] = this;
@@ -44,10 +41,9 @@ public class FluidFake {
 		temperature = 0.0F;
 	}
 
-	/**It is not recommended to use this method.**/
-	@Deprecated
+	/**It is not recommended to use this method.**/@Deprecated
 	public FluidFake(int id, String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		this.id = id;
 		list[id] = this;
 		this.tag = tag;
@@ -56,7 +52,7 @@ public class FluidFake {
 	}
 
 	public FluidFake(String tag) {
-		if (Core.show_system_info_testing) checkTag(tag);
+		checkTag(this, tag);
 		id = nextID();
 		list[id] = this;
 		this.tag = tag;
@@ -87,10 +83,10 @@ public class FluidFake {
 		return 0;
 	}
 
-	private static void checkTag(String tag) {
+	private static void checkTag(FluidFake fluid, String tag) {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] != null && list[i].tag == tag)
-				System.out.println("!Duplicate: " + tag);
+				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + fluid + ".");
 	}
 
 	public static FluidFake get(String tag) {
@@ -189,8 +185,7 @@ public class FluidFake {
 		private float temperature_max;
 		private int igniter;
 
-		/**It is not recommended to use this method.**/
-		@Deprecated
+		/**It is not recommended to use this method.**/@Deprecated
 		public TypeFluid(int id) {
 			this.id = id;
 			list_type[id] = this;
