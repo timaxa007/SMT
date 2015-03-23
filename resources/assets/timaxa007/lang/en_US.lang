@@ -136,21 +136,6 @@ type.woolen.name=Woolen
 type.metal.name=Metal
 type.gems.name=Gems
 
-category.tms.name=TMS Key Bindings
-key.reload.name=Reload
-key.charge.name=Charge
-key.mode.name=Mode Switch
-key.mode_in.name=Mode Increase
-key.mode_out.name=Mode Decrease
-key.action.name=Action
-key.action_helmet.name=Action Helmet
-key.action_chest.name=Action Chestplate
-key.action_leggin.name=Action Leggings
-key.action_boot.name=Action Boots
-key.booster.name=Booster
-key.grab.name=Grab
-key.lie.name=Lie Down
-
 itemGroup.tab_tms=Tab TMS's
 tile.block_test.name=Test Block
 item.item_test.name=Test Item

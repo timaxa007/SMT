@@ -136,21 +136,6 @@ type.woolen.name=Шерстянной
 type.metal.name=Металлический
 type.gems.name=Драгоценый
 
-category.tms.name=TMS Сочетания Клавиш
-key.reload.name=Перезарядка
-key.charge.name=Изменение
-key.mode.name=Переключатель Режима
-key.mode_in.name=Режим Увеличения
-key.mode_out.name=Режим Уменьшения
-key.action.name=Действие
-key.action_helmet.name = Действие Шлем
-key.action_chest.name = Действие Нагрудник
-key.action_leggin.name = Действие Поножи
-key.action_boot.name = Действие Сапоги
-key.booster.name=Усилитель
-key.grab.name=Захват
-key.lie.name=Лечь
-
 itemGroup.tab_tms=Таблица TMS
 tile.block_test.name=Тест Блок
 item.item_test.name=Тест Предмет

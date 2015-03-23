@@ -1,0 +1,86 @@
+package timaxa007.pack.furniture.render.item;
+
+import timaxa007.tms.lib.AddTextureModel;
+import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.model.AdvancedModelLoader;
+import net.minecraftforge.client.model.IModelCustom;
+
+import org.lwjgl.opengl.GL11;
+
+public class ItemRenderBarrels implements IItemRenderer {
+	private static final IModelCustom mdlB = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/barrel_cone.obj"));
+	private static final IModelCustom mdlP = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/barrel_top.obj"));
+	private static final IModelCustom mdlCD = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/barrel_cap_down.obj"));
+
+	public ItemRenderBarrels() {
+
+	}
+
+	@Override
+	public boolean handleRenderType(ItemStack is, ItemRenderType type) {
+		return true;
+	}
+
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack is, ItemRendererHelper helper) {
+		return true;
+	}
+
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
+		NBTTagCompound nbt = is.getTagCompound();
+
+		int rot=2;/*
+		int texB = nbt.getInteger("TypeB");
+		int texP = nbt.getInteger("TypeP");
+		int texCD = nbt.getInteger("TypeCD");
+		boolean lie = nbt.getBoolean("Lie");*/
+		boolean lie = false;
+		GL11.glPushMatrix();
+		if (lie) {
+			GL11.glTranslatef(0.5F, 0.5F, 1.0F);
+			GL11.glRotatef(180F, 1.0F, 0.0F, 0.0F);
+		} else {
+			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
+			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		}
+		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
+		mdlB.renderAll();
+		GL11.glPopMatrix();
+		/*
+		if (texP>0) {
+		GL11.glPushMatrix();
+		if (lie) {
+		GL11.glTranslatef(0.5F, 0.5F, 1.0F-0.9375F);
+		GL11.glRotatef(180F, 1.0F, 0.0F, 0.0F);
+		} else {
+		GL11.glTranslatef(0.5F, 0.9375F, 0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		}
+		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
+		mdlP.renderAll();
+		GL11.glPopMatrix();
+		}
+
+		GL11.glPushMatrix();
+		if (lie) {
+		GL11.glTranslatef(0.5F, 0.5F, 1.0F);
+		GL11.glRotatef(180F, 1.0F, 0.0F, 0.0F);
+		} else {
+		GL11.glTranslatef(0.5F, 0.0F, 0.5F);
+		GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
+		}*/
+		GL11.glRotatef(-180F+((float)((4-rot)*90F)), 0.0F, 0.0F, 1.0F);
+		Minecraft.getMinecraft().renderEngine.bindTexture(AddTextureModel.list[0].getTexture());
+		mdlCD.renderAll();
+		GL11.glPopMatrix();
+
+	}
+
+}

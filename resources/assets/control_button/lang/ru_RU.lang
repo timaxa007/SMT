@@ -1,0 +1,18 @@
+﻿
+category.control_button.name=Контролирование Кнопок Сочетания клавиш
+
+key.reload.name=Перезарядка
+key.charge.name=Изменение
+key.mode.name=Переключатель Режима
+key.mode_in.name=Режим Увеличения
+key.mode_out.name=Режим Уменьшения
+key.action.name=Действие
+
+key.action_helmet.name=Действие Шлем
+key.action_chest.name=Действие Нагрудник
+key.action_leggin.name=Действие Поножи
+key.action_boot.name=Действие Сапоги
+
+key.booster.name=Усилитель
+key.grab.name=Захват
+key.lie.name=Лечь
