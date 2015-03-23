@@ -67,7 +67,7 @@ public class BlockBlender extends ModifiedBlock implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, int par2, int par3, int par4, int par5) {
+	public static ItemStack addNBT(int par1, int par2, int par3, int par4, int par5) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.blender, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par2);

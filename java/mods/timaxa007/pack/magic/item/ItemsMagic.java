@@ -8,6 +8,7 @@ public class ItemsMagic extends ModifiedItem {
 	public ItemsMagic(String tag) {
 		super(tag);
 		setCreativeTab(PackMagic.tab_magic);
+		setTextureName("timaxa007:icon/magic");
 	}
 
 }

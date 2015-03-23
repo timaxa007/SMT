@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.furniture.lib;
 
-import mods.timaxa007.pack.magic.lib.Spells;
 import mods.timaxa007.tms.util.UtilString;
 
 /**
@@ -54,17 +53,17 @@ public class AddBlockGround {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (AddBlockGround adding : list)
+				if (adding != null && tag.equalsIgnoreCase(adding.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
+			for (AddBlockGround adding : list)
+				if (adding != null && tag.equalsIgnoreCase(adding.tag))
+					return adding.id;
 		return empty.id;
 	}
 
@@ -74,8 +73,8 @@ public class AddBlockGround {
 	}
 
 	private static void checkTag(AddBlockGround addBlockGround, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
+		for (AddBlockGround adding : list)
+			if (adding != null && adding.tag == tag)
 				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + addBlockGround.getClass() + ".");
 	}
 

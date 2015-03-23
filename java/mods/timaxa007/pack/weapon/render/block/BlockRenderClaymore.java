@@ -1,8 +1,8 @@
 package mods.timaxa007.pack.weapon.render.block;
 
-import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.weapon.render.model.ModelClaymoreStick;
 import mods.timaxa007.pack.weapon.tile.TileEntityClaymore;
+import mods.timaxa007.tms.lib.AddTextureModel;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;

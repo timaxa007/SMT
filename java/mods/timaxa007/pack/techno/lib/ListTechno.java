@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.techno.lib;
 
-import mods.timaxa007.lib.FluidFake;
+import mods.timaxa007.tms.lib.FluidFake;
 
 public class ListTechno {
 	public static final FluidFake.TypeFluid fuel = new FluidFake.TypeFluid("fuel");

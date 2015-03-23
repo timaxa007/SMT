@@ -53,17 +53,17 @@ public class AddBlockWood {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (AddBlockWood adding : list)
+				if (adding != null && tag.equalsIgnoreCase(adding.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
+			for (AddBlockWood adding : list)
+				if (adding != null && tag.equalsIgnoreCase(adding.tag))
+					return adding.id;
 		return empty.id;
 	}
 
@@ -73,9 +73,10 @@ public class AddBlockWood {
 	}
 
 	private static void checkTag(AddBlockWood addBlockWood, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + addBlockWood.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (AddBlockWood adding : list)
+				if (adding != null && adding.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + addBlockWood.getClass() + ".");
 	}
 
 	public static AddBlockWood get(String tag) {

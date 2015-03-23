@@ -54,18 +54,18 @@ public class ItemForTechno {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (ItemForTechno iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (ItemForTechno iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
+		return empty.id;
 	}
 
 	private static void checkID(ItemForTechno itemForTechno, int id) {
@@ -74,9 +74,10 @@ public class ItemForTechno {
 	}
 
 	private static void checkTag(ItemForTechno itemForTechno, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + itemForTechno.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (ItemForTechno iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + itemForTechno.getClass() + ".");
 	}
 
 	public static ItemForTechno get(String tag) {

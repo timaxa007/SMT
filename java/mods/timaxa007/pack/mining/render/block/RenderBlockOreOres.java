@@ -2,9 +2,12 @@ package mods.timaxa007.pack.mining.render.block;
 
 import mods.timaxa007.pack.mining.block.OreOres;
 import mods.timaxa007.pack.mining.tile.TileEntityOreOres;
+import mods.timaxa007.tms.lib.AddTextureModel;
+import mods.timaxa007.tms.util.UtilRender;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
@@ -56,13 +59,25 @@ public class RenderBlockOreOres extends TileEntitySpecialRenderer {
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
 			//GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		}
-
+		/*
 		bindTexture(new ResourceLocation("timaxa007", 
 				"textures/blocks/ore/ore_" + (typ < OreOres.type_ore.length && typ >= 0 ? OreOres.type_ore[typ] : OreOres.type_ore[0]) + "_overlay.png"));
+		 */
+		/*
+		BufferedImage img1 = ImageUtils.getImageFrom(AddTextureModel.get("minecraft_dirt").getTexture());
+		BufferedImage img2 = ImageUtils.getImageFrom(new ResourceLocation("timaxa007", 
+				"textures/blocks/ore/ore_" + (typ < OreOres.type_ore.length && typ >= 0 ? OreOres.type_ore[typ] : OreOres.type_ore[0]) + "_overlay.png"));
+
+		UtilRender.mergerImage(img1, img2);
+		 */
+		UtilRender.mergerImage(AddTextureModel.get("minecraft_dirt").getTexture(), 
+				new ResourceLocation("timaxa007", 
+						"textures/blocks/ore/ore_" + (typ < OreOres.type_ore.length && typ >= 0 ? OreOres.type_ore[typ] : OreOres.type_ore[0]) + "_overlay.png"),
+						0xFF0000);
 
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
-		tessellator.setColorOpaque_I(clr);
+		//tessellator.setColorOpaque_I(clr);
 		tessellator.setBrightness(brl);
 
 		//Down

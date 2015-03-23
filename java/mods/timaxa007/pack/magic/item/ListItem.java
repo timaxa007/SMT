@@ -6,18 +6,20 @@ import net.minecraft.item.Item;
 public class ListItem {
 
 	public static boolean 
-	items_for_magic_be, 
-	wands_be, 
-	stuffs_be, 
-	teleport_be, 
+	items_for_magic_be,
+	wands_be,
+	stuffs_be,
+	teleport_be,
 	globular_be;
 
 	public static Item 
-	items_for_magic, 
-	wands, 
-	stuffs, 
-	teleport, 
+	items_for_magic,
+	wands,
+	stuffs,
+	teleport,
 	globular;
+
+	public static Item[] list_item;
 
 	public static void preInit() {
 
@@ -29,13 +31,15 @@ public class ListItem {
 		//if (magic_bow_be) magic_bow = new BowMagic("magic_bow");
 		//if (arrow_mini_be) arrow_mini = new ItemArrowMini("arrow_mini");
 
-		UtilTMS.UtilItem.RegItem(new Item[] {
-				items_for_magic, 
-				wands, 
-				stuffs, 
-				teleport, 
+		list_item = new Item[] {
+				items_for_magic,
+				wands,
+				stuffs,
+				teleport,
 				globular
-		});
+		};
+
+		UtilTMS.UtilItem.RegItem(list_item);
 
 	}
 

@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.mining.lib;
 
-import mods.timaxa007.lib.FluidFake;
+import mods.timaxa007.tms.lib.FluidFake;
 
 public class ListMining {
 

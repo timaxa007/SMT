@@ -1,6 +1,6 @@
 package mods.timaxa007.tms.util;
 
-import mods.timaxa007.lib.Colors;
+import mods.timaxa007.tms.lib.Colors;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 

@@ -1,8 +1,8 @@
 package mods.timaxa007.pack.stock.render.block;
 
-import mods.timaxa007.lib.ModelT;
 import mods.timaxa007.pack.stock.lib.GerminationPlants;
 import mods.timaxa007.pack.stock.tile.TileEntityGerminationPlants;
+import mods.timaxa007.tms.lib.ModelT;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;

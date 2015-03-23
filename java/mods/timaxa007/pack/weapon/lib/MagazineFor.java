@@ -56,23 +56,23 @@ public class MagazineFor {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
 				return i;
-		return list.length-1;
+		return list.length - 1;
 	}
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (MagazineFor iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (MagazineFor iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
+		return empty.id;
 	}
 
 	private static void checkID(MagazineFor magazineFor, int id) {
@@ -81,9 +81,10 @@ public class MagazineFor {
 	}
 
 	private static void checkTag(MagazineFor magazineFor, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + magazineFor.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (MagazineFor iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + magazineFor.getClass() + ".");
 	}
 
 	public static MagazineFor get(String tag) {

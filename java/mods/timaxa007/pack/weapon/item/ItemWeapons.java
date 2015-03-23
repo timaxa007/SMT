@@ -101,7 +101,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null) {
 			if (nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm")) {
-				world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundFire()[0], 1.0F, 1.0F);
+				//world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundFire()[0], 1.0F, 1.0F);
 				EntityArrow entityarrow = new EntityArrow(world, player, 5.0F);
 				world.spawnEntityInWorld(entityarrow);
 				nbt.setInteger("AmmoAtm", nbt.getInteger("AmmoAtm") - 1);
@@ -162,7 +162,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		if (nbt != null && nbt.hasKey("Weapon")) {
 			if (isPress) {
 				if (!world.isRemote) {
-					world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
+					//world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
 				} else {
 					if (Core.show_system_info_testing) System.out.println("-reload-");
 				}
@@ -292,7 +292,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(String par1) {
+	public static ItemStack addNBT(String par1) {
 		ItemStack is = new ItemStack(PackWeapons.proxy.item.weapons, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Weapon", par1);

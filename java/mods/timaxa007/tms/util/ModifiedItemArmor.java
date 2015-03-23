@@ -1,9 +1,11 @@
 package mods.timaxa007.tms.util;
 
+import mods.timaxa007.module.weight.api.IWeight;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
 
-public class ModifiedItemArmor extends ItemArmor {
+public class ModifiedItemArmor extends ItemArmor implements IWeight {
 
 	private String tag;
 
@@ -20,6 +22,11 @@ public class ModifiedItemArmor extends ItemArmor {
 
 	public String getTag() {
 		return tag;
+	}
+
+	@Override
+	public float getWeight(ItemStack is) {
+		return 0.0F;
 	}
 
 }

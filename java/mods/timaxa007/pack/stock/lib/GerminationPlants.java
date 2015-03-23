@@ -63,18 +63,18 @@ public class GerminationPlants {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (GerminationPlants iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (GerminationPlants iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
+		return empty.id;
 	}
 
 	private static void checkID(GerminationPlants gp, int id) {
@@ -83,9 +83,10 @@ public class GerminationPlants {
 	}
 
 	private static void checkTag(GerminationPlants gp, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + gp.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (GerminationPlants iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + gp.getClass() + ".");
 	}
 
 	public static GerminationPlants get(String tag) {

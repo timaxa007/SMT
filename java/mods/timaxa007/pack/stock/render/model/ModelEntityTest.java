@@ -19,9 +19,9 @@ public class ModelEntityTest extends ModelBiped {
 	}
 
 	public void render(Entity p_78088_1_, float f1, float f2, float f3, float f4, float f5, float f6) {
-        GL11.glPushMatrix();
-        model.renderAll();;
-        GL11.glPopMatrix();
+GL11.glPushMatrix();
+model.renderAll();;
+GL11.glPopMatrix();
 	}
 
 }

@@ -24,6 +24,10 @@ public class ListBlock {
 	te_healing, 
 	te_apiary;
 
+	public static Block[] list_block;
+
+	public static Class[] list_te;
+
 	public static void preInit() {
 
 		if (germination_plants_be) {
@@ -46,19 +50,23 @@ public class ListBlock {
 			te_apiary = TileEntityApiary.class;
 		}
 
-		UtilTMS.UtilBlock.RegBlock(new Block[] {
+		list_block = new Block[] {
 				germination_plants, 
 				foods, 
 				healing, 
 				apiary
-		});
+		};
 
-		UtilTMS.UtilBlock.RegTE(new Class[] {
+		UtilTMS.UtilBlock.RegBlock(list_block);
+
+		list_te = new Class[] {
 				te_germination_plants, 
 				te_foods, 
 				te_healing, 
 				te_apiary
-		});
+		};
+
+		UtilTMS.UtilBlock.RegTE(list_te);
 
 	}
 

@@ -45,7 +45,7 @@ public class ArmorWoolColors extends ModifiedItemArmor {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(ItemStack par1, int par2) {
+	public static ItemStack addNBT(ItemStack par1, int par2) {
 		ItemStack is = par1;
 		NBTTagCompound nbt = new NBTTagCompound();
 		//nbt.setInteger("Color", par2);

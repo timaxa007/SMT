@@ -1,6 +1,10 @@
 package mods.timaxa007.tms;
 
-import mods.timaxa007.tms.event.*;
+import mods.timaxa007.tms.event.EventActionArmorKey;
+import mods.timaxa007.tms.event.EventActionMouse;
+import mods.timaxa007.tms.event.EventActionPrimaryKey;
+import mods.timaxa007.tms.event.EventActionSecondarKey;
+import mods.timaxa007.tms.event.EventClientTMS;
 import mods.timaxa007.tms.util.RegKey;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -11,16 +15,16 @@ import cpw.mods.fml.common.FMLLog;
 
 public class ProxyClient extends ProxyCommon {
 
-	public void preInitialize() {
-		super.preInitialize();
+	public void preInit() {
+		super.preInit();
 
 		RegKey.preInit();
 
 	}
 
 	@Override
-	public void initialize() {
-		super.initialize();
+	public void init() {
+		super.init();
 
 		if (Core.debug) FMLLog.log(Core.MODID, Level.DEBUG, "Successful initialized client part.");
 

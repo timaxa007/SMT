@@ -1,5 +1,6 @@
 package mods.timaxa007.pack.stock.item;
 
+import mods.timaxa007.pack.stock.lib.food.ListFoodFirst;
 import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.item.Item;
 
@@ -29,12 +30,17 @@ public class ListItem {
 	bees;
 	//food_dog;
 
+	public static Item[] list_item;
+
 	public static void preInit() {
 
 		if (items_for_stock_be) items_for_stock = new ItemsStock("items_for_stock");
 		if (germination_plants_be) germination_plants = new ItemGerminationPlants("germination_plants");
 		if (nature_product_be) nature_product= new ItemNatureProduct("nature_product");
-		if (foods_be) foods = new ItemFoods("foods");
+		if (foods_be) {
+			new ListFoodFirst();
+			foods = new ItemFoods("foods");
+		}
 		if (drinks_be) drinks = new ItemDrinks("drinks");
 		if (medicals_be) medicals = new ItemMedicals("medicals");
 		if (honeycombs_be) honeycombs = new ItemHoneycombs("honeycombs");
@@ -42,7 +48,7 @@ public class ListItem {
 		if (bees_be) bees = new ItemBees("bees");
 		//if (food_dog_be) food_dog = new ItemFoodDog(food_dog_itemID);
 
-		UtilTMS.UtilItem.RegItem(new Item[] {
+		list_item = new Item[] {
 				items_for_stock, 
 				germination_plants, 
 				nature_product, 
@@ -52,7 +58,9 @@ public class ListItem {
 				honeycombs, 
 				bee_products, 
 				bees
-		});
+		};
+
+		UtilTMS.UtilItem.RegItem(list_item);
 
 	}
 

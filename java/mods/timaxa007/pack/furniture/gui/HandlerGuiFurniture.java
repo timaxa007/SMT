@@ -23,6 +23,22 @@ public class HandlerGuiFurniture implements IGuiHandler {
 		//case 18:return new ContainerGrills(player, (TileEntityGrills)te);
 		//case 19:return new ContainerMashineWater(player, (TileEntityMashineWater)te);
 		case 20:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 32:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 33:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 34:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 35:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 36:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 37:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 38:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 39:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 40:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 41:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 42:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 43:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 44:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 45:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 46:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
+		case 47:return new ContainerBackpack(player, (ItemBackpack)current.getItem());
 		default:return null;
 		}
 	}
@@ -39,6 +55,22 @@ public class HandlerGuiFurniture implements IGuiHandler {
 		//case 18:return new GuiGrills(player, (TileEntityGrills)te);
 		//case 19:return new GuiMashineWater(player, (TileEntityMashineWater)te);
 		case 20:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 32:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 33:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 34:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 35:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 36:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 37:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 38:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 39:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 40:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 41:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 42:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 43:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 44:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 45:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 46:return new GuiBackpack(player, (ItemBackpack)current.getItem());
+		case 47:return new GuiBackpack(player, (ItemBackpack)current.getItem());
 		default:return null;
 		}
 	}

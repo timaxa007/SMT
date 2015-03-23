@@ -1,11 +1,12 @@
 package mods.timaxa007.tms.util;
 
+import mods.timaxa007.module.weight.api.IWeight;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
-public class ModifiedItem extends Item {
+public class ModifiedItem extends Item implements IWeight {
 
 	private String tag;
-	private float weight;
 
 	public ModifiedItem(String tag) {
 		super();
@@ -24,13 +25,9 @@ public class ModifiedItem extends Item {
 		return tag;
 	}
 
-	public Item setWeight(float weight) {
-		this.weight = weight;
-		return this;
-	}
-
-	public float getWeight() {
-		return weight;
+	@Override
+	public float getWeight(ItemStack is) {
+		return 0.0F;
 	}
 
 }

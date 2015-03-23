@@ -99,7 +99,7 @@ public class ItemStuffs extends ItemActionMouse {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, int par2) {
+	public static ItemStack addNBT(int par1, int par2) {
 		ItemStack is = new ItemStack(PackMagic.proxy.item.stuffs, 1, 512);
 		NBTTagCompound nbt = new NBTTagCompound();
 		Spells.addSpell(nbt, Spells.efficient_mining, 0, -1);

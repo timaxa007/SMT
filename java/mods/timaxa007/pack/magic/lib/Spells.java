@@ -100,17 +100,18 @@ public class Spells {
 	}
 
 	public static boolean hasTag(String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-				return true;
+		if (UtilString.hasString(tag))
+			for (Spells spell : list)
+				if (spell != null && tag.equalsIgnoreCase(spell.tag))
+					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
+			for (Spells spell : list)
+				if (spell != null && tag.equalsIgnoreCase(spell.tag))
+					return spell.id;
 		return empty.id;
 	}
 
@@ -120,9 +121,10 @@ public class Spells {
 	}
 
 	private static void checkTag(Spells spell, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + spell.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (Spells spell2 : list)
+				if (spell2 != null && spell2.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + spell.getClass() + ".");
 	}
 
 	public static Spells get(String tag) {
@@ -302,20 +304,24 @@ public class Spells {
 					//---------------------------------------------------------------------
 					ItemStack[] main = player.inventory.mainInventory;
 
-					for (int j = 0; j < main.length; j++) {
-						if (main[j] != null) {
+					for (ItemStack slot : main) {
+						if (slot != null) {
 							//-------------------------------------------------------------
-							NBTTagList nbttaglist = Spells.getSpellsTagList(main[j]);
+							NBTTagList nbttaglist = Spells.getSpellsTagList(slot);
 
 							if (nbttaglist != null) {
 								for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 
 									NBTTagCompound tagAt = nbttaglist.getCompoundTagAt(i);
-
+									//------------------------
 									Spells spell = Spells.get(tagAt.getString("spell"));
 									int power = UtilInteger.getMaxByte((int)tagAt.getByte("power"));
 									int times = (int)tagAt.getShort("times");
-
+									//------------------------
+									Spells spell_last = spell;
+									int power_last = power;
+									int times_last = times;
+									//------------------------
 									if (world.getWorldTime() % (20) == 0) {
 										if (times == 0) spell = Spells.empty;
 										if (times > 0) --times;
@@ -323,13 +329,13 @@ public class Spells {
 
 									if (times != 0) {
 										if (power > 0 && world.getWorldTime() % (int)(255 / power) == 0) {
-											spell.functioning(main[j], player, Spells.TypeFunctioning.item);
+											spell.functioning(slot, player, Spells.TypeFunctioning.item);
 										}
 									}
 
-									tagAt.setString("spell", spell.getTag());
-									tagAt.setByte("power", (byte)UtilInteger.setMaxByte(power));
-									tagAt.setShort("times", (short)times);
+									if (spell_last != spell) tagAt.setString("spell", spell.getTag());
+									if (power_last != power) tagAt.setByte("power", (byte)UtilInteger.setMaxByte(power));
+									if (times_last != times) tagAt.setShort("times", (short)times);
 
 								}
 							}
@@ -348,11 +354,15 @@ public class Spells {
 								for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 
 									NBTTagCompound tagAt = nbttaglist.getCompoundTagAt(i);
-
+									//------------------------
 									Spells spell = Spells.get(tagAt.getString("spell"));
 									int power = UtilInteger.getMaxByte((int)tagAt.getByte("power"));
 									int times = (int)tagAt.getShort("times");
-
+									//------------------------
+									Spells spell_last = spell;
+									int power_last = power;
+									int times_last = times;
+									//------------------------
 									if (world.getWorldTime() % (20) == 0) {
 										if (times == 0) spell = Spells.empty;
 										if (times > 0) --times;
@@ -377,9 +387,9 @@ public class Spells {
 										}
 									}
 
-									tagAt.setString("spell", spell.getTag());
-									tagAt.setByte("power", (byte)UtilInteger.setMaxByte(power));
-									tagAt.setShort("times", (short)times);
+									if (spell_last != spell) tagAt.setString("spell", spell.getTag());
+									if (power_last != power) tagAt.setByte("power", (byte)UtilInteger.setMaxByte(power));
+									if (times_last != times) tagAt.setShort("times", (short)times);
 
 								}
 							}

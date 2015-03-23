@@ -16,12 +16,14 @@ public class RenderMain {
 	public static int block_electric_wires_modelID;
 	public static int block_chip_modelID;
 	public static int block_module_movement_modelID;
+	public static int block_farm_mashines_modelID;
 
 	public static void preInit() {
 
 		block_electric_wires_modelID = -1;
 		block_chip_modelID = -1;
 		block_module_movement_modelID = -1;
+		block_farm_mashines_modelID = -1;
 
 	}
 
@@ -32,17 +34,26 @@ public class RenderMain {
 		//Blocks
 		/*block_electric_wires_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_chip_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_module_movement_modelID = RenderingRegistry.getNextAvailableRenderId();*/
+		block_module_movement_modelID = RenderingRegistry.getNextAvailableRenderId();
+		block_farm_mashines_modelID = RenderingRegistry.getNextAvailableRenderId();*/
 
 		//Blocks
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElectricWires.class, new BlockRenderElectricWires());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChip.class, new BlockRenderChip());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModuleMovement.class, new BlockRenderModuleMovement());
-
-		//Blocks
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.electric_wires), new ItemRenderBlockElectricWires());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.chip), new ItemRenderBlockChip());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.module_movement), new ItemRenderBlockModuleMovement());
+		if (PackTechno.proxy.block.electric_wires_be) {
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElectricWires.class, new BlockRenderElectricWires());
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.electric_wires), new ItemRenderBlockElectricWires());
+		}
+		if (PackTechno.proxy.block.chip_be) {
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChip.class, new BlockRenderChip());
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.chip), new ItemRenderBlockChip());
+		}
+		if (PackTechno.proxy.block.module_movement_be) {
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModuleMovement.class, new BlockRenderModuleMovement());
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.module_movement), new ItemRenderBlockModuleMovement());
+		}
+		if (PackTechno.proxy.block.farm_mashines_be) {
+			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFarmMashines.class, new BlockRenderFarmMashines());
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.farm_mashines), new ItemRenderBlockFarmMashines());
+		}
 
 		//Items
 

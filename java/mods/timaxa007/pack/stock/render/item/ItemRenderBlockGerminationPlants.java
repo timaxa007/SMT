@@ -1,6 +1,6 @@
 package mods.timaxa007.pack.stock.render.item;
 
-import mods.timaxa007.lib.ModelT;
+import mods.timaxa007.tms.lib.ModelT;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

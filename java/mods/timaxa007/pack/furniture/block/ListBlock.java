@@ -228,6 +228,10 @@ public class ListBlock {
 	te_furniture_chest
 	;
 
+	public static Block[] list_block;
+
+	public static Class[] list_te;
+
 	public static void preInit() {
 
 		if (furniture_machines_be) {
@@ -480,7 +484,7 @@ public class ListBlock {
 
 		te_block_blocks = TileEntityBlockBlocks.class;
 
-		UtilTMS.UtilBlock.RegBlock(new Block[] {
+		list_block = new Block[] {
 				furniture_machines, 
 				furniture_rock_blocks, 
 				furniture_glass_blocks, 
@@ -569,9 +573,11 @@ public class ListBlock {
 				metal_blocks, 
 				vegetable_face, 
 				furniture_chest
-		});
+		};
 
-		UtilTMS.UtilBlock.RegTE(new Class[] {
+		UtilTMS.UtilBlock.RegBlock(list_block);
+
+		list_te = new Class[] {
 				te_furniture_machines, 
 				te_furniture_rock_blocks, 
 				te_furniture_glass_blocks, 
@@ -610,7 +616,9 @@ public class ListBlock {
 				te_metal_blocks, 
 				te_vegetable_face, 
 				te_furniture_chest
-		});
+		};
+
+		UtilTMS.UtilBlock.RegTE(list_te);
 
 	}
 

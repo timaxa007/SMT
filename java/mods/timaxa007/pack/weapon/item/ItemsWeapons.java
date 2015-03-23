@@ -8,6 +8,7 @@ public class ItemsWeapons extends ModifiedItem {
 	public ItemsWeapons(String tag) {
 		super(tag);
 		setCreativeTab(PackWeapons.tab_weapons);
+		setTextureName("timaxa007:icon/weapon");
 	}
 
 }

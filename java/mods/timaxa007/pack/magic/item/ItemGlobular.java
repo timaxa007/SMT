@@ -50,7 +50,7 @@ public class ItemGlobular extends ModifiedItem {
 		list.add(addNBT());
 	}
 
-	private static ItemStack addNBT() {
+	public static ItemStack addNBT() {
 		ItemStack is = new ItemStack(PackMagic.proxy.item.globular, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setBoolean("Active", false);

@@ -28,7 +28,7 @@ public class Recipes_Stock {
 */
 	}
 
-	private static ItemStack addNBTCake(Block par1, String par2) {
+	public static ItemStack addNBTCake(Block par1, String par2) {
 		ItemStack is = new ItemStack(par1, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Type", par2);

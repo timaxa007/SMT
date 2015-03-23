@@ -69,18 +69,18 @@ public class FoodForBlock {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (FoodForBlock iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (FoodForBlock iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
+		return empty.id;
 	}
 
 	private static void checkID(FoodForBlock foodForBlock, int id) {
@@ -89,9 +89,10 @@ public class FoodForBlock {
 	}
 
 	private static void checkTag(FoodForBlock foodForBlock, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + foodForBlock.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (FoodForBlock iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + foodForBlock.getClass() + ".");
 	}
 
 	public static FoodForBlock get(String tag) {

@@ -52,20 +52,20 @@ public class EventWeaponsClient {
 					w_min = (width / 2) - (height /2);
 					w_max = (width / 2) + (height /2);
 					//-------------------------------------------------------------
-					voidRender(tessellator, 0, w_min, h_min, h_max, new ResourceLocation("timaxa007", "textures/gui/scope_blank_null.png"));
-					voidRender(tessellator, w_max, width, h_min, h_max, new ResourceLocation("timaxa007", "textures/gui/scope_blank_null.png"));
+					voidRender(tessellator, 0, w_min, h_min, h_max, new ResourceLocation("timaxa007", "textures/gui/scope/scope_blank_null.png"));
+					voidRender(tessellator, w_max, width, h_min, h_max, new ResourceLocation("timaxa007", "textures/gui/scope/scope_blank_null.png"));
 					//-------------------------------------------------------------
 				} else if (height > width) {
 					h_min = (height / 2) - (width /2);
 					h_max = (height / 2) + (width /2);
 					//-------------------------------------------------------------
-					voidRender(tessellator, w_min, w_max, 0, h_min, new ResourceLocation("timaxa007", "textures/gui/scope_blank_null.png"));
-					voidRender(tessellator, w_min, w_max, h_max, height, new ResourceLocation("timaxa007", "textures/gui/scope_blank_null.png"));
+					voidRender(tessellator, w_min, w_max, 0, h_min, new ResourceLocation("timaxa007", "textures/gui/scope/scope_blank_null.png"));
+					voidRender(tessellator, w_min, w_max, h_max, height, new ResourceLocation("timaxa007", "textures/gui/scope/scope_blank_null.png"));
 					//-------------------------------------------------------------
 				}
 
 				//-------------------------------------------------------------
-				voidRender(tessellator, w_min, w_max, h_min, h_max, new ResourceLocation("timaxa007", "textures/gui/scope_blank_11.png"));
+				voidRender(tessellator, w_min, w_max, h_min, h_max, new ResourceLocation("timaxa007", "textures/gui/scope/scope_blank_11.png"));
 				//-------------------------------------------------------------
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				GL11.glPopMatrix();

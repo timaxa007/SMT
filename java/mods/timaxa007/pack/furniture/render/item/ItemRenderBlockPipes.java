@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.furniture.render.item;
 
-import mods.timaxa007.lib.AddTextureModel;
-import mods.timaxa007.lib.ModelT;
+import mods.timaxa007.tms.lib.AddTextureModel;
+import mods.timaxa007.tms.lib.ModelT;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

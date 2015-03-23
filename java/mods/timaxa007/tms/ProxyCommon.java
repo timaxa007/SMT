@@ -6,11 +6,11 @@ import cpw.mods.fml.common.FMLLog;
 
 public class ProxyCommon {
 
-	public void preInitialize() {
+	public void preInit() {
 
 	}
 
-	public void initialize() {
+	public void init() {
 		if (Core.debug) FMLLog.log(Core.MODID, Level.DEBUG, "Successful initialized common part.");
 	}
 

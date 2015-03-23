@@ -55,18 +55,18 @@ public class OreFake {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (OreFake ore_fake : list)
+				if (ore_fake != null && tag.equalsIgnoreCase(ore_fake.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (OreFake ore_fake : list)
+				if (ore_fake != null && tag.equalsIgnoreCase(ore_fake.tag))
+					return ore_fake.id;
+		return empty.id;
 	}
 
 	private static void checkID(OreFake oreFake, int id) {
@@ -75,9 +75,10 @@ public class OreFake {
 	}
 
 	private static void checkTag(OreFake oreFake, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + oreFake.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (OreFake ore_fake : list)
+				if (ore_fake != null && ore_fake.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + oreFake.getClass() + ".");
 	}
 
 	public static OreFake get(String tag) {

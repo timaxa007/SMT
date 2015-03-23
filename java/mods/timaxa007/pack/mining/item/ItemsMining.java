@@ -8,6 +8,7 @@ public class ItemsMining extends ModifiedItem {
 	public ItemsMining(String tag) {
 		super(tag);
 		setCreativeTab(PackMining.tab_mining);
+		setTextureName("timaxa007:icon/mining");
 	}
 	/*
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {

@@ -32,7 +32,7 @@ public class PackFurniture {
 
 	public static CreativeTabs tab_furniture = new CreativeTabs("tab_furniture") {
 		public Item getTabIconItem() {
-			return Item.getItemFromBlock(PackFurniture.proxy.block.cnstor_block);
+			return PackFurniture.proxy.item.items_for_furniture;
 		}
 	};
 

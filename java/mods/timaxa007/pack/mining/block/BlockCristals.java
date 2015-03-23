@@ -56,7 +56,6 @@ public class BlockCristals extends ModifiedBlock implements ITileEntityProvider 
 		return null;
 	}
 
-
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
@@ -85,7 +84,7 @@ public class BlockCristals extends ModifiedBlock implements ITileEntityProvider 
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, int par2, int par3) {
+	public static ItemStack addNBT(int par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackMining.proxy.block.cristals, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par1);

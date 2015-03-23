@@ -2,9 +2,9 @@ package mods.timaxa007.pack.furniture.block;
 
 import java.util.List;
 
-import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityPipes;
+import mods.timaxa007.tms.lib.AddTextureModel;
 import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -88,7 +88,7 @@ public class BlockPipes extends ModifiedBlock implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(String par1, int par2, int par3) {
+	public static ItemStack addNBT(String par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.pipes, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);

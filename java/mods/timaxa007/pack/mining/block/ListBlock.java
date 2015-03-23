@@ -22,6 +22,10 @@ public class ListBlock {
 	te_ore_ores, 
 	te_cristals;
 
+	public static Block[] list_block;
+
+	public static Class[] list_te;
+
 	public static void preInit() {
 
 		if (ore_rock_ores_be) ore_rock_ores = new OreOres("ore_rock_ores").setBlockTextureName("stone");
@@ -34,17 +38,21 @@ public class ListBlock {
 			te_cristals = TileEntityCristals.class;
 		}
 
-		UtilTMS.UtilBlock.RegBlock(new Block[] {
+		list_block = new Block[] {
 				ore_rock_ores, 
 				ore_nether_ores, 
 				ore_ender_ores, 
 				cristals
-		});
+		};
 
-		UtilTMS.UtilBlock.RegTE(new Class[] {
+		UtilTMS.UtilBlock.RegBlock(list_block);
+
+		list_te = new Class[] {
 				te_ore_ores, 
 				te_cristals
-		});
+		};
+
+		UtilTMS.UtilBlock.RegTE(list_te);
 
 	}
 

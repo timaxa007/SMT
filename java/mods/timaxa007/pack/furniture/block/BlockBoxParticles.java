@@ -145,7 +145,7 @@ public class BlockBoxParticles extends ModifiedBlock implements ITileEntityProvi
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, String par2) {
+	public static ItemStack addNBT(int par1, String par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.box_particles, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par2);

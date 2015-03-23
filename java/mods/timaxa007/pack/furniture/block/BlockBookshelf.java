@@ -95,7 +95,7 @@ public class BlockBookshelf extends ModifiedBlock implements ITileEntityProvider
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, String par2) {
+	public static ItemStack addNBT(int par1, String par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.bookshelf, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par2);

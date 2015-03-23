@@ -30,6 +30,22 @@ public class ProxyCommon {
 	public static int gui_grills = 18;
 	public static int gui_mashine_water = 19;
 	public static int gui_backpack = 20;
+	public static int gui_backpack_1 = 32;
+	public static int gui_backpack_2 = 33;
+	public static int gui_backpack_3 = 34;
+	public static int gui_backpack_4 = 35;
+	public static int gui_backpack_5 = 36;
+	public static int gui_backpack_6 = 37;
+	public static int gui_backpack_7 = 38;
+	public static int gui_backpack_8 = 39;
+	public static int gui_backpack_9 = 40;
+	public static int gui_backpack_10 = 41;
+	public static int gui_backpack_11 = 42;
+	public static int gui_backpack_12 = 43;
+	public static int gui_backpack_13 = 44;
+	public static int gui_backpack_14 = 45;
+	public static int gui_backpack_15 = 46;
+	public static int gui_backpack_16 = 47;
 
 	public void preInit(FMLPreInitializationEvent event) {
 

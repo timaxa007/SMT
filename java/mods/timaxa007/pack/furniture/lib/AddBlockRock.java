@@ -1,6 +1,5 @@
 package mods.timaxa007.pack.furniture.lib;
 
-import mods.timaxa007.pack.magic.lib.Spells;
 import mods.timaxa007.tms.util.UtilString;
 
 /**
@@ -54,17 +53,17 @@ public class AddBlockRock {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (AddBlockRock adding : list)
+				if (adding != null && tag.equalsIgnoreCase(adding.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
+			for (AddBlockRock adding : list)
+				if (adding != null && tag.equalsIgnoreCase(adding.tag))
+					return adding.id;
 		return empty.id;
 	}
 
@@ -74,9 +73,10 @@ public class AddBlockRock {
 	}
 
 	private static void checkTag(AddBlockRock addBlockRock, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + addBlockRock.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (AddBlockRock adding : list)
+				if (adding != null && adding.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + addBlockRock.getClass() + ".");
 	}
 
 	public static AddBlockRock get(String tag) {

@@ -123,11 +123,11 @@ public class BlockFurnitureGroundBlocks extends ModifiedBlock implements ITileEn
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(Block par1, int par2, int par3) {
+	public static ItemStack addNBT(Block par1, int par2, int par3) {
 		return addNBT(Item.getItemFromBlock(par1), par2, par3);
 	}
 
-	private static ItemStack addNBT(Item par1, int par2, int par3) {
+	public static ItemStack addNBT(Item par1, int par2, int par3) {
 		ItemStack is = new ItemStack(par1, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setByte("SubID", (byte)par2);

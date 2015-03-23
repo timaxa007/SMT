@@ -32,6 +32,7 @@ public class ProxyCommon implements IProxy {
 		block.electric_wires_be = cfg.get("block", "electric_wires", true).getBoolean(true);
 		block.chip_be = cfg.get("block", "chip", true).getBoolean(true);
 		block.module_movement_be = cfg.get("block", "module_movement", true).getBoolean(true);
+		block.farm_mashines_be = cfg.get("block", "farm_mashines", true).getBoolean(true);
 
 		item.items_for_techno_be = cfg.get("item", "items_for_techno", true).getBoolean(true);
 		item.tool_electric_wrench_be = cfg.get("item", "tool_electric_wrench", true).getBoolean(true);

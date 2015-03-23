@@ -82,7 +82,7 @@ public class BlockCnstorFence extends ModifiedBlock implements ITileEntityProvid
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(String par1) {
+	public static ItemStack addNBT(String par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_fence, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);

@@ -11,13 +11,17 @@ public class ListItem {
 	public static Item 
 	items_for_mining;
 
+	public static Item[] list_item;
+
 	public static void preInit() {
 
 		if (items_for_mining_be) items_for_mining = new ItemsMining("items_for_mining");
 
-		UtilTMS.UtilItem.RegItem(new Item[] {
+		list_item = new Item[] {
 				items_for_mining
-		});
+		};
+
+		UtilTMS.UtilItem.RegItem(list_item);
 
 	}
 

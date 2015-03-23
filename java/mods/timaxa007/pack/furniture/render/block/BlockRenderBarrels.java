@@ -1,7 +1,7 @@
 package mods.timaxa007.pack.furniture.render.block;
 
-import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.tile.TileEntityBarrels;
+import mods.timaxa007.tms.lib.AddTextureModel;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;

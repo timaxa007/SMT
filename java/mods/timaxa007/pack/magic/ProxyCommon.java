@@ -2,6 +2,7 @@ package mods.timaxa007.pack.magic;
 
 import mods.timaxa007.pack.magic.block.ListBlock;
 import mods.timaxa007.pack.magic.event.EventMagic;
+import mods.timaxa007.pack.magic.event.EventMana;
 import mods.timaxa007.pack.magic.gui.HandlerGuiMagic;
 import mods.timaxa007.pack.magic.item.ListItem;
 import mods.timaxa007.pack.magic.lib.ListMagic;
@@ -13,6 +14,7 @@ import mods.timaxa007.tms.util.IProxy;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
@@ -68,13 +70,14 @@ public class ProxyCommon implements IProxy {
 
 		new ListMagic();
 
+		MinecraftForge.EVENT_BUS.register(new EventMagic());
+		MinecraftForge.EVENT_BUS.register(new EventMana.Player());
+
 		block.preInit();
 		item.preInit();
 		render.preInit();
 
 		Recipes_Magic.list();
-
-		MinecraftForge.EVENT_BUS.register(new EventMagic());
 
 	}
 
@@ -82,6 +85,7 @@ public class ProxyCommon implements IProxy {
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(PackMagic.MODID, new HandlerGuiMagic());
 		MinecraftForge.EVENT_BUS.register(new Spells.EventSpellsCommon());
+		FMLCommonHandler.instance().bus().register(new EventMana.Server());
 
 	}
 

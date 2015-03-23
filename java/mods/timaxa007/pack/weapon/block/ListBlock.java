@@ -15,6 +15,10 @@ public class ListBlock {
 	public static Class 
 	te_claymore;
 
+	public static Block[] list_block;
+
+	public static Class[] list_te;
+
 	public static void preInit() {
 
 		if (claymore_be) {
@@ -22,13 +26,17 @@ public class ListBlock {
 			te_claymore = TileEntityClaymore.class;
 		}
 
-		UtilTMS.UtilBlock.RegBlock(new Block[] {
+		list_block = new Block[] {
 				claymore
-		});
+		};
 
-		UtilTMS.UtilBlock.RegTE(new Class[] {
+		UtilTMS.UtilBlock.RegBlock(list_block);
+
+		list_te = new Class[] {
 				te_claymore
-		});
+		};
+
+		UtilTMS.UtilBlock.RegTE(list_te);
 
 	}
 

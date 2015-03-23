@@ -54,17 +54,17 @@ public class ItemForMagic {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (ItemForMagic iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
+			for (ItemForMagic iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
 		return empty.id;
 	}
 
@@ -74,9 +74,10 @@ public class ItemForMagic {
 	}
 
 	private static void checkTag(ItemForMagic itemForMagic, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + itemForMagic.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (ItemForMagic iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + itemForMagic.getClass() + ".");
 	}
 
 	public static ItemForMagic get(String tag) {

@@ -23,7 +23,7 @@ public class Recipes_Mining {
 */
 	}
 
-	private static ItemStack addNBT(ItemStack par1, int par2) {
+	public static ItemStack addNBT(ItemStack par1, int par2) {
 		ItemStack is = par1;
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Color", par2);

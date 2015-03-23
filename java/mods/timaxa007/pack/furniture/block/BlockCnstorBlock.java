@@ -3,9 +3,9 @@ package mods.timaxa007.pack.furniture.block;
 import java.util.List;
 import java.util.Random;
 
-import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityCnstorBlock;
+import mods.timaxa007.tms.lib.AddTextureModel;
 import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -106,7 +106,7 @@ public class BlockCnstorBlock extends ModifiedBlock implements ITileEntityProvid
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(String par1, int par2) {
+	public static ItemStack addNBT(String par1, int par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_block);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);

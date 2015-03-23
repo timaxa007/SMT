@@ -24,7 +24,7 @@ public class UtilTMS {
 	public static class UtilBlock {
 
 		public static void RegBlock(Block[] block) {
-			for (int i = 0; i < block.length; i++) RegBlock(block[i]);
+			for (Block blk : block) RegBlock(blk);
 		}
 
 		public static void RegBlock(Block block) {
@@ -42,7 +42,7 @@ public class UtilTMS {
 		}
 
 		public static void RegTE(Class<? extends TileEntity> te[]) {
-			for (int i = 0; i < te.length; i++) RegTE(te[i]);
+			for (Class<? extends TileEntity> tile : te) RegTE(tile);
 		}
 
 		public static void RegTE(Class<? extends TileEntity> te) {
@@ -63,7 +63,7 @@ public class UtilTMS {
 	public static class UtilItem {
 
 		public static void RegItem(Item[] item) {
-			for (int i = 0; i < item.length; i++) RegItem(item[i]);
+			for (Item itm : item) RegItem(itm);
 		}
 
 		public static void RegItem(Item item) {

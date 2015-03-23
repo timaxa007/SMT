@@ -450,7 +450,7 @@ world.spawnEntityInWorld(entityitem2);
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, String par2, int par3, int par4, int par5, int par6, int par7) {
+	public static ItemStack addNBT(int par1, String par2, int par3, int par4, int par5, int par6, int par7) {
 		ItemStack is = new ItemStack(PackStock.proxy.block.germination_plants, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("PlantID", par1);

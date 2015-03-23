@@ -70,23 +70,23 @@ public class WeaponFor {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
 				return i;
-		return 0;
+		return list.length - 1;
 	}
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (WeaponFor iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (WeaponFor iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
+		return empty.id;
 	}
 
 	private static void checkID(WeaponFor weaponFor, int id) {
@@ -95,9 +95,10 @@ public class WeaponFor {
 	}
 
 	private static void checkTag(WeaponFor weaponFor, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + weaponFor.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (WeaponFor iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + weaponFor.getClass() + ".");
 	}
 
 	public static WeaponFor get(String tag) {

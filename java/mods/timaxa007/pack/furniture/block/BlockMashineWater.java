@@ -91,7 +91,7 @@ public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvi
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, boolean par2) {
+	public static ItemStack addNBT(int par1, boolean par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.mashine_waiter, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Color", par1);

@@ -47,7 +47,7 @@ public class AmmoFor {
 		list[id] = this;
 		this.tag = tag;
 	}
-	//--------------------------------------------------------v
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -57,18 +57,18 @@ public class AmmoFor {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (AmmoFor iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (AmmoFor iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
+		return empty.id;
 	}
 
 	private static void checkID(AmmoFor ammoFor, int id) {
@@ -77,9 +77,10 @@ public class AmmoFor {
 	}
 
 	private static void checkTag(AmmoFor ammoFor, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + ammoFor.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (AmmoFor iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + ammoFor.getClass() + ".");
 	}
 
 	public static AmmoFor get(String tag) {

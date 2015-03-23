@@ -1,6 +1,6 @@
 package mods.timaxa007.tms;
 
-import mods.timaxa007.lib.ListTextureModel;
+import mods.timaxa007.tms.lib.ListTextureModel;
 import mods.timaxa007.tms.packet.RegisterMessage;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -80,13 +80,13 @@ public class Core {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(Core.MODID);
 		RegisterMessage.init(network);
 
-		proxy.preInitialize();
+		proxy.preInit();
 
 	}
 
 	@EventHandler
 	public void initialize(FMLInitializationEvent event) {
-		proxy.initialize();
+		proxy.init();
 	}
 
 	private static boolean isObfuscated() {

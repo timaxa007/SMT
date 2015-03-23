@@ -68,7 +68,7 @@ public class BlockBarrels extends ModifiedBlock implements ITileEntityProvider {
 		//list.add(new ItemStack(PackFurniture.toolAirBrush, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, int par2, int par3, boolean par4) {
+	public static ItemStack addNBT(int par1, int par2, int par3, boolean par4) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.barrels, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("TypeB", par1);

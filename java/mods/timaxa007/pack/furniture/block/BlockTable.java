@@ -72,7 +72,7 @@ public class BlockTable extends ModifiedBlock implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, String par2, int par3) {
+	public static ItemStack addNBT(int par1, String par2, int par3) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.table, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par2);

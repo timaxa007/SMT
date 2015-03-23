@@ -8,6 +8,7 @@ public class ItemsTechno extends ModifiedItem {
 	public ItemsTechno(String tag) {
 		super(tag);
 		setCreativeTab(PackTechno.tab_techno);
+		setTextureName("timaxa007:icon/techno");
 	}
 
 }

@@ -3,10 +3,10 @@ package mods.timaxa007.pack.stock.block;
 import java.util.List;
 import java.util.Random;
 
-import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.stock.PackStock;
 import mods.timaxa007.pack.stock.lib.FoodForBlock;
 import mods.timaxa007.pack.stock.tile.TileEntityFoods;
+import mods.timaxa007.tms.lib.ActionModel;
 import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -110,7 +110,7 @@ public class BlockFoods extends ModifiedBlock implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(String par1, int par2, int par3) {
+	public static ItemStack addNBT(String par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackStock.proxy.block.foods, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);

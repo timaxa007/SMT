@@ -170,11 +170,11 @@ public class BlockVegetableFace extends ModifiedBlock implements ITileEntityProv
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(Block par1, int par2, int par3, int par4) {
+	public static ItemStack addNBT(Block par1, int par2, int par3, int par4) {
 		return addNBT(Item.getItemFromBlock(par1), par2, par3, par4);
 	}
 
-	private static ItemStack addNBT(Item par1, int par2, int par3, int par4) {
+	public static ItemStack addNBT(Item par1, int par2, int par3, int par4) {
 		ItemStack is = new ItemStack(par1, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setByte("SubID", (byte)par2);

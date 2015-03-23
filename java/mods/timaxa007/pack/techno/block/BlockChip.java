@@ -120,7 +120,7 @@ public class BlockChip extends ModifiedBlock implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1) {
+	public static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackTechno.proxy.block.chip, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par1);

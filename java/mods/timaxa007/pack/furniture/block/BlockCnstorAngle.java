@@ -81,7 +81,7 @@ public class BlockCnstorAngle extends ModifiedBlock implements ITileEntityProvid
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, int par2) {
+	public static ItemStack addNBT(int par1, int par2) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_angle, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par2);

@@ -54,18 +54,18 @@ public class ItemForPackItems {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (ItemForPackItems iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (ItemForPackItems iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
+		return empty.id;
 	}
 
 	private static void checkID(ItemForPackItems itemForPackItems, int id) {
@@ -74,9 +74,10 @@ public class ItemForPackItems {
 	}
 
 	private static void checkTag(ItemForPackItems itemForPackItems, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + itemForPackItems.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (ItemForPackItems iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + itemForPackItems.getClass() + ".");
 	}
 
 	public static ItemForPackItems get(String tag) {

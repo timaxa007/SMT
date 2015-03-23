@@ -110,5 +110,36 @@ public class UtilInteger {
 				timer[4] + " : " + timer[5] + ", " + 
 				timer[6] + " : " + timer[7] + "";*/
 	}
+	//-----------------------------------------------------
+	public enum RomanNumeral {
 
+		RomanNumeral1(0x0, 1, "I"),
+		RomanNumeral2(0x1, 2, "II"),
+		RomanNumeral3(0x2, 3, "III"),
+		RomanNumeral4(0x3, 4, "IV"),
+		RomanNumeral5(0x4, 5, "V"),
+		RomanNumeral6(0x5, 6, "VI"),
+		RomanNumeral7(0x6, 7, "VII"),
+		RomanNumeral8(0x7, 8, "VIII"),
+		RomanNumeral9(0x8, 9, "IX"),
+		RomanNumeral10(0x9, 10, "X"),
+		RomanNumeral11(0xA, 11, "XI"),
+		RomanNumeral12(0xB, 12, "VII"),
+		RomanNumeral50(0xC, 50, "L"),
+		RomanNumeral100(0xD, 100, "C"),
+		RomanNumeral500(0xE, 500, "D"),
+		RomanNumeral1000(0xF, 1000, "M");
+
+		int hex;
+		int num;
+		String name;
+
+		RomanNumeral(int i, int j, String k) {
+			hex = i;
+			num = j;
+			name = k;
+		}
+
+	}
+	//-----------------------------------------------------
 }

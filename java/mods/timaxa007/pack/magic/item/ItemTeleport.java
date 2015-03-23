@@ -49,7 +49,7 @@ public class ItemTeleport extends ModifiedItem {
 		list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(double x, double y, double z) {
+	public static ItemStack addNBT(double x, double y, double z) {
 		ItemStack is = new ItemStack(PackMagic.proxy.item.teleport, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		//nbt.setBoolean("SurfaceWorld", true);

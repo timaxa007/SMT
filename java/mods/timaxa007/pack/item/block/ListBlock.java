@@ -1,6 +1,7 @@
 package mods.timaxa007.pack.item.block;
 
 import mods.timaxa007.pack.item.tile.*;
+import mods.timaxa007.tms.util.UtilTMS;
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -16,9 +17,9 @@ public class ListBlock {
 
 		//items_machines = new BlockItemsMachines();
 
-		//GameRegistry.registerBlock(items_machines, "BlockItemsMachines");
+		//UtilTMS.UtilBlock.RegBlock(list_block);
 
-		//GameRegistry.registerTileEntity(TileEntityItemsMachines.class, "TileEntityItemsMachines");
+		//UtilTMS.UtilBlock.RegTE(list_te);
 
 	}
 

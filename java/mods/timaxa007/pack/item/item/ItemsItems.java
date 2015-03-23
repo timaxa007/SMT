@@ -13,6 +13,7 @@ public class ItemsItems extends ModifiedItem {
 	public ItemsItems(String tag) {
 		super(tag);
 		setCreativeTab(PackItems.tab_items);
+		setTextureName("timaxa007:icon/item");
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {

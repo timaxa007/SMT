@@ -25,13 +25,19 @@ public class FoodForItem {
 	private float sat;
 	private int spd_eat;
 
-	private float temp;
+	private float protein;
+	private float fat;
+	private float carbohydrate;
+	private float vitamin;
+	private float minerals;
+	private float micronutrients;
+
 	private float temp_min;
 	private float temp_max;
 
 	//private int pass_n = 4;
-	private int[] color_hex = new int[] {0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF};
-	private String[] texture_name = new String[] {"empty", "empty", "empty", "empty"};
+	public int[] color_hex = new int[] {0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF};
+	public String[] texture_name = new String[] {"empty", "empty", "empty", "empty"};
 	private int[] clr_tmp = color_hex;
 	private String[] txr_tmp = texture_name;
 
@@ -63,18 +69,18 @@ public class FoodForItem {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (FoodForItem iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (FoodForItem iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
+		return empty.id;
 	}
 
 	private static void checkID(FoodForItem foodForItem, int id) {
@@ -83,9 +89,10 @@ public class FoodForItem {
 	}
 
 	private static void checkTag(FoodForItem foodForItem, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + foodForItem.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (FoodForItem iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + foodForItem.getClass() + ".");
 	}
 
 	public static FoodForItem get(String tag) {
@@ -119,7 +126,7 @@ public class FoodForItem {
 	}
 
 	public String getShortName() {
-		return UtilString.hasString(name_short) ? name_short : "unnamed";
+		return UtilString.hasString(name_short) ? name_short : getName();
 	}
 
 	public String getLocalizedShortName() {
@@ -139,32 +146,59 @@ public class FoodForItem {
 		return StatCollector.translateToLocal("type." + getType().toLowerCase() + ".name");
 	}
 
-	public FoodForItem setFoodStats(int i, float f) {
-		level = i;
-		sat = f;
+	public FoodForItem setFoodStats(int food_level, float saturation) {
+		this.level = food_level;
+		this.sat = saturation;
 		return this;
 	}
 
-	public FoodForItem setFoodLevel(int i) {
-		level = i;
+	public FoodForItem setFoodStats(int food_level, float saturation, 
+			float protein, float fat, float carbohydrate, float vitamin, float minerals, float micronutrients) {
+		this.level = food_level;
+		this.sat = saturation;
+		this.protein = protein;
+		this.fat = fat;
+		this.carbohydrate = carbohydrate;
+		this.vitamin = vitamin;
+		this.minerals = minerals;
+		this.micronutrients = micronutrients;
 		return this;
 	}
 
-	public int getFoodLevel() {
-		return level == 0 ? 0 : level;
+	public int getFoodLevel() {return level;}
+	public float getFoodSaturation() {return sat;}
+
+	public int setFoodLevel() {return level;}
+	public float setFoodSaturation() {return sat;}
+
+	public float getFoodProtein() {return protein;}
+	public float getFoodFat() {return fat;}
+	public float getFoodCarbohydrate() {return carbohydrate;}
+	public float getFoodVitamin() {return vitamin;}
+	public float getFoodMinerals() {return minerals;}
+	public float getFoodMicronutrients() {return micronutrients;}
+
+	public FoodForItem setFoodProtein(float protein) {
+		this.protein = protein;return this;
+	}
+	public FoodForItem setFoodFat(float fat) {
+		this.fat = fat;return this;
+	}
+	public FoodForItem setFoodCarbohydrate(float carbohydrate) {
+		this.carbohydrate = carbohydrate;return this;
+	}
+	public FoodForItem setFoodVitamin(float vitamin) {
+		this.vitamin = vitamin;return this;
+	}
+	public FoodForItem setFoodMinerals(float minerals) {
+		this.minerals = minerals;return this;
+	}
+	public FoodForItem setFoodMicronutrients(float micronutrients) {
+		this.micronutrients = micronutrients;return this;
 	}
 
-	public FoodForItem setFoodSaturation(float f) {
-		sat = f;
-		return this;
-	}
-
-	public float getFoodSaturation() {
-		return sat == 0 ? 0.0F : sat;
-	}
-
-	public FoodForItem setSpeedOfEating(int i) {
-		spd_eat = i;
+	public FoodForItem setSpeedOfEating(int speed_eating) {
+		spd_eat = speed_eating;
 		return this;
 	}
 
@@ -172,24 +206,14 @@ public class FoodForItem {
 		return spd_eat == 0 ? 32 : spd_eat;
 	}
 
-	public FoodForItem setTemperatures(float f, float f1, float f2) {
-		temp = f;
-		temp_min = f1;
-		temp_max = f2;
+	public FoodForItem setTemperatureMinMax(float min, float max) {
+		temp_min = min;
+		temp_max = max;
 		return this;
 	}
 
-	public FoodForItem setTemperature(float f) {
-		temp = f;
-		return this;
-	}
-
-	public float getTemperature() {
-		return temp;
-	}
-
-	public FoodForItem setTemperatureMin(float f1) {
-		temp_min = f1;
+	public FoodForItem setTemperatureMin(float min) {
+		temp_min = min;
 		return this;
 	}
 
@@ -197,8 +221,8 @@ public class FoodForItem {
 		return temp_min;
 	}
 
-	public FoodForItem setTemperatureMax(float f2) {
-		temp_max = f2;
+	public FoodForItem setTemperatureMax(float max) {
+		temp_max = max;
 		return this;
 	}
 

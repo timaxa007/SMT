@@ -88,7 +88,7 @@ public class BlockApiary extends ModifiedBlock implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(String par1, int par2) {
+	public static ItemStack addNBT(String par1, int par2) {
 		ItemStack is = new ItemStack(PackStock.proxy.block.apiary, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);

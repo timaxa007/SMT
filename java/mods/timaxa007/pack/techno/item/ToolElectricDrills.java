@@ -2,8 +2,8 @@ package mods.timaxa007.pack.techno.item;
 
 import java.util.List;
 
-import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.techno.PackTechno;
+import mods.timaxa007.tms.lib.ActionModel;
 import mods.timaxa007.tms.util.ItemPrimaryKey;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.block.Block;
@@ -151,7 +151,7 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT() {
+	public static ItemStack addNBT() {
 		ItemStack is = new ItemStack(PackTechno.proxy.item.tool_electric_drills, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("ModeID", 0);

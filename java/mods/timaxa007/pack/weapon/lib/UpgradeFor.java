@@ -41,7 +41,7 @@ public class UpgradeFor {
 		list[id] = this;
 		this.tag = tag;
 	}
-	//--------------------------------------------------------v
+	//--------------------------------------------------------
 	public static int nextID() {
 		for (int i = 0; i < list.length; i++)
 			if (list[i] == null)
@@ -51,18 +51,18 @@ public class UpgradeFor {
 
 	public static boolean hasTag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
+			for (UpgradeFor iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
 					return true;
 		return false;
 	}
 
 	public static int getID_tag(String tag) {
 		if (UtilString.hasString(tag))
-			for (int i = 0; i < list.length; i++)
-				if (list[i] != null && tag.equalsIgnoreCase(list[i].tag))
-					return i;
-		return 0;
+			for (UpgradeFor iteming : list)
+				if (iteming != null && tag.equalsIgnoreCase(iteming.tag))
+					return iteming.id;
+		return empty.id;
 	}
 
 	private static void checkID(UpgradeFor upgradeFor, int id) {
@@ -71,9 +71,10 @@ public class UpgradeFor {
 	}
 
 	private static void checkTag(UpgradeFor upgradeFor, String tag) {
-		for (int i = 0; i < list.length; i++)
-			if (list[i] != null && list[i].tag == tag)
-				throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + upgradeFor.getClass() + ".");
+		if (UtilString.hasString(tag))
+			for (UpgradeFor iteming : list)
+				if (iteming != null && iteming.tag == tag)
+					throw new IllegalArgumentException("Duplicate tag: " + tag + " in " + upgradeFor.getClass() + ".");
 	}
 
 	public static UpgradeFor get(String tag) {

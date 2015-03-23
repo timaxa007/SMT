@@ -30,7 +30,7 @@ public class ItemWands extends ModifiedItem {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1, int par2) {
+	public static ItemStack addNBT(int par1, int par2) {
 		ItemStack is = new ItemStack(PackMagic.proxy.item.wands);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par1);

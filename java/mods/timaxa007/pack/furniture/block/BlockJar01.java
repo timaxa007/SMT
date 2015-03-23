@@ -91,7 +91,7 @@ public class BlockJar01 extends ModifiedBlock implements ITileEntityProvider {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(int par1) {
+	public static ItemStack addNBT(int par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.block.jar01, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("ColorWater", par1);

@@ -2,10 +2,11 @@ package mods.timaxa007.pack.techno.block;
 
 import java.util.List;
 
-import mods.timaxa007.lib.AddTextureModel;
 import mods.timaxa007.pack.techno.PackTechno;
 import mods.timaxa007.pack.techno.tile.TileEntityElectricWires;
+import mods.timaxa007.tms.lib.AddTextureModel;
 import mods.timaxa007.tms.util.ModifiedBlock;
+import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -82,22 +83,22 @@ public class BlockElectricWires extends ModifiedBlock implements ITileEntityProv
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		for (int j = 0; j < AddTextureModel.list.length; ++j) {
-			if (AddTextureModel.list[j] != null && AddTextureModel.list[j].tag != null) {
-				list.add(addNBT(AddTextureModel.list[j].tag, 1, 0xFFFFFF));
-				list.add(addNBT(AddTextureModel.list[j].tag, 2, 0xFFFFFF));
-				list.add(addNBT(AddTextureModel.list[j].tag, 3, 0xFFFFFF));
-				list.add(addNBT(AddTextureModel.list[j].tag, 4, 0xFFFFFF));
-				list.add(addNBT(AddTextureModel.list[j].tag, 5, 0xFFFFFF));
-				list.add(addNBT(AddTextureModel.list[j].tag, 6, 0xFFFFFF));
-				list.add(addNBT(AddTextureModel.list[j].tag, 7, 0xFFFFFF));
-				list.add(addNBT(AddTextureModel.list[j].tag, 8, 0xFFFFFF));
+		for (AddTextureModel texture : AddTextureModel.list) {
+			if (!texture.isNull(texture) && UtilString.hasString(texture.tag)) {
+				list.add(addNBT(texture.tag, 1, 0xFFFFFF));
+				list.add(addNBT(texture.tag, 2, 0xFFFFFF));
+				list.add(addNBT(texture.tag, 3, 0xFFFFFF));
+				list.add(addNBT(texture.tag, 4, 0xFFFFFF));
+				list.add(addNBT(texture.tag, 5, 0xFFFFFF));
+				list.add(addNBT(texture.tag, 6, 0xFFFFFF));
+				list.add(addNBT(texture.tag, 7, 0xFFFFFF));
+				list.add(addNBT(texture.tag, 8, 0xFFFFFF));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(String par1, int par2, int par3) {
+	public static ItemStack addNBT(String par1, int par2, int par3) {
 		ItemStack is = new ItemStack(PackTechno.proxy.block.electric_wires, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);

@@ -92,7 +92,7 @@ public class ItemKitchenware extends ModifiedItem {
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(String par1) {
+	public static ItemStack addNBT(String par1) {
 		ItemStack is = new ItemStack(PackFurniture.proxy.item.kitchenware, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);

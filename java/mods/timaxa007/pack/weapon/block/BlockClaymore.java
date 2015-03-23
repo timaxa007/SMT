@@ -1,8 +1,8 @@
 package mods.timaxa007.pack.weapon.block;
 
-import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.weapon.PackWeapons;
 import mods.timaxa007.pack.weapon.tile.TileEntityClaymore;
+import mods.timaxa007.tms.lib.ActionModel;
 import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

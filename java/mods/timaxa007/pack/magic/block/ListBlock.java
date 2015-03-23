@@ -7,22 +7,26 @@ import net.minecraft.block.Block;
 public class ListBlock {
 
 	public static boolean 
-	magic_machines_be, 
-	magic_slims_be, 
-	magic_cauldron_be, 
+	magic_machines_be,
+	magic_slims_be,
+	magic_cauldron_be,
 	magic_locked_be;
 
 	public static Block 
-	magic_machines, 
-	magic_slims, 
-	magic_cauldron, 
+	magic_machines,
+	magic_slims,
+	magic_cauldron,
 	magic_locked;
 
 	public static Class 
-	te_magic_machines, 
-	te_magic_slims, 
-	te_magic_cauldron, 
+	te_magic_machines,
+	te_magic_slims,
+	te_magic_cauldron,
 	te_magic_locked;
+
+	public static Block[] list_block;
+
+	public static Class[] list_te;
 
 	public static void preInit() {
 
@@ -46,19 +50,23 @@ public class ListBlock {
 			te_magic_locked = TileEntityBlockLocked.class;
 		}
 
-		UtilTMS.UtilBlock.RegBlock(new Block[] {
+		list_block = new Block[] {
 				magic_machines, 
 				magic_slims, 
 				magic_cauldron, 
 				magic_locked
-		});
+		};
 
-		UtilTMS.UtilBlock.RegTE(new Class[] {
+		UtilTMS.UtilBlock.RegBlock(list_block);
+
+		list_te = new Class[] {
 				te_magic_machines, 
 				te_magic_slims, 
 				te_magic_cauldron, 
 				te_magic_locked
-		});
+		};
+
+		UtilTMS.UtilBlock.RegTE(list_te);
 
 	}
 

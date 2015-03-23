@@ -1,8 +1,8 @@
 package mods.timaxa007.pack.furniture.block;
 
-import mods.timaxa007.lib.ActionModel;
 import mods.timaxa007.pack.furniture.PackFurniture;
 import mods.timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
+import mods.timaxa007.tms.lib.ActionModel;
 import mods.timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

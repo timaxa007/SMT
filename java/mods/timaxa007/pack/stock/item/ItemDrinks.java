@@ -2,8 +2,8 @@ package mods.timaxa007.pack.stock.item;
 
 import java.util.List;
 
-import mods.timaxa007.lib.FluidFake;
 import mods.timaxa007.pack.stock.PackStock;
+import mods.timaxa007.tms.lib.FluidFake;
 import mods.timaxa007.tms.util.ModifiedItem;
 import mods.timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -187,7 +187,7 @@ liquid_hex = liq_hex;
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	private static ItemStack addNBT(String par1, int par2) {
+	public static ItemStack addNBT(String par1, int par2) {
 		ItemStack is = new ItemStack(PackStock.proxy.item.drinks, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);
