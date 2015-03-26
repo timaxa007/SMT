@@ -10,6 +10,7 @@ public class RegisterMessage {
 	public static void init(SimpleNetworkWrapper network) {
 		network.registerMessage(MessagePackTechnoServer.Handler.class, MessagePackTechnoServer.class, id++, Side.SERVER);
 		network.registerMessage(MessagePackTechnoClient.Handler.class, MessagePackTechnoClient.class, id++, Side.CLIENT);
+		network.registerMessage(MessageDrill.Handler.class, MessageDrill.class, id++, Side.SERVER);
 	}
 
 }

@@ -66,6 +66,7 @@ public class ProxyCommon implements IProxy {
 		item.stuffs_be = cfg.get("item", "stuffs", true).getBoolean(true);
 		item.teleport_be = cfg.get("item", "teleport", true).getBoolean(true);
 		item.globular_be = cfg.get("item", "globular", true).getBoolean(true);
+		item.magic_bag_be = cfg.get("item", "magic_bag_be", true).getBoolean(true);
 
 		cfg.save();
 

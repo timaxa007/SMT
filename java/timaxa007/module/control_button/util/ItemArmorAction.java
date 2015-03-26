@@ -26,82 +26,62 @@ public class ItemArmorAction extends ItemArmorActionMouse {
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
-	public void onHelmetTickClient(ItemStack is, World world, EntityPlayer player) {
+	public void onHelmetTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
 	}
 
-	/**@return <b>true</b> send network for work method this.onHelmet.
-	 * @param is - ItemStack is taken from player's active slot helmet,
+	/**@param is - ItemStack is taken from player's active slot helmet,
 	 * @param world - player.worldObj,
 	 * @param player - EntityPlayer which uses this <b>is</b>,
 	 * @param isPress - button is pressed, setting set of keyBinds,
 	 **/
 	@SideOnly(Side.CLIENT)
-	public boolean onHelmetClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onHelmet(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onHelmetClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
-	public void onChestplateTickClient(ItemStack is, World world, EntityPlayer player) {
+	public void onChestplateTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
 	}
 
-	/**@return <b>true</b> send network for work method this.onChestplate.
-	 * @param is - ItemStack is taken from player's active slot chestplate,
+	/**@param is - ItemStack is taken from player's active slot chestplate,
 	 * @param world - player.worldObj,
 	 * @param player - EntityPlayer which uses this <b>is</b>,
 	 * @param isPress - button is pressed, setting set of keyBinds,
 	 **/
 	@SideOnly(Side.CLIENT)
-	public boolean onChestplateClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onChestplate(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onChestplateClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
-	public void onLeggingsTickClient(ItemStack is, World world, EntityPlayer player) {
+	public void onLeggingsTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
 	}
 
-	/**@return <b>true</b> send network for work method this.onLeggings.
-	 * @param is - ItemStack is taken from player's active slot leggings,
+	/**@param is - ItemStack is taken from player's active slot leggings,
 	 * @param world - player.worldObj,
 	 * @param player - EntityPlayer which uses this <b>is</b>,
 	 * @param isPress - button is pressed, setting set of keyBinds,
 	 **/
 	@SideOnly(Side.CLIENT)
-	public boolean onLeggingsClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onLeggings(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onLeggingsClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
-	public void onBootsTickClient(ItemStack is, World world, EntityPlayer player) {
+	public void onBootsTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
 	}
 
-	/**@return <b>true</b> send network for work method this.onBoots.
-	 * @param is - ItemStack is taken from player's active slot boots,
+	/**@param is - ItemStack is taken from player's active slot boots,
 	 * @param world - player.worldObj,
 	 * @param player - EntityPlayer which uses this <b>is</b>,
 	 * @param isPress - button is pressed, setting set of keyBinds,
 	 **/
 	@SideOnly(Side.CLIENT)
-	public boolean onBootsClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onBoots(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onBootsClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------

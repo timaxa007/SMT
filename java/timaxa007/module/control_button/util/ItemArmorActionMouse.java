@@ -21,42 +21,32 @@ public class ItemArmorActionMouse extends ModifiedItemArmor {
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
-	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player) {
+	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
 	}
 
-	/**@return <b>true</b> send network for work method this.onLeftClick.
-	 * @param is - ItemStack is taken from player's active slot hand,
+	/**@param is - ItemStack is taken from player's active slot hand,
 	 * @param world - player.worldObj,
 	 * @param player - EntityPlayer which uses this <b>is</b>,
 	 * @param isPress - button is pressed, setting set of keyBinds,
 	 **/
 	@SideOnly(Side.CLIENT)
-	public boolean onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
-	public void onRightClickTickClient(ItemStack is, World world, EntityPlayer player) {
+	public void onRightClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
 	}
 
-	/**@return <b>true</b> send network for work method this.onRightClick.
-	 * @param is - ItemStack is taken from player's active slot hand,
+	/**@param is - ItemStack is taken from player's active slot hand,
 	 * @param world - player.worldObj,
 	 * @param player - EntityPlayer which uses this <b>is</b>,
 	 * @param isPress - button is pressed, setting set of keyBinds,
 	 **/
 	@SideOnly(Side.CLIENT)
-	public boolean onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		return false;
-	}
-
-	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------

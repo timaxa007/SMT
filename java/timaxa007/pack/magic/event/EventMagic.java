@@ -6,6 +6,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventMagic {
@@ -94,6 +95,14 @@ public class EventMagic {
 
 				}
 			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void hasPlayerTool(BlockEvent.BreakEvent e) {
+		ItemStack current = e.getPlayer().getCurrentEquippedItem();
+		if (current != null) {
+			//System.out.println("isBreakBlock " + e.block.getUnlocalizedName() + ".");
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------

@@ -4,7 +4,6 @@ import net.minecraftforge.common.MinecraftForge;
 import timaxa007.module.control_button.event.EventActionArmorKey;
 import timaxa007.module.control_button.event.EventActionMouse;
 import timaxa007.module.control_button.event.EventActionPrimaryKey;
-import timaxa007.module.control_button.event.EventActionSecondarKey;
 import timaxa007.module.control_button.event.EventControlButtonClient;
 import timaxa007.module.control_button.util.RegKey;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -26,7 +25,6 @@ public class ProxyClient extends ProxyCommon {
 		//MinecraftForge.EVENT_BUS.register(new EventMouse());
 		FMLCommonHandler.instance().bus().register(new EventActionMouse());
 		FMLCommonHandler.instance().bus().register(new EventActionPrimaryKey());
-		FMLCommonHandler.instance().bus().register(new EventActionSecondarKey());
 		FMLCommonHandler.instance().bus().register(new EventActionArmorKey());
 
 	}

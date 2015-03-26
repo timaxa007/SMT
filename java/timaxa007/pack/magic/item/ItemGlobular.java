@@ -69,7 +69,7 @@ public class ItemGlobular extends ModifiedItem {
 		if (nbt != null && nbt.hasKey("Active")) {
 
 			if (pass == 0) {
-				return nbt.getBoolean("Active")?icon_overlay:itemIcon;
+				return nbt.getBoolean("Active") ? icon_overlay : itemIcon;
 			} else {
 				return itemIcon;
 			}

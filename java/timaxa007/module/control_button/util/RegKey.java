@@ -7,14 +7,14 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class RegKey {
-	
+
 	private static final String cat_name = "category.control_button.name";
 
 	public static final KeyBinding reload = new KeyBinding("key.reload.name", Keyboard.KEY_R, cat_name);
 	public static final KeyBinding charge = new KeyBinding("key.charge.name", Keyboard.KEY_T, cat_name);
 	public static final KeyBinding mode = new KeyBinding("key.mode.name", Keyboard.KEY_F, cat_name);
-	public static final KeyBinding mode_in = new KeyBinding("key.zoom_in.name", Keyboard.KEY_EQUALS, cat_name);
-	public static final KeyBinding mode_out = new KeyBinding("key.zoom_out.name", Keyboard.KEY_MINUS, cat_name);
+	public static final KeyBinding mode_in = new KeyBinding("key.mode_in.name", Keyboard.KEY_EQUALS, cat_name);
+	public static final KeyBinding mode_out = new KeyBinding("key.mode_out.name", Keyboard.KEY_MINUS, cat_name);
 
 	public static final KeyBinding action = new KeyBinding("key.action.name", Keyboard.KEY_G, cat_name);
 	public static final KeyBinding action_helmet = new KeyBinding("key.action_helmet.name", Keyboard.KEY_L, cat_name);
@@ -34,8 +34,7 @@ public class RegKey {
 
 	public static void preInit() {
 
-		for (int k = 0; k < list_key.length; k++) 
-			ClientRegistry.registerKeyBinding(list_key[k]);
+		for (KeyBinding key : list_key) ClientRegistry.registerKeyBinding(key);
 
 	}
 

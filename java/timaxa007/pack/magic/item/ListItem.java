@@ -10,14 +10,16 @@ public class ListItem {
 	wands_be,
 	stuffs_be,
 	teleport_be,
-	globular_be;
+	globular_be, 
+	magic_bag_be;
 
 	public static Item 
 	items_for_magic,
 	wands,
 	stuffs,
 	teleport,
-	globular;
+	globular, 
+	magic_bag;
 
 	public static Item[] list_item;
 
@@ -28,6 +30,7 @@ public class ListItem {
 		if (stuffs_be) stuffs = new ItemStuffs("stuffs");
 		if (teleport_be) teleport = new ItemTeleport("teleport");
 		if (globular_be) globular = new ItemGlobular("globular");
+		if (magic_bag_be) magic_bag = new ItemMagicBag("magic_bag");
 		//if (magic_bow_be) magic_bow = new BowMagic("magic_bow");
 		//if (arrow_mini_be) arrow_mini = new ItemArrowMini("arrow_mini");
 
@@ -36,7 +39,8 @@ public class ListItem {
 				wands,
 				stuffs,
 				teleport,
-				globular
+				globular, 
+				magic_bag
 		};
 
 		UtilTMS.UtilItem.RegItem(list_item);

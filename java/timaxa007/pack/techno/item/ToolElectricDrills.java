@@ -16,6 +16,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.util.ItemPrimaryKey;
 import timaxa007.pack.techno.PackTechno;
+import timaxa007.pack.techno.packet.MessageDrill;
 import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -38,9 +39,10 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (isPress && !isLeftClick) {
 			NBTTagCompound nbt = is.getTagCompound();
+
 			if (nbt != null && nbt.hasKey("ModeID")) {
 				int nbn = nbt.getInteger("ModeID");
 
@@ -50,24 +52,25 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 						EnumChatFormatting.GOLD + "[Drill]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
 						);
 
-				return true;
+				PackTechno.network.sendToServer(new MessageDrill(1, true));
+
 			}
+
 		}
-		return super.onModeClient(is, world, player, isPress);
 	}
 
-	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (isPress) {
-			NBTTagCompound nbt = is.getTagCompound();
-			if (nbt != null && nbt.hasKey("ModeID")) {
-				int nbn = nbt.getInteger("ModeID");
+	public void mode(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound nbt = is.getTagCompound();
 
-				if (nbn >= 2) nbn = 0; else nbn++;
+		if (nbt != null && nbt.hasKey("ModeID")) {
+			int nbn = nbt.getInteger("ModeID");
 
-				nbt.setInteger("ModeID", nbn);
-				is.setTagCompound(nbt);
-			}
+			if (nbn >= 2) nbn = 0; else nbn++;
+
+			nbt.setInteger("ModeID", nbn);
+			is.setTagCompound(nbt);
 		}
+
 	}
 
 	public float getDigSpeed(ItemStack is, Block block, int metadata) {
@@ -137,7 +140,7 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
 				if (nbt.hasKey("ModeID")) {
-					list.add("ModeID: " + nbt.getInteger("ModeID"));
+					list.add("ModeID: " + modes[nbt.getInteger("ModeID")] + " / " + nbt.getInteger("ModeID") + ".");
 				}
 			}
 		} else list.add(UtilString.hldshiftinf);

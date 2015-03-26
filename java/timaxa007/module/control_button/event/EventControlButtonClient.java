@@ -14,29 +14,32 @@ public class EventControlButtonClient {
 	@SubscribeEvent
 	public void onZoom(FOVUpdateEvent e) {
 		ItemStack current = e.entity.getCurrentEquippedItem();
+
 		if (current != null && current.getItem() instanceof IScope) {
 			NBTTagCompound nbt = current.getTagCompound();
 			if (nbt != null && nbt.hasKey("Aim") && nbt.getBoolean("Aim")) {
 				if (nbt.hasKey("ZoomFov"))
-					e.newfov -= ((float)(nbt.getByte("ZoomFov") + 224) / (384.0F));
+					e.newfov -= ((127.0F + (float)nbt.getByte("ZoomFov")) / 127.0F);
 				else 
 					e.newfov -= 0.25F;
 			}
 		}
+
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void onRenderCrosshairs(RenderGameOverlayEvent.Pre e) {
 		ItemStack current = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
-		NBTTagCompound nbt = current.getTagCompound();
 
-		if (current != null && current.getItem() instanceof IScope && nbt != null) {
+		if (current != null && current.getItem() instanceof IScope) {
+			NBTTagCompound nbt = current.getTagCompound();
 			if (e.type.equals(ElementType.CROSSHAIRS)) {
-				if (nbt.hasKey("Aim") && nbt.getBoolean("Aim")) {
+				if (nbt != null && nbt.hasKey("Aim") && nbt.getBoolean("Aim")) {
 					e.setCanceled(true);
 				}
 			}
 		}
+
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

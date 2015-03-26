@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import timaxa007.module.control_button.util.ItemActionMouse;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.lib.Spells;
+import timaxa007.pack.magic.packet.MessageStuff;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -27,18 +28,24 @@ public class ItemStuffs extends ItemActionMouse {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (isPress) {
 			world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 255.0D);
-			return true;
 		}
-		return super.onLeftClickClient(is, world, player, isPress);
+		PackMagic.network.sendToServer(new MessageStuff(1, isPress));
 	}
 
-	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (isPress) {
-			is.damageItem(1, player);
-		}
+	public void left(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		if (isPress) is.damageItem(1, player);
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		PackMagic.network.sendToServer(new MessageStuff(2, isPress));
+	}
+
+	public void right(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {

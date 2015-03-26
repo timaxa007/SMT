@@ -42,103 +42,96 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			ItemStack current = player.getCurrentEquippedItem();
-			if (current != null && current == is) {
-				NBTTagCompound nbt = is.getTagCompound();
-				if (nbt != null) {
-					//---------------------------------------------------------------
-					if (nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm")) {
+			NBTTagCompound nbt = is.getTagCompound();
+			if (nbt != null) {
 
-						int rbt/* = 0*/;
-						if (nbt.hasKey("RBT")) {
-							rbt = (int)nbt.getByte("RBT"); 
-						} else {
-							nbt.setByte("RBT", (byte)0);
-							rbt = 0;
-						}
+				if (nbt.hasKey("Delay")) {
+					int delay = (int)nbt.getByte("Delay"); 
 
-						if (rbt > 0) --rbt;
+					if (delay > 0) {
+						--delay;
+						nbt.setByte("Delay", (byte)delay);
+						is.setTagCompound(nbt);
+					}
 
-						if (isLeftClick) {
-							if (nbt.getInteger("AmmoAtm") > 0) {
-								if (rbt == 0) {
-									if (!world.isRemote) {
-										PackWeapons.network.sendToServer(new MessageActionWeapons(1));
-									}
-									rbt = WeaponFor.get(nbt.getString("Weapon")).getDelay();
-								}
-							}
-						}
-						nbt.setByte("RBT", (byte)rbt);
-					} else {
-						//if (nbt.hasKey("RTM")) nbt.setByte("RTM", (byte)0);
-					}
-					//-----------------------------------------------------------------------------------------------
-					if (isRightClick && isModeIn && !isModeOut) {
-						if (nbt.hasKey("ZoomFov")) {
-							int get_zoom = nbt.getByte("ZoomFov");
-							if (get_zoom < 119) {
-								nbt.setByte("ZoomFov", (byte)(get_zoom + 8));
-							}
-						}
-					}
-					//---------------------------------------------------------------
-					if (isRightClick && isModeOut && !isModeIn) {
-						if (nbt.hasKey("ZoomFov")) {
-							int get_zoom = nbt.getByte("ZoomFov");
-							if (get_zoom > -119) {
-								nbt.setByte("ZoomFov", (byte)(get_zoom - 8));
-							}
-						}
-					}
-					//---------------------------------------------------------------
+				} else {
+					nbt.setByte("Delay", (byte)0);
 					is.setTagCompound(nbt);
 				}
+
 			}
 		}
-	}
-
-	public void onFire(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null) {
-			if (nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm")) {
-				//world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundFire()[0], 1.0F, 1.0F);
-				EntityArrow entityarrow = new EntityArrow(world, player, 5.0F);
-				world.spawnEntityInWorld(entityarrow);
-				nbt.setInteger("AmmoAtm", nbt.getInteger("AmmoAtm") - 1);
-				if (Core.show_system_info_testing) System.out.println("fire");
-			}
-		}
-	}
-
-	@Override
-	public void onLeftClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		//if (nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm")) {
-		//if (!isPress) nbt.removeTag("RTM");
-
-		/*
-			if (!world.isRemote && isPress) {
-				if (nbt.getInteger("AmmoAtm") > 0) {
-					world.playSoundAtEntity(player, "timaxa007:ak74_shoot", 1.0F, 1.0F);
-					nbt.setInteger("AmmoAtm", nbt.getInteger("AmmoAtm") - 1);
-					if (Core.show_system_info_testing) System.out.println("fire");
-				}
-			}
-		 */
-		//is.setTagCompound(nbt);
-		//}
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("Aim")) {
-			return true;
+		if (nbt != null && nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm") && nbt.hasKey("Delay")) {
+			int delay = (int)nbt.getByte("Delay");
+
+			if (nbt.getInteger("AmmoAtm") > 0) {
+				if (delay == 0) {
+					//if (Core.show_system_info_testing) System.out.println("fire1 " + tick);
+					PackWeapons.network.sendToServer(new MessageActionWeapons(1, true));
+					dellay(nbt);
+				}
+			}
+
+			is.setTagCompound(nbt);
+
 		}
-		return super.onRightClickClient(is, world, player, isPress);
 	}
 
-	@Override
-	public void onRightClick(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	@SideOnly(Side.CLIENT)
+	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+
+	}
+
+	public void fire(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm") && nbt.hasKey("Delay")) {
+
+			if (Core.show_system_info_testing) System.out.println("fire");
+			world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundFire()[0], 1.0F, 1.0F);
+			EntityArrow entityarrow = new EntityArrow(world, player, 5.0F);
+			world.spawnEntityInWorld(entityarrow);
+			nbt.setInteger("AmmoAtm", nbt.getInteger("AmmoAtm") - 1);
+
+			dellay(nbt);
+
+			is.setTagCompound(nbt);
+		}
+	}
+
+	public void dellay(NBTTagCompound nbt) {
+		if (nbt != null && nbt.hasKey("Weapon") && nbt.hasKey("Delay")) {
+
+			int delay = (int)nbt.getByte("Delay");
+
+			if (delay == 0) {
+				delay = WeaponFor.get(nbt.getString("Weapon")).getDelay();
+				nbt.setByte("Delay", (byte)delay);
+			}
+
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void onRightClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
+		/*
+		if (isModeIn && !isModeOut)
+			PackWeapons.network.sendToServer(new MessageActionWeapons(5, true));
+		if (isModeOut && !isModeIn)
+			PackWeapons.network.sendToServer(new MessageActionWeapons(6, true));
+		 */
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		PackWeapons.network.sendToServer(new MessageActionWeapons(2, isPress));
+	}
+
+	public void scope(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Aim")) {
 			nbt.setBoolean("Aim", isPress);
@@ -148,24 +141,48 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("Weapon")) {
-			return true;
-		}
-		return super.onReloadClient(is, world, player, isPress);
+	public void onModeInClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		if (isPress && isRightClick && !isModeOut)
+			PackWeapons.network.sendToServer(new MessageActionWeapons(5, true));
 	}
 
-	@Override
-	public void onReload(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	@SideOnly(Side.CLIENT)
+	public void onModeOutClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		if (isPress && isRightClick && !isModeIn)
+			PackWeapons.network.sendToServer(new MessageActionWeapons(6, true));
+	}
+
+	public void zoomIn(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("ZoomFov")) {
+			int get_zoom = nbt.getByte("ZoomFov");
+			if (get_zoom < 119) {
+				nbt.setByte("ZoomFov", (byte)(get_zoom + 8));
+			}
+		}
+	}
+
+	public void zoomOut(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("ZoomFov")) {
+			int get_zoom = nbt.getByte("ZoomFov");
+			if (get_zoom > -119) {
+				nbt.setByte("ZoomFov", (byte)(get_zoom - 8));
+			}
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		PackWeapons.network.sendToServer(new MessageActionWeapons(3, isPress));
+	}
+
+	public void reload(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Weapon")) {
 			if (isPress) {
-				if (!world.isRemote) {
-					//world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
-				} else {
-					if (Core.show_system_info_testing) System.out.println("-reload-");
-				}
+				world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
+				if (Core.show_system_info_testing) System.out.println("-reload-");
 				//nbt.setInteger("AmmoAtm", WeaponFor.get(nbt.getString("Weapon")).getSizeAmmo());
 				nbt.setInteger("AmmoAtm", 20);
 			}
@@ -174,48 +191,17 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (isPress) {
-			return true;
-		}
-		return super.onModeClient(is, world, player, isPress);
+	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		PackWeapons.network.sendToServer(new MessageActionWeapons(4, isPress));
 	}
 
-	public void onMode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+	public void mode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		if (isPress) {
 			player.openGui(PackWeapons.instance, PackWeapons.proxy.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 			if (Core.show_system_info_testing) System.out.println("-modify-");
 		}
 	}
-	/*
-	@Override
-	public void onZoomIn(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (isPress) {
-			if (nbt.hasKey("ZoomFov")) {
-				int get_zoom = nbt.getByte("ZoomFov");
-				if (get_zoom < 127) {
-					nbt.setByte("ZoomFov", (byte)(get_zoom + 1));
-					is.setTagCompound(nbt);
-				}
-			}
-		}
-	}
 
-	@Override
-	public void onZoomOut(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (isPress) {
-			if (nbt.hasKey("ZoomFov")) {
-				int get_zoom = nbt.getByte("ZoomFov");
-				if (get_zoom > -127) {
-					nbt.setByte("ZoomFov", (byte)(get_zoom - 1));
-					is.setTagCompound(nbt);
-				}
-			}
-		}
-	}
-	 */
 	public boolean onEntitySwing(EntityLivingBase entity, ItemStack is) {
 		return true;
 	}
@@ -223,31 +209,6 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	public boolean onLeftClickEntity(ItemStack is, EntityPlayer player, Entity entity) {
 		return true;
 	}
-	/*public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (!world.isRemote) {
-			if (nbt != null && nbt.hasKey("Aim")) {
-				nbt.setBoolean("Aim", false);
-				is.setTagCompound(nbt);
-				System.out.println("off-scope");
-			}
-		}
-	}
-
-	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound nbt = is.getTagCompound();
-		//if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.getItem())) {
-		player.setItemInUse(is, getMaxItemUseDuration(is));
-		//}
-		if (!world.isRemote) {
-			if (nbt != null && nbt.hasKey("Aim")) {
-				nbt.setBoolean("Aim", true);
-				is.setTagCompound(nbt);
-				System.out.println("on-scope");
-			}
-		}
-		return is;
-	}*/
 
 	public int getMaxItemUseDuration(ItemStack is) {
 		return 72000;
@@ -274,6 +235,18 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 					list.add("Weapon: " + nbt.getString("Weapon") + "/" + WeaponFor.get(nbt.getString("Weapon")).getLocalizedName() + ".");
 					list.add("Weapon: " + WeaponFor.get(nbt.getString("Weapon")).getType() + 
 							"/" + WeaponFor.get(nbt.getString("Weapon")).getName() + ".");
+				}
+
+				if (nbt.hasKey("AmmoAtm")) {
+					list.add("AmmoAtm:  " + nbt.getInteger("AmmoAtm") + ".");
+				}
+
+				if (nbt.hasKey("ZoomFov") && Core.show_tip_info_testing) {
+					list.add("ZoomFov:  " + nbt.getByte("ZoomFov") + ".");
+				}
+
+				if (nbt.hasKey("Delay") && Core.show_tip_info_testing) {
+					list.add("Delay:  " + nbt.getByte("Delay") + ".");
 				}
 
 			}

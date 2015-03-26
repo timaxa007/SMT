@@ -65,10 +65,6 @@ public class TileEntityFurnitureChest extends TileEntity implements IInventory {
 		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
 		list_slot = new ItemStack[getSizeInventory()];
 
-		if (nbt.hasKey("CustomName", 8)) {
-			custom_name = nbt.getString("CustomName");
-		}
-
 		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			int j = nbttagcompound1.getByte("Slot") & 255;
@@ -76,6 +72,10 @@ public class TileEntityFurnitureChest extends TileEntity implements IInventory {
 			if (j >= 0 && j < list_slot.length) {
 				list_slot[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
+		}
+
+		if (nbt.hasKey("CustomName", 8)) {
+			custom_name = nbt.getString("CustomName");
 		}
 
 		if (nbt.hasKey("NameID")) tag = nbt.getString("NameID");

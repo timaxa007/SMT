@@ -1,8 +1,5 @@
 package timaxa007.tms.packet;
 
-import timaxa007.module.control_button.packet.MessageArmorKey;
-import timaxa007.module.control_button.packet.MessageMouseKey;
-import timaxa007.module.control_button.packet.MessagePrimaryKey;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 
