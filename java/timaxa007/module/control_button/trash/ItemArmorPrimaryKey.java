@@ -1,12 +1,15 @@
-package timaxa007.module.control_button.util;
+package timaxa007.module.control_button.trash;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import timaxa007.module.control_button.api.IActionPrimaryKey;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemPrimaryKey extends ItemActionMouse {
+/**For example.**/@Deprecated
+public class ItemArmorPrimaryKey extends ItemArmorActionMouse implements IActionPrimaryKey {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public static boolean isReload;
@@ -26,8 +29,8 @@ public class ItemPrimaryKey extends ItemActionMouse {
 	@SideOnly(Side.CLIENT)
 	public static boolean isModeOut;
 	//--------------------------------------------------------------------------------------------------------------
-	public ItemPrimaryKey(String tag) {
-		super(tag);
+	public ItemArmorPrimaryKey(String tag, ItemArmor.ArmorMaterial material, int render_id, int armor_type) {
+		super(tag, material, render_id, armor_type);
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -35,14 +38,9 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot hand,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isReload = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -50,14 +48,9 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot hand,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onChargeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isCharge = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -65,14 +58,9 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot hand,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isMode = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -80,14 +68,9 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot hand,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onActionClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isAction = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -95,14 +78,9 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot hand,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onModeInClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isModeIn = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -110,14 +88,9 @@ public class ItemPrimaryKey extends ItemActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot hand,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onModeOutClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isModeOut = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

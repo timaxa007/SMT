@@ -4,6 +4,7 @@ import net.minecraft.client.settings.KeyBinding;
 
 import org.lwjgl.input.Keyboard;
 
+import timaxa007.module.control_button.CoreControlButton;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class RegKey {
@@ -15,8 +16,8 @@ public class RegKey {
 	public static final KeyBinding mode = new KeyBinding("key.mode.name", Keyboard.KEY_F, cat_name);
 	public static final KeyBinding mode_in = new KeyBinding("key.mode_in.name", Keyboard.KEY_EQUALS, cat_name);
 	public static final KeyBinding mode_out = new KeyBinding("key.mode_out.name", Keyboard.KEY_MINUS, cat_name);
-
 	public static final KeyBinding action = new KeyBinding("key.action.name", Keyboard.KEY_G, cat_name);
+	
 	public static final KeyBinding action_helmet = new KeyBinding("key.action_helmet.name", Keyboard.KEY_L, cat_name);
 	public static final KeyBinding action_chest = new KeyBinding("key.action_chest.name", Keyboard.KEY_K, cat_name);
 	public static final KeyBinding action_leggin = new KeyBinding("key.action_leggin.name", Keyboard.KEY_J, cat_name);
@@ -26,15 +27,27 @@ public class RegKey {
 	public static final KeyBinding grab = new KeyBinding("key.grab.name", Keyboard.KEY_V, cat_name);
 	public static final KeyBinding lie = new KeyBinding("key.lie.name", Keyboard.KEY_C, cat_name);
 
-	public static final KeyBinding[] list_key = new KeyBinding[] {
-		reload, charge, mode, action, mode_in, mode_out, 
-		action_helmet, action_chest, action_leggin, action_boot, 
-		booster, grab, lie
-	};
+	public static KeyBinding botton_left;
+	public static KeyBinding botton_right;
+
+	public static KeyBinding[] list_key;
 
 	public static void preInit() {
 
-		for (KeyBinding key : list_key) ClientRegistry.registerKeyBinding(key);
+		if (CoreControlButton.botton_left)
+			botton_left = new KeyBinding("key.botton_left.name", 0, cat_name);
+
+		if (CoreControlButton.botton_right)
+			botton_right = new KeyBinding("key.botton_right.name", 0, cat_name);
+
+		list_key = new KeyBinding[] {
+				reload, charge, mode, mode_in, mode_out, action, 
+				action_helmet, action_chest, action_leggin, action_boot, 
+				booster, grab, lie,
+				botton_left, botton_right
+		};
+
+		for (KeyBinding key : list_key) if (key != null) ClientRegistry.registerKeyBinding(key);
 
 	}
 

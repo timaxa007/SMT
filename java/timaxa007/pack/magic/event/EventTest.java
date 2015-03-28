@@ -1,4 +1,4 @@
-package timaxa007.tms;
+package timaxa007.pack.magic.event;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;

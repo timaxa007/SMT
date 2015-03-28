@@ -14,7 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IScope;
-import timaxa007.module.control_button.util.ItemPrimaryKey;
+import timaxa007.module.control_button.trash.ItemPrimaryKey;
 import timaxa007.pack.weapon.PackWeapons;
 import timaxa007.pack.weapon.lib.WeaponFor;
 import timaxa007.pack.weapon.packet.MessageActionWeapons;
@@ -84,7 +84,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@SideOnly(Side.CLIENT)
 	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		super.onLeftClickClient(is, world, player, isPress);
 	}
 
 	public void fire(ItemStack is, World world, EntityPlayer player) {
@@ -128,6 +128,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@SideOnly(Side.CLIENT)
 	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		super.onRightClickClient(is, world, player, isPress);
 		PackWeapons.network.sendToServer(new MessageActionWeapons(2, isPress));
 	}
 
@@ -142,12 +143,14 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@SideOnly(Side.CLIENT)
 	public void onModeInClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		super.onModeInClient(is, world, player, isPress);
 		if (isPress && isRightClick && !isModeOut)
 			PackWeapons.network.sendToServer(new MessageActionWeapons(5, true));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void onModeOutClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		super.onModeOutClient(is, world, player, isPress);
 		if (isPress && isRightClick && !isModeIn)
 			PackWeapons.network.sendToServer(new MessageActionWeapons(6, true));
 	}
@@ -174,6 +177,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@SideOnly(Side.CLIENT)
 	public void onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		super.onReloadClient(is, world, player, isPress);
 		PackWeapons.network.sendToServer(new MessageActionWeapons(3, isPress));
 	}
 
@@ -192,6 +196,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 	@SideOnly(Side.CLIENT)
 	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		super.onModeClient(is, world, player, isPress);
 		PackWeapons.network.sendToServer(new MessageActionWeapons(4, isPress));
 	}
 

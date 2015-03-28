@@ -1,13 +1,15 @@
-package timaxa007.module.control_button.util;
+package timaxa007.module.control_button.trash;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.tms.util.ModifiedItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemActionMouse extends ModifiedItem {
+/**For example.**/@Deprecated
+public class ItemActionMouse extends ModifiedItem implements IActionMouse {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public static boolean isLeftClick;
@@ -24,14 +26,9 @@ public class ItemActionMouse extends ModifiedItem {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot hand,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isLeftClick = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -39,14 +36,9 @@ public class ItemActionMouse extends ModifiedItem {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot hand,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isRightClick = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

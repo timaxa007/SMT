@@ -20,7 +20,7 @@ public class ProxyClient extends ProxyCommon {
 	@Override
 	public void init() {
 		super.init();
-		
+
 		MinecraftForge.EVENT_BUS.register(new EventControlButtonClient());
 		//MinecraftForge.EVENT_BUS.register(new EventMouse());
 		FMLCommonHandler.instance().bus().register(new EventActionMouse());

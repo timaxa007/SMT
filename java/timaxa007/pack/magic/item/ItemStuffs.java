@@ -9,14 +9,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import timaxa007.module.control_button.util.ItemActionMouse;
+import timaxa007.module.control_button.trash.ItemPrimaryKey;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.lib.Spells;
 import timaxa007.pack.magic.packet.MessageStuff;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemStuffs extends ItemActionMouse {
+public class ItemStuffs extends ItemPrimaryKey {
 
 	public ItemStuffs(String tag) {
 		super(tag);
@@ -29,9 +29,9 @@ public class ItemStuffs extends ItemActionMouse {
 
 	@SideOnly(Side.CLIENT)
 	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (isPress) {
-			world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 255.0D);
-		}
+		super.onLeftClickClient(is, world, player, isPress);
+		//if (isPress) {
+		world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 255.0D);
 		PackMagic.network.sendToServer(new MessageStuff(1, isPress));
 	}
 
@@ -41,6 +41,7 @@ public class ItemStuffs extends ItemActionMouse {
 
 	@SideOnly(Side.CLIENT)
 	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		super.onRightClickClient(is, world, player, isPress);
 		PackMagic.network.sendToServer(new MessageStuff(2, isPress));
 	}
 

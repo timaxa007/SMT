@@ -23,8 +23,8 @@ public class UtilTMS {
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilBlock {
 
-		public static void RegBlock(Block[] block) {
-			for (Block blk : block) RegBlock(blk);
+		public static void RegBlock(Block[] blocks) {
+			for (Block block : blocks) RegBlock(block);
 		}
 
 		public static void RegBlock(Block block) {
@@ -62,8 +62,8 @@ public class UtilTMS {
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilItem {
 
-		public static void RegItem(Item[] item) {
-			for (Item itm : item) RegItem(itm);
+		public static void RegItem(Item[] items) {
+			for (Item item : items) RegItem(item);
 		}
 
 		public static void RegItem(Item item) {

@@ -14,7 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import timaxa007.module.control_button.util.ItemPrimaryKey;
+import timaxa007.module.control_button.trash.ItemPrimaryKey;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.packet.MessageDrill;
 import timaxa007.tms.util.UtilString;
@@ -40,6 +40,7 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 
 	@SideOnly(Side.CLIENT)
 	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		super.onModeClient(is, world, player, isPress);
 		if (isPress && !isLeftClick) {
 			NBTTagCompound nbt = is.getTagCompound();
 

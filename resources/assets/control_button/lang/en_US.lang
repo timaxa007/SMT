@@ -16,3 +16,6 @@ key.action_boot.name=Action Boots
 key.booster.name=Booster
 key.grab.name=Grab
 key.lie.name=Lie Down
+
+key.botton_left.name=Left Botton Mouse
+key.botton_right.name=Right Botton Mouse

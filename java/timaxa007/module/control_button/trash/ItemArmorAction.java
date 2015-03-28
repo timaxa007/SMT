@@ -1,25 +1,27 @@
-package timaxa007.module.control_button.util;
+package timaxa007.module.control_button.trash;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import timaxa007.module.control_button.api.IActionArmor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemArmorAction extends ItemArmorActionMouse {
+/**For example.**/@Deprecated
+public class ItemArmorAction extends ItemArmorActionMouse implements IActionArmor {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
-	public static boolean isHelmet;
+	public static boolean isHelmetBotton;
 
 	@SideOnly(Side.CLIENT)
-	public static boolean isChestplate;
+	public static boolean isChestplateBotton;
 
 	@SideOnly(Side.CLIENT)
-	public static boolean isLeggings;
+	public static boolean isLeggingsBotton;
 
 	@SideOnly(Side.CLIENT)
-	public static boolean isBoots;
+	public static boolean isBootsBotton;
 	//--------------------------------------------------------------------------------------------------------------
 	public ItemArmorAction(String tag, ItemArmor.ArmorMaterial material, int render_id, int armor_type) {
 		super(tag, material, render_id, armor_type);
@@ -30,14 +32,9 @@ public class ItemArmorAction extends ItemArmorActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot helmet,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onHelmetClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isHelmetBotton = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -45,14 +42,9 @@ public class ItemArmorAction extends ItemArmorActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot chestplate,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onChestplateClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isChestplateBotton = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -60,14 +52,9 @@ public class ItemArmorAction extends ItemArmorActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot leggings,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onLeggingsClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isLeggingsBotton = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -75,14 +62,9 @@ public class ItemArmorAction extends ItemArmorActionMouse {
 
 	}
 
-	/**@param is - ItemStack is taken from player's active slot boots,
-	 * @param world - player.worldObj,
-	 * @param player - EntityPlayer which uses this <b>is</b>,
-	 * @param isPress - button is pressed, setting set of keyBinds,
-	 **/
 	@SideOnly(Side.CLIENT)
 	public void onBootsClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-
+		isBootsBotton = isPress;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

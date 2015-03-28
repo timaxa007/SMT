@@ -1,5 +1,7 @@
 package timaxa007.module.control_button;
 
+import net.minecraftforge.common.config.Configuration;
+
 import org.apache.logging.log4j.Logger;
 
 import cpw.mods.fml.common.Mod;
@@ -25,11 +27,22 @@ public class CoreControlButton {
 	public static ProxyCommon proxy;
 	public static Logger log;
 
+	public static boolean botton_left;
+	public static boolean botton_right;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
 		log.info("Starting module " + CoreControlButton.MODNAME + ".");
+
+		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		cfg.load();
+
+		botton_left = cfg.get("bottons", "botton_left", false).getBoolean(false);
+		botton_right = cfg.get("bottons", "botton_right", false).getBoolean(false);
+
+		cfg.save();
 
 		proxy.preInit();
 
