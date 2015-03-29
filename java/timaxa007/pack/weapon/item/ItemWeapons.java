@@ -72,7 +72,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 			if (nbt.getInteger("AmmoAtm") > 0) {
 				if (delay == 0) {
 					//if (Core.show_system_info_testing) System.out.println("fire1 " + tick);
-					PackWeapons.network.sendToServer(new MessageActionWeapons(1, true));
+					PackWeapons.network.sendToServer(new MessageActionWeapons(1));
 					dellay(nbt);
 				}
 			}
@@ -129,7 +129,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	@SideOnly(Side.CLIENT)
 	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		super.onRightClickClient(is, world, player, isPress);
-		PackWeapons.network.sendToServer(new MessageActionWeapons(2, isPress));
+		PackWeapons.network.sendToServer(new MessageActionWeapons((isPress ? 2 : -2)));
 	}
 
 	public void scope(ItemStack is, World world, EntityPlayer player, boolean isPress) {
@@ -142,17 +142,45 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	}
 
 	@SideOnly(Side.CLIENT)
+	public void onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		super.onReloadClient(is, world, player, isPress);
+		PackWeapons.network.sendToServer(new MessageActionWeapons(3));
+	}
+
+	public void reload(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Weapon")) {
+			world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
+			if (Core.show_system_info_testing) System.out.println("-reload-");
+			//nbt.setInteger("AmmoAtm", WeaponFor.get(nbt.getString("Weapon")).getSizeAmmo());
+			nbt.setInteger("AmmoAtm", 20);
+			is.setTagCompound(nbt);
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		super.onModeClient(is, world, player, isPress);
+		PackWeapons.network.sendToServer(new MessageActionWeapons(4));
+	}
+
+	public void mode(ItemStack is, World world, EntityPlayer player) {
+		player.openGui(PackWeapons.instance, PackWeapons.proxy.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+		if (Core.show_system_info_testing) System.out.println("-modify-");
+	}
+
+	@SideOnly(Side.CLIENT)
 	public void onModeInClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		super.onModeInClient(is, world, player, isPress);
 		if (isPress && isRightClick && !isModeOut)
-			PackWeapons.network.sendToServer(new MessageActionWeapons(5, true));
+			PackWeapons.network.sendToServer(new MessageActionWeapons(5));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void onModeOutClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		super.onModeOutClient(is, world, player, isPress);
 		if (isPress && isRightClick && !isModeIn)
-			PackWeapons.network.sendToServer(new MessageActionWeapons(6, true));
+			PackWeapons.network.sendToServer(new MessageActionWeapons(6));
 	}
 
 	public void zoomIn(ItemStack is, World world, EntityPlayer player) {
@@ -172,38 +200,6 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 			if (get_zoom > -119) {
 				nbt.setByte("ZoomFov", (byte)(get_zoom - 8));
 			}
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		super.onReloadClient(is, world, player, isPress);
-		PackWeapons.network.sendToServer(new MessageActionWeapons(3, isPress));
-	}
-
-	public void reload(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("Weapon")) {
-			if (isPress) {
-				world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
-				if (Core.show_system_info_testing) System.out.println("-reload-");
-				//nbt.setInteger("AmmoAtm", WeaponFor.get(nbt.getString("Weapon")).getSizeAmmo());
-				nbt.setInteger("AmmoAtm", 20);
-			}
-			is.setTagCompound(nbt);
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		super.onModeClient(is, world, player, isPress);
-		PackWeapons.network.sendToServer(new MessageActionWeapons(4, isPress));
-	}
-
-	public void mode(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (isPress) {
-			player.openGui(PackWeapons.instance, PackWeapons.proxy.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
-			if (Core.show_system_info_testing) System.out.println("-modify-");
 		}
 	}
 

@@ -1,17 +1,18 @@
 package timaxa007.pack.stock;
 
+import net.minecraft.entity.EntityList;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import timaxa007.pack.stock.block.ListBlock;
 import timaxa007.pack.stock.entity.EntityTest;
 import timaxa007.pack.stock.event.EventStock;
 import timaxa007.pack.stock.item.ListItem;
 import timaxa007.pack.stock.lib.ListStock;
+import timaxa007.pack.stock.lib.ReceivingNutriment;
 import timaxa007.pack.stock.recipe.Recipes_Stock;
 import timaxa007.pack.stock.render.RenderMain;
 import timaxa007.pack.stock.world.GeneratorPackStock;
 import timaxa007.tms.util.IProxy;
-import net.minecraft.entity.EntityList;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -63,6 +64,8 @@ public class ProxyCommon implements IProxy {
 	}
 
 	public void init() {
+
+		MinecraftForge.EVENT_BUS.register(new ReceivingNutriment.EventNutrimentCommon());
 
 	}
 

@@ -10,25 +10,21 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 public class MessageActionWeapons implements IMessage {
 
 	public int button;
-	public boolean buttonstate;
 
 	public MessageActionWeapons() {}
 
-	public MessageActionWeapons(int button, boolean buttonstate) {
+	public MessageActionWeapons(int button) {
 		this.button = button;
-		this.buttonstate = buttonstate;
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(button);
-		buf.writeBoolean(buttonstate);
 	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		button = buf.readInt();
-		buttonstate = buf.readBoolean();
 	}
 	//----------------------------------------------------------------------------------
 	public static class Handler implements IMessageHandler<MessageActionWeapons, IMessage> {
@@ -36,14 +32,14 @@ public class MessageActionWeapons implements IMessage {
 		@Override
 		public IMessage onMessage(MessageActionWeapons packet, MessageContext message) {
 			int button = packet.button;
-			boolean buttonstate = packet.buttonstate;
 			EntityPlayerMP player = message.getServerHandler().playerEntity;
 
 			switch(button) {
 			case 1:ActionWeapons.onFire(player);break;
-			case 2:ActionWeapons.onScope(player, buttonstate);break;
-			case 3:ActionWeapons.onReload(player, buttonstate);break;
-			case 4:ActionWeapons.onMode(player, buttonstate);break;
+			case 2:ActionWeapons.onScope(player, true);break;
+			case -2:ActionWeapons.onScope(player, false);break;
+			case 3:ActionWeapons.onReload(player);break;
+			case 4:ActionWeapons.onMode(player);break;
 			case 5:ActionWeapons.zoomIn(player);break;
 			case 6:ActionWeapons.zoomOut(player);break;
 			}

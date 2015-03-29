@@ -158,4 +158,11 @@ public class UtilString {
 		return UtilString.getText("Color") + ": " + red + ", " + green + ", " + blue + ".";
 	}
 	//------------------------------------------------------------------------------------------------
+	public static String ticksToElapsedTime(int time) {
+		int j = time / 20;
+		int k = j / 60;
+		j %= 60;
+		return j < 10 ? k + ":0" + j : k + ":" + j;
+	}
+	//------------------------------------------------------------------------------------------------
 }

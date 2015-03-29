@@ -14,6 +14,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod (modid = PackStock.MODID, name = PackStock.MODNAME, version = PackStock.VERSION, dependencies = "required-after:timaxa007")
 
@@ -31,29 +33,24 @@ public class PackStock {
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
-		public Item getTabIconItem() {
-			return PackStock.proxy.item.items_for_stock;
-		}
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem() {return PackStock.proxy.item.items_for_stock;}
 	};
 	public static CreativeTabs tab_plant = new CreativeTabs("tab_plant") {
-		public Item getTabIconItem() {
-			return PackStock.proxy.item.germination_plants;
-		}
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem() {return PackStock.proxy.item.germination_plants;}
 	};
 	public static CreativeTabs tab_food = new CreativeTabs("tab_food") {
-		public Item getTabIconItem() {
-			return PackStock.proxy.item.foods;
-		}
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem() {return PackStock.proxy.item.foods;}
 	};
 	public static CreativeTabs tab_medical = new CreativeTabs("tab_medical") {
-		public Item getTabIconItem() {
-			return PackStock.proxy.item.medicals;
-		}
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem() {return PackStock.proxy.item.medicals;}
 	};
 	public static CreativeTabs tab_apis = new CreativeTabs("tab_apis") {
-		public Item getTabIconItem() {
-			return PackStock.proxy.item.bees;
-		}
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem() {return PackStock.proxy.item.bees;}
 	};
 
 	@EventHandler
