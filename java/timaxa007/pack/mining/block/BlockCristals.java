@@ -34,7 +34,7 @@ public class BlockCristals extends ModifiedBlock implements ITileEntityProvider 
 	}
 
 	public int getRenderType() {
-		return PackMining.proxy.render.block_cristals_modelID;
+		return PackMining.render.block_cristals_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -85,7 +85,7 @@ public class BlockCristals extends ModifiedBlock implements ITileEntityProvider 
 	}
 
 	public static ItemStack addNBT(int par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackMining.proxy.block.cristals, 1, 0);
+		ItemStack is = new ItemStack(PackMining.block.cristals, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par1);
 		nbt.setInteger("ColorHex", par2);

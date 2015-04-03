@@ -1,9 +1,5 @@
 package timaxa007.pack.furniture.block;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
-import timaxa007.tms.lib.ActionModel;
-import timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,6 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import timaxa007.pack.CorePack;
+import timaxa007.pack.furniture.PackFurniture;
+import timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
+import timaxa007.tms.lib.ActionModel;
+import timaxa007.tms.util.ModifiedBlock;
 
 public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityProvider {
 
@@ -37,7 +38,7 @@ public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityPro
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_furniture_chest_modelID;
+		return PackFurniture.render.block_furniture_chest_modelID;
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
@@ -67,7 +68,7 @@ public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityPro
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityFurnitureChest) {
-			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_furniture_chest, world, x, y, z);
+			player.openGui(CorePack.instance, PackFurniture.gui_furniture_chest, world, x, y, z);
 			return true;
 		}
 		return false;

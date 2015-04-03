@@ -33,7 +33,7 @@ public class BlockCrystals extends ModifiedBlock implements ITileEntityProvider 
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_crystals_modelID;
+		return PackFurniture.render.block_crystals_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -70,7 +70,7 @@ public class BlockCrystals extends ModifiedBlock implements ITileEntityProvider 
 	}
 
 	public static ItemStack addNBT(int par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.crystals, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.block.crystals, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Amount", 8);
 		nbt.setInteger("Type", par1);
@@ -81,7 +81,7 @@ public class BlockCrystals extends ModifiedBlock implements ITileEntityProvider 
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 ArrayList<ItemStack> ret=super.getBlockDropped(world, x, y, z, metadata, fortune);
-ret.add(new ItemStack(PackFurniture.proxy.block.crystals, 1, metadata));
+ret.add(new ItemStack(PackFurniture.block.crystals, 1, metadata));
 return ret;
 }
 	 */

@@ -28,14 +28,14 @@ public class ReceivingNutriment {
 	public static class EventNutrimentClient {
 
 		@SubscribeEvent
-		public void tipTagReceivingNutriment(ItemTooltipEvent e) {
-			ItemStack is = e.itemStack;
+		public void tipTagReceivingNutriment(ItemTooltipEvent tip) {
+			ItemStack is = tip.itemStack;
 
 			if (is != null) {
 
 				NBTTagCompound nbt = is.getTagCompound();
 
-				if (nbt != null) {
+				if (nbt != null && isEffect(is)) {
 					//-------------------------------------------------------------
 					NBTTagList nbttaglist = ReceivingNutriment.getEffectTagList(is);
 
@@ -43,7 +43,7 @@ public class ReceivingNutriment {
 
 						if (UtilString.isControlKeyDown()) {
 
-							e.toolTip.add("PotionEffect:");
+							tip.toolTip.add("PotionEffect:");
 
 							for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 
@@ -67,11 +67,11 @@ public class ReceivingNutriment {
 								if (ptn_efct.getDuration() > 20)
 									mess += " (" + Potion.getDurationString(ptn_efct) + ")";
 
-								e.toolTip.add(" - " + mess);
+								tip.toolTip.add(" - " + mess);
 
 							}
 
-						} else e.toolTip.add(UtilString.hldctrltinf);
+						} else tip.toolTip.add(UtilString.hldctrltinf);
 					}
 					//-------------------------------------------------------------
 				}

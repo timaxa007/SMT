@@ -50,7 +50,7 @@ public class BlockLight extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_lights_modelID;
+		return PackFurniture.render.block_lights_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {
@@ -137,7 +137,7 @@ public class BlockLight extends ModifiedBlock implements ITileEntityProvider {
 		if (current != null) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			//--------------------------------
-			/*if (current.getItem() == PackFurniture.proxy.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
+			/*if (current.getItem() == PackFurniture.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 				if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 				return true;
 			}

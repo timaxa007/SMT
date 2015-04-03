@@ -1,8 +1,5 @@
 package timaxa007.pack.furniture.block;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.tile.TileEntityFurnitureMachines;
-import timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,6 +9,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import timaxa007.pack.CorePack;
+import timaxa007.pack.furniture.PackFurniture;
+import timaxa007.pack.furniture.tile.TileEntityFurnitureMachines;
+import timaxa007.tms.util.ModifiedBlock;
 
 public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntityProvider {
 
@@ -52,7 +53,7 @@ public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntity
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityFurnitureMachines) {
-			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_furniture_machines, world, x, y, z);
+			player.openGui(CorePack.instance, PackFurniture.gui_furniture_machines, world, x, y, z);
 			return true;
 		}
 		return false;

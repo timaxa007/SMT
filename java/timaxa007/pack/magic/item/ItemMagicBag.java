@@ -76,7 +76,7 @@ public class ItemMagicBag extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT() {
-		ItemStack is = new ItemStack(PackMagic.proxy.item.magic_bag);
+		ItemStack is = new ItemStack(PackMagic.item.magic_bag);
 		NBTTagCompound nbt = new NBTTagCompound();
 		NBTTagList nbttaglist = new NBTTagList();
 

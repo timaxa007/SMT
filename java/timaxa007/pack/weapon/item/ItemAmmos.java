@@ -60,7 +60,7 @@ public class ItemAmmos extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT(int par1) {
-		ItemStack is = new ItemStack(PackWeapons.proxy.item.ammos, 1, 0);
+		ItemStack is = new ItemStack(PackWeapons.item.ammos, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("AmmoID", par1);
 		is.setTagCompound(nbt);

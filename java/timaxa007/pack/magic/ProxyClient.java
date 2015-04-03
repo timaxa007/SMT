@@ -1,30 +1,35 @@
 package timaxa007.pack.magic;
 
+import net.minecraftforge.common.MinecraftForge;
+import timaxa007.pack.api.IProxyPackClient;
 import timaxa007.pack.magic.event.EventMagicClient;
 import timaxa007.pack.magic.event.EventMana;
 import timaxa007.pack.magic.lib.Spells;
-import timaxa007.tms.util.IProxy;
-import net.minecraftforge.common.MinecraftForge;
+import timaxa007.pack.magic.render.RenderMain;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-public class ProxyClient extends ProxyCommon implements IProxy {
+public class ProxyClient implements IProxyPackClient {
 
-	public void preInit(FMLPreInitializationEvent event) {
-		super.preInit(event);
+	@Override
+	public void preInit() {
 
 		MinecraftForge.EVENT_BUS.register(new EventMagicClient());
 
 	}
 
+	@Override
 	public void init() {
-		super.init();
 
 		MinecraftForge.EVENT_BUS.register(new Spells.EventSpellsClient());
 		FMLCommonHandler.instance().bus().register(new EventMana.Client());
 
-		render.init();
+		RenderMain.init();
 
+	}
+
+	@Override
+	public void postInit() {
+		
 	}
 
 }

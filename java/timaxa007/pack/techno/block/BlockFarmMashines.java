@@ -35,7 +35,7 @@ public class BlockFarmMashines extends ModifiedBlock implements ITileEntityProvi
 	}
 
 	public int getRenderType() {
-		return PackTechno.proxy.render.block_farm_mashines_modelID;
+		return PackTechno.render.block_farm_mashines_modelID;
 	}
 
 	public boolean isOpaqueCube() {return false;}
@@ -91,7 +91,7 @@ public class BlockFarmMashines extends ModifiedBlock implements ITileEntityProvi
 	}
 
 	public static ItemStack addNBT(String par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackTechno.proxy.block.farm_mashines, 1, 0);
+		ItemStack is = new ItemStack(PackTechno.block.farm_mashines, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);
 		nbt.setInteger("Type", par2);

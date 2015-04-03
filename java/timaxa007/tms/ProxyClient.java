@@ -18,7 +18,7 @@ public class ProxyClient extends ProxyCommon {
 	public void init() {
 		super.init();
 
-		if (Core.debug) FMLLog.log(Core.MODID, Level.DEBUG, "Successful initialized client part.");
+		if (CoreTMS.debug) FMLLog.log(CoreTMS.MODID, Level.DEBUG, "Successful initialized client part.");
 
 		MinecraftForge.EVENT_BUS.register(new EventClientTMS());
 

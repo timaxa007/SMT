@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import timaxa007.tms.lib.ImageUtils;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -108,7 +111,7 @@ public class UtilRender {
 		int g2 = (color_hex2 >> 8 & 0xFF);
 		int b2 = (color_hex2 & 0xFF);
 
-		int r3, g3, b3 = 0;
+		int r3, g3, b3;
 
 		if (r1 > r2) r3 = r1; else r3 = r2;
 		if (g1 > g2) g3 = g1; else g3 = g2;
@@ -126,7 +129,7 @@ public class UtilRender {
 		int g2 = (color_hex2 >> 8 & 0xFF);
 		int b2 = (color_hex2 & 0xFF);
 
-		int r3, g3, b3 = 0;
+		int r3, g3, b3;
 
 		if (r1 < r2) r3 = r1; else r3 = r2;
 		if (g1 < g2) g3 = g1; else g3 = g2;
@@ -160,99 +163,47 @@ public class UtilRender {
 	}
 
 	public static int colorMixHigherAlpha(int color_hex1, int color_hex2) {
+		
+		int a1 = (color_hex1 >> 24 & 0xFF);
 		int r1 = (color_hex1 >> 16 & 0xFF);
 		int g1 = (color_hex1 >> 8 & 0xFF);
 		int b1 = (color_hex1 & 0xFF);
 
+		int a2 = (color_hex2 >> 24 & 0xFF);
 		int r2 = (color_hex2 >> 16 & 0xFF);
 		int g2 = (color_hex2 >> 8 & 0xFF);
 		int b2 = (color_hex2 & 0xFF);
 
-		int r3, g3, b3 = 0;
+		int a3, r3, g3, b3;
 
+		if (a1 > a2) a3 = a1; else a3 = a2;
 		if (r1 > r2) r3 = r1; else r3 = r2;
 		if (g1 > g2) g3 = g1; else g3 = g2;
 		if (b1 > b2) b3 = b1; else b3 = b2;
 
-		return r3 << 16 | g3 << 8 | b3;
+		return a3 << 24 | r3 << 16 | g3 << 8 | b3;
 	}
 
 	public static int colorMixLowerAlpha(int color_hex1, int color_hex2) {
+
+		int a1 = (color_hex1 >> 24 & 0xFF);
 		int r1 = (color_hex1 >> 16 & 0xFF);
 		int g1 = (color_hex1 >> 8 & 0xFF);
 		int b1 = (color_hex1 & 0xFF);
 
+		int a2 = (color_hex2 >> 24 & 0xFF);
 		int r2 = (color_hex2 >> 16 & 0xFF);
 		int g2 = (color_hex2 >> 8 & 0xFF);
 		int b2 = (color_hex2 & 0xFF);
 
-		int r3, g3, b3 = 0;
+		int a3, r3, g3, b3;
 
+		if (a1 < a2) a3 = a1; else a3 = a2;
 		if (r1 < r2) r3 = r1; else r3 = r2;
 		if (g1 < g2) g3 = g1; else g3 = g2;
 		if (b1 < b2) b3 = b1; else b3 = b2;
 
-		return r3 << 16 | g3 << 8 | b3;
-	}
-	//------------------------------------------------------------------------------------------------------
-	public static int colorMixAlpha1(int color_hex1, int color_hex2) {
-		return colorMixAverageAlpha1(color_hex1, color_hex2);
-	}
-
-	public static int colorMixAverageAlpha1(int color_hex1, int color_hex2) {
-
-		int a1 = (color_hex1 >> 24 & 0xFF);
-		int r1 = (color_hex1 >> 16 & 0xFF);
-		int g1 = (color_hex1 >> 8 & 0xFF);
-		int b1 = (color_hex1 & 0xFF);
-
-		int r2 = (color_hex2 >> 16 & 0xFF);
-		int g2 = (color_hex2 >> 8 & 0xFF);
-		int b2 = (color_hex2 & 0xFF);
-
-		int r3 = (r1 + r2) / 2;
-		int g3 = (g1 + g2) / 2;
-		int b3 = (b1 + b2) / 2;
-
-		return a1 << 24 | r3 << 16 | g3 << 8 | b3;
-	}
-
-	public static int colorMixHigherAlpha1(int color_hex1, int color_hex2) {
-		int a1 = (color_hex1 >> 24 & 0xFF);
-		int r1 = (color_hex1 >> 16 & 0xFF);
-		int g1 = (color_hex1 >> 8 & 0xFF);
-		int b1 = (color_hex1 & 0xFF);
-
-		int r2 = (color_hex2 >> 16 & 0xFF);
-		int g2 = (color_hex2 >> 8 & 0xFF);
-		int b2 = (color_hex2 & 0xFF);
-
-		int r3, g3, b3 = 0;
-
-		if (r1 > r2) r3 = r1; else r3 = r2;
-		if (g1 > g2) g3 = g1; else g3 = g2;
-		if (b1 > b2) b3 = b1; else b3 = b2;
-
-		return a1 << 24 | r3 << 16 | g3 << 8 | b3;
-	}
-
-	public static int colorMixLowerAlpha1(int color_hex1, int color_hex2) {
-		int a1 = (color_hex1 >> 24 & 0xFF);
-		int r1 = (color_hex1 >> 16 & 0xFF);
-		int g1 = (color_hex1 >> 8 & 0xFF);
-		int b1 = (color_hex1 & 0xFF);
-
-		int r2 = (color_hex2 >> 16 & 0xFF);
-		int g2 = (color_hex2 >> 8 & 0xFF);
-		int b2 = (color_hex2 & 0xFF);
-
-		int r3, g3, b3 = 0;
-
-		if (r1 < r2) r3 = r1; else r3 = r2;
-		if (g1 < g2) g3 = g1; else g3 = g2;
-		if (b1 < b2) b3 = b1; else b3 = b2;
-
-		return a1 << 24 | r3 << 16 | g3 << 8 | b3;
+		return a3 << 24 | r3 << 16 | g3 << 8 | b3;
 	}
 	//------------------------------------------------------------------------------------------------------
 	@Deprecated
@@ -296,7 +247,7 @@ public class UtilRender {
 
 		for (int x = 0; x < img2.getWidth(); x++){
 			for (int y = 0; y < img2.getHeight(); y++){
-				img2.setRGB(x, y, UtilRender.colorMixLowerAlpha1(img2.getRGB(x, y), UtilRender.getHEXa(hex)));
+				img2.setRGB(x, y, UtilRender.colorMixLowerAlpha(img2.getRGB(x, y), UtilRender.getHEXa(hex)));
 			}
 		}
 
@@ -311,6 +262,11 @@ public class UtilRender {
 		//img1.getGraphics().drawImage(img2, 0, 0, (ImageObserver)null);
 		//TextureUtil.uploadTextureImage(this.getGlTextureId(), img1);
 		ImageUtils.bindTextureFromImage(image);
+	}
+	//------------------------------------------------------------------------------------------------------
+	public static void render(EntityPlayer player) {
+		ItemStack is = player.getCurrentEquippedItem();
+		RenderBlocks rb = new RenderBlocks(player.getEntityWorld());
 	}
 	//------------------------------------------------------------------------------------------------------
 }

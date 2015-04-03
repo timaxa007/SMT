@@ -2,9 +2,6 @@ package timaxa007.pack.furniture.block;
 
 import java.util.Random;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.tile.TileEntityMincer;
-import timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -16,6 +13,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import timaxa007.pack.CorePack;
+import timaxa007.pack.furniture.PackFurniture;
+import timaxa007.pack.furniture.tile.TileEntityMincer;
+import timaxa007.tms.util.ModifiedBlock;
 
 public class BlockMincer extends ModifiedBlock implements ITileEntityProvider {
 	private static boolean keepFurnaceInventory;
@@ -36,7 +37,7 @@ public class BlockMincer extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_mincer_modelID;
+		return PackFurniture.render.block_mincer_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -61,7 +62,7 @@ public class BlockMincer extends ModifiedBlock implements ITileEntityProvider {
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityMincer) {
-			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_mincer, world, x, y, z);
+			player.openGui(CorePack.instance, PackFurniture.gui_mincer, world, x, y, z);
 			return true;
 		}
 		return false;

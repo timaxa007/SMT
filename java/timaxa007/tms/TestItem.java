@@ -6,7 +6,7 @@ public class TestItem extends Item {
 
 	public TestItem() {
 		super();
-		this.setCreativeTab(Core.tab_tms);
+		this.setCreativeTab(CoreTMS.tab_tms);
 		this.setTextureName("timaxa007:test_item");
 		this.setUnlocalizedName("item_test");
 	}

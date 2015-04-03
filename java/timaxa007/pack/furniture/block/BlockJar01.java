@@ -35,7 +35,7 @@ public class BlockJar01 extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_jar01_modelID;
+		return PackFurniture.render.block_jar01_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -75,7 +75,7 @@ public class BlockJar01 extends ModifiedBlock implements ITileEntityProvider {
 		if (current != null) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			//--------------------------------
-			/*if (current.getItem() == PackFurniture.proxy.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
+			/*if (current.getItem() == PackFurniture.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 				--current.stackSize;
 				((TileEntityJar01)te).setColorWater(GetColors.getHexColors[current.getItemDamage()]);
 				return true;
@@ -92,7 +92,7 @@ public class BlockJar01 extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(int par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.jar01, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.block.jar01, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("ColorWater", par1);
 		is.setTagCompound(nbt);

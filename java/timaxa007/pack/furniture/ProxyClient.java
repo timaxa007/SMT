@@ -1,14 +1,15 @@
 package timaxa007.pack.furniture;
 
-import timaxa007.pack.furniture.event.EventFurnitureClient;
-import timaxa007.tms.util.IProxy;
 import net.minecraftforge.common.MinecraftForge;
+import timaxa007.pack.api.IProxyPackClient;
+import timaxa007.pack.furniture.event.EventFurnitureClient;
+import timaxa007.pack.furniture.render.RenderMain;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-public class ProxyClient extends ProxyCommon implements IProxy {
+public class ProxyClient implements IProxyPackClient {
 
-	public void preInit(FMLPreInitializationEvent event) {
-		super.preInit(event);
+	@Override
+	public void preInit() {
 
 		MinecraftForge.EVENT_BUS.register(new EventFurnitureClient());
 
@@ -16,10 +17,14 @@ public class ProxyClient extends ProxyCommon implements IProxy {
 
 	@Override
 	public void init() {
-		super.init();
 
-		render.init();
+		RenderMain.init();
 
+	}
+
+	@Override
+	public void postInit() {
+		
 	}
 
 }

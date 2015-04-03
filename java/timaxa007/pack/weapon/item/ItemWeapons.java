@@ -15,10 +15,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IScope;
 import timaxa007.module.control_button.trash.ItemPrimaryKey;
+import timaxa007.pack.CorePack;
 import timaxa007.pack.weapon.PackWeapons;
 import timaxa007.pack.weapon.lib.WeaponFor;
 import timaxa007.pack.weapon.packet.MessageActionWeapons;
-import timaxa007.tms.Core;
+import timaxa007.tms.CoreTMS;
 import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -71,7 +72,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 
 			if (nbt.getInteger("AmmoAtm") > 0) {
 				if (delay == 0) {
-					//if (Core.show_system_info_testing) System.out.println("fire1 " + tick);
+					//System.out.println("fire1 " + tick);
 					PackWeapons.network.sendToServer(new MessageActionWeapons(1));
 					dellay(nbt);
 				}
@@ -91,11 +92,11 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm") && nbt.hasKey("Delay")) {
 
-			if (Core.show_system_info_testing) System.out.println("fire");
-			world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundFire()[0], 1.0F, 1.0F);
 			EntityArrow entityarrow = new EntityArrow(world, player, 5.0F);
 			world.spawnEntityInWorld(entityarrow);
 			nbt.setInteger("AmmoAtm", nbt.getInteger("AmmoAtm") - 1);
+
+			playSound(is, world, player, "fire");
 
 			dellay(nbt);
 
@@ -137,23 +138,26 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		if (nbt != null && nbt.hasKey("Aim")) {
 			nbt.setBoolean("Aim", isPress);
 			is.setTagCompound(nbt);
-			if (Core.show_system_info_testing) System.out.println(isPress ? "onScope" : "offScope");
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void onReloadClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		super.onReloadClient(is, world, player, isPress);
-		PackWeapons.network.sendToServer(new MessageActionWeapons(3));
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Weapon")) {
+			if (isPress) {
+				PackWeapons.network.sendToServer(new MessageActionWeapons(3));
+			}
+		}
 	}
 
 	public void reload(ItemStack is, World world, EntityPlayer player) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Weapon")) {
-			world.playSoundAtEntity(player, WeaponFor.get(nbt.getString("Weapon")).getSoundReload()[0], 1.0F, 1.0F);
-			if (Core.show_system_info_testing) System.out.println("-reload-");
 			//nbt.setInteger("AmmoAtm", WeaponFor.get(nbt.getString("Weapon")).getSizeAmmo());
 			nbt.setInteger("AmmoAtm", 20);
+			playSound(is, world, player, "reload");
 			is.setTagCompound(nbt);
 		}
 	}
@@ -165,8 +169,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	}
 
 	public void mode(ItemStack is, World world, EntityPlayer player) {
-		player.openGui(PackWeapons.instance, PackWeapons.proxy.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
-		if (Core.show_system_info_testing) System.out.println("-modify-");
+		player.openGui(CorePack.instance, PackWeapons.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -187,9 +190,8 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("ZoomFov")) {
 			int get_zoom = nbt.getByte("ZoomFov");
-			if (get_zoom < 119) {
+			if (get_zoom <= 112 && get_zoom >= 0)
 				nbt.setByte("ZoomFov", (byte)(get_zoom + 8));
-			}
 		}
 	}
 
@@ -197,33 +199,39 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("ZoomFov")) {
 			int get_zoom = nbt.getByte("ZoomFov");
-			if (get_zoom > -119) {
+			if (get_zoom <= 120 && get_zoom >= 8)
 				nbt.setByte("ZoomFov", (byte)(get_zoom - 8));
+		}
+	}
+
+	public void playSound(ItemStack is, World world, EntityPlayer player, String type) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Weapon")) {
+			WeaponFor weapon = WeaponFor.get(nbt.getString("Weapon"));
+			//System.out.println(weapon);
+			if (!WeaponFor.isNull(weapon)) {
+
+				String sound = null;
+				if (type == "fire") sound = weapon.getSoundFire()[0];
+				else if (type == "reload") sound = weapon.getSoundReload()[0];
+
+				if (UtilString.hasString(sound))
+					world.playSoundAtEntity(player, sound, 1.0F, 1.0F);
+
+				//System.out.println(sound);
 			}
 		}
 	}
 
-	public boolean onEntitySwing(EntityLivingBase entity, ItemStack is) {
-		return true;
-	}
-
-	public boolean onLeftClickEntity(ItemStack is, EntityPlayer player, Entity entity) {
-		return true;
-	}
-
-	public int getMaxItemUseDuration(ItemStack is) {
-		return 72000;
-	}
-
-	public EnumAction getItemUseAction(ItemStack is) {
-		return EnumAction.none;
-	}
+	public boolean onEntitySwing(EntityLivingBase entity, ItemStack is) {return true;}
+	public boolean onLeftClickEntity(ItemStack is, EntityPlayer player, Entity entity) {return true;}
+	public int getMaxItemUseDuration(ItemStack is) {return 72000;}
+	public EnumAction getItemUseAction(ItemStack is) {return EnumAction.none;}
 
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("Weapon")) {
+		if (nbt != null && nbt.hasKey("Weapon"))
 			return "weapon." + WeaponFor.get(nbt.getString("Weapon")).getName();
-		}
 		return super.getUnlocalizedName();
 	}
 
@@ -242,11 +250,11 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 					list.add("AmmoAtm:  " + nbt.getInteger("AmmoAtm") + ".");
 				}
 
-				if (nbt.hasKey("ZoomFov") && Core.show_tip_info_testing) {
+				if (nbt.hasKey("ZoomFov") && CoreTMS.show_tip_info_testing) {
 					list.add("ZoomFov:  " + nbt.getByte("ZoomFov") + ".");
 				}
 
-				if (nbt.hasKey("Delay") && Core.show_tip_info_testing) {
+				if (nbt.hasKey("Delay") && CoreTMS.show_tip_info_testing) {
 					list.add("Delay:  " + nbt.getByte("Delay") + ".");
 				}
 
@@ -267,7 +275,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	}
 
 	public static ItemStack addNBT(String par1) {
-		ItemStack is = new ItemStack(PackWeapons.proxy.item.weapons, 1, 0);
+		ItemStack is = new ItemStack(PackWeapons.item.weapons, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Weapon", par1);
 

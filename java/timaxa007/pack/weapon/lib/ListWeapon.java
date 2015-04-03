@@ -23,16 +23,16 @@ public class ListWeapon {
 	.setDelay(4).setSoundFire("timaxa007:fiveseven-1").setSoundReload("timaxa007:fiveseven_slidepull").setAmmo(magazine_pistol);
 
 	public static WeaponFor weapon_shotgun_1 = new WeaponFor("weapon_shotgun_1")
-	.setDelay(7).setSoundFire("timaxa007:m3-1").setSoundReload("timaxa007:m3_pump").setAmmo(bullet_shotgun).setSizeAmmo(2);
+	.setDelay(8).setSoundFire("timaxa007:m3-1").setSoundReload("timaxa007:m3_pump").setAmmo(bullet_shotgun).setSizeAmmo(2);
 
 	public static WeaponFor weapon_shotgun_2 = new WeaponFor("weapon_shotgun_2")
-	.setDelay(10).setSoundFire("timaxa007:m3-1").setSoundReload("timaxa007:m3_pump").setAmmo(bullet_shotgun).setSizeAmmo(7);
+	.setDelay(12).setSoundFire("timaxa007:m3-1").setSoundReload("timaxa007:m3_pump").setAmmo(bullet_shotgun).setSizeAmmo(7);
 
 	public static WeaponFor weapon_avtomat = new WeaponFor("weapon_avtomat")
 	.setDelay(2).setSoundFire("timaxa007:ak47-1").setSoundReload("timaxa007:ak47_boltpull").setAmmo(magazine_avtomat);
 
 	public static WeaponFor weapon_pulemet = new WeaponFor("weapon_pulemet")
-	.setDelay(3).setSoundFire("timaxa007:m249-1").setSoundReload("timaxa007:m249_chain").setAmmo(magazine_pulemet);
+	.setDelay(2).setSoundFire("timaxa007:m249-1").setSoundReload("timaxa007:m249_chain").setAmmo(magazine_pulemet);
 
 	public static WeaponFor weapon_sniper = new WeaponFor("weapon_sniper")
 	.setDelay(25).setSoundFire("timaxa007:scout_fire-1").setSoundReload("timaxa007:scout_bolt").setAmmo(magazine_sniper);

@@ -38,21 +38,21 @@ public class RenderMain {
 		block_farm_mashines_modelID = RenderingRegistry.getNextAvailableRenderId();*/
 
 		//Blocks
-		if (PackTechno.proxy.block.electric_wires_be) {
+		if (PackTechno.block.electric_wires_be) {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElectricWires.class, new BlockRenderElectricWires());
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.electric_wires), new ItemRenderBlockElectricWires());
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.block.electric_wires), new ItemRenderBlockElectricWires());
 		}
-		if (PackTechno.proxy.block.chip_be) {
+		if (PackTechno.block.chip_be) {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChip.class, new BlockRenderChip());
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.chip), new ItemRenderBlockChip());
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.block.chip), new ItemRenderBlockChip());
 		}
-		if (PackTechno.proxy.block.module_movement_be) {
+		if (PackTechno.block.module_movement_be) {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModuleMovement.class, new BlockRenderModuleMovement());
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.module_movement), new ItemRenderBlockModuleMovement());
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.block.module_movement), new ItemRenderBlockModuleMovement());
 		}
-		if (PackTechno.proxy.block.farm_mashines_be) {
+		if (PackTechno.block.farm_mashines_be) {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFarmMashines.class, new BlockRenderFarmMashines());
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.proxy.block.farm_mashines), new ItemRenderBlockFarmMashines());
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.block.farm_mashines), new ItemRenderBlockFarmMashines());
 		}
 
 		//Items

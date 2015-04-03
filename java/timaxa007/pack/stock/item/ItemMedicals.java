@@ -74,9 +74,9 @@ public class ItemMedicals extends ModifiedItem {
 				if (player.experienceLevel >= 1) {
 					player.addExperienceLevel(-1);
 					player.addPotionEffect(new PotionEffect(Potion.confusion.id, 50, 1));
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 190), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.item.medicals, 1, 190), true);
 				} else {
-					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.proxy.item.medicals, 1, 189), true);
+					player.dropPlayerItemWithRandomChoice(new ItemStack(PackStock.item.medicals, 1, 189), true);
 				}
 			} else if (is.getItemDamage() == 190) {
 				player.addExperienceLevel(1);
@@ -116,7 +116,7 @@ public class ItemMedicals extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		if (PackStock.proxy.item.medicals_be) {
+		if (PackStock.item.medicals_be) {
 			for (int i = 0; i < Potion.potionTypes.length; i++) {
 				if (Potion.potionTypes[i] != null) {
 					for (int j = 0; j < 5; j++) list.add(addNBT(i, 60, j));
@@ -129,7 +129,7 @@ public class ItemMedicals extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT(int id, int time, int lvl) {
-		ItemStack is = new ItemStack(PackStock.proxy.item.medicals);
+		ItemStack is = new ItemStack(PackStock.item.medicals);
 		NBTTagCompound nbt = new NBTTagCompound();
 		ReceivingNutriment.addEffect(nbt, id, time, lvl);
 		is.setTagCompound(nbt);

@@ -23,7 +23,7 @@ public class EventFurniture {
 		if (player != null && world != null && event.action == event.action.RIGHT_CLICK_BLOCK) {
 			if (current != null && current.getItem() == Items.glass_bottle && world.getBlock(event.x, event.y, event.z) == Blocks.stone) {
 				--current.stackSize;
-				//player.inventory.addItemStackToInventory(new ItemStack(PackStock.proxy.item_drinks, 1, 0));
+				//player.inventory.addItemStackToInventory(new ItemStack(PackStock.item_drinks, 1, 0));
 				event.setResult(Result.ALLOW);
 			}
 		}
@@ -37,7 +37,7 @@ public class EventFurniture {
 		if (current == null) {
 			if (player != null && world != null && !world.isRemote && event.action == event.action.RIGHT_CLICK_BLOCK) {
 				Block block = world.getBlock(event.x, event.y, event.z);
-				if (block != null && block == PackFurniture.proxy.block.lamps_click_off) {
+				if (block != null && block == PackFurniture.block.lamps_click_off) {
 					System.out.println("on");
 					event.setResult(Result.ALLOW);
 				}
@@ -53,7 +53,7 @@ public class EventFurniture {
 		if (current == null) {
 			if (player != null && world != null && !world.isRemote && event.action == event.action.RIGHT_CLICK_BLOCK) {
 				Block block = world.getBlock(event.x, event.y, event.z);
-				if (block != null && block == PackFurniture.proxy.block.lamps_click_on) {
+				if (block != null && block == PackFurniture.block.lamps_click_on) {
 					System.out.println("off");
 					event.setResult(Result.ALLOW);
 				}
@@ -68,7 +68,7 @@ public class EventFurniture {
 			if (e.craftMatrix.getStackInSlot(i) != null) {
 				ItemStack j = e.craftMatrix.getStackInSlot(i);
 				if (j.getItem() != null && j.getItem() instanceof ToolHammer) {
-					ItemStack k = new ItemStack(PackFurniture.proxy.item.tool_hammer, 2, (j.getItemDamage() + 1 ));
+					ItemStack k = new ItemStack(PackFurniture.item.tool_hammer, 2, (j.getItemDamage() + 1 ));
 					e.craftMatrix.setInventorySlotContents(i, k);
 				}
 			}

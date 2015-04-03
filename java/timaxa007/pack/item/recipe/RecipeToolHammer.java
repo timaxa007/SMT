@@ -39,13 +39,13 @@ public class RecipeToolHammer implements IRecipe {
 				ic4 != null && ic4.getItem() instanceof ItemsFurniture) {
 			//ic1.setItemDamage(ic4.getItemDamage() + 1);
 			//--ic7.stackSize;
-			return new ItemStack(PackFurniture.proxy.item.items_for_furniture, 1, 0);
+			return new ItemStack(PackFurniture.item.items_for_furniture, 1, 0);
 		}
 		else if (ic4 != null && ic4.getItem() instanceof ToolHammer && 
 				ic7 != null && ic7.getItem() instanceof ItemsFurniture) {
 			//ic4.setItemDamage(ic4.getItemDamage() + 1);
 			//--ic7.stackSize;
-			return new ItemStack(PackFurniture.proxy.item.items_for_furniture, 1, 0);
+			return new ItemStack(PackFurniture.item.items_for_furniture, 1, 0);
 		}
 		else return null;
 	}

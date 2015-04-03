@@ -12,7 +12,7 @@ public class Recipes_PackItems {
 	}
 	/*
 	public static ItemStack testTagAdd(int par1, String par2) {
-		ItemStack is = new ItemStack(PackMagic.proxy.blockSlims, 1, par1);
+		ItemStack is = new ItemStack(PackMagic.blockSlims, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("ColorHex", par2);
 		is.setTagCompound(tag);

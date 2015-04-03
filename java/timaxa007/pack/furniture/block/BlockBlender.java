@@ -33,7 +33,7 @@ public class BlockBlender extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_blender_modelID;
+		return PackFurniture.render.block_blender_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -68,7 +68,7 @@ public class BlockBlender extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(int par1, int par2, int par3, int par4, int par5) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.blender, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.block.blender, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par2);
 		nbt.setInteger("TypeCap", par2);

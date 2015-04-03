@@ -35,7 +35,7 @@ public class BlockCnstorAngle extends ModifiedBlock implements ITileEntityProvid
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_cnstor_angle_modelID;
+		return PackFurniture.render.block_cnstor_angle_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -82,7 +82,7 @@ public class BlockCnstorAngle extends ModifiedBlock implements ITileEntityProvid
 	}
 
 	public static ItemStack addNBT(int par1, int par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_angle, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.block.cnstor_angle, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par2);
 		nbt.setInteger("Size", par1);

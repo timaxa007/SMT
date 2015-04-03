@@ -33,7 +33,7 @@ public class ArmorMasks extends ModifiedItemArmor {
 	};
 
 	public ArmorMasks(String tag) {
-		super(tag, PackFurniture.proxy.item.COSTUME, 0, 0);
+		super(tag, PackFurniture.item.COSTUME, 0, 0);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setTextureName("timaxa007:armor/mask");
 	}
@@ -67,7 +67,7 @@ public class ArmorMasks extends ModifiedItemArmor {
 	}
 
 	public static ItemStack addNBT(int par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.item.armor_masks, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.item.armor_masks, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("TypeMask", par1);
 		is.setTagCompound(nbt);

@@ -191,7 +191,7 @@ public class ItemGerminationPlants extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT(int par1, String par2, int par3, int par4, int par5) {
-		ItemStack is = new ItemStack(PackStock.proxy.item.germination_plants, 1, 0);
+		ItemStack is = new ItemStack(PackStock.item.germination_plants, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("PlantID", par1);
 		nbt.setString("PlantType", par2);

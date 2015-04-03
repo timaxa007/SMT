@@ -188,7 +188,7 @@ liquid_hex = liq_hex;
 	}
 
 	public static ItemStack addNBT(String par1, int par2) {
-		ItemStack is = new ItemStack(PackStock.proxy.item.drinks, 1, 0);
+		ItemStack is = new ItemStack(PackStock.item.drinks, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);
 		nbt.setInteger("LiquidID", par2);

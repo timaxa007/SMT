@@ -32,7 +32,7 @@ public class BlockWardrobe extends ModifiedBlock implements ITileEntityProvider 
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_wardrobe_modelID;
+		return PackFurniture.render.block_wardrobe_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -78,7 +78,7 @@ public class BlockWardrobe extends ModifiedBlock implements ITileEntityProvider 
 	}
 
 	public static ItemStack addNBT(int par1, int par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.wardrobe, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.block.wardrobe, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par2);
 		is.setTagCompound(nbt);

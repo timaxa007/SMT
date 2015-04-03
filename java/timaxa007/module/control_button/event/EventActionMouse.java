@@ -1,9 +1,9 @@
 package timaxa007.module.control_button.event;
 
-import timaxa007.module.control_button.CoreControlButton;
+import net.minecraft.client.Minecraft;
+import timaxa007.module.control_button.NodeControlButton;
 import timaxa007.module.control_button.util.ActionMouseKey;
 import timaxa007.module.control_button.util.RegKey;
-import net.minecraft.client.Minecraft;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -20,9 +20,9 @@ public class EventActionMouse {
 	public void actionBindAttack(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			//------------------------------------------------------------------------------------------------------
-			if (CoreControlButton.botton_left) {//------------------------------------------------------------------
+			if (NodeControlButton.button_left) {//------------------------------------------------------------------
 				//--------------------------------------------------------------------------------------------------
-				if (RegKey.botton_left.getIsKeyPressed()) {
+				if (RegKey.button_left.getIsKeyPressed()) {
 					ActionMouseKey.actionLeftClickTickClient(event.player, tick_lc);
 					tick_lc += 1;
 					lc = true;
@@ -59,9 +59,9 @@ public class EventActionMouse {
 	public void actionBindUseItem(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.START && event.side == Side.CLIENT) {
 			//-------------------------------------------------------------------------------------------------------
-			if (CoreControlButton.botton_right) {//------------------------------------------------------------------
+			if (NodeControlButton.button_right) {//------------------------------------------------------------------
 				//---------------------------------------------------------------------------------------------------
-				if (RegKey.botton_right.getIsKeyPressed()) {
+				if (RegKey.button_right.getIsKeyPressed()) {
 					ActionMouseKey.actionRightClickTickClient(event.player, tick_rc);
 					tick_rc += 1;
 					rc = true;

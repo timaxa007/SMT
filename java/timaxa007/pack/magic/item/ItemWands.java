@@ -31,7 +31,7 @@ public class ItemWands extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT(int par1, int par2) {
-		ItemStack is = new ItemStack(PackMagic.proxy.item.wands);
+		ItemStack is = new ItemStack(PackMagic.item.wands);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par1);
 		nbt.setInteger("Cap", par2);

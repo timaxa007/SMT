@@ -114,7 +114,7 @@ public class TileEntityGerminationPlants extends TileEntity {
 			if (!worldObj.isRemote && worldObj.getWorldTime() % (20 * updt) == 0 &&
 					(worldObj.isAirBlock(xCoord, yCoord + 1, zCoord) || worldObj.getBlock(xCoord, yCoord + 1, zCoord) == Block.leaves) &&
 					getHeight() == 16) {
-				worldObj.setBlock(xCoord, yCoord + 1, zCoord, PackStock.proxy.block_germination_plants);
+				worldObj.setBlock(xCoord, yCoord + 1, zCoord, PackStock.block_germination_plants);
 				TileEntityGerminationPlants tes = new TileEntityGerminationPlants();
 				tes.setTypePlant(getTypePlant());
 				tes.setPlant(getPlant());

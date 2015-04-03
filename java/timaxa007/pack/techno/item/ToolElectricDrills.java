@@ -155,7 +155,7 @@ public class ToolElectricDrills extends ItemPrimaryKey {
 	}
 
 	public static ItemStack addNBT() {
-		ItemStack is = new ItemStack(PackTechno.proxy.item.tool_electric_drills, 1, 0);
+		ItemStack is = new ItemStack(PackTechno.item.tool_electric_drills, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("ModeID", 0);
 		is.setTagCompound(nbt);

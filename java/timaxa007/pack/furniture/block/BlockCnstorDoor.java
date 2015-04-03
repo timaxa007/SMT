@@ -89,7 +89,7 @@ public class BlockCnstorDoor extends ModifiedBlock implements ITileEntityProvide
 
 			if (ib == 0) {//
 
-				if (current != null && current.getItem() == PackFurniture.proxy.item.items_for_furniture) {
+				if (current != null && current.getItem() == PackFurniture.item.items_for_furniture) {
 					//if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 					NBTTagCompound nbt = current.getTagCompound();
 					if (nbt != null && nbt.hasKey("CordX") && nbt.hasKey("CordY") && nbt.hasKey("CordZ")) {

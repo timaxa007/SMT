@@ -3,9 +3,6 @@ package timaxa007.pack.furniture.block;
 import java.util.List;
 import java.util.Random;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.tile.TileEntityGrills;
-import timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,6 +15,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import timaxa007.pack.CorePack;
+import timaxa007.pack.furniture.PackFurniture;
+import timaxa007.pack.furniture.tile.TileEntityGrills;
+import timaxa007.tms.util.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -40,7 +41,7 @@ public class BlockGrills extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_grills_modelID;
+		return PackFurniture.render.block_grills_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {
@@ -67,7 +68,7 @@ public class BlockGrills extends ModifiedBlock implements ITileEntityProvider {
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityGrills) {
-			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_grills, world, x, y, z);
+			player.openGui(CorePack.instance, PackFurniture.gui_grills, world, x, y, z);
 			return true;
 		}
 		return false;
@@ -99,7 +100,7 @@ public class BlockGrills extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(String par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.grills, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.block.grills, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);
 		is.setTagCompound(nbt);

@@ -3,9 +3,6 @@ package timaxa007.pack.magic.lib;
 import java.util.Iterator;
 import java.util.List;
 
-import timaxa007.tms.Core;
-import timaxa007.tms.packet.MessageSpawnParticle;
-import timaxa007.tms.util.UtilTMS;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -20,6 +17,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import timaxa007.tms.CoreTMS;
+import timaxa007.tms.packet.MessageSpawnParticle;
+import timaxa007.tms.util.UtilTMS;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class ActionMagic {
@@ -60,7 +60,7 @@ public class ActionMagic {
 			}
 
 
-			if (Core.show_system_info_testing) System.out.println("obj_entity - " + obj_entity.toString());
+			if (CoreTMS.show_system_info_testing) System.out.println("obj_entity - " + obj_entity.toString());
 		} else if (obj_block != null && obj_block.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
 			int x = obj_block.blockX;
 			int y = obj_block.blockY;
@@ -69,9 +69,9 @@ public class ActionMagic {
 
 			//if (block.getMaterial() != Material.air) {}
 
-			if (Core.show_system_info_testing) System.out.println(block.getLocalizedName() + "obj_block - " + obj_block.toString());
+			if (CoreTMS.show_system_info_testing) System.out.println(block.getLocalizedName() + "obj_block - " + obj_block.toString());
 		} else {
-			if (Core.show_system_info_testing) System.out.println("Air");
+			if (CoreTMS.show_system_info_testing) System.out.println("Air");
 		}
 
 	}
@@ -96,7 +96,7 @@ public class ActionMagic {
 			}
 
 
-			if (Core.show_system_info_testing) System.out.println("obj_entity - " + obj_entity.toString());
+			if (CoreTMS.show_system_info_testing) System.out.println("obj_entity - " + obj_entity.toString());
 		} else if (obj_block != null && obj_block.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
 			int x = obj_block.blockX;
 			int y = obj_block.blockY;
@@ -114,9 +114,9 @@ public class ActionMagic {
 				world.setBlock(x, y, z, Blocks.grass);
 			}
 
-			if (Core.show_system_info_testing) System.out.println(block.getLocalizedName() + "obj_block - " + obj_block.toString());
+			if (CoreTMS.show_system_info_testing) System.out.println(block.getLocalizedName() + "obj_block - " + obj_block.toString());
 		} else {
-			if (Core.show_system_info_testing) System.out.println("Air");
+			if (CoreTMS.show_system_info_testing) System.out.println("Air");
 		}
 
 		double d0 = (double)(50);
@@ -170,7 +170,7 @@ public class ActionMagic {
 	}
 
 	public static void actionVoid3(World world, EntityPlayer player) {
-		Core.network.sendToAllAround(new MessageSpawnParticle(1, player.posX, player.posY, player.posZ), 
+		CoreTMS.network.sendToAllAround(new MessageSpawnParticle(1, player.posX, player.posY, player.posZ), 
 				new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 18.5D));
 	}
 

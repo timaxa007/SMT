@@ -21,7 +21,7 @@ public class BlockMagicCauldron extends ModifiedBlock implements ITileEntityProv
 	}
 
 	public int getRenderType() {
-		return PackMagic.proxy.render.block_magic_cauldron_modelID;
+		return PackMagic.render.block_magic_cauldron_modelID;
 	}
 
 }

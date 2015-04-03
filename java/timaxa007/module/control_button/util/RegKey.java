@@ -4,7 +4,7 @@ import net.minecraft.client.settings.KeyBinding;
 
 import org.lwjgl.input.Keyboard;
 
-import timaxa007.module.control_button.CoreControlButton;
+import timaxa007.module.control_button.NodeControlButton;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class RegKey {
@@ -27,24 +27,24 @@ public class RegKey {
 	public static final KeyBinding grab = new KeyBinding("key.grab.name", Keyboard.KEY_V, cat_name);
 	public static final KeyBinding lie = new KeyBinding("key.lie.name", Keyboard.KEY_C, cat_name);
 
-	public static KeyBinding botton_left;
-	public static KeyBinding botton_right;
+	public static KeyBinding button_left;
+	public static KeyBinding button_right;
 
 	public static KeyBinding[] list_key;
 
 	public static void preInit() {
 
-		if (CoreControlButton.botton_left)
-			botton_left = new KeyBinding("key.botton_left.name", 0, cat_name);
+		if (NodeControlButton.button_left)
+			button_left = new KeyBinding("key.button_left.name", 0, cat_name);
 
-		if (CoreControlButton.botton_right)
-			botton_right = new KeyBinding("key.botton_right.name", 0, cat_name);
+		if (NodeControlButton.button_right)
+			button_right = new KeyBinding("key.button_right.name", 0, cat_name);
 
 		list_key = new KeyBinding[] {
 				reload, charge, mode, mode_in, mode_out, action, 
 				action_helmet, action_chest, action_leggin, action_boot, 
 				booster, grab, lie,
-				botton_left, botton_right
+				button_left, button_right
 		};
 
 		for (KeyBinding key : list_key) if (key != null) ClientRegistry.registerKeyBinding(key);

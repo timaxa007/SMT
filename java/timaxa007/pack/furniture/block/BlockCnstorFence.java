@@ -37,7 +37,7 @@ public class BlockCnstorFence extends ModifiedBlock implements ITileEntityProvid
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_cnstor_fence_modelID;
+		return PackFurniture.render.block_cnstor_fence_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -83,7 +83,7 @@ public class BlockCnstorFence extends ModifiedBlock implements ITileEntityProvid
 	}
 
 	public static ItemStack addNBT(String par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.cnstor_fence, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.block.cnstor_fence, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);
 		is.setTagCompound(nbt);

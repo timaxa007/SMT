@@ -2,9 +2,6 @@ package timaxa007.pack.techno.block;
 
 import java.util.Random;
 
-import timaxa007.pack.techno.PackTechno;
-import timaxa007.pack.techno.tile.TileEntityElectricMachines;
-import timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,6 +11,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import timaxa007.pack.CorePack;
+import timaxa007.pack.techno.PackTechno;
+import timaxa007.pack.techno.tile.TileEntityElectricMachines;
+import timaxa007.tms.util.ModifiedBlock;
 
 public class BlockElectricMachines extends ModifiedBlock implements ITileEntityProvider {
 
@@ -80,7 +81,7 @@ public class BlockElectricMachines extends ModifiedBlock implements ITileEntityP
 		}
 
 		if (te != null && te instanceof TileEntityElectricMachines) {
-			player.openGui(PackTechno.instance, PackTechno.proxy.gui_electric_machines, world, x, y, z);
+			player.openGui(CorePack.instance, PackTechno.gui_electric_machines, world, x, y, z);
 			return true;
 		}
 

@@ -3,9 +3,6 @@ package timaxa007.pack.furniture.block;
 import java.util.List;
 import java.util.Random;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.tile.TileEntityBookshelf;
-import timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,6 +13,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import timaxa007.pack.CorePack;
+import timaxa007.pack.furniture.PackFurniture;
+import timaxa007.pack.furniture.tile.TileEntityBookshelf;
+import timaxa007.tms.util.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -65,7 +66,7 @@ public class BlockBookshelf extends ModifiedBlock implements ITileEntityProvider
 		//if (!world.isRemote) {return false;}
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityBookshelf) {
-			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_bookshelf, world, x, y, z);
+			player.openGui(CorePack.instance, PackFurniture.gui_bookshelf, world, x, y, z);
 			return true;
 		}
 		return false;
@@ -96,7 +97,7 @@ public class BlockBookshelf extends ModifiedBlock implements ITileEntityProvider
 	}
 
 	public static ItemStack addNBT(int par1, String par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.bookshelf, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.block.bookshelf, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par2);
 		is.setTagCompound(nbt);

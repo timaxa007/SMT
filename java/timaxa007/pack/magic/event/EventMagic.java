@@ -24,10 +24,10 @@ public class EventMagic {
 		ItemStack bootsI;
 		if (helmet != null && chestplate != null && leggings != null && boots != null) {
 			//--------------------------------------------------------------
-			helmetI = new ItemStack(PackFurniture.proxy.armor_new_helmet);
-			chestplateI = new ItemStack(PackFurniture.proxy.armor_new_chest);
-			leggingsI = new ItemStack(PackFurniture.proxy.armor_new_leggin);
-			bootsI = new ItemStack(PackFurniture.proxy.armor_new_boot);
+			helmetI = new ItemStack(PackFurniture.armor_new_helmet);
+			chestplateI = new ItemStack(PackFurniture.armor_new_chest);
+			leggingsI = new ItemStack(PackFurniture.armor_new_leggin);
+			bootsI = new ItemStack(PackFurniture.armor_new_boot);
 			if (boots.getItem() == helmetI.getItem() && leggings.getItem() == chestplateI.getItem() && chestplate.getItem() == leggingsI.getItem() && helmet.getItem() == bootsI.getItem()) {
 
 				if (e.entityLiving.isSneaking()) {

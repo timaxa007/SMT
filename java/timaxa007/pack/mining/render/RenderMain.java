@@ -32,7 +32,7 @@ public class RenderMain {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOreOres.class, new RenderBlockOreOres());
 
 		//Block
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMining.proxy.block.cristals), new ItemRenderBlockCristals());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackMining.block.cristals), new ItemRenderBlockCristals());
 
 		//Item
 

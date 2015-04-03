@@ -42,7 +42,7 @@ public class BlockApiary extends ModifiedBlock implements ITileEntityProvider {
 		return new TileEntityApiary();
 	}
 
-	public int getRenderType() {return PackStock.proxy.render.block_apiary_modelID;}
+	public int getRenderType() {return PackStock.render.block_apiary_modelID;}
 
 	public int quantityDropped(Random random) {
 		return 0;
@@ -89,7 +89,7 @@ public class BlockApiary extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(String par1, int par2) {
-		ItemStack is = new ItemStack(PackStock.proxy.block.apiary, 1, 0);
+		ItemStack is = new ItemStack(PackStock.block.apiary, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);
 		nbt.setInteger("TypeID", par2);

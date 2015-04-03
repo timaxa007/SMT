@@ -12,7 +12,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class RenderMain {
 
-	public static int block_claymore_modelID;
+	public static int
+	block_claymore_modelID
+	;
 
 	public static void preInit() {
 
@@ -31,10 +33,10 @@ public class RenderMain {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityClaymore.class, new BlockRenderClaymore());
 
 		//Blocks
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapons.proxy.block.claymore), new ItemRendererClaymore());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapons.block.claymore), new ItemRendererClaymore());
 
 		//Item
-		MinecraftForgeClient.registerItemRenderer(PackWeapons.proxy.item.weapons, new ItemRendererWeapons());
+		MinecraftForgeClient.registerItemRenderer(PackWeapons.item.weapons, new ItemRendererWeapons());
 
 		//Entity
 		//RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderEntityBullet());

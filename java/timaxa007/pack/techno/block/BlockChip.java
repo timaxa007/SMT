@@ -37,7 +37,7 @@ public class BlockChip extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackTechno.proxy.render.block_chip_modelID;
+		return PackTechno.render.block_chip_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {
@@ -121,7 +121,7 @@ public class BlockChip extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(int par1) {
-		ItemStack is = new ItemStack(PackTechno.proxy.block.chip, 1, 0);
+		ItemStack is = new ItemStack(PackTechno.block.chip, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par1);
 		is.setTagCompound(nbt);

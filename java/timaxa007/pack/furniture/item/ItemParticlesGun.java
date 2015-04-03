@@ -61,7 +61,7 @@ public class ItemParticlesGun extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT(int par1) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.item.particles_gun, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.item.particles_gun, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("WeaponID", par1);
 		//nbt.setInteger("AmmoID", par2);

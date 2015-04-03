@@ -42,7 +42,7 @@ public class BlockFoods extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackStock.proxy.render.block_foods_modelID;
+		return PackStock.render.block_foods_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -111,7 +111,7 @@ public class BlockFoods extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(String par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackStock.proxy.block.foods, 1, 0);
+		ItemStack is = new ItemStack(PackStock.block.foods, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);
 		nbt.setInteger("Color1", par2);

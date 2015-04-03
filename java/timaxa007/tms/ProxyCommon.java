@@ -11,7 +11,7 @@ public class ProxyCommon {
 	}
 
 	public void init() {
-		if (Core.debug) FMLLog.log(Core.MODID, Level.DEBUG, "Successful initialized common part.");
+		if (CoreTMS.debug) FMLLog.log(CoreTMS.MODID, Level.DEBUG, "Successful initialized common part.");
 	}
 
 }

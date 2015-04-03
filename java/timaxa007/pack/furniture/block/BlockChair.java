@@ -31,7 +31,7 @@ public class BlockChair extends ModifiedBlock implements ITileEntityProvider {
 		return new TileEntityChair();
 	}
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_chair_modelID;
+		return PackFurniture.render.block_chair_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -79,7 +79,7 @@ public class BlockChair extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(int par1, int par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.chair, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.block.chair, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par2);
 		is.setTagCompound(nbt);

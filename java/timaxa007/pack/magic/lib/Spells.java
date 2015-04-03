@@ -1,8 +1,5 @@
 package timaxa007.pack.magic.lib;
 
-import timaxa007.tms.Core;
-import timaxa007.tms.util.UtilInteger;
-import timaxa007.tms.util.UtilString;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,6 +14,9 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import timaxa007.tms.CoreTMS;
+import timaxa007.tms.util.UtilInteger;
+import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**Spells same Enchantment, but better.<br><b>WIP</b>
@@ -272,7 +272,7 @@ public class Spells {
 
 		public static boolean isNoShowHard(EntityPlayer player) {
 			return (player.capabilities.isCreativeMode || 
-					(Core.show_tip_info_testing || player.worldObj.difficultySetting != EnumDifficulty.HARD));
+					(CoreTMS.show_tip_info_testing || player.worldObj.difficultySetting != EnumDifficulty.HARD));
 		}
 
 		@Deprecated
@@ -287,7 +287,7 @@ public class Spells {
 
 		public static boolean isShowPeace(EntityPlayer player) {
 			return (player.capabilities.isCreativeMode || 
-					Core.show_tip_info_testing || player.worldObj.difficultySetting == EnumDifficulty.PEACEFUL);
+					CoreTMS.show_tip_info_testing || player.worldObj.difficultySetting == EnumDifficulty.PEACEFUL);
 		}
 
 	}

@@ -2,12 +2,6 @@ package timaxa007.pack.stock.item;
 
 import java.util.List;
 
-import timaxa007.pack.stock.PackStock;
-import timaxa007.pack.stock.lib.FoodForItem;
-import timaxa007.tms.Core;
-import timaxa007.tms.lib.Colors;
-import timaxa007.tms.util.ModifiedItem;
-import timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -18,6 +12,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import timaxa007.pack.stock.PackStock;
+import timaxa007.pack.stock.lib.FoodForItem;
+import timaxa007.tms.CoreTMS;
+import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -123,14 +122,14 @@ Allspice(0.0F), Ginger(0.0F), Canella(0.0F), Curcuma(0.0F), Bay(0.0F), Rosemary(
 					if (!FoodForItem.isNull(nbt.getString("NameID"))) {
 						FoodForItem ffi = FoodForItem.get(nbt.getString("NameID"));
 
-						if (Core.show_tip_info_testing) {
+						if (CoreTMS.show_tip_info_testing) {
 							list.add("NameID: " + nbt.getString("NameID") + " / [-] ID:" + ffi.id + ".");
 						}
 
 						list.add(UtilString.getText("Name") + ": " + ffi.getLocalizedName() + ".");
 						list.add(UtilString.getText("Type") + ": " + ffi.getLocalizedType() + ".");
 
-						if (Core.show_tip_info_testing && nbt.hasKey("Spoilage")) {
+						if (CoreTMS.show_tip_info_testing && nbt.hasKey("Spoilage")) {
 							list.add("Spoilage:" + nbt.getByte("Spoilage") + ".");
 						}
 
@@ -168,7 +167,7 @@ Allspice(0.0F), Ginger(0.0F), Canella(0.0F), Curcuma(0.0F), Bay(0.0F), Rosemary(
 	}
 
 	public static ItemStack addNBT(String par1) {
-		ItemStack is = new ItemStack(PackStock.proxy.item.foods, 1, 0);
+		ItemStack is = new ItemStack(PackStock.item.foods, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);
 		is.setTagCompound(nbt);

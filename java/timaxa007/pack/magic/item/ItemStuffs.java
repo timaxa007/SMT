@@ -108,7 +108,7 @@ public class ItemStuffs extends ItemPrimaryKey {
 	}
 
 	public static ItemStack addNBT(int par1, int par2) {
-		ItemStack is = new ItemStack(PackMagic.proxy.item.stuffs, 1, 512);
+		ItemStack is = new ItemStack(PackMagic.item.stuffs, 1, 512);
 		NBTTagCompound nbt = new NBTTagCompound();
 		Spells.addSpell(nbt, Spells.efficient_mining, 0, -1);
 		Spells.addSpell(nbt, Spells.efficient_digging, 1, 0);

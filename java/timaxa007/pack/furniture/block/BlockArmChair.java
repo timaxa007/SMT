@@ -37,7 +37,7 @@ public class BlockArmChair extends ModifiedBlock implements ITileEntityProvider 
 
 	@Override
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_armchair_modelID;
+		return PackFurniture.render.block_armchair_modelID;
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class BlockArmChair extends ModifiedBlock implements ITileEntityProvider 
 	}
 
 	public static ItemStack addNBT(String par1, int par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.arm_chair, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.block.arm_chair, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Type", par1);
 		nbt.setInteger("Size", par2);

@@ -42,7 +42,7 @@ public class BlockModuleMovement extends ModifiedBlock implements ITileEntityPro
 	}
 
 	public int getRenderType() {
-		return PackTechno.proxy.render.block_module_movement_modelID;
+		return PackTechno.render.block_module_movement_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {
@@ -154,7 +154,7 @@ public class BlockModuleMovement extends ModifiedBlock implements ITileEntityPro
 	}
 
 	public static ItemStack addNBT(int par1) {
-		ItemStack is = new ItemStack(PackTechno.proxy.block.module_movement, 1, 0);
+		ItemStack is = new ItemStack(PackTechno.block.module_movement, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par1);
 		is.setTagCompound(nbt);

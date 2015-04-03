@@ -2,9 +2,6 @@ package timaxa007.pack.furniture.item;
 
 import java.util.List;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.util.IBackpack;
-import timaxa007.tms.util.ModifiedItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +11,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
+import timaxa007.pack.CorePack;
+import timaxa007.pack.furniture.PackFurniture;
+import timaxa007.pack.furniture.util.IBackpack;
+import timaxa007.tms.util.ModifiedItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -32,7 +33,7 @@ public class ItemBackpack extends ModifiedItem implements IBackpack, IInventory 
 		if (player.isSneaking()) {
 
 		} else {
-			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_backpack, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+			player.openGui(CorePack.instance, PackFurniture.gui_backpack, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 		}
 		return is;
 	}
@@ -44,7 +45,7 @@ public class ItemBackpack extends ModifiedItem implements IBackpack, IInventory 
 	}
 
 	private ItemStack addNBT() {
-		ItemStack is = new ItemStack(PackFurniture.proxy.item.backpack);
+		ItemStack is = new ItemStack(PackFurniture.item.backpack);
 		NBTTagCompound nbt = new NBTTagCompound();
 		writeToNBT(nbt);
 		is.setTagCompound(nbt);

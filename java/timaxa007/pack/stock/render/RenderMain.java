@@ -42,9 +42,9 @@ public class RenderMain {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityApiary.class, new RenderBlockApiary());
 
 		//Blocks
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block.germination_plants), new ItemRenderBlockGerminationPlants());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block.foods), new ItemRenderFoods());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.proxy.block.apiary), new ItemRenderBlockApiary());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.block.germination_plants), new ItemRenderBlockGerminationPlants());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.block.foods), new ItemRenderFoods());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackStock.block.apiary), new ItemRenderBlockApiary());
 
 		//Items
 

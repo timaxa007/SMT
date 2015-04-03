@@ -107,7 +107,7 @@ public class BlockLocked extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(int par1) {
-		ItemStack is = new ItemStack(PackMagic.proxy.block.magic_locked, 1, 0);
+		ItemStack is = new ItemStack(PackMagic.block.magic_locked, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Type", par1);
 		is.setTagCompound(nbt);

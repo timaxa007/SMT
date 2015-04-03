@@ -35,7 +35,7 @@ public class BlockBoxParticles extends ModifiedBlock implements ITileEntityProvi
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_box_particles_modelID;
+		return PackFurniture.render.block_box_particles_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -146,7 +146,7 @@ public class BlockBoxParticles extends ModifiedBlock implements ITileEntityProvi
 	}
 
 	public static ItemStack addNBT(int par1, String par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.box_particles, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.block.box_particles, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par2);
 		is.setTagCompound(nbt);

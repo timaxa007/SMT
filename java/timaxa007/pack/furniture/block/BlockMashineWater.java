@@ -2,9 +2,6 @@ package timaxa007.pack.furniture.block;
 
 import java.util.List;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.tile.TileEntityMashineWater;
-import timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,6 +13,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import timaxa007.pack.CorePack;
+import timaxa007.pack.furniture.PackFurniture;
+import timaxa007.pack.furniture.tile.TileEntityMashineWater;
+import timaxa007.tms.util.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -35,7 +36,7 @@ public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvi
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_jar01_modelID;
+		return PackFurniture.render.block_jar01_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -78,7 +79,7 @@ public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvi
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityMashineWater) {
-			player.openGui(PackFurniture.instance, PackFurniture.proxy.gui_mashine_water, world, x, y, z);
+			player.openGui(CorePack.instance, PackFurniture.gui_mashine_water, world, x, y, z);
 			return true;
 		}
 		return false;
@@ -92,7 +93,7 @@ public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvi
 	}
 
 	public static ItemStack addNBT(int par1, boolean par2) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.mashine_waiter, 1, par1);
+		ItemStack is = new ItemStack(PackFurniture.block.mashine_waiter, 1, par1);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("ColorHex", par1);
 		nbt.setBoolean("Part", par2);

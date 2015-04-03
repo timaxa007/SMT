@@ -19,7 +19,7 @@ public class Generator_Mining implements IWorldGenerator {
 
 	public void generateNether(World world, Random rand, int chunkX, int chunkZ) {
 		/*
-		(new WorldGenMinable(PackMining.proxy.blockRock, 12, 32, 
+		(new WorldGenMinable(PackMining.blockRock, 12, 32, 
 				Blocks.netherrack)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(127), chunkZ + rand.nextInt(16));
 		 */
 	}
@@ -31,7 +31,7 @@ public class Generator_Mining implements IWorldGenerator {
 				for (int z = 1; z < world.getHeight(); ++z) {
 					if (world.getBiomeGenForCoords(chunkX + x, y).biomeID == 30 || world.getBiomeGenForCoords(chunkX + x, chunkY + y).biomeID == 31) {
 						if ((world.getBlock(chunkX + x, z, chunkY + y) == Blocks.grass || world.getBlock(chunkX + x, z, chunkY + y) == Blocks.netherrack)) {
-							world.setBlock(chunkX + x, z, chunkY + y, PackMining.proxy.blockRock);
+							world.setBlock(chunkX + x, z, chunkY + y, PackMining.blockRock);
 						}
 					}
 				}
@@ -42,7 +42,7 @@ public class Generator_Mining implements IWorldGenerator {
 		for (int j = 0;j<16;j++) {
 			int rdm = rand.nextInt(100);
 			if (rdm == 0) {
-				(new WorldGenMinable(PackMining.proxy.oreGemsLarge, j, 4, 
+				(new WorldGenMinable(PackMining.oreGemsLarge, j, 4, 
 						Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(10), chunkZ + rand.nextInt(16));
 			}
 		}
@@ -50,7 +50,7 @@ public class Generator_Mining implements IWorldGenerator {
 		for (int j = 0; j < 16; j++) {
 			int rdm = rand.nextInt(50);
 			if (rdm == 0) {
-				(new WorldGenMinable(PackMining.proxy.oreGemsMedium, j, 6, 
+				(new WorldGenMinable(PackMining.oreGemsMedium, j, 6, 
 						Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(20), chunkZ + rand.nextInt(16));
 			}
 		}
@@ -58,18 +58,18 @@ public class Generator_Mining implements IWorldGenerator {
 		for (int j = 0; j < 16; j++) {
 			int rdm = rand.nextInt(10);
 			if (rdm == 0) {
-				(new WorldGenMinable(PackMining.proxy.oreGemsSmall, j, 8, 
+				(new WorldGenMinable(PackMining.oreGemsSmall, j, 8, 
 						Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(30), chunkZ + rand.nextInt(16));
 			}
 		}
 
 		for (int j = 0; j < 16; j++) {
-			(new WorldGenMinable(PackMining.proxy.blockRock, j, 16, 
+			(new WorldGenMinable(PackMining.blockRock, j, 16, 
 					Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(96), chunkZ + rand.nextInt(16));
 		}
 
 		for (int j = 0; j < 16; j++) {
-			(new WorldGenMinable(PackMining.proxy.oreMetals, j, 8, 
+			(new WorldGenMinable(PackMining.oreMetals, j, 8, 
 					Block.stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(60), chunkZ + rand.nextInt(16));
 		}
 		 */
@@ -77,7 +77,7 @@ public class Generator_Mining implements IWorldGenerator {
 
 	public void generateEnd(World world, Random rand, int chunkX, int chunkZ) {
 		/*
-		(new WorldGenMinable(PackMining.proxy.blockRock, 12, 32, 
+		(new WorldGenMinable(PackMining.blockRock, 12, 32, 
 				Blocks.end_stone)).generate(world, rand, chunkX + rand.nextInt(16), rand.nextInt(96), chunkZ + rand.nextInt(16));
 		 */
 	}

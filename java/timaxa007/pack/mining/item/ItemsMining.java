@@ -14,7 +14,7 @@ public class ItemsMining extends ModifiedItem {
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		if (!world.isRemote && player instanceof EntityPlayerMP) {
 			MinecraftServer minecraftserver = MinecraftServer.getServer();
-			minecraftserver.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP)player, PackMining.proxy.world_dim_mining_id);
+			minecraftserver.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP)player, PackMining.world_dim_mining_id);
 		}
 		return is;
 	}

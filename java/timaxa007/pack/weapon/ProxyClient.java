@@ -1,24 +1,26 @@
 package timaxa007.pack.weapon;
 
-import timaxa007.pack.weapon.event.EventWeaponsClient;
-import timaxa007.tms.util.IProxy;
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import timaxa007.pack.api.IProxyPackClient;
+import timaxa007.pack.weapon.event.EventWeaponsClient;
+import timaxa007.pack.weapon.render.RenderMain;
 
-public class ProxyClient extends ProxyCommon implements IProxy {
+public class ProxyClient implements IProxyPackClient {
 
-	public void preInit(FMLPreInitializationEvent event) {
-		super.preInit(event);
+	public void preInit() {
 
 		MinecraftForge.EVENT_BUS.register(new EventWeaponsClient());
 
 	}
 
 	public void init() {
-		super.init();
 
-		render.init();
+		RenderMain.init();
 
+	}
+
+	public void postInit() {
+		
 	}
 
 }

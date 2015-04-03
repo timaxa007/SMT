@@ -77,7 +77,7 @@ list.add(addNBT(i));
 }
 
 public static ItemStack addNBT(String par1) {
-ItemStack is = new ItemStack(PackFurniture.proxy.item_colored, 1, 0);
+ItemStack is = new ItemStack(PackFurniture.item_colored, 1, 0);
 NBTTagCompound nbt = new NBTTagCompound();
 nbt.setString("NameID", par1);
 is.setTagCompound(tag);
@@ -85,7 +85,7 @@ return is;
 }
 
 public static ItemStack addNBT(int par1) {
-ItemStack is = new ItemStack(PackFurniture.proxy.item_colored, 1, 0);
+ItemStack is = new ItemStack(PackFurniture.item_colored, 1, 0);
 NBTTagCompound nbt = new NBTTagCompound();
 nbt.setInteger("ItemID", par1);
 is.setTagCompound(tag);

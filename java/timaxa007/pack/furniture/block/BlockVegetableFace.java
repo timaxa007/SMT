@@ -136,7 +136,7 @@ public class BlockVegetableFace extends ModifiedBlock implements ITileEntityProv
 		if (current != null) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			//--------------------------------
-			if (current.getItem() == PackFurniture.proxy.item.colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
+			if (current.getItem() == PackFurniture.item.colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 				if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 				//((TileEntityVegetableFace)te).setColorBlock(GetColors.getHexColors[current.getItemDamage()]);
 				((TileEntityVegetableFace)te).setColorBlock(GetColors.getColorMix(GetColors.getHexColors[current.getItemDamage()], ((TileEntityVegetableFace)te).getColorBlock()));

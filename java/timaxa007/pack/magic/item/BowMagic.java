@@ -83,7 +83,7 @@ public class BowMagic extends ModifiedItem {
 		if (event.isCanceled()) {return;}
 		j = event.charge;
 		boolean flag = player.capabilities.isCreativeMode||EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, is) > 0;
-		if (flag || player.inventory.hasItem(PackMagic.proxy.item.arrow_mini)) {
+		if (flag || player.inventory.hasItem(PackMagic.item.arrow_mini)) {
 			float f = (float)j / 20.0F;
 			f = (f * f + f * 2.0F) / 3.0F;
 			if ((double)f<0.1D) {return;}
@@ -98,7 +98,7 @@ public class BowMagic extends ModifiedItem {
 			is.damageItem(1, player);
 			world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F/(itemRand.nextFloat()*0.4F+1.2F)+f*0.5F);
 			if (flag) {entityarrow.canBePickedUp = 2;}
-			else {player.inventory.consumeInventoryItem(PackMagic.proxy.itemArrowMini.getItem());}
+			else {player.inventory.consumeInventoryItem(PackMagic.itemArrowMini.getItem());}
 			//if (!world.isRemote) {
 			world.spawnEntityInWorld(entityarrow);
 			}
@@ -132,7 +132,7 @@ public class BowMagic extends ModifiedItem {
 	public int getItemEnchantability() {return 1;}
 	/*
 	public IIcon getIcon(ItemStack is, int renderPass, EntityPlayer player, ItemStack useItm, int useRem) {
-		Item itm = PackMagic.proxy.item.magic_bow;
+		Item itm = PackMagic.item.magic_bow;
 		if (useItm != null && is.getItem() == itm) {
 			int j = is.getMaxItemUseDuration()-useRem;
 			if (j >= 18) {return ((BowMagic)itm).getItemIIconForUseDuration(2);}

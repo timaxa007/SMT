@@ -1,27 +1,32 @@
 package timaxa007.pack.stock;
 
 import net.minecraftforge.common.MinecraftForge;
+import timaxa007.pack.api.IProxyPackClient;
 import timaxa007.pack.stock.event.EventStockClient;
 import timaxa007.pack.stock.lib.ReceivingNutriment;
-import timaxa007.tms.util.IProxy;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import timaxa007.pack.stock.render.RenderMain;
 
-public class ProxyClient extends ProxyCommon implements IProxy {
+public class ProxyClient implements IProxyPackClient {
 
-	public void preInit(FMLPreInitializationEvent event) {
-		super.preInit(event);
+	@Override
+	public void preInit() {
 
 		MinecraftForge.EVENT_BUS.register(new EventStockClient());
 
 	}
 
+	@Override
 	public void init() {
-		super.init();
 
 		MinecraftForge.EVENT_BUS.register(new ReceivingNutriment.EventNutrimentClient());
 
-		render.init();
+		RenderMain.init();
 
+	}
+
+	@Override
+	public void postInit() {
+		
 	}
 
 }

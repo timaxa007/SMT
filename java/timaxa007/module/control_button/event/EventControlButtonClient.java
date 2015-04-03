@@ -19,7 +19,7 @@ public class EventControlButtonClient {
 			NBTTagCompound nbt = current.getTagCompound();
 			if (nbt != null && nbt.hasKey("Aim") && nbt.getBoolean("Aim")) {
 				if (nbt.hasKey("ZoomFov"))
-					e.newfov -= ((127.0F + (float)nbt.getByte("ZoomFov")) / 127.0F);
+					e.newfov -= ((float)nbt.getByte("ZoomFov") / 127.0F);
 				else 
 					e.newfov -= 0.25F;
 			}

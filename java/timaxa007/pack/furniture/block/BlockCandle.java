@@ -39,7 +39,7 @@ public class BlockCandle extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_candle_modelID;
+		return PackFurniture.render.block_candle_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -172,7 +172,7 @@ world.spawnParticle("flame", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 }
 
 else {*/
-		if (this == PackFurniture.proxy.block.candle_light) {
+		if (this == PackFurniture.block.candle_light) {
 			if (world.rand.nextInt(8) == 0) {
 				world.spawnParticle("smoke", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 			}
@@ -191,7 +191,7 @@ else {*/
 @Override 
 public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int meta, int fortune) {
 ArrayList<ItemStack> ret = super.getBlockDropped(world, x, y, z, meta, fortune);
-ret.add(new ItemStack(PackFurniture.proxy.block.candle, 1, meta));
+ret.add(new ItemStack(PackFurniture.block.candle, 1, meta));
 return ret;
 }
 	 */

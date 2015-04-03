@@ -32,7 +32,7 @@ public class BlockTable extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_table_modelID;
+		return PackFurniture.render.block_table_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -73,7 +73,7 @@ public class BlockTable extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(int par1, String par2, int par3) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.table, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.block.table, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par2);
 		nbt.setInteger("Size", par3);

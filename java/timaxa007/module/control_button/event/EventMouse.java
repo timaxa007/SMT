@@ -18,16 +18,16 @@ public class EventMouse {
 	@SubscribeEvent
 	public void onLeftClick(MouseEvent m) {
 		if (m.button == 0) {
-			//if (Core.show_system_info_testing) System.out.println("onLeftClick");
-			//Core.network.sendToServer(new MessageMouseKey(1, m.buttonstate));
+			//if (NodeTMS.show_system_info_testing) System.out.println("onLeftClick");
+			//NodeTMS.network.sendToServer(new MessageMouseKey(1, m.buttonstate));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void onRightClick(MouseEvent m) {
 		if (m.button == 1) {
-			//if (Core.show_system_info_testing) System.out.println("onRightClick");
-			//Core.network.sendToServer(new MessageMouseKey(2, m.buttonstate));
+			//if (NodeTMS.show_system_info_testing) System.out.println("onRightClick");
+			//NodeTMS.network.sendToServer(new MessageMouseKey(2, m.buttonstate));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -36,8 +36,8 @@ public class EventMouse {
 		if (Mouse.isButtonDown(0) && 
 				(!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) && 
 				p.entityLiving instanceof EntityPlayer) {
-			//if (Core.show_system_info_testing) System.out.println("onLeftClickTick");
-			//Core.network.sendToServer(new MessageMouseKey(3, true));
+			//if (NodeTMS.show_system_info_testing) System.out.println("onLeftClickTick");
+			//NodeTMS.network.sendToServer(new MessageMouseKey(3, true));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -46,8 +46,8 @@ public class EventMouse {
 		if (Mouse.isButtonDown(1) && 
 				(!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) && 
 				p.entityLiving instanceof EntityPlayer) {
-			//if (Core.show_system_info_testing) System.out.println("onRightClick");
-			//Core.network.sendToServer(new MessageMouseKey(4, true));
+			//if (NodeTMS.show_system_info_testing) System.out.println("onRightClick");
+			//NodeTMS.network.sendToServer(new MessageMouseKey(4, true));
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------

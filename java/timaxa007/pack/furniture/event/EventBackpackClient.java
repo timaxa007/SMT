@@ -1,15 +1,10 @@
 package timaxa007.pack.furniture.event;
 
 import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.gui.GuiBackpack;
 import timaxa007.pack.furniture.packet.MessageBackpack;
-import net.minecraft.client.Minecraft;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.relauncher.Side;
 
 public class EventBackpackClient {
-
+/*
 	boolean og1, og1_last = false;
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
@@ -26,7 +21,7 @@ public class EventBackpackClient {
 				og1_last = og1;
 			}
 		}
-	}
+	}*/
 	//--------------------------------------------------------------------------------------------------------------
 	public static void sendChangedStateGui(boolean last, boolean now, int pack) {
 		//System.out.println("sendChangedStateMouse");

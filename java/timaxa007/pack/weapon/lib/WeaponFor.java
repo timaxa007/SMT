@@ -109,8 +109,8 @@ public class WeaponFor {
 		return isNull(get(tag));
 	}
 
-	public static boolean isNull(WeaponFor spell) {
-		return spell == null || spell == empty;
+	public static boolean isNull(WeaponFor weapon) {
+		return weapon == null || weapon == empty;
 	}
 	//--------------------------------------------------------
 	public WeaponFor setName(String name) {

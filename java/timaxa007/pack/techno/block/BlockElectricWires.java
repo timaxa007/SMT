@@ -34,7 +34,7 @@ public class BlockElectricWires extends ModifiedBlock implements ITileEntityProv
 	}
 
 	public int getRenderType() {
-		return PackTechno.proxy.render.block_electric_wires_modelID;
+		return PackTechno.render.block_electric_wires_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -99,7 +99,7 @@ public class BlockElectricWires extends ModifiedBlock implements ITileEntityProv
 	}
 
 	public static ItemStack addNBT(String par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackTechno.proxy.block.electric_wires, 1, 0);
+		ItemStack is = new ItemStack(PackTechno.block.electric_wires, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);
 		nbt.setInteger("Size", par2);

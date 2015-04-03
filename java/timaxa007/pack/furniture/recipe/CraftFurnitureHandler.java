@@ -12,17 +12,17 @@ public class CraftFurnitureHandler /*implements ICraftingHandler*/ {
 				if (cmj != null && cmh != null) {
 					if (cmj.getItem() != cmh.getItem()) {
 
-						if (cmj.getItem() == new ItemStack(PackFurniture.proxy.item_filter_charcoal).getItem() && cmh.getItem() == new ItemStack(Item.potion).getItem()) {
-							player.inventory.addItemStackToInventory(new ItemStack(PackFurniture.proxy.item_filter_charcoal, 1 , craftMatrix.getStackInSlot(j).getItemDamage()+1));
+						if (cmj.getItem() == new ItemStack(PackFurniture.item_filter_charcoal).getItem() && cmh.getItem() == new ItemStack(Item.potion).getItem()) {
+							player.inventory.addItemStackToInventory(new ItemStack(PackFurniture.item_filter_charcoal, 1 , craftMatrix.getStackInSlot(j).getItemDamage()+1));
 						}
 
 					}
 				}
 			}
 
-			if (craftMatrix.getStackInSlot(i) != null && craftMatrix.getStackInSlot(i).getItem()==new ItemStack(PackFurniture.proxy.itemColored).getItem()) {
+			if (craftMatrix.getStackInSlot(i) != null && craftMatrix.getStackInSlot(i).getItem()==new ItemStack(PackFurniture.itemColored).getItem()) {
 			}
-			if (is != null && is.getItem()==new ItemStack(PackFurniture.proxy.toolAirBrush).getItem()) {
+			if (is != null && is.getItem()==new ItemStack(PackFurniture.toolAirBrush).getItem()) {
 			}
 
 		}

@@ -38,7 +38,7 @@ public class BlockGerminationPlants extends ModifiedBlock implements ITileEntity
 	}
 
 	public int getRenderType() {
-		return PackStock.proxy.render.block_germination_plants_modelID;
+		return PackStock.render.block_germination_plants_modelID;
 	}
 
 	public boolean renderAsNormalBlock() {
@@ -172,7 +172,7 @@ if (te != null && te instanceof TileEntityGerminationPlants) {
 if (current != null) {
 //--------------------------------
 if (
-(current.getItem() == PackStock.proxy.item_base_seed)&&
+(current.getItem() == PackStock.item_base_seed)&&
 (((TileEntityGerminationPlants)te).getPlant() == "")&&
 (world.getBlock(x, y-1, z) == Block.tilledField)
 ) {
@@ -451,7 +451,7 @@ world.spawnEntityInWorld(entityitem2);
 	}
 
 	public static ItemStack addNBT(int par1, String par2, int par3, int par4, int par5, int par6, int par7) {
-		ItemStack is = new ItemStack(PackStock.proxy.block.germination_plants, 1, 0);
+		ItemStack is = new ItemStack(PackStock.block.germination_plants, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("PlantID", par1);
 		nbt.setString("PlantType", par2);

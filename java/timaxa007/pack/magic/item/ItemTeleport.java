@@ -50,7 +50,7 @@ public class ItemTeleport extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT(double x, double y, double z) {
-		ItemStack is = new ItemStack(PackMagic.proxy.item.teleport, 1, 0);
+		ItemStack is = new ItemStack(PackMagic.item.teleport, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		//nbt.setBoolean("SurfaceWorld", true);
 		nbt.setDouble("CordX", x);

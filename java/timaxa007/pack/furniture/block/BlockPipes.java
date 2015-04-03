@@ -33,7 +33,7 @@ public class BlockPipes extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return PackFurniture.proxy.render.block_pipes_modelID;
+		return PackFurniture.render.block_pipes_modelID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -89,7 +89,7 @@ public class BlockPipes extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public static ItemStack addNBT(String par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackFurniture.proxy.block.pipes, 1, 0);
+		ItemStack is = new ItemStack(PackFurniture.block.pipes, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);
 		nbt.setInteger("Size", par2);

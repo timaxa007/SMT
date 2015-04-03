@@ -18,8 +18,8 @@ public class RecipeArmorColor implements IRecipe {
 
 		if (
 				(cmj != null && cmh != null && cmj != cmh) &&
-				(cmj != null && cmj.getItem() == new ItemStack(PackItems.proxy.item.armor_wool_colors_helmet).getItem() && cmj.getTagCompound() != null) && 
-				(cmh != null && cmh.getItem() == new ItemStack(PackFurniture.proxy.item.colored).getItem() && cmj.getTagCompound().getInteger("ColorHex") == 14)
+				(cmj != null && cmj.getItem() == new ItemStack(PackItems.item.armor_wool_colors_helmet).getItem() && cmj.getTagCompound() != null) && 
+				(cmh != null && cmh.getItem() == new ItemStack(PackFurniture.item.colored).getItem() && cmj.getTagCompound().getInteger("ColorHex") == 14)
 				) {
 			return true;
 		}
@@ -35,10 +35,10 @@ public class RecipeArmorColor implements IRecipe {
 
 		if (
 				(cmj != null && cmh != null && cmj != cmh) &&
-				(cmj.getItem() == new ItemStack(PackItems.proxy.item.armor_wool_colors_helmet).getItem() && cmj.getTagCompound() != null && cmj.getTagCompound().getInteger("ColorHex") == 14) && 
-				(cmh.getItem() == new ItemStack(PackFurniture.proxy.item.colored).getItem())
+				(cmj.getItem() == new ItemStack(PackItems.item.armor_wool_colors_helmet).getItem() && cmj.getTagCompound() != null && cmj.getTagCompound().getInteger("ColorHex") == 14) && 
+				(cmh.getItem() == new ItemStack(PackFurniture.item.colored).getItem())
 				) {
-			ItemStack is = new ItemStack(PackItems.proxy.item.armor_wool_colors_helmet);
+			ItemStack is = new ItemStack(PackItems.item.armor_wool_colors_helmet);
 			NBTTagCompound nbt = new NBTTagCompound();
 			nbt.setInteger("ColorHex", cmh.getItemDamage());
 			is.setTagCompound(nbt);
