@@ -9,6 +9,7 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
+@Deprecated //Useless thing, it has alredy replaced by vanila.
 public class MessageSpawnParticle implements IMessage {
 
 	public int num;
