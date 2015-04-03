@@ -10,7 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import timaxa007.module.weight.NodeWeight;
+import timaxa007.module.weight.ModuleWeight;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -97,7 +97,7 @@ public class ItemUpgradeWeight extends Item {
 	}
 
 	public static ItemStack addNBT(short i) {
-		ItemStack is = new ItemStack(NodeWeight.upgradeWeight);
+		ItemStack is = new ItemStack(ModuleWeight.upgradeWeight);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setShort("WeightUp", i);
 		is.setTagCompound(nbt);

@@ -13,7 +13,7 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-public class NodeWeight implements IModuleClass {
+public class ModuleWeight implements IModuleClass {
 
 	public static final String MODID = "weight";
 	public static final String MODNAME = "SystemWeight";
@@ -28,12 +28,12 @@ public class NodeWeight implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + NodeWeight.MODNAME + ", version: " + NodeWeight.VERSION + ".");
+		log.info("Starting module " + ModuleWeight.MODNAME + ", version: " + ModuleWeight.VERSION + ".");
 
 		upgradeWeight = new ItemUpgradeWeight();
 		GameRegistry.registerItem(upgradeWeight, "ItemUpgradeWeight");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(NodeWeight.MODID);
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(ModuleWeight.MODID);
 		network.registerMessage(MessageWeight.Handler.class, MessageWeight.class, 0, Side.CLIENT);
 
 	}

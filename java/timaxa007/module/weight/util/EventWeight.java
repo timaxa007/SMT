@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import timaxa007.module.weight.NodeWeight;
+import timaxa007.module.weight.ModuleWeight;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
@@ -27,7 +27,7 @@ public class EventWeight {
 					//float weight = PlayerWeight.get((EntityPlayer)event.entity).getWeight();
 					float weight_max = PlayerWeight.get((EntityPlayer)event.entity).getWeightMax();
 					//Fix for Client
-					NodeWeight.network.sendTo(new MessageWeight(weight_max), (EntityPlayerMP)event.entity);
+					ModuleWeight.network.sendTo(new MessageWeight(weight_max), (EntityPlayerMP)event.entity);
 				}
 		}
 

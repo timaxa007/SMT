@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import timaxa007.pack.CorePack;
+import timaxa007.pack.NodePack;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
 import timaxa007.tms.lib.ActionModel;
@@ -68,7 +68,7 @@ public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityPro
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityFurnitureChest) {
-			player.openGui(CorePack.instance, PackFurniture.gui_furniture_chest, world, x, y, z);
+			player.openGui(NodePack.instance, PackFurniture.gui_furniture_chest, world, x, y, z);
 			return true;
 		}
 		return false;

@@ -53,7 +53,7 @@ public class ProxyModuleClient extends ProxyModuleCommon {
 
 	public static void listModuleClient() {
 		//------------------------------------------------------------------------------------
-		if (CoreModule.isNodeControlButton) {
+		if (NodeModule.isNodeControlButton) {
 			try {
 				String node_control_button = "timaxa007.module.control_button.ProxyClient";
 				Object o_control_button = Class.forName(node_control_button).newInstance();
@@ -64,7 +64,7 @@ public class ProxyModuleClient extends ProxyModuleCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CoreModule.isNodeEnvironment) {
+		if (NodeModule.isNodeEnvironment) {
 			try {
 				String node_environment = "timaxa007.module.environment.ProxyClient";
 				Object o_environment = Class.forName(node_environment).newInstance();
@@ -75,7 +75,7 @@ public class ProxyModuleClient extends ProxyModuleCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CoreModule.isNodeStatusPlayer) {
+		if (NodeModule.isNodeStatusPlayer) {
 			try {
 				String node_status_player = "timaxa007.module.status_player.ProxyClient";
 				Object o_status_player = Class.forName(node_status_player).newInstance();
@@ -86,7 +86,7 @@ public class ProxyModuleClient extends ProxyModuleCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CoreModule.isNodeWeight) {
+		if (NodeModule.isNodeWeight) {
 			try {
 				String node_weight = "timaxa007.module.weight.ProxyClient";
 				Object o_weight = Class.forName(node_weight).newInstance();
@@ -97,7 +97,7 @@ public class ProxyModuleClient extends ProxyModuleCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CoreModule.isNodeEffect) {
+		if (NodeModule.isNodeEffect) {
 			try {
 				String node_effects = "timaxa007.module.effect.ProxyClient";
 				Object o_effects = Class.forName(node_effects).newInstance();
@@ -108,7 +108,7 @@ public class ProxyModuleClient extends ProxyModuleCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CoreModule.isNodeColors) {
+		if (NodeModule.isNodeColors) {
 			try {
 				String node_colors = "timaxa007.module.effect.ProxyClient";
 				Object o_colors = Class.forName(node_colors).newInstance();

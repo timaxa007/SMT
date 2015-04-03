@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import timaxa007.module.api.IModuleClass;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-public class NodeEffect implements IModuleClass {
+public class ModuleEffect implements IModuleClass {
 
 	public static final String MODID = "effects";
 	public static final String MODNAME = "Effects";
@@ -17,7 +17,7 @@ public class NodeEffect implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + NodeEffect.MODNAME + ", version: " + NodeEffect.VERSION + ".");
+		log.info("Starting module " + ModuleEffect.MODNAME + ", version: " + ModuleEffect.VERSION + ".");
 
 	}
 

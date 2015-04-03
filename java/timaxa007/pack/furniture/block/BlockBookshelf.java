@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import timaxa007.pack.CorePack;
+import timaxa007.pack.NodePack;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityBookshelf;
 import timaxa007.tms.util.ModifiedBlock;
@@ -66,7 +66,7 @@ public class BlockBookshelf extends ModifiedBlock implements ITileEntityProvider
 		//if (!world.isRemote) {return false;}
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityBookshelf) {
-			player.openGui(CorePack.instance, PackFurniture.gui_bookshelf, world, x, y, z);
+			player.openGui(NodePack.instance, PackFurniture.gui_bookshelf, world, x, y, z);
 			return true;
 		}
 		return false;

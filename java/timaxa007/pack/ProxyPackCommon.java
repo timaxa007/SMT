@@ -53,7 +53,7 @@ public class ProxyPackCommon {
 
 	public static void listPackClient() {
 		//------------------------------------------------------------------------------------
-		if (CorePack.isPackFurniture) {
+		if (NodePack.isPackFurniture) {
 			try {
 				String node_furniture = "timaxa007.pack.furniture.ProxyCommon";
 				Object o_furniture = Class.forName(node_furniture).newInstance();
@@ -64,7 +64,7 @@ public class ProxyPackCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CorePack.isPackItems) {
+		if (NodePack.isPackItems) {
 			try {
 				String node_item = "timaxa007.pack.item.ProxyCommon";
 				Object o_item = Class.forName(node_item).newInstance();
@@ -75,7 +75,7 @@ public class ProxyPackCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CorePack.isPackMagic) {
+		if (NodePack.isPackMagic) {
 			try {
 				String node_magic = "timaxa007.pack.magic.ProxyCommon";
 				Object o_magic = Class.forName(node_magic).newInstance();
@@ -86,7 +86,7 @@ public class ProxyPackCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CorePack.isPackMining) {
+		if (NodePack.isPackMining) {
 			try {
 				String node_mining = "timaxa007.pack.mining.ProxyCommon";
 				Object o_mining = Class.forName(node_mining).newInstance();
@@ -97,7 +97,7 @@ public class ProxyPackCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CorePack.isPackStock) {
+		if (NodePack.isPackStock) {
 			try {
 				String node_stock = "timaxa007.pack.stock.ProxyCommon";
 				Object o_stock = Class.forName(node_stock).newInstance();
@@ -108,7 +108,7 @@ public class ProxyPackCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CorePack.isPackTechno) {
+		if (NodePack.isPackTechno) {
 			try {
 				String node_techno = "timaxa007.pack.techno.ProxyCommon";
 				Object o_techno = Class.forName(node_techno).newInstance();
@@ -119,7 +119,7 @@ public class ProxyPackCommon {
 			catch (ClassNotFoundException e) {e.printStackTrace();}
 		}
 		//------------------------------------------------------------------------------------
-		if (CorePack.isPackWeapons) {
+		if (NodePack.isPackWeapons) {
 			try {
 				String node_weapon = "timaxa007.pack.weapon.ProxyCommon";
 				Object o_weapon = Class.forName(node_weapon).newInstance();

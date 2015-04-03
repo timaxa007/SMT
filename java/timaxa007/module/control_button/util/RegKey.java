@@ -4,7 +4,7 @@ import net.minecraft.client.settings.KeyBinding;
 
 import org.lwjgl.input.Keyboard;
 
-import timaxa007.module.control_button.NodeControlButton;
+import timaxa007.module.control_button.ModuleControlButton;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class RegKey {
@@ -34,10 +34,10 @@ public class RegKey {
 
 	public static void preInit() {
 
-		if (NodeControlButton.button_left)
+		if (ModuleControlButton.button_left)
 			button_left = new KeyBinding("key.button_left.name", 0, cat_name);
 
-		if (NodeControlButton.button_right)
+		if (ModuleControlButton.button_right)
 			button_right = new KeyBinding("key.button_right.name", 0, cat_name);
 
 		list_key = new KeyBinding[] {

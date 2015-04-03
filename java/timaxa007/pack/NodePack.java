@@ -14,17 +14,17 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-@Mod (modid = CorePack.MODID, name = CorePack.MODNAME, version = CorePack.VERSION, dependencies = "required-after:timaxa007")
+@Mod (modid = NodePack.MODID, name = NodePack.MODNAME, version = NodePack.VERSION, dependencies = "required-after:timaxa007")
 
-public class CorePack {
+public class NodePack {
 
 	public static final String MODID = "pack_tms";
-	public static final String MODNAME = "CorePack";
+	public static final String MODNAME = "NodePack";
 	public static final String VERSION = "0.2.2a";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
-	@Instance(CorePack.MODID) public static CorePack instance;
-	@SidedProxy(modId = CorePack.MODID, 
+	@Instance(NodePack.MODID) public static NodePack instance;
+	@SidedProxy(modId = NodePack.MODID, 
 			clientSide = "timaxa007.pack.ProxyPackClient", 
 			serverSide = "timaxa007.pack.ProxyPackCommon")
 	public static ProxyPackCommon proxy;
@@ -64,7 +64,7 @@ public class CorePack {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting core packs, version: " + CorePack.VERSION + ".");
+		log.info("Starting core packs, version: " + NodePack.VERSION + ".");
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();
@@ -104,7 +104,7 @@ public class CorePack {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(CorePack.MODID, new HandlerGuiCorePack());
+		NetworkRegistry.INSTANCE.registerGuiHandler(NodePack.MODID, new HandlerGuiNodePack());
 
 		proxy.init();
 	}

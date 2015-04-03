@@ -15,7 +15,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IScope;
 import timaxa007.module.control_button.trash.ItemPrimaryKey;
-import timaxa007.pack.CorePack;
+import timaxa007.pack.NodePack;
 import timaxa007.pack.weapon.PackWeapons;
 import timaxa007.pack.weapon.lib.WeaponFor;
 import timaxa007.pack.weapon.packet.MessageActionWeapons;
@@ -169,7 +169,7 @@ public class ItemWeapons extends ItemPrimaryKey implements IScope {
 	}
 
 	public void mode(ItemStack is, World world, EntityPlayer player) {
-		player.openGui(CorePack.instance, PackWeapons.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+		player.openGui(NodePack.instance, PackWeapons.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 import timaxa007.module.api.IModuleClass;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-public class NodeControlButton implements IModuleClass {
+public class ModuleControlButton implements IModuleClass {
 
 	public static final String MODID = "control_button";
 	public static final String MODNAME = "ControlButton";
@@ -22,7 +22,7 @@ public class NodeControlButton implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + NodeControlButton.MODNAME + ", version: " + NodeControlButton.VERSION + ".");
+		log.info("Starting module " + ModuleControlButton.MODNAME + ", version: " + ModuleControlButton.VERSION + ".");
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();

@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import timaxa007.module.api.IModuleClass;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-public class NodeColors implements IModuleClass {
+public class ModuleColors implements IModuleClass {
 
 	public static final String MODID = "colors";
 	public static final String MODNAME = "Colors";
@@ -17,7 +17,7 @@ public class NodeColors implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + NodeColors.MODNAME + ", version: " + NodeColors.VERSION + ".");
+		log.info("Starting module " + ModuleColors.MODNAME + ", version: " + ModuleColors.VERSION + ".");
 
 	}
 

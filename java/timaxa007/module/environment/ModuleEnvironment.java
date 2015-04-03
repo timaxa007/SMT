@@ -13,7 +13,7 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-public class NodeEnvironment implements IModuleClass {
+public class ModuleEnvironment implements IModuleClass {
 
 	public static final String MODID = "environment";
 	public static final String MODNAME = "Environment";
@@ -28,12 +28,12 @@ public class NodeEnvironment implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + NodeEnvironment.MODNAME + ", version: " + NodeEnvironment.VERSION + ".");
+		log.info("Starting module " + ModuleEnvironment.MODNAME + ", version: " + ModuleEnvironment.VERSION + ".");
 
 		upgradeWeight = new ItemEnvironment();
 		GameRegistry.registerItem(upgradeWeight, "ItemEnvironment");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(NodeEnvironment.MODID);
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(ModuleEnvironment.MODID);
 		network.registerMessage(MessageEnvironment.Handler.class, MessageEnvironment.class, 0, Side.CLIENT);
 
 	}

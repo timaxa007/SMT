@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
-import timaxa007.pack.CorePack;
+import timaxa007.pack.NodePack;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.util.IBackpack;
 import timaxa007.tms.util.ModifiedItem;
@@ -33,7 +33,7 @@ public class ItemBackpack extends ModifiedItem implements IBackpack, IInventory 
 		if (player.isSneaking()) {
 
 		} else {
-			player.openGui(CorePack.instance, PackFurniture.gui_backpack, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+			player.openGui(NodePack.instance, PackFurniture.gui_backpack, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 		}
 		return is;
 	}

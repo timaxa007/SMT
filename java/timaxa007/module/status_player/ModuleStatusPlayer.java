@@ -13,7 +13,7 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-public class NodeStatusPlayer implements IModuleClass {
+public class ModuleStatusPlayer implements IModuleClass {
 
 	public static final String MODID = "status_player";
 	public static final String MODNAME = "StatusPlayer";
@@ -28,12 +28,12 @@ public class NodeStatusPlayer implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + NodeStatusPlayer.MODNAME + ", version: " + NodeStatusPlayer.VERSION + ".");
+		log.info("Starting module " + ModuleStatusPlayer.MODNAME + ", version: " + ModuleStatusPlayer.VERSION + ".");
 
 		upgradeWeight = new ItemStatusPlayer();
 		GameRegistry.registerItem(upgradeWeight, "ItemStatusPlayer");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(NodeStatusPlayer.MODID);
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(ModuleStatusPlayer.MODID);
 		network.registerMessage(MessageStatusPlayer.Handler.class, MessageStatusPlayer.class, 0, Side.CLIENT);
 
 	}

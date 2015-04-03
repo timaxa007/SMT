@@ -13,17 +13,17 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-@Mod (modid = CoreModule.MODID, name = CoreModule.MODNAME, version = CoreModule.VERSION)
+@Mod (modid = NodeModule.MODID, name = NodeModule.MODNAME, version = NodeModule.VERSION)
 
-public class CoreModule {
+public class NodeModule {
 
 	public static final String MODID = "module_tms";
-	public static final String MODNAME = "CoreModule";
+	public static final String MODNAME = "NodeModule";
 	public static final String VERSION = "0.2.1a";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
-	@Instance(CoreModule.MODID) public static CoreModule instance;
-	@SidedProxy(modId = CoreModule.MODID, 
+	@Instance(NodeModule.MODID) public static NodeModule instance;
+	@SidedProxy(modId = NodeModule.MODID, 
 			clientSide = "timaxa007.module.ProxyModuleClient", 
 			serverSide = "timaxa007.module.ProxyModuleCommon")
 	public static ProxyModuleCommon proxy;
@@ -60,7 +60,7 @@ public class CoreModule {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting core modules, version: " + CoreModule.VERSION + ".");
+		log.info("Starting core modules, version: " + NodeModule.VERSION + ".");
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		cfg.load();
@@ -108,7 +108,7 @@ public class CoreModule {
 		//------------------------------------------------------------------------------------
 		if (!disable_module_control_button) {
 			try {
-				String node_control_button = "timaxa007.module.control_button.NodeControlButton";
+				String node_control_button = "timaxa007.module.control_button.ModuleControlButton";
 				Object o_control_button = Class.forName(node_control_button).newInstance();
 				control_button = (IModuleClass)o_control_button;
 			}
@@ -119,7 +119,7 @@ public class CoreModule {
 		//------------------------------------------------------------------------------------
 		if (!disable_module_environment) {
 			try {
-				String node_environment = "timaxa007.module.environment.NodeEnvironment";
+				String node_environment = "timaxa007.module.environment.ModuleEnvironment";
 				Object o_environment = Class.forName(node_environment).newInstance();
 				environment = (IModuleClass)o_environment;
 			}
@@ -130,7 +130,7 @@ public class CoreModule {
 		//------------------------------------------------------------------------------------
 		if (!disable_module_status_player) {
 			try {
-				String node_status_player = "timaxa007.module.status_player.NodeStatusPlayer";
+				String node_status_player = "timaxa007.module.status_player.ModuleStatusPlayer";
 				Object o_status_player = Class.forName(node_status_player).newInstance();
 				status_player = (IModuleClass)o_status_player;
 			}
@@ -141,7 +141,7 @@ public class CoreModule {
 		//------------------------------------------------------------------------------------
 		if (!disable_module_weight) {
 			try {
-				String node_weight = "timaxa007.module.weight.NodeWeight";
+				String node_weight = "timaxa007.module.weight.ModuleWeight";
 				Object o_weight = Class.forName(node_weight).newInstance();
 				weight = (IModuleClass)o_weight;
 			}
@@ -152,7 +152,7 @@ public class CoreModule {
 		//------------------------------------------------------------------------------------
 		if (!disable_module_effects) {
 			try {
-				String node_effects = "timaxa007.module.effect.NodeEffect";
+				String node_effects = "timaxa007.module.effect.ModuleEffect";
 				Object o_effects = Class.forName(node_effects).newInstance();
 				effects = (IModuleClass)o_effects;
 			}
@@ -163,7 +163,7 @@ public class CoreModule {
 		//------------------------------------------------------------------------------------
 		if (!disable_module_colors) {
 			try {
-				String node_colors = "timaxa007.module.colors.NodeColors";
+				String node_colors = "timaxa007.module.colors.ModuleColors";
 				Object o_colors = Class.forName(node_colors).newInstance();
 				colors = (IModuleClass)o_colors;
 			}
