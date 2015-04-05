@@ -12,10 +12,11 @@ public class ProxyModuleClient extends ProxyModuleCommon {
 	effects,
 	colors;
 
+	@Override
 	public void preInit() {
 		super.preInit();
 
-		listModuleClient();
+		verificationModuleClient();
 
 		if (control_button != null) control_button.preInit();
 		if (environment != null) environment.preInit();
@@ -39,6 +40,7 @@ public class ProxyModuleClient extends ProxyModuleCommon {
 
 	}
 
+	@Override
 	public void postInit() {
 		super.postInit();
 
@@ -51,74 +53,34 @@ public class ProxyModuleClient extends ProxyModuleCommon {
 
 	}
 
-	public static void listModuleClient() {
-		//------------------------------------------------------------------------------------
-		if (NodeModule.isNodeControlButton) {
-			try {
-				String node_control_button = "timaxa007.module.control_button.ProxyClient";
-				Object o_control_button = Class.forName(node_control_button).newInstance();
-				control_button = (IProxyModuleClient)o_control_button;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (NodeModule.isNodeEnvironment) {
-			try {
-				String node_environment = "timaxa007.module.environment.ProxyClient";
-				Object o_environment = Class.forName(node_environment).newInstance();
-				environment = (IProxyModuleClient)o_environment;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (NodeModule.isNodeStatusPlayer) {
-			try {
-				String node_status_player = "timaxa007.module.status_player.ProxyClient";
-				Object o_status_player = Class.forName(node_status_player).newInstance();
-				status_player = (IProxyModuleClient)o_status_player;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (NodeModule.isNodeWeight) {
-			try {
-				String node_weight = "timaxa007.module.weight.ProxyClient";
-				Object o_weight = Class.forName(node_weight).newInstance();
-				weight = (IProxyModuleClient)o_weight;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (NodeModule.isNodeEffect) {
-			try {
-				String node_effects = "timaxa007.module.effect.ProxyClient";
-				Object o_effects = Class.forName(node_effects).newInstance();
-				effects = (IProxyModuleClient)o_effects;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (NodeModule.isNodeColors) {
-			try {
-				String node_colors = "timaxa007.module.effect.ProxyClient";
-				Object o_colors = Class.forName(node_colors).newInstance();
-				colors = (IProxyModuleClient)o_colors;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
+	public static void verificationModuleClient() {
+
+		if (NodeModule.isNodeControlButton)
+			control_button = checkModuleClient(NodeModule.PATH + ".control_button.ProxyClient");
+
+		if (NodeModule.isNodeEnvironment)
+			environment = checkModuleClient(NodeModule.PATH + ".environment.ProxyClient");
+
+		if (NodeModule.isNodeStatusPlayer)
+			status_player = checkModuleClient(NodeModule.PATH + ".status_player.ProxyClient");
+
+		if (NodeModule.isNodeWeight)
+			weight = checkModuleClient(NodeModule.PATH + ".weight.ProxyClient");
+
+		if (NodeModule.isNodeEffect)
+			effects = checkModuleClient(NodeModule.PATH + ".effect.ProxyClient");
+
+		if (NodeModule.isNodeColors)
+			colors = checkModuleClient(NodeModule.PATH + ".colors.ProxyClient");
+
+	}
+
+	public static IProxyModuleClient checkModuleClient(String node) {
+		try {return (IProxyModuleClient)Class.forName(node).newInstance();}
+		catch (InstantiationException e) {e.printStackTrace();}
+		catch (IllegalAccessException e) {e.printStackTrace();}
+		catch (ClassNotFoundException e) {e.printStackTrace();}
+		return null;
 	}
 
 }

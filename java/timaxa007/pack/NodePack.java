@@ -18,15 +18,16 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class NodePack {
 
-	public static final String MODID = "pack_tms";
+	public static final String MODID = "tms_pack";
 	public static final String MODNAME = "NodePack";
 	public static final String VERSION = "0.2.2a";
+	public static final String PATH = "timaxa007.pack";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	@Instance(NodePack.MODID) public static NodePack instance;
 	@SidedProxy(modId = NodePack.MODID, 
-			clientSide = "timaxa007.pack.ProxyPackClient", 
-			serverSide = "timaxa007.pack.ProxyPackCommon")
+			clientSide = PATH + ".ProxyPackClient", 
+			serverSide = PATH + ".ProxyPackCommon")
 	public static ProxyPackCommon proxy;
 	public static Logger log;
 
@@ -35,7 +36,7 @@ public class NodePack {
 	item,
 	magic,
 	mining,
-	stocks,
+	stock,
 	techno,
 	weapon
 	;
@@ -79,21 +80,13 @@ public class NodePack {
 
 		cfg.save();
 
-		listPack();
-
-		isPackFurniture = furniture != null;
-		isPackItems = item != null;
-		isPackMagic = magic != null;
-		isPackMining = mining != null;
-		isPackStock = stocks != null;
-		isPackTechno = techno != null;
-		isPackWeapons = weapon != null;
+		verificationPack();
 
 		if (isPackFurniture) furniture.preInit(event);
 		if (isPackItems) item.preInit(event);
 		if (isPackMagic) magic.preInit(event);
 		if (isPackMining) mining.preInit(event);
-		if (isPackStock) stocks.preInit(event);
+		if (isPackStock) stock.preInit(event);
 		if (isPackTechno) techno.preInit(event);
 		if (isPackWeapons) weapon.preInit(event);
 
@@ -114,85 +107,44 @@ public class NodePack {
 		proxy.postInit();
 	}
 
-	public static void listPack() {
-		//------------------------------------------------------------------------------------
-		if (!disable_pack_furniture) {
-			try {
-				String node_furniture = "timaxa007.pack.furniture.PackFurniture";
-				Object o_furniture = Class.forName(node_furniture).newInstance();
-				furniture = (IPackClass)o_furniture;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (!disable_pack_item) {
-			try {
-				String node_item = "timaxa007.pack.item.PackItems";
-				Object o_item = Class.forName(node_item).newInstance();
-				item = (IPackClass)o_item;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (!disable_pack_magic) {
-			try {
-				String node_magic = "timaxa007.pack.magic.PackMagic";
-				Object o_magic = Class.forName(node_magic).newInstance();
-				magic = (IPackClass)o_magic;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (!disable_pack_mining) {
-			try {
-				String node_mining = "timaxa007.pack.mining.PackMining";
-				Object o_mining = Class.forName(node_mining).newInstance();
-				mining = (IPackClass)o_mining;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (!disable_pack_stocks) {
-			try {
-				String node_stocks = "timaxa007.pack.stock.PackStock";
-				Object o_stocks = Class.forName(node_stocks).newInstance();
-				stocks = (IPackClass)o_stocks;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (!disable_pack_techno) {
-			try {
-				String node_techno = "timaxa007.pack.techno.PackTechno";
-				Object o_techno = Class.forName(node_techno).newInstance();
-				techno = (IPackClass)o_techno;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
-		if (!disable_pack_weapon) {
-			try {
-				String node_weapon = "timaxa007.pack.weapon.PackWeapons";
-				Object o_weapon = Class.forName(node_weapon).newInstance();
-				weapon = (IPackClass)o_weapon;
-			}
-			catch (InstantiationException e) {e.printStackTrace();}
-			catch (IllegalAccessException e) {e.printStackTrace();}
-			catch (ClassNotFoundException e) {e.printStackTrace();}
-		}
-		//------------------------------------------------------------------------------------
+	public static void verificationPack() {
+
+		if (!disable_pack_furniture)
+			furniture = checkPack(PATH + ".furniture.PackFurniture");
+		isPackFurniture = furniture != null;
+
+		if (!disable_pack_item)
+			item = checkPack(PATH + ".item.PackItems");
+		isPackItems = item != null;
+
+		if (!disable_pack_magic)
+			magic = checkPack(PATH + ".magic.PackMagic");
+		isPackMagic = magic != null;
+
+		if (!disable_pack_mining)
+			mining = checkPack(PATH + ".mining.PackMining");
+		isPackMining = mining != null;
+
+		if (!disable_pack_stocks)
+			stock = checkPack(PATH + ".stock.PackStock");
+		isPackStock = stock != null;
+
+		if (!disable_pack_techno)
+			techno = checkPack(PATH + ".techno.PackTechno");
+		isPackTechno = techno != null;
+
+		if (!disable_pack_weapon)
+			weapon = checkPack(PATH + ".weapon.PackWeapons");
+		isPackWeapons = weapon != null;
+
+	}
+
+	public static IPackClass checkPack(String node) {
+		try {return (IPackClass)Class.forName(node).newInstance();}
+		catch (InstantiationException e) {e.printStackTrace();}
+		catch (IllegalAccessException e) {e.printStackTrace();}
+		catch (ClassNotFoundException e) {e.printStackTrace();}
+		return null;
 	}
 
 }
