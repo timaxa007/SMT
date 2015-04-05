@@ -1,5 +1,7 @@
 package timaxa007.module;
 
+import java.io.File;
+
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
@@ -61,7 +63,7 @@ public class NodeModule {
 		log = event.getModLog();
 		log.info("Starting core modules, version: " + NodeModule.VERSION + ".");
 
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms", NodeModule.MODID + ".cfg"));
 		cfg.load();
 
 		disable_module_control_button = cfg.get("disable_module", "control_button", false).getBoolean(false);

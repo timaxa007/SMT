@@ -1,5 +1,7 @@
 package timaxa007.pack.magic;
 
+import java.io.File;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -76,10 +78,7 @@ public class PackMagic implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackMagic.MODNAME + ".");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMagic.MODID);
-		RegisterMessage.init(network);
-
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms/pack", PackMagic.MODID + ".cfg"));
 		cfg.load();
 
 		block.magic_machines_be = cfg.get("block", "magic_machines", true).getBoolean(true);
@@ -95,6 +94,9 @@ public class PackMagic implements IPackClass {
 		item.magic_bag_be = cfg.get("item", "magic_bag_be", true).getBoolean(true);
 
 		cfg.save();
+
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMagic.MODID);
+		RegisterMessage.init(network);
 
 		new ListMagic();
 

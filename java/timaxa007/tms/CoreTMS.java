@@ -1,10 +1,13 @@
 package timaxa007.tms;
 
+import java.io.File;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 
 import org.apache.logging.log4j.Logger;
 
@@ -51,16 +54,26 @@ public class CoreTMS {
 	public static Block block_test;
 	public static Item item_test;
 
-	private static Configuration currectConfig;
-
 	@EventHandler
 	public void preInitialize(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
 		log.info("Starting core " + CoreTMS.MODNAME + ".");
 
-		currectConfig = new Configuration(event.getSuggestedConfigurationFile());
-		syncConfig(currectConfig);
+		Configuration cfg = new Configuration(new File("./config/tms", "core_tms.cfg"));
+		cfg.load();
+
+		debug = cfg.get("debugging", "debug", false).getBoolean(false);
+
+		Property show_tip_info_testing_cfg = cfg.get("debugging", "show_tip_info_testing", false);
+		show_tip_info_testing_cfg.comment = "comment show_tip_info_testing";
+		show_tip_info_testing = show_tip_info_testing_cfg.getBoolean(false);
+
+		Property show_system_info_testing_cfg = cfg.get("debugging", "show_system_info_testing", false);
+		show_system_info_testing_cfg.comment = "comment show_system_info_testing";
+		show_system_info_testing = show_system_info_testing_cfg.getBoolean(false);
+
+		cfg.save();
 
 		new ListTextureModel();
 
@@ -90,16 +103,6 @@ public class CoreTMS {
 		} catch(Exception e) {
 			return false;
 		}
-	}
-
-	private static void syncConfig(Configuration config) {
-		config.load();
-
-		debug = config.get("debugging", "debug", false).getBoolean(false);
-		show_tip_info_testing = config.get("debugging", "show_tip_info_testing", false).getBoolean(false);
-		show_system_info_testing = config.get("debugging", "show_system_info_testing", false).getBoolean(false);
-
-		config.save();
 	}
 
 }

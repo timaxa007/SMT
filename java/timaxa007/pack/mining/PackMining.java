@@ -1,5 +1,7 @@
 package timaxa007.pack.mining;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -59,10 +61,7 @@ public class PackMining implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackMining.MODNAME + ".");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMining.MODID);
-		RegisterMessage.init(network);
-
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms/pack", PackMining.MODID + ".cfg"));
 		cfg.load();
 
 		world_dim_mining_id = cfg.get("world", "dimension_mining_id", 30).getInt();
@@ -77,6 +76,9 @@ public class PackMining implements IPackClass {
 		item.items_for_mining_be = cfg.get("item", "items_for_mining", true).getBoolean(true);
 
 		cfg.save();
+
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMining.MODID);
+		RegisterMessage.init(network);
 
 		new ListMining();
 

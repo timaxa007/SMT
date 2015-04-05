@@ -1,5 +1,9 @@
 package timaxa007.module.colors;
 
+import java.io.File;
+
+import net.minecraftforge.common.config.Configuration;
+
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.module.api.IModuleClass;
@@ -18,6 +22,11 @@ public class ModuleColors implements IModuleClass {
 
 		log = event.getModLog();
 		log.info("Starting module " + ModuleColors.MODNAME + ", version: " + ModuleColors.VERSION + ".");
+
+		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleColors.MODID + ".cfg"));
+		cfg.load();
+
+		cfg.save();
 
 	}
 

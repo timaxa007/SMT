@@ -1,18 +1,18 @@
-package timaxa007.pack.furniture.item;
+package timaxa007.pack.item.item;
 
 import java.util.List;
 
-import timaxa007.pack.furniture.render.model.ModelNewArmor;
-import timaxa007.tms.util.ModifiedItemArmor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import timaxa007.pack.item.PackItems;
+import timaxa007.pack.item.render.model.ModelNewArmor;
+import timaxa007.tms.util.ModifiedItemArmor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -20,6 +20,7 @@ public class ArmorNew extends ModifiedItemArmor {
 
 	public ArmorNew(String tag, ArmorMaterial mat, int par3, int par4) {
 		super(tag, mat, par3, par4);
+		setCreativeTab(PackItems.tab_items);
 	}
 
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack is) {

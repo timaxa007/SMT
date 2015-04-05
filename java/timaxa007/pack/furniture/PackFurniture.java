@@ -1,5 +1,7 @@
 package timaxa007.pack.furniture;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
@@ -15,7 +17,6 @@ import timaxa007.pack.furniture.recipe.FuelHandlerFurniture;
 import timaxa007.pack.furniture.recipe.RecipesArmor;
 import timaxa007.pack.furniture.recipe.Recipes_Furniture;
 import timaxa007.pack.furniture.render.RenderMain;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -75,10 +76,7 @@ public class PackFurniture implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackFurniture.MODNAME + ".");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackFurniture.MODID);
-		RegisterMessage.init(network);
-
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms/pack", PackFurniture.MODID + ".cfg"));
 		cfg.load();
 
 		block.furniture_machines_be = cfg.get("block", "furniture_machines", true).getBoolean(true);
@@ -188,16 +186,11 @@ public class PackFurniture implements IPackClass {
 		item.armor_costumes_chest_be = cfg.get("item", "armor_costumes_chest", true).getBoolean(true);
 		item.armor_costumes_leggin_be = cfg.get("item", "armor_costumes_leggin", true).getBoolean(true);
 		item.armor_costumes_boot_be = cfg.get("item", "armor_costumes_boot", true).getBoolean(true);
-		item.armor_medieval_helmet_be = cfg.get("item", "armor_medieval_helmet", true).getBoolean(true);
-		item.armor_medieval_chest_be = cfg.get("item", "armor_medieval_chest", true).getBoolean(true);
-		item.armor_medieval_leggin_be = cfg.get("item", "armor_medieval_leggin", true).getBoolean(true);
-		item.armor_medieval_boot_be = cfg.get("item", "armor_medieval_boot", true).getBoolean(true);
-		item.armor_new_helmet_be = cfg.get("item", "armor_new_helmet", true).getBoolean(true);
-		item.armor_new_chest_be = cfg.get("item", "armor_new_chest", true).getBoolean(true);
-		item.armor_new_leggin_be = cfg.get("item", "armor_new_leggin", true).getBoolean(true);
-		item.armor_new_boot_be = cfg.get("item", "armor_new_boot", true).getBoolean(true);
 
 		cfg.save();
+
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackFurniture.MODID);
+		RegisterMessage.init(network);
 
 		new ListFurniture();
 

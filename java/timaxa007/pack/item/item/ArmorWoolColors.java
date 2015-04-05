@@ -2,17 +2,16 @@ package timaxa007.pack.item.item;
 
 import java.util.List;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.tms.util.ModifiedItemArmor;
-import timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import timaxa007.pack.item.PackItems;
+import timaxa007.tms.util.ModifiedItemArmor;
+import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -20,7 +19,7 @@ public class ArmorWoolColors extends ModifiedItemArmor {
 
 	public ArmorWoolColors(String tag, ArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
 		super(tag, par2EnumArmorMaterial, par3, par4);
-		setCreativeTab(PackFurniture.tab_furniture);
+		setCreativeTab(PackItems.tab_items);
 	}
 
 	public String getUnlocalizedName(ItemStack is) {

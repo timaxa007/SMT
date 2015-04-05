@@ -1,6 +1,9 @@
 package timaxa007.module.environment;
 
+import java.io.File;
+
 import net.minecraft.item.Item;
+import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
@@ -29,6 +32,11 @@ public class ModuleEnvironment implements IModuleClass {
 
 		log = event.getModLog();
 		log.info("Starting module " + ModuleEnvironment.MODNAME + ", version: " + ModuleEnvironment.VERSION + ".");
+
+		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleEnvironment.MODID + ".cfg"));
+		cfg.load();
+
+		cfg.save();
 
 		upgradeWeight = new ItemEnvironment();
 		GameRegistry.registerItem(upgradeWeight, "ItemEnvironment");

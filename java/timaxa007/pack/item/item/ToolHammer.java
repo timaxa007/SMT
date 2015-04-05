@@ -1,8 +1,8 @@
 package timaxa007.pack.item.item;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.tms.util.ModifiedItem;
 import net.minecraft.item.ItemStack;
+import timaxa007.pack.item.PackItems;
+import timaxa007.tms.util.ModifiedItem;
 
 public class ToolHammer extends ModifiedItem {
 	/*
@@ -11,7 +11,7 @@ public class ToolHammer extends ModifiedItem {
 	 */
 	public ToolHammer(String tag) {
 		super(tag);
-		setCreativeTab(PackFurniture.tab_furniture);
+		setCreativeTab(PackItems.tab_items);
 		setNoRepair();
 		setMaxStackSize(1);
 		setMaxDamage(10);

@@ -1,5 +1,7 @@
 package timaxa007.pack;
 
+import java.io.File;
+
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
@@ -67,7 +69,7 @@ public class NodePack {
 		log = event.getModLog();
 		log.info("Starting core packs, version: " + NodePack.VERSION + ".");
 
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms", NodePack.MODID + ".cfg"));
 		cfg.load();
 
 		disable_pack_furniture = cfg.get("disable_pack", "furniture", false).getBoolean(false);

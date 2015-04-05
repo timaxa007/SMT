@@ -1,5 +1,7 @@
 package timaxa007.pack.techno;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -48,10 +50,7 @@ public class PackTechno implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackTechno.MODNAME + ".");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackTechno.MODID);
-		RegisterMessage.init(network);
-
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms/pack", PackTechno.MODID + ".cfg"));
 		cfg.load();
 
 		block.electric_machines_be = cfg.get("block", "electric_machines", true).getBoolean(true);
@@ -65,6 +64,9 @@ public class PackTechno implements IPackClass {
 		item.tool_electric_drills_be = cfg.get("item", "tool_electric_drills", true).getBoolean(true);
 
 		cfg.save();
+
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackTechno.MODID);
+		RegisterMessage.init(network);
 
 		new ListTechno();
 

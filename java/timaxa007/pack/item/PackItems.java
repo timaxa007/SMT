@@ -1,5 +1,7 @@
 package timaxa007.pack.item;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
@@ -20,6 +22,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class PackItems implements IPackClass {
 
@@ -40,9 +44,8 @@ public class PackItems implements IPackClass {
 	public static int gui_items_machines = 1;
 
 	public static CreativeTabs tab_items = new CreativeTabs("tab_items") {
-		public Item getTabIconItem() {
-			return PackItems.item.items_for_items;
-		}
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem() {return PackItems.item.items_for_items;}
 	};
 
 	public void preInit(FMLPreInitializationEvent event) {
@@ -50,10 +53,7 @@ public class PackItems implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackItems.MODNAME + ".");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackItems.MODID);
-		RegisterMessage.init(network);
-
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms/pack", PackItems.MODID + ".cfg"));
 		cfg.load();
 
 		//block.items_machines_be = cfg.get("block", "items_machines", true).getBoolean(true);
@@ -64,6 +64,16 @@ public class PackItems implements IPackClass {
 		item.armor_wool_colors_chest_be = cfg.get("item", "armor_wool_colors_chest", true).getBoolean(true);
 		item.armor_wool_colors_leggin_be = cfg.get("item", "armor_wool_colors_leggin", true).getBoolean(true);
 		item.armor_wool_colors_boot_be = cfg.get("item", "armor_wool_colors_boot", true).getBoolean(true);
+
+		item.armor_medieval_helmet_be = cfg.get("item", "armor_medieval_helmet", true).getBoolean(true);
+		item.armor_medieval_chest_be = cfg.get("item", "armor_medieval_chest", true).getBoolean(true);
+		item.armor_medieval_leggin_be = cfg.get("item", "armor_medieval_leggin", true).getBoolean(true);
+		item.armor_medieval_boot_be = cfg.get("item", "armor_medieval_boot", true).getBoolean(true);
+
+		item.armor_new_helmet_be = cfg.get("item", "armor_new_helmet", true).getBoolean(true);
+		item.armor_new_chest_be = cfg.get("item", "armor_new_chest", true).getBoolean(true);
+		item.armor_new_leggin_be = cfg.get("item", "armor_new_leggin", true).getBoolean(true);
+		item.armor_new_boot_be = cfg.get("item", "armor_new_boot", true).getBoolean(true);
 
 		item.tool_axe_be = cfg.get("item", "tool_axe", true).getBoolean(true);
 		item.tool_shovel_be = cfg.get("item", "tool_shovel", true).getBoolean(true);
@@ -95,6 +105,9 @@ public class PackItems implements IPackClass {
 		item.tool_shield_be = cfg.get("item", "tool_shield", true).getBoolean(true);
 
 		cfg.save();
+
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackItems.MODID);
+		RegisterMessage.init(network);
 
 		new ListPackItems();
 

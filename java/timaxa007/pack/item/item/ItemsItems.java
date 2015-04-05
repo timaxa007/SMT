@@ -1,12 +1,12 @@
 package timaxa007.pack.item.item;
 
-import timaxa007.pack.item.PackItems;
-import timaxa007.tms.util.ModifiedItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import timaxa007.pack.item.PackItems;
+import timaxa007.tms.util.ModifiedItem;
 
 public class ItemsItems extends ModifiedItem {
 

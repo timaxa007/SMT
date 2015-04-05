@@ -1,6 +1,9 @@
 package timaxa007.module.status_player;
 
+import java.io.File;
+
 import net.minecraft.item.Item;
+import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
@@ -29,6 +32,11 @@ public class ModuleStatusPlayer implements IModuleClass {
 
 		log = event.getModLog();
 		log.info("Starting module " + ModuleStatusPlayer.MODNAME + ", version: " + ModuleStatusPlayer.VERSION + ".");
+
+		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleStatusPlayer.MODID + ".cfg"));
+		cfg.load();
+
+		cfg.save();
 
 		upgradeWeight = new ItemStatusPlayer();
 		GameRegistry.registerItem(upgradeWeight, "ItemStatusPlayer");

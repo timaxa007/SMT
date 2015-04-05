@@ -1,6 +1,9 @@
 package timaxa007.module.weight;
 
+import java.io.File;
+
 import net.minecraft.item.Item;
+import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
@@ -29,6 +32,11 @@ public class ModuleWeight implements IModuleClass {
 
 		log = event.getModLog();
 		log.info("Starting module " + ModuleWeight.MODNAME + ", version: " + ModuleWeight.VERSION + ".");
+
+		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleWeight.MODID + ".cfg"));
+		cfg.load();
+
+		cfg.save();
 
 		upgradeWeight = new ItemUpgradeWeight();
 		GameRegistry.registerItem(upgradeWeight, "ItemUpgradeWeight");

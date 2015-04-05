@@ -1,5 +1,7 @@
 package timaxa007.pack.stock;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
@@ -65,10 +67,7 @@ public class PackStock implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackStock.MODNAME + ".");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackStock.MODID);
-		RegisterMessage.init(network);
-
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms/pack", PackStock.MODID + ".cfg"));
 		cfg.load();
 
 		block.germination_plants_be = cfg.get("block", "germination_plants", true).getBoolean(true);
@@ -88,6 +87,9 @@ public class PackStock implements IPackClass {
 		//item.food_dog_be = cfg.get("item", "food_dog", true).getBoolean(true);
 
 		cfg.save();
+
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackStock.MODID);
+		RegisterMessage.init(network);
 
 		new ListStock();
 

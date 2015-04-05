@@ -1,5 +1,9 @@
 package timaxa007.module.effect;
 
+import java.io.File;
+
+import net.minecraftforge.common.config.Configuration;
+
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.module.api.IModuleClass;
@@ -18,6 +22,11 @@ public class ModuleEffect implements IModuleClass {
 
 		log = event.getModLog();
 		log.info("Starting module " + ModuleEffect.MODNAME + ", version: " + ModuleEffect.VERSION + ".");
+
+		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleEffect.MODID + ".cfg"));
+		cfg.load();
+
+		cfg.save();
 
 	}
 

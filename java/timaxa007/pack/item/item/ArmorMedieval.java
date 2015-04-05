@@ -1,21 +1,20 @@
-package timaxa007.pack.furniture.item;
+package timaxa007.pack.item.item;
 
 import java.util.List;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.render.model.ModelArmorMedieval;
-import timaxa007.tms.util.ModifiedItemArmor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import timaxa007.pack.item.PackItems;
+import timaxa007.pack.item.render.model.ModelArmorMedieval;
+import timaxa007.tms.util.ModifiedItemArmor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -30,7 +29,7 @@ public class ArmorMedieval extends ModifiedItemArmor {
 
 	public ArmorMedieval(String tag, ArmorMaterial par2, int par3, int par4) {
 		super(tag, par2, par3, par4);
-		setCreativeTab(PackFurniture.tab_furniture);
+		setCreativeTab(PackItems.tab_items);
 		setTextureName("timaxa007:armor/medieval");
 	}
 

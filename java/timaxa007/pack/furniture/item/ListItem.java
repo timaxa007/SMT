@@ -1,10 +1,10 @@
 package timaxa007.pack.furniture.item;
 
-import timaxa007.tms.util.UtilTMS;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
+import timaxa007.tms.util.UtilTMS;
 
 public class ListItem {
 
@@ -32,15 +32,7 @@ public class ListItem {
 	armor_costumes_helmet_be, 
 	armor_costumes_chest_be, 
 	armor_costumes_leggin_be, 
-	armor_costumes_boot_be, 
-	armor_medieval_helmet_be, 
-	armor_medieval_chest_be, 
-	armor_medieval_leggin_be, 
-	armor_medieval_boot_be, 
-	armor_new_helmet_be, 
-	armor_new_chest_be, 
-	armor_new_leggin_be, 
-	armor_new_boot_be;
+	armor_costumes_boot_be;
 
 	public static Item 
 	items_for_furniture, 
@@ -59,15 +51,7 @@ public class ListItem {
 	armor_costumes_helmet, 
 	armor_costumes_chest, 
 	armor_costumes_leggin, 
-	armor_costumes_boot, 
-	armor_medieval_helmet, 
-	armor_medieval_chest, 
-	armor_medieval_leggin, 
-	armor_medieval_boot, 
-	armor_new_helmet, 
-	armor_new_chest, 
-	armor_new_leggin, 
-	armor_new_boot;
+	armor_costumes_boot;
 
 	public static Item[] list_item;
 
@@ -90,14 +74,6 @@ public class ListItem {
 		if (armor_costumes_chest_be) armor_costumes_chest = new ArmorCostumes("armor_costumes_chest", COSTUME, 0, 1);
 		if (armor_costumes_leggin_be) armor_costumes_leggin = new ArmorCostumes("armor_costumes_leggin", COSTUME, 0, 2);
 		if (armor_costumes_boot_be) armor_costumes_boot = new ArmorCostumes("armor_costumes_boot", COSTUME, 0, 3);
-		if (armor_medieval_helmet_be) armor_medieval_helmet = new ArmorMedieval("armor_medieval_helmet", COSTUME, 0, 0);
-		if (armor_medieval_chest_be) armor_medieval_chest = new ArmorMedieval("armor_medieval_chest", COSTUME, 0, 1);
-		if (armor_medieval_leggin_be) armor_medieval_leggin = new ArmorMedieval("armor_medieval_leggin", COSTUME, 0, 2);
-		if (armor_medieval_boot_be) armor_medieval_boot = new ArmorMedieval("armor_medieval_boot", COSTUME, 0, 3);
-		if (armor_new_helmet_be) armor_new_helmet = new ArmorNew("armor_new_helmet", COSTUME, 0, 0);
-		if (armor_new_chest_be) armor_new_chest = new ArmorNew("armor_new_chest", COSTUME, 0, 1);
-		if (armor_new_leggin_be) armor_new_leggin = new ArmorNew("armor_new_leggin", COSTUME, 0, 2);
-		if (armor_new_boot_be) armor_new_boot = new ArmorNew("armor_new_boot", COSTUME, 0, 3);
 
 		list_item = new Item[] {
 				items_for_furniture, 
@@ -116,15 +92,7 @@ public class ListItem {
 				armor_costumes_helmet, 
 				armor_costumes_chest, 
 				armor_costumes_leggin, 
-				armor_costumes_boot, 
-				armor_medieval_helmet, 
-				armor_medieval_chest, 
-				armor_medieval_leggin, 
-				armor_medieval_boot, 
-				armor_new_helmet, 
-				armor_new_chest, 
-				armor_new_leggin, 
-				armor_new_boot
+				armor_costumes_boot
 		};
 
 		UtilTMS.UtilItem.RegItem(list_item);

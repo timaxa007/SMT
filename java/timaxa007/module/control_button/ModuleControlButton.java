@@ -1,5 +1,7 @@
 package timaxa007.module.control_button;
 
+import java.io.File;
+
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
@@ -24,7 +26,7 @@ public class ModuleControlButton implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleControlButton.MODNAME + ", version: " + ModuleControlButton.VERSION + ".");
 
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleControlButton.MODID + ".cfg"));
 		cfg.load();
 
 		button_left = cfg.get("buttons", "button_left", false).getBoolean(false);

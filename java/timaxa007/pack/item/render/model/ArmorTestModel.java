@@ -1,4 +1,4 @@
-package timaxa007.pack.furniture.render.model;
+package timaxa007.pack.item.render.model;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;

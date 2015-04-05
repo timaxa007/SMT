@@ -1,86 +1,106 @@
 package timaxa007.pack.item.item;
 
-import timaxa007.tms.util.UtilTMS;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
+import timaxa007.tms.util.UtilTMS;
 
 public class ListItem {
 
 	public static final ArmorMaterial CLOTHWOOL = EnumHelper.addArmorMaterial("CLOTHWOOL", 6, new int[] {2, 3, 2, 1}, 10);
 
 	public static boolean 
-	items_for_items_be, 
+	items_for_items_be,
 
-	armor_wool_colors_helmet_be, 
-	armor_wool_colors_chest_be, 
-	armor_wool_colors_leggin_be, 
-	armor_wool_colors_boot_be, 
+	armor_wool_colors_helmet_be,
+	armor_wool_colors_chest_be,
+	armor_wool_colors_leggin_be,
+	armor_wool_colors_boot_be,
 
-	tool_axe_be, 
-	tool_shovel_be, 
-	tool_pickaxe_be, 
-	tool_hoe_be, 
-	tool_hammer_be, 
-	tool_sickle_be, 
-	tool_scythe_be, 
-	tool_sword_be, 
-	tool_battle_axe_be, 
-	tool_battle_hammer_be, 
-	tool_chisel_be, 
-	tool_cutter_be, 
-	tool_screwdriver_be, 
-	tool_wrench_be, 
-	tool_knife_be, 
-	tool_fry_pan_be, 
-	tool_pan_be, 
-	tool_jar_be, 
-	tool_saw_be, 
-	tool_crowbar_be, 
-	tool_dagger_be, 
-	tool_cleaver_be, 
-	tool_greatsword_be, 
-	tool_spear_be, 
-	tool_whip_be, 
-	tool_shuriken_be, 
-	tool_tomahawk_be, 
+	armor_medieval_helmet_be,
+	armor_medieval_chest_be,
+	armor_medieval_leggin_be,
+	armor_medieval_boot_be,
+
+	armor_new_helmet_be,
+	armor_new_chest_be,
+	armor_new_leggin_be,
+	armor_new_boot_be,
+
+	tool_axe_be,
+	tool_shovel_be,
+	tool_pickaxe_be,
+	tool_hoe_be,
+	tool_hammer_be,
+	tool_sickle_be,
+	tool_scythe_be,
+	tool_sword_be,
+	tool_battle_axe_be,
+	tool_battle_hammer_be,
+	tool_chisel_be,
+	tool_cutter_be,
+	tool_screwdriver_be,
+	tool_wrench_be,
+	tool_knife_be,
+	tool_fry_pan_be,
+	tool_pan_be,
+	tool_jar_be,
+	tool_saw_be,
+	tool_crowbar_be,
+	tool_dagger_be,
+	tool_cleaver_be,
+	tool_greatsword_be,
+	tool_spear_be,
+	tool_whip_be,
+	tool_shuriken_be,
+	tool_tomahawk_be,
 	tool_shield_be;
 
 	public static Item 
-	items_for_items, 
+	items_for_items,
 
-	armor_wool_colors_helmet, 
-	armor_wool_colors_chest, 
-	armor_wool_colors_leggin, 
-	armor_wool_colors_boot, 
+	armor_wool_colors_helmet,
+	armor_wool_colors_chest,
+	armor_wool_colors_leggin,
+	armor_wool_colors_boot,
 
-	tool_axe, 
-	tool_shovel, 
-	tool_pickaxe, 
-	tool_hoe, 
-	tool_hammer, 
-	tool_sickle, 
-	tool_scythe, 
-	tool_sword, 
-	tool_battle_axe, 
-	tool_battle_hammer, 
-	tool_chisel, 
-	tool_cutter, 
-	tool_screwdriver, 
-	tool_wrench, 
-	tool_knife, 
-	tool_fry_pan, 
-	tool_pan, 
-	tool_jar, 
-	tool_saw, 
-	tool_crowbar, 
-	tool_dagger, 
-	tool_cleaver, 
-	tool_greatsword, 
-	tool_spear, 
-	tool_whip, 
-	tool_shuriken, 
-	tool_tomahawk, 
+	armor_medieval_helmet,
+	armor_medieval_chest,
+	armor_medieval_leggin,
+	armor_medieval_boot,
+
+	armor_new_helmet,
+	armor_new_chest,
+	armor_new_leggin,
+	armor_new_boot,
+
+	tool_axe,
+	tool_shovel,
+	tool_pickaxe,
+	tool_hoe,
+	tool_hammer,
+	tool_sickle,
+	tool_scythe,
+	tool_sword,
+	tool_battle_axe,
+	tool_battle_hammer,
+	tool_chisel,
+	tool_cutter,
+	tool_screwdriver,
+	tool_wrench,
+	tool_knife,
+	tool_fry_pan,
+	tool_pan,
+	tool_jar,
+	tool_saw,
+	tool_crowbar,
+	tool_dagger,
+	tool_cleaver,
+	tool_greatsword,
+	tool_spear,
+	tool_whip,
+	tool_shuriken,
+	tool_tomahawk,
 	tool_shield;
 
 	public static Item[] list_item;
@@ -93,6 +113,16 @@ public class ListItem {
 		if (armor_wool_colors_chest_be) armor_wool_colors_chest = new ArmorWoolColors("armor_wool_colors_chest", CLOTHWOOL, 0, 1);
 		if (armor_wool_colors_leggin_be) armor_wool_colors_leggin = new ArmorWoolColors("armor_wool_colors_leggin", CLOTHWOOL, 0, 2);
 		if (armor_wool_colors_boot_be) armor_wool_colors_boot = new ArmorWoolColors("armor_wool_colors_boot", CLOTHWOOL, 0, 3);
+
+		if (armor_medieval_helmet_be) armor_medieval_helmet = new ArmorMedieval("armor_medieval_helmet", CLOTHWOOL, 0, 0);
+		if (armor_medieval_chest_be) armor_medieval_chest = new ArmorMedieval("armor_medieval_chest", CLOTHWOOL, 0, 1);
+		if (armor_medieval_leggin_be) armor_medieval_leggin = new ArmorMedieval("armor_medieval_leggin", CLOTHWOOL, 0, 2);
+		if (armor_medieval_boot_be) armor_medieval_boot = new ArmorMedieval("armor_medieval_boot", CLOTHWOOL, 0, 3);
+
+		if (armor_new_helmet_be) armor_new_helmet = new ArmorNew("armor_new_helmet", CLOTHWOOL, 0, 0);
+		if (armor_new_chest_be) armor_new_chest = new ArmorNew("armor_new_chest", CLOTHWOOL, 0, 1);
+		if (armor_new_leggin_be) armor_new_leggin = new ArmorNew("armor_new_leggin", CLOTHWOOL, 0, 2);
+		if (armor_new_boot_be) armor_new_boot = new ArmorNew("armor_new_boot", CLOTHWOOL, 0, 3);
 
 		if (tool_axe_be) tool_axe = new ToolAxe("tool_axe");
 		if (tool_shovel_be) tool_shovel = new ToolShovel("tool_shovel");
@@ -124,40 +154,50 @@ public class ListItem {
 		if (tool_shield_be) tool_shield = new ToolShield("tool_shield");
 
 		list_item = new Item[] {
-				items_for_items, 
+				items_for_items,
 
-				armor_wool_colors_helmet, 
-				armor_wool_colors_chest, 
-				armor_wool_colors_leggin, 
-				armor_wool_colors_boot, 
+				armor_wool_colors_helmet,
+				armor_wool_colors_chest,
+				armor_wool_colors_leggin,
+				armor_wool_colors_boot,
 
-				tool_axe, 
-				tool_shovel, 
-				tool_pickaxe, 
-				tool_hoe, 
-				tool_hammer, 
-				tool_sickle, 
-				tool_scythe, 
-				tool_sword, 
-				tool_battle_axe, 
-				tool_battle_hammer, 
-				tool_chisel, 
-				tool_cutter, 
-				tool_screwdriver, 
-				tool_wrench, 
-				tool_knife, 
-				tool_fry_pan, 
-				tool_pan, 
-				tool_jar, 
-				tool_saw, 
-				tool_crowbar, 
-				tool_dagger, 
-				tool_cleaver, 
-				tool_greatsword, 
-				tool_spear, 
-				tool_whip, 
-				tool_shuriken, 
-				tool_tomahawk, 
+				armor_medieval_helmet,
+				armor_medieval_chest,
+				armor_medieval_leggin,
+				armor_medieval_boot,
+
+				armor_new_helmet,
+				armor_new_chest,
+				armor_new_leggin,
+				armor_new_boot,
+
+				tool_axe,
+				tool_shovel,
+				tool_pickaxe,
+				tool_hoe,
+				tool_hammer,
+				tool_sickle,
+				tool_scythe,
+				tool_sword,
+				tool_battle_axe,
+				tool_battle_hammer,
+				tool_chisel,
+				tool_cutter,
+				tool_screwdriver,
+				tool_wrench,
+				tool_knife,
+				tool_fry_pan,
+				tool_pan,
+				tool_jar,
+				tool_saw,
+				tool_crowbar,
+				tool_dagger,
+				tool_cleaver,
+				tool_greatsword,
+				tool_spear,
+				tool_whip,
+				tool_shuriken,
+				tool_tomahawk,
 				tool_shield
 		};
 

@@ -1,5 +1,7 @@
 package timaxa007.pack.weapon;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
@@ -49,10 +51,7 @@ public class PackWeapons implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackWeapons.MODNAME + ".");
 
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackWeapons.MODID);
-		RegisterMessage.init(network);
-
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration cfg = new Configuration(new File("./config/tms/pack", PackWeapons.MODID + ".cfg"));
 		cfg.load();
 
 		block.claymore_be = cfg.get("block", "claymore", true).getBoolean(true);
@@ -64,6 +63,9 @@ public class PackWeapons implements IPackClass {
 		item.magazines_be = cfg.get("item", "magazines", true).getBoolean(true);
 
 		cfg.save();
+
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackWeapons.MODID);
+		RegisterMessage.init(network);
 
 		new ListWeapon();
 
