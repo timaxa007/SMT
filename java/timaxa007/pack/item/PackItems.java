@@ -75,6 +75,11 @@ public class PackItems implements IPackClass {
 		item.armor_new_leggin_be = cfg.get("item", "armor_new_leggin", true).getBoolean(true);
 		item.armor_new_boot_be = cfg.get("item", "armor_new_boot", true).getBoolean(true);
 
+		item.armor_test_helmet_be = cfg.get("item", "armor_test_helmet", true).getBoolean(true);
+		item.armor_test_chest_be = cfg.get("item", "armor_test_chest", true).getBoolean(true);
+		item.armor_test_leggin_be = cfg.get("item", "armor_test_leggin", true).getBoolean(true);
+		item.armor_test_boot_be = cfg.get("item", "armor_test_boot", true).getBoolean(true);
+
 		item.tool_axe_be = cfg.get("item", "tool_axe", true).getBoolean(true);
 		item.tool_shovel_be = cfg.get("item", "tool_shovel", true).getBoolean(true);
 		item.tool_pickaxe_be = cfg.get("item", "tool_pickaxe", true).getBoolean(true);

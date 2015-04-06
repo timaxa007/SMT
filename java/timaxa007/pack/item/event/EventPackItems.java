@@ -1,13 +1,14 @@
 package timaxa007.pack.item.event;
 
-import timaxa007.pack.item.item.ToolShield;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import timaxa007.pack.item.item.ToolShield;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventPackItems {
@@ -42,6 +43,51 @@ public class EventPackItems {
 			}
 
 		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void actionArmor(LivingHurtEvent e) {
+		EntityLivingBase to = e.entityLiving;//Кому наноситься урон,
+
+		if (to instanceof EntityPlayer) {
+
+			EntityPlayer player_to = (EntityPlayer)to;
+			ItemStack current_to = player_to.getCurrentEquippedItem();//Что дерижит кому наносится урон
+			ItemStack helm_to = player_to.getCurrentArmor(3);//Что в слоте шлема кому наносится урон
+			ItemStack chest_to = player_to.getCurrentArmor(2);//Что в слоте нагрудника кому наносится урон
+			ItemStack legs_to = player_to.getCurrentArmor(1);//Что в слоте штанов кому наносится урон
+			ItemStack boot_to = player_to.getCurrentArmor(0);//Что в слоте ботинок кому наносится урон
+
+			if (e.source.isExplosion()) {
+
+			}
+
+			if (e.source.isProjectile()) {
+
+			}
+
+			if (e.source.isFireDamage()) {
+
+			}
+
+			if (e.source.isDamageAbsolute()) {
+				player_to.addChatMessage(new ChatComponentText("isDamageAbsolute"));
+			}
+
+			if (e.source.isMagicDamage()) {
+				player_to.addChatMessage(new ChatComponentText("isMagicDamage"));
+			}
+
+			if (e.source.isUnblockable()) {
+
+			}
+
+			if (e.source.isDifficultyScaled()) {
+
+			}
+
+		}
+
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

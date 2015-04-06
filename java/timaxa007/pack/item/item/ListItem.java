@@ -27,6 +27,11 @@ public class ListItem {
 	armor_new_leggin_be,
 	armor_new_boot_be,
 
+	armor_test_helmet_be,
+	armor_test_chest_be,
+	armor_test_leggin_be,
+	armor_test_boot_be,
+
 	tool_axe_be,
 	tool_shovel_be,
 	tool_pickaxe_be,
@@ -73,6 +78,11 @@ public class ListItem {
 	armor_new_chest,
 	armor_new_leggin,
 	armor_new_boot,
+
+	armor_test_helmet,
+	armor_test_chest,
+	armor_test_leggin,
+	armor_test_boot,
 
 	tool_axe,
 	tool_shovel,
@@ -124,6 +134,11 @@ public class ListItem {
 		if (armor_new_leggin_be) armor_new_leggin = new ArmorNew("armor_new_leggin", CLOTHWOOL, 0, 2);
 		if (armor_new_boot_be) armor_new_boot = new ArmorNew("armor_new_boot", CLOTHWOOL, 0, 3);
 
+		if (armor_test_helmet_be) armor_test_helmet = new ArmorTest("armor_test_helmet", 0);
+		if (armor_test_chest_be) armor_test_chest = new ArmorTest("armor_test_chest", 1);
+		if (armor_test_leggin_be) armor_test_leggin = new ArmorTest("armor_test_leggin", 2);
+		if (armor_test_boot_be) armor_test_boot = new ArmorTest("armor_test_boot", 3);
+
 		if (tool_axe_be) tool_axe = new ToolAxe("tool_axe");
 		if (tool_shovel_be) tool_shovel = new ToolShovel("tool_shovel");
 		if (tool_pickaxe_be) tool_pickaxe = new ToolPickaxe("tool_pickaxe");
@@ -170,6 +185,11 @@ public class ListItem {
 				armor_new_chest,
 				armor_new_leggin,
 				armor_new_boot,
+
+				armor_test_helmet,
+				armor_test_chest,
+				armor_test_leggin,
+				armor_test_boot,
 
 				tool_axe,
 				tool_shovel,

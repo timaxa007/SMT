@@ -31,12 +31,21 @@ text.spells.power=Мощность
 text.spells.duration=Длительность
 text.spells.permanent=Постоянный
 
+text.spell.is_explosion.attempt=предотвращена попытка взорвать вас
+text.spell.is_projectile.attempt=предотвращена попытка подстрелить вас
+text.spell.is_fire_damage.attempt=предотвращена попытка поджечь вас
+text.spell.is_unblockable.attempt=предотвращена попытка разбиться об землю
+
 spell.efficient_mining.name=Эффективная Добыча
 spell.efficient_digging.name=Эффективное Копание
 spell.efficient_chopping.name=Эффективная Рубка
 spell.efficient_trimming.name=Эффективная Стрижка
 spell.repair_item.name=Ремонт Предмета
 spell.damage_item.name=Повреждение Предмета
+spell.fire_damage_protection.name=Защита от огня
+spell.projectile_protection.name=Защита от стрел
+spell.unblockable_protection.name=Защита от падения
+spell.explosion_protection.name=Защита от взрыва
 
 convert.text.0=Ноль
 convert.text.1=Один

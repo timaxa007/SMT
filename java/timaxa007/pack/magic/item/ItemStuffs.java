@@ -54,25 +54,29 @@ public class ItemStuffs extends ItemPrimaryKey {
 		ItemStack is1 = new ItemStack(Items.diamond_helmet);
 		NBTTagCompound nbt1 = new NBTTagCompound();
 		Spells.addSpell(nbt1, Spells.repair_item, 1, -1);
-		Spells.addSpell(nbt1, Spells.armor_head, 0, 120);
+		//Spells.addSpell(nbt1, Spells.armor_head, 0, 120);
+		Spells.addSpell(nbt1, Spells.projectile_protection, 255, -1);
 		is1.setTagCompound(nbt1);
 
 		ItemStack is2 = new ItemStack(Items.diamond_chestplate);
 		NBTTagCompound nbt2 = new NBTTagCompound();
 		Spells.addSpell(nbt2, Spells.repair_item, 1, -1);
-		Spells.addSpell(nbt2, Spells.armor_torso, 0, 120);
+		//Spells.addSpell(nbt2, Spells.armor_torso, 0, 120);
+		Spells.addSpell(nbt2, Spells.explosion_protection, 255, -1);
 		is2.setTagCompound(nbt2);
 
 		ItemStack is3 = new ItemStack(Items.diamond_leggings);
 		NBTTagCompound nbt3 = new NBTTagCompound();
 		Spells.addSpell(nbt3, Spells.repair_item, 1, -1);
-		Spells.addSpell(nbt3, Spells.armor_legs, 0, 120);
+		//Spells.addSpell(nbt3, Spells.armor_legs, 0, 120);
+		Spells.addSpell(nbt3, Spells.fire_damage_protection, 255, -1);
 		is3.setTagCompound(nbt3);
 
 		ItemStack is4 = new ItemStack(Items.diamond_boots);
 		NBTTagCompound nbt4 = new NBTTagCompound();
 		Spells.addSpell(nbt4, Spells.repair_item, 1, -1);
-		Spells.addSpell(nbt4, Spells.armor_feet, 0, 120);
+		//Spells.addSpell(nbt4, Spells.armor_feet, 0, 120);
+		Spells.addSpell(nbt4, Spells.unblockable_protection, 255, -1);
 		is4.setTagCompound(nbt4);
 
 		ItemStack[] armorSpell = new ItemStack[] {is1, is2, is3, is4};

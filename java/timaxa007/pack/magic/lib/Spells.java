@@ -8,16 +8,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
-import net.minecraft.world.EnumDifficulty;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import timaxa007.tms.CoreTMS;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import timaxa007.tms.util.UtilInteger;
 import timaxa007.tms.util.UtilString;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**Spells same Enchantment, but better.<br><b>WIP</b>
  * @author timaxa007
@@ -55,7 +49,7 @@ public class Spells {
 
 	public static final Spells damage_item = new Spells("damage_item") {
 
-		public void functioning(ItemStack is, EntityPlayer player, TypeFunctioning type) {
+		public void functioning(ItemStack is, EntityPlayer player, TypeFunctioning type, LivingHurtEvent event) {
 			if (type == type.item) {
 				if (is.isItemStackDamageable()) {
 					if (is.getItemDamage() > 0 && is.getItemDamage() < is.getMaxDamage()) is.setItemDamage(is.getItemDamage() + 1);
@@ -67,6 +61,11 @@ public class Spells {
 
 	public static final Spells slow_spell = new Spells("slow_spell");
 	public static final Spells fast_spell = new Spells("fast_spell");
+
+	public static final Spells explosion_protection = new Spells("explosion_protection");
+	public static final Spells projectile_protection = new Spells("projectile_protection");
+	public static final Spells fire_damage_protection = new Spells("fire_damage_protection");
+	public static final Spells unblockable_protection = new Spells("unblockable_protection");
 
 	public int id;
 	public String tag;
@@ -213,195 +212,6 @@ public class Spells {
 		item;
 	}
 	//-----------------------------------------------------------------------------
-	public static class EventSpellsClient {
-
-		@SubscribeEvent
-		public void tipSpellsTag(ItemTooltipEvent e) {
-
-			if (isNoShowHard(e.entityPlayer)) {
-
-				NBTTagList nbttaglist = Spells.getSpellsTagList(e.itemStack);
-
-				if (nbttaglist != null) {
-					for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-
-						String spell = nbttaglist.getCompoundTagAt(i).getString("spell");
-						int power = UtilInteger.getMaxByte((int)nbttaglist.getCompoundTagAt(i).getByte("power"));
-						int times = (int)nbttaglist.getCompoundTagAt(i).getShort("times");
-
-						if (UtilString.isControlKeyDown() && isShowPeace(e.entityPlayer)) {
-
-							//if (!Spells.isNull(spell)) {
-
-							e.toolTip.add("");
-
-							e.toolTip.add(UtilString.getText("spells." + "Spell") + ": " + 
-									Spells.get(spell).getLocalizedName() + ", ");
-
-							e.toolTip.add(UtilString.getText("spells." + "Power") + ": " + power + ", " + 
-									UtilString.getText("spells." + "Duration") + ": " + 
-									(times >= 0 ? times : UtilString.getText("spells." + "Permanent")) + ".");
-
-							//}
-
-						} else {
-
-							if (isShowPeace(e.entityPlayer) && i == 0)
-								e.toolTip.add(UtilString.hldctrltinfab + " " + 
-										EnumChatFormatting.LIGHT_PURPLE + 
-										UtilString.getText("spells.spells") + 
-										EnumChatFormatting.RESET);
-
-							//if (!Spells.isNull(spell)) {
-
-							e.toolTip.add(Spells.get(spell).getLocalizedName() + 
-									(" (" + power + ") ") + 
-									(times >= 0 ? times : "")
-									);
-
-							//}
-
-						}
-
-					}
-				}
-
-			}
-
-		}
-
-		public static boolean isNoShowHard(EntityPlayer player) {
-			return (player.capabilities.isCreativeMode || 
-					(CoreTMS.show_tip_info_testing || player.worldObj.difficultySetting != EnumDifficulty.HARD));
-		}
-
-		@Deprecated
-		public static boolean isShowPeaceEasyNormal(EntityPlayer player) {
-			return (isShowPeaceEasy(player) || player.worldObj.difficultySetting == EnumDifficulty.NORMAL);
-		}
-
-		@Deprecated
-		public static boolean isShowPeaceEasy(EntityPlayer player) {
-			return (isShowPeace(player) || player.worldObj.difficultySetting == EnumDifficulty.EASY);
-		}
-
-		public static boolean isShowPeace(EntityPlayer player) {
-			return (player.capabilities.isCreativeMode || 
-					CoreTMS.show_tip_info_testing || player.worldObj.difficultySetting == EnumDifficulty.PEACEFUL);
-		}
-
-	}
-	//-----------------------------------------------------------------------------
-	public static class EventSpellsCommon {
-
-		@SubscribeEvent
-		public void updateSpells(LivingUpdateEvent e) {
-			if (e.entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer)e.entityLiving;
-				World world = player.worldObj;
-
-				if (!world.isRemote && !player.capabilities.isCreativeMode) {
-					//---------------------------------------------------------------------
-					ItemStack[] main = player.inventory.mainInventory;
-
-					for (ItemStack slot : main) {
-						if (slot != null) {
-							//-------------------------------------------------------------
-							NBTTagList nbttaglist = Spells.getSpellsTagList(slot);
-
-							if (nbttaglist != null) {
-								for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-
-									NBTTagCompound tagAt = nbttaglist.getCompoundTagAt(i);
-									//------------------------
-									Spells spell = Spells.get(tagAt.getString("spell"));
-									int power = UtilInteger.getMaxByte((int)tagAt.getByte("power"));
-									int times = (int)tagAt.getShort("times");
-									//------------------------
-									Spells spell_last = spell;
-									int power_last = power;
-									int times_last = times;
-									//------------------------
-									if (world.getWorldTime() % (20) == 0) {
-										if (times == 0) spell = Spells.empty;
-										if (times > 0) --times;
-									}
-
-									if (times != 0) {
-										if (power > 0 && world.getWorldTime() % (int)(255 / power) == 0) {
-											spell.functioning(slot, player, Spells.TypeFunctioning.item);
-										}
-									}
-
-									if (spell_last != spell) tagAt.setString("spell", spell.getTag());
-									if (power_last != power) tagAt.setByte("power", (byte)UtilInteger.setMaxByte(power));
-									if (times_last != times) tagAt.setShort("times", (short)times);
-
-								}
-							}
-							//-------------------------------------------------------------
-						}
-					}
-					//---------------------------------------------------------------------
-					ItemStack[] armor = player.inventory.armorInventory;
-
-					for (int j = 0; j < armor.length; j++) {
-						if (armor[j] != null) {
-							//-------------------------------------------------------------
-							NBTTagList nbttaglist = Spells.getSpellsTagList(armor[j]);
-
-							if (nbttaglist != null) {
-								for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-
-									NBTTagCompound tagAt = nbttaglist.getCompoundTagAt(i);
-									//------------------------
-									Spells spell = Spells.get(tagAt.getString("spell"));
-									int power = UtilInteger.getMaxByte((int)tagAt.getByte("power"));
-									int times = (int)tagAt.getShort("times");
-									//------------------------
-									Spells spell_last = spell;
-									int power_last = power;
-									int times_last = times;
-									//------------------------
-									if (world.getWorldTime() % (20) == 0) {
-										if (times == 0) spell = Spells.empty;
-										if (times > 0) --times;
-									}
-
-									if (times != 0) {
-										if (power > 0 && world.getWorldTime() % (int)(255 / power) == 0) {
-											spell.functioning(armor[j], player, Spells.TypeFunctioning.item);
-
-											if (j == 3)
-												spell.functioning(armor[j], player, Spells.TypeFunctioning.armor_head);
-
-											if (j == 2)
-												spell.functioning(armor[j], player, Spells.TypeFunctioning.armor_torso);
-
-											if (j == 1)
-												spell.functioning(armor[j], player, Spells.TypeFunctioning.armor_legs);
-
-											if (j == 0)
-												spell.functioning(armor[j], player, Spells.TypeFunctioning.armor_feet);
-
-										}
-									}
-
-									if (spell_last != spell) tagAt.setString("spell", spell.getTag());
-									if (power_last != power) tagAt.setByte("power", (byte)UtilInteger.setMaxByte(power));
-									if (times_last != times) tagAt.setShort("times", (short)times);
-
-								}
-							}
-							//-------------------------------------------------------------
-						}
-					}
-					//---------------------------------------------------------------------
-				}
-			}
-		}
-
-	}
 	//-----------------------------------------------------------------------------
 	public static void addSpell(NBTTagCompound nbt, Spells spell) {
 		addSpell(nbt, spell.getTag(), 1, -1);
@@ -432,6 +242,31 @@ public class Spells {
 
 	public static boolean isSpell(ItemStack is) {
 		return is.getTagCompound() != null && is.getTagCompound().hasKey("spells", 9);
+	}
+
+	public static boolean isSpell(ItemStack is, Spells spell) {
+		return isSpell(is, spell.getTag());
+	}
+
+	public static boolean isSpell(ItemStack is, String spell) {
+		if (is != null) {
+			//------------------------------------------------------------------------------------------
+			NBTTagList nbttaglist = Spells.getSpellsTagList(is);
+
+			if (nbttaglist != null) {
+				for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+
+					NBTTagCompound tagAt = nbttaglist.getCompoundTagAt(i);
+					//------------------------
+					String spelly = tagAt.getString("spell");
+					int power = UtilInteger.getMaxByte((int)tagAt.getByte("power"));
+					int times = (int)tagAt.getShort("times");
+					//---------------------------------------------------------------------------------
+					if (spelly == spell) return true;
+				}
+			}
+		}
+		return false;
 	}
 	//-----------------------------------------------------------------------------
 }

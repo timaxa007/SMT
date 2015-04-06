@@ -31,12 +31,21 @@ text.spells.power=Power
 text.spells.duration=Duration
 text.spells.permanent=Permanent
 
+text.spell.is_explosion.attempt=prevented the attempt to blow you up
+text.spell.is_projectile.attempt=prevented the attempt to shoot you
+text.spell.is_fire_damage.attempt=prevented the attempt to set fire to you
+text.spell.is_unblockable.attempt=prevented an attempt to break the ground
+
 spell.efficient_mining.name=Efficient Mining
 spell.efficient_digging.name=Efficient Digging
 spell.efficient_chopping.name=Efficient Chopping
 spell.efficient_trimming.name=Efficient Trimming
 spell.repair_item.name=Repair Item's
 spell.damage_item.name=Damage Item's
+spell.fire_damage_protection.name=Protection against Fire
+spell.projectile_protection.name=Protection from Arrows
+spell.unblockable_protection.name=Protection from Falling
+spell.explosion_protection.name=Protection from Explosion
 
 convert.text.0=Zero
 convert.text.1=One

@@ -85,7 +85,7 @@ public class SystemWeight {
 			} else {
 
 				if (player.motionY >= 0.0D)
-					player.motionY *= 1.1D;
+					player.motionY *= 1.05D;
 				else
 					player.motionY *= 0.95D;
 
