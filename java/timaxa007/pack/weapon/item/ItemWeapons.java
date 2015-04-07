@@ -38,7 +38,7 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 	@SideOnly(Side.CLIENT) public static boolean isModeIn;
 	@SideOnly(Side.CLIENT) public static boolean isModeOut;
 
-	@SideOnly(Side.CLIENT) public static int dellay;
+	@SideOnly(Side.CLIENT) public static int delay;
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
@@ -59,36 +59,26 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 			ItemStack current = player.getCurrentEquippedItem();
 			NBTTagCompound nbt = is.getTagCompound();
 			if (nbt != null) {
-
-				if (nbt.hasKey("Delay")) {
-					int delay = (int)nbt.getByte("Delay"); 
-
-					if (delay > 0) {
-						--delay;
-						dellayUpdate();
-						nbt.setByte("Delay", (byte)delay);
-						is.setTagCompound(nbt);
-					}
-
-				} else {
-					nbt.setByte("Delay", (byte)0);
-					is.setTagCompound(nbt);
-				}
-
+				delayUpdate();
 			}
 		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void delayUpdate() {
+		if (delay > 0) --delay;
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm") && nbt.hasKey("Delay")) {
-			int delay = (int)nbt.getByte("Delay");
+		if (nbt != null && nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm")) {
 
 			if (nbt.getInteger("AmmoAtm") > 0) {
-				if (delay == 0 && dellay == 0) {
+				if (delay == 0) {
 					//System.out.println("fire1 " + tick);
-					dellay = WeaponFor.get(nbt.getString("Weapon")).getDelay();
+					delay = WeaponFor.get(nbt.getString("Weapon")).getDelay();
+					System.out.println(delay);
 					PackWeapons.network.sendToServer(new MessageActionWeapons(1));
 				}
 			}
@@ -101,6 +91,21 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 	@SideOnly(Side.CLIENT)
 	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		isLeftClick = isPress;
+	}
+
+	public void fire(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm")) {
+
+			if (nbt.getInteger("AmmoAtm") > 0) {
+				EntityArrow entityarrow = new EntityArrow(world, player, 5.0F);
+				world.spawnEntityInWorld(entityarrow);
+				nbt.setInteger("AmmoAtm", nbt.getInteger("AmmoAtm") - 1);
+
+				playSound(is, world, player, "fire");
+			}
+			is.setTagCompound(nbt);
+		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -118,6 +123,14 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 		isRightClick = isPress;
 		PackWeapons.network.sendToServer(new MessageActionWeapons((isPress ? 2 : -2)));
 	}
+
+	public void scope(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Aim")) {
+			nbt.setBoolean("Aim", isPress);
+			is.setTagCompound(nbt);
+		}
+	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public void onReloadTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
@@ -132,6 +145,16 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 			if (isPress) {
 				PackWeapons.network.sendToServer(new MessageActionWeapons(3));
 			}
+		}
+	}
+
+	public void reload(ItemStack is, World world, EntityPlayer player) {
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("Weapon")) {
+			//nbt.setInteger("AmmoAtm", WeaponFor.get(nbt.getString("Weapon")).getSizeAmmo());
+			nbt.setInteger("AmmoAtm", 20);
+			playSound(is, world, player, "reload");
+			is.setTagCompound(nbt);
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -155,6 +178,10 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 		isMode = isPress;
 		PackWeapons.network.sendToServer(new MessageActionWeapons(4));
 	}
+
+	public void mode(ItemStack is, World world, EntityPlayer player) {
+		player.openGui(NodePack.instance, PackWeapons.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public void onActionTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
@@ -168,7 +195,9 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public void onModeInTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
-
+		if (tick > 10 && isRightClick && !isModeOut)
+			if (tick % 4 == 0)
+				PackWeapons.network.sendToServer(new MessageActionWeapons(5));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -176,66 +205,6 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 		isModeIn = isPress;
 		if (isPress && isRightClick && !isModeOut)
 			PackWeapons.network.sendToServer(new MessageActionWeapons(5));
-	}
-	//--------------------------------------------------------------------------------------------------------------
-	@SideOnly(Side.CLIENT)
-	public void onModeOutTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
-
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void onModeOutClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		isModeOut = isPress;
-		if (isPress && isRightClick && !isModeIn)
-			PackWeapons.network.sendToServer(new MessageActionWeapons(6));
-	}
-	//--------------------------------------------------------------------------------------------------------------
-	public void fire(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("Weapon") && nbt.hasKey("AmmoAtm") && nbt.hasKey("Delay")) {
-
-			EntityArrow entityarrow = new EntityArrow(world, player, 5.0F);
-			world.spawnEntityInWorld(entityarrow);
-			nbt.setInteger("AmmoAtm", nbt.getInteger("AmmoAtm") - 1);
-
-			playSound(is, world, player, "fire");
-
-			int delay = (int)nbt.getByte("Delay");
-
-			if (delay == 0) {
-				delay = WeaponFor.get(nbt.getString("Weapon")).getDelay();
-				nbt.setByte("Delay", (byte)delay);
-			}
-
-			is.setTagCompound(nbt);
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void dellayUpdate() {
-		if (dellay > 0) --dellay;
-	}
-
-	public void scope(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("Aim")) {
-			nbt.setBoolean("Aim", isPress);
-			is.setTagCompound(nbt);
-		}
-	}
-
-	public void reload(ItemStack is, World world, EntityPlayer player) {
-		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("Weapon")) {
-			//nbt.setInteger("AmmoAtm", WeaponFor.get(nbt.getString("Weapon")).getSizeAmmo());
-			nbt.setInteger("AmmoAtm", 20);
-			playSound(is, world, player, "reload");
-			is.setTagCompound(nbt);
-		}
-	}
-
-	public void mode(ItemStack is, World world, EntityPlayer player) {
-		player.openGui(NodePack.instance, PackWeapons.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 	}
 
 	public void zoomIn(ItemStack is, World world, EntityPlayer player) {
@@ -246,6 +215,20 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 				nbt.setByte("ZoomFov", (byte)(get_zoom + 8));
 		}
 	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SideOnly(Side.CLIENT)
+	public void onModeOutTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
+		if (tick > 10 && isRightClick && !isModeIn)
+			if (tick % 4 == 0)
+				PackWeapons.network.sendToServer(new MessageActionWeapons(6));
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void onModeOutClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		isModeOut = isPress;
+		if (isPress && isRightClick && !isModeIn)
+			PackWeapons.network.sendToServer(new MessageActionWeapons(6));
+	}
 
 	public void zoomOut(ItemStack is, World world, EntityPlayer player) {
 		NBTTagCompound nbt = is.getTagCompound();
@@ -255,7 +238,7 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 				nbt.setByte("ZoomFov", (byte)(get_zoom - 8));
 		}
 	}
-
+	//--------------------------------------------------------------------------------------------------------------
 	public void playSound(ItemStack is, World world, EntityPlayer player, String type) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Weapon")) {
@@ -304,10 +287,6 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 
 				if (nbt.hasKey("ZoomFov") && CoreTMS.show_tip_info_testing) {
 					list.add("ZoomFov:  " + nbt.getByte("ZoomFov") + ".");
-				}
-
-				if (nbt.hasKey("Delay") && CoreTMS.show_tip_info_testing) {
-					list.add("Delay:  " + nbt.getByte("Delay") + ".");
 				}
 
 			}

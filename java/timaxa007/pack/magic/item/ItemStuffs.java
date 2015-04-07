@@ -1,18 +1,25 @@
 package timaxa007.pack.magic.item;
 
+import java.util.Iterator;
 import java.util.List;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.trash.ItemPrimaryKey;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.lib.Spells;
-import timaxa007.pack.magic.packet.MessageStuff;
+import timaxa007.pack.magic.packet.MessageInteractionEntity;
+import timaxa007.tms.util.UtilTMS;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -31,26 +38,102 @@ public class ItemStuffs extends ItemPrimaryKey {
 	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		super.onLeftClickClient(is, world, player, isPress);
 		//if (isPress) {
-		world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 255.0D);
-		PackMagic.network.sendToServer(new MessageStuff(1, isPress));
+		MovingObjectPosition entity = UtilTMS.LookOBJ.getMouseOver(1.0F, 7.0F, true);
+		if (entity != null) {
+			if (isPress) {
+				System.out.println(entity.toString());
+				if (entity.entityHit != null) {
+					PackMagic.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId(), 1));
+				}
+			}
+			world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 255.0D);
+		}
 	}
 
 	public void left(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		if (isPress) is.damageItem(1, player);
+
+	}
+
+	/**For Testing. This not work.**/
+	public void act1(ItemStack is, World world, EntityPlayer player, Entity entity) {
+		if (entity instanceof EntityItem) {
+			EntityItem item_entity = (EntityItem)entity;
+			ItemStack is_entity = item_entity.getEntityItem();
+
+			if (is_entity != null) {
+				if (is_entity.getItem() == Items.stick && is_entity.stackSize == 1) {
+
+					System.out.println(is_entity.getDisplayName());
+
+					double pos_x = entity.posX;
+					double pos_y = entity.posY;
+					double pos_z = entity.posZ;
+
+					double d0 = (double)(5);
+
+					AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(pos_x, pos_y, pos_z, (double)(pos_x + 1), (double)(pos_y + 1), (double)(pos_z + 1)).expand(d0, d0, d0);
+					axisalignedbb.maxY = (double)world.getHeight();
+					List list = world.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
+					Iterator iterator = list.iterator();
+					Entity entity2;
+
+					while(iterator.hasNext()) {
+						entity2 = (Entity)iterator.next();
+
+						if (entity != null && entity2 != null && entity2 != entity) {
+
+							if (entity2 instanceof EntityItem) {
+								EntityItem item_entity2 = (EntityItem)entity;
+								ItemStack is_entity2 = item_entity.getEntityItem();
+
+								if (is_entity2 != null) {
+									if (is_entity2.getItem() == Items.blaze_powder && is_entity2.stackSize == 3) {
+
+										System.out.println(is_entity2.getDisplayName());
+
+										NBTTagCompound nbt = is_entity.getTagCompound();
+										is_entity = new ItemStack(Items.blaze_rod);
+										is_entity.setTagCompound(nbt);
+										UtilTMS.UtilWorld.dropItem(world, (int)pos_x, (int)pos_y, (int)pos_z, new ItemStack(Items.paper));
+									}
+								}
+
+							}
+						}
+
+					}
+
+				}
+			}
+
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		super.onRightClickClient(is, world, player, isPress);
-		PackMagic.network.sendToServer(new MessageStuff(2, isPress));
+		MovingObjectPosition entity = Minecraft.getMinecraft().objectMouseOver;
+		if (entity != null) {
+			if (isPress) {
+				System.out.println(entity.toString());
+				if (entity.entityHit != null) {
+					PackMagic.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId(), 2));
+				}
+			}
+			world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 255.0D, 0.0D);
+		}
 	}
 
 	public void right(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 
 	}
 
-	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
+	public void act2(ItemStack is, World world, EntityPlayer player, Entity entity) {
 
+	}
+
+	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
+		/*
 		ItemStack is1 = new ItemStack(Items.diamond_helmet);
 		NBTTagCompound nbt1 = new NBTTagCompound();
 		Spells.addSpell(nbt1, Spells.repair_item, 1, -1);
@@ -89,7 +172,7 @@ public class ItemStuffs extends ItemPrimaryKey {
 				if (k == armorSpell.length) break;
 			}
 		}
-
+		 */
 		is.damageItem(1, player);
 		return is;
 	}
