@@ -35,12 +35,18 @@ public class ItemRendererWeapons implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack is, Object... data) {
 		NBTTagCompound nbt = is.getTagCompound();
 		boolean isAim = false;
+		boolean isFov = false;
+		float fov = 0.0F;
 		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
 		//Render render = RenderManager.instance.getEntityRenderObject(player);
 		//RenderPlayer renderplayer = (RenderPlayer)render;
 
 		if (nbt != null) {
 			if (nbt.hasKey("Aim")) isAim = nbt.getBoolean("Aim");
+			if (nbt.hasKey("ZoomFov")) {
+				fov = nbt.getByte("ZoomFov");
+				isFov = true;
+			}
 		}
 
 		//if (player.isSwingInProgress) {System.out.println("test");}
@@ -77,6 +83,10 @@ public class ItemRendererWeapons implements IItemRenderer {
 			GL11.glPopMatrix();
 		}
 		 */
+
+		if (isFov && !isAim) {
+		}
+
 		if (type == type.EQUIPPED_FIRST_PERSON) {
 			GL11.glPushMatrix();
 			//---------------------------------------
@@ -116,8 +126,8 @@ public class ItemRendererWeapons implements IItemRenderer {
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 			GL11.glRotatef(135F, 0.0F, 0.0F, 1.0F);
 			GL11.glTranslatef(0.0F, 0.30F, 0.0F);
-			//if (isAim) GL11.glTranslatef(0.940F, 0.75F, 0.320F);
-			if (isAim) GL11.glTranslatef(-2.5F, 0.0F, -2.5F);
+			if (isAim) GL11.glTranslatef(0.940F, 0.75F, 0.320F);
+			//if (isAim) GL11.glTranslatef(-2.5F, 0.0F, -2.5F);
 		} else if (type == type.INVENTORY) {
 			GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
@@ -126,10 +136,12 @@ public class ItemRendererWeapons implements IItemRenderer {
 			GL11.glRotatef(-90F, 1.0F, 0.0F, 0.0F);
 			GL11.glRotatef(-135F, 0.0F, 0.0F, 1.0F);
 		}
+
 		GL11.glScalef(2.0F, 2.0F, 2.0F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("textures/blocks/iron_block.png"));
 		model_weapon_sniper.renderAll();
 		GL11.glPopMatrix();
+
 
 	}
 

@@ -16,13 +16,4 @@ public class ActionInteractionEntity {
 		}
 	}
 
-	public static void act2(EntityPlayer player, Entity entity) {
-		ItemStack current = player.getCurrentEquippedItem();
-		if (current != null) {
-			if (current.getItem() instanceof ItemStuffs) {
-				((ItemStuffs)current.getItem()).act2(current, player.worldObj, player, entity);
-			}
-		}
-	}
-
 }

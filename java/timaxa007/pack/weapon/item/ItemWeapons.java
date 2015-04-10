@@ -311,7 +311,7 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 		nbt.setString("Weapon", par1);
 
 		nbt.setBoolean("Aim", false);
-		nbt.setByte("ZoomFov", (byte)0);
+		//nbt.setByte("ZoomFov", (byte)0);
 
 		is.setTagCompound(nbt);
 		return is;

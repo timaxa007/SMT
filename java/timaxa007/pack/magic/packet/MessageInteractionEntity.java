@@ -43,7 +43,6 @@ public class MessageInteractionEntity implements IMessage {
 
 			switch(act) {
 			case 1:ActionInteractionEntity.act1(player, entity);break;
-			case 2:ActionInteractionEntity.act2(player, entity);break;
 			}
 
 			return null;

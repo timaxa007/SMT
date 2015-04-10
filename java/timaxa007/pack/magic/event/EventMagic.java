@@ -55,50 +55,6 @@ public class EventMagic {
 	}*/
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void disAttack(LivingHurtEvent e) {
-		if (e.source instanceof EntityDamageSource) {
-
-			EntityDamageSource dmgSource = (EntityDamageSource)e.source;
-			Entity ent = dmgSource.getEntity();
-			Entity en = dmgSource.getSourceOfDamage();
-			if (ent instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer)ent;
-				ItemStack current = player.getCurrentEquippedItem();
-
-				if (current != null) {
-					if (current.getItem() == Items.golden_sword) {
-						e.ammount = 0;
-					}
-
-				}
-			}
-		}
-	}
-	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
-	public void onHitEntity(LivingHurtEvent e) {
-		if (e.source instanceof EntityDamageSource) {
-
-			EntityDamageSource dmgSource = (EntityDamageSource)e.source;
-			Entity ent = dmgSource.getEntity();
-			if (ent instanceof EntityPlayer) {
-				/*
-				Random ran = new Random();
-				int ran1 = ran.nextInt(100);*/
-				EntityPlayer player = (EntityPlayer) ent;
-				ItemStack weapon = player.getCurrentEquippedItem();
-
-				if (weapon != null) {
-					if (weapon.getItem() == Items.golden_sword) {
-						//e.ammount=100;
-					}
-
-				}
-			}
-		}
-	}
-	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
 	public void hasPlayerTool(BlockEvent.BreakEvent e) {
 		ItemStack current = e.getPlayer().getCurrentEquippedItem();
 		if (current != null) {
