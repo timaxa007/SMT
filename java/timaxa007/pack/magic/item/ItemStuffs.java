@@ -15,8 +15,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
@@ -24,8 +26,10 @@ import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.lib.Spells;
 import timaxa007.pack.magic.packet.MessageInteractionBlock;
 import timaxa007.pack.magic.packet.MessageInteractionEntity;
+import timaxa007.pack.magic.packet.MessagePuff;
 import timaxa007.tms.util.ModifiedItem;
 import timaxa007.tms.util.UtilTMS;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -62,7 +66,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 		isLeftClick = isPress;
 
 		//if (isPress) {
-		MovingObjectPosition entity = UtilTMS.LookOBJ.getEntity(1.0F, 7.0F, true);
+		MovingObjectPosition entity = UtilTMS.LookOBJ.look(0.5F, 25.0F, true);
 
 		if (entity != null) {
 			if (isPress) {
@@ -76,6 +80,15 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 					PackMagic.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId(), 1));
 				}
+				if (entity.typeOfHit == MovingObjectType.BLOCK) {
+
+					int pos_x = entity.blockX;
+					int pos_y = entity.blockY;
+					int pos_z = entity.blockZ;
+					//world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 0.0D, 255.0D);
+
+					PackMagic.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z, 1));
+				}
 			}
 			//world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 255.0D, 0.0D);
 		}
@@ -87,7 +100,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 	/**For Testing.**/
 	public void act1(ItemStack is, World world, EntityPlayer player, Entity entity) {
-		//magicAct1(is, world, player, entity);
+		magicAct1(is, world, player, entity);
 		magicAct2(is, world, player, entity);
 	}
 
@@ -96,33 +109,70 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 			EntityItem item_entity = (EntityItem)entity;
 			ItemStack is_entity = item_entity.getEntityItem();
 
-			double pos_x = entity.posX;
-			double pos_y = entity.posY;
-			double pos_z = entity.posZ;
+			double pos_x = item_entity.posX;
+			double pos_y = item_entity.posY;
+			double pos_z = item_entity.posZ;
+			float light = world.getLightBrightness(MathHelper.floor_double(pos_x), MathHelper.floor_double(pos_y), MathHelper.floor_double(pos_z));
+
+			System.out.println(light);
+
+			if (world.canBlockSeeTheSky(MathHelper.floor_double(pos_x), MathHelper.floor_double(pos_y), MathHelper.floor_double(pos_z))) {
+
+				if (light >= 0.9F) {
+
+					magicFried1(item_entity, 
+							new ItemStack(Items.beef, 1), 
+							new ItemStack(Items.cooked_beef, 1));
+
+					magicFried1(item_entity, 
+							new ItemStack(Items.porkchop, 1), 
+							new ItemStack(Items.cooked_porkchop, 1));
+
+					magicFried1(item_entity, 
+							new ItemStack(Items.chicken, 1), 
+							new ItemStack(Items.cooked_chicken, 1));
+				}
+
+				if (light >= 0.8F) {
+
+					magicFried1(item_entity, 
+							new ItemStack(Items.fish, 1), 
+							new ItemStack(Items.cooked_fished, 1));
+
+					magicFried1(item_entity, 
+							new ItemStack(Items.potato, 1), 
+							new ItemStack(Items.baked_potato, 1));
+
+				}
+
+			}
 
 			double d0 = 5.0D;
 
-			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(pos_x, pos_y, pos_z, (double)(pos_x + 1), (double)(pos_y + 1), (double)(pos_z + 1)).expand(d0, d0, d0);
+			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(pos_x, pos_y, pos_z, pos_x + 1.0D, pos_y + 1.0D, pos_z + 1.0D).expand(d0, d0, d0);
 			List list = world.getEntitiesWithinAABB(Entity.class, axisalignedbb);
 			Iterator iterator = list.iterator();
 			Entity entity2;
 
-			EntityItem entity_a = null;
-			EntityItem entity_b = null;
-			EntityItem entity_c = null;
-
 			while(iterator.hasNext()) {
 				entity2 = (Entity)iterator.next();
 
-				if (entity2 instanceof EntityItem) {
-					EntityItem item_entity2 = (EntityItem)entity2;
-					ItemStack is_entity2 = item_entity.getEntityItem();
+				if (entity2 != null) {
+					if (entity2 instanceof EntityItem) {
+						EntityItem item_entity2 = (EntityItem)entity2;
+						ItemStack is_entity2 = item_entity2.getEntityItem();
 
-					if (is_entity2 != null) {
+						if (is_entity2 != null && item_entity.getEntityId() != item_entity2.getEntityId()) {
 
-						if (is_entity2.getItem() == Items.stick) {entity_a = item_entity2;}
-						if (is_entity2.getItem() == Items.book) {entity_b = item_entity2;}
-						if (is_entity2.getItem() == Items.blaze_powder) {entity_c = item_entity2;}
+							//System.out.println(is_entity.getDisplayName());
+							//System.out.println(is_entity2.getDisplayName());
+
+							magicCraft1(item_entity, item_entity2, 
+									new ItemStack(Items.stick, 1),
+									new ItemStack(Items.blaze_powder, 3),
+									new ItemStack(Items.blaze_rod));
+
+						}
 
 					}
 
@@ -130,42 +180,56 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 			}
 
-			if (entity_a != null && entity_c != null) {
-
-				ItemStack is_entity_a = entity_a.getEntityItem();
-				ItemStack is_entity_c = entity_c.getEntityItem();
-
-				ItemStack is_new = new ItemStack(Items.blaze_rod);
-
-				if (is_entity_a.getTagCompound() != null)
-					is_new.setTagCompound(is_entity_a.getTagCompound());
-				else if (is_entity_c.getTagCompound() != null)
-					is_new.setTagCompound(is_entity_c.getTagCompound());
-
-				entity_a.setDead();
-				entity_c.setDead();
-
-				UtilTMS.UtilWorld.dropItem(world, pos_x, pos_y, pos_z, is_new);
-
-			}
-
-			if (entity_b != null) {
-
-				ItemStack is_entity_b = entity_b.getEntityItem();
-
-				ItemStack is_new = new ItemStack(Items.book);
-				NBTTagCompound nbt_new = new NBTTagCompound();
-
-				if (is_entity_b.getTagCompound() != null)
-					is_new.setTagCompound(is_entity_b.getTagCompound());
-
-				entity_b.setDead();
-
-				UtilTMS.UtilWorld.dropItem(world, pos_x, pos_y, pos_z, is_new);
-
-			}
-
 		}
+	}
+
+	public static void magicCraft1(EntityItem item_entity_a, EntityItem item_entity_b, 
+			ItemStack element_a, ItemStack element_b, ItemStack out) {
+		ItemStack is_entity_a = item_entity_a.getEntityItem();
+		ItemStack is_entity_b = item_entity_b.getEntityItem();
+
+		if (is_entity_a.getItem() == element_a.getItem() && is_entity_a.stackSize >= element_a.stackSize && 
+				is_entity_a.getItemDamage() >= element_a.getItemDamage() && 
+				is_entity_b.getItem() == element_b.getItem() && is_entity_b.stackSize >= element_b.stackSize && 
+				is_entity_b.getItemDamage() >= element_b.getItemDamage()) {
+
+			if (is_entity_a.getTagCompound() != null) {
+				out.setTagCompound(is_entity_a.getTagCompound());
+			}
+			else if (is_entity_b.getTagCompound() != null) {
+				out.setTagCompound(is_entity_b.getTagCompound());
+			}
+
+			if (is_entity_a.stackSize > element_a.stackSize) is_entity_a.stackSize -= element_a.stackSize; 
+			else item_entity_a.setDead();
+			if (is_entity_b.stackSize > element_b.stackSize) is_entity_b.stackSize -= element_b.stackSize; 
+			else item_entity_b.setDead();
+
+			UtilTMS.UtilWorld.dropItem(item_entity_a.worldObj, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, out);
+
+			//break;
+		}
+
+	}
+
+	public static void magicFried1(EntityItem item_entity_a, ItemStack in, ItemStack out) {
+		ItemStack is_entity_a = item_entity_a.getEntityItem();
+
+		if (is_entity_a.getItem() == in.getItem() && is_entity_a.stackSize >= in.stackSize && 
+				is_entity_a.getItemDamage() >= in.getItemDamage()) {
+
+			if (is_entity_a.getTagCompound() != null) {
+				out.setTagCompound(is_entity_a.getTagCompound());
+			}
+
+			if (is_entity_a.stackSize > in.stackSize) is_entity_a.stackSize -= in.stackSize; 
+			else item_entity_a.setDead();
+
+			UtilTMS.UtilWorld.dropItem(item_entity_a.worldObj, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, out);
+
+			//break;
+		}
+
 	}
 
 	public static void magicAct2(ItemStack is, World world, EntityPlayer player, Entity entity) {
@@ -238,7 +302,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		isRightClick = isPress;
 
-		MovingObjectPosition block = UtilTMS.LookOBJ.getBlock(1.0F, 12.0F, true);
+		MovingObjectPosition block = UtilTMS.LookOBJ.block(1.0F, 25.0F, true);
 		if (block != null) {
 			if (isPress) {
 				System.out.println(block.toString());
@@ -317,7 +381,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 			world.setBlockToAir(x, y, z);
 		}
 
-		double d0 = 5.0D;
+		double d0 = 1.0D;
 
 		AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double)x, (double)y, (double)z, (double)(x + 1), (double)(y + 1), (double)(z + 1)).expand(d0, d0, d0);
 		List list = world.getEntitiesWithinAABB(Entity.class, axisalignedbb);
@@ -340,6 +404,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 							world.setBlock(x, y, z, Blocks.coal_ore);
 							if (is_entity.stackSize == 9) entity.setDead();
 							else is_entity.stackSize -= 9;
+							PackMagic.network.sendToAllAround(new MessagePuff(1, entity.posX, entity.posY, entity.posZ), 
+									new NetworkRegistry.TargetPoint(player.dimension, entity.posX, entity.posY, entity.posZ, 18.5D));
 							break;
 						}
 
@@ -347,6 +413,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 							world.setBlock(x, y, z, Blocks.coal_ore);
 							if (is_entity.stackSize == 16) entity.setDead();
 							else is_entity.stackSize -= 16;
+							PackMagic.network.sendToAllAround(new MessagePuff(1, entity.posX, entity.posY, entity.posZ), 
+									new NetworkRegistry.TargetPoint(player.dimension, entity.posX, entity.posY, entity.posZ, 18.5D));
 							break;
 						}
 
@@ -354,6 +422,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 							world.setBlock(x, y, z, Blocks.diamond_ore);
 							if (is_entity.stackSize == 6) entity.setDead();
 							else is_entity.stackSize -= 6;
+							PackMagic.network.sendToAllAround(new MessagePuff(1, entity.posX, entity.posY, entity.posZ), 
+									new NetworkRegistry.TargetPoint(player.dimension, entity.posX, entity.posY, entity.posZ, 18.5D));
 							break;
 						}
 
@@ -361,6 +431,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 							world.setBlock(x, y, z, Blocks.iron_ore);
 							if (is_entity.stackSize == 2) entity.setDead();
 							else is_entity.stackSize -= 2;
+							PackMagic.network.sendToAllAround(new MessagePuff(1, entity.posX, entity.posY, entity.posZ), 
+									new NetworkRegistry.TargetPoint(player.dimension, entity.posX, entity.posY, entity.posZ, 18.5D));
 							break;
 						}
 
@@ -368,6 +440,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 							world.setBlock(x, y, z, Blocks.gold_ore);
 							if (is_entity.stackSize == 2) entity.setDead();
 							else is_entity.stackSize -= 2;
+							PackMagic.network.sendToAllAround(new MessagePuff(1, entity.posX, entity.posY, entity.posZ), 
+									new NetworkRegistry.TargetPoint(player.dimension, entity.posX, entity.posY, entity.posZ, 18.5D));
 							break;
 						}
 
@@ -380,6 +454,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 							world.setBlock(x, y + 1, z, Blocks.dirt);
 							if (is_entity.stackSize == 1) entity.setDead();
 							else is_entity.stackSize -= 1;
+							PackMagic.network.sendToAllAround(new MessagePuff(1, entity.posX, entity.posY, entity.posZ), 
+									new NetworkRegistry.TargetPoint(player.dimension, entity.posX, entity.posY, entity.posZ, 18.5D));
 							break;
 						}
 
@@ -392,6 +468,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 							world.setBlockMetadataWithNotify(x, y, z, is_entity.getItemDamage(), 3);
 							if (is_entity.stackSize == 1) entity.setDead();
 							else is_entity.stackSize -= 1;
+							PackMagic.network.sendToAllAround(new MessagePuff(1, entity.posX, entity.posY, entity.posZ), 
+									new NetworkRegistry.TargetPoint(player.dimension, entity.posX, entity.posY, entity.posZ, 18.5D));
 							break;
 						}
 
@@ -400,6 +478,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 							world.setBlockMetadataWithNotify(x, y, z, is_entity.getItemDamage() + 4, 3);
 							if (is_entity.stackSize == 1) entity.setDead();
 							else is_entity.stackSize -= 1;
+							PackMagic.network.sendToAllAround(new MessagePuff(1, entity.posX, entity.posY, entity.posZ), 
+									new NetworkRegistry.TargetPoint(player.dimension, entity.posX, entity.posY, entity.posZ, 18.5D));
 							break;
 						}
 
@@ -411,6 +491,17 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 		}
 
+	}
+
+	public void puff1(World world, double cord_x, double cord_y, double cord_z) {
+		world.spawnParticle("portal", cord_x + 0.15D, cord_y + 0.5D, cord_z + 0.15D, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("portal", cord_x + 0.15D, cord_y + 0.5D, cord_z - 0.15D, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("portal", cord_x - 0.15D, cord_y + 0.5D, cord_z - 0.15D, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("portal", cord_x - 0.15D, cord_y + 0.5D, cord_z + 0.15D, 0.0D, 0.0D, 0.0D);
+
+		world.spawnParticle("largesmoke", cord_x, cord_y + 0.35D, cord_z, 0.0D, 0.0D, 0.0D);
+
+		world.playSound(cord_x, cord_y, cord_z, "portal.portal", 0.5F, 1.2F, false);
 	}
 
 	public static void blockAct2(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {

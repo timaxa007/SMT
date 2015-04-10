@@ -85,14 +85,14 @@ public class UtilTMS {
 	}
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilWorld {
-
+		/* && world.getGameRules().getGameRuleBooleanValue("doTileDrops")*/
 		public static void dropItem(World world, int x, int y, int z, ItemStack is) {
 			dropItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, is);
 		}
 
 		public static void dropItem(World world, double x, double y, double z, ItemStack is) {
 			if (world != null && is != null) {
-				if (!world.isRemote/* && world.getGameRules().getGameRuleBooleanValue("doTileDrops")*/) {
+				if (!world.isRemote) {
 					EntityItem entityitem = new EntityItem(world, x, y, z, is);
 					entityitem.delayBeforeCanPickup = 10;
 					world.spawnEntityInWorld(entityitem);
@@ -104,45 +104,78 @@ public class UtilTMS {
 	//-----------------------------------------------------------------------------------------------
 	public static class LookOBJ {
 		//-------------------------------
-		public static MovingObjectPosition getLook(float fasc, boolean interact) {
+		public static MovingObjectPosition look(float fasc, boolean interact) {
 			double dist = (double)mc.playerController.getBlockReachDistance();
-			return (getEntity(fasc, dist, interact) != null ? getEntity(fasc, dist, interact) : getBlock(fasc, dist, interact));
+			MovingObjectPosition entity = entity(fasc, dist, interact);
+			return ((entity != null && entity.entityHit != null) ? 
+					entity(fasc, dist, interact) : block(fasc, dist, interact));
 		}
 
-		public static MovingObjectPosition getLook(float fasc, double dist, boolean interact) {
-			return (getEntity(fasc, dist, interact) != null ? getEntity(fasc, dist, interact) : getBlock(fasc, dist, interact));
+		public static MovingObjectPosition look(float fasc, double dist, boolean interact) {
+			MovingObjectPosition entity = entity(fasc, dist, interact);
+			return ((entity != null && entity.entityHit != null) ? 
+					entity(fasc, dist, interact) : block(fasc, dist, interact));
 		}
 		//-------------------------------
-		public static MovingObjectPosition getEntity(float fasc, boolean interact) {
-			return getEntity(fasc, (double)mc.playerController.getBlockReachDistance(), interact);
+		public static MovingObjectPosition entity(float fasc, boolean interact) {
+			return entity(fasc, (double)mc.playerController.getBlockReachDistance(), interact);
 		}
 
-		public static MovingObjectPosition getEntity(float fasc, double dist, boolean interact) {
+		public static MovingObjectPosition entity(float fasc, double dist, boolean interact) {
 			if (mc.renderViewEntity != null && mc.theWorld != null) {
+
+				Entity pointedEntity = null;
 				double d0 = dist;
 				MovingObjectPosition objectMouseOver = mc.renderViewEntity.rayTrace(d0, fasc);
+				double d1 = d0;
 				Vec3 vec3 = mc.renderViewEntity.getPosition(fasc);
 
+				d0 = d1;
+
 				if (objectMouseOver != null) {
-					d0 = objectMouseOver.hitVec.distanceTo(vec3);
+					d1 = objectMouseOver.hitVec.distanceTo(vec3);
 				}
 
 				Vec3 vec31 = mc.renderViewEntity.getLook(fasc);
 				Vec3 vec32 = vec3.addVector(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0);
-				Entity pointedEntity = null;
+				pointedEntity = null;
 				Vec3 vec33 = null;
 				float f1 = 1.0F;
 				List list = mc.theWorld.getEntitiesWithinAABBExcludingEntity(mc.renderViewEntity, mc.renderViewEntity.boundingBox.addCoord(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0).expand((double)f1, (double)f1, (double)f1));
+				double d2 = d1;
 
 				for (int i = 0; i < list.size(); ++i) {
 					Entity entity = (Entity)list.get(i);
 
+					//if (entity.canBeCollidedWith()) {
 					float f2 = entity.getCollisionBorderSize();
 					AxisAlignedBB axisalignedbb = entity.boundingBox.expand((double)f2, (double)f2, (double)f2);
 					MovingObjectPosition movingobjectposition = axisalignedbb.calculateIntercept(vec3, vec32);
 
-					pointedEntity = entity;
-					vec33 = movingobjectposition == null ? vec3 : movingobjectposition.hitVec;
+					if (axisalignedbb.isVecInside(vec3)) {
+						if (0.0D < d2 || d2 == 0.0D) {
+							pointedEntity = entity;
+							vec33 = movingobjectposition == null ? vec3 : movingobjectposition.hitVec;
+							d2 = 0.0D;
+						}
+					}
+					else if (movingobjectposition != null) {
+						double d3 = vec3.distanceTo(movingobjectposition.hitVec);
+
+						if (d3 < d2 || d2 == 0.0D) {
+							if (entity == mc.renderViewEntity.ridingEntity && !entity.canRiderInteract()) {
+								if (d2 == 0.0D) {
+									pointedEntity = entity;
+									vec33 = movingobjectposition.hitVec;
+								}
+							} else {
+								pointedEntity = entity;
+								vec33 = movingobjectposition.hitVec;
+								d2 = d3;
+							}
+						}
+					}
+					//}
 				}
 
 				return new MovingObjectPosition(pointedEntity, vec33);
@@ -150,11 +183,11 @@ public class UtilTMS {
 			return null;
 		}
 		//-------------------------------
-		public static MovingObjectPosition getBlock(float fasc, boolean interact) {
-			return getBlock(fasc, (double)mc.playerController.getBlockReachDistance(), interact);
+		public static MovingObjectPosition block(float fasc, boolean interact) {
+			return block(fasc, (double)mc.playerController.getBlockReachDistance(), interact);
 		}
 
-		public static MovingObjectPosition getBlock(float fasc, double dist, boolean interact) {
+		public static MovingObjectPosition block(float fasc, double dist, boolean interact) {
 			if (mc.renderViewEntity != null && mc.theWorld != null) {
 
 				Vec3 vec3 = mc.renderViewEntity.getPosition(fasc);

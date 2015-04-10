@@ -13,6 +13,7 @@ public class RegisterMessage {
 		network.registerMessage(MessageStuff.Handler.class, MessageStuff.class, id++, Side.SERVER);
 		network.registerMessage(MessageInteractionEntity.Handler.class, MessageInteractionEntity.class, id++, Side.SERVER);
 		network.registerMessage(MessageInteractionBlock.Handler.class, MessageInteractionBlock.class, id++, Side.SERVER);
+		network.registerMessage(MessagePuff.Handler.class, MessagePuff.class, id++, Side.CLIENT);
 	}
 
 }
