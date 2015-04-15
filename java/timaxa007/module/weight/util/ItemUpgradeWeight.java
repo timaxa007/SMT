@@ -64,7 +64,7 @@ public class ItemUpgradeWeight extends Item {
 			}
 		}
 
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	@SideOnly(Side.CLIENT)

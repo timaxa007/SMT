@@ -50,6 +50,8 @@ public class MessagePuff implements IMessage {
 			
 			switch(act) {
 			case 1:ActionPuff.puff1(player, cord_x, cord_y, cord_z);break;
+			case 2:ActionPuff.craft1(player, cord_x, cord_y, cord_z);break;
+			case 3:ActionPuff.fried1(player, cord_x, cord_y, cord_z);break;
 			default:break;
 			}
 

@@ -29,7 +29,7 @@ public class ItemMedPack extends ModifiedItem {
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		player.setItemInUse(is, getMaxItemUseDuration(is));
 		world.playSound(player.posX, player.posY, player.posZ, "timaxa007:vodka", 1.0F, 1.0F, true);
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	public int getMaxItemUseDuration(ItemStack is) {

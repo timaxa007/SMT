@@ -95,7 +95,9 @@ public class ListBlock {
 	cloth_blocks_be, 
 	metal_blocks_be, 
 	vegetable_face_be, 
-	furniture_chest_be;
+	furniture_chest_be,
+	storage_be
+	;
 
 	public static Block 
 	furniture_machines, 
@@ -185,7 +187,9 @@ public class ListBlock {
 	cloth_blocks, 
 	metal_blocks, 
 	vegetable_face, 
-	furniture_chest;
+	furniture_chest,
+	storage
+	;
 
 	public static Class
 	te_furniture_machines, 
@@ -225,7 +229,8 @@ public class ListBlock {
 	te_cloth_blocks, 
 	te_metal_blocks, 
 	te_vegetable_face, 
-	te_furniture_chest
+	te_furniture_chest,
+	te_storage
 	;
 
 	public static Block[] list_block;
@@ -482,6 +487,11 @@ public class ListBlock {
 			te_furniture_chest = TileEntityFurnitureChest.class;
 		}
 
+		if (storage_be) {
+			storage = new BlockStorage("storage");
+			te_storage = TileEntityStorage.class;
+		}
+
 		te_block_blocks = TileEntityBlockBlocks.class;
 
 		list_block = new Block[] {
@@ -572,7 +582,8 @@ public class ListBlock {
 				cloth_blocks, 
 				metal_blocks, 
 				vegetable_face, 
-				furniture_chest
+				furniture_chest,
+				storage
 		};
 
 		UtilTMS.UtilBlock.RegBlock(list_block);
@@ -615,7 +626,8 @@ public class ListBlock {
 				te_cloth_blocks, 
 				te_metal_blocks, 
 				te_vegetable_face, 
-				te_furniture_chest
+				te_furniture_chest,
+				te_storage
 		};
 
 		UtilTMS.UtilBlock.RegTE(list_te);

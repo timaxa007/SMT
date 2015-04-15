@@ -57,7 +57,7 @@ public class MolotovCocktail extends ModifiedItem {
 		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Items.flint_and_steel)) {
 			player.setItemInUse(is, this.getMaxItemUseDuration(is));
 		}
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 }

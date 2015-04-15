@@ -35,7 +35,7 @@ public class ItemBackpack extends ModifiedItem implements IBackpack, IInventory 
 		} else {
 			player.openGui(NodePack.instance, PackFurniture.gui_backpack, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 		}
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	@SideOnly(Side.CLIENT)

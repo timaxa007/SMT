@@ -38,7 +38,7 @@ public class ItemParticlesGun extends ModifiedItem {
 	}
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	public EnumAction getItemUseAction(ItemStack is) {

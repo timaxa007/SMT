@@ -42,7 +42,7 @@ public class ToolShield extends ModifiedItem {
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		player.setItemInUse(is, getMaxItemUseDuration(is));
 		is.damageItem(1, player);
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {

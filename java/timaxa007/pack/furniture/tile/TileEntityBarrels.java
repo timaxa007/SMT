@@ -8,74 +8,30 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityBarrels extends TileEntity {
 
-	private int typeB;
-	private int typeP;
-	private int typeCD;
-	private int rotation;
-	private boolean lie;
+	//private int typeB;
 
 	public TileEntityBarrels() {
 
 	}
-
+	/*
 	public void setTypeB(int i) {
 		typeB = i;
-	}
-
-	public void setTypeP(int i) {
-		typeP = i;
-	}
-
-	public void setTypeCD(int i) {
-		typeCD = i;
-	}
-
-	public void setRotation(int i) {
-		rotation = i;
-	}
-
-	public void setLie(boolean i) {
-		lie = i;
 	}
 
 	public int getTypeB() {
 		return typeB;
 	}
-
-	public int getTypeP() {
-		return typeP;
-	}
-
-	public int getTypeCD() {
-		return typeCD;
-	}
-
-	public int getRotation() {
-		return rotation;
-	}
-
-	public boolean getLie() {
-		return lie;
-	}
-
+	 */
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		if (nbt.hasKey("TypeB")) typeB = nbt.getInteger("TypeB");
-		if (nbt.hasKey("TypeP")) typeP = nbt.getInteger("TypeP");
-		if (nbt.hasKey("TypeCD")) typeCD = nbt.getInteger("TypeCD");
-		if (nbt.hasKey("Rotation")) rotation = nbt.getInteger("Rotation");
-		if (nbt.hasKey("Lie")) lie = nbt.getBoolean("Lie");
+		//if (nbt.hasKey("TypeB")) typeB = nbt.getInteger("TypeB");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		nbt.setInteger("TypeB", typeB);
-		nbt.setInteger("TypeP", typeP);
-		nbt.setInteger("TypeCD", typeCD);
-		nbt.setInteger("Rotation", rotation);
-		nbt.setBoolean("Lie", lie);
+		//nbt.setInteger("TypeB", typeB);
 	}
 
 	public Packet getDescriptionPacket() {

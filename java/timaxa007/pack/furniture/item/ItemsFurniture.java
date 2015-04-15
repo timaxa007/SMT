@@ -18,7 +18,7 @@ public class ItemsFurniture extends ModifiedItem {
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		if (!world.isRemote) player.addChatMessage(new ChatComponentText("F - " + ActionModel.rotation_model_8sides_invert(player)));
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 }

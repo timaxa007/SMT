@@ -91,7 +91,7 @@ Allspice(0.0F), Ginger(0.0F), Canella(0.0F), Curcuma(0.0F), Bay(0.0F), Rosemary(
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		player.setItemInUse(is, getMaxItemUseDuration(is));
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	public int getMaxItemUseDuration(ItemStack is) {

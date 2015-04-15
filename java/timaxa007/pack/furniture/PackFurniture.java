@@ -47,6 +47,7 @@ public class PackFurniture implements IPackClass {
 	public static int gui_grills = 18;
 	public static int gui_mashine_water = 19;
 	public static int gui_backpack = 20;
+	public static int gui_storage = 21;
 	public static int gui_backpack_1 = 32;
 	public static int gui_backpack_2 = 33;
 	public static int gui_backpack_3 = 34;
@@ -167,6 +168,7 @@ public class PackFurniture implements IPackClass {
 		block.metal_blocks_be = cfg.get("block", "metal_blocks", true).getBoolean(true);
 		block.vegetable_face_be = cfg.get("block", "vegetable_face", true).getBoolean(true);
 		block.furniture_chest_be = cfg.get("block", "furniture_chest", true).getBoolean(true);
+		block.storage_be = cfg.get("block", "storage", true).getBoolean(true);
 
 
 		item.items_for_furniture_be = cfg.get("item", "items_for_furniture", true).getBoolean(true);

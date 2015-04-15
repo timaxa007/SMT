@@ -16,7 +16,7 @@ public class ItemsMining extends ModifiedItem {
 			MinecraftServer minecraftserver = MinecraftServer.getServer();
 			minecraftserver.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP)player, PackMining.world_dim_mining_id);
 		}
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 	 */
 }

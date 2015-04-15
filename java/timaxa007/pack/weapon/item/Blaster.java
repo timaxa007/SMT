@@ -42,7 +42,7 @@ public class Blaster extends ModifiedItem {
 		if (player.inventory.hasItem(PackFurniture.item.colored)) {
 			player.setItemInUse(is, getMaxItemUseDuration(is));
 		}
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	public void addInformation(ItemStack is, CreativeTabs tab, List list, boolean f3Enabled) {

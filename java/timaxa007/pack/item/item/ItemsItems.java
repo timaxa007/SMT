@@ -33,6 +33,6 @@ public class ItemsItems extends ModifiedItem {
 			--is.stackSize;
 		}*/
 
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 }

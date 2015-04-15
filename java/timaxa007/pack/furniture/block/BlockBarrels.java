@@ -2,9 +2,6 @@ package timaxa007.pack.furniture.block;
 
 import java.util.List;
 
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.furniture.tile.TileEntityBarrels;
-import timaxa007.tms.util.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,13 +11,16 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import timaxa007.pack.furniture.PackFurniture;
+import timaxa007.pack.furniture.tile.TileEntityBarrels;
+import timaxa007.tms.util.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBarrels extends ModifiedBlock implements ITileEntityProvider {
 
 	public BlockBarrels(String tag) {
-		super(tag, Material.clay);
+		super(tag, Material.wood);
 		setCreativeTab(PackFurniture.tab_furniture);
 		setHardness(0.5F);
 		setBlockTextureName("planks_oak");
@@ -32,26 +32,18 @@ public class BlockBarrels extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public int getRenderType() {
-		return -1;
+		return PackFurniture.render.block_barrels_modelID;
 	}
 
-	public boolean isOpaqueCube() {
-		return false;
-	}
-
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	public int idPicked(World world, int x, int y, int z) {
-		return 0;
-	}
+	public boolean isOpaqueCube() {return false;}
+	public boolean renderAsNormalBlock() {return false;}
+	public int idPicked(World world, int x, int y, int z) {return 0;}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null && te instanceof TileEntityBarrels) {
+		/*if (te != null && te instanceof TileEntityBarrels) {
 			return addNBT(((TileEntityBarrels)te).getTypeB(), ((TileEntityBarrels)te).getTypeP(), ((TileEntityBarrels)te).getTypeCD(), ((TileEntityBarrels)te).getLie());
-		}
+		}*/
 		return addNBT(0, 0, 0, false);
 	}
 
@@ -71,10 +63,10 @@ public class BlockBarrels extends ModifiedBlock implements ITileEntityProvider {
 	public static ItemStack addNBT(int par1, int par2, int par3, boolean par4) {
 		ItemStack is = new ItemStack(PackFurniture.block.barrels, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
-		nbt.setInteger("TypeB", par1);
-		nbt.setInteger("TypeP", par2);
-		nbt.setInteger("TypeCD", par3);
-		nbt.setBoolean("Lie", par4);
+		//nbt.setInteger("TypeB", par1);
+		//nbt.setInteger("TypeP", par2);
+		//nbt.setInteger("TypeCD", par3);
+		//nbt.setBoolean("Lie", par4);
 		is.setTagCompound(nbt);
 		return is;
 	}

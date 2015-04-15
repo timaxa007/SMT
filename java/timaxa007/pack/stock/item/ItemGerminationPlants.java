@@ -148,7 +148,7 @@ public class ItemGerminationPlants extends ModifiedItem {
 			if (nbt.hasKey("Fertility")) {player.addChatMessage(" - " + nbt.getInteger("Fertility"));}
 			if (nbt.hasKey("Resistance")) {player.addChatMessage(" - " + nbt.getInteger("Resistance"));}
 		}
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 	 */
 	public String getUnlocalizedName(ItemStack is) {

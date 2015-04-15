@@ -90,7 +90,7 @@ public class ItemMedicals extends ModifiedItem {
 
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		player.setItemInUse(is, getMaxItemUseDuration(is));
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	public int getMaxItemUseDuration(ItemStack is) {

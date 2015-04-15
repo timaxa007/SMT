@@ -136,7 +136,7 @@ liquid_hex = liq_hex;
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		//world.playSoundAtEntity(player, "timaxa007:vodka", 1.0F, 1.0F);
 		player.setItemInUse(is, getMaxItemUseDuration(is));
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	public int getMaxItemUseDuration(ItemStack is) {

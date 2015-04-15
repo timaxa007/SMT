@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -18,7 +19,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
-import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
@@ -59,18 +59,10 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 	@SideOnly(Side.CLIENT)
 	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
-	}
+		if (tick >= 20 && tick % 20 == 0) {
+			MovingObjectPosition entity = UtilTMS.LookOBJ.look(1.0F, 25.0F, true);
 
-	@SideOnly(Side.CLIENT)
-	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
-		isLeftClick = isPress;
-
-		//if (isPress) {
-		MovingObjectPosition entity = UtilTMS.LookOBJ.look(0.5F, 25.0F, true);
-
-		if (entity != null) {
-			if (isPress) {
-				//System.out.println(entity.toString());
+			if (entity != null) {
 				if (entity.entityHit != null && entity.typeOfHit == MovingObjectType.ENTITY) {
 
 					double pos_x = entity.entityHit.posX;
@@ -85,13 +77,45 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					int pos_x = entity.blockX;
 					int pos_y = entity.blockY;
 					int pos_z = entity.blockZ;
-					//world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 0.0D, 255.0D);
 
 					PackMagic.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z, 1));
 				}
+
 			}
-			//world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 255.0D, 0.0D);
+
 		}
+
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
+		isLeftClick = isPress;
+		/*
+		MovingObjectPosition entity = UtilTMS.LookOBJ.look(0.5F, 25.0F, true);
+
+		if (entity != null) {
+			if (isPress) {
+				if (entity.entityHit != null && entity.typeOfHit == MovingObjectType.ENTITY) {
+
+					double pos_x = entity.entityHit.posX;
+					double pos_y = entity.entityHit.posY;
+					double pos_z = entity.entityHit.posZ;
+					world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 255.0D, 0.0D);
+
+					PackMagic.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId(), 1));
+				}
+				if (entity.typeOfHit == MovingObjectType.BLOCK) {
+
+					int pos_x = entity.blockX;
+					int pos_y = entity.blockY;
+					int pos_z = entity.blockZ;
+
+					PackMagic.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z, 1));
+				}
+
+			}
+		}
+		 */
 	}
 
 	public void left(ItemStack is, World world, EntityPlayer player, boolean isPress) {
@@ -114,7 +138,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 			double pos_z = item_entity.posZ;
 			float light = world.getLightBrightness(MathHelper.floor_double(pos_x), MathHelper.floor_double(pos_y), MathHelper.floor_double(pos_z));
 
-			System.out.println(light);
+			//System.out.println(light);
 
 			if (world.canBlockSeeTheSky(MathHelper.floor_double(pos_x), MathHelper.floor_double(pos_y), MathHelper.floor_double(pos_z))) {
 
@@ -158,6 +182,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 				entity2 = (Entity)iterator.next();
 
 				if (entity2 != null) {
+
 					if (entity2 instanceof EntityItem) {
 						EntityItem item_entity2 = (EntityItem)entity2;
 						ItemStack is_entity2 = item_entity2.getEntityItem();
@@ -177,10 +202,29 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					}
 
 				}
-
 			}
+			/*
+			Entity[] entity_list = new Entity[1024];
+
+			for (int i = 0; i < list.size(); ++i) {
+				Entity entity1 = (Entity)list.get(i);
+				if (entity1 != null) {
+					entity_list[i] = entity1;
+					System.out.println(entity1);
+				}
+			}
+			 */
+		}
+
+		if (entity instanceof EntityCreature) {
+
+			world.playSoundEffect(player.posX, player.posY, player.posZ, "mob.endermen.portal", 1.0F, 1.0F);
+			world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "mob.endermen.portal", 1.0F, 1.0F);
+
+			entity.setPosition(player.posX, player.posY, player.posZ);
 
 		}
+
 	}
 
 	public static void magicCraft1(EntityItem item_entity_a, EntityItem item_entity_b, 
@@ -207,6 +251,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 			UtilTMS.UtilWorld.dropItem(item_entity_a.worldObj, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, out);
 
+			PackMagic.network.sendToAllAround(new MessagePuff(2, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ), 
+					new NetworkRegistry.TargetPoint(item_entity_a.dimension, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, 18.5D));
 			//break;
 		}
 
@@ -227,6 +273,8 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 			UtilTMS.UtilWorld.dropItem(item_entity_a.worldObj, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, out);
 
+			PackMagic.network.sendToAllAround(new MessagePuff(3, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ), 
+					new NetworkRegistry.TargetPoint(item_entity_a.dimension, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, 18.5D));
 			//break;
 		}
 
@@ -326,7 +374,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 	public void actBlock1(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {
 		blockAct1(is, world, player, block, x, y, z);
-		//blockAct2(is, world, player, block, x, y, z);
+		blockAct2(is, world, player, block, x, y, z);
 	}
 
 	public static void blockAct1(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {
@@ -493,17 +541,6 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 	}
 
-	public void puff1(World world, double cord_x, double cord_y, double cord_z) {
-		world.spawnParticle("portal", cord_x + 0.15D, cord_y + 0.5D, cord_z + 0.15D, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("portal", cord_x + 0.15D, cord_y + 0.5D, cord_z - 0.15D, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("portal", cord_x - 0.15D, cord_y + 0.5D, cord_z - 0.15D, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("portal", cord_x - 0.15D, cord_y + 0.5D, cord_z + 0.15D, 0.0D, 0.0D, 0.0D);
-
-		world.spawnParticle("largesmoke", cord_x, cord_y + 0.35D, cord_z, 0.0D, 0.0D, 0.0D);
-
-		world.playSound(cord_x, cord_y, cord_z, "portal.portal", 0.5F, 1.2F, false);
-	}
-
 	public static void blockAct2(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {
 
 	}
@@ -611,7 +648,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 		}
 		 */
 		is.damageItem(1, player);
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	@SideOnly(Side.CLIENT)

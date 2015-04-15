@@ -24,7 +24,7 @@ import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IActionPrimaryKey, ITechnoTool {
+public class ToolElectricDrill extends ModifiedItem implements IActionMouse, IActionPrimaryKey, ITechnoTool {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;
@@ -37,19 +37,18 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 	@SideOnly(Side.CLIENT) public static boolean isModeOut;
 
 	private static String[] modes = new String[] {
-		"None", 			//0
-		"Dismantling", 		//1
-		"Configuration",	//2
-		"Crafting"			//3
+		"Mining", 	//0
+		"Digging", 	//1
+		"Crafting"	//2
 	};
 	//--------------------------------------------------------------------------------------------------------------
-	public ToolElectricWrench(String tag) {
+	public ToolElectricDrill(String tag) {
 		super(tag);
 		setCreativeTab(PackTechno.tab_techno);
 		setMaxDamage(1000);
 		setMaxStackSize(1);
 		setNoRepair();
-		setTextureName("timaxa007:tool/electric/wrench");
+		setTextureName("timaxa007:tool/electric/drill");
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -114,7 +113,7 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 				if (nbn >= 2) nbn = 0; else nbn++;
 
 				player.addChatMessage(new ChatComponentText(
-						EnumChatFormatting.GOLD + "[Wrench]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
+						EnumChatFormatting.GOLD + "[Drill]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
 						);
 
 				PackTechno.network.sendToServer(new MessageTechnoTool(1));
@@ -201,13 +200,12 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 				isWorking = nbt.getBoolean("Working");
 
 				Material material = block.getMaterial();
-				if (material == PackTechno.techno_block)
-					return isWorking ? 10.0F : 1.0F;
 
+				if (material == Material.ground) return isWorking ? 3.0F : 0.8F;
+				if (material == Material.rock) return isWorking ? 2.0F : 0.5F;
 				//for hing speed with Upgrade or setting speed-up
 
 				//Upgrade
-
 
 			}
 		}
@@ -216,19 +214,39 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 
 	public boolean hitEntity(ItemStack is, EntityLivingBase entity1, EntityLivingBase entity2) {
 		NBTTagCompound nbt = is.getTagCompound();
-		is.damageItem((entity2.worldObj.rand.nextInt(3) + 2), entity2);
+		if (nbt != null) {
+
+			if (nbt.hasKey("Working")) {
+				boolean isWorking = nbt.getBoolean("Working");
+				int efc = 1;				
+
+				if (nbt.hasKey("ModeID")) {
+					if (nbt.getInteger("ModeID") == 0) {efc = 2;}
+					if (nbt.getInteger("ModeID") == 1) {efc = 3;}
+					if (nbt.getInteger("ModeID") == 2) {efc = 1;}
+				}
+
+				is.damageItem(efc, entity2);
+				return true;
+			}
+
+		}
+		is.damageItem((entity2.worldObj.rand.nextInt(2) + 1), entity2);
 		return true;
 	}
 
 	public boolean onBlockDestroyed(ItemStack is, World world, Block block, int x, int y, int z, EntityLivingBase entity) {
 		NBTTagCompound nbt = is.getTagCompound();
-
-		Material material = block.getMaterial();
-		if (material == PackTechno.techno_block) {
-			is.damageItem(1, entity);
+		if (/*world.getBlock(x, y, z)*/block.getBlockHardness(world, x, y, z) != 0.0F) {
+			int es = 10;
+			if (nbt != null && nbt.hasKey("ModeID")) {
+				if (nbt.getInteger("ModeID") == 0) {es = 10;}
+				if (nbt.getInteger("ModeID") == 1) {es = 20;}
+				if (nbt.getInteger("ModeID") == 2) {es = 5;}
+			}
+			is.damageItem((int)(/*world.getBlock(x, y, z)*/block.getBlockHardness(world, x, y, z) * es), entity);
 			return true;
 		}
-
 		is.damageItem((int)(/*world.getBlock(x, y, z)*/block.getBlockHardness(world, x, y, z) * 100), entity);
 		return true;
 	}
@@ -263,7 +281,7 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 	}
 
 	public static ItemStack addNBT() {
-		ItemStack is = new ItemStack(PackTechno.item.tool_electric_wrench, 1, 0);
+		ItemStack is = new ItemStack(PackTechno.item.tool_electric_drill, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("ModeID", 0);
 		nbt.setByte("RTM", (byte)1);

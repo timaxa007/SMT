@@ -2,6 +2,7 @@ package timaxa007.pack.techno;
 
 import java.io.File;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -17,6 +18,7 @@ import timaxa007.pack.techno.lib.ListTechno;
 import timaxa007.pack.techno.packet.RegisterMessage;
 import timaxa007.pack.techno.recipe.Recipes_Techno;
 import timaxa007.pack.techno.render.RenderMain;
+import timaxa007.pack.techno.util.MaterialTechno;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -30,6 +32,8 @@ public class PackTechno implements IPackClass {
 
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
+
+	public static Material techno_block = new MaterialTechno();
 
 	public static ListBlock block;
 	public static ListItem item;
@@ -61,7 +65,8 @@ public class PackTechno implements IPackClass {
 
 		item.items_for_techno_be = cfg.get("item", "items_for_techno", true).getBoolean(true);
 		item.tool_electric_wrench_be = cfg.get("item", "tool_electric_wrench", true).getBoolean(true);
-		item.tool_electric_drills_be = cfg.get("item", "tool_electric_drills", true).getBoolean(true);
+		item.tool_electric_drill_be = cfg.get("item", "tool_electric_drill", true).getBoolean(true);
+		item.tool_electric_saw_be = cfg.get("item", "tool_electric_saw", true).getBoolean(true);
 
 		cfg.save();
 

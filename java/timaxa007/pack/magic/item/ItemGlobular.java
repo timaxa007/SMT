@@ -35,7 +35,7 @@ public class ItemGlobular extends ModifiedItem {
 			--is.stackSize;
 			addNBT();
 		}*/
-		return is;
+		return super.onItemRightClick(is, world, player);
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {

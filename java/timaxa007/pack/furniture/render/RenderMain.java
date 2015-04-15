@@ -1,11 +1,11 @@
 package timaxa007.pack.furniture.render;
 
+import net.minecraft.item.Item;
+import net.minecraftforge.client.MinecraftForgeClient;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.render.block.*;
 import timaxa007.pack.furniture.render.item.*;
 import timaxa007.pack.furniture.tile.*;
-import net.minecraft.item.Item;
-import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,6 +32,7 @@ public class RenderMain {
 	public static int block_pipes_modelID;
 	public static int block_mashine_waiter_modelID;
 	public static int block_furniture_chest_modelID;
+	public static int block_storage_modelID;
 
 	public static void preInit() {
 
@@ -55,6 +56,7 @@ public class RenderMain {
 		block_pipes_modelID = -1;
 		block_mashine_waiter_modelID = -1;
 		block_furniture_chest_modelID = -1;
+		block_storage_modelID = -1;
 
 	}
 
@@ -63,7 +65,8 @@ public class RenderMain {
 
 		/**Useless. Need for RenderingRegistry.registerBlockHandler**/
 		//Blocks
-		/*block_cnstor_block_modelID = RenderingRegistry.getNextAvailableRenderId();
+		/*
+		block_cnstor_block_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_cnstor_angle_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_cnstor_fence_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_lights_modelID = RenderingRegistry.getNextAvailableRenderId();
@@ -82,7 +85,9 @@ public class RenderMain {
 		block_jar01_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_pipes_modelID = RenderingRegistry.getNextAvailableRenderId();
 		block_mashine_waiter_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_furniture_chest_modelID = RenderingRegistry.getNextAvailableRenderId();*/
+		block_furniture_chest_modelID = RenderingRegistry.getNextAvailableRenderId();
+		block_storage_modelID = RenderingRegistry.getNextAvailableRenderId();
+		 */
 
 		/**Useless**/
 		//RenderingRegistry.registerBlockHandler(block_cnstor_block_modelID, new HandlerBlockLampsOn());
@@ -108,6 +113,7 @@ public class RenderMain {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPipes.class, new RenderBlockPipes());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMashineWater.class, new RenderBlockMashineWater());
 		//ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodBlocks.class, new RenderBlockWoodBlocks());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStorage.class, new RenderBlockStorage());
 
 		//Blocks
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.cnstor_block), new ItemRenderCnstorBlock());
@@ -152,6 +158,7 @@ public class RenderMain {
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.sand_blocks), new ItemRenderBlockSandBlocks());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.cloth_blocks), new ItemRenderBlockClothBlocks());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.metal_blocks), new ItemRenderBlockMetalBlocks());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.storage), new ItemRenderBlockStorage());
 
 		//Items
 
