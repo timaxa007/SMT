@@ -8,14 +8,12 @@ import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
-import timaxa007.pack.api.IPackClass;
+import timaxa007.api.IPackClass;
 import timaxa007.pack.item.block.ListBlock;
 import timaxa007.pack.item.item.ListItem;
 import timaxa007.pack.item.lib.ListPackItems;
 import timaxa007.pack.item.packet.RegisterMessage;
-import timaxa007.pack.item.recipe.RecipeArmorColor;
-import timaxa007.pack.item.recipe.RecipeToolHammer;
-import timaxa007.pack.item.recipe.Recipes_PackItems;
+import timaxa007.pack.item.recipe.*;
 import timaxa007.pack.item.render.RenderMain;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -60,26 +58,6 @@ public class PackItems implements IPackClass {
 
 		item.items_for_items_be = cfg.get("item", "items_for_items", true).getBoolean(true);
 
-		item.armor_wool_colors_helmet_be = cfg.get("item", "armor_wool_colors_helmet", true).getBoolean(true);
-		item.armor_wool_colors_chest_be = cfg.get("item", "armor_wool_colors_chest", true).getBoolean(true);
-		item.armor_wool_colors_leggin_be = cfg.get("item", "armor_wool_colors_leggin", true).getBoolean(true);
-		item.armor_wool_colors_boot_be = cfg.get("item", "armor_wool_colors_boot", true).getBoolean(true);
-
-		item.armor_medieval_helmet_be = cfg.get("item", "armor_medieval_helmet", true).getBoolean(true);
-		item.armor_medieval_chest_be = cfg.get("item", "armor_medieval_chest", true).getBoolean(true);
-		item.armor_medieval_leggin_be = cfg.get("item", "armor_medieval_leggin", true).getBoolean(true);
-		item.armor_medieval_boot_be = cfg.get("item", "armor_medieval_boot", true).getBoolean(true);
-
-		item.armor_new_helmet_be = cfg.get("item", "armor_new_helmet", true).getBoolean(true);
-		item.armor_new_chest_be = cfg.get("item", "armor_new_chest", true).getBoolean(true);
-		item.armor_new_leggin_be = cfg.get("item", "armor_new_leggin", true).getBoolean(true);
-		item.armor_new_boot_be = cfg.get("item", "armor_new_boot", true).getBoolean(true);
-
-		item.armor_test_helmet_be = cfg.get("item", "armor_test_helmet", true).getBoolean(true);
-		item.armor_test_chest_be = cfg.get("item", "armor_test_chest", true).getBoolean(true);
-		item.armor_test_leggin_be = cfg.get("item", "armor_test_leggin", true).getBoolean(true);
-		item.armor_test_boot_be = cfg.get("item", "armor_test_boot", true).getBoolean(true);
-
 		item.tool_axe_be = cfg.get("item", "tool_axe", true).getBoolean(true);
 		item.tool_shovel_be = cfg.get("item", "tool_shovel", true).getBoolean(true);
 		item.tool_pickaxe_be = cfg.get("item", "tool_pickaxe", true).getBoolean(true);
@@ -120,7 +98,7 @@ public class PackItems implements IPackClass {
 		item.preInit();
 
 		Recipes_PackItems.list();
-		GameRegistry.addRecipe(new RecipeArmorColor());
+		//GameRegistry.addRecipe(new RecipeArmorColor());
 		GameRegistry.addRecipe(new RecipeToolHammer());
 
 	}

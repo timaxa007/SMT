@@ -1,7 +1,7 @@
 package timaxa007.module.weight;
 
 import net.minecraftforge.common.MinecraftForge;
-import timaxa007.module.api.IProxyModuleCommon;
+import timaxa007.api.IProxyModuleCommon;
 import timaxa007.module.weight.util.EventWeight;
 import cpw.mods.fml.common.FMLCommonHandler;
 

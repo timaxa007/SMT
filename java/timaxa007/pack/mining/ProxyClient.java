@@ -1,7 +1,7 @@
 package timaxa007.pack.mining;
 
 import net.minecraftforge.common.MinecraftForge;
-import timaxa007.pack.api.IProxyPackClient;
+import timaxa007.api.IProxyPackClient;
 import timaxa007.pack.mining.event.EventMiningClient;
 import timaxa007.pack.mining.render.RenderMain;
 

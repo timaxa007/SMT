@@ -116,7 +116,7 @@ public class ToolElectricSaw extends ModifiedItem implements IActionMouse, IActi
 			if (nbt != null && nbt.hasKey("ModeID")) {
 				int nbn = nbt.getInteger("ModeID");
 
-				if (nbn >= 2) nbn = 0; else nbn++;
+				if (nbn < (modes.length - 1)) nbn++; else nbn = 0;
 
 				player.addChatMessage(new ChatComponentText(
 						EnumChatFormatting.GOLD + "[Saw]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
@@ -137,7 +137,7 @@ public class ToolElectricSaw extends ModifiedItem implements IActionMouse, IActi
 		if (nbt != null && nbt.hasKey("ModeID")) {
 			int nbn = nbt.getInteger("ModeID");
 
-			if (nbn >= 2) nbn = 0; else nbn++;
+			if (nbn < (modes.length - 1)) nbn++; else nbn = 0;
 
 			nbt.setInteger("ModeID", nbn);
 			is.setTagCompound(nbt);
@@ -244,8 +244,9 @@ public class ToolElectricSaw extends ModifiedItem implements IActionMouse, IActi
 				boolean isWorking = nbt.getBoolean("Working");
 
 				if (nbt.hasKey("ModeID") && nbt.getInteger("ModeID") == 1) {
-					if (block == Blocks.leaves || block == Blocks.leaves2)
+					if (block == Blocks.leaves || block == Blocks.leaves2) {
 						UtilTMS.UtilWorld.dropItem(world, x, y, z, new ItemStack(block, 1, world.getBlockMetadata(x, y, z)));
+					}
 				}
 
 				if (material == Material.wood) is.damageItem(1, entity);
@@ -261,6 +262,29 @@ public class ToolElectricSaw extends ModifiedItem implements IActionMouse, IActi
 
 		is.damageItem((int)(/*world.getBlock(x, y, z)*/block.getBlockHardness(world, x, y, z) * 100), entity);
 		return true;
+	}
+
+	public boolean canHarvestBlock(Block block, ItemStack is) {
+		NBTTagCompound nbt = is.getTagCompound();
+		boolean isWorking = false;
+		int mode = 0;
+
+		if (nbt != null) {
+
+			if (nbt.hasKey("ModeID")) {
+				mode = nbt.getInteger("ModeID");
+			}
+
+			if (nbt.hasKey("Working")) {
+				isWorking = nbt.getBoolean("Working");
+
+				Material material = block.getMaterial();
+
+				//if (material == Material.leaves) return isWorking ? (mode == 1 ? true : false) : false;// - not use
+
+			}
+		}
+		return super.canHarvestBlock(block, is);
 	}
 
 	@SideOnly(Side.CLIENT)

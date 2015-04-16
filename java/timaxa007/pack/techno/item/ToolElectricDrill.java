@@ -110,7 +110,7 @@ public class ToolElectricDrill extends ModifiedItem implements IActionMouse, IAc
 			if (nbt != null && nbt.hasKey("ModeID")) {
 				int nbn = nbt.getInteger("ModeID");
 
-				if (nbn >= 2) nbn = 0; else nbn++;
+				if (nbn < (modes.length - 1)) nbn++; else nbn = 0;
 
 				player.addChatMessage(new ChatComponentText(
 						EnumChatFormatting.GOLD + "[Drill]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
@@ -131,7 +131,7 @@ public class ToolElectricDrill extends ModifiedItem implements IActionMouse, IAc
 		if (nbt != null && nbt.hasKey("ModeID")) {
 			int nbn = nbt.getInteger("ModeID");
 
-			if (nbn >= 2) nbn = 0; else nbn++;
+			if (nbn < (modes.length - 1)) nbn++; else nbn = 0;
 
 			nbt.setInteger("ModeID", nbn);
 			is.setTagCompound(nbt);
@@ -219,13 +219,13 @@ public class ToolElectricDrill extends ModifiedItem implements IActionMouse, IAc
 			if (nbt.hasKey("Working")) {
 				boolean isWorking = nbt.getBoolean("Working");
 				int efc = 1;				
-
+				/*
 				if (nbt.hasKey("ModeID")) {
 					if (nbt.getInteger("ModeID") == 0) {efc = 2;}
 					if (nbt.getInteger("ModeID") == 1) {efc = 3;}
 					if (nbt.getInteger("ModeID") == 2) {efc = 1;}
 				}
-
+				 */
 				is.damageItem(efc, entity2);
 				return true;
 			}
@@ -239,16 +239,42 @@ public class ToolElectricDrill extends ModifiedItem implements IActionMouse, IAc
 		NBTTagCompound nbt = is.getTagCompound();
 		if (/*world.getBlock(x, y, z)*/block.getBlockHardness(world, x, y, z) != 0.0F) {
 			int es = 10;
-			if (nbt != null && nbt.hasKey("ModeID")) {
-				if (nbt.getInteger("ModeID") == 0) {es = 10;}
-				if (nbt.getInteger("ModeID") == 1) {es = 20;}
-				if (nbt.getInteger("ModeID") == 2) {es = 5;}
+			if (nbt != null) {
+				/*
+				if(nbt.hasKey("ModeID")) {
+					if (nbt.getInteger("ModeID") == 0) {es = 10;}
+					if (nbt.getInteger("ModeID") == 1) {es = 20;}
+					if (nbt.getInteger("ModeID") == 2) {es = 5;}
+				}
+				 */
 			}
 			is.damageItem((int)(/*world.getBlock(x, y, z)*/block.getBlockHardness(world, x, y, z) * es), entity);
 			return true;
 		}
 		is.damageItem((int)(/*world.getBlock(x, y, z)*/block.getBlockHardness(world, x, y, z) * 100), entity);
 		return true;
+	}
+
+	public boolean canHarvestBlock(Block block, ItemStack is) {
+		NBTTagCompound nbt = is.getTagCompound();
+		boolean isWorking = false;
+
+		if (nbt != null) {
+
+			if (nbt.hasKey("Working")) {
+				isWorking = nbt.getBoolean("Working");
+
+				Material material = block.getMaterial();
+
+				if (material == Material.ground) return isWorking ? true : true;
+				if (material == Material.rock) return isWorking ? true : false;
+				//for hing speed with Upgrade or setting speed-up
+
+				//Upgrade
+
+			}
+		}
+		return super.canHarvestBlock(block, is);
 	}
 
 	@SideOnly(Side.CLIENT)

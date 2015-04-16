@@ -10,7 +10,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
-import timaxa007.pack.api.IPackClass;
+import timaxa007.api.IPackClass;
 import timaxa007.pack.mining.block.ListBlock;
 import timaxa007.pack.mining.event.EventMining;
 import timaxa007.pack.mining.item.ListItem;

@@ -2,8 +2,6 @@ package timaxa007.pack.furniture.block;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,11 +12,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import timaxa007.pack.NodePack;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityStorage;
+import timaxa007.tms.CoreTMS;
 import timaxa007.tms.lib.ActionModel;
 import timaxa007.tms.util.ModifiedBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockStorage extends ModifiedBlock implements ITileEntityProvider {
 
@@ -67,7 +67,7 @@ public class BlockStorage extends ModifiedBlock implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityStorage) {
-			if (!world.isRemote) player.openGui(NodePack.instance, PackFurniture.gui_storage, world, x, y, z);
+			if (!world.isRemote) player.openGui(CoreTMS.instance, PackFurniture.gui_storage, world, x, y, z);
 			return true;
 		}
 		return false;

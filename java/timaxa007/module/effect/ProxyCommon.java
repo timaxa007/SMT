@@ -1,6 +1,6 @@
 package timaxa007.module.effect;
 
-import timaxa007.module.api.IProxyModuleCommon;
+import timaxa007.api.IProxyModuleCommon;
 
 public class ProxyCommon implements IProxyModuleCommon {
 

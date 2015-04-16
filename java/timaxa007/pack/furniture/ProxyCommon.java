@@ -1,7 +1,7 @@
 package timaxa007.pack.furniture;
 
 import net.minecraftforge.common.MinecraftForge;
-import timaxa007.pack.api.IProxyPackCommon;
+import timaxa007.api.IProxyPackCommon;
 import timaxa007.pack.furniture.event.EventFurniture;
 import timaxa007.pack.furniture.render.RenderMain;
 

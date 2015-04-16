@@ -1,6 +1,6 @@
 package timaxa007.module.environment;
 
-import timaxa007.module.api.IProxyModuleClient;
+import timaxa007.api.IProxyModuleClient;
 
 public class ProxyClient implements IProxyModuleClient {
 

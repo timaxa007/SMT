@@ -1,7 +1,7 @@
 package timaxa007.module.effect;
 
 import net.minecraftforge.common.MinecraftForge;
-import timaxa007.module.api.IProxyModuleClient;
+import timaxa007.api.IProxyModuleClient;
 import timaxa007.module.effect.event.EventClient;
 
 public class ProxyClient implements IProxyModuleClient {

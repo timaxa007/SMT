@@ -1,7 +1,7 @@
 package timaxa007.module.control_button;
 
 import net.minecraftforge.common.MinecraftForge;
-import timaxa007.module.api.IProxyModuleClient;
+import timaxa007.api.IProxyModuleClient;
 import timaxa007.module.control_button.event.EventActionArmorKey;
 import timaxa007.module.control_button.event.EventActionMouse;
 import timaxa007.module.control_button.event.EventActionPrimaryKey;

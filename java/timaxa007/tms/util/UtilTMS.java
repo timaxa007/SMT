@@ -85,6 +85,12 @@ public class UtilTMS {
 	}
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilWorld {
+
+		/**Vec3.createVectorHelper(entity.posX, entity.posY, entity.posZ);**/
+		public static void dropItem(World world, Vec3 vec3, ItemStack is) {
+			dropItem(world, vec3.xCoord, vec3.yCoord, vec3.zCoord, is);
+		}
+
 		/* && world.getGameRules().getGameRuleBooleanValue("doTileDrops")*/
 		public static void dropItem(World world, int x, int y, int z, ItemStack is) {
 			dropItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, is);
@@ -104,6 +110,14 @@ public class UtilTMS {
 	//-----------------------------------------------------------------------------------------------
 	public static class LookOBJ {
 		//-------------------------------
+		public static MovingObjectPosition look() {
+			return look(1.0F, false);
+		}
+
+		public static MovingObjectPosition look(boolean interact) {
+			return look(1.0F, interact);
+		}
+
 		public static MovingObjectPosition look(float fasc, boolean interact) {
 			double dist = (double)mc.playerController.getBlockReachDistance();
 			MovingObjectPosition entity = entity(fasc, dist, interact);
@@ -117,6 +131,14 @@ public class UtilTMS {
 					entity(fasc, dist, interact) : block(fasc, dist, interact));
 		}
 		//-------------------------------
+		public static MovingObjectPosition entity() {
+			return entity(1.0F, false);
+		}
+
+		public static MovingObjectPosition entity(boolean interact) {
+			return entity(1.0F, interact);
+		}
+
 		public static MovingObjectPosition entity(float fasc, boolean interact) {
 			return entity(fasc, (double)mc.playerController.getBlockReachDistance(), interact);
 		}
@@ -147,35 +169,35 @@ public class UtilTMS {
 				for (int i = 0; i < list.size(); ++i) {
 					Entity entity = (Entity)list.get(i);
 
-					//if (entity.canBeCollidedWith()) {
-					float f2 = entity.getCollisionBorderSize();
-					AxisAlignedBB axisalignedbb = entity.boundingBox.expand((double)f2, (double)f2, (double)f2);
-					MovingObjectPosition movingobjectposition = axisalignedbb.calculateIntercept(vec3, vec32);
+					if (entity.canBeCollidedWith() || interact) {
+						float f2 = entity.getCollisionBorderSize();
+						AxisAlignedBB axisalignedbb = entity.boundingBox.expand((double)f2, (double)f2, (double)f2);
+						MovingObjectPosition movingobjectposition = axisalignedbb.calculateIntercept(vec3, vec32);
 
-					if (axisalignedbb.isVecInside(vec3)) {
-						if (0.0D < d2 || d2 == 0.0D) {
-							pointedEntity = entity;
-							vec33 = movingobjectposition == null ? vec3 : movingobjectposition.hitVec;
-							d2 = 0.0D;
+						if (axisalignedbb.isVecInside(vec3)) {
+							if (0.0D < d2 || d2 == 0.0D) {
+								pointedEntity = entity;
+								vec33 = movingobjectposition == null ? vec3 : movingobjectposition.hitVec;
+								d2 = 0.0D;
+							}
 						}
-					}
-					else if (movingobjectposition != null) {
-						double d3 = vec3.distanceTo(movingobjectposition.hitVec);
+						else if (movingobjectposition != null) {
+							double d3 = vec3.distanceTo(movingobjectposition.hitVec);
 
-						if (d3 < d2 || d2 == 0.0D) {
-							if (entity == mc.renderViewEntity.ridingEntity && !entity.canRiderInteract()) {
-								if (d2 == 0.0D) {
+							if (d3 < d2 || d2 == 0.0D) {
+								if (entity == mc.renderViewEntity.ridingEntity && !entity.canRiderInteract()) {
+									if (d2 == 0.0D) {
+										pointedEntity = entity;
+										vec33 = movingobjectposition.hitVec;
+									}
+								} else {
 									pointedEntity = entity;
 									vec33 = movingobjectposition.hitVec;
+									d2 = d3;
 								}
-							} else {
-								pointedEntity = entity;
-								vec33 = movingobjectposition.hitVec;
-								d2 = d3;
 							}
 						}
 					}
-					//}
 				}
 
 				return new MovingObjectPosition(pointedEntity, vec33);
@@ -183,6 +205,14 @@ public class UtilTMS {
 			return null;
 		}
 		//-------------------------------
+		public static MovingObjectPosition block() {
+			return block(1.0F, false);
+		}
+
+		public static MovingObjectPosition block(boolean interact) {
+			return block(1.0F, interact);
+		}
+
 		public static MovingObjectPosition block(float fasc, boolean interact) {
 			return block(fasc, (double)mc.playerController.getBlockReachDistance(), interact);
 		}

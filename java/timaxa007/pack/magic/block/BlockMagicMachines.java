@@ -9,9 +9,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import timaxa007.pack.NodePack;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.tile.TileEntityMagicMachines;
+import timaxa007.tms.CoreTMS;
 import timaxa007.tms.util.ModifiedBlock;
 
 public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProvider {
@@ -54,7 +54,7 @@ public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProv
 		if (player.isSneaking()) return false;
 
 		if (te != null && te instanceof TileEntityMagicMachines) {
-			player.openGui(NodePack.instance, PackMagic.gui_magic_machines, world, x, y, z);
+			player.openGui(CoreTMS.instance, PackMagic.gui_magic_machines, world, x, y, z);
 			return true;
 		}
 

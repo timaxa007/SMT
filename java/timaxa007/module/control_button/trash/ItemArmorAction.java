@@ -5,11 +5,12 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IActionArmor;
+import timaxa007.tms.util.ModifiedItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**For example.**/@Deprecated
-public class ItemArmorAction extends ItemArmorActionMouse implements IActionArmor {
+public class ItemArmorAction extends ModifiedItem implements IActionArmor {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public static boolean isHelmetBotton;
@@ -23,8 +24,12 @@ public class ItemArmorAction extends ItemArmorActionMouse implements IActionArmo
 	@SideOnly(Side.CLIENT)
 	public static boolean isBootsBotton;
 	//--------------------------------------------------------------------------------------------------------------
+	public ItemArmorAction(String tag) {
+		super(tag);
+	}
+
 	public ItemArmorAction(String tag, ItemArmor.ArmorMaterial material, int render_id, int armor_type) {
-		super(tag, material, render_id, armor_type);
+		super(tag);
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)

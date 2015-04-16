@@ -1,4 +1,4 @@
-package timaxa007.pack;
+package timaxa007.tms;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -9,7 +9,7 @@ import timaxa007.pack.furniture.gui.StorageContainer;
 import timaxa007.pack.furniture.gui.StorageGui;
 import cpw.mods.fml.common.network.IGuiHandler;
 
-public class HandlerGuiNodePack implements IGuiHandler {
+public class HandlerGuiTMS implements IGuiHandler {
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {

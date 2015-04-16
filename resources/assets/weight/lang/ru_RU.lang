@@ -1,8 +1,1 @@
 ﻿
-item.upgrades_weights.name=Обновления Веса
-item.take.upgrades_weights.name=Взятия Обновления Веса
-item.meter.name=Измеритель Веса
-
-text.add_weight=Добавление веса
-text.get_weight=Вес
-text.get_weight_max=Максимальный Вес

@@ -1,6 +1,6 @@
 package timaxa007.pack.techno;
 
-import timaxa007.pack.api.IProxyPackCommon;
+import timaxa007.api.IProxyPackCommon;
 import timaxa007.pack.techno.render.RenderMain;
 
 public class ProxyCommon implements IProxyPackCommon {

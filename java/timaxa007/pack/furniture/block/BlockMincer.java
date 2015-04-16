@@ -13,9 +13,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import timaxa007.pack.NodePack;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityMincer;
+import timaxa007.tms.CoreTMS;
 import timaxa007.tms.util.ModifiedBlock;
 
 public class BlockMincer extends ModifiedBlock implements ITileEntityProvider {
@@ -62,7 +62,7 @@ public class BlockMincer extends ModifiedBlock implements ITileEntityProvider {
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityMincer) {
-			player.openGui(NodePack.instance, PackFurniture.gui_mincer, world, x, y, z);
+			player.openGui(CoreTMS.instance, PackFurniture.gui_mincer, world, x, y, z);
 			return true;
 		}
 		return false;

@@ -1,7 +1,7 @@
 package timaxa007.pack.stock;
 
 import net.minecraftforge.common.MinecraftForge;
-import timaxa007.pack.api.IProxyPackCommon;
+import timaxa007.api.IProxyPackCommon;
 import timaxa007.pack.stock.lib.ReceivingNutriment;
 import timaxa007.pack.stock.render.RenderMain;
 

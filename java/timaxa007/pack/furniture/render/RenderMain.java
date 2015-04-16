@@ -12,27 +12,31 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class RenderMain {
 
-	public static int block_cnstor_block_modelID;
-	public static int block_cnstor_angle_modelID;
-	public static int block_cnstor_fence_modelID;
-	public static int block_lights_modelID;
-	public static int block_candle_modelID;
-	public static int block_crystals_modelID;
-	public static int block_barrels_modelID;
-	public static int block_bookshelf_modelID;
-	public static int block_table_modelID;
-	public static int block_chair_modelID;
-	public static int block_wardrobe_modelID;
-	public static int block_mincer_modelID;
-	public static int block_armchair_modelID;
-	public static int block_blender_modelID;
-	public static int block_grills_modelID;
-	public static int block_box_particles_modelID;
-	public static int block_jar01_modelID;
-	public static int block_pipes_modelID;
-	public static int block_mashine_waiter_modelID;
-	public static int block_furniture_chest_modelID;
-	public static int block_storage_modelID;
+	public static int
+	block_cnstor_block_modelID,
+	block_cnstor_angle_modelID,
+	block_cnstor_fence_modelID,
+	block_lights_modelID,
+	block_candle_modelID,
+	block_crystals_modelID,
+	block_barrels_modelID,
+	block_bookshelf_modelID,
+	block_table_modelID,
+	block_chair_modelID,
+	block_wardrobe_modelID,
+	block_mincer_modelID,
+	block_armchair_modelID,
+	block_blender_modelID,
+	block_grills_modelID,
+	block_box_particles_modelID,
+	block_jar01_modelID,
+	block_pipes_modelID,
+	block_mashine_waiter_modelID,
+	block_furniture_chest_modelID,
+	block_storage_modelID
+	;
+
+	public static int[] list_render_id;
 
 	public static void preInit() {
 
@@ -58,36 +62,37 @@ public class RenderMain {
 		block_furniture_chest_modelID = -1;
 		block_storage_modelID = -1;
 
+		list_render_id = new int[] {
+				block_cnstor_block_modelID,
+				block_cnstor_angle_modelID,
+				block_cnstor_fence_modelID,
+				block_lights_modelID,
+				block_candle_modelID,
+				block_crystals_modelID,
+				block_barrels_modelID,
+				block_bookshelf_modelID,
+				block_table_modelID,
+				block_chair_modelID,
+				block_wardrobe_modelID,
+				block_mincer_modelID,
+				block_armchair_modelID,
+				block_blender_modelID,
+				block_grills_modelID,
+				block_box_particles_modelID,
+				block_jar01_modelID,
+				block_pipes_modelID,
+				block_mashine_waiter_modelID,
+				block_furniture_chest_modelID,
+				block_storage_modelID
+		};
+
 	}
 
 	@SideOnly(Side.CLIENT)
 	public static void init() {
 
 		/**Useless. Need for RenderingRegistry.registerBlockHandler**/
-		//Blocks
-		/*
-		block_cnstor_block_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_cnstor_angle_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_cnstor_fence_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_lights_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_candle_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_crystals_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_barrels_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_bookshelf_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_table_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_chair_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_wardrobe_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_mincer_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_armchair_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_blender_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_grills_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_box_particles_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_jar01_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_pipes_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_mashine_waiter_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_furniture_chest_modelID = RenderingRegistry.getNextAvailableRenderId();
-		block_storage_modelID = RenderingRegistry.getNextAvailableRenderId();
-		 */
+		//for (int id : list_render_id) id = RenderingRegistry.getNextAvailableRenderId();
 
 		/**Useless**/
 		//RenderingRegistry.registerBlockHandler(block_cnstor_block_modelID, new HandlerBlockLampsOn());

@@ -7,7 +7,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
-import timaxa007.module.api.IModuleClass;
+import timaxa007.api.IModuleClass;
 import timaxa007.module.environment.util.ItemEnvironment;
 import timaxa007.module.environment.util.MessageEnvironment;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;

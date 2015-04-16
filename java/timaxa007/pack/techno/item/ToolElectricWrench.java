@@ -111,7 +111,7 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 			if (nbt != null && nbt.hasKey("ModeID")) {
 				int nbn = nbt.getInteger("ModeID");
 
-				if (nbn >= 2) nbn = 0; else nbn++;
+				if (nbn < (modes.length - 1)) nbn++; else nbn = 0;
 
 				player.addChatMessage(new ChatComponentText(
 						EnumChatFormatting.GOLD + "[Wrench]: " + EnumChatFormatting.RESET + modes[nbn] + ".")
@@ -132,7 +132,7 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 		if (nbt != null && nbt.hasKey("ModeID")) {
 			int nbn = nbt.getInteger("ModeID");
 
-			if (nbn >= 2) nbn = 0; else nbn++;
+			if (nbn < (modes.length - 1)) nbn++; else nbn = 0;
 
 			nbt.setInteger("ModeID", nbn);
 			is.setTagCompound(nbt);
@@ -231,6 +231,25 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 
 		is.damageItem((int)(/*world.getBlock(x, y, z)*/block.getBlockHardness(world, x, y, z) * 100), entity);
 		return true;
+	}
+
+	public boolean canHarvestBlock(Block block, ItemStack is) {
+		NBTTagCompound nbt = is.getTagCompound();
+		Material material = block.getMaterial();
+		boolean isWorking = false;
+
+		if (nbt != null) {
+
+			if (nbt.hasKey("Working")) {
+				isWorking = nbt.getBoolean("Working");
+
+			}
+
+		}
+
+		if (material == PackTechno.techno_block) return true;
+
+		return super.canHarvestBlock(block, is);
 	}
 
 	@SideOnly(Side.CLIENT)

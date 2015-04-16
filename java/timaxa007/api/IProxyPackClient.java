@@ -1,6 +1,6 @@
-package timaxa007.module.api;
+package timaxa007.api;
 
-public interface IProxyModuleClient {
+public interface IProxyPackClient {
 
 	public void preInit();
 	public void init();

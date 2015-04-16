@@ -35,10 +35,10 @@ public class RegKey {
 	public static void preInit() {
 
 		if (ModuleControlButton.button_left)
-			button_left = new KeyBinding("key.button_left.name", 0, cat_name);
+			button_left = new KeyBinding("key.button_left.name", -100, cat_name);
 
 		if (ModuleControlButton.button_right)
-			button_right = new KeyBinding("key.button_right.name", 0, cat_name);
+			button_right = new KeyBinding("key.button_right.name", -99, cat_name);
 
 		list_key = new KeyBinding[] {
 				reload, charge, mode, mode_in, mode_out, action, 

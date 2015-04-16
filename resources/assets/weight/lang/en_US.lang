@@ -1,8 +1,1 @@
 ﻿
-item.upgrades_weights.name=Upgrades Weights
-item.take.upgrades_weights.name=Taking Upgrades Weights
-item.meter.name=Meter Weights
-
-text.add_weight=Adding Weight
-text.get_weight=Weight
-text.get_weight_max=Weight Limit

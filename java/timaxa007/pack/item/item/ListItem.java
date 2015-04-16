@@ -7,30 +7,8 @@ import timaxa007.tms.util.UtilTMS;
 
 public class ListItem {
 
-	public static final ArmorMaterial CLOTHWOOL = EnumHelper.addArmorMaterial("CLOTHWOOL", 6, new int[] {2, 3, 2, 1}, 10);
-
 	public static boolean 
 	items_for_items_be,
-
-	armor_wool_colors_helmet_be,
-	armor_wool_colors_chest_be,
-	armor_wool_colors_leggin_be,
-	armor_wool_colors_boot_be,
-
-	armor_medieval_helmet_be,
-	armor_medieval_chest_be,
-	armor_medieval_leggin_be,
-	armor_medieval_boot_be,
-
-	armor_new_helmet_be,
-	armor_new_chest_be,
-	armor_new_leggin_be,
-	armor_new_boot_be,
-
-	armor_test_helmet_be,
-	armor_test_chest_be,
-	armor_test_leggin_be,
-	armor_test_boot_be,
 
 	tool_axe_be,
 	tool_shovel_be,
@@ -63,26 +41,6 @@ public class ListItem {
 
 	public static Item 
 	items_for_items,
-
-	armor_wool_colors_helmet,
-	armor_wool_colors_chest,
-	armor_wool_colors_leggin,
-	armor_wool_colors_boot,
-
-	armor_medieval_helmet,
-	armor_medieval_chest,
-	armor_medieval_leggin,
-	armor_medieval_boot,
-
-	armor_new_helmet,
-	armor_new_chest,
-	armor_new_leggin,
-	armor_new_boot,
-
-	armor_test_helmet,
-	armor_test_chest,
-	armor_test_leggin,
-	armor_test_boot,
 
 	tool_axe,
 	tool_shovel,
@@ -119,26 +77,6 @@ public class ListItem {
 
 		if (items_for_items_be) items_for_items = new ItemsItems("items_for_items");
 
-		if (armor_wool_colors_helmet_be) armor_wool_colors_helmet = new ArmorWoolColors("armor_wool_colors_helmet", CLOTHWOOL, 0, 0);
-		if (armor_wool_colors_chest_be) armor_wool_colors_chest = new ArmorWoolColors("armor_wool_colors_chest", CLOTHWOOL, 0, 1);
-		if (armor_wool_colors_leggin_be) armor_wool_colors_leggin = new ArmorWoolColors("armor_wool_colors_leggin", CLOTHWOOL, 0, 2);
-		if (armor_wool_colors_boot_be) armor_wool_colors_boot = new ArmorWoolColors("armor_wool_colors_boot", CLOTHWOOL, 0, 3);
-
-		if (armor_medieval_helmet_be) armor_medieval_helmet = new ArmorMedieval("armor_medieval_helmet", CLOTHWOOL, 0, 0);
-		if (armor_medieval_chest_be) armor_medieval_chest = new ArmorMedieval("armor_medieval_chest", CLOTHWOOL, 0, 1);
-		if (armor_medieval_leggin_be) armor_medieval_leggin = new ArmorMedieval("armor_medieval_leggin", CLOTHWOOL, 0, 2);
-		if (armor_medieval_boot_be) armor_medieval_boot = new ArmorMedieval("armor_medieval_boot", CLOTHWOOL, 0, 3);
-
-		if (armor_new_helmet_be) armor_new_helmet = new ArmorNew("armor_new_helmet", CLOTHWOOL, 0, 0);
-		if (armor_new_chest_be) armor_new_chest = new ArmorNew("armor_new_chest", CLOTHWOOL, 0, 1);
-		if (armor_new_leggin_be) armor_new_leggin = new ArmorNew("armor_new_leggin", CLOTHWOOL, 0, 2);
-		if (armor_new_boot_be) armor_new_boot = new ArmorNew("armor_new_boot", CLOTHWOOL, 0, 3);
-
-		if (armor_test_helmet_be) armor_test_helmet = new ArmorTest("armor_test_helmet", 0);
-		if (armor_test_chest_be) armor_test_chest = new ArmorTest("armor_test_chest", 1);
-		if (armor_test_leggin_be) armor_test_leggin = new ArmorTest("armor_test_leggin", 2);
-		if (armor_test_boot_be) armor_test_boot = new ArmorTest("armor_test_boot", 3);
-
 		if (tool_axe_be) tool_axe = new ToolAxe("tool_axe");
 		if (tool_shovel_be) tool_shovel = new ToolShovel("tool_shovel");
 		if (tool_pickaxe_be) tool_pickaxe = new ToolPickaxe("tool_pickaxe");
@@ -170,26 +108,6 @@ public class ListItem {
 
 		list_item = new Item[] {
 				items_for_items,
-
-				armor_wool_colors_helmet,
-				armor_wool_colors_chest,
-				armor_wool_colors_leggin,
-				armor_wool_colors_boot,
-
-				armor_medieval_helmet,
-				armor_medieval_chest,
-				armor_medieval_leggin,
-				armor_medieval_boot,
-
-				armor_new_helmet,
-				armor_new_chest,
-				armor_new_leggin,
-				armor_new_boot,
-
-				armor_test_helmet,
-				armor_test_chest,
-				armor_test_leggin,
-				armor_test_boot,
 
 				tool_axe,
 				tool_shovel,

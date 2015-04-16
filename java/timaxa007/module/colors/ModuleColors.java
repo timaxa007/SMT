@@ -6,7 +6,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
-import timaxa007.module.api.IModuleClass;
+import timaxa007.api.IModuleClass;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class ModuleColors implements IModuleClass {

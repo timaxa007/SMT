@@ -8,14 +8,12 @@ import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
-import timaxa007.pack.api.IPackClass;
+import timaxa007.api.IPackClass;
 import timaxa007.pack.furniture.block.ListBlock;
 import timaxa007.pack.furniture.item.ListItem;
 import timaxa007.pack.furniture.lib.ListFurniture;
 import timaxa007.pack.furniture.packet.RegisterMessage;
-import timaxa007.pack.furniture.recipe.FuelHandlerFurniture;
-import timaxa007.pack.furniture.recipe.RecipesArmor;
-import timaxa007.pack.furniture.recipe.Recipes_Furniture;
+import timaxa007.pack.furniture.recipe.*;
 import timaxa007.pack.furniture.render.RenderMain;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -182,13 +180,6 @@ public class PackFurniture implements IPackClass {
 		item.tool_brush_be = cfg.get("item", "tool_brush", true).getBoolean(true);
 		item.tool_airbrush_be = cfg.get("item", "tool_airbrush", true).getBoolean(true);
 
-		item.armor_masks_be = cfg.get("item", "armor_masks", true).getBoolean(true);
-		item.armor_backpacks_be = cfg.get("item", "armor_backpacks", true).getBoolean(true);
-		item.armor_costumes_helmet_be = cfg.get("item", "armor_costumes_helmet", true).getBoolean(true);
-		item.armor_costumes_chest_be = cfg.get("item", "armor_costumes_chest", true).getBoolean(true);
-		item.armor_costumes_leggin_be = cfg.get("item", "armor_costumes_leggin", true).getBoolean(true);
-		item.armor_costumes_boot_be = cfg.get("item", "armor_costumes_boot", true).getBoolean(true);
-
 		cfg.save();
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackFurniture.MODID);
@@ -218,7 +209,7 @@ public class PackFurniture implements IPackClass {
 		OreDictionary.registerOre("dyeWhite", new ItemStack(item_colored, 1, 14));
 		OreDictionary.registerOre("dyeYellow", new ItemStack(item_colored, 1, 15));
 		 */
-		GameRegistry.addRecipe(new RecipesArmor());
+		//GameRegistry.addRecipe(new RecipesArmor());
 		//GameRegistry.registerCraftingHandler(new CraftFurnitureHandler());
 
 		GameRegistry.registerFuelHandler(new FuelHandlerFurniture());

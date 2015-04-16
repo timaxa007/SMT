@@ -1,7 +1,7 @@
 package timaxa007.module.environment;
 
 import net.minecraftforge.common.MinecraftForge;
-import timaxa007.module.api.IProxyModuleCommon;
+import timaxa007.api.IProxyModuleCommon;
 import timaxa007.module.environment.util.EventEnvironment;
 import cpw.mods.fml.common.FMLCommonHandler;
 

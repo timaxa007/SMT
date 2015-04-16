@@ -1,32 +1,30 @@
 package timaxa007.tms.util;
 
-import timaxa007.module.weight.api.IWeight;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
 
-public class ModifiedItemArmor extends ItemArmor implements IWeight {
+public class ModifiedItemArmor extends ModifiedItem {
+	/*ItemArmor does not work well.*/
 
-	private String tag;
+	public int part_armor;
+	public String armor_material;
 
-	public ModifiedItemArmor(String tag, ItemArmor.ArmorMaterial material, int render_id, int armor_type) {
-		super(material, render_id, armor_type);
-		this.tag = tag;
-		setUnlocalizedName(tag);
+	public ModifiedItemArmor(String tag, int armor_type) {
+		super(tag);
+		this.part_armor = armor_type;
+		this.armor_material = "";
 	}
 
-	public Item setTag(String tag) {
-		this.tag = tag;
-		return this;
+	public ModifiedItemArmor(String tag, int armor_type, String armor_material) {
+		super(tag);
+		this.part_armor = armor_type;
+		this.armor_material = armor_material;
 	}
 
-	public String getTag() {
-		return tag;
+	public static class MaterialPartArmor {
+
 	}
 
-	@Override
-	public float getWeight(ItemStack is) {
-		return 0.0F;
+	public static class MaterialArmorAll {
+
 	}
 
 }

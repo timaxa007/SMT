@@ -2,7 +2,7 @@ package timaxa007.pack.item.packet;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
-import timaxa007.pack.NodePack;
+import timaxa007.tms.CoreTMS;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -35,7 +35,7 @@ public class MessageOpenGui implements IMessage {
 			int num = packet.num;
 			EntityPlayerMP player = message.getServerHandler().playerEntity;
 			num += 16;
-			FMLNetworkHandler.openGui(player, NodePack.instance, num, 
+			FMLNetworkHandler.openGui(player, CoreTMS.instance, num, 
 					player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
 			return null;
 		}

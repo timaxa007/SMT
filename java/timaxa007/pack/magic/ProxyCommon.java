@@ -1,7 +1,7 @@
 package timaxa007.pack.magic;
 
 import net.minecraftforge.common.MinecraftForge;
-import timaxa007.pack.api.IProxyPackCommon;
+import timaxa007.api.IProxyPackCommon;
 import timaxa007.pack.magic.event.EventMana;
 import timaxa007.pack.magic.event.EventSpells;
 import timaxa007.pack.magic.render.RenderMain;

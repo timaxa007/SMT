@@ -1,4 +1,36 @@
-﻿# text
+﻿
+category.control_button.name=Control Buttons (Module)
+
+key.reload.name=Reload
+key.charge.name=Charge
+key.mode.name=Mode Switch
+key.mode_in.name=Mode Increase
+key.mode_out.name=Mode Decrease
+key.action.name=Action
+
+key.action_helmet.name=Action Helmet
+key.action_chest.name=Action Chestplate
+key.action_leggin.name=Action Leggings
+key.action_boot.name=Action Boots
+
+key.booster.name=Booster
+key.grab.name=Grab
+key.lie.name=Lie Down
+
+key.botton_left.name=Left Botton Mouse
+key.botton_right.name=Right Botton Mouse
+
+
+item.upgrades_weights.name=Upgrades Weights
+item.take.upgrades_weights.name=Taking Upgrades Weights
+item.meter.name=Meter Weights
+
+text.add_weight=Adding Weight
+text.get_weight=Weight
+text.get_weight_max=Weight Limit
+
+
+# text
 text.material=Material
 text.name=Name
 text.type=Type

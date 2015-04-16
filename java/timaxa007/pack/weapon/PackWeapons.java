@@ -8,7 +8,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
-import timaxa007.pack.api.IPackClass;
+import timaxa007.api.IPackClass;
 import timaxa007.pack.weapon.block.ListBlock;
 import timaxa007.pack.weapon.item.ListItem;
 import timaxa007.pack.weapon.lib.ListWeapon;
