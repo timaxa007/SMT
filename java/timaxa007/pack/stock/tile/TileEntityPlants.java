@@ -1,36 +1,46 @@
 package timaxa007.pack.stock.tile;
 
-import timaxa007.tms.util.UtilString;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import timaxa007.tms.util.UtilString;
 
 public class TileEntityPlants extends TileEntity {
 
 	private String plant;
 	private String plant_type;
-	private int width;
-	private int height;
+
+	//private Plants.PlantParametersMain parameters_main;
+	//private Plants.PlantParametersSecondary parameters_secondary;
+
 	private int growth;
 	private int fertility;
 	private int resistance;
 
+	private int width;
+	private int height;
+
+	private String style;
+
 	public TileEntityPlants() {
 		plant = "";
 		plant_type = "";
-		width = 0;
-		height = 0;
+		//parameters_main = Plants.PlantParametersMain.createParameters(0, 0, 0);
+		//parameters_secondary = Plants.PlantParametersSecondary.createParameters(0, 0, 0);
 		growth = 0;
 		fertility = 0;
 		resistance = 0;
+		width = 0;
+		height = 0;
+		style = "";
 	}
 
 	public void setPlant(String plant) {this.plant = plant;}
 	public String getPlant() {return plant;}
 
-	public void setPlantType(String i) {this.plant_type = i;}
+	public void setPlantType(String plant_type) {this.plant_type = plant_type;}
 	public String getPlantType() {return plant_type;}
 
 	public void setGrowth(int growth) {this.growth = growth;}
@@ -47,6 +57,9 @@ public class TileEntityPlants extends TileEntity {
 
 	public void setHeight(int height) {this.height = height;}
 	public int getHeight() {return height;}
+
+	public void setStyle(String style) {this.style = style;}
+	public String getStyle() {return style;}
 
 	/*
 	public void updateEntity() {
@@ -111,23 +124,39 @@ public class TileEntityPlants extends TileEntity {
 		super.readFromNBT(nbt);
 		if (nbt.hasKey("Plant")) plant = nbt.getString("Plant"); else plant = "";
 		if (nbt.hasKey("PlantType")) plant_type = nbt.getString("PlantType"); else plant = "";
+		/*
+		if (nbt.hasKey("PlantParametersMain")) 
+			parameters_main.createParameters(nbt.getInteger("PlantParametersMain"));
+		if (nbt.hasKey("PlantParametersSecondary")) 
+			parameters_secondary.createParameters(nbt.getInteger("PlantParametersSecondary"));
+		 */
 		if (nbt.hasKey("Growth")) growth = (int)nbt.getByte("Growth");
 		if (nbt.hasKey("Fertility")) fertility = (int)nbt.getByte("Fertility");
 		if (nbt.hasKey("Resistance")) resistance = (int)nbt.getByte("Resistance");
+
 		if (nbt.hasKey("Width")) width = (int)nbt.getByte("Width");
 		if (nbt.hasKey("Height")) height = (int)nbt.getByte("Height");
+		if (nbt.hasKey("Style")) style = nbt.getString("Style"); else style = "";
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
+
 		if (UtilString.hasString(plant)) nbt.setString("Plant", plant);
 		if (UtilString.hasString(plant_type)) nbt.setString("PlantType", plant_type);
+
+		//nbt.setInteger("PlantParametersMain", parameters_main.parameters_plant_main);
+		//nbt.setInteger("PlantParametersSecondary", parameters_secondary.parameters_plant_secondary);
+
 		nbt.setByte("Growth", (byte)growth);
 		nbt.setByte("Fertility", (byte)fertility);
 		nbt.setByte("Resistance", (byte)resistance);
+
 		nbt.setByte("Width", (byte)width);
 		nbt.setByte("Height", (byte)height);
+
+		if (UtilString.hasString(style)) nbt.setString("Style", style);
 	}
 
 	public Packet getDescriptionPacket() {

@@ -1,6 +1,8 @@
 package timaxa007.pack.stock.lib;
 
 import net.minecraft.util.StatCollector;
+import timaxa007.module.environment.Humidity;
+import timaxa007.module.environment.Temperature;
 import timaxa007.tms.util.UtilString;
 /**
  * Use in <b>ItemPlants</b> and <b>BlockPlants</b>.
@@ -11,7 +13,7 @@ import timaxa007.tms.util.UtilString;
  */
 public class Plants {
 
-	public PlantType type_plants;
+	public static PlantType type_plants;
 
 	public static final Plants[] list = new Plants[4096];
 
@@ -23,17 +25,13 @@ public class Plants {
 	private String type;
 	//private int color_hex;
 
-	private int growth;
-	private int fertility;
-	private int resistance;
-
-	private float temperature;
-	private float temperature_min;
-	private float temperature_max;
-
-	private float humidity;
-	private float humidity_min;
-	private float humidity_max;
+	/**0 x <b>F1</b> <b>F2</b> <b>F3</b> :<br>
+	 * <b>F1</b> - growth (0 - 255); <br>
+	 * <b>F2</b> - fertility (0 - 255);<br>
+	 * <b>F3</b> - resistance (0 - 255);**/
+	private PlantParametersMain parameters_main;
+	private Temperature temperature;
+	private Humidity humidity;
 
 	private String texture;
 
@@ -138,107 +136,32 @@ public class Plants {
 		return color_hex == 0 ? 0xFFFFFF : color_hex;
 	}
 	 */
-	public Plants setPlantStats(int gro, int fer, int res) {
-		growth = gro;
-		fertility = fer;
-		resistance = res;
+	public Plants setPlantStats(int growth, int fertility, int resistance) {
+		this.parameters_main = PlantParametersMain.createParameters(growth, fertility, resistance);
 		return this;
 	}
 
-	public Plants setGrowth(int gro) {
-		growth = gro;
+	public int getGrowth() {return parameters_main.growth;}
+	public int getFertility() {return parameters_main.fertility;}
+	public int getResistance() {return parameters_main.resistance;}
+
+	public Plants setTemperatures(float temperature, float temperature_min, float temperature_max) {
+		this.temperature = Temperature.createTemperature(temperature, temperature_min, temperature_max);
 		return this;
 	}
 
-	public int getGrowth() {
-		return growth == 0 ? 0 : growth;
-	}
+	public float getTemperature() {return temperature.temperature;}
+	public float getTemperatureMin() {return temperature.temperature_min;}
+	public float getTemperatureMax() {return temperature.temperature_max;}
 
-	public Plants setFertility(int fer) {
-		fertility = fer;
+	public Plants setHumidity(float humidity, float humidity_min, float humidity_max) {
+		this.humidity = Humidity.createHumidity(humidity, humidity_min, humidity_max);
 		return this;
 	}
 
-	public int getFertility() {
-		return fertility == 0 ? 0 : fertility;
-	}
-
-	public Plants setResistance(int res) {
-		resistance = res;
-		return this;
-	}
-
-	public int getResistance() {
-		return resistance == 0 ? 0 : resistance;
-	}
-
-	public Plants setTemperatures(float temp, float temp_min, float temp_max) {
-		temperature = temp;
-		temperature_min = temp_min;
-		temperature_max = temp_max;
-		return this;
-	}
-
-	public Plants setTemperature(float f) {
-		temperature = f;
-		return this;
-	}
-
-	public float getTemperature() {
-		return temperature == 0 ? 0.0F : temperature;
-	}
-
-	public Plants setTemperatureMin(float f) {
-		temperature_min = f;
-		return this;
-	}
-
-	public float getTemperatureMin() {
-		return temperature_min == 0 ? 0.0F : temperature_min;
-	}
-
-	public Plants setTemperatureMax(float f) {
-		temperature_max = f;
-		return this;
-	}
-
-	public float getTemperatureMax() {
-		return temperature_max == 0 ? 0.0F : temperature_max;
-	}
-
-	public Plants setHumidity(float humy, float humy_min, float humy_max) {
-		humidity = humy;
-		humidity_min = humy_min;
-		humidity_max = humy_max;
-		return this;
-	}
-
-	public Plants setHumidity(float f) {
-		humidity = f;
-		return this;
-	}
-
-	public float getHumidity() {
-		return humidity == 0 ? 0.0F : humidity;
-	}
-
-	public Plants setHumidityMin(float f) {
-		humidity_min = f;
-		return this;
-	}
-
-	public float getHumidityMin() {
-		return humidity_min == 0 ? 0.0F : humidity_min;
-	}
-
-	public Plants setHumidityMax(float f) {
-		humidity_max = f;
-		return this;
-	}
-
-	public float getHumidityMax() {
-		return humidity_max == 0 ? 0.0F : humidity_max;
-	}
+	public float getHumidity() {return humidity.humidity;}
+	public float getHumidityMin() {return humidity.humidity_min;}
+	public float getHumidityMax() {return humidity.humidity_max;}
 
 	public Plants setTexture(String str) {
 		texture = str;
@@ -246,12 +169,94 @@ public class Plants {
 	}
 
 	public String getTexture() {
-		return texture == null ? getName() : texture;
+		return UtilString.hasString(texture) ? texture : getName();
 	}
+	//--------------------------------------------------------------------------
+	public static class PlantParametersMain {
 
-	private static class PlantType/*Build*/ {
+		public int parameters_plant_main;
+		/*(parameters_plant) или (growth, fertility, resistance)*/
+		public byte growth;
+		public byte fertility;
+		public byte resistance;
+		//Тут может быть четвёртый параметр быть. (0 x FF FF FF FF).
 
-		public int id_type;
+		public static PlantParametersMain createParameters(int growth, int fertility, int resistance) {
+			return new PlantParametersMain((byte)growth, (byte)fertility, (byte)resistance);
+		}
+
+		public static PlantParametersMain createParameters(byte growth, byte fertility, byte resistance) {
+			return new PlantParametersMain(growth, fertility, resistance);
+		}
+
+		public static PlantParametersMain createParameters(int parameters_plant_main) {
+			return new PlantParametersMain(parameters_plant_main);
+		}
+
+		public PlantParametersMain(byte growth, byte fertility, byte resistance) {
+			this.growth = growth;
+			this.fertility = fertility;
+			this.resistance = resistance;
+			this.parameters_plant_main = (int)growth << 16 | (int)fertility << 8 | (int)resistance;
+		}
+
+		public PlantParametersMain(int parameters_plant_main) {
+			this.growth = (byte)(parameters_plant_main >> 16 & 0xFF);
+			this.fertility = (byte)(parameters_plant_main >> 8 & 0xFF);
+			this.resistance = (byte)(parameters_plant_main & 0xFF);
+			this.parameters_plant_main = parameters_plant_main;
+		}
+
+		public String toString() {
+			return "(" + this.growth + ", " + this.fertility + ", " + this.resistance + ")";
+		}
+
+	}
+	//--------------------------------------------------------------------------
+	public static class PlantParametersSecondary {
+
+		public int parameters_plant_secondary;
+		/*(parameters_plant_secondary) или (fertilizer, humidity, temperature)*/
+		public byte fertilizer;
+		public byte humidity;
+		public byte temperature;
+		//Тут может быть четвёртый параметр быть. (0 x FF FF FF FF).
+
+		public static PlantParametersSecondary createParameters(int fertilizer, int humidity, int temperature) {
+			return new PlantParametersSecondary((byte)fertilizer, (byte)humidity, (byte)temperature);
+		}
+
+		public static PlantParametersSecondary createParameters(byte fertilizer, byte humidity, byte temperature) {
+			return new PlantParametersSecondary(fertilizer, humidity, temperature);
+		}
+
+		public static PlantParametersSecondary createParameters(int parameters_plant_secondary) {
+			return new PlantParametersSecondary(parameters_plant_secondary);
+		}
+
+		public PlantParametersSecondary(byte fertilizer, byte humidity, byte temperature) {
+			this.fertilizer = fertilizer;
+			this.humidity = humidity;
+			this.temperature = temperature;
+			this.parameters_plant_secondary = (int)fertilizer << 16 | (int)humidity << 8 | (int)temperature;
+		}
+
+		public PlantParametersSecondary(int parameters_plant_secondary) {
+			this.fertilizer = (byte)(parameters_plant_secondary >> 16 & 0xFF);
+			this.humidity = (byte)(parameters_plant_secondary >> 8 & 0xFF);
+			this.temperature = (byte)(parameters_plant_secondary & 0xFF);
+			this.parameters_plant_secondary = parameters_plant_secondary;
+		}
+
+		public String toString() {
+			return "(" + this.fertilizer + ", " + this.humidity + ", " + this.temperature + ")";
+		}
+
+	}
+	//--------------------------------------------------------------------------
+	public static class PlantType/*Build*/ {
+
+		private int id_type;
 		public String type_plant;
 
 		public static final PlantType[] list_type_plant = new PlantType[128];
@@ -339,5 +344,5 @@ public class Plants {
 		}
 		//--------------------------------------------------------
 	}
-
+	//--------------------------------------------------------------------------
 }

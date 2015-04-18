@@ -16,7 +16,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.item.ItemPlants;
+import timaxa007.pack.stock.lib.Plants;
 import timaxa007.pack.stock.tile.TileEntityPlants;
+import timaxa007.tms.lib.AddTextureModel;
 import timaxa007.tms.util.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,43 +31,25 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 		setHardness(0.25F);
 		setResistance(0.1F);
 		setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 1.0F, 0.875F);
-		setBlockTextureName("plank_oak");
+		setBlockTextureName("planks_oak");
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityPlants();
-	}
-
-	public int getRenderType() {
-		return PackStock.render.block_plants_modelID;
-	}
-
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	public boolean isOpaqueCube() {
-		return false;
-	}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityPlants();}
+	public int getRenderType() {return PackStock.render.block_plants_modelID;}
+	public boolean renderAsNormalBlock() {return false;}
+	public boolean isOpaqueCube() {return false;}
+	public int idPicked(World world, int x, int y, int z) {return 0;}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityPlants) {
-			/*return addNBT(
-					((TileEntityPlants)te).getPlant(), 
-					((TileEntityPlants)te).getSticks(), 
-					((TileEntityPlants)te).getGrowth(), 
-					((TileEntityPlants)te).getFertility(), 
-					((TileEntityPlants)te).getResistance()
-					);*/
-			/*return ItemPlants.addNBT(
-					((TileEntityPlants)te).getPlant(), 
-					(byte)((TileEntityPlants)te).getTypePlant(), 
-					(byte)((TileEntityPlants)te).getGrowth(), 
-					(byte)((TileEntityPlants)te).getFertility(), 
-					(byte)((TileEntityPlants)te).getResistance()
-					);*/
+			TileEntityPlants tile = (TileEntityPlants)te;
+			if (!Plants.isNull(tile.getPlant()))
+				return ItemPlants.addNBT(
+						tile.getPlant(), tile.getPlantType(), 
+						tile.getGrowth(), tile.getFertility(), tile.getResistance(), 
+						tile.getWidth(), tile.getHeight());
 		}
 		return null;
 	}
@@ -77,30 +61,17 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityPlants) {
+			TileEntityPlants tile = (TileEntityPlants)te;
+
 			if (current != null) {
-				if (current.getItem() instanceof ItemPlants && current.getTagCompound() != null && 
-						current.getTagCompound().hasKey("PlantID") && 
-						current.getTagCompound().hasKey("PlantType") && 
-						current.getTagCompound().hasKey("Growth") && 
-						current.getTagCompound().hasKey("Fertility") && 
-						current.getTagCompound().hasKey("Resistance") &&
-						((TileEntityPlants)te).getPlantID() == 0) {
-					((TileEntityPlants)te).setPlantID(current.getTagCompound().getInteger("PlantID"));
-					((TileEntityPlants)te).setPlantType(current.getTagCompound().getString("PlantType"));
-					((TileEntityPlants)te).setWidth(0);
-					((TileEntityPlants)te).setHeight(0);
-					((TileEntityPlants)te).setGrowth(current.getTagCompound().getInteger("Growth"));
-					((TileEntityPlants)te).setFertility(current.getTagCompound().getInteger("Fertility"));
-					((TileEntityPlants)te).setResistance(current.getTagCompound().getInteger("Resistance"));
-					return true;
-				}
+				//				if (current.getItem() instanceof ItemPlants && current.getTagCompound() != null && 
 			} else {
 				if (world.isRemote) {
 					//player.addChatMessage("/*****************************************/");
 
 					/*player.addChatMessage(
-" Plant ID - " + ((TileEntityPlants)te).getPlantID() + 
-" / Name - " + Plants.plant_list[((TileEntityPlants)te).getPlantID()].getLocalizedName() +
+" Plant ID - " + ((TileEntityPlants)te).getPlant() + 
+" / Name - " + Plants.plant_list[((TileEntityPlants)te).getPlant()].getLocalizedName() +
 " / Plant Type - " + ((TileEntityPlants)te).getPlantType());
 
 player.addChatMessage(
@@ -413,59 +384,29 @@ world.spawnEntityInWorld(entityitem2);
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityPlants) {
+			TileEntityPlants tile = (TileEntityPlants)te;
 
-			if (
-					nbt != null && 
-					nbt.hasKey("PlantID") && 
-					nbt.hasKey("PlantType") && 
-					nbt.hasKey("Width") && 
-					nbt.hasKey("Height") && 
-					nbt.hasKey("Growth") && 
-					nbt.hasKey("Fertility") && 
-					nbt.hasKey("Resistance")
-					) {
-				((TileEntityPlants)te).setPlantID(nbt.getInteger("PlantID"));
-				((TileEntityPlants)te).setPlantType(nbt.getString("PlantType"));
-				((TileEntityPlants)te).setWidth(nbt.getInteger("Width"));
-				((TileEntityPlants)te).setHeight(nbt.getInteger("Height"));
-				((TileEntityPlants)te).setGrowth(nbt.getInteger("Growth"));
-				((TileEntityPlants)te).setFertility(nbt.getInteger("Fertility"));
-				((TileEntityPlants)te).setResistance(nbt.getInteger("Resistance"));
-			} else {
-				((TileEntityPlants)te).setPlantID(0);
-				((TileEntityPlants)te).setPlantType("");
-				((TileEntityPlants)te).setWidth(0);
-				((TileEntityPlants)te).setHeight(0);
-				((TileEntityPlants)te).setGrowth(0);
-				((TileEntityPlants)te).setFertility(0);
-				((TileEntityPlants)te).setResistance(0);
-			}
+			if (nbt != null && nbt.hasKey("Style"))
+				tile.setStyle(nbt.getString("Style"));
+			else
+				tile.setStyle("");
 
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		list.add(addNBT(0, "", 0, 0, 0, 0, 0));
+		for (AddTextureModel texture : AddTextureModel.list)
+			if (texture != null && AddTextureModel.hasTag(texture.tag)) list.add(addNBT(texture.tag));
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	public static ItemStack addNBT(int par1, String par2, int par3, int par4, int par5, int par6, int par7) {
+	public static ItemStack addNBT(String par1) {
 		ItemStack is = new ItemStack(PackStock.block.plants, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
-		nbt.setInteger("PlantID", par1);
-		nbt.setString("PlantType", par2);
-		nbt.setInteger("Width", par3);
-		nbt.setInteger("Height", par4);
-		nbt.setInteger("Growth", par5);
-		nbt.setInteger("Fertility", par6);
-		nbt.setInteger("Resistance", par7);
+		nbt.setString("Style", par1);
 		is.setTagCompound(nbt);
 		return is;
 	}
 
-	/*
-@SideOnly(Side.CLIENT)
-public void registerBlockIcons(IIconRegister ir) {blockIcon = ir.registerIcon("wood");}
-	 */
 }

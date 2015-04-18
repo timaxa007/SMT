@@ -31,16 +31,10 @@ public class BlockStorage extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityStorage();
-	}
-
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityStorage();}
+	public int getRenderType() {return PackFurniture.render.block_storage_modelID;}
 	public boolean isOpaqueCube() {return false;}
 	public boolean renderAsNormalBlock() {return false;}
-
-	public int getRenderType() {
-		return PackFurniture.render.block_storage_modelID;
-	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);

@@ -127,23 +127,22 @@ public class ItemPlants extends ModifiedItem {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (nbt != null && te != null && te instanceof TileEntityPlants) {
 				TileEntityPlants tile = (TileEntityPlants)te;
-				//-----------------------------------------------
-				if (nbt.hasKey("Plant"))
-					if (!UtilString.hasString(tile.getPlant()))
-						tile.setPlant(nbt.getString("Plant"));
-				//-----------------------------------------------
-				if (nbt.hasKey("PlantType"))
-					if (!UtilString.hasString(tile.getPlantType()))
-						tile.setPlant(nbt.getString("PlantType"));
-				//-----------------------------------------------
-				if (nbt.hasKey("Growth")) tile.setGrowth(nbt.getByte("Growth"));
-				if (nbt.hasKey("Fertility")) tile.setFertility(nbt.getByte("Fertility"));
-				if (nbt.hasKey("Resistance")) tile.setResistance(nbt.getByte("Resistance"));
-				//-----------------------------------------------
-				if (nbt.hasKey("Width")) tile.setWidth(nbt.getByte("Width"));
-				if (nbt.hasKey("Height")) tile.setHeight(nbt.getByte("Height"));
-				//-----------------------------------------------
-				return true;
+
+				if (Plants.isNull(tile.getPlant())) {
+					//-----------------------------------------------
+					if (nbt.hasKey("Plant")) tile.setPlant(nbt.getString("Plant"));
+					//-----------------------------------------------
+					if (nbt.hasKey("PlantType")) tile.setPlantType(nbt.getString("PlantType"));
+					//-----------------------------------------------
+					if (nbt.hasKey("Growth")) tile.setGrowth(nbt.getByte("Growth"));
+					if (nbt.hasKey("Fertility")) tile.setFertility(nbt.getByte("Fertility"));
+					if (nbt.hasKey("Resistance")) tile.setResistance(nbt.getByte("Resistance"));
+					//-----------------------------------------------
+					if (nbt.hasKey("Width")) tile.setWidth(nbt.getByte("Width"));
+					if (nbt.hasKey("Height")) tile.setHeight(nbt.getByte("Height"));
+					//-----------------------------------------------
+					return true;
+				} else return false;
 			} else return false;
 		}
 	}
@@ -174,7 +173,7 @@ public class ItemPlants extends ModifiedItem {
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (Plants plant : Plants.list) {
-			if (plant != null) {
+			if (!Plants.isNull(plant)) {
 				list.add(addNBT(
 						plant.tag, 
 						plant.getType(), 
@@ -188,15 +187,19 @@ public class ItemPlants extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT(String par1, String par2, int par3, int par4, int par5) {
-		ItemStack is = new ItemStack(PackStock.item.plants, 1, 0);
+		return addNBT(par1, par2, par3, par4, par5, 1, 1);
+	}
+
+	public static ItemStack addNBT(String par1, String par2, int par3, int par4, int par5, int par6, int par7) {
+		ItemStack is = new ItemStack(PackStock.item.plants);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Plant", par1);
 		nbt.setString("PlantType", par2);
 		nbt.setByte("Growth", (byte)par3);
 		nbt.setByte("Fertility", (byte)par4);
 		nbt.setByte("Resistance", (byte)par5);
-		nbt.setByte("Width", (byte)1);
-		nbt.setByte("Height", (byte)1);
+		nbt.setByte("Width", (byte)par6);
+		nbt.setByte("Height", (byte)par7);
 		is.setTagCompound(nbt);
 		return is;
 	}

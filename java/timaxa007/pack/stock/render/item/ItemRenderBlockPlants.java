@@ -1,12 +1,13 @@
 package timaxa007.pack.stock.render.item;
 
-import timaxa007.tms.lib.ModelT;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
+
+import timaxa007.tms.lib.ModelT;
 
 public class ItemRenderBlockPlants implements IItemRenderer {
 
@@ -36,75 +37,7 @@ public class ItemRenderBlockPlants implements IItemRenderer {
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glPopMatrix();
 		//------------------------------------------------------------------------------------------------------
-/*
-		GL11.glPushMatrix();
-		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glDisable(GL11.GL_LIGHTING);
-
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("timaxa007", "textures/blocks//0.png"));
-
-		Tessellator tessellator = Tessellator.instance;
-		tessellator.startDrawingQuads();
-
-		//Up
-		tessellator.addVertexWithUV(1.0D, 0.5D, 0.0D, 1.0D, 0.0D);
-		tessellator.addVertexWithUV(0.0D, 0.5D, 0.0D, 0.0D, 0.0D);
-		tessellator.addVertexWithUV(0.0D, 0.5D, 1.0D, 0.0D, 1.0D);
-		tessellator.addVertexWithUV(1.0D, 0.5D, 1.0D, 1.0D, 1.0D);
-		//Down
-		tessellator.addVertexWithUV(1.0D, 0.5D, 1.0D, 1.0D, 1.0D);
-		tessellator.addVertexWithUV(0.0D, 0.5D, 1.0D, 0.0D, 1.0D);
-		tessellator.addVertexWithUV(0.0D, 0.5D, 0.0D, 0.0D, 0.0D);
-		tessellator.addVertexWithUV(1.0D, 0.5D, 0.0D, 1.0D, 0.0D);
-
-		//-----
-		tessellator.addVertexWithUV(1.0D, 0.0D, 0.0D + (slc * 4), 0.0D, 1.0D);
-		tessellator.addVertexWithUV(0.0D, 0.0D, 0.0D + (slc * 4), 1.0D, 1.0D);
-		tessellator.addVertexWithUV(0.0D, 1.0D, 0.0D + (slc * 4), 1.0D, 0.0D);
-		tessellator.addVertexWithUV(1.0D, 1.0D, 0.0D + (slc * 4), 0.0D, 0.0D);
-
-		tessellator.addVertexWithUV(1.0D, 1.0D, 0.0D + (slc * 4), 1.0D, 0.0D);
-		tessellator.addVertexWithUV(0.0D, 1.0D, 0.0D + (slc * 4), 0.0D, 0.0D);
-		tessellator.addVertexWithUV(0.0D, 0.0D, 0.0D + (slc * 4), 0.0D, 1.0D);
-		tessellator.addVertexWithUV(1.0D, 0.0D, 0.0D + (slc * 4), 1.0D, 1.0D);
-		//---
-		tessellator.addVertexWithUV(1.0D, 0.0D, 1.0D - (slc * 4), 0.0D, 1.0D);
-		tessellator.addVertexWithUV(0.0D, 0.0D, 1.0D - (slc * 4), 1.0D, 1.0D);
-		tessellator.addVertexWithUV(0.0D, 1.0D, 1.0D - (slc * 4), 1.0D, 0.0D);
-		tessellator.addVertexWithUV(1.0D, 1.0D, 1.0D - (slc * 4), 0.0D, 0.0D);
-
-		tessellator.addVertexWithUV(1.0D, 1.0D, 1.0D - (slc * 4), 1.0D, 0.0D);
-		tessellator.addVertexWithUV(0.0D, 1.0D, 1.0D - (slc * 4), 0.0D, 0.0D);
-		tessellator.addVertexWithUV(0.0D, 0.0D, 1.0D - (slc * 4), 0.0D, 1.0D);
-		tessellator.addVertexWithUV(1.0D, 0.0D, 1.0D - (slc * 4), 1.0D, 1.0D);
-		//-----
-		tessellator.addVertexWithUV(0.0D + (slc * 4), 1.0D, 1.0D, 1.0D, 0.0D);
-		tessellator.addVertexWithUV(0.0D + (slc * 4), 1.0D, 0.0D, 0.0D, 0.0D);
-		tessellator.addVertexWithUV(0.0D + (slc * 4), 0.0D, 0.0D, 0.0D, 1.0D);
-		tessellator.addVertexWithUV(0.0D + (slc * 4), 0.0D, 1.0D, 1.0D, 1.0D);
-
-		tessellator.addVertexWithUV(0.0D + (slc * 4), 0.0D, 1.0D, 0.0D, 1.0D);
-		tessellator.addVertexWithUV(0.0D + (slc * 4), 0.0D, 0.0D, 1.0D, 1.0D);
-		tessellator.addVertexWithUV(0.0D + (slc * 4), 1.0D, 0.0D, 1.0D, 0.0D);
-		tessellator.addVertexWithUV(0.0D + (slc * 4), 1.0D, 1.0D, 0.0D, 0.0D);
-		//---
-		tessellator.addVertexWithUV(1.0D - (slc * 4), 1.0D, 1.0D, 1.0D, 0.0D);
-		tessellator.addVertexWithUV(1.0D - (slc * 4), 1.0D, 0.0D, 0.0D, 0.0D);
-		tessellator.addVertexWithUV(1.0D - (slc * 4), 0.0D, 0.0D, 0.0D, 1.0D);
-		tessellator.addVertexWithUV(1.0D - (slc * 4), 0.0D, 1.0D, 1.0D, 1.0D);
-
-		tessellator.addVertexWithUV(1.0D - (slc * 4), 0.0D, 1.0D, 0.0D, 1.0D);
-		tessellator.addVertexWithUV(1.0D - (slc * 4), 0.0D, 0.0D, 1.0D, 1.0D);
-		tessellator.addVertexWithUV(1.0D - (slc * 4), 1.0D, 0.0D, 1.0D, 0.0D);
-		tessellator.addVertexWithUV(1.0D - (slc * 4), 1.0D, 1.0D, 0.0D, 0.0D);
-
-		tessellator.draw();
-
-		GL11.glEnable(GL11.GL_LIGHTING);
-		GL11.glDisable(GL11.GL_BLEND);
-		GL11.glPopMatrix();
-*/
+		/* Переделать, передлать. */
 	}
 
 }
