@@ -42,26 +42,22 @@ public class PackStock implements IPackClass {
 	public static RenderMain render;
 
 	public static CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
-		@SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {return PackStock.item.items_for_stock;}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.items_for_stock;}
 	};
 	public static CreativeTabs tab_plant = new CreativeTabs("tab_plant") {
-		@SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {return PackStock.item.germination_plants;}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.plants;}
 	};
 	public static CreativeTabs tab_food = new CreativeTabs("tab_food") {
-		@SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {return PackStock.item.foods;}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.foods;}
 	};
 	public static CreativeTabs tab_medical = new CreativeTabs("tab_medical") {
-		@SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {return PackStock.item.medicals;}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.medicals;}
 	};
 	public static CreativeTabs tab_apis = new CreativeTabs("tab_apis") {
-		@SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {return PackStock.item.bees;}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.bees;}
 	};
 
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
@@ -70,13 +66,14 @@ public class PackStock implements IPackClass {
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackStock.MODID + ".cfg"));
 		cfg.load();
 
-		block.germination_plants_be = cfg.get("block", "germination_plants", true).getBoolean(true);
+		block.plants_be = cfg.get("block", "plants", true).getBoolean(true);
 		block.foods_be = cfg.get("block", "foods", true).getBoolean(true);
 		block.healing_be = cfg.get("block", "healing", true).getBoolean(true);
 		block.apiary_be = cfg.get("block", "apiary", true).getBoolean(true);
+		block.petalled_be = cfg.get("block", "petalled", true).getBoolean(true);
 
 		item.items_for_stock_be = cfg.get("item", "items_for_stock", true).getBoolean(true);
-		item.germination_plants_be = cfg.get("item", "germination_plants", true).getBoolean(true);
+		item.plants_be = cfg.get("item", "plants", true).getBoolean(true);
 		item.nature_product_be = cfg.get("item", "nature_product", true).getBoolean(true);
 		item.foods_be = cfg.get("item", "foods", true).getBoolean(true);
 		item.drinks_be = cfg.get("item", "drinks", true).getBoolean(true);
@@ -84,6 +81,7 @@ public class PackStock implements IPackClass {
 		item.honeycombs_be = cfg.get("item", "honeycombs", true).getBoolean(true);
 		item.bee_products_be = cfg.get("item", "bee_products", true).getBoolean(true);
 		item.bees_be = cfg.get("item", "bees", true).getBoolean(true);
+		item.petals_be = cfg.get("item", "petals", true).getBoolean(true);
 		//item.food_dog_be = cfg.get("item", "food_dog", true).getBoolean(true);
 
 		cfg.save();

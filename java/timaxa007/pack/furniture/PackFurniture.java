@@ -64,12 +64,10 @@ public class PackFurniture implements IPackClass {
 	public static int gui_backpack_16 = 47;
 
 	public static CreativeTabs tab_furniture = new CreativeTabs("tab_furniture") {
-		@SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {
-			return PackFurniture.item.items_for_furniture;
-		}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackFurniture.item.items_for_furniture;}
 	};
 
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();

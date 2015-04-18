@@ -22,6 +22,8 @@ import timaxa007.pack.techno.util.MaterialTechno;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class PackTechno implements IPackClass {
 
@@ -44,11 +46,10 @@ public class PackTechno implements IPackClass {
 	public static int gui_electric_machines = 1;
 
 	public static CreativeTabs tab_techno = new CreativeTabs("tab_techno") {
-		public Item getTabIconItem() {
-			return PackTechno.item.items_for_techno;
-		}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackTechno.item.items_for_techno;}
 	};
 
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();

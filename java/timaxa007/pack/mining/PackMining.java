@@ -23,6 +23,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class PackMining implements IPackClass {
 
@@ -46,16 +48,13 @@ public class PackMining implements IPackClass {
 	public static int world_dim_only_night_id;
 
 	public static CreativeTabs tab_mining = new CreativeTabs("tab_mining") {
-		public Item getTabIconItem() {
-			return PackMining.item.items_for_mining;
-		}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMining.item.items_for_mining;}
 	};
 	public static CreativeTabs tab_tools = new CreativeTabs("tab_tools") {
-		public Item getTabIconItem() {
-			return PackMining.item.items_for_mining;
-		}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMining.item.items_for_mining;}
 	};
 
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();

@@ -2,10 +2,6 @@ package timaxa007.pack.stock.item;
 
 import java.util.List;
 
-import timaxa007.pack.stock.PackStock;
-import timaxa007.tms.lib.FluidFake;
-import timaxa007.tms.util.ModifiedItem;
-import timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +11,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import timaxa007.module.fluids.Fluids;
+import timaxa007.pack.stock.PackStock;
+import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -150,7 +150,7 @@ liquid_hex = liq_hex;
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("LiquidID")) {
-			return "fluid." + FluidFake.list[nbt.getInteger("LiquidID")].getName();
+			return "fluid." + Fluids.list[nbt.getInteger("LiquidID")].getName();
 		}
 		return super.getUnlocalizedName();
 	}
@@ -163,10 +163,10 @@ liquid_hex = liq_hex;
 					list.add("NameID: " + nbt.getString("NameID") + ".");
 					list.add("Saturation Level: " + drinks.valueOf(nbt.getString("NameID")).lvl + ".");
 				}
-				if (nbt.hasKey("LiquidID") && FluidFake.list[nbt.getInteger("LiquidID")] != null) {
+				if (nbt.hasKey("LiquidID") && Fluids.list[nbt.getInteger("LiquidID")] != null) {
 					list.add("LiquidID: " + nbt.getInteger("LiquidID") + "/" + 
-							FluidFake.list[nbt.getInteger("LiquidID")].getLocalizedName() + ".");
-					list.add("Liquid Type: " + FluidFake.list[nbt.getInteger("LiquidID")].getType() + ".");
+							Fluids.list[nbt.getInteger("LiquidID")].getLocalizedName() + ".");
+					list.add("Liquid Type: " + Fluids.list[nbt.getInteger("LiquidID")].getType() + ".");
 				}
 			}
 		} else {
@@ -177,8 +177,8 @@ liquid_hex = liq_hex;
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (drinks j1 : drinks.values()) {
-			for (int i = 0; i < FluidFake.list.length; ++i) {
-				if (FluidFake.list[i] != null) {
+			for (int i = 0; i < Fluids.list.length; ++i) {
+				if (Fluids.list[i] != null) {
 					list.add(addNBT(j1.toString(), i));
 				}
 			}
@@ -223,7 +223,7 @@ liquid_hex = liq_hex;
 			} else {return 16777215;}
 		} else {
 			if (nbt != null && nbt.hasKey("LiquidID")) {
-				return FluidFake.list[nbt.getInteger("LiquidID")].getColor();
+				return Fluids.list[nbt.getInteger("LiquidID")].getColor();
 			} else {return 16777215;}
 		}
 	}

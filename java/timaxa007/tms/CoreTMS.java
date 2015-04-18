@@ -13,10 +13,10 @@ import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IModuleClass;
 import timaxa007.api.IPackClass;
+import timaxa007.gui.HandlerGuiTMS;
 import timaxa007.tms.lib.ListTextureModel;
 import timaxa007.tms.packet.RegisterMessage;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -47,8 +47,7 @@ public class CoreTMS {
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_tms = new CreativeTabs("tab_tms") {
-		@SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {return CoreTMS.item_test;}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return CoreTMS.item_test;}
 	};
 
 	public static boolean debug;
@@ -61,7 +60,8 @@ public class CoreTMS {
 	status_player,
 	weight,
 	effects,
-	colors
+	colors,
+	fluids
 	;
 
 	public static boolean
@@ -70,7 +70,8 @@ public class CoreTMS {
 	isNodeStatusPlayer,
 	isNodeWeight,
 	isNodeEffect,
-	isNodeColors
+	isNodeColors,
+	isNodeFluids
 	;
 
 	public static boolean
@@ -79,7 +80,8 @@ public class CoreTMS {
 	disable_module_status_player,
 	disable_module_weight,
 	disable_module_effects,
-	disable_module_colors
+	disable_module_colors,
+	disable_module_fluids
 	;
 
 	public static IPackClass
@@ -115,12 +117,11 @@ public class CoreTMS {
 	public static Block block_test;
 	public static Item item_test;
 
-	@EventHandler
+	@Mod.EventHandler
 	public void preInitialize(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-
-
+		//--------------------------------------------------------------------------------------------
 		log.info("Starting core modules.");
 
 		Configuration cfg_module = new Configuration(new File("./config/tms", "node_module.cfg"));
@@ -132,6 +133,7 @@ public class CoreTMS {
 		disable_module_weight = cfg_module.get("disable_module", "weight", false).getBoolean(false);
 		disable_module_effects = cfg_module.get("disable_module", "effects", false).getBoolean(false);
 		disable_module_colors = cfg_module.get("disable_module", "colors", false).getBoolean(false);
+		disable_module_fluids = cfg_module.get("disable_module", "fluids", false).getBoolean(false);
 
 		cfg_module.save();
 
@@ -143,8 +145,8 @@ public class CoreTMS {
 		if (isNodeWeight) weight.preInit(event);
 		if (isNodeEffect) effects.preInit(event);
 		if (isNodeColors) colors.preInit(event);
-
-
+		if (isNodeFluids) fluids.preInit(event);
+		//--------------------------------------------------------------------------------------------
 		log.info("Starting core " + CoreTMS.MODNAME + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms", "core_tms.cfg"));
@@ -159,8 +161,7 @@ public class CoreTMS {
 				"comment show_system_info_testing", false);
 
 		cfg.save();
-
-
+		//--------------------------------------------------------------------------------------------
 		log.info("Starting core packs.");
 
 		Configuration cfg_pack = new Configuration(new File("./config/tms", "node_pack.cfg"));
@@ -185,8 +186,7 @@ public class CoreTMS {
 		if (isPackStock) stock.preInit(event);
 		if (isPackTechno) techno.preInit(event);
 		if (isPackWeapons) weapon.preInit(event);
-
-
+		//--------------------------------------------------------------------------------------------
 		new ListTextureModel();
 
 		block_test = new TestBlock();
@@ -204,7 +204,7 @@ public class CoreTMS {
 
 	}
 
-	@EventHandler
+	@Mod.EventHandler
 	public void initialize(FMLInitializationEvent event) {
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(CoreTMS.MODID, new HandlerGuiTMS());
@@ -251,6 +251,10 @@ public class CoreTMS {
 		if (!disable_module_colors)
 			colors = checkModule(PATH_MODULE + ".colors.ModuleColors");
 		isNodeColors = colors != null;
+
+		if (!disable_module_fluids)
+			fluids = checkModule(PATH_MODULE + ".fluids.ModuleFluids");
+		isNodeFluids = colors != null;
 
 	}
 

@@ -18,6 +18,7 @@ public class ModuleColors implements IModuleClass {
 
 	public static Logger log;
 
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();

@@ -42,10 +42,10 @@ public class PackItems implements IPackClass {
 	public static int gui_items_machines = 1;
 
 	public static CreativeTabs tab_items = new CreativeTabs("tab_items") {
-		@SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {return PackItems.item.items_for_items;}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackItems.item.items_for_items;}
 	};
 
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();

@@ -17,8 +17,8 @@ key.booster.name=Усилитель
 key.grab.name=Захват
 key.lie.name=Лечь
 
-key.botton_left.name=Левая Кнопка Мыши
-key.botton_right.name=Правая Кнопка Мыши
+key.button_left.name=Левая Кнопка Мыши
+key.button_right.name=Правая Кнопка Мыши
 
 
 item.upgrades_weights.name=Обновления Веса

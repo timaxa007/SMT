@@ -7,22 +7,28 @@ import net.minecraft.block.Block;
 public class ListBlock {
 
 	public static boolean 
-	germination_plants_be, 
-	foods_be, 
-	healing_be, 
-	apiary_be;
+	plants_be,
+	foods_be,
+	healing_be,
+	apiary_be,
+	petalled_be
+	;
 
 	public static Block 
-	germination_plants, 
-	foods, 
-	healing, 
-	apiary;
+	plants,
+	foods,
+	healing,
+	apiary,
+	petalled
+	;
 
 	public static Class 
-	te_germination_plants, 
-	te_foods, 
-	te_healing, 
-	te_apiary;
+	te_plants,
+	te_foods,
+	te_healing,
+	te_apiary,
+	te_petalled
+	;
 
 	public static Block[] list_block;
 
@@ -30,9 +36,9 @@ public class ListBlock {
 
 	public static void preInit() {
 
-		if (germination_plants_be) {
-			germination_plants = new BlockGerminationPlants("germination_plants");
-			te_germination_plants = TileEntityGerminationPlants.class;
+		if (plants_be) {
+			plants = new BlockPlants("plants");
+			te_plants = TileEntityPlants.class;
 		}
 
 		if (foods_be) {
@@ -50,20 +56,27 @@ public class ListBlock {
 			te_apiary = TileEntityApiary.class;
 		}
 
+		if (petalled_be) {
+			petalled = new BlockPetalled("petalled");
+			te_petalled = TileEntityPetalled.class;
+		}
+
 		list_block = new Block[] {
-				germination_plants, 
-				foods, 
-				healing, 
-				apiary
+				plants,
+				foods,
+				healing,
+				apiary,
+				petalled
 		};
 
 		UtilTMS.UtilBlock.RegBlock(list_block);
 
 		list_te = new Class[] {
-				te_germination_plants, 
-				te_foods, 
-				te_healing, 
-				te_apiary
+				te_plants,
+				te_foods,
+				te_healing,
+				te_apiary,
+				te_petalled
 		};
 
 		UtilTMS.UtilBlock.RegTE(list_te);

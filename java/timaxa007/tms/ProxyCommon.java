@@ -14,7 +14,8 @@ public class ProxyCommon {
 	status_player,
 	weight,
 	effects,
-	colors
+	colors,
+	fluids
 	;
 
 	public static IProxyPackCommon 
@@ -37,6 +38,7 @@ public class ProxyCommon {
 		if (weight != null) weight.preInit();
 		if (effects != null) effects.preInit();
 		if (colors != null) colors.preInit();
+		if (fluids != null) fluids.preInit();
 
 		verificationPackCommon();
 
@@ -58,6 +60,7 @@ public class ProxyCommon {
 		if (weight != null) weight.init();
 		if (effects != null) effects.init();
 		if (colors != null) colors.init();
+		if (fluids != null) fluids.init();
 
 		if (furniture != null) furniture.init();
 		if (item != null) item.init();
@@ -78,6 +81,7 @@ public class ProxyCommon {
 		if (weight != null) weight.postInit();
 		if (effects != null) effects.postInit();
 		if (colors != null) colors.postInit();
+		if (fluids != null) fluids.postInit();
 
 		if (furniture != null) furniture.postInit();
 		if (item != null) item.postInit();
@@ -108,6 +112,9 @@ public class ProxyCommon {
 
 		if (CoreTMS.isNodeColors)
 			colors = checkModuleCommon(CoreTMS.PATH_MODULE + ".colors.ProxyCommon");
+
+		if (CoreTMS.isNodeFluids)
+			fluids = checkModuleCommon(CoreTMS.PATH_MODULE + ".fluids.ProxyCommon");
 
 	}
 

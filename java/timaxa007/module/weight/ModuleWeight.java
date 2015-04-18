@@ -28,6 +28,7 @@ public class ModuleWeight implements IModuleClass {
 
 	public static Item upgradeWeight;
 
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();

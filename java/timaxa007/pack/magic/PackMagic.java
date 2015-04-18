@@ -21,10 +21,11 @@ import timaxa007.pack.magic.packet.RegisterMessage;
 import timaxa007.pack.magic.recipe.Recipes_Magic;
 import timaxa007.pack.magic.render.RenderMain;
 import timaxa007.pack.magic.util.MaterialOreMagic;
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class PackMagic implements IPackClass {
 
@@ -67,12 +68,10 @@ public class PackMagic implements IPackClass {
 	public static int gui_magic_machines = 1;
 
 	public static CreativeTabs tab_magic = new CreativeTabs("tab_magic") {
-		public Item getTabIconItem() {
-			return PackMagic.item.items_for_magic;
-		}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMagic.item.items_for_magic;}
 	};
 
-	@EventHandler
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();

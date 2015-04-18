@@ -8,8 +8,7 @@ public class RegisterMessage {
 	private static int id = 0;
 
 	public static void init(SimpleNetworkWrapper network) {
-		network.registerMessage(MessageSpawnParticle.Handler.class, MessageSpawnParticle.class, id++, Side.CLIENT);
-		network.registerMessage(MessagePlayer.Handler.class, MessagePlayer.class, id++, Side.SERVER);
+
 	}
 
 }

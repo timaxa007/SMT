@@ -15,7 +15,6 @@ import timaxa007.pack.weapon.lib.ListWeapon;
 import timaxa007.pack.weapon.packet.RegisterMessage;
 import timaxa007.pack.weapon.recipe.Recipes_Weapons;
 import timaxa007.pack.weapon.render.RenderMain;
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -41,11 +40,10 @@ public class PackWeapons implements IPackClass {
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_weapons = new CreativeTabs("tab_weapons") {
-	    @SideOnly(Side.CLIENT)
-		public Item getTabIconItem() {return PackWeapons.item.items_for_weapons;}
+	    @SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackWeapons.item.items_for_weapons;}
 	};
 
-	@EventHandler
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
@@ -76,7 +74,6 @@ public class PackWeapons implements IPackClass {
 
 	}
 
-	@EventHandler
 	public void init(FMLInitializationEvent event) {
 
 	}

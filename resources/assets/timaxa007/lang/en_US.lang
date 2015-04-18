@@ -17,8 +17,8 @@ key.booster.name=Booster
 key.grab.name=Grab
 key.lie.name=Lie Down
 
-key.botton_left.name=Left Botton Mouse
-key.botton_right.name=Right Botton Mouse
+key.button_left.name=Left Botton Mouse
+key.button_right.name=Right Botton Mouse
 
 
 item.upgrades_weights.name=Upgrades Weights

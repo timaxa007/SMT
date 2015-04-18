@@ -23,14 +23,12 @@ public class UtilTMS {
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilBlock {
 
-		public static void RegBlock(Block[] blocks) {
-			for (Block block : blocks) RegBlock(block);
-		}
-
-		public static void RegBlock(Block block) {
-			if (block != null) {
-				if (block instanceof ModifiedBlock)
-					GameRegistry.registerBlock(block, "block_" + ((ModifiedBlock)block).getTag());
+		public static void RegBlock(Block... blocks) {
+			for (Block block : blocks) {
+				if (block != null) {
+					if (block instanceof ModifiedBlock)
+						GameRegistry.registerBlock(block, "block_" + ((ModifiedBlock)block).getTag());
+				}
 			}
 		}
 
@@ -41,39 +39,37 @@ public class UtilTMS {
 			}
 		}
 
-		public static void RegTE(Class<? extends TileEntity> te[]) {
-			for (Class<? extends TileEntity> tile : te) RegTE(tile);
-		}
+		public static void RegTE(Class<? extends TileEntity>... te) {
+			for (Class<? extends TileEntity> tile : te) {
+				if (tile != null) {
+					String tag = tile.toString();
 
-		public static void RegTE(Class<? extends TileEntity> te) {
-			if (te != null) {
-				String tag = te.toString();
+					if (tag.startsWith("TileEntity")) 
+						tag.replaceFirst("^TileEntity*", "tile_entity_").toLowerCase();
+					else if (tag.startsWith("TE")) 
+						tag.replaceFirst("^TE*", "tile_entity_").toLowerCase();
+					else ;
 
-				if (tag.startsWith("TileEntity")) 
-					tag.replaceFirst("^TileEntity*", "tile_entity_").toLowerCase();
-				else if (tag.startsWith("TE")) 
-					tag.replaceFirst("^TE*", "tile_entity_").toLowerCase();
-				else ;
-
-				GameRegistry.registerTileEntity(te, tag);
+					GameRegistry.registerTileEntity(tile, tag);
+				}
 			}
 		}
+
 	}
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilItem {
 
-		public static void RegItem(Item[] items) {
-			for (Item item : items) RegItem(item);
-		}
-
-		public static void RegItem(Item item) {
-			if (item != null) {
-				if (item instanceof ModifiedItem)
-					GameRegistry.registerItem(item, "item_" + ((ModifiedItem)item).getTag());
-				else if (item instanceof ModifiedItemArmor)
-					GameRegistry.registerItem(item, "item_" + ((ModifiedItemArmor)item).getTag());
+		public static void RegItem(Item... items) {
+			for (Item item : items) {
+				if (item != null) {
+					if (item instanceof ModifiedItem)
+						GameRegistry.registerItem(item, "item_" + ((ModifiedItem)item).getTag());
+					else if (item instanceof ModifiedItemArmor)
+						GameRegistry.registerItem(item, "item_" + ((ModifiedItemArmor)item).getTag());
+				}
 			}
 		}
+
 	}
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilEntity {
@@ -118,11 +114,17 @@ public class UtilTMS {
 			return look(1.0F, interact);
 		}
 
+		public static MovingObjectPosition look(double dist) {
+			return look(1.0F, dist, false);
+		}
+
+		public static MovingObjectPosition look(double dist, boolean interact) {
+			return look(1.0F, dist, interact);
+		}
+
 		public static MovingObjectPosition look(float fasc, boolean interact) {
 			double dist = (double)mc.playerController.getBlockReachDistance();
-			MovingObjectPosition entity = entity(fasc, dist, interact);
-			return ((entity != null && entity.entityHit != null) ? 
-					entity(fasc, dist, interact) : block(fasc, dist, interact));
+			return look(fasc, dist, interact);
 		}
 
 		public static MovingObjectPosition look(float fasc, double dist, boolean interact) {
@@ -137,6 +139,14 @@ public class UtilTMS {
 
 		public static MovingObjectPosition entity(boolean interact) {
 			return entity(1.0F, interact);
+		}
+
+		public static MovingObjectPosition entity(double dist) {
+			return entity(dist, false);
+		}
+
+		public static MovingObjectPosition entity(double dist, boolean interact) {
+			return entity(1.0F, dist, interact);
 		}
 
 		public static MovingObjectPosition entity(float fasc, boolean interact) {
@@ -213,6 +223,14 @@ public class UtilTMS {
 			return block(1.0F, interact);
 		}
 
+		public static MovingObjectPosition block(double dist) {
+			return block(dist, false);
+		}
+
+		public static MovingObjectPosition block(double dist, boolean interact) {
+			return block(1.0F, dist, interact);
+		}
+
 		public static MovingObjectPosition block(float fasc, boolean interact) {
 			return block(fasc, (double)mc.playerController.getBlockReachDistance(), interact);
 		}
@@ -233,6 +251,10 @@ public class UtilTMS {
 		//-------------------------------
 	}
 	//-----------------------------------------------------------------------------------------------
+	public static String isSide() {
+		return (isServerSide() ? "Server" : (isClientSide() ? "Client" : "None"));
+	}
+
 	public static boolean isServerSide() {
 		return FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER;
 	}

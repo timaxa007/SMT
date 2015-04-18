@@ -17,7 +17,8 @@ public class ProxyClient extends ProxyCommon {
 	status_player,
 	weight,
 	effects,
-	colors
+	colors,
+	fluids
 	;
 
 	public static IProxyPackClient 
@@ -41,6 +42,7 @@ public class ProxyClient extends ProxyCommon {
 		if (weight != null) weight.preInit();
 		if (effects != null) effects.preInit();
 		if (colors != null) colors.preInit();
+		if (fluids != null) fluids.preInit();
 
 		verificationPackClient();
 
@@ -64,6 +66,7 @@ public class ProxyClient extends ProxyCommon {
 		if (weight != null) weight.init();
 		if (effects != null) effects.init();
 		if (colors != null) colors.init();
+		if (fluids != null) fluids.init();
 
 		if (furniture != null) furniture.init();
 		if (item != null) item.init();
@@ -89,6 +92,7 @@ public class ProxyClient extends ProxyCommon {
 		if (weight != null) weight.postInit();
 		if (effects != null) effects.postInit();
 		if (colors != null) colors.postInit();
+		if (fluids != null) fluids.postInit();
 
 		if (furniture != null) furniture.postInit();
 		if (item != null) item.postInit();
@@ -119,6 +123,9 @@ public class ProxyClient extends ProxyCommon {
 
 		if (CoreTMS.isNodeColors)
 			colors = checkModuleClient(CoreTMS.PATH_MODULE + ".colors.ProxyClient");
+
+		if (CoreTMS.isNodeFluids)
+			fluids = checkModuleClient(CoreTMS.PATH_MODULE + ".fluids.ProxyClient");
 
 	}
 

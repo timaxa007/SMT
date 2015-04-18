@@ -4,9 +4,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.packet.MessageSpawnParticle;
-import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class ActionMagic {
 
@@ -155,9 +152,10 @@ public class ActionMagic {
 
 	}
 	 */
+	/*
 	public static void actionVoid3(World world, EntityPlayer player) {
 		CoreTMS.network.sendToAllAround(new MessageSpawnParticle(1, player.posX, player.posY, player.posZ), 
 				new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 18.5D));
 	}
-
+	 */
 }

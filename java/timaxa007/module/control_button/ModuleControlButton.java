@@ -21,6 +21,7 @@ public class ModuleControlButton implements IModuleClass {
 	public static boolean button_left;
 	public static boolean button_right;
 
+	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
