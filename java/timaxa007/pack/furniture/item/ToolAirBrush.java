@@ -10,7 +10,7 @@ import timaxa007.pack.furniture.tile.TileEntityRockBlocks;
 import timaxa007.pack.furniture.tile.TileEntitySandBlocks;
 import timaxa007.pack.furniture.tile.TileEntityWoodBlocks;
 import timaxa007.pack.mining.PackMining;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 import timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;

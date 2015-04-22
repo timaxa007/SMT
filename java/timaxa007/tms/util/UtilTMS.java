@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -14,6 +15,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.tms.object.ModifiedItem;
+import timaxa007.tms.object.ModifiedItemArmor;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -261,6 +266,15 @@ public class UtilTMS {
 
 	public static boolean isClientSide() {
 		return FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT;
+	}
+
+	public static World getWorldClient() {
+		return FMLClientHandler.instance().getWorldClient();
+
+	}
+
+	public static EntityPlayer getPlayerClient() {
+		return FMLClientHandler.instance().getClientPlayerEntity();
 	}
 
 	/*public static boolean isGUI(String str) {

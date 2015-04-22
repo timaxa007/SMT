@@ -4,7 +4,7 @@ import java.util.List;
 
 import timaxa007.pack.weapon.PackWeapons;
 import timaxa007.pack.weapon.lib.MagazineFor;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 import timaxa007.tms.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;

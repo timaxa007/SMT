@@ -3,7 +3,7 @@ package timaxa007.pack.techno.block;
 import java.util.List;
 
 import timaxa007.pack.techno.PackTechno;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

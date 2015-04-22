@@ -1,4 +1,4 @@
-package timaxa007.tms.util;
+package timaxa007.tms.object;
 
 import timaxa007.module.weight.api.IWeight;
 import net.minecraft.block.Block;

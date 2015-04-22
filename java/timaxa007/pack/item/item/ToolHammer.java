@@ -2,7 +2,7 @@ package timaxa007.pack.item.item;
 
 import net.minecraft.item.ItemStack;
 import timaxa007.pack.item.PackItems;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 
 public class ToolHammer extends ModifiedItem {
 	/*

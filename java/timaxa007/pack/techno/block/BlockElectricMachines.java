@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.tile.TileEntityElectricMachines;
 import timaxa007.tms.CoreTMS;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 
 public class BlockElectricMachines extends ModifiedBlock implements ITileEntityProvider {
 

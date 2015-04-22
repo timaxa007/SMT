@@ -1,7 +1,7 @@
 package timaxa007.pack.techno.item;
 
 import timaxa007.pack.techno.PackTechno;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 
 public class ItemsTechno extends ModifiedItem {
 

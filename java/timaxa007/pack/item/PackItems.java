@@ -86,6 +86,7 @@ public class PackItems implements IPackClass {
 		item.tool_shuriken_be = cfg.get("item", "tool_shuriken", true).getBoolean(true);
 		item.tool_tomahawk_be = cfg.get("item", "tool_tomahawk", true).getBoolean(true);
 		item.tool_shield_be = cfg.get("item", "tool_shield", true).getBoolean(true);
+		item.tool_craft_be = cfg.get("item", "tool_craft", true).getBoolean(true);
 
 		cfg.save();
 

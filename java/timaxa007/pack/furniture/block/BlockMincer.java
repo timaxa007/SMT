@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityMincer;
 import timaxa007.tms.CoreTMS;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 
 public class BlockMincer extends ModifiedBlock implements ITileEntityProvider {
 	private static boolean keepFurnaceInventory;

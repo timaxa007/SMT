@@ -1,7 +1,7 @@
 package timaxa007.pack.stock.item;
 
 import timaxa007.pack.stock.PackStock;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;

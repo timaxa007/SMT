@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import timaxa007.pack.stock.lib.Plants;
 import timaxa007.tms.util.UtilString;
 
 public class TileEntityPlants extends TileEntity {
@@ -25,16 +26,16 @@ public class TileEntityPlants extends TileEntity {
 	private String style;
 
 	public TileEntityPlants() {
-		plant = "";
-		plant_type = "";
-		//parameters_main = Plants.PlantParametersMain.createParameters(0, 0, 0);
-		//parameters_secondary = Plants.PlantParametersSecondary.createParameters(0, 0, 0);
-		growth = 0;
-		fertility = 0;
-		resistance = 0;
-		width = 0;
-		height = 0;
-		style = "";
+		this.plant = "";
+		this.plant_type = "";
+		//this.parameters_main = Plants.PlantParametersMain.create(0, 0, 0);
+		//this.parameters_secondary = Plants.PlantParametersSecondary.create(0, 0, 0);
+		this.growth = 0;
+		this.fertility = 0;
+		this.resistance = 0;
+		this.width = 0;
+		this.height = 0;
+		this.style = "";
 	}
 
 	public void setPlant(String plant) {this.plant = plant;}
@@ -43,13 +44,48 @@ public class TileEntityPlants extends TileEntity {
 	public void setPlantType(String plant_type) {this.plant_type = plant_type;}
 	public String getPlantType() {return plant_type;}
 
-	public void setGrowth(int growth) {this.growth = growth;}
+	public void setPlantParametersMain(int parameters_main) {
+		Plants.PlantParametersMain parameters_main2 = Plants.PlantParametersMain.create(parameters_main);
+		this.growth = parameters_main2.growth;
+		this.fertility = parameters_main2.fertility;
+		this.resistance = parameters_main2.resistance;
+	}
+
+	public void setPlantParametersMain(int growth, int fertility, int resistance) {
+		this.growth = growth;
+		this.fertility = fertility;
+		this.resistance = resistance;
+	}
+
+	public Plants.PlantParametersMain getPlantParametersMain() {
+		Plants.PlantParametersMain parameters_main = Plants.PlantParametersMain.create(this.growth, this.fertility, this.resistance);
+		return parameters_main;
+	}
+	/*
+	public int getGrowth() {return parameters_main.growth;}
+	public int getFertility() {return parameters_main.fertility;}
+	public int getResistance() {return parameters_main.resistance;}
+	 */
+
+	public void setGrowth(int growth) {
+		if (growth <= Byte.MIN_VALUE) this.growth = Byte.MIN_VALUE;
+		else if (growth >= Byte.MAX_VALUE) this.growth = Byte.MAX_VALUE;
+		else this.growth = growth;
+	}
 	public int getGrowth() {return growth;}
 
-	public void setFertility(int fertility) {this.fertility = fertility;}
+	public void setFertility(int fertility) {
+		if (fertility <= Byte.MIN_VALUE) this.fertility = Byte.MIN_VALUE;
+		else if (fertility >= Byte.MAX_VALUE) this.fertility = Byte.MAX_VALUE;
+		else this.fertility = fertility;
+	}
 	public int getFertility() {return fertility;}
 
-	public void setResistance(int resistance) {this.resistance = resistance;}
+	public void setResistance(int resistance) {
+		if (resistance <= Byte.MIN_VALUE) this.resistance = Byte.MIN_VALUE;
+		else if (resistance >= Byte.MAX_VALUE) this.resistance = Byte.MAX_VALUE;
+		else this.resistance = resistance;
+	}
 	public int getResistance() {return resistance;}
 
 	public void setWidth(int width) {this.width = width;}
@@ -61,6 +97,12 @@ public class TileEntityPlants extends TileEntity {
 	public void setStyle(String style) {this.style = style;}
 	public String getStyle() {return style;}
 
+	public void updateEntity() {
+		if (worldObj.getWorldTime() % (20 * 10) == 0) {
+			setFertility(++fertility);
+		}
+		//parameters_main = Plants.PlantParametersMain.create(growth, fertility, resistance);
+	}
 	/*
 	public void updateEntity() {
 		int updt = 1;
@@ -124,16 +166,15 @@ public class TileEntityPlants extends TileEntity {
 		super.readFromNBT(nbt);
 		if (nbt.hasKey("Plant")) plant = nbt.getString("Plant"); else plant = "";
 		if (nbt.hasKey("PlantType")) plant_type = nbt.getString("PlantType"); else plant = "";
-		/*
-		if (nbt.hasKey("PlantParametersMain")) 
-			parameters_main.createParameters(nbt.getInteger("PlantParametersMain"));
-		if (nbt.hasKey("PlantParametersSecondary")) 
-			parameters_secondary.createParameters(nbt.getInteger("PlantParametersSecondary"));
-		 */
-		if (nbt.hasKey("Growth")) growth = (int)nbt.getByte("Growth");
-		if (nbt.hasKey("Fertility")) fertility = (int)nbt.getByte("Fertility");
-		if (nbt.hasKey("Resistance")) resistance = (int)nbt.getByte("Resistance");
 
+		if (nbt.hasKey("PlantParametersMain")) {
+			Plants.PlantParametersMain parameters_main = Plants.PlantParametersMain.create(nbt.getInteger("PlantParametersMain"));
+			this.growth = parameters_main.growth;
+			this.fertility = parameters_main.fertility;
+			this.resistance = parameters_main.resistance;
+		}
+		/*if (nbt.hasKey("PlantParametersSecondary")) 
+			parameters_secondary.create(nbt.getInteger("PlantParametersSecondary"));*/
 		if (nbt.hasKey("Width")) width = (int)nbt.getByte("Width");
 		if (nbt.hasKey("Height")) height = (int)nbt.getByte("Height");
 		if (nbt.hasKey("Style")) style = nbt.getString("Style"); else style = "";
@@ -146,12 +187,9 @@ public class TileEntityPlants extends TileEntity {
 		if (UtilString.hasString(plant)) nbt.setString("Plant", plant);
 		if (UtilString.hasString(plant_type)) nbt.setString("PlantType", plant_type);
 
-		//nbt.setInteger("PlantParametersMain", parameters_main.parameters_plant_main);
+		Plants.PlantParametersMain parameters_main = Plants.PlantParametersMain.create(this.growth, this.fertility, this.resistance);
+		nbt.setInteger("PlantParametersMain", parameters_main.getPlantParametersMain());
 		//nbt.setInteger("PlantParametersSecondary", parameters_secondary.parameters_plant_secondary);
-
-		nbt.setByte("Growth", (byte)growth);
-		nbt.setByte("Fertility", (byte)fertility);
-		nbt.setByte("Resistance", (byte)resistance);
 
 		nbt.setByte("Width", (byte)width);
 		nbt.setByte("Height", (byte)height);

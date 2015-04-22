@@ -11,6 +11,8 @@ public class RegisterMessage {
 		network.registerMessage(MessagePackItemsServer.Handler.class, MessagePackItemsServer.class, id++, Side.SERVER);
 		network.registerMessage(MessagePackItemsClient.Handler.class, MessagePackItemsClient.class, id++, Side.CLIENT);
 		network.registerMessage(MessageOpenGui.Handler.class, MessageOpenGui.class, id++, Side.SERVER);
+		network.registerMessage(MessageInteractionEntity.Handler.class, MessageInteractionEntity.class, id++, Side.SERVER);
+		network.registerMessage(MessageInteractionBlock.Handler.class, MessageInteractionBlock.class, id++, Side.SERVER);
 	}
 
 }

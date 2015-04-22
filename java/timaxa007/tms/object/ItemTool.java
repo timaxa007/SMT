@@ -1,4 +1,4 @@
-package timaxa007.tms.util;
+package timaxa007.tms.object;
 
 public class ItemTool extends ModifiedItem {
 	//--------------------------------------------------------------------------------------------------------------

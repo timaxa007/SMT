@@ -6,7 +6,7 @@ import java.util.Random;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.lib.AddBlockCloth;
 import timaxa007.pack.furniture.tile.TileEntityClothBlocks;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

@@ -1,7 +1,7 @@
 package timaxa007.pack.magic.item;
 
 import timaxa007.pack.magic.PackMagic;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 
 public class ItemsMagic extends ModifiedItem {
 

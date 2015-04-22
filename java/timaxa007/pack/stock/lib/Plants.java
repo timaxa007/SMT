@@ -137,7 +137,7 @@ public class Plants {
 	}
 	 */
 	public Plants setPlantStats(int growth, int fertility, int resistance) {
-		this.parameters_main = PlantParametersMain.createParameters(growth, fertility, resistance);
+		this.parameters_main = Plants.PlantParametersMain.create(growth, fertility, resistance);
 		return this;
 	}
 
@@ -174,37 +174,59 @@ public class Plants {
 	//--------------------------------------------------------------------------
 	public static class PlantParametersMain {
 
-		public int parameters_plant_main;
-		/*(parameters_plant) или (growth, fertility, resistance)*/
 		public byte growth;
 		public byte fertility;
 		public byte resistance;
 		//Тут может быть четвёртый параметр быть. (0 x FF FF FF FF).
 
-		public static PlantParametersMain createParameters(int growth, int fertility, int resistance) {
-			return new PlantParametersMain((byte)growth, (byte)fertility, (byte)resistance);
-		}
-
-		public static PlantParametersMain createParameters(byte growth, byte fertility, byte resistance) {
-			return new PlantParametersMain(growth, fertility, resistance);
-		}
-
-		public static PlantParametersMain createParameters(int parameters_plant_main) {
-			return new PlantParametersMain(parameters_plant_main);
-		}
-
 		public PlantParametersMain(byte growth, byte fertility, byte resistance) {
 			this.growth = growth;
 			this.fertility = fertility;
 			this.resistance = resistance;
-			this.parameters_plant_main = (int)growth << 16 | (int)fertility << 8 | (int)resistance;
 		}
 
 		public PlantParametersMain(int parameters_plant_main) {
 			this.growth = (byte)(parameters_plant_main >> 16 & 0xFF);
 			this.fertility = (byte)(parameters_plant_main >> 8 & 0xFF);
 			this.resistance = (byte)(parameters_plant_main & 0xFF);
-			this.parameters_plant_main = parameters_plant_main;
+		}
+
+		public static PlantParametersMain create(int growth, int fertility, int resistance) {
+			return new PlantParametersMain((byte)growth, (byte)fertility, (byte)resistance);
+		}
+
+		public static PlantParametersMain create(byte growth, byte fertility, byte resistance) {
+			return new PlantParametersMain(growth, fertility, resistance);
+		}
+
+		public static PlantParametersMain create(int parameters_plant_main) {
+			return new PlantParametersMain(parameters_plant_main);
+		}
+
+		public void edit(int growth, int fertility, int resistance) {
+			edit((byte)growth, (byte)fertility, (byte)resistance);
+		}
+
+		public void edit(byte growth, byte fertility, byte resistance) {
+			this.growth = growth;
+			this.fertility = fertility;
+			this.resistance = resistance;
+		}
+
+		public void editGrowth(int growth) {
+			this.growth = (byte)growth;
+		}
+
+		public void editFertility(int fertility) {
+			this.fertility = (byte)fertility;
+		}
+
+		public void editResistance(int resistance) {
+			this.resistance = (byte)resistance;
+		}
+
+		public int getPlantParametersMain() {
+			return (int)this.growth << 16 | (int)this.fertility << 8 | (int)resistance;
 		}
 
 		public String toString() {
@@ -269,7 +291,7 @@ public class Plants {
 		public static final PlantType crop_cap = new PlantType("Crop Cap");
 		public static final PlantType mushroom = new PlantType("Mushroom");
 		public static final PlantType stem = new PlantType("Stem");
-		//public static final PlantType squash = new PlantType("Squash");
+		//public static final PlantType squash = new PlantType("Squash");//type for plod
 		public static final PlantType shrub = new PlantType("Shrub");
 		public static final PlantType sapling = new PlantType("Sapling");
 		public static final PlantType tree = new PlantType("Tree");

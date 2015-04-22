@@ -5,7 +5,7 @@ import java.util.List;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.tile.TileEntityElectricWires;
 import timaxa007.tms.lib.AddTextureModel;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 import timaxa007.tms.util.UtilString;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

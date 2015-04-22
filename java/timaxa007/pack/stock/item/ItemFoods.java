@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.lib.FoodForItem;
 import timaxa007.tms.CoreTMS;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -19,7 +19,7 @@ import timaxa007.pack.stock.item.ItemPlants;
 import timaxa007.pack.stock.lib.Plants;
 import timaxa007.pack.stock.tile.TileEntityPlants;
 import timaxa007.tms.lib.AddTextureModel;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -48,7 +48,7 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 			if (!Plants.isNull(tile.getPlant()))
 				return ItemPlants.addNBT(
 						tile.getPlant(), tile.getPlantType(), 
-						tile.getGrowth(), tile.getFertility(), tile.getResistance(), 
+						tile.getPlantParametersMain(), 
 						tile.getWidth(), tile.getHeight());
 		}
 		return null;

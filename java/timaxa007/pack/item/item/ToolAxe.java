@@ -1,7 +1,7 @@
 package timaxa007.pack.item.item;
 
 import timaxa007.pack.item.PackItems;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 
 public class ToolAxe extends ModifiedItem {
 

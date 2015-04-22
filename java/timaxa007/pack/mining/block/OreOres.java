@@ -4,7 +4,7 @@ import java.util.List;
 
 import timaxa007.pack.mining.PackMining;
 import timaxa007.pack.mining.tile.TileEntityOreOres;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

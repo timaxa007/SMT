@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.tile.TileEntityMagicMachines;
 import timaxa007.tms.CoreTMS;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 
 public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProvider {
 

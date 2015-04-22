@@ -1,7 +1,7 @@
 package timaxa007.pack.stock.item;
 
 import timaxa007.pack.stock.PackStock;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

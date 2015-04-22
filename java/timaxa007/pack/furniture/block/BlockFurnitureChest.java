@@ -12,7 +12,7 @@ import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
 import timaxa007.tms.CoreTMS;
 import timaxa007.tms.lib.ActionModel;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 
 public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityProvider {
 

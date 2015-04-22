@@ -1,7 +1,7 @@
 package timaxa007.pack.stock.item;
 
 import timaxa007.pack.stock.PackStock;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 
 public class ItemNatureProduct extends ModifiedItem {
 

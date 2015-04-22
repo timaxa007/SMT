@@ -7,7 +7,7 @@ import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.lib.FoodForBlock;
 import timaxa007.pack.stock.tile.TileEntityFoods;
 import timaxa007.tms.lib.ActionModel;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

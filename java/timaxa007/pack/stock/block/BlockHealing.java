@@ -4,7 +4,7 @@ import java.util.List;
 
 import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.tile.TileEntityHealing;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;

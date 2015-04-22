@@ -20,7 +20,7 @@ import timaxa007.pack.weapon.PackWeapons;
 import timaxa007.pack.weapon.lib.WeaponFor;
 import timaxa007.pack.weapon.packet.MessageActionWeapons;
 import timaxa007.tms.CoreTMS;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

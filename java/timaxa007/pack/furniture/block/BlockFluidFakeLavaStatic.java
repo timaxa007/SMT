@@ -1,7 +1,7 @@
 package timaxa007.pack.furniture.block;
 
 import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 import net.minecraft.block.material.Material;
 
 public class BlockFluidFakeLavaStatic extends ModifiedBlock {

@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import timaxa007.pack.stock.tile.TileEntityPetalled;
-import timaxa007.tms.util.ModifiedBlock;
+import timaxa007.tms.object.ModifiedBlock;
 
 public class BlockPetalled extends ModifiedBlock implements ITileEntityProvider {
 

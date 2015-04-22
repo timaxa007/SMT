@@ -67,14 +67,25 @@ public class UtilRender {
 		return (int)colors[0] << 16 | (int)colors[1] << 8 | (int)colors[2];
 	}
 
-	public static void setColor3(int color_hex) {
+	public static void setColorGL(int color_hex) {
+		float a = (color_hex >> 24 & 0xFF) / (float)0xFF;
+		float r = (color_hex >> 16 & 0xFF) / (float)0xFF;
+		float g = (color_hex >> 8 & 0xFF) / (float)0xFF;
+		float b = (color_hex & 0xFF) / (float)0xFF;
+		if (a == 0.0F)
+			GL11.glColor3f(r, g, b);
+		else
+			GL11.glColor4f(r, g, b, a);
+	}
+
+	public static void setColor3GL(int color_hex) {
 		float r = (color_hex >> 16 & 0xFF) / (float)0xFF;
 		float g = (color_hex >> 8 & 0xFF) / (float)0xFF;
 		float b = (color_hex & 0xFF) / (float)0xFF;
 		GL11.glColor3f(r, g, b);
 	}
 
-	public static void setColor4(int color_hex) {
+	public static void setColor4GL(int color_hex) {
 		float r = (color_hex >> 16 & 0xFF) / (float)0xFF;
 		float g = (color_hex >> 8 & 0xFF) / (float)0xFF;
 		float b = (color_hex & 0xFF) / (float)0xFF;
@@ -163,7 +174,7 @@ public class UtilRender {
 	}
 
 	public static int colorMixHigherAlpha(int color_hex1, int color_hex2) {
-		
+
 		int a1 = (color_hex1 >> 24 & 0xFF);
 		int r1 = (color_hex1 >> 16 & 0xFF);
 		int g1 = (color_hex1 >> 8 & 0xFF);

@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.util.IBackpack;
 import timaxa007.tms.CoreTMS;
-import timaxa007.tms.util.ModifiedItem;
+import timaxa007.tms.object.ModifiedItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
