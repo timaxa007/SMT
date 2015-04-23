@@ -256,6 +256,10 @@ public class UtilTMS {
 		//-------------------------------
 	}
 	//-----------------------------------------------------------------------------------------------
+	public static String isSides() {
+		return ((isServerSide() && isClientSide()) ? "Common" : (isServerSide() ? "Server" : (isClientSide() ? "Client" : "None")));
+	}
+
 	public static String isSide() {
 		return (isServerSide() ? "Server" : (isClientSide() ? "Client" : "None"));
 	}
@@ -270,7 +274,6 @@ public class UtilTMS {
 
 	public static World getWorldClient() {
 		return FMLClientHandler.instance().getWorldClient();
-
 	}
 
 	public static EntityPlayer getPlayerClient() {

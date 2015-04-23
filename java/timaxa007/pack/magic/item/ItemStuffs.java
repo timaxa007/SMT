@@ -58,6 +58,57 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 		setFull3D();
 	}
 	//--------------------------------------------------------------------------------------------------------------
+	public void onUpdate(ItemStack is, World world, Entity entity, int tick, boolean flag) {
+
+		if (entity instanceof EntityPlayer) {
+			double d0 = 8.0D;
+
+			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double)entity.posX, (double)entity.posY, (double)entity.posZ, (double)(entity.posX + 1), (double)(entity.posY + 1), (double)(entity.posZ + 1)).expand(d0, d0, d0);
+			List list = world.getEntitiesWithinAABB(Entity.class, axisalignedbb);
+			Iterator iterator = list.iterator();
+			Entity entity2 = null;
+			//EntityItem entity_item = null;
+
+			while(iterator.hasNext()) {
+				entity2 = (Entity)iterator.next();
+
+				if (entity2 instanceof EntityItem) {
+					/*EntityXPOrb*/
+					if (entity != null) {
+						double d1 = (entity.posX - entity2.posX) / d0;
+						double d2 = (entity.posY + (double)entity.getEyeHeight() - entity2.posY) / d0;
+						double d3 = (entity.posZ - entity2.posZ) / d0;
+						double d4 = Math.sqrt(d1 * d1 + d2 * d2 + d3 * d3);
+						double d5 = 1.0D - d4;
+
+						if (d5 > 0.0D) {
+							d5 *= d5;
+							entity2.motionX += d1 / d4 * d5 * 0.1D;
+							entity2.motionY += d2 / d4 * d5 * 0.1D;
+							entity2.motionZ += d3 / d4 * d5 * 0.1D;
+						}
+					}
+
+					entity2.moveEntity(entity2.motionX, entity2.motionY, entity2.motionZ);
+					float f = 0.98F;
+
+					if (entity2.onGround) {
+						f = entity2.worldObj.getBlock(MathHelper.floor_double(entity2.posX), MathHelper.floor_double(entity2.boundingBox.minY) - 1, MathHelper.floor_double(entity2.posZ)).slipperiness * 0.98F;
+					}
+
+					entity2.motionX *= (double)f;
+					entity2.motionY *= 0.9800000190734863D;
+					entity2.motionZ *= (double)f;
+
+					if (entity2.onGround) {
+						entity2.motionY *= -0.8999999761581421D;
+					}
+
+				}
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
