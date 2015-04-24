@@ -44,7 +44,9 @@ public class UtilString {
 		return Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) || Keyboard.isKeyDown(Keyboard.KEY_RCONTROL);
 	}
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public static boolean isAltKeyDown() {
 		return Keyboard.isKeyDown(Keyboard.KEY_LMENU) || Keyboard.isKeyDown(Keyboard.KEY_RMENU);
 	}

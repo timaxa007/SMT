@@ -4,8 +4,8 @@ import net.minecraft.util.StatCollector;
 import timaxa007.module.environment.Humidity;
 import timaxa007.module.environment.Temperature;
 import timaxa007.tms.util.UtilString;
-/**
- * Use in <b>ItemPlants</b> and <b>BlockPlants</b>.
+
+/**Use in <b>ItemPlants</b> and <b>BlockPlants</b> (<i>TileEntityPlants</i>).
  * @author timaxa007
  * @param 
  * @param 
@@ -25,23 +25,25 @@ public class Plants {
 	private String type;
 	//private int color_hex;
 
-	/**0 x <b>F1</b> <b>F2</b> <b>F3</b> :<br>
-	 * <b>F1</b> - growth (0 - 255); <br>
-	 * <b>F2</b> - fertility (0 - 255);<br>
-	 * <b>F3</b> - resistance (0 - 255);**/
 	private PlantParametersMain parameters_main;
 	private Temperature temperature;
 	private Humidity humidity;
 
 	private String texture;
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public Plants() {id = nextID();list[id] = this;}
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public Plants(int id) {checkID(this, id);this.id = id;list[id] = this;}
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public Plants(int id, String tag) {
 		checkID(this, id);checkTag(this, tag);
 		this.id = id;this.tag = tag;list[id] = this;
@@ -136,14 +138,15 @@ public class Plants {
 		return color_hex == 0 ? 0xFFFFFF : color_hex;
 	}
 	 */
-	public Plants setPlantStats(int growth, int fertility, int resistance) {
-		this.parameters_main = Plants.PlantParametersMain.create(growth, fertility, resistance);
+	public Plants setPlantStats(int growth, int fertility, int resistance, int protection) {
+		this.parameters_main = Plants.PlantParametersMain.create(growth, fertility, resistance, protection);
 		return this;
 	}
 
 	public int getGrowth() {return parameters_main.growth;}
 	public int getFertility() {return parameters_main.fertility;}
 	public int getResistance() {return parameters_main.resistance;}
+	public int getProtection() {return parameters_main.protection;}
 
 	public Plants setTemperatures(float temperature, float temperature_min, float temperature_max) {
 		this.temperature = Temperature.createTemperature(temperature, temperature_min, temperature_max);
@@ -174,81 +177,84 @@ public class Plants {
 	//--------------------------------------------------------------------------
 	public static class PlantParametersMain {
 
-		public byte growth;
-		public byte fertility;
-		public byte resistance;
-		//Тут может быть четвёртый параметр быть. (0 x FF FF FF FF).
+		/****/
+		public int growth;
+		/****/
+		public int fertility;
+		/****/
+		public int resistance;
+		/****/
+		public int protection;
 
-		public PlantParametersMain(byte growth, byte fertility, byte resistance) {
+		/** 0 x FF EE CD <br>
+		 * @param growth (0 - 255) = FF - Насколько быстро будет расти/How quickly will grow (<i>ещё думаю о качестве роста</i>).<br>
+		 * @param fertility (0 - 255) = EE - плодородие/fertility 
+		 * (<i>пока-что задумался об том, чтобы разделить ещё на два параметра [количество/качество - (0-15)]</i>),<br>
+		 * @param resistance (0 - 15) = C - сопротивление к сорнякам/resistance to weeds,<br>
+		 * @param protection (0 - 15) = D - защита от топтания/protection from trampling.<br>
+		 * **/
+		public PlantParametersMain(int growth, int fertility, int resistance, int protection) {
 			this.growth = growth;
 			this.fertility = fertility;
 			this.resistance = resistance;
+			this.protection = protection;
 		}
 
 		public PlantParametersMain(int parameters_plant_main) {
-			this.growth = (byte)(parameters_plant_main >> 16 & 0xFF);
-			this.fertility = (byte)(parameters_plant_main >> 8 & 0xFF);
-			this.resistance = (byte)(parameters_plant_main & 0xFF);
+			this.growth = (parameters_plant_main >> 16 & 0xFF);
+			this.fertility = (parameters_plant_main >> 8 & 0xFF);
+			this.resistance = (parameters_plant_main >> 4 & 0xF);
+			this.protection = (parameters_plant_main & 0xF);
 		}
 
-		public static PlantParametersMain create(int growth, int fertility, int resistance) {
-			return new PlantParametersMain((byte)growth, (byte)fertility, (byte)resistance);
-		}
-
-		public static PlantParametersMain create(byte growth, byte fertility, byte resistance) {
-			return new PlantParametersMain(growth, fertility, resistance);
+		public static PlantParametersMain create(int growth, int fertility, int resistance, int protection) {
+			return new PlantParametersMain(growth, fertility, resistance, protection);
 		}
 
 		public static PlantParametersMain create(int parameters_plant_main) {
 			return new PlantParametersMain(parameters_plant_main);
 		}
 
-		public void edit(int growth, int fertility, int resistance) {
-			edit((byte)growth, (byte)fertility, (byte)resistance);
-		}
-
-		public void edit(byte growth, byte fertility, byte resistance) {
-			this.growth = growth;
-			this.fertility = fertility;
-			this.resistance = resistance;
+		public void edit(int growth, int fertility, int resistance, int protection) {
+			editGrowth(growth);
+			editFertility(fertility);
+			editResistance(resistance);
+			editProtection(protection);
 		}
 
 		public void editGrowth(int growth) {
-			this.growth = (byte)growth;
+			this.growth = growth;
 		}
 
 		public void editFertility(int fertility) {
-			this.fertility = (byte)fertility;
+			this.fertility = fertility;
 		}
 
 		public void editResistance(int resistance) {
-			this.resistance = (byte)resistance;
+			this.resistance = resistance;
+		}
+
+		public void editProtection(int protection) {
+			this.protection = protection;
 		}
 
 		public int getPlantParametersMain() {
-			return (int)this.growth << 16 | (int)this.fertility << 8 | (int)resistance;
+			return this.growth << 16 | this.fertility << 8 | this.resistance << 4 | protection;
 		}
 
 		public String toString() {
-			return "(" + this.growth + ", " + this.fertility + ", " + this.resistance + ")";
+			return "(" + this.growth + ", " + this.fertility + ", " + this.resistance + ", " + this.protection + ")";
 		}
 
 	}
 	//--------------------------------------------------------------------------
 	public static class PlantParametersSecondary {
 
-		public int parameters_plant_secondary;
-		/*(parameters_plant_secondary) или (fertilizer, humidity, temperature)*/
-		public byte fertilizer;
-		public byte humidity;
-		public byte temperature;
-		//Тут может быть четвёртый параметр быть. (0 x FF FF FF FF).
+		public int fertilizer;
+		public int humidity;
+		public int temperature;
 
 		public static PlantParametersSecondary createParameters(int fertilizer, int humidity, int temperature) {
-			return new PlantParametersSecondary((byte)fertilizer, (byte)humidity, (byte)temperature);
-		}
-
-		public static PlantParametersSecondary createParameters(byte fertilizer, byte humidity, byte temperature) {
 			return new PlantParametersSecondary(fertilizer, humidity, temperature);
 		}
 
@@ -256,18 +262,38 @@ public class Plants {
 			return new PlantParametersSecondary(parameters_plant_secondary);
 		}
 
-		public PlantParametersSecondary(byte fertilizer, byte humidity, byte temperature) {
+		public PlantParametersSecondary(int fertilizer, int humidity, int temperature) {
 			this.fertilizer = fertilizer;
 			this.humidity = humidity;
 			this.temperature = temperature;
-			this.parameters_plant_secondary = (int)fertilizer << 16 | (int)humidity << 8 | (int)temperature;
 		}
 
 		public PlantParametersSecondary(int parameters_plant_secondary) {
-			this.fertilizer = (byte)(parameters_plant_secondary >> 16 & 0xFF);
-			this.humidity = (byte)(parameters_plant_secondary >> 8 & 0xFF);
-			this.temperature = (byte)(parameters_plant_secondary & 0xFF);
-			this.parameters_plant_secondary = parameters_plant_secondary;
+			this.fertilizer = (parameters_plant_secondary >> 16 & 0xFF);
+			this.humidity = (parameters_plant_secondary >> 8 & 0xFF);
+			this.temperature = (parameters_plant_secondary & 0xFF);
+		}
+
+		public void edit(int fertilizer, int humidity, int temperature) {
+			editFertilizer(fertilizer);
+			editHumidity(humidity);
+			editTemperature(temperature);
+		}
+
+		public void editFertilizer(int fertilizer) {
+			this.fertilizer = fertilizer;
+		}
+
+		public void editHumidity(int humidity) {
+			this.humidity = humidity;
+		}
+
+		public void editTemperature(int temperature) {
+			this.temperature = temperature;
+		}
+
+		public int getPlantParametersSecondary() {
+			return this.fertilizer << 16 | this.humidity << 8 | temperature;
 		}
 
 		public String toString() {
@@ -298,13 +324,19 @@ public class Plants {
 		public static final PlantType palma = new PlantType("Palma");
 		public static final PlantType cactus = new PlantType("Cactus");
 
-		/**It is not recommended to use this method.**/@Deprecated
+		/**Не рекомендуется использовать этот метод.<br>
+		 * It is not recommended to use this method.**/
+		@Deprecated
 		public PlantType() {id_type = nextID();list_type_plant[id_type] = this;}
 
-		/**It is not recommended to use this method.**/@Deprecated
+		/**Не рекомендуется использовать этот метод.<br>
+		 * It is not recommended to use this method.**/
+		@Deprecated
 		public PlantType(int id_type) {checkID(this, id_type);this.id_type = id_type;list_type_plant[id_type] = this;}
 
-		/**It is not recommended to use this method.**/@Deprecated
+		/**Не рекомендуется использовать этот метод.<br>
+		 * It is not recommended to use this method.**/
+		@Deprecated
 		public PlantType(int id_type, String type_plant) {
 			checkID(this, id_type);checkTag(this, type_plant);
 			this.id_type = id_type;this.type_plant = type_plant;list_type_plant[id_type] = this;

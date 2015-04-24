@@ -19,11 +19,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPlants extends ModifiedItem {
 	/*
-@SideOnly(Side.CLIENT) private IIcon icon_a;
-@SideOnly(Side.CLIENT) private IIcon icon_b;
+	@SideOnly(Side.CLIENT) private IIcon icon_a;
+	@SideOnly(Side.CLIENT) private IIcon icon_b;
 	 */
 
-	public static Plants test_plant = new Plants("test_plant").setType("Plant").setPlantStats(3, 2, 1).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
+	public static Plants test_plant = new Plants("test_plant").setType("Plant").setPlantStats(3, 2, 1, 2).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
 	public ItemPlants(String tag) {
 		super(tag);
@@ -49,19 +49,15 @@ public class ItemPlants extends ModifiedItem {
 					//-----------------------------------------------
 					if (nbt.hasKey("PlantParametersMain"))
 						tile.setPlantParametersMain(nbt.getInteger("PlantParametersMain"));
-					/*
-					if (nbt.hasKey("Growth")) tile.setGrowth(nbt.getByte("Growth"));
-					if (nbt.hasKey("Fertility")) tile.setFertility(nbt.getByte("Fertility"));
-					if (nbt.hasKey("Resistance")) tile.setResistance(nbt.getByte("Resistance"));
-					 */
 					//-----------------------------------------------
 					if (nbt.hasKey("Width")) tile.setWidth(nbt.getByte("Width"));
 					if (nbt.hasKey("Height")) tile.setHeight(nbt.getByte("Height"));
 					//-----------------------------------------------
 					return true;
-				} else return false;
-			} else return false;
+				}
+			}
 		}
+		return false;
 	}
 
 	public String getUnlocalizedName(ItemStack is) {
@@ -85,12 +81,9 @@ public class ItemPlants extends ModifiedItem {
 					list.add("Growth: " + (parameters_main.growth) + ".");
 					list.add("Fertility: " + (parameters_main.fertility) + ".");
 					list.add("Resistance: " + (parameters_main.resistance) + ".");
+					list.add("Protection: " + (parameters_main.protection) + ".");
 				}
-				/*
-				if (nbt.hasKey("Growth")) list.add("Growth: " + nbt.getByte("Growth") + ".");
-				if (nbt.hasKey("Fertility")) list.add("Fertility: " + nbt.getByte("Fertility") + ".");
-				if (nbt.hasKey("Resistance")) list.add("Resistance: " + nbt.getByte("Resistance") + ".");
-				 */
+
 				if (nbt.hasKey("Width")) list.add("Width: " + nbt.getByte("Width") + ".");
 				if (nbt.hasKey("Height")) list.add("Height: " + nbt.getByte("Height") + ".");
 			}
@@ -106,19 +99,25 @@ public class ItemPlants extends ModifiedItem {
 						plant.getType(), 
 						plant.getGrowth(), 
 						plant.getFertility(), 
-						plant.getResistance()
+						plant.getResistance(), 
+						plant.getProtection()
 						));
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	public static ItemStack addNBT(String plant, String plant_type, int growth, int fertility, int resistance) {
-		return addNBT(plant, plant_type, growth, fertility, resistance, 1, 1);
+	public static ItemStack addNBT(String plant, String plant_type, 
+			int growth, int fertility, int resistance, int protection) {
+		return addNBT(plant, plant_type, growth, fertility, resistance, protection, 1, 1);
 	}
 
-	public static ItemStack addNBT(String plant, String plant_type, int growth, int fertility, int resistance, int width, int height) {
-		return addNBT(plant, plant_type, Plants.PlantParametersMain.create(growth, fertility, resistance), width, height);
+	public static ItemStack addNBT(String plant, String plant_type, 
+			int growth, int fertility, int resistance, int protection, 
+			int width, int height) {
+		return addNBT(plant, plant_type, 
+				Plants.PlantParametersMain.create(growth, fertility, resistance, protection), 
+				width, height);
 	}
 
 	public static ItemStack addNBT(String plant, String plant_type, Plants.PlantParametersMain parameters_main, 
@@ -128,11 +127,6 @@ public class ItemPlants extends ModifiedItem {
 		nbt.setString("Plant", plant);
 		nbt.setString("PlantType", plant_type);
 		nbt.setInteger("PlantParametersMain", parameters_main.getPlantParametersMain());
-		/*
-		nbt.setByte("Growth", (byte)par3);
-		nbt.setByte("Fertility", (byte)par4);
-		nbt.setByte("Resistance", (byte)par5);
-		 */
 		nbt.setByte("Width", (byte)width);
 		nbt.setByte("Height", (byte)height);
 		is.setTagCompound(nbt);

@@ -23,13 +23,19 @@ public class UpgradeFor {
 	private String texture1;
 	private String texture2;
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public UpgradeFor() {id = nextID();list[id] = this;}
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public UpgradeFor(int id) {checkID(this, id);this.id = id;list[id] = this;}
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public UpgradeFor(int id, String tag) {
 		checkID(this, id);checkTag(this, tag);
 		this.id = id;this.tag = tag;list[id] = this;

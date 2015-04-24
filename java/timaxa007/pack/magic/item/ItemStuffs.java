@@ -73,8 +73,9 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 				entity2 = (Entity)iterator.next();
 
 				if (entity2 instanceof EntityItem) {
+					EntityItem entity_item = (EntityItem)entity2;
 					/*EntityXPOrb*/
-					if (entity != null) {
+					if (entity2 != null && entity_item.delayBeforeCanPickup == 0) {
 						double d1 = (entity.posX - entity2.posX) / d0;
 						double d2 = (entity.posY + (double)entity.getEyeHeight() - entity2.posY) / d0;
 						double d3 = (entity.posZ - entity2.posZ) / d0;

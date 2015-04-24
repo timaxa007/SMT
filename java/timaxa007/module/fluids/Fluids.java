@@ -1,7 +1,12 @@
 package timaxa007.module.fluids;
 
-import timaxa007.tms.util.UtilString;
+import java.util.Map;
+
 import net.minecraft.util.StatCollector;
+import timaxa007.tms.util.UtilString;
+
+import com.google.common.collect.Maps;
+
 /**
  * @author timaxa007
  * @param 
@@ -11,9 +16,9 @@ import net.minecraft.util.StatCollector;
 public class Fluids {
 
 	public static final Fluids[] list = new Fluids[4096];
-	//private static Map hashMap = new HashMap();
+	public static Map<String, Fluids> hashMap = Maps.newHashMap();
 
-	public static final Fluids empty = new Fluids(0);
+	public static final Fluids empty = new Fluids("");
 
 	public int id;
 	public String tag;
@@ -23,7 +28,9 @@ public class Fluids {
 	private float temperature;
 	private String texture;
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public Fluids() {
 		id = nextID();
 		list[id] = this;
@@ -32,7 +39,9 @@ public class Fluids {
 		temperature = 0.0F;
 	}
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public Fluids(int id) {
 		this.id = id;
 		list[id] = this;
@@ -41,7 +50,9 @@ public class Fluids {
 		temperature = 0.0F;
 	}
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public Fluids(int id, String tag) {
 		checkTag(this, tag);
 		this.id = id;
@@ -100,6 +111,7 @@ public class Fluids {
 	public static boolean isNull(Fluids fluid) {
 		return fluid == null || fluid == empty;
 	}
+
 	//--------------------------------------------------------
 	public Fluids setName(String name) {
 		this.name = name;
@@ -185,7 +197,9 @@ public class Fluids {
 		private float temperature_max;
 		private int igniter;
 
-		/**It is not recommended to use this method.**/@Deprecated
+		/**Не рекомендуется использовать этот метод.<br>
+		 * It is not recommended to use this method.**/
+		@Deprecated
 		public TypeFluid(int id) {
 			this.id = id;
 			list_type[id] = this;

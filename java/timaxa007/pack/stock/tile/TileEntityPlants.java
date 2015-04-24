@@ -19,6 +19,7 @@ public class TileEntityPlants extends TileEntity {
 	private int growth;
 	private int fertility;
 	private int resistance;
+	private int protection;
 
 	private int width;
 	private int height;
@@ -33,6 +34,7 @@ public class TileEntityPlants extends TileEntity {
 		this.growth = 0;
 		this.fertility = 0;
 		this.resistance = 0;
+		this.protection = 0;
 		this.width = 0;
 		this.height = 0;
 		this.style = "";
@@ -49,16 +51,19 @@ public class TileEntityPlants extends TileEntity {
 		this.growth = parameters_main2.growth;
 		this.fertility = parameters_main2.fertility;
 		this.resistance = parameters_main2.resistance;
+		this.protection = parameters_main2.protection;
 	}
 
-	public void setPlantParametersMain(int growth, int fertility, int resistance) {
+	public void setPlantParametersMain(int growth, int fertility, int resistance, int protection) {
 		this.growth = growth;
 		this.fertility = fertility;
 		this.resistance = resistance;
+		this.protection = protection;
 	}
 
 	public Plants.PlantParametersMain getPlantParametersMain() {
-		Plants.PlantParametersMain parameters_main = Plants.PlantParametersMain.create(this.growth, this.fertility, this.resistance);
+		Plants.PlantParametersMain parameters_main = 
+				Plants.PlantParametersMain.create(this.growth, this.fertility, this.resistance, this.protection);
 		return parameters_main;
 	}
 	/*
@@ -68,25 +73,32 @@ public class TileEntityPlants extends TileEntity {
 	 */
 
 	public void setGrowth(int growth) {
-		if (growth <= Byte.MIN_VALUE) this.growth = Byte.MIN_VALUE;
-		else if (growth >= Byte.MAX_VALUE) this.growth = Byte.MAX_VALUE;
+		if (growth <= 0) this.growth = 0;
+		else if (growth >= 255) this.growth = 255;
 		else this.growth = growth;
 	}
 	public int getGrowth() {return growth;}
 
 	public void setFertility(int fertility) {
-		if (fertility <= Byte.MIN_VALUE) this.fertility = Byte.MIN_VALUE;
-		else if (fertility >= Byte.MAX_VALUE) this.fertility = Byte.MAX_VALUE;
+		if (fertility <= 0) this.fertility = 0;
+		else if (fertility >= 255) this.fertility = 255;
 		else this.fertility = fertility;
 	}
 	public int getFertility() {return fertility;}
 
 	public void setResistance(int resistance) {
-		if (resistance <= Byte.MIN_VALUE) this.resistance = Byte.MIN_VALUE;
-		else if (resistance >= Byte.MAX_VALUE) this.resistance = Byte.MAX_VALUE;
+		if (resistance <= 0) this.resistance = 0;
+		else if (resistance >= 16) this.resistance = 16;
 		else this.resistance = resistance;
 	}
 	public int getResistance() {return resistance;}
+
+	public void setProtection(int protection) {
+		if (protection <= 0) this.protection = 0;
+		else if (protection >= 16) this.protection = 16;
+		else this.protection = protection;
+	}
+	public int getProtection() {return protection;}
 
 	public void setWidth(int width) {this.width = width;}
 	public int getWidth() {return width;}
@@ -172,6 +184,7 @@ public class TileEntityPlants extends TileEntity {
 			this.growth = parameters_main.growth;
 			this.fertility = parameters_main.fertility;
 			this.resistance = parameters_main.resistance;
+			this.protection = parameters_main.protection;
 		}
 		/*if (nbt.hasKey("PlantParametersSecondary")) 
 			parameters_secondary.create(nbt.getInteger("PlantParametersSecondary"));*/
@@ -187,7 +200,8 @@ public class TileEntityPlants extends TileEntity {
 		if (UtilString.hasString(plant)) nbt.setString("Plant", plant);
 		if (UtilString.hasString(plant_type)) nbt.setString("PlantType", plant_type);
 
-		Plants.PlantParametersMain parameters_main = Plants.PlantParametersMain.create(this.growth, this.fertility, this.resistance);
+		Plants.PlantParametersMain parameters_main = 
+				Plants.PlantParametersMain.create(this.growth, this.fertility, this.resistance, this.protection);
 		nbt.setInteger("PlantParametersMain", parameters_main.getPlantParametersMain());
 		//nbt.setInteger("PlantParametersSecondary", parameters_secondary.parameters_plant_secondary);
 

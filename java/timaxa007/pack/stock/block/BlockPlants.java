@@ -37,8 +37,8 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityPlants();}
 	public int getRenderType() {return PackStock.render.block_plants_modelID;}
-	public boolean renderAsNormalBlock() {return false;}
 	public boolean isOpaqueCube() {return false;}
+	public boolean renderAsNormalBlock() {return false;}
 	public int idPicked(World world, int x, int y, int z) {return 0;}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
@@ -402,7 +402,7 @@ world.spawnEntityInWorld(entityitem2);
 	}
 
 	public static ItemStack addNBT(String par1) {
-		ItemStack is = new ItemStack(PackStock.block.plants, 1, 0);
+		ItemStack is = new ItemStack(PackStock.block.plants);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Style", par1);
 		is.setTagCompound(nbt);

@@ -25,13 +25,19 @@ public class AddTextureModel {
 	private static final String tb = "textures/blocks/";
 	private static final String ti = "textures/items/";
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public AddTextureModel() {id = getNextID();list[id] = this;metadata = 0;}
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public AddTextureModel(int id) {checkID(this, id);this.id = id;list[id] = this;metadata = 0;}
 
-	/**It is not recommended to use this method.**/@Deprecated
+	/**Не рекомендуется использовать этот метод.<br>
+	 * It is not recommended to use this method.**/
+	@Deprecated
 	public AddTextureModel(int id, String tag) {
 		checkID(this, id);checkTag(this, tag);
 		this.id = id;this.tag = tag;list[id] = this;metadata = 0;
