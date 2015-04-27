@@ -74,14 +74,14 @@ public class TileEntityPlants extends TileEntity {
 
 	public void setGrowth(int growth) {
 		if (growth <= 0) this.growth = 0;
-		else if (growth >= 255) this.growth = 255;
+		else if (growth >= 63) this.growth = 63;
 		else this.growth = growth;
 	}
 	public int getGrowth() {return growth;}
 
 	public void setFertility(int fertility) {
 		if (fertility <= 0) this.fertility = 0;
-		else if (fertility >= 255) this.fertility = 255;
+		else if (fertility >= 63) this.fertility = 63;
 		else this.fertility = fertility;
 	}
 	public int getFertility() {return fertility;}
@@ -111,7 +111,9 @@ public class TileEntityPlants extends TileEntity {
 
 	public void updateEntity() {
 		if (worldObj.getWorldTime() % (20 * 10) == 0) {
-			setFertility(++fertility);
+			if (Plants.hasTag(getPlant())) {
+				setGrowth(getGrowth() + 1);
+			}
 		}
 		//parameters_main = Plants.PlantParametersMain.create(growth, fertility, resistance);
 	}
@@ -180,11 +182,11 @@ public class TileEntityPlants extends TileEntity {
 		if (nbt.hasKey("PlantType")) plant_type = nbt.getString("PlantType"); else plant = "";
 
 		if (nbt.hasKey("PlantParametersMain")) {
-			Plants.PlantParametersMain parameters_main = Plants.PlantParametersMain.create(nbt.getInteger("PlantParametersMain"));
-			this.growth = parameters_main.growth;
-			this.fertility = parameters_main.fertility;
-			this.resistance = parameters_main.resistance;
-			this.protection = parameters_main.protection;
+			int parameters_main = nbt.getInteger("PlantParametersMain");
+			this.growth = (parameters_main & 0x3F);
+			this.fertility = (parameters_main >> 6 & 0x3F);
+			this.resistance = (parameters_main >> 12 & 0xF);
+			this.protection = (parameters_main >> 16 & 0xF);
 		}
 		/*if (nbt.hasKey("PlantParametersSecondary")) 
 			parameters_secondary.create(nbt.getInteger("PlantParametersSecondary"));*/
@@ -200,9 +202,9 @@ public class TileEntityPlants extends TileEntity {
 		if (UtilString.hasString(plant)) nbt.setString("Plant", plant);
 		if (UtilString.hasString(plant_type)) nbt.setString("PlantType", plant_type);
 
-		Plants.PlantParametersMain parameters_main = 
-				Plants.PlantParametersMain.create(this.growth, this.fertility, this.resistance, this.protection);
-		nbt.setInteger("PlantParametersMain", parameters_main.getPlantParametersMain());
+		nbt.setInteger("PlantParametersMain", 
+				this.protection << 16 | this.resistance << 12 | this.fertility << 6 | this.growth
+				);
 		//nbt.setInteger("PlantParametersSecondary", parameters_secondary.parameters_plant_secondary);
 
 		nbt.setByte("Width", (byte)width);

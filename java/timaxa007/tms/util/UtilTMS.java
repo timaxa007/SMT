@@ -53,6 +53,8 @@ public class UtilTMS {
 						tag.replaceFirst("^TileEntity*", "tile_entity_").toLowerCase();
 					else if (tag.startsWith("TE")) 
 						tag.replaceFirst("^TE*", "tile_entity_").toLowerCase();
+					else if (tag.startsWith("Tile")) 
+						tag.replaceFirst("^Tile*", "tile_entity_").toLowerCase();
 					else ;
 
 					GameRegistry.registerTileEntity(tile, tag);
@@ -69,8 +71,8 @@ public class UtilTMS {
 				if (item != null) {
 					if (item instanceof ModifiedItem)
 						GameRegistry.registerItem(item, "item_" + ((ModifiedItem)item).getTag());
-					else if (item instanceof ModifiedItemArmor)
-						GameRegistry.registerItem(item, "item_" + ((ModifiedItemArmor)item).getTag());
+					/*else if (item instanceof ModifiedItemArmor)
+						GameRegistry.registerItem(item, "item_" + ((ModifiedItemArmor)item).getTag());*/
 				}
 			}
 		}

@@ -3,11 +3,6 @@ package timaxa007.pack.stock.block;
 import java.util.List;
 import java.util.Random;
 
-import timaxa007.pack.stock.PackStock;
-import timaxa007.pack.stock.lib.FoodForBlock;
-import timaxa007.pack.stock.tile.TileEntityFoods;
-import timaxa007.tms.lib.ActionModel;
-import timaxa007.tms.object.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,6 +14,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import timaxa007.pack.stock.PackStock;
+import timaxa007.pack.stock.lib.FoodForBlock;
+import timaxa007.pack.stock.tile.TileEntityFoods;
+import timaxa007.tms.lib.ActionModel;
+import timaxa007.tms.object.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -33,29 +33,12 @@ public class BlockFoods extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityFoods();
-	}
-
-	public int quantityDropped(Random random) {
-		return 0;
-	}
-
-	public int getRenderType() {
-		return PackStock.render.block_foods_modelID;
-	}
-
-	public boolean isOpaqueCube() {
-		return false;
-	}
-
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	public int idPicked(World world, int x, int y, int z) {
-		return 0;
-	}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityFoods();}
+	public int quantityDropped(Random random) {return 0;}
+	public int getRenderType() {return PackStock.render.block_foods_modelID;}
+	public boolean isOpaqueCube() {return false;}
+	public boolean renderAsNormalBlock() {return false;}
+	public int idPicked(World world, int x, int y, int z) {return 0;}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);

@@ -187,8 +187,8 @@ public class Plants {
 		public int protection;
 
 		/** 0 x FF EE CD <br>
-		 * @param growth (0 - 255) = FF - Насколько быстро будет расти/How quickly will grow (<i>ещё думаю о качестве роста</i>).<br>
-		 * @param fertility (0 - 255) = EE - плодородие/fertility 
+		 * @param growth (0 - 255) = FF - Насколько быстро будет расти (<i>ещё думаю о качестве роста</i>).<br>
+		 * @param fertility (0 - 255) = EE - Плодовитость
 		 * (<i>пока-что задумался об том, чтобы разделить ещё на два параметра [количество/качество - (0-15)]</i>),<br>
 		 * @param resistance (0 - 15) = C - сопротивление к сорнякам/resistance to weeds,<br>
 		 * @param protection (0 - 15) = D - защита от топтания/protection from trampling.<br>
@@ -222,21 +222,10 @@ public class Plants {
 			editProtection(protection);
 		}
 
-		public void editGrowth(int growth) {
-			this.growth = growth;
-		}
-
-		public void editFertility(int fertility) {
-			this.fertility = fertility;
-		}
-
-		public void editResistance(int resistance) {
-			this.resistance = resistance;
-		}
-
-		public void editProtection(int protection) {
-			this.protection = protection;
-		}
+		public void editGrowth(int growth) {this.growth = growth;}
+		public void editFertility(int fertility) {this.fertility = fertility;}
+		public void editResistance(int resistance) {this.resistance = resistance;}
+		public void editProtection(int protection) {this.protection = protection;}
 
 		public int getPlantParametersMain() {
 			return this.growth << 16 | this.fertility << 8 | this.resistance << 4 | protection;

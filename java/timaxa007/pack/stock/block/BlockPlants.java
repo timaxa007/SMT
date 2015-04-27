@@ -1,6 +1,7 @@
 package timaxa007.pack.stock.block;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -12,6 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import timaxa007.pack.stock.PackStock;
@@ -20,6 +23,8 @@ import timaxa007.pack.stock.lib.Plants;
 import timaxa007.pack.stock.tile.TileEntityPlants;
 import timaxa007.tms.lib.AddTextureModel;
 import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.tms.util.UtilString;
+import timaxa007.tms.util.UtilTMS;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -37,6 +42,7 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityPlants();}
 	public int getRenderType() {return PackStock.render.block_plants_modelID;}
+	public int quantityDropped(Random random) {return 0;}
 	public boolean isOpaqueCube() {return false;}
 	public boolean renderAsNormalBlock() {return false;}
 	public int idPicked(World world, int x, int y, int z) {return 0;}
@@ -63,25 +69,60 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 		if (te != null && te instanceof TileEntityPlants) {
 			TileEntityPlants tile = (TileEntityPlants)te;
 
+			Plants plant = Plants.get(tile.getPlant());
+
 			if (current != null) {
 				//				if (current.getItem() instanceof ItemPlants && current.getTagCompound() != null && 
+				if (player.isSneaking()) {
+
+				} else {
+					
+					if (Plants.hasTag(tile.getPlant())) {
+						
+					}
+
+				}
+
 			} else {
 				if (world.isRemote) {
-					//player.addChatMessage("/*****************************************/");
 
-					/*player.addChatMessage(
-" Plant ID - " + ((TileEntityPlants)te).getPlant() + 
-" / Name - " + Plants.plant_list[((TileEntityPlants)te).getPlant()].getLocalizedName() +
-" / Plant Type - " + ((TileEntityPlants)te).getPlantType());
+					player.addChatMessage(new ChatComponentText("/*****************************************/"));
 
-player.addChatMessage(
-" Width - " + ((TileEntityPlants)te).getWidth() + 
-" / Height - " + ((TileEntityPlants)te).getHeight());
+					player.addChatMessage(new ChatComponentText(
+							EnumChatFormatting.AQUA + UtilString.getText("Plant") + ": " + 
+									EnumChatFormatting.RESET  + plant.getLocalizedName() + " (" + tile.getPlant() + ") " + ".")
+							);
 
-player.addChatMessage(
-" Growth - " + ((TileEntityPlants)te).getGrowth() + 
-" / Fertility - " + ((TileEntityPlants)te).getFertility() + 
-" / Resistance - " + ((TileEntityPlants)te).getResistance());*/
+					player.addChatMessage(new ChatComponentText(
+							EnumChatFormatting.AQUA + UtilString.getText("PlantType") + ": " + 
+									EnumChatFormatting.RESET  + tile.getPlantType() + ".")
+							);
+
+					player.addChatMessage(new ChatComponentText(
+							EnumChatFormatting.AQUA + UtilString.getText("Growth") + ": " + 
+									EnumChatFormatting.RESET  + tile.getGrowth() + ".")
+							);
+
+					player.addChatMessage(new ChatComponentText(
+							EnumChatFormatting.AQUA + UtilString.getText("Fertility") + ": " + 
+									EnumChatFormatting.RESET  + tile.getFertility() + ".")
+							);
+
+					player.addChatMessage(new ChatComponentText(
+							EnumChatFormatting.AQUA + UtilString.getText("Resistance") + ": " + 
+									EnumChatFormatting.RESET  + tile.getResistance() + ".")
+							);
+
+					player.addChatMessage(new ChatComponentText(
+							EnumChatFormatting.AQUA + UtilString.getText("Protection") + ": " + 
+									EnumChatFormatting.RESET  + tile.getProtection() + ".")
+							);
+
+					player.addChatMessage(new ChatComponentText(
+							EnumChatFormatting.AQUA + UtilString.getText("Width") + " / " + UtilString.getText("Height") + 
+							": " + EnumChatFormatting.RESET + tile.getWidth() + ", " + tile.getHeight() + ".")
+							);
+
 				}
 			}
 		}
@@ -134,7 +175,7 @@ spawnPlod(world, x, y, z, psp1, psg1, 0, 0);
 }
 }
 
-public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
 ItemStack current = player.getCurrentEquippedItem();
 
 TileEntity te = world.getTileEntity(x, y, z);
@@ -394,11 +435,35 @@ world.spawnEntityInWorld(entityitem2);
 		}
 	}
 
+	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
+		if (!player.capabilities.isCreativeMode) {
+			TileEntity te = world.getTileEntity(x, y, z);
+			if (te != null && te instanceof TileEntityPlants) {
+				TileEntityPlants tile = (TileEntityPlants)te;
+				//----------------------------------------------------
+				if (!Plants.isNull(tile.getPlant())) {
+
+					ItemStack is_item = ItemPlants.addNBT(
+							tile.getPlant(), tile.getPlantType(), 
+							tile.getPlantParametersMain(), 
+							tile.getWidth(), tile.getHeight());
+
+					UtilTMS.UtilWorld.dropItem(world, x, y, z, is_item);
+				}
+				//----------------------------------------------------
+				if (UtilString.hasString(tile.getStyle())) {
+					ItemStack is_block = addNBT(tile.getStyle());
+					UtilTMS.UtilWorld.dropItem(world, x, y, z, is_block);
+				}
+				//----------------------------------------------------
+			}
+		}
+	}
+
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
 		for (AddTextureModel texture : AddTextureModel.list)
 			if (texture != null && AddTextureModel.hasTag(texture.tag)) list.add(addNBT(texture.tag));
-		//list.add(new ItemStack(id, 1, 0));
 	}
 
 	public static ItemStack addNBT(String par1) {

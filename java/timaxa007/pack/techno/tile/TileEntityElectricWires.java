@@ -1,5 +1,6 @@
 package timaxa007.pack.techno.tile;
 
+import timaxa007.tms.util.UtilString;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -32,8 +33,8 @@ public class TileEntityElectricWires extends TileEntity {
 		east = true;;
 	}
 
-	public void setStyle(String i) {
-		style = i;
+	public void setStyle(String style) {
+		this.style = style;
 	}
 
 	public String getStyle() {
@@ -91,7 +92,7 @@ public class TileEntityElectricWires extends TileEntity {
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		if (style != null) nbt.setString("Style", style);
+		if (UtilString.hasString(style)) nbt.setString("Style", style);
 		//nbt.setInteger("Type", type);
 		nbt.setInteger("Size", size);
 		nbt.setInteger("ColorHex", color_hex);

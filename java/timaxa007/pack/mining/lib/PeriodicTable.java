@@ -3,7 +3,7 @@ package timaxa007.pack.mining.lib;
 public class PeriodicTable {
 
 	public String getXX[] = new String[] {
-			"", 		//	0	None
+			"", 	//	0	None
 			"H", 	//	1	Hydrogen
 			"He", 	//	2	Helium
 			"Li", 	//	3	Lithium

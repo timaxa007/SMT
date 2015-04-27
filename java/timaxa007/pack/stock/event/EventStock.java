@@ -2,8 +2,6 @@ package timaxa007.pack.stock.event;
 
 import java.util.Random;
 
-import timaxa007.pack.stock.PackStock;
-import timaxa007.pack.stock.item.ItemsStock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.item.EntityItem;
@@ -24,6 +22,8 @@ import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import timaxa007.pack.stock.PackStock;
+import timaxa007.pack.stock.item.ItemsStock;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -43,14 +43,15 @@ public class EventStock {
 	@SubscribeEvent
 	public void onUpdate(LivingUpdateEvent p) {
 		if (p.entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)p.entityLiving;
 
-			for (int i = 0; i < ((EntityPlayer)p.entityLiving).inventory.mainInventory.length; i++) {
-				if (((EntityPlayer)p.entityLiving).inventory.mainInventory[i] != null && ((EntityPlayer)p.entityLiving).inventory.mainInventory[i].getItem() instanceof ItemsStock) {
+			for (int i = 0; i < player.inventory.mainInventory.length; i++) {
+				if (player.inventory.mainInventory[i] != null && player.inventory.mainInventory[i].getItem() instanceof ItemsStock) {
 
-					if (((EntityPlayer)p.entityLiving).getActivePotionEffect(Potion.nightVision) != null) {
-						//((EntityPlayer)p.entityLiving).removePotionEffect(Potion.nightVision.id);
+					if (player.getActivePotionEffect(Potion.nightVision) != null) {
+						//player.removePotionEffect(Potion.nightVision.id);
 					} else {
-						//((EntityPlayer)p.entityLiving).addPotionEffect(new PotionEffect(Potion.nightVision.id, 20, 3));
+						//player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 20, 3));
 					}
 					break;
 				}
