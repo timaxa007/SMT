@@ -46,7 +46,7 @@ text.hol_key=Удершивай клавишу
 text.pres_key=Нажми на клавишу
 text.for_ifo=для инфы
 text.for_ifo_abt=для инфы о
-text.style.name=Стиль
+text.style=Стиль
 
 text.on=Вкл.
 text.off=Выкл.
@@ -528,11 +528,18 @@ fluid.water_dirt.name=Загрязненная Вода
 plant.unnamed.name=Без имени
 
 text.plant=Растение
-text.planttype=Тип Растения
+text.plant_type=Тип Растения
 text.growth=Рост
+text.growth_mach=Насколько Быстрый Рост
+text.growth_quality=Качество Роста
 text.fertility=Плодовитость
+text.fertility_quality=Качество Плодовитости
+text.fertility_quantity=Количество Плодовитости
 text.resistance=Сопротивление
 text.protection=Защита
+text.dead_plant=Отмёршие Растение
+text.width=Ширина
+text.height=Высота
 
 type.herbal.name=Травяные
 type.mushroom.name=Грибы

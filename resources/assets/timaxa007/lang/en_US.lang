@@ -46,7 +46,7 @@ text.hol_key=Hold key
 text.pres_key=Press on key
 text.for_ifo=for info
 text.for_ifo_abt=for info about
-text.style.name=Style
+text.style=Style
 
 text.on=On
 text.off=Off
@@ -528,11 +528,18 @@ fluid.water_dirt.name=Polluted Water
 plant.unnamed.name=Unnamed
 
 text.plant=Plant
-text.planttype=Type Plant
+text.plant_type=Type Plant
 text.growth=Growth
+text.growth_mach=How Fast Growth
+text.growth_quality=Quality of Growth
 text.fertility=Fertility
+text.fertility_quality=Quality of Fertility
+text.fertility_quantity=Quantity of Fertility
 text.resistance=Resistance
 text.protection=Protection
+text.dead_plant=Dead Plant
+text.width=Width
+text.height=Height
 
 type.herbal.name=Herbal
 type.mushroom.name=Mushroom

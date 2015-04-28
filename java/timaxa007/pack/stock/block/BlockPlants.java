@@ -76,57 +76,42 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 				if (player.isSneaking()) {
 
 				} else {
-					
+
 					if (Plants.hasTag(tile.getPlant())) {
-						
+
 					}
 
 				}
 
 			} else {
 				if (world.isRemote) {
-
 					player.addChatMessage(new ChatComponentText("/*****************************************/"));
-
-					player.addChatMessage(new ChatComponentText(
-							EnumChatFormatting.AQUA + UtilString.getText("Plant") + ": " + 
-									EnumChatFormatting.RESET  + plant.getLocalizedName() + " (" + tile.getPlant() + ") " + ".")
-							);
-
-					player.addChatMessage(new ChatComponentText(
-							EnumChatFormatting.AQUA + UtilString.getText("PlantType") + ": " + 
-									EnumChatFormatting.RESET  + tile.getPlantType() + ".")
-							);
-
-					player.addChatMessage(new ChatComponentText(
-							EnumChatFormatting.AQUA + UtilString.getText("Growth") + ": " + 
-									EnumChatFormatting.RESET  + tile.getGrowth() + ".")
-							);
-
-					player.addChatMessage(new ChatComponentText(
-							EnumChatFormatting.AQUA + UtilString.getText("Fertility") + ": " + 
-									EnumChatFormatting.RESET  + tile.getFertility() + ".")
-							);
-
-					player.addChatMessage(new ChatComponentText(
-							EnumChatFormatting.AQUA + UtilString.getText("Resistance") + ": " + 
-									EnumChatFormatting.RESET  + tile.getResistance() + ".")
-							);
-
-					player.addChatMessage(new ChatComponentText(
-							EnumChatFormatting.AQUA + UtilString.getText("Protection") + ": " + 
-									EnumChatFormatting.RESET  + tile.getProtection() + ".")
-							);
-
-					player.addChatMessage(new ChatComponentText(
-							EnumChatFormatting.AQUA + UtilString.getText("Width") + " / " + UtilString.getText("Height") + 
-							": " + EnumChatFormatting.RESET + tile.getWidth() + ", " + tile.getHeight() + ".")
-							);
-
+					blankMessage1(player, "Plant", plant.getLocalizedName() + " (" + tile.getPlant() + ") ");
+					blankMessage1(player, "Plant_Type", tile.getPlantType());
+					blankMessage1(player, "Growth_Mach", tile.getGrowthMach());
+					blankMessage1(player, "Growth_Quality", tile.getGrowthQuality());
+					blankMessage1(player, "Fertility_Quality", tile.getFertilityQuality());
+					blankMessage1(player, "Fertility_Quantity", tile.getFertilityQuantity());
+					blankMessage1(player, "Resistance", tile.getResistance());
+					blankMessage1(player, "Protection", tile.getProtection());
+					blankMessage1(player, "Dead_Plant", UtilString.textYesNo(tile.getDeadPlant()));
+					blankMessage1(player, "Width", tile.getWidth());
+					blankMessage1(player, "Height", tile.getHeight());
+					//player.addChatMessage(new ChatComponentText("/*****************************************/"));
 				}
 			}
 		}
 		return false;
+	}
+
+	private static void blankMessage1(EntityPlayer player, String text1, int text2) {
+		blankMessage1(player, text1, Integer.toString(text2));
+	}
+
+	private static void blankMessage1(EntityPlayer player, String text1, String text2) {
+		player.addChatMessage(new ChatComponentText(
+				EnumChatFormatting.AQUA + UtilString.getText(text1) + ": " + EnumChatFormatting.RESET + text2 + ".")
+				);
 	}
 	/*
 public boolean checkTemperatureGrowing(World world, int x, int y, int z, float temp) {

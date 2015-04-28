@@ -23,7 +23,8 @@ public class ItemPlants extends ModifiedItem {
 	@SideOnly(Side.CLIENT) private IIcon icon_b;
 	 */
 
-	public static Plants test_plant = new Plants("test_plant").setType("Plant").setPlantStats(3, 2, 1, 2).setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
+	public static Plants test_plant = new Plants("test_plant").setType("Plant").setPlantStats(5, 4, 3, 2, 1, 10)
+			.setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
 	public ItemPlants(String tag) {
 		super(tag);
@@ -78,14 +79,17 @@ public class ItemPlants extends ModifiedItem {
 				if (nbt.hasKey("PlantParametersMain")) {
 					Plants.PlantParametersMain parameters_main = 
 							Plants.PlantParametersMain.create(nbt.getInteger("PlantParametersMain"));
-					list.add("Growth: " + (parameters_main.growth) + ".");
-					list.add("Fertility: " + (parameters_main.fertility) + ".");
-					list.add("Resistance: " + (parameters_main.resistance) + ".");
-					list.add("Protection: " + (parameters_main.protection) + ".");
+					list.add(UtilString.getText("Growth_Mach") + ": " + (parameters_main.growth_mach) + ".");
+					list.add(UtilString.getText("Growth_Quality") + ": " + (parameters_main.growth_quality) + ".");
+					list.add(UtilString.getText("Fertility_Quality") + ": " + (parameters_main.fertility_quality) + ".");
+					list.add(UtilString.getText("Fertility_Quantity") + ": " + (parameters_main.fertility_quantity) + ".");
+					list.add(UtilString.getText("Resistance") + ": " + (parameters_main.resistance) + ".");
+					list.add(UtilString.getText("Protection") + ": " + (parameters_main.protection) + ".");
+					list.add(UtilString.getText("Dead_Plant") + ": " + (parameters_main.dead_plant) + ".");
 				}
 
-				if (nbt.hasKey("Width")) list.add("Width: " + nbt.getByte("Width") + ".");
-				if (nbt.hasKey("Height")) list.add("Height: " + nbt.getByte("Height") + ".");
+				if (nbt.hasKey("Width")) list.add(UtilString.getText("Width") + ": " + nbt.getByte("Width") + ".");
+				if (nbt.hasKey("Height")) list.add(UtilString.getText("Height") + ": " + nbt.getByte("Height") + ".");
 			}
 		} else list.add(UtilString.hldshiftinf);
 	}
@@ -97,10 +101,13 @@ public class ItemPlants extends ModifiedItem {
 				list.add(addNBT(
 						plant.tag, 
 						plant.getType(), 
-						plant.getGrowth(), 
-						plant.getFertility(), 
+						plant.getGrowthMach(), 
+						plant.getGrowthQuality(), 
+						plant.getFertilityQuality(), 
+						plant.getFertilityQuantity(), 
 						plant.getResistance(), 
-						plant.getProtection()
+						plant.getProtection(), 
+						plant.getDeadPlant()
 						));
 			}
 		}
@@ -108,19 +115,29 @@ public class ItemPlants extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT(String plant, String plant_type, 
-			int growth, int fertility, int resistance, int protection) {
-		return addNBT(plant, plant_type, growth, fertility, resistance, protection, 1, 1);
+			int growth_mach, int growth_quality, 
+			int fertility_quality, int fertility_quantity, 
+			int resistance, int protection, boolean dead_plant) {
+		return addNBT(plant, plant_type, 
+				growth_mach, growth_quality, 
+				fertility_quality, fertility_quantity, 
+				resistance, protection, dead_plant, 1, 1);
 	}
 
 	public static ItemStack addNBT(String plant, String plant_type, 
-			int growth, int fertility, int resistance, int protection, 
+			int growth_mach, int growth_quality, 
+			int fertility_quality, int fertility_quantity, 
+			int resistance, int protection, boolean dead_plant, 
 			int width, int height) {
-		return addNBT(plant, plant_type, 
-				Plants.PlantParametersMain.create(growth, fertility, resistance, protection), 
+		return addNBT(plant, plant_type, Plants.PlantParametersMain.create(
+				growth_mach, growth_quality, 
+				fertility_quality, fertility_quantity, 
+				resistance, protection, dead_plant), 
 				width, height);
 	}
 
-	public static ItemStack addNBT(String plant, String plant_type, Plants.PlantParametersMain parameters_main, 
+	public static ItemStack addNBT(String plant, String plant_type, 
+			Plants.PlantParametersMain parameters_main, 
 			int width, int height) {
 		ItemStack is = new ItemStack(PackStock.item.plants);
 		NBTTagCompound nbt = new NBTTagCompound();

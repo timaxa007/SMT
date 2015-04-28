@@ -6,6 +6,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import timaxa007.pack.stock.lib.Plants;
+import timaxa007.pack.stock.lib.Plants.PlantParametersMain;
 import timaxa007.tms.util.UtilString;
 
 public class TileEntityPlants extends TileEntity {
@@ -13,14 +14,7 @@ public class TileEntityPlants extends TileEntity {
 	private String plant;
 	private String plant_type;
 
-	//private Plants.PlantParametersMain parameters_main;
-	//private Plants.PlantParametersSecondary parameters_secondary;
-
-	private int growth;
-	private int fertility;
-	private int resistance;
-	private int protection;
-
+	private Plants.PlantParametersMain parameters_plant_main;
 	private int width;
 	private int height;
 
@@ -29,12 +23,7 @@ public class TileEntityPlants extends TileEntity {
 	public TileEntityPlants() {
 		this.plant = "";
 		this.plant_type = "";
-		//this.parameters_main = Plants.PlantParametersMain.create(0, 0, 0);
-		//this.parameters_secondary = Plants.PlantParametersSecondary.create(0, 0, 0);
-		this.growth = 0;
-		this.fertility = 0;
-		this.resistance = 0;
-		this.protection = 0;
+		this.parameters_plant_main = Plants.PlantParametersMain.create(0x00000000);
 		this.width = 0;
 		this.height = 0;
 		this.style = "";
@@ -46,59 +35,38 @@ public class TileEntityPlants extends TileEntity {
 	public void setPlantType(String plant_type) {this.plant_type = plant_type;}
 	public String getPlantType() {return plant_type;}
 
-	public void setPlantParametersMain(int parameters_main) {
-		Plants.PlantParametersMain parameters_main2 = Plants.PlantParametersMain.create(parameters_main);
-		this.growth = parameters_main2.growth;
-		this.fertility = parameters_main2.fertility;
-		this.resistance = parameters_main2.resistance;
-		this.protection = parameters_main2.protection;
+	public void setPlantParametersMain(
+			int growth_mach, int growth_quality, 
+			int fertility_quality, int fertility_quantity, int resistance, int protection, boolean dead_plant) {
+		this.parameters_plant_main = Plants.PlantParametersMain.create(
+				growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant);
 	}
 
-	public void setPlantParametersMain(int growth, int fertility, int resistance, int protection) {
-		this.growth = growth;
-		this.fertility = fertility;
-		this.resistance = resistance;
-		this.protection = protection;
+	public void setPlantParametersMain(int parameters_plant_main) {
+		this.parameters_plant_main = Plants.PlantParametersMain.create(parameters_plant_main);
 	}
 
-	public Plants.PlantParametersMain getPlantParametersMain() {
-		Plants.PlantParametersMain parameters_main = 
-				Plants.PlantParametersMain.create(this.growth, this.fertility, this.resistance, this.protection);
-		return parameters_main;
+	public void setPlantParametersMain(PlantParametersMain parameters_plant_main) {
+		this.parameters_plant_main = parameters_plant_main;
 	}
-	/*
-	public int getGrowth() {return parameters_main.growth;}
-	public int getFertility() {return parameters_main.fertility;}
-	public int getResistance() {return parameters_main.resistance;}
-	 */
 
-	public void setGrowth(int growth) {
-		if (growth <= 0) this.growth = 0;
-		else if (growth >= 63) this.growth = 63;
-		else this.growth = growth;
-	}
-	public int getGrowth() {return growth;}
+	public Plants.PlantParametersMain getPlantParametersMain() {return parameters_plant_main;}
 
-	public void setFertility(int fertility) {
-		if (fertility <= 0) this.fertility = 0;
-		else if (fertility >= 63) this.fertility = 63;
-		else this.fertility = fertility;
-	}
-	public int getFertility() {return fertility;}
+	public void setGrowthMach(int growth_mach) {getPlantParametersMain().editGrowthMach(growth_mach);}
+	public void setGrowthQuality(int growth_quality) {getPlantParametersMain().editGrowthQuality(growth_quality);}
+	public void setFertilityQuality(int fertility_quality) {getPlantParametersMain().editFertilityQuality(fertility_quality);}
+	public void setFertilityQuantity(int fertility_quantity) {getPlantParametersMain().editFertilityQuantity(fertility_quantity);}
+	public void setResistance(int resistance) {getPlantParametersMain().editResistance(resistance);}
+	public void setProtection(int protection) {getPlantParametersMain().editProtection(protection);}
+	public void setDeadPlant(boolean dead_plant) {getPlantParametersMain().editDeadPlant(dead_plant);}
 
-	public void setResistance(int resistance) {
-		if (resistance <= 0) this.resistance = 0;
-		else if (resistance >= 16) this.resistance = 16;
-		else this.resistance = resistance;
-	}
-	public int getResistance() {return resistance;}
-
-	public void setProtection(int protection) {
-		if (protection <= 0) this.protection = 0;
-		else if (protection >= 16) this.protection = 16;
-		else this.protection = protection;
-	}
-	public int getProtection() {return protection;}
+	public int getGrowthMach() {return getPlantParametersMain().growth_mach;}
+	public int getGrowthQuality() {return getPlantParametersMain().growth_quality;}
+	public int getFertilityQuality() {return getPlantParametersMain().fertility_quality;}
+	public int getFertilityQuantity() {return getPlantParametersMain().fertility_quantity;}
+	public int getResistance() {return getPlantParametersMain().resistance;}
+	public int getProtection() {return getPlantParametersMain().protection;}
+	public boolean getDeadPlant() {return getPlantParametersMain().dead_plant;}
 
 	public void setWidth(int width) {this.width = width;}
 	public int getWidth() {return width;}
@@ -110,84 +78,44 @@ public class TileEntityPlants extends TileEntity {
 	public String getStyle() {return style;}
 
 	public void updateEntity() {
-		if (worldObj.getWorldTime() % (20 * 10) == 0) {
-			if (Plants.hasTag(getPlant())) {
-				setGrowth(getGrowth() + 1);
+		TileEntity te = worldObj.getTileEntity(xCoord, yCoord, zCoord);
+		if (te != null && te instanceof TileEntityPlants) {
+			TileEntityPlants tile = (TileEntityPlants)te;
+			if (worldObj.getWorldTime() % (20 * 1) == 0) {
+				if (Plants.hasTag(getPlant())) {
+
+					if (tile.getGrowthMach() < Plants.PlantParametersMain.GrowthMachMax)
+						tile.setGrowthMach(tile.getGrowthMach() + 1);
+
+					if (tile.getGrowthQuality() < Plants.PlantParametersMain.GrowthQualityMax)
+						tile.setGrowthQuality(tile.getGrowthQuality() + 1);
+
+					if (tile.getFertilityQuality() < Plants.PlantParametersMain.FertilityQualityMax)
+						tile.setFertilityQuality(tile.getFertilityQuality() + 1);
+
+					if (tile.getFertilityQuantity() < Plants.PlantParametersMain.FertilityQuantityMax)
+						tile.setFertilityQuantity(tile.getFertilityQuantity() + 1);
+
+					if (tile.getResistance() < Plants.PlantParametersMain.ResistanceMax)
+						tile.setResistance(tile.getResistance() + 1);
+
+					if (tile.getProtection() < Plants.PlantParametersMain.ProtectionMax)
+						tile.setProtection(tile.getProtection() + 1);
+
+					tile.setDeadPlant(!tile.getDeadPlant());
+				}
 			}
 		}
 		//parameters_main = Plants.PlantParametersMain.create(growth, fertility, resistance);
 	}
-	/*
-	public void updateEntity() {
-		int updt = 1;
 
-		if (getTypePlant() == 1) {
-			if (worldObj.getWorldTime() % (20 * updt) == 0 && getGrowing() <= 8) {
-				setGrowing(getGrowing() + 1);
-			}
-		}
-		//-------------------------------------------------------------------------------
-		if (getTypePlant() == 2) {
-
-			if (worldObj.getWorldTime() % (20 * updt) == 0 && getHeight() < 16) {
-				setHeight(getHeight() + 1);
-			}
-
-			TileEntity teb = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
-
-			if (worldObj.getWorldTime() % (20 * 10 * updt) == 0 && getThickness() <= 8) {
-				if (teb != null && teb instanceof TileEntityPlants) {
-					if (((TileEntityPlants)teb).getThickness() > getThickness()) {
-						setThickness(getThickness() + 1);
-					}
-				} else if (teb == null) {
-					setThickness(getThickness() + 1);
-				} else {;}
-
-			}
-
-			if (!worldObj.isRemote && worldObj.getWorldTime() % (20 * updt) == 0 &&
-					(worldObj.isAirBlock(xCoord, yCoord + 1, zCoord) || worldObj.getBlock(xCoord, yCoord + 1, zCoord) == Block.leaves) &&
-					getHeight() == 16) {
-				worldObj.setBlock(xCoord, yCoord + 1, zCoord, PackStock.block__plants);
-				TileEntityPlants tes = new TileEntityPlants();
-				tes.setTypePlant(getTypePlant());
-				tes.setPlant(getPlant());
-				tes.setSticks(0);
-				tes.setHeight(1);
-				tes.setThickness(1);
-				worldObj.setTileEntity(xCoord, yCoord + 1, zCoord, tes);
-			}
-
-		}
-		//-------------------------------------------------------------------------------
-		//if (!worldObj.isRemote) {}
-
-	}
-
-	public void updateEntity() {
-		int updt = 1;
-
-		if (worldObj.getWorldTime() % (20 * updt) == 0 && getHeight() <= 8) {
-			setHeight(getHeight() + 1);
-		}
-
-		//if (getPlantType() == "Tree") {System.out.println(" + ");}
-	}
-	 */
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
 		if (nbt.hasKey("Plant")) plant = nbt.getString("Plant"); else plant = "";
 		if (nbt.hasKey("PlantType")) plant_type = nbt.getString("PlantType"); else plant = "";
 
-		if (nbt.hasKey("PlantParametersMain")) {
-			int parameters_main = nbt.getInteger("PlantParametersMain");
-			this.growth = (parameters_main & 0x3F);
-			this.fertility = (parameters_main >> 6 & 0x3F);
-			this.resistance = (parameters_main >> 12 & 0xF);
-			this.protection = (parameters_main >> 16 & 0xF);
-		}
+		if (nbt.hasKey("PlantParametersMain")) setPlantParametersMain(nbt.getInteger("PlantParametersMain"));
 		/*if (nbt.hasKey("PlantParametersSecondary")) 
 			parameters_secondary.create(nbt.getInteger("PlantParametersSecondary"));*/
 		if (nbt.hasKey("Width")) width = (int)nbt.getByte("Width");
@@ -202,9 +130,7 @@ public class TileEntityPlants extends TileEntity {
 		if (UtilString.hasString(plant)) nbt.setString("Plant", plant);
 		if (UtilString.hasString(plant_type)) nbt.setString("PlantType", plant_type);
 
-		nbt.setInteger("PlantParametersMain", 
-				this.protection << 16 | this.resistance << 12 | this.fertility << 6 | this.growth
-				);
+		nbt.setInteger("PlantParametersMain", parameters_plant_main.getPlantParametersMain());
 		//nbt.setInteger("PlantParametersSecondary", parameters_secondary.parameters_plant_secondary);
 
 		nbt.setByte("Width", (byte)width);

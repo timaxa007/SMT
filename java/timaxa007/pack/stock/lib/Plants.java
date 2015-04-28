@@ -138,15 +138,27 @@ public class Plants {
 		return color_hex == 0 ? 0xFFFFFF : color_hex;
 	}
 	 */
-	public Plants setPlantStats(int growth, int fertility, int resistance, int protection) {
-		this.parameters_main = Plants.PlantParametersMain.create(growth, fertility, resistance, protection);
+	public Plants setPlantStats(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, 
+			int resistance, int protection, boolean dead_plant) {
+		this.parameters_main = Plants.PlantParametersMain.create(
+				growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant);
 		return this;
 	}
 
-	public int getGrowth() {return parameters_main.growth;}
-	public int getFertility() {return parameters_main.fertility;}
+	public Plants setPlantStats(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, 
+			int resistance, int protection) {
+		this.parameters_main = Plants.PlantParametersMain.create(
+				growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, false);
+		return this;
+	}
+
+	public int getGrowthMach() {return parameters_main.growth_mach;}
+	public int getGrowthQuality() {return parameters_main.growth_quality;}
+	public int getFertilityQuality() {return parameters_main.fertility_quality;}
+	public int getFertilityQuantity() {return parameters_main.fertility_quantity;}
 	public int getResistance() {return parameters_main.resistance;}
 	public int getProtection() {return parameters_main.protection;}
+	public boolean getDeadPlant() {return parameters_main.dead_plant;}
 
 	public Plants setTemperatures(float temperature, float temperature_min, float temperature_max) {
 		this.temperature = Temperature.createTemperature(temperature, temperature_min, temperature_max);
@@ -177,62 +189,134 @@ public class Plants {
 	//--------------------------------------------------------------------------
 	public static class PlantParametersMain {
 
-		/****/
-		public int growth;
-		/****/
-		public int fertility;
-		/****/
-		public int resistance;
-		/****/
-		public int protection;
+		/**<b>growth</b> 0xF (0 - 15) - на сколько быстро будет расти.**/
+		public int growth_mach;
+		public static final int GrowthMachMax = 0xF;
 
-		/** 0 x FF EE CD <br>
-		 * @param growth (0 - 255) = FF - Насколько быстро будет расти (<i>ещё думаю о качестве роста</i>).<br>
-		 * @param fertility (0 - 255) = EE - Плодовитость
-		 * (<i>пока-что задумался об том, чтобы разделить ещё на два параметра [количество/качество - (0-15)]</i>),<br>
-		 * @param resistance (0 - 15) = C - сопротивление к сорнякам/resistance to weeds,<br>
-		 * @param protection (0 - 15) = D - защита от топтания/protection from trampling.<br>
-		 * **/
-		public PlantParametersMain(int growth, int fertility, int resistance, int protection) {
-			this.growth = growth;
-			this.fertility = fertility;
+		/**<b>growth</b> 0xF (0 - 15) - на сколько качествено будет расти.**/
+		public int growth_quality;
+		public static final int GrowthQualityMax = 0xF;
+
+		/**<b>fertility</b> 0xF (0 - 15) - плодовитость качество**/
+		public int fertility_quality;
+		public static final int FertilityQualityMax = 0xF;
+
+		/**<b>fertility</b> 0xF (0 - 15) - плодовитость количество**/
+		public int fertility_quantity;
+		public static final int FertilityQuantityMax = 0xF;
+
+		/**<b>resistance</b> 0xF (0 - 15) - сопротивление к сорнякам**/
+		public int resistance;
+		public static final int ResistanceMax = 0xF;
+
+		/**<b>protection</b> 0xF (0 - 15) - защита от топтания**/
+		public int protection;
+		public static final int ProtectionMax = 0xF;
+
+		/**<b>dead_plant</b> 0x1 (0 - 1) - отмершие растение**/
+		public boolean dead_plant;
+		public static final int DeadPlantMax = 0x1;
+
+		public PlantParametersMain(
+				int growth_mach, int growth_quality, 
+				int fertility_quality, int fertility_quantity, 
+				int resistance, int protection, boolean dead_plant) {
+			this.growth_mach = growth_mach;
+			this.growth_quality = growth_quality;
+			this.fertility_quality = fertility_quality;
+			this.fertility_quantity = fertility_quantity;
 			this.resistance = resistance;
 			this.protection = protection;
+			this.dead_plant = dead_plant;
 		}
 
 		public PlantParametersMain(int parameters_plant_main) {
-			this.growth = (parameters_plant_main >> 16 & 0xFF);
-			this.fertility = (parameters_plant_main >> 8 & 0xFF);
-			this.resistance = (parameters_plant_main >> 4 & 0xF);
-			this.protection = (parameters_plant_main & 0xF);
+			this.growth_mach = (parameters_plant_main & GrowthMachMax);
+			this.growth_quality = (parameters_plant_main >> 4  & GrowthQualityMax);
+			this.fertility_quality = (parameters_plant_main >> 8 & FertilityQualityMax);
+			this.fertility_quantity = (parameters_plant_main >> 12 & FertilityQuantityMax);
+			this.resistance = (parameters_plant_main >> 16 & ResistanceMax);
+			this.protection = (parameters_plant_main >> 20 & ProtectionMax);
+			this.dead_plant = ((parameters_plant_main >> 24 & DeadPlantMax) == 0 ? false : true);
+			//25
 		}
 
-		public static PlantParametersMain create(int growth, int fertility, int resistance, int protection) {
-			return new PlantParametersMain(growth, fertility, resistance, protection);
+		public static PlantParametersMain create(
+				int growth_mach, int growth_quality, 
+				int fertility_quality, int fertility_quantity, 
+				int resistance, int protection, 
+				boolean dead_plant) {
+			return new PlantParametersMain(
+					growth_mach, growth_quality, 
+					fertility_quality, fertility_quantity, 
+					resistance, protection, dead_plant);
 		}
 
 		public static PlantParametersMain create(int parameters_plant_main) {
 			return new PlantParametersMain(parameters_plant_main);
 		}
 
-		public void edit(int growth, int fertility, int resistance, int protection) {
-			editGrowth(growth);
-			editFertility(fertility);
+		public void edit(int growth_mach, int growth_quality, 
+				int fertility_quality, int fertility_quantity, 
+				int resistance, int protection, boolean dead_plant) {
+			editGrowthMach(growth_mach);
+			editGrowthQuality(growth_quality);
+			editFertilityQuality(fertility_quality);
+			editFertilityQuantity(fertility_quantity);
 			editResistance(resistance);
 			editProtection(protection);
+			editDeadPlant(dead_plant);
 		}
 
-		public void editGrowth(int growth) {this.growth = growth;}
-		public void editFertility(int fertility) {this.fertility = fertility;}
-		public void editResistance(int resistance) {this.resistance = resistance;}
-		public void editProtection(int protection) {this.protection = protection;}
+		/**@param growth_mach = (0 - 15)**/
+		public void editGrowthMach(int growth_mach) {
+			this.growth_mach = (growth_mach <= 0 ? 0 : 
+				(growth_mach >= GrowthMachMax ? GrowthMachMax : growth_mach));
+		}
+
+		/**@param growth_quality = (0 - 15)**/
+		public void editGrowthQuality(int growth_quality) {
+			this.growth_quality = (growth_quality <= 0 ? 0 : 
+				(growth_quality >= GrowthQualityMax ? GrowthQualityMax : growth_quality));
+		}
+
+		/**@param fertility_quality = (0 - 15)**/
+		public void editFertilityQuality(int fertility_quality) {
+			this.fertility_quality = (fertility_quality <= 0 ? 0 : 
+				(fertility_quality >= FertilityQualityMax ? FertilityQualityMax : fertility_quality));
+		}
+
+		/**@param fertility_quantity = (0 - 15)**/
+		public void editFertilityQuantity(int fertility_quantity) {
+			this.fertility_quantity = (fertility_quantity <= 0 ? 0 : 
+				(fertility_quantity >= FertilityQuantityMax ? FertilityQuantityMax : fertility_quantity));
+		}
+
+		/**@param resistance = (0 - 15)**/
+		public void editResistance(int resistance) {
+			this.resistance = (resistance <= 0 ? 0 : (resistance >= ResistanceMax ? ResistanceMax : resistance));
+		}
+
+		/**@param protection = (0 - 15)**/
+		public void editProtection(int protection) {
+			this.protection = (protection <= 0 ? 0 : (protection >= ProtectionMax ? ProtectionMax : protection));
+		}
+
+		/**@param dead_plant = (<b>true</b> or <b>false</b>)**/
+		public void editDeadPlant(boolean dead_plant) {
+			this.dead_plant = dead_plant;
+		}
 
 		public int getPlantParametersMain() {
-			return this.growth << 16 | this.fertility << 8 | this.resistance << 4 | protection;
+			return (dead_plant ? 1 : 0) << 24 | this.protection << 20 | this.resistance << 16 | 
+					this.fertility_quantity << 12 | this.fertility_quality << 8 | 
+					this.growth_quality << 4 | this.growth_mach;
 		}
 
 		public String toString() {
-			return "(" + this.growth + ", " + this.fertility + ", " + this.resistance + ", " + this.protection + ")";
+			return "(" + this.growth_mach + ", " + this.growth_quality + ", " + 
+					this.fertility_quality + ", " + this.fertility_quantity + ", " + 
+					this.resistance + ", " + this.protection + ", " + (this.dead_plant) + ")";
 		}
 
 	}
