@@ -109,7 +109,7 @@ public class BlockClothBlocks extends ModifiedBlock implements ITileEntityProvid
 		}
 	}
 	/*
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			TileEntity te = world.getTileEntity(x, y, z);

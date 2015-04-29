@@ -2,21 +2,22 @@ package timaxa007.pack.techno.block;
 
 import java.util.List;
 
-import timaxa007.pack.techno.PackTechno;
-import timaxa007.pack.techno.tile.TileEntityElectricWires;
-import timaxa007.tms.lib.AddTextureModel;
-import timaxa007.tms.object.ModifiedBlock;
-import timaxa007.tms.util.UtilString;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import timaxa007.pack.techno.PackTechno;
+import timaxa007.pack.techno.tile.TileEntityElectricWires;
+import timaxa007.tms.lib.AddTextureModel;
+import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.tms.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -29,25 +30,11 @@ public class BlockElectricWires extends ModifiedBlock implements ITileEntityProv
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityElectricWires();
-	}
-
-	public int getRenderType() {
-		return PackTechno.render.block_electric_wires_modelID;
-	}
-
-	public boolean isOpaqueCube() {
-		return false;
-	}
-
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	public int idPicked(World world, int x, int y, int z) {
-		return 0;
-	}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityElectricWires();}
+	public int getRenderType() {return PackTechno.render.block_electric_wires_modelID;}
+	public boolean isOpaqueCube() {return false;}
+	public boolean renderAsNormalBlock() {return false;}
+	public int idPicked(World world, int x, int y, int z) {return 0;}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
@@ -58,7 +45,6 @@ public class BlockElectricWires extends ModifiedBlock implements ITileEntityProv
 		return null;
 	}
 
-
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		TileEntity te = world.getTileEntity(x, y, z);
@@ -68,17 +54,33 @@ public class BlockElectricWires extends ModifiedBlock implements ITileEntityProv
 			TileEntityElectricWires tile = (TileEntityElectricWires)te;
 
 			//int l=MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
-			//((TileEntityJar01)te).setRot(l);
+			//tile.setRot(l);
 
 			if (nbt != null) {
 				//if (nbt.hasKey("Type")) tile.setType(nbt.getInteger("Type"));
 				if (nbt.hasKey("Style")) tile.setStyle(nbt.getString("Style"));
 				if (nbt.hasKey("Size")) tile.setSize(nbt.getInteger("Size"));
 				if (nbt.hasKey("Color")) tile.setColor(nbt.getInteger("Color"));
+
+				tile.updateExtensively(world, x, y, z);
+
 			}
 
 		}
 
+	}
+
+	@Override
+	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
+		if (!world.isRemote) {
+			TileEntity te = world.getTileEntity(x, y, z);
+			if (te != null && te instanceof TileEntityElectricWires && !player.capabilities.isCreativeMode) {
+				TileEntityElectricWires tile = (TileEntityElectricWires)te;
+				dropBlockAsItem(world, x, y, z, addNBT(tile.getStyle(), tile.getSize(), tile.getColor()));
+				world.removeTileEntity(x, y, z);
+				world.setBlockToAir(x, y, z);
+			}
+		}
 	}
 
 	@SideOnly(Side.CLIENT)

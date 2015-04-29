@@ -62,7 +62,7 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {return null;}
 
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		ItemStack current = player.getCurrentEquippedItem();
 
 		TileEntity te = world.getTileEntity(x, y, z);
