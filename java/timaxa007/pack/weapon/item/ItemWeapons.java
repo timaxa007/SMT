@@ -281,11 +281,11 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 				}
 
 				if (nbt.hasKey("AmmoAtm")) {
-					list.add("AmmoAtm:  " + nbt.getInteger("AmmoAtm") + ".");
+					list.add("AmmoAtm: " + nbt.getInteger("AmmoAtm") + ".");
 				}
 
 				if (nbt.hasKey("ZoomFov") && CoreTMS.show_tip_info_testing) {
-					list.add("ZoomFov:  " + nbt.getByte("ZoomFov") + ".");
+					list.add("ZoomFov: " + nbt.getByte("ZoomFov") + ".");
 				}
 
 			}

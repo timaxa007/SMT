@@ -6,7 +6,7 @@ public class Humidity {
 	public float humidity_min;
 	public float humidity_max;
 
-	public static Humidity createHumidity(float humidity, float humidity_min, float humidity_max) {
+	public static Humidity create(float humidity, float humidity_min, float humidity_max) {
 		return new Humidity(humidity, humidity_min, humidity_max);
 	}
 

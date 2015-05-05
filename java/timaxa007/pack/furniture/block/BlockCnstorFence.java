@@ -72,7 +72,7 @@ public class BlockCnstorFence extends ModifiedBlock implements ITileEntityProvid
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		//for (int  j = 0; j < TileTexture.texTest01.length; ++j) {
+		//for (int j = 0; j < TileTexture.texTest01.length; ++j) {
 		//for (int i = 0; i < 16; ++i) {
 		String j = "";
 

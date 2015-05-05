@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.Tessellator;
 
 public class ModelCakes {
 
-	public static void addSliceCake(Tessellator t, double x,  double y,  double z) {
+	public static void addSliceCake(Tessellator t, double x, double y, double z) {
 		/*
 		t.startDrawingQuads();
 

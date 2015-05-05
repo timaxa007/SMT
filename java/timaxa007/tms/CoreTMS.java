@@ -127,13 +127,13 @@ public class CoreTMS {
 		Configuration cfg_module = new Configuration(new File("./config/tms", "node_module.cfg"));
 		cfg_module.load();
 
-		disable_module_control_button = cfg_module.get("disable_module", "control_button", false).getBoolean(false);
-		disable_module_environment = cfg_module.get("disable_module", "environment", false).getBoolean(false);
-		disable_module_status_player = cfg_module.get("disable_module", "status_player", false).getBoolean(false);
-		disable_module_weight = cfg_module.get("disable_module", "weight", false).getBoolean(false);
-		disable_module_effects = cfg_module.get("disable_module", "effects", false).getBoolean(false);
-		disable_module_colors = cfg_module.get("disable_module", "colors", false).getBoolean(false);
-		disable_module_fluids = cfg_module.get("disable_module", "fluids", false).getBoolean(false);
+		disable_module_control_button = cfg_module.get("disable_module", "control_button", false).getBoolean();
+		disable_module_environment = cfg_module.get("disable_module", "environment", false).getBoolean();
+		disable_module_status_player = cfg_module.get("disable_module", "status_player", false).getBoolean();
+		disable_module_weight = cfg_module.get("disable_module", "weight", false).getBoolean();
+		disable_module_effects = cfg_module.get("disable_module", "effects", false).getBoolean();
+		disable_module_colors = cfg_module.get("disable_module", "colors", false).getBoolean();
+		disable_module_fluids = cfg_module.get("disable_module", "fluids", false).getBoolean();
 
 		cfg_module.save();
 
@@ -152,7 +152,7 @@ public class CoreTMS {
 		Configuration cfg = new Configuration(new File("./config/tms", "core_tms.cfg"));
 		cfg.load();
 
-		debug = cfg.get("debugging", "debug", false).getBoolean(false);
+		debug = cfg.get("debugging", "debug", false).getBoolean();
 
 		show_tip_info_testing = getProperty(cfg, "debugging", "show_tip_info_testing", 
 				"comment show_tip_info_testing", false);
@@ -167,13 +167,13 @@ public class CoreTMS {
 		Configuration cfg_pack = new Configuration(new File("./config/tms", "node_pack.cfg"));
 		cfg_pack.load();
 
-		disable_pack_furniture = cfg_pack.get("disable_pack", "furniture", false).getBoolean(false);
-		disable_pack_item = cfg_pack.get("disable_pack", "item", false).getBoolean(false);
-		disable_pack_magic = cfg_pack.get("disable_pack", "magic", false).getBoolean(false);
-		disable_pack_mining = cfg_pack.get("disable_pack", "mining", false).getBoolean(false);
-		disable_pack_stocks = cfg_pack.get("disable_pack", "stocks", false).getBoolean(false);
-		disable_pack_techno = cfg_pack.get("disable_pack", "techno", false).getBoolean(false);
-		disable_pack_weapon = cfg_pack.get("disable_pack", "weapon", false).getBoolean(false);
+		disable_pack_furniture = cfg_pack.get("disable_pack", "furniture", false).getBoolean();
+		disable_pack_item = cfg_pack.get("disable_pack", "item", false).getBoolean();
+		disable_pack_magic = cfg_pack.get("disable_pack", "magic", false).getBoolean();
+		disable_pack_mining = cfg_pack.get("disable_pack", "mining", false).getBoolean();
+		disable_pack_stocks = cfg_pack.get("disable_pack", "stocks", false).getBoolean();
+		disable_pack_techno = cfg_pack.get("disable_pack", "techno", false).getBoolean();
+		disable_pack_weapon = cfg_pack.get("disable_pack", "weapon", false).getBoolean();
 
 		cfg_pack.save();
 
@@ -215,7 +215,7 @@ public class CoreTMS {
 	private static boolean getProperty(Configuration cfg, String category, String name, String comment, boolean flag) {
 		Property show_system_info_testing_cfg = cfg.get(category, name, flag);
 		show_system_info_testing_cfg.comment = comment;
-		return show_system_info_testing_cfg.getBoolean(flag);
+		return show_system_info_testing_cfg.getBoolean();
 	}
 
 	private static boolean isObfuscated() {

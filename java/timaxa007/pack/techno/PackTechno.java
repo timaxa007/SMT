@@ -58,16 +58,16 @@ public class PackTechno implements IPackClass {
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackTechno.MODID + ".cfg"));
 		cfg.load();
 
-		block.electric_machines_be = cfg.get("block", "electric_machines", true).getBoolean(true);
-		block.electric_wires_be = cfg.get("block", "electric_wires", true).getBoolean(true);
+		block.electric_machines_be = cfg.get("block", "electric_machines", true).getBoolean();
+		block.electric_wires_be = cfg.get("block", "electric_wires", true).getBoolean();
 		block.chip_be = cfg.get("block", "chip", true).getBoolean(true);
-		block.module_movement_be = cfg.get("block", "module_movement", true).getBoolean(true);
-		block.farm_mashines_be = cfg.get("block", "farm_mashines", true).getBoolean(true);
+		block.module_movement_be = cfg.get("block", "module_movement", true).getBoolean();
+		block.farm_mashines_be = cfg.get("block", "farm_mashines", true).getBoolean();
 
-		item.items_for_techno_be = cfg.get("item", "items_for_techno", true).getBoolean(true);
-		item.tool_electric_wrench_be = cfg.get("item", "tool_electric_wrench", true).getBoolean(true);
-		item.tool_electric_drill_be = cfg.get("item", "tool_electric_drill", true).getBoolean(true);
-		item.tool_electric_saw_be = cfg.get("item", "tool_electric_saw", true).getBoolean(true);
+		item.items_for_techno_be = cfg.get("item", "items_for_techno", true).getBoolean();
+		item.tool_electric_wrench_be = cfg.get("item", "tool_electric_wrench", true).getBoolean();
+		item.tool_electric_drill_be = cfg.get("item", "tool_electric_drill", true).getBoolean();
+		item.tool_electric_saw_be = cfg.get("item", "tool_electric_saw", true).getBoolean();
 
 		cfg.save();
 

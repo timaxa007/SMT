@@ -22,7 +22,7 @@ public class FixModel {
 		int fix_a = sky_light % 65536;
 		int fix_b = sky_light / 65536;
 		tes.setColorOpaque_F(brightness, brightness, brightness);
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit,  (float) fix_a,  fix_b);
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) fix_a, fix_b);
 	}
 
 	public static void FixLight(World world, float x, float y, float z) {
@@ -40,7 +40,7 @@ public class FixModel {
 		int fix_a = sky_light % 65536;
 		int fix_b = sky_light / 65536;
 		tes.setColorOpaque_F(brightness, brightness, brightness);
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit,  (float) fix_a,  fix_b);
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) fix_a, fix_b);
 	}
 
 }

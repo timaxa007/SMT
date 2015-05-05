@@ -35,11 +35,8 @@ public class TileEntityPlants extends TileEntity {
 	public void setPlantType(String plant_type) {this.plant_type = plant_type;}
 	public String getPlantType() {return plant_type;}
 
-	public void setPlantParametersMain(
-			int growth_mach, int growth_quality, 
-			int fertility_quality, int fertility_quantity, int resistance, int protection, boolean dead_plant) {
-		this.parameters_plant_main = Plants.PlantParametersMain.create(
-				growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant);
+	public void setPlantParametersMain(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, int resistance, int protection, boolean dead_plant) {
+		this.parameters_plant_main = Plants.PlantParametersMain.create(growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant);
 	}
 
 	public void setPlantParametersMain(int parameters_plant_main) {

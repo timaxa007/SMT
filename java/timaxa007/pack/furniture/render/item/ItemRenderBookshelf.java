@@ -39,7 +39,7 @@ public class ItemRenderBookshelf implements IItemRenderer{
 			if (nbt.hasKey("Style")) tex = nbt.getString("Style");
 		}
 
-		float par1=  0.0625F;
+		float par1 = 0.0625F;
 		float par2 = 0.01F;
 
 		GL11.glPushMatrix();

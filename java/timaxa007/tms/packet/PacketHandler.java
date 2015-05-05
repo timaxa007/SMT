@@ -34,7 +34,7 @@ client.writeAndFlush(new FMLProxyPacket(data, "то_самое_название_
 //cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper - другие типы "посыла" - игрокам, в измерение и т. д. как в старом добром PacketDispatcher-е.
 
 @Override
-public void  channelRead0(ChannelHandlerContext ctx, FMLProxyPacket msg){
+public void channelRead0(ChannelHandlerContext ctx, FMLProxyPacket msg){
 ByteBuf data = msg.payload();//Ваша инфа.
 switch(data.readByte()){//Делайте чего хотите, но крайне рекомендую делать так
 //case 0:doMagic1();break;

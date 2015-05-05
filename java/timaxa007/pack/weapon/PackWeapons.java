@@ -40,7 +40,7 @@ public class PackWeapons implements IPackClass {
 	public static SimpleNetworkWrapper network;
 
 	public static CreativeTabs tab_weapons = new CreativeTabs("tab_weapons") {
-	    @SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackWeapons.item.items_for_weapons;}
+		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackWeapons.item.items_for_weapons;}
 	};
 
 	@Override
@@ -52,13 +52,13 @@ public class PackWeapons implements IPackClass {
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackWeapons.MODID + ".cfg"));
 		cfg.load();
 
-		block.claymore_be = cfg.get("block", "claymore", true).getBoolean(true);
+		block.claymore_be = cfg.get("block", "claymore", true).getBoolean();
 
-		item.items_for_weapons_be = cfg.get("item", "items_for_weapons", true).getBoolean(true);
-		item.molotov_cocktail_be = cfg.get("item", "molotov_cocktail", true).getBoolean(true);
-		item.weapons_be = cfg.get("item", "weapons", true).getBoolean(true);
-		item.ammos_be = cfg.get("item", "ammos", true).getBoolean(true);
-		item.magazines_be = cfg.get("item", "magazines", true).getBoolean(true);
+		item.items_for_weapons_be = cfg.get("item", "items_for_weapons", true).getBoolean();
+		item.molotov_cocktail_be = cfg.get("item", "molotov_cocktail", true).getBoolean();
+		item.weapons_be = cfg.get("item", "weapons", true).getBoolean();
+		item.ammos_be = cfg.get("item", "ammos", true).getBoolean();
+		item.magazines_be = cfg.get("item", "magazines", true).getBoolean();
 
 		cfg.save();
 

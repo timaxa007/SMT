@@ -67,12 +67,12 @@ public class PackMining implements IPackClass {
 		world_dim_only_day_id = cfg.get("world", "dimension_only_day_id", 31).getInt();
 		world_dim_only_night_id = cfg.get("world", "dimension_only_night_id", 32).getInt();
 
-		block.ore_rock_ores_be = cfg.get("block", "ore_rock_ores", true).getBoolean(true);
-		block.ore_nether_ores_be = cfg.get("block", "ore_nether_ores", true).getBoolean(true);
-		block.ore_ender_ores_be = cfg.get("block", "ore_ender_ores", true).getBoolean(true);
-		block.cristals_be = cfg.get("block", "cristals", true).getBoolean(true);
+		block.ore_rock_ores_be = cfg.get("block", "ore_rock_ores", true).getBoolean();
+		block.ore_nether_ores_be = cfg.get("block", "ore_nether_ores", true).getBoolean();
+		block.ore_ender_ores_be = cfg.get("block", "ore_ender_ores", true).getBoolean();
+		block.cristals_be = cfg.get("block", "cristals", true).getBoolean();
 
-		item.items_for_mining_be = cfg.get("item", "items_for_mining", true).getBoolean(true);
+		item.items_for_mining_be = cfg.get("item", "items_for_mining", true).getBoolean();
 
 		cfg.save();
 
@@ -103,7 +103,7 @@ public class PackMining implements IPackClass {
 
 		DimensionManager.registerProviderType(world_dim_only_night_id, WorldOnlyNight.class, true);
 		DimensionManager.registerDimension(world_dim_only_night_id, world_dim_only_night_id);
-		  */
+		*/
 		Recipes_Mining.list();
 
 		MinecraftForge.EVENT_BUS.register(new EventMining());

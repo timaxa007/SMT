@@ -22,7 +22,9 @@ import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import timaxa007.pack.stock.PackStock;
+import timaxa007.pack.stock.item.ItemPetals;
 import timaxa007.pack.stock.item.ItemsStock;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -138,7 +140,7 @@ public class EventStock {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public void dropCobblestone(LivingDropsEvent event) {
 		if (event.source.getDamageType().equals("player")) {
 			random = new Random();
@@ -152,80 +154,122 @@ public class EventStock {
 				}
 			}
 		}
-	}
+	}*/
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
-	public void dropMossyCobblestone(LivingDropsEvent event) {
-		if (event.source.getDamageType().equals("player")) {
-			if (event.entityLiving instanceof EntityZombie) {
-				random = new Random();
-				System.out.println(random);
-				if (random.nextInt(100) < 25) {
-					random = new Random();
-					System.out.println(random);
-					event.entityLiving.entityDropItem(new ItemStack(Blocks.mossy_cobblestone, 1 + random.nextInt(2), 0), 0.0F);
+	public void dropFlower(BlockEvent.HarvestDropsEvent event) {
+		boolean drop_default = (PackStock.geteDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.DEFAULT);
+		boolean drop_vanilla_dye = (PackStock.geteDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.VANILLA_DYE);
+		boolean drop_petals = (PackStock.geteDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.PETALS);
+		boolean drop_other = (PackStock.geteDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.OTHER);
+		if (!drop_default) {
+			//-------------------------------------------------------------------------------------
+			if (event.block == Blocks.red_flower) {
+				if (event.blockMetadata == 0) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 1));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("poppy"), 1 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 1) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 12));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("blueOrchid"), 1 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 2) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 13));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("allium"), 1 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 3) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 7));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("houstonia"), 1 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 4) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 1));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("tulipRed"), 1 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 5) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 14));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("tulipOrange"), 1 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 6) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 7));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("tulipWhite"), 1 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 7) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 8));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("tulipPink"), 1 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 8) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 7));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("oxeyeDaisy"), 1 + event.world.rand.nextInt(2));
 				}
 			}
+			//-------------------------------------------------------------------------------------
+			if (event.block == Blocks.yellow_flower) {
+				if (event.blockMetadata == 0) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 1 + event.world.rand.nextInt(2), 11));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("dandelion"), 1 + event.world.rand.nextInt(2));
+				}
+			}
+			//-------------------------------------------------------------------------------------
+			if (event.block == Blocks.double_plant) {
+				if (event.blockMetadata == 0) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 2 + event.world.rand.nextInt(1), 11));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("sunflower"), 2 + event.world.rand.nextInt(1));
+				}
+				if (event.blockMetadata == 1) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 2 + event.world.rand.nextInt(2), 13));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("syringa"), 2 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 4) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 2 + event.world.rand.nextInt(2), 1));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("rose"), 2 + event.world.rand.nextInt(2));
+				}
+				if (event.blockMetadata == 5) {
+					if (drop_vanilla_dye)
+						renewDropFlower(event, new ItemStack(Items.dye, 2 + event.world.rand.nextInt(2), 9));
+					if (drop_petals)
+						renewDropFlower(event, ItemPetals.addNBT("paeonia"), 2 + event.world.rand.nextInt(2));
+				}
+			}
+			//-------------------------------------------------------------------------------------
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
-	public void dropIronOre(LivingDropsEvent event) {
-		if (event.source.getDamageType().equals("player")) {
-			if (event.entityLiving instanceof EntityZombie) {
-				random = new Random();
-				System.out.println(random);
-				if (random.nextInt(100) < 3) {
-					random = new Random();
-					System.out.println(random);
-					event.entityLiving.entityDropItem(new ItemStack(Blocks.iron_ore, 1 + random.nextInt(1), 0), 0.0F);
-				}
-			}
-		}
+	private static void renewDropFlower(BlockEvent.HarvestDropsEvent event, ItemStack is) {
+		event.drops.clear();
+		if (is != null) event.drops.add(is);
 	}
-	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
-	public void dropCoalOre(LivingDropsEvent event) {
-		if (event.source.getDamageType().equals("player")) {
-			if (event.entityLiving instanceof EntityZombie) {
-				random = new Random();
-				System.out.println(random);
-				if (random.nextInt(100) < 7) {
-					random = new Random();
-					System.out.println(random);
-					event.entityLiving.entityDropItem(new ItemStack(Blocks.coal_ore, 1 + random.nextInt(2), 0), 0.0F);
-				}
-			}
-		}
-	}
-	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
-	public void dropLapisOre(LivingDropsEvent event) {
-		if (event.source.getDamageType().equals("player")) {
-			if (event.entityLiving instanceof EntityZombie) {
-				random = new Random();
-				System.out.println(random);
-				if (random.nextInt(100) < 2) {
-					random = new Random();
-					System.out.println(random);
-					event.entityLiving.entityDropItem(new ItemStack(Blocks.lapis_ore, 3 + random.nextInt(5), 0), 0.0F);
-				}
-			}
-		}
-	}
-	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
-	public void dropGoldOre(LivingDropsEvent event) {
-		if (event.source.getDamageType().equals("player")) {
-			if (event.entityLiving instanceof EntityZombie) {
-				random = new Random();
-				System.out.println(random);
-				if (random.nextInt(1000) < 8) {
-					random = new Random();
-					System.out.println(random);
-					event.entityLiving.entityDropItem(new ItemStack(Blocks.gold_ore, 1 + random.nextInt(1), 0), 0.0F);
-				}
-			}
+
+	private static void renewDropFlower(BlockEvent.HarvestDropsEvent event, ItemStack is, int size) {
+		event.drops.clear();
+		if (is != null) {
+			is.stackSize = size;
+			event.drops.add(is);
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------

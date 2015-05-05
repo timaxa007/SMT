@@ -113,11 +113,11 @@ public class TileEntityElectricWires extends TileEntity {
 		if (nbt.hasKey("Stat")) {
 			int stat = nbt.getByte("Stat");
 			this.up = ((stat & 0x1) == 0 ? false : true);
-			this.down = ((stat >> 1  & 0x1) == 0 ? false : true);
-			this.north = ((stat >> 2  & 0x1) == 0 ? false : true);
-			this.south = ((stat >> 3  & 0x1) == 0 ? false : true);
-			this.west = ((stat >> 4  & 0x1) == 0 ? false : true);
-			this.east = ((stat >> 5  & 0x1) == 0 ? false : true);
+			this.down = ((stat >> 1 & 0x1) == 0 ? false : true);
+			this.north = ((stat >> 2 & 0x1) == 0 ? false : true);
+			this.south = ((stat >> 3 & 0x1) == 0 ? false : true);
+			this.west = ((stat >> 4 & 0x1) == 0 ? false : true);
+			this.east = ((stat >> 5 & 0x1) == 0 ? false : true);
 		}
 	}
 

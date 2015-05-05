@@ -61,7 +61,7 @@ public class SystemWeight {
 			double moving = ((weight >= 0.0F && weight <= weight_max) ? (double)factor : 0.0D);
 
 			/*if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
-				System.out.println(player.getDisplayName() + ":  moving -- " + moving);
+				System.out.println(player.getDisplayName() + ": moving -- " + moving);
 				System.out.println("weight -- " + weight + ", weight_max -- " + weight_max);
 			}*/
 

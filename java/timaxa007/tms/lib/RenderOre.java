@@ -30,7 +30,7 @@ ImageUtils.getImageFrom(ImageUtils.getLocationFrom(Blocks.stone.getIcon(1, meta)
 /**Texture of base ore*/
 BufferedImage ore = ImageUtils.getImageFrom(new ResourceLocation("timaxa007", "textures/blocks/ore/ore_dust_overlay.png"));
 /**Colored Texture of base ore.*/
-Image colored  = Toolkit.getDefaultToolkit().createImage(new FilteredImageSource(ore.getSource(), new ImageUtils.ImageColorFilter(/* Color, to paint base ore.*/Color.BLUE, ore)));
+Image colored = Toolkit.getDefaultToolkit().createImage(new FilteredImageSource(ore.getSource(), new ImageUtils.ImageColorFilter(/* Color, to paint base ore.*/Color.BLUE, ore)));
 /**Draw base ore texture on block -1 texture.*/
 //stone.getGraphics().drawImage(colored, 0, 0, 16, 16, null);
 /**Drawing block, translating, rotating, coloring.*/

@@ -52,10 +52,7 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 		if (te != null && te instanceof TileEntityPlants) {
 			TileEntityPlants tile = (TileEntityPlants)te;
 			if (!Plants.isNull(tile.getPlant()))
-				return ItemPlants.addNBT(
-						tile.getPlant(), tile.getPlantType(), 
-						tile.getPlantParametersMain(), 
-						tile.getWidth(), tile.getHeight());
+				return ItemPlants.addNBT(tile.getPlant(), tile.getPlantType(), tile.getPlantParametersMain(), tile.getWidth(), tile.getHeight());
 		}
 		return null;
 	}
@@ -109,9 +106,7 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	private static void blankMessage1(EntityPlayer player, String text1, String text2) {
-		player.addChatMessage(new ChatComponentText(
-				EnumChatFormatting.AQUA + UtilString.getText(text1) + ": " + EnumChatFormatting.RESET + text2 + ".")
-				);
+		player.addChatMessage(new ChatComponentText(EnumChatFormatting.AQUA + UtilString.getText(text1) + ": " + EnumChatFormatting.RESET + text2 + "."));
 	}
 	/*
 public boolean checkTemperatureGrowing(World world, int x, int y, int z, float temp) {

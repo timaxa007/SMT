@@ -6,7 +6,7 @@ public class Temperature {
 	public float temperature_min;
 	public float temperature_max;
 
-	public static Temperature createTemperature(float temperature, float temperature_min, float temperature_max) {
+	public static Temperature create(float temperature, float temperature_min, float temperature_max) {
 		return new Temperature(temperature, temperature_min, temperature_max);
 	}
 

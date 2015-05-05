@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 
 import org.apache.logging.log4j.Logger;
 
@@ -41,6 +42,8 @@ public class PackStock implements IPackClass {
 	public static ListItem item;
 	public static RenderMain render;
 
+	public static String is_drop_vanilla_flowers;
+
 	public static CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.items_for_stock;}
 	};
@@ -66,23 +69,30 @@ public class PackStock implements IPackClass {
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackStock.MODID + ".cfg"));
 		cfg.load();
 
-		block.plants_be = cfg.get("block", "plants", true).getBoolean(true);
-		block.foods_be = cfg.get("block", "foods", true).getBoolean(true);
-		block.healing_be = cfg.get("block", "healing", true).getBoolean(true);
-		block.apiary_be = cfg.get("block", "apiary", true).getBoolean(true);
-		block.petalled_be = cfg.get("block", "petalled", true).getBoolean(true);
+		is_drop_vanilla_flowers = getProperty(cfg, "config", "what_is_to_drop_of_vanilla_flowers", 
+				"What is to drop of vanilla flowers?\n"
+						+ "<default> - do not change drop in vanilla flowers.\n"
+						+ "<vanilla_dye> - drop vanilla dye (not from the recipe, but in the recipe)-[with plus].\n"
+						+ "<petals> - drop petals this mod.", 
+				"default");
 
-		item.items_for_stock_be = cfg.get("item", "items_for_stock", true).getBoolean(true);
-		item.plants_be = cfg.get("item", "plants", true).getBoolean(true);
-		item.nature_product_be = cfg.get("item", "nature_product", true).getBoolean(true);
-		item.foods_be = cfg.get("item", "foods", true).getBoolean(true);
-		item.drinks_be = cfg.get("item", "drinks", true).getBoolean(true);
-		item.medicals_be = cfg.get("item", "medicals", true).getBoolean(true);
-		item.honeycombs_be = cfg.get("item", "honeycombs", true).getBoolean(true);
-		item.bee_products_be = cfg.get("item", "bee_products", true).getBoolean(true);
-		item.bees_be = cfg.get("item", "bees", true).getBoolean(true);
-		item.petals_be = cfg.get("item", "petals", true).getBoolean(true);
-		//item.food_dog_be = cfg.get("item", "food_dog", true).getBoolean(true);
+		block.plants_be = cfg.get("block", "plants", true).getBoolean();
+		block.foods_be = cfg.get("block", "foods", true).getBoolean();
+		block.healing_be = cfg.get("block", "healing", true).getBoolean();
+		block.apiary_be = cfg.get("block", "apiary", true).getBoolean();
+		block.petalled_be = cfg.get("block", "petalled", true).getBoolean();
+
+		item.items_for_stock_be = cfg.get("item", "items_for_stock", true).getBoolean();
+		item.plants_be = cfg.get("item", "plants", true).getBoolean();
+		item.nature_product_be = cfg.get("item", "nature_product", true).getBoolean();
+		item.foods_be = cfg.get("item", "foods", true).getBoolean();
+		item.drinks_be = cfg.get("item", "drinks", true).getBoolean();
+		item.medicals_be = cfg.get("item", "medicals", true).getBoolean();
+		item.honeycombs_be = cfg.get("item", "honeycombs", true).getBoolean();
+		item.bee_products_be = cfg.get("item", "bee_products", true).getBoolean();
+		item.bees_be = cfg.get("item", "bees", true).getBoolean();
+		item.petals_be = cfg.get("item", "petals", true).getBoolean();
+		//item.food_dog_be = cfg.get("item", "food_dog", true).getBoolean();
 
 		cfg.save();
 
@@ -105,5 +115,34 @@ public class PackStock implements IPackClass {
 		MinecraftForge.EVENT_BUS.register(new EventStock());
 
 	}
+	//---------------------------------------------------------------------
+	private static boolean getProperty(Configuration cfg, String category, String name, String comment, boolean flag) {
+		Property show_system_info_testing_cfg = cfg.get(category, name, flag);
+		show_system_info_testing_cfg.comment = comment;
+		return show_system_info_testing_cfg.getBoolean();
+	}
 
+	private static String getProperty(Configuration cfg, String category, String name, String comment, String flag) {
+		Property show_system_info_testing_cfg = cfg.get(category, name, flag);
+		show_system_info_testing_cfg.comment = comment;
+		return show_system_info_testing_cfg.getString();
+	}
+	//---------------------------------------------------------------------
+	public static enum typeDropVanillaFlowers {
+		DEFAULT,
+		VANILLA_DYE,
+		PETALS,
+		OTHER;
+	}
+
+	public static typeDropVanillaFlowers geteDropVanillaFlowers() {
+		if (is_drop_vanilla_flowers.equals("default"))
+			return typeDropVanillaFlowers.DEFAULT;
+		else if (is_drop_vanilla_flowers.equals("vanilla_dye"))
+			return typeDropVanillaFlowers.VANILLA_DYE;
+		else if (is_drop_vanilla_flowers.equals("petals"))
+			return typeDropVanillaFlowers.PETALS;
+		else return typeDropVanillaFlowers.OTHER;
+	}
+	//---------------------------------------------------------------------
 }

@@ -53,8 +53,8 @@ public class UtilTMS {
 						tag.replaceFirst("^TileEntity*", "tile_entity_").toLowerCase();
 					else if (tag.startsWith("TE")) 
 						tag.replaceFirst("^TE*", "tile_entity_").toLowerCase();
-					else if (tag.startsWith("Tile")) 
-						tag.replaceFirst("^Tile*", "tile_entity_").toLowerCase();
+					/*else if (tag.startsWith("Tile")) 
+						tag.replaceFirst("^Tile*", "tile_entity_").toLowerCase();*/
 					else ;
 
 					GameRegistry.registerTileEntity(tile, tag);

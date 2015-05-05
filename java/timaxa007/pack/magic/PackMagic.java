@@ -80,17 +80,17 @@ public class PackMagic implements IPackClass {
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackMagic.MODID + ".cfg"));
 		cfg.load();
 
-		block.magic_machines_be = cfg.get("block", "magic_machines", true).getBoolean(true);
-		block.magic_slims_be = cfg.get("block", "magic_slims", true).getBoolean(true);
-		block.magic_cauldron_be = cfg.get("block", "magic_cauldron", true).getBoolean(true);
-		block.magic_locked_be = cfg.get("block", "magic_locked", true).getBoolean(true);
+		block.magic_machines_be = cfg.get("block", "magic_machines", true).getBoolean();
+		block.magic_slims_be = cfg.get("block", "magic_slims", true).getBoolean();
+		block.magic_cauldron_be = cfg.get("block", "magic_cauldron", true).getBoolean();
+		block.magic_locked_be = cfg.get("block", "magic_locked", true).getBoolean();
 
-		item.items_for_magic_be = cfg.get("item", "items_for_magic", true).getBoolean(true);
-		item.wands_be = cfg.get("item", "wands", true).getBoolean(true);
-		item.stuffs_be = cfg.get("item", "stuffs", true).getBoolean(true);
-		item.teleport_be = cfg.get("item", "teleport", true).getBoolean(true);
-		item.globular_be = cfg.get("item", "globular", true).getBoolean(true);
-		item.magic_bag_be = cfg.get("item", "magic_bag_be", true).getBoolean(true);
+		item.items_for_magic_be = cfg.get("item", "items_for_magic", true).getBoolean();
+		item.wands_be = cfg.get("item", "wands", true).getBoolean();
+		item.stuffs_be = cfg.get("item", "stuffs", true).getBoolean();
+		item.teleport_be = cfg.get("item", "teleport", true).getBoolean();
+		item.globular_be = cfg.get("item", "globular", true).getBoolean();
+		item.magic_bag_be = cfg.get("item", "magic_bag_be", true).getBoolean();
 
 		cfg.save();
 

@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.Tessellator;
 
 public class ModelCandles {
 
-	public static void addSliceCake(Tessellator t, double x,  double y,  double z, int h, int w) {
+	public static void addSliceCake(Tessellator t, double x, double y, double z, int h, int w) {
 
 		double p = 0.0625D;
 		double dh = (p * (double)w) / 2.0D;

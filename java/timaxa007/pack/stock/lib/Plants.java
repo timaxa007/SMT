@@ -2,6 +2,7 @@ package timaxa007.pack.stock.lib;
 
 import net.minecraft.util.StatCollector;
 import timaxa007.module.environment.Humidity;
+import timaxa007.module.environment.Hydrogenated;
 import timaxa007.module.environment.Temperature;
 import timaxa007.tms.util.UtilString;
 
@@ -13,8 +14,6 @@ import timaxa007.tms.util.UtilString;
  */
 public class Plants {
 
-	public static PlantType type_plants;
-
 	public static final Plants[] list = new Plants[4096];
 
 	public static final Plants empty = new Plants("");
@@ -24,12 +23,13 @@ public class Plants {
 	private String name;
 	private String type;
 	//private int color_hex;
+	private String texture;
 
+	public PlantType type_plants;
 	private PlantParametersMain parameters_main;
 	private Temperature temperature;
 	private Humidity humidity;
-
-	private String texture;
+	private Hydrogenated hydrogenated;
 
 	/**Не рекомендуется использовать этот метод.<br>
 	 * It is not recommended to use this method.**/
@@ -134,21 +134,15 @@ public class Plants {
 		return this;
 	}
 
-	public int getColor() {
-		return color_hex == 0 ? 0xFFFFFF : color_hex;
-	}
+	public int getColor() {return color_hex == 0 ? 0xFFFFFF : color_hex;}
 	 */
-	public Plants setPlantStats(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, 
-			int resistance, int protection, boolean dead_plant) {
-		this.parameters_main = Plants.PlantParametersMain.create(
-				growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant);
+	public Plants setPlantStats(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, int resistance, int protection, boolean dead_plant) {
+		this.parameters_main = Plants.PlantParametersMain.create(growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant);
 		return this;
 	}
 
-	public Plants setPlantStats(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, 
-			int resistance, int protection) {
-		this.parameters_main = Plants.PlantParametersMain.create(
-				growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, false);
+	public Plants setPlantStats(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, int resistance, int protection) {
+		this.parameters_main = Plants.PlantParametersMain.create(growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, false);
 		return this;
 	}
 
@@ -161,7 +155,7 @@ public class Plants {
 	public boolean getDeadPlant() {return parameters_main.dead_plant;}
 
 	public Plants setTemperatures(float temperature, float temperature_min, float temperature_max) {
-		this.temperature = Temperature.createTemperature(temperature, temperature_min, temperature_max);
+		this.temperature = Temperature.create(temperature, temperature_min, temperature_max);
 		return this;
 	}
 
@@ -170,13 +164,22 @@ public class Plants {
 	public float getTemperatureMax() {return temperature.temperature_max;}
 
 	public Plants setHumidity(float humidity, float humidity_min, float humidity_max) {
-		this.humidity = Humidity.createHumidity(humidity, humidity_min, humidity_max);
+		this.humidity = Humidity.create(humidity, humidity_min, humidity_max);
 		return this;
 	}
 
 	public float getHumidity() {return humidity.humidity;}
 	public float getHumidityMin() {return humidity.humidity_min;}
 	public float getHumidityMax() {return humidity.humidity_max;}
+
+	public Plants setHydrogenated(float hydrogenated, float hydrogenated_min, float hydrogenated_max) {
+		this.hydrogenated = Hydrogenated.create(hydrogenated, hydrogenated_min, hydrogenated_max);
+		return this;
+	}
+
+	public float getHydrogenated() {return hydrogenated.hydrogenated;}
+	public float getHydrogenatedMin() {return hydrogenated.hydrogenated_min;}
+	public float getHydrogenatedMax() {return hydrogenated.hydrogenated_max;}
 
 	public Plants setTexture(String str) {
 		texture = str;
@@ -217,10 +220,7 @@ public class Plants {
 		public boolean dead_plant;
 		public static final int DeadPlantMax = 0x1;
 
-		public PlantParametersMain(
-				int growth_mach, int growth_quality, 
-				int fertility_quality, int fertility_quantity, 
-				int resistance, int protection, boolean dead_plant) {
+		public PlantParametersMain(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, int resistance, int protection, boolean dead_plant) {
 			this.growth_mach = growth_mach;
 			this.growth_quality = growth_quality;
 			this.fertility_quality = fertility_quality;
@@ -232,7 +232,7 @@ public class Plants {
 
 		public PlantParametersMain(int parameters_plant_main) {
 			this.growth_mach = (parameters_plant_main & GrowthMachMax);
-			this.growth_quality = (parameters_plant_main >> 4  & GrowthQualityMax);
+			this.growth_quality = (parameters_plant_main >> 4 & GrowthQualityMax);
 			this.fertility_quality = (parameters_plant_main >> 8 & FertilityQualityMax);
 			this.fertility_quantity = (parameters_plant_main >> 12 & FertilityQuantityMax);
 			this.resistance = (parameters_plant_main >> 16 & ResistanceMax);
@@ -241,24 +241,15 @@ public class Plants {
 			//25
 		}
 
-		public static PlantParametersMain create(
-				int growth_mach, int growth_quality, 
-				int fertility_quality, int fertility_quantity, 
-				int resistance, int protection, 
-				boolean dead_plant) {
-			return new PlantParametersMain(
-					growth_mach, growth_quality, 
-					fertility_quality, fertility_quantity, 
-					resistance, protection, dead_plant);
+		public static PlantParametersMain create(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, int resistance, int protection, boolean dead_plant) {
+			return new PlantParametersMain(growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant);
 		}
 
 		public static PlantParametersMain create(int parameters_plant_main) {
 			return new PlantParametersMain(parameters_plant_main);
 		}
 
-		public void edit(int growth_mach, int growth_quality, 
-				int fertility_quality, int fertility_quantity, 
-				int resistance, int protection, boolean dead_plant) {
+		public void edit(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, int resistance, int protection, boolean dead_plant) {
 			editGrowthMach(growth_mach);
 			editGrowthQuality(growth_quality);
 			editFertilityQuality(fertility_quality);
@@ -308,15 +299,11 @@ public class Plants {
 		}
 
 		public int getPlantParametersMain() {
-			return (dead_plant ? 1 : 0) << 24 | this.protection << 20 | this.resistance << 16 | 
-					this.fertility_quantity << 12 | this.fertility_quality << 8 | 
-					this.growth_quality << 4 | this.growth_mach;
+			return (this.dead_plant ? 1 : 0) << 24 | this.protection << 20 | this.resistance << 16 | this.fertility_quantity << 12 | this.fertility_quality << 8 | this.growth_quality << 4 | this.growth_mach;
 		}
 
 		public String toString() {
-			return "(" + this.growth_mach + ", " + this.growth_quality + ", " + 
-					this.fertility_quality + ", " + this.fertility_quantity + ", " + 
-					this.resistance + ", " + this.protection + ", " + (this.dead_plant) + ")";
+			return "(" + this.growth_mach + ", " + this.growth_quality + ", " + this.fertility_quality + ", " + this.fertility_quantity + ", " + this.resistance + ", " + this.protection + ", " + (this.dead_plant) + ")";
 		}
 
 	}
