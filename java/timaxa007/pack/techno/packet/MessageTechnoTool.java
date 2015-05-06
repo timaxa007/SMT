@@ -26,7 +26,7 @@ public class MessageTechnoTool implements IMessage {
 	public void fromBytes(ByteBuf buf) {
 		action = buf.readInt();
 	}
-
+	//----------------------------------------------------------------------------------
 	public static class Handler implements IMessageHandler<MessageTechnoTool, IMessage> {
 
 		@Override
@@ -43,5 +43,5 @@ public class MessageTechnoTool implements IMessage {
 		}
 
 	}
-
+	//----------------------------------------------------------------------------------
 }

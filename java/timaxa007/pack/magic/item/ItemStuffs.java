@@ -29,7 +29,6 @@ import timaxa007.pack.magic.packet.MessageInteractionBlock;
 import timaxa007.pack.magic.packet.MessageInteractionEntity;
 import timaxa007.pack.magic.packet.MessagePuff;
 import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.util.ActionSetBiome;
 import timaxa007.tms.util.UtilTMS;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -427,7 +426,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 	}
 
 	public void actBlock1(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {
-		ActionSetBiome.setBiome(BiomeGenBase.desert, world, x, z);
+		UtilTMS.UtilWorld.setBiome(BiomeGenBase.desert, world, x, z);
 
 		blockAct1(is, world, player, block, x, y, z);
 		blockAct2(is, world, player, block, x, y, z);

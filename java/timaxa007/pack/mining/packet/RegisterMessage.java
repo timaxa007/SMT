@@ -8,8 +8,7 @@ public class RegisterMessage {
 	private static int id = 0;
 
 	public static void init(SimpleNetworkWrapper network) {
-		network.registerMessage(MessagePackMiningServer.Handler.class, MessagePackMiningServer.class, id++, Side.SERVER);
-		network.registerMessage(MessagePackMiningClient.Handler.class, MessagePackMiningClient.class, id++, Side.CLIENT);
+
 	}
 
 }

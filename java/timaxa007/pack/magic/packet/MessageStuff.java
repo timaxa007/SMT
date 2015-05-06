@@ -30,7 +30,7 @@ public class MessageStuff implements IMessage {
 		button = buf.readInt();
 		buttonstate = buf.readBoolean();
 	}
-
+	//----------------------------------------------------------------------------------
 	public static class Handler implements IMessageHandler<MessageStuff, IMessage> {
 
 		@Override
@@ -48,5 +48,5 @@ public class MessageStuff implements IMessage {
 		}
 
 	}
-
+	//----------------------------------------------------------------------------------
 }

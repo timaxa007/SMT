@@ -29,7 +29,7 @@ public class MessageOpenGui implements IMessage {
 	public void fromBytes(ByteBuf buf) {
 		gui_id = buf.readInt();
 	}
-
+	//----------------------------------------------------------------------------------
 	public static class Handler implements IMessageHandler<MessageOpenGui, IMessage> {
 
 		@Override
@@ -45,5 +45,5 @@ public class MessageOpenGui implements IMessage {
 		}
 
 	}
-
+	//----------------------------------------------------------------------------------
 }

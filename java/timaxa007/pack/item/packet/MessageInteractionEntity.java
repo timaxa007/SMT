@@ -31,7 +31,7 @@ public class MessageInteractionEntity implements IMessage {
 		entityID = buf.readInt();
 		act = buf.readInt();
 	}
-
+	//----------------------------------------------------------------------------------
 	public static class Handler implements IMessageHandler<MessageInteractionEntity, IMessage> {
 
 		@Override
@@ -49,5 +49,5 @@ public class MessageInteractionEntity implements IMessage {
 		}
 
 	}
-
+	//----------------------------------------------------------------------------------
 }

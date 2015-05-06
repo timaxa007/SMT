@@ -38,7 +38,7 @@ public class MessageInteractionBlock implements IMessage {
 		block_z = buf.readInt();
 		act = buf.readInt();
 	}
-
+	//----------------------------------------------------------------------------------
 	public static class Handler implements IMessageHandler<MessageInteractionBlock, IMessage> {
 
 		@Override
@@ -57,5 +57,5 @@ public class MessageInteractionBlock implements IMessage {
 		}
 
 	}
-
+	//----------------------------------------------------------------------------------
 }

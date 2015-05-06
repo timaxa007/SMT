@@ -37,7 +37,7 @@ public class MessagePuff implements IMessage {
 		cord_y = buf.readDouble();
 		cord_z = buf.readDouble();
 	}
-
+	//----------------------------------------------------------------------------------
 	public static class Handler implements IMessageHandler<MessagePuff, IMessage> {
 
 		@Override
@@ -59,5 +59,5 @@ public class MessagePuff implements IMessage {
 		}
 
 	}
-
+	//----------------------------------------------------------------------------------
 }

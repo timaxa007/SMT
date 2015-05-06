@@ -15,9 +15,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.chunk.Chunk;
+import timaxa007.tms.CoreTMS;
 import timaxa007.tms.object.ModifiedBlock;
 import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.object.ModifiedItemArmor;
+import timaxa007.tms.packet.MessageSetBiome;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -38,7 +41,7 @@ public class UtilTMS {
 		}
 
 		public static void RegBlock(Block block, Class<? extends ItemBlock> item) {
-			if (block != null) {
+			if (block != null && item != null) {
 				if (block instanceof ModifiedBlock)
 					GameRegistry.registerBlock(block, item, "block_" + ((ModifiedBlock)block).getTag());
 			}
@@ -106,6 +109,21 @@ public class UtilTMS {
 					entityitem.delayBeforeCanPickup = 10;
 					world.spawnEntityInWorld(entityitem);
 				}
+			}
+		}
+
+		public static void setBiome(BiomeGenBase biome, World world, int x, int z) {
+			setBiome(biome.biomeID, world, x, z);
+		}
+
+		public static void setBiome(int biomeID, World world, int x, int z) {
+			if (world == null) world = Minecraft.getMinecraft().theWorld;
+			if (world != null) {
+				Chunk chunk = world.getChunkFromBlockCoords(x, z);
+				byte[] array = chunk.getBiomeArray();
+				array[((z & 0xF) << 4 | x & 0xF)] = ((byte)(biomeID & 0xFF));
+				chunk.setBiomeArray(array);
+				if (!world.isRemote) CoreTMS.network.sendToAll(new MessageSetBiome(biomeID, x, z));
 			}
 		}
 

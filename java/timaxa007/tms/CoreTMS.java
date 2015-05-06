@@ -14,12 +14,14 @@ import org.apache.logging.log4j.Logger;
 import timaxa007.api.IModuleClass;
 import timaxa007.api.IPackClass;
 import timaxa007.gui.HandlerGuiTMS;
+import timaxa007.tms.lib.LangLib;
 import timaxa007.tms.lib.ListTextureModel;
 import timaxa007.tms.packet.RegisterMessage;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -118,7 +120,7 @@ public class CoreTMS {
 	public static Item item_test;
 
 	@Mod.EventHandler
-	public void preInitialize(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
 		//--------------------------------------------------------------------------------------------
@@ -205,11 +207,19 @@ public class CoreTMS {
 	}
 
 	@Mod.EventHandler
-	public void initialize(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event) {
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(CoreTMS.MODID, new HandlerGuiTMS());
 
 		proxy.init();
+
+		//LangLib.init(CoreTMS.MODID);
+
+	}
+
+	@Mod.EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		proxy.postInit();
 	}
 
 	private static boolean getProperty(Configuration cfg, String category, String name, String comment, boolean flag) {
