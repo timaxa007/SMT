@@ -49,10 +49,6 @@ public class RenderMain {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElectricWires.class, new BlockRenderElectricWires());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.block.electric_wires), new ItemRenderBlockElectricWires());
 		}
-		if (PackTechno.block.chip_be) {
-			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChip.class, new BlockRenderChip());
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.block.chip), new ItemRenderBlockChip());
-		}
 		if (PackTechno.block.module_movement_be) {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModuleMovement.class, new BlockRenderModuleMovement());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.block.module_movement), new ItemRenderBlockModuleMovement());

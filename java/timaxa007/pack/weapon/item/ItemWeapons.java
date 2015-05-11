@@ -284,7 +284,7 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 					list.add("AmmoAtm: " + nbt.getInteger("AmmoAtm") + ".");
 				}
 
-				if (nbt.hasKey("ZoomFov") && CoreTMS.show_tip_info_testing) {
+				if (nbt.hasKey("ZoomFov") && CoreTMS.config.show_tip_info_testing) {
 					list.add("ZoomFov: " + nbt.getByte("ZoomFov") + ".");
 				}
 

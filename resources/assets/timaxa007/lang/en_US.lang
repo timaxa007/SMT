@@ -9,7 +9,7 @@ key.mode_out.name=Mode Decrease
 key.action.name=Action
 
 key.action_helmet.name=Action Helmet
-key.action_chest.name=Action Chestplate
+key.action_chest.name=Action Chest-plate
 key.action_leggin.name=Action Leggings
 key.action_boot.name=Action Boots
 
@@ -17,8 +17,8 @@ key.booster.name=Booster
 key.grab.name=Grab
 key.lie.name=Lie Down
 
-key.button_left.name=Left Botton Mouse
-key.button_right.name=Right Botton Mouse
+key.button_left.name=Left Button Mouse
+key.button_right.name=Right Button Mouse
 
 
 item.upgrades_weights.name=Upgrades Weights
@@ -500,7 +500,7 @@ item.teleport.name=Teleport
 
 item.armor_costumes_helmet.name=Costume Helmet
 item.armor_costumes_chest.name=Costume Chest
-item.armor_costumes_leggin.name=Costume Leggin
+item.armor_costumes_leggin.name=Costume Legging
 item.armor_costumes_boot.name=Costume Boot
 
 item.armor_masks.name=Mask

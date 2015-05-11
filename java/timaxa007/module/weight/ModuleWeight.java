@@ -20,7 +20,7 @@ public class ModuleWeight implements IModuleClass {
 
 	public static final String MODID = "weight";
 	public static final String MODNAME = "SystemWeight";
-	public static final String VERSION = "0.2a";
+	public static final String VERSION = "0.013";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -32,7 +32,7 @@ public class ModuleWeight implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + ModuleWeight.MODNAME + ", version: " + ModuleWeight.VERSION + ".");
+		log.info("Starting module " + ModuleWeight.MODNAME + ", build: " + ModuleWeight.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleWeight.MODID + ".cfg"));
 		cfg.load();

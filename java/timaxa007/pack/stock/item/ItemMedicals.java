@@ -119,7 +119,8 @@ public class ItemMedicals extends ModifiedItem {
 		if (PackStock.item.medicals_be) {
 			for (int i = 0; i < Potion.potionTypes.length; i++) {
 				if (Potion.potionTypes[i] != null) {
-					for (int j = 0; j < 5; j++) list.add(addNBT(i, 60, j));
+					for (int j = 0; j < 4; j++) list.add(addNBT(i, 60, j));
+					list.add(addNBT(i, 60, 255));
 				}
 			}
 		}

@@ -13,7 +13,7 @@ public class ModuleColors implements IModuleClass {
 
 	public static final String MODID = "colors";
 	public static final String MODNAME = "Colors";
-	public static final String VERSION = "0.1.3a";
+	public static final String VERSION = "0.031";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -22,7 +22,7 @@ public class ModuleColors implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + ModuleColors.MODNAME + ", version: " + ModuleColors.VERSION + ".");
+		log.info("Starting module " + ModuleColors.MODNAME + ", build: " + ModuleColors.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleColors.MODID + ".cfg"));
 		cfg.load();

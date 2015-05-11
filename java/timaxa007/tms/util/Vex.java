@@ -4,7 +4,7 @@ public class Vex {
 	//-------------------------------------------------------------
 	public static class Integer2 {
 
-		int x, z;
+		public int x, z;
 
 		public Integer2(int x, int z) {
 			this.x = x;this.z = z;
@@ -26,7 +26,7 @@ public class Vex {
 	//-------------------------------------------------------------
 	public static class Integer3 {
 
-		int x, y, z;
+		public int x, y, z;
 
 		public Integer3(int x, int y, int z) {
 			this.x = x;this.y = y;this.z = z;
@@ -48,7 +48,7 @@ public class Vex {
 	//-------------------------------------------------------------
 	public static class Integer6 {
 
-		int x, y, z, u, v, w;
+		public int x, y, z, u, v, w;
 
 		public Integer6(int x, int y, int z, int u, int v, int w) {
 			this.x = x;this.y = y;this.z = z;this.u = u;this.v = v;this.w = w;
@@ -70,7 +70,7 @@ public class Vex {
 	//-------------------------------------------------------------
 	public static class Double2 {
 
-		double x, z;
+		public double x, z;
 
 		public Double2(double x, double z) {
 			this.x = x;this.z = z;
@@ -92,7 +92,7 @@ public class Vex {
 	//-------------------------------------------------------------
 	public static class Double3 {
 
-		double x, y, z;
+		public double x, y, z;
 
 		public Double3(double x, double y, double z) {
 			this.x = x;this.y = y;this.z = z;
@@ -114,7 +114,7 @@ public class Vex {
 	//-------------------------------------------------------------
 	public static class Double6 {
 
-		double x, y, z, u, v, w;
+		public double x, y, z, u, v, w;
 
 		public Double6(double x, double y, double z, double u, double v, double w) {
 			this.x = x;this.y = y;this.z = z;this.u = u;this.v = v;this.w = w;
@@ -136,7 +136,7 @@ public class Vex {
 	//-------------------------------------------------------------
 	public static class Float2 {
 
-		float x, z;
+		public float x, z;
 
 		public Float2(float x, float z) {
 			this.x = x;this.z = z;
@@ -158,7 +158,7 @@ public class Vex {
 	//-------------------------------------------------------------
 	public static class Float3 {
 
-		float x, y, z;
+		public float x, y, z;
 
 		public Float3(float x, float y, float z) {
 			this.x = x;this.y = y;this.z = z;
@@ -180,7 +180,7 @@ public class Vex {
 	//-------------------------------------------------------------
 	public static class Float6 {
 
-		float x, y, z, u, v, w;
+		public float x, y, z, u, v, w;
 
 		public Float6(float x, float y, float z, float u, float v, float w) {
 			this.x = x;this.y = y;this.z = z;this.u = u;this.v = v;this.w = w;

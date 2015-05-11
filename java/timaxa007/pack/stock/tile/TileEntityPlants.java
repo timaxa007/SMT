@@ -7,9 +7,10 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import timaxa007.pack.stock.lib.Plants;
 import timaxa007.pack.stock.lib.Plants.PlantParametersMain;
+import timaxa007.tms.util.ITileEntityOwner;
 import timaxa007.tms.util.UtilString;
 
-public class TileEntityPlants extends TileEntity {
+public class TileEntityPlants extends TileEntity implements ITileEntityOwner {
 
 	private String plant;
 	private String plant_type;
@@ -19,6 +20,7 @@ public class TileEntityPlants extends TileEntity {
 	private int height;
 
 	private String style;
+	private String owner;
 
 	public TileEntityPlants() {
 		this.plant = "";
@@ -27,6 +29,7 @@ public class TileEntityPlants extends TileEntity {
 		this.width = 0;
 		this.height = 0;
 		this.style = "";
+		owner = "";
 	}
 
 	public void setPlant(String plant) {this.plant = plant;}
@@ -74,6 +77,9 @@ public class TileEntityPlants extends TileEntity {
 	public void setStyle(String style) {this.style = style;}
 	public String getStyle() {return style;}
 
+	public void setOwner(String username) {owner = username;}
+	public String getOwner() {return owner;}
+
 	public void updateEntity() {
 		TileEntity te = worldObj.getTileEntity(xCoord, yCoord, zCoord);
 		if (te != null && te instanceof TileEntityPlants) {
@@ -118,6 +124,7 @@ public class TileEntityPlants extends TileEntity {
 		if (nbt.hasKey("Width")) width = (int)nbt.getByte("Width");
 		if (nbt.hasKey("Height")) height = (int)nbt.getByte("Height");
 		if (nbt.hasKey("Style")) style = nbt.getString("Style"); else style = "";
+		if (nbt.hasKey("Owner")) owner = nbt.getString("Owner");
 	}
 
 	@Override
@@ -134,6 +141,7 @@ public class TileEntityPlants extends TileEntity {
 		nbt.setByte("Height", (byte)height);
 
 		if (UtilString.hasString(style)) nbt.setString("Style", style);
+		if (UtilString.hasString(owner)) nbt.setString("Owner", owner);
 	}
 
 	public Packet getDescriptionPacket() {

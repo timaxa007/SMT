@@ -3,6 +3,8 @@ package timaxa007.pack.stock.tile;
 import java.util.Iterator;
 import java.util.List;
 
+import timaxa007.tms.util.ITileEntityOwner;
+import timaxa007.tms.util.UtilString;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.potion.Potion;
@@ -10,7 +12,16 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
-public class TileEntityHealing extends TileEntity {
+public class TileEntityHealing extends TileEntity implements ITileEntityOwner {
+
+	private String owner;
+
+	public TileEntityHealing() {
+		owner = "";
+	}
+
+	public void setOwner(String username) {owner = username;}
+	public String getOwner() {return owner;}
 
 	public void updateEntity() {
 		if (worldObj.getTotalWorldTime() % 80L == 0L) {
@@ -39,4 +50,6 @@ public class TileEntityHealing extends TileEntity {
 		}
 	}
 
+	//if (nbt.hasKey("Owner")) owner = nbt.getString("Owner");
+	//if (UtilString.hasString(owner)) nbt.setString("Owner", owner);
 }

@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Level;
 import timaxa007.api.IProxyModuleClient;
 import timaxa007.api.IProxyPackClient;
 import timaxa007.tms.event.EventClientTMS;
+import timaxa007.tms.lib.LangLib;
 import cpw.mods.fml.common.FMLLog;
 
 public class ProxyClient extends ProxyCommon {
@@ -54,6 +55,8 @@ public class ProxyClient extends ProxyCommon {
 		if (techno != null) techno.preInit();
 		if (weapon != null) weapon.preInit();
 
+		LangLib.init(CoreTMS.MODID);
+
 	}
 
 	@Override
@@ -76,7 +79,7 @@ public class ProxyClient extends ProxyCommon {
 		if (techno != null) techno.init();
 		if (weapon != null) weapon.init();
 
-		if (CoreTMS.debug) FMLLog.log(CoreTMS.MODID, Level.DEBUG, "Successful initialized client part.");
+		if (CoreTMS.config.debug) FMLLog.log(CoreTMS.MODID, Level.DEBUG, "Successful initialized client part.");
 
 		MinecraftForge.EVENT_BUS.register(new EventClientTMS());
 
@@ -106,25 +109,25 @@ public class ProxyClient extends ProxyCommon {
 
 	public static void verificationModuleClient() {
 
-		if (CoreTMS.isNodeControlButton)
+		if (CoreTMS.config.isNodeControlButton)
 			control_button = checkModuleClient(CoreTMS.PATH_MODULE + ".control_button.ProxyClient");
 
-		if (CoreTMS.isNodeEnvironment)
+		if (CoreTMS.config.isNodeEnvironment)
 			environment = checkModuleClient(CoreTMS.PATH_MODULE + ".environment.ProxyClient");
 
-		if (CoreTMS.isNodeStatusPlayer)
+		if (CoreTMS.config.isNodeStatusPlayer)
 			status_player = checkModuleClient(CoreTMS.PATH_MODULE + ".status_player.ProxyClient");
 
-		if (CoreTMS.isNodeWeight)
+		if (CoreTMS.config.isNodeWeight)
 			weight = checkModuleClient(CoreTMS.PATH_MODULE + ".weight.ProxyClient");
 
-		if (CoreTMS.isNodeEffect)
+		if (CoreTMS.config.isNodeEffect)
 			effects = checkModuleClient(CoreTMS.PATH_MODULE + ".effect.ProxyClient");
 
-		if (CoreTMS.isNodeColors)
+		if (CoreTMS.config.isNodeColors)
 			colors = checkModuleClient(CoreTMS.PATH_MODULE + ".colors.ProxyClient");
 
-		if (CoreTMS.isNodeFluids)
+		if (CoreTMS.config.isNodeFluids)
 			fluids = checkModuleClient(CoreTMS.PATH_MODULE + ".fluids.ProxyClient");
 
 	}
@@ -139,25 +142,25 @@ public class ProxyClient extends ProxyCommon {
 
 	public static void verificationPackClient() {
 
-		if (CoreTMS.isPackFurniture)
+		if (CoreTMS.config.isPackFurniture)
 			furniture = checkPackClient(CoreTMS.PATH_PACK + ".furniture.ProxyClient");
 
-		if (CoreTMS.isPackItems)
+		if (CoreTMS.config.isPackItems)
 			item = checkPackClient(CoreTMS.PATH_PACK + ".item.ProxyClient");
 
-		if (CoreTMS.isPackMagic)
+		if (CoreTMS.config.isPackMagic)
 			magic = checkPackClient(CoreTMS.PATH_PACK + ".magic.ProxyClient");
 
-		if (CoreTMS.isPackMining)
+		if (CoreTMS.config.isPackMining)
 			mining = checkPackClient(CoreTMS.PATH_PACK + ".mining.ProxyClient");
 
-		if (CoreTMS.isPackStock)
+		if (CoreTMS.config.isPackStock)
 			stock = checkPackClient(CoreTMS.PATH_PACK + ".stock.ProxyClient");
 
-		if (CoreTMS.isPackTechno)
+		if (CoreTMS.config.isPackTechno)
 			techno = checkPackClient(CoreTMS.PATH_PACK + ".techno.ProxyClient");
 
-		if (CoreTMS.isPackWeapons)
+		if (CoreTMS.config.isPackWeapons)
 			weapon = checkPackClient(CoreTMS.PATH_PACK + ".weapon.ProxyClient");
 
 	}

@@ -13,7 +13,7 @@ public class ModuleFluids implements IModuleClass {
 
 	public static final String MODID = "fluids";
 	public static final String MODNAME = "Fluids";
-	public static final String VERSION = "0.3.3a";
+	public static final String VERSION = "0.021";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -22,7 +22,7 @@ public class ModuleFluids implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + ModuleFluids.MODNAME + ", version: " + ModuleFluids.VERSION + ".");
+		log.info("Starting module " + ModuleFluids.MODNAME + ", build: " + ModuleFluids.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleFluids.MODID + ".cfg"));
 		cfg.load();

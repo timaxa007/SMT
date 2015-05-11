@@ -13,7 +13,8 @@ import timaxa007.pack.item.block.ListBlock;
 import timaxa007.pack.item.item.ListItem;
 import timaxa007.pack.item.lib.ListPackItems;
 import timaxa007.pack.item.packet.RegisterMessage;
-import timaxa007.pack.item.recipe.*;
+import timaxa007.pack.item.recipe.RecipeToolHammer;
+import timaxa007.pack.item.recipe.Recipes_PackItems;
 import timaxa007.pack.item.render.RenderMain;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -27,7 +28,7 @@ public class PackItems implements IPackClass {
 
 	public static final String MODID = "itemspack";
 	public static final String MODNAME = "PackItems";
-	public static final String VERSION = "0.1a";
+	public static final String VERSION = "0.117";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -49,7 +50,7 @@ public class PackItems implements IPackClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting sub-mod " + PackItems.MODNAME + ".");
+		log.info("Starting sub-mod " + PackItems.MODNAME + ", build: " + PackItems.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackItems.MODID + ".cfg"));
 		cfg.load();

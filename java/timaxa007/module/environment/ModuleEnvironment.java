@@ -20,7 +20,7 @@ public class ModuleEnvironment implements IModuleClass {
 
 	public static final String MODID = "environment";
 	public static final String MODNAME = "Environment";
-	public static final String VERSION = "0.2a";
+	public static final String VERSION = "0.006";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -32,7 +32,7 @@ public class ModuleEnvironment implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + ModuleEnvironment.MODNAME + ", version: " + ModuleEnvironment.VERSION + ".");
+		log.info("Starting module " + ModuleEnvironment.MODNAME + ", build: " + ModuleEnvironment.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleEnvironment.MODID + ".cfg"));
 		cfg.load();

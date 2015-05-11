@@ -30,7 +30,7 @@ public class PackMining implements IPackClass {
 
 	public static final String MODID = "miningpack";
 	public static final String MODNAME = "PackMining";
-	public static final String VERSION = "0.1a";
+	public static final String VERSION = "0.227";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -58,7 +58,7 @@ public class PackMining implements IPackClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting sub-mod " + PackMining.MODNAME + ".");
+		log.info("Starting sub-mod " + PackMining.MODNAME + ", build: " + PackMining.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackMining.MODID + ".cfg"));
 		cfg.load();

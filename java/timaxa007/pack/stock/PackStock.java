@@ -32,7 +32,7 @@ public class PackStock implements IPackClass {
 
 	public static final String MODID = "stockpack";
 	public static final String MODNAME = "PackStock";
-	public static final String VERSION = "0.1a";
+	public static final String VERSION = "0.243";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -64,7 +64,7 @@ public class PackStock implements IPackClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting sub-mod " + PackStock.MODNAME + ".");
+		log.info("Starting sub-mod " + PackStock.MODNAME + ", build: " + PackStock.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackStock.MODID + ".cfg"));
 		cfg.load();

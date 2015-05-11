@@ -1,5 +1,6 @@
 package timaxa007.tms.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -31,11 +32,41 @@ public class UtilTMS {
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilBlock {
 
+		public static void RegBlock(Object[][] objects) {
+			for (int i = 0; i < objects.length; i++) {
+
+				Block block = null;
+				Class<? extends ItemBlock> item = null;
+				Class<? extends TileEntity> te = null;
+
+				for (int j = 0; j < objects[i].length; j++) {
+
+					if (objects[i][j] != null && objects[i][j] instanceof Block)
+						block = (Block)objects[i][j];
+
+					if (objects[i][j] != null && objects[i][j] instanceof ItemBlock)
+						item = (Class<? extends ItemBlock>)objects[i][j];
+
+					if (objects[i][j] != null && objects[i][j] instanceof TileEntity)
+						te = (Class<? extends TileEntity>)objects[i][j];
+
+				}
+
+				if (block != null && item != null) RegBlock(block, item);
+				else if (block != null && item == null) RegBlock(block);
+
+				if (te != null) RegTE(te);
+
+			}
+		}
+
 		public static void RegBlock(Block... blocks) {
 			for (Block block : blocks) {
 				if (block != null) {
 					if (block instanceof ModifiedBlock)
 						GameRegistry.registerBlock(block, "block_" + ((ModifiedBlock)block).getTag());
+					else if (block instanceof Block)
+						GameRegistry.registerBlock(block, block.getUnlocalizedName());
 				}
 			}
 		}
@@ -44,6 +75,8 @@ public class UtilTMS {
 			if (block != null && item != null) {
 				if (block instanceof ModifiedBlock)
 					GameRegistry.registerBlock(block, item, "block_" + ((ModifiedBlock)block).getTag());
+				else if (block instanceof Block)
+					GameRegistry.registerBlock(block, item, block.getUnlocalizedName());
 			}
 		}
 
@@ -74,8 +107,6 @@ public class UtilTMS {
 				if (item != null) {
 					if (item instanceof ModifiedItem)
 						GameRegistry.registerItem(item, "item_" + ((ModifiedItem)item).getTag());
-					/*else if (item instanceof ModifiedItemArmor)
-						GameRegistry.registerItem(item, "item_" + ((ModifiedItemArmor)item).getTag());*/
 				}
 			}
 		}
@@ -124,6 +155,34 @@ public class UtilTMS {
 				array[((z & 0xF) << 4 | x & 0xF)] = ((byte)(biomeID & 0xFF));
 				chunk.setBiomeArray(array);
 				if (!world.isRemote) CoreTMS.network.sendToAll(new MessageSetBiome(biomeID, x, z));
+			}
+		}
+
+		public static void breakBlock(World world, int x, int y, int z) {
+			if (!world.isAirBlock(x, y, z)) {
+				ArrayList<ItemStack> items = world.getBlock(x, y, z).getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+				for (ItemStack is : items) UtilTMS.UtilWorld.dropItem(world, x, y, z, is);
+				setAir(world, x, y, z);
+			}
+		}
+
+		public static void dropBlock(World world, int x, int y, int z) {
+			if (!world.isAirBlock(x, y, z)) {
+				UtilTMS.UtilWorld.dropItem(world, x, y, z, new ItemStack (world.getBlock(x, y, z), 1, world.getBlockMetadata(x, y, z)));
+				setAir(world, x, y, z);
+			}
+		}
+
+		public static void breakupBlock(World world, int x, int y, int z, ItemStack is) {
+			if (is != null)
+				UtilTMS.UtilWorld.dropItem(world, x, y, z, new ItemStack (world.getBlock(x, y, z), 1, world.getBlockMetadata(x, y, z)));
+			setAir(world, x, y, z);
+		}
+
+		public static void setAir(World world, int x, int y, int z) {
+			if (!world.isAirBlock(x, y, z)) {
+				if (world.getTileEntity(x, y, z) != null) world.removeTileEntity(x, y, z);
+				world.setBlockToAir(x, y, z);
 			}
 		}
 

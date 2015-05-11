@@ -26,7 +26,7 @@ public class PackWeapons implements IPackClass {
 
 	public static final String MODID = "weaponpack";
 	public static final String MODNAME = "PackWeapon";
-	public static final String VERSION = "0.1a";
+	public static final String VERSION = "0.120";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	//GUI
@@ -47,7 +47,7 @@ public class PackWeapons implements IPackClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting sub-mod " + PackWeapons.MODNAME + ".");
+		log.info("Starting sub-mod " + PackWeapons.MODNAME + ", build: " + PackWeapons.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackWeapons.MODID + ".cfg"));
 		cfg.load();

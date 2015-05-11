@@ -6,14 +6,16 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import timaxa007.tms.util.ITileEntityOwner;
 import timaxa007.tms.util.UtilString;
 
-public class TileEntityElectricWires extends TileEntity {
+public class TileEntityElectricWires extends TileEntity implements ITileEntityOwner {
 
 	private String style;
 	//private int type;
 	private int size;
 	private int color_hex;
+	private String owner;
 
 	public boolean up;
 	public boolean down;
@@ -26,12 +28,13 @@ public class TileEntityElectricWires extends TileEntity {
 		//type = 0;
 		size = 0;
 		color_hex = 0xFFFFFF;
-		up = true;;
-		down = true;;
-		north = true;;
-		south = true;;
-		west = true;;
-		east = true;;
+		up = true;
+		down = true;
+		north = true;
+		south = true;
+		west = true;
+		east = true;
+		owner = "";
 	}
 
 	public void setStyle(String style) {this.style = style;}
@@ -50,6 +53,10 @@ public class TileEntityElectricWires extends TileEntity {
 
 	public void setColor(int color_hex) {this.color_hex = color_hex;}
 	public int getColor() {return color_hex;}
+
+	public void setOwner(String username) {owner = username;}
+	public String getOwner() {return owner;}
+
 	/*
 	public void updateEntity() {
 		if (worldObj.getTileEntity(xCoord, yCoord + 1, zCoord) instanceof TileEntityElectricWires) {up = true;} else {up = false;}
@@ -110,6 +117,7 @@ public class TileEntityElectricWires extends TileEntity {
 		//if (nbt.hasKey("Type")) type = nbt.getInteger("Type");
 		if (nbt.hasKey("Size")) size = nbt.getInteger("Size");
 		if (nbt.hasKey("ColorHex")) color_hex = nbt.getInteger("ColorHex");
+		if (nbt.hasKey("Owner")) owner = nbt.getString("Owner");
 		if (nbt.hasKey("Stat")) {
 			int stat = nbt.getByte("Stat");
 			this.up = ((stat & 0x1) == 0 ? false : true);
@@ -128,6 +136,7 @@ public class TileEntityElectricWires extends TileEntity {
 		//nbt.setInteger("Type", type);
 		nbt.setInteger("Size", size);
 		nbt.setInteger("ColorHex", color_hex);
+		if (UtilString.hasString(owner)) nbt.setString("Owner", owner);
 		nbt.setByte("Stat", (byte) (
 				(east ? 1 : 0) << 5 | 
 				(west ? 1 : 0) << 4 | 

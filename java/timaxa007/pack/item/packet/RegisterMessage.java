@@ -9,8 +9,6 @@ public class RegisterMessage {
 
 	public static void init(SimpleNetworkWrapper network) {
 		network.registerMessage(MessageOpenGui.Handler.class, MessageOpenGui.class, id++, Side.SERVER);
-		network.registerMessage(MessageInteractionEntity.Handler.class, MessageInteractionEntity.class, id++, Side.SERVER);
-		network.registerMessage(MessageInteractionBlock.Handler.class, MessageInteractionBlock.class, id++, Side.SERVER);
 	}
 
 }

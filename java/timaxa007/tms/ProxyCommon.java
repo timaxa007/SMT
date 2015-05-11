@@ -1,9 +1,12 @@
 package timaxa007.tms;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import org.apache.logging.log4j.Level;
 
 import timaxa007.api.IProxyModuleCommon;
 import timaxa007.api.IProxyPackCommon;
+import timaxa007.tms.event.EventOwner;
 import cpw.mods.fml.common.FMLLog;
 
 public class ProxyCommon {
@@ -53,6 +56,8 @@ public class ProxyCommon {
 	}
 
 	public void init() {
+		
+		MinecraftForge.EVENT_BUS.register(new EventOwner());
 
 		if (control_button != null) control_button.init();
 		if (environment != null) environment.init();
@@ -70,7 +75,7 @@ public class ProxyCommon {
 		if (techno != null) techno.init();
 		if (weapon != null) weapon.init();
 
-		if (CoreTMS.debug) FMLLog.log(CoreTMS.MODID, Level.DEBUG, "Successful initialized common part.");
+		if (CoreTMS.config.debug) FMLLog.log(CoreTMS.MODID, Level.DEBUG, "Successful initialized common part.");
 	}
 
 	public void postInit() {
@@ -95,25 +100,25 @@ public class ProxyCommon {
 
 	public static void verificationModuleCommon() {
 
-		if (CoreTMS.isNodeControlButton)
+		if (CoreTMS.config.isNodeControlButton)
 			control_button = checkModuleCommon(CoreTMS.PATH_MODULE + ".control_button.ProxyCommon");
 
-		if (CoreTMS.isNodeEnvironment)
+		if (CoreTMS.config.isNodeEnvironment)
 			environment = checkModuleCommon(CoreTMS.PATH_MODULE + ".environment.ProxyCommon");
 
-		if (CoreTMS.isNodeStatusPlayer)
+		if (CoreTMS.config.isNodeStatusPlayer)
 			status_player = checkModuleCommon(CoreTMS.PATH_MODULE + ".status_player.ProxyCommon");
 
-		if (CoreTMS.isNodeWeight)
+		if (CoreTMS.config.isNodeWeight)
 			weight = checkModuleCommon(CoreTMS.PATH_MODULE + ".weight.ProxyCommon");
 
-		if (CoreTMS.isNodeEffect)
+		if (CoreTMS.config.isNodeEffect)
 			effects = checkModuleCommon(CoreTMS.PATH_MODULE + ".effect.ProxyCommon");
 
-		if (CoreTMS.isNodeColors)
+		if (CoreTMS.config.isNodeColors)
 			colors = checkModuleCommon(CoreTMS.PATH_MODULE + ".colors.ProxyCommon");
 
-		if (CoreTMS.isNodeFluids)
+		if (CoreTMS.config.isNodeFluids)
 			fluids = checkModuleCommon(CoreTMS.PATH_MODULE + ".fluids.ProxyCommon");
 
 	}
@@ -128,25 +133,25 @@ public class ProxyCommon {
 
 	public static void verificationPackCommon() {
 
-		if (CoreTMS.isPackFurniture)
+		if (CoreTMS.config.isPackFurniture)
 			furniture = checkPackCommon(CoreTMS.PATH_PACK + ".furniture.ProxyCommon");
 
-		if (CoreTMS.isPackItems)
+		if (CoreTMS.config.isPackItems)
 			item = checkPackCommon(CoreTMS.PATH_PACK + ".item.ProxyCommon");
 
-		if (CoreTMS.isPackMagic)
+		if (CoreTMS.config.isPackMagic)
 			magic = checkPackCommon(CoreTMS.PATH_PACK + ".magic.ProxyCommon");
 
-		if (CoreTMS.isPackMining)
+		if (CoreTMS.config.isPackMining)
 			mining = checkPackCommon(CoreTMS.PATH_PACK + ".mining.ProxyCommon");
 
-		if (CoreTMS.isPackStock)
+		if (CoreTMS.config.isPackStock)
 			stock = checkPackCommon(CoreTMS.PATH_PACK + ".stock.ProxyCommon");
 
-		if (CoreTMS.isPackTechno)
+		if (CoreTMS.config.isPackTechno)
 			techno = checkPackCommon(CoreTMS.PATH_PACK + ".techno.ProxyCommon");
 
-		if (CoreTMS.isPackWeapons)
+		if (CoreTMS.config.isPackWeapons)
 			weapon = checkPackCommon(CoreTMS.PATH_PACK + ".weapon.ProxyCommon");
 
 	}

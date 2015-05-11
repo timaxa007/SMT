@@ -25,10 +25,11 @@ import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.lib.Spells;
-import timaxa007.pack.magic.packet.MessageInteractionBlock;
-import timaxa007.pack.magic.packet.MessageInteractionEntity;
 import timaxa007.pack.magic.packet.MessagePuff;
+import timaxa007.tms.CoreTMS;
 import timaxa007.tms.object.ModifiedItem;
+import timaxa007.tms.packet.MessageInteractionBlock;
+import timaxa007.tms.packet.MessageInteractionEntity;
 import timaxa007.tms.util.UtilTMS;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -123,7 +124,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					double pos_z = entity.entityHit.posZ;
 					world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 255.0D, 0.0D);
 
-					PackMagic.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId(), 1));
+					CoreTMS.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
 				}
 				if (entity.typeOfHit == MovingObjectType.BLOCK) {
 
@@ -131,7 +132,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					int pos_y = entity.blockY;
 					int pos_z = entity.blockZ;
 
-					PackMagic.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z, 1));
+					CoreTMS.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
 				}
 
 			}
@@ -414,7 +415,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					int pos_z = block.blockZ;
 					//world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 0.0D, 255.0D);
 
-					PackMagic.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z, 1));
+					CoreTMS.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
 				}
 			}
 			//world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 255.0D);

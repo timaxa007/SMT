@@ -13,7 +13,7 @@ public class ModuleControlButton implements IModuleClass {
 
 	public static final String MODID = "control_button";
 	public static final String MODNAME = "ControlButton";
-	public static final String VERSION = "0.3a";
+	public static final String VERSION = "0.023";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -25,7 +25,7 @@ public class ModuleControlButton implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + ModuleControlButton.MODNAME + ", version: " + ModuleControlButton.VERSION + ".");
+		log.info("Starting module " + ModuleControlButton.MODNAME + ", build: " + ModuleControlButton.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleControlButton.MODID + ".cfg"));
 		cfg.load();

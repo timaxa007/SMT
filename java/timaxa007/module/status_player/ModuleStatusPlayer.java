@@ -20,7 +20,7 @@ public class ModuleStatusPlayer implements IModuleClass {
 
 	public static final String MODID = "status_player";
 	public static final String MODNAME = "StatusPlayer";
-	public static final String VERSION = "0.2a";
+	public static final String VERSION = "0.002";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -32,7 +32,7 @@ public class ModuleStatusPlayer implements IModuleClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting module " + ModuleStatusPlayer.MODNAME + ", version: " + ModuleStatusPlayer.VERSION + ".");
+		log.info("Starting module " + ModuleStatusPlayer.MODNAME + ", build: " + ModuleStatusPlayer.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleStatusPlayer.MODID + ".cfg"));
 		cfg.load();

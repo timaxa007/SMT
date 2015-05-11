@@ -79,7 +79,7 @@ public class EventSpells {
 
 		public static boolean isNoShowHard(EntityPlayer player) {
 			return (player.capabilities.isCreativeMode || 
-					(CoreTMS.show_tip_info_testing || player.worldObj.difficultySetting != EnumDifficulty.HARD));
+					(CoreTMS.config.show_tip_info_testing || player.worldObj.difficultySetting != EnumDifficulty.HARD));
 		}
 
 		@Deprecated
@@ -94,7 +94,7 @@ public class EventSpells {
 
 		public static boolean isShowPeace(EntityPlayer player) {
 			return (player.capabilities.isCreativeMode || 
-					CoreTMS.show_tip_info_testing || player.worldObj.difficultySetting == EnumDifficulty.PEACEFUL);
+					CoreTMS.config.show_tip_info_testing || player.worldObj.difficultySetting == EnumDifficulty.PEACEFUL);
 		}
 
 	}

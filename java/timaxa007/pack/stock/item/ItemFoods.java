@@ -122,14 +122,14 @@ Allspice(0.0F), Ginger(0.0F), Canella(0.0F), Curcuma(0.0F), Bay(0.0F), Rosemary(
 					if (!FoodForItem.isNull(nbt.getString("NameID"))) {
 						FoodForItem ffi = FoodForItem.get(nbt.getString("NameID"));
 
-						if (CoreTMS.show_tip_info_testing) {
+						if (CoreTMS.config.show_tip_info_testing) {
 							list.add("NameID: " + nbt.getString("NameID") + " / [-] ID:" + ffi.id + ".");
 						}
 
 						list.add(UtilString.getText("Name") + ": " + ffi.getLocalizedName() + ".");
 						list.add(UtilString.getText("Type") + ": " + ffi.getLocalizedType() + ".");
 
-						if (CoreTMS.show_tip_info_testing && nbt.hasKey("Spoilage")) {
+						if (CoreTMS.config.show_tip_info_testing && nbt.hasKey("Spoilage")) {
 							list.add("Spoilage:" + nbt.getByte("Spoilage") + ".");
 						}
 

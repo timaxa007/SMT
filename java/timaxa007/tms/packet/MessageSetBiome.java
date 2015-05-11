@@ -2,6 +2,7 @@ package timaxa007.tms.packet;
 
 import io.netty.buffer.ByteBuf;
 import timaxa007.tms.util.UtilTMS;
+import timaxa007.tms.util.Vex;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -18,6 +19,12 @@ public class MessageSetBiome implements IMessage {
 		this.biomeID = biomeID;
 		this.x = x;
 		this.z = z;
+	}
+
+	public MessageSetBiome(int biomeID, Vex.Integer2 vex) {
+		this.biomeID = biomeID;
+		this.x = vex.x;
+		this.z = vex.z;
 	}
 
 	@Override

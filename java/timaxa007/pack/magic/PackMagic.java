@@ -21,6 +21,7 @@ import timaxa007.pack.magic.packet.RegisterMessage;
 import timaxa007.pack.magic.recipe.Recipes_Magic;
 import timaxa007.pack.magic.render.RenderMain;
 import timaxa007.pack.magic.util.MaterialOreMagic;
+import timaxa007.pack.mining.PackMining;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -31,7 +32,7 @@ public class PackMagic implements IPackClass {
 
 	public static final String MODID = "magicpack";
 	public static final String MODNAME = "PackMagic";
-	public static final String VERSION = "0.1a";
+	public static final String VERSION = "0.437";
 	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
@@ -75,15 +76,13 @@ public class PackMagic implements IPackClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting sub-mod " + PackMagic.MODNAME + ".");
+		log.info("Starting sub-mod " + PackMagic.MODNAME + ", build: " + PackMining.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/tms/pack", PackMagic.MODID + ".cfg"));
 		cfg.load();
 
 		block.magic_machines_be = cfg.get("block", "magic_machines", true).getBoolean();
-		block.magic_slims_be = cfg.get("block", "magic_slims", true).getBoolean();
 		block.magic_cauldron_be = cfg.get("block", "magic_cauldron", true).getBoolean();
-		block.magic_locked_be = cfg.get("block", "magic_locked", true).getBoolean();
 
 		item.items_for_magic_be = cfg.get("item", "items_for_magic", true).getBoolean();
 		item.wands_be = cfg.get("item", "wands", true).getBoolean();

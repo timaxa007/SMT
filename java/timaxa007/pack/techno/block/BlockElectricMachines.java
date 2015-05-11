@@ -35,12 +35,18 @@ public class BlockElectricMachines extends ModifiedBlock implements ITileEntityP
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityElectricMachines) {
+			TileEntityElectricMachines tile = (TileEntityElectricMachines)te;
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			((TileEntityElectricMachines)te).setRot(l);
+			tile.setRot(l);
 
 			if (nbt != null) {
-				if (nbt.hasKey("Type")) ((TileEntityElectricMachines)te).setType(nbt.getInteger("Type"));
+				if (nbt.hasKey("Type")) tile.setType(nbt.getInteger("Type"));
+			}
+
+			if (entity instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer)entity;
+				tile.setOwner(player.getCommandSenderName());
 			}
 			/*
 			if (is.hasDisplayName()) {

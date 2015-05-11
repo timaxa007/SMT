@@ -6,26 +6,26 @@ import net.minecraft.block.Block;
 
 public class ListBlock {
 
-	public static boolean 
+	public static boolean
 	electric_machines_be,
 	electric_wires_be,
-	chip_be,
 	module_movement_be,
-	farm_mashines_be;
+	farm_mashines_be
+	;
 
-	public static Block 
+	public static Block
 	electric_machines,
 	electric_wires,
-	chip,
 	module_movement,
-	farm_mashines;
+	farm_mashines
+	;
 
-	public static Class 
+	public static Class
 	te_electric_machines,
 	te_electric_wires,
-	te_chip,
 	te_module_movement,
-	te_farm_mashines;
+	te_farm_mashines
+	;
 
 	public static Block[] list_block;
 
@@ -43,11 +43,6 @@ public class ListBlock {
 			te_electric_wires = TileEntityElectricWires.class;
 		}
 
-		if (chip_be) {
-			chip = new BlockChip("chip");
-			te_chip = TileEntityChip.class;
-		}
-
 		if (module_movement_be) {
 			module_movement = new BlockModuleMovement("module_movement");
 			te_module_movement = TileEntityModuleMovement.class;
@@ -61,9 +56,8 @@ public class ListBlock {
 		//transporter belt
 
 		list_block = new Block[] {
-				electric_machines, 
-				electric_wires, 
-				chip, 
+				electric_machines,
+				electric_wires,
 				module_movement,
 				farm_mashines
 		};
@@ -71,9 +65,8 @@ public class ListBlock {
 		UtilTMS.UtilBlock.RegBlock(list_block);
 
 		list_te = new Class[] {
-				te_electric_machines, 
-				te_electric_wires, 
-				te_chip, 
+				te_electric_machines,
+				te_electric_wires,
 				te_module_movement,
 				te_farm_mashines
 		};

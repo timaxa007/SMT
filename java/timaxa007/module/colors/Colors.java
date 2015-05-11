@@ -52,19 +52,14 @@ public class Colors {
 	private String name;
 
 	public Colors(int hex, String name) {
-		if (CoreTMS.show_system_info_testing) checkHex(this, hex);
+		if (CoreTMS.config.show_system_info_testing) checkHex(this, hex);
 		this.hex = hex;
 		list[hex] = this;
 		this.name = name;
 	}
 
-	public int getColor() {
-		return hex;
-	}
-
-	public String getName() {
-		return name;
-	}
+	public int getColor() {return hex;}
+	public String getName() {return name;}
 	//--------------------------------------------------------
 	public static int getColor(Colors color) {
 		for (Colors clr : list)

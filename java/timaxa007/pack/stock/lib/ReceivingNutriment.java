@@ -51,7 +51,7 @@ public class ReceivingNutriment {
 								//-----------------------------------------------------
 								int id = tagAt.getInteger("id");
 								int times = (int)tagAt.getShort("time");
-								int lvl = UtilInteger.getMaxByte((int)tagAt.getByte("lvl"));
+								int lvl = (int)tagAt.getByte("lvl") & 0xFF;
 								//-----------------------------------------------------
 								PotionEffect ptn_efct = new PotionEffect(id, 20 * times, lvl);
 								String mess = "";
@@ -113,7 +113,7 @@ public class ReceivingNutriment {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		nbttagcompound.setByte("id", (byte)id);
 		nbttagcompound.setShort("time", (short)time);
-		nbttagcompound.setByte("lvl", (byte)UtilInteger.setMaxByte(lvl));
+		nbttagcompound.setByte("lvl", (byte)lvl);
 		nbttaglist.appendTag(nbttagcompound);
 	}
 
