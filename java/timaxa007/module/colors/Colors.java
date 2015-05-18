@@ -3,7 +3,7 @@ package timaxa007.module.colors;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import timaxa007.tms.CoreTMS;
+import timaxa007.smt.CoreSMT;
 
 public class Colors {
 
@@ -52,7 +52,7 @@ public class Colors {
 	private String name;
 
 	public Colors(int hex, String name) {
-		if (CoreTMS.config.show_system_info_testing) checkHex(this, hex);
+		if (CoreSMT.config.show_system_info_testing) checkHex(this, hex);
 		this.hex = hex;
 		list[hex] = this;
 		this.name = name;
@@ -77,7 +77,7 @@ public class Colors {
 
 	private static void checkHex(Colors color, int hex) {
 		if (list[hex] != null)
-			throw new IllegalArgumentException("Duplicate: " + hex + " in " + color.getClass() + ".");
+			throw new IllegalArgumentException("Duplicate: " + hex + ".");
 	}
 
 	public static Colors get(int hex) {

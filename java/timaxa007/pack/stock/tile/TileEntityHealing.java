@@ -3,8 +3,8 @@ package timaxa007.pack.stock.tile;
 import java.util.Iterator;
 import java.util.List;
 
-import timaxa007.tms.util.ITileEntityOwner;
-import timaxa007.tms.util.UtilString;
+import timaxa007.module.forbidden.api.ITileEntityOwner;
+import timaxa007.smt.util.UtilString;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.potion.Potion;

@@ -4,8 +4,8 @@ import java.util.List;
 
 import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.lib.ItemForStock;
-import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.util.UtilString;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;

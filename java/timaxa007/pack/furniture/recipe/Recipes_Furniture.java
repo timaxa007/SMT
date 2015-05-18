@@ -1,7 +1,7 @@
 package timaxa007.pack.furniture.recipe;
 
 import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.tms.lib.RemoveRecipe;
+import timaxa007.smt.lib.RemoveRecipe;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

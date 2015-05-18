@@ -2,7 +2,7 @@ package timaxa007.module.weight.util;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
-import timaxa007.tms.CoreTMS;
+import timaxa007.smt.CoreSMT;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;

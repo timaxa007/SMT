@@ -13,7 +13,8 @@ import timaxa007.pack.furniture.block.ListBlock;
 import timaxa007.pack.furniture.item.ListItem;
 import timaxa007.pack.furniture.lib.ListFurniture;
 import timaxa007.pack.furniture.packet.RegisterMessage;
-import timaxa007.pack.furniture.recipe.*;
+import timaxa007.pack.furniture.recipe.FuelHandlerFurniture;
+import timaxa007.pack.furniture.recipe.Recipes_Furniture;
 import timaxa007.pack.furniture.render.RenderMain;
 import timaxa007.pack.stock.PackStock;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -23,12 +24,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**@author timaxa007**/
 public class PackFurniture implements IPackClass {
 
 	public static final String MODID = "furniturepack";
 	public static final String MODNAME = "PackFurniture";
 	public static final String VERSION = "0.332";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
@@ -74,7 +75,7 @@ public class PackFurniture implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackFurniture.MODNAME + ", build: " + PackStock.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/pack", PackFurniture.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackFurniture.MODID + ".cfg"));
 		cfg.load();
 
 		block.furniture_machines_be = cfg.get("block", "furniture_machines", true).getBoolean();
@@ -156,13 +157,6 @@ public class PackFurniture implements IPackClass {
 		block.jar01_be = cfg.get("block", "jar01", true).getBoolean();
 		block.pipes_be = cfg.get("block", "pipes", true).getBoolean();
 		block.mashine_waiter_be = cfg.get("block", "mashine_waiter", true).getBoolean();
-		block.rock_blocks_be = cfg.get("block", "rock_blocks", true).getBoolean();
-		block.glass_blocks_be = cfg.get("block", "glass_blocks", true).getBoolean();
-		block.wood_blocks_be = cfg.get("block", "wood_blocks", true).getBoolean();
-		block.ground_blocks_be = cfg.get("block", "ground_blocks", true).getBoolean();
-		block.sand_blocks_be = cfg.get("block", "sand_blocks", true).getBoolean();
-		block.cloth_blocks_be = cfg.get("block", "cloth_blocks", true).getBoolean();
-		block.metal_blocks_be = cfg.get("block", "metal_blocks", true).getBoolean();
 		block.vegetable_face_be = cfg.get("block", "vegetable_face", true).getBoolean();
 		block.furniture_chest_be = cfg.get("block", "furniture_chest", true).getBoolean();
 		block.storage_be = cfg.get("block", "storage", true).getBoolean();
@@ -184,7 +178,7 @@ public class PackFurniture implements IPackClass {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackFurniture.MODID);
 		RegisterMessage.init(network);
 
-		new ListFurniture();
+		ListFurniture.init();
 
 		block.preInit();
 		item.preInit();

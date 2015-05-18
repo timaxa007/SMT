@@ -8,10 +8,11 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import timaxa007.tms.util.UtilInteger;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.util.UtilInteger;
+import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ReceivingNutriment {
@@ -107,9 +108,9 @@ public class ReceivingNutriment {
 	}
 
 	public static void addEffect(NBTTagCompound nbt, int id, int time, int lvl) {
-		if (!nbt.hasKey("eft_nut", 9)) nbt.setTag("eft_nut", new NBTTagList());
+		if (!nbt.hasKey("eft_nut", Constants.NBT.TAG_LIST)) nbt.setTag("eft_nut", new NBTTagList());
 
-		NBTTagList nbttaglist = nbt.getTagList("eft_nut", 10);
+		NBTTagList nbttaglist = nbt.getTagList("eft_nut", Constants.NBT.TAG_COMPOUND);
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		nbttagcompound.setByte("id", (byte)id);
 		nbttagcompound.setShort("time", (short)time);
@@ -118,11 +119,11 @@ public class ReceivingNutriment {
 	}
 
 	public static NBTTagList getEffectTagList(ItemStack is) {
-		return is.getTagCompound() == null ? null : is.getTagCompound().getTagList("eft_nut", 10);
+		return is.getTagCompound() == null ? null : is.getTagCompound().getTagList("eft_nut", Constants.NBT.TAG_COMPOUND);
 	}
 
 	public static boolean isEffect(ItemStack is) {
-		return is.getTagCompound() != null && is.getTagCompound().hasKey("eft_nut", 9);
+		return is.getTagCompound() != null && is.getTagCompound().hasKey("eft_nut", Constants.NBT.TAG_LIST);
 	}
 	//-----------------------------------------------------------------------------
 }

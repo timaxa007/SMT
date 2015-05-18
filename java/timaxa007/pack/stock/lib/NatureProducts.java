@@ -4,7 +4,7 @@ import net.minecraft.util.StatCollector;
 import timaxa007.module.environment.Humidity;
 import timaxa007.module.environment.Hydrogenated;
 import timaxa007.module.environment.Temperature;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.util.UtilString;
 
 public class NatureProducts {
 

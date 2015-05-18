@@ -1,61 +1,64 @@
 package timaxa007.pack.stock.lib.food;
 
-import timaxa007.pack.mining.lib.OreFake;
-import timaxa007.pack.stock.lib.FoodForItem;
+import timaxa007.pack.mining.util.Ore;
 
 public class ListFoodFirst {
-	/*---OreFake---*/
-	public static OreFake ore_salt = new OreFake("ore_salt").setName("salt").setType("Rock").setColor(0xFFFFFF).setTemperatures(16.0F, -10.0F, 100.0F);
-	public static OreFake ore_salted = new OreFake("ore_salted").setName("salt").setType("End").setColor(0xFFFFFF).setTemperatures(0.0F, -60.0F, 40.0F);
-	public static OreFake ore_salter = new OreFake("ore_salter").setName("salt").setType("Nether").setColor(0xFFFFFF).setTemperatures(48.0F, 0.0F, 180.0F);
+	/*---Ore---*/
+	public static Ore ore_salt = new Ore("ore_salt").setName("salt").setType("Rock").setColor(0xFFFFFF).setTemperatures(16.0F, -10.0F, 100.0F);
+	public static Ore ore_salted = new Ore("ore_salted").setName("salt").setType("End").setColor(0xFFFFFF).setTemperatures(0.0F, -60.0F, 40.0F);
+	public static Ore ore_salter = new Ore("ore_salter").setName("salt").setType("Nether").setColor(0xFFFFFF).setTemperatures(48.0F, 0.0F, 180.0F);
+	/*---	---*/
+	/*---FoodBlock---*/
 
-	/*---FoodForItem---*/
+	/*---	---*/
+	/*---FoodItem---*/
+	/*
 	public static FoodForItem cookie_raw = new FoodForItem("cookie_raw").setFoodStats(1, 0.2F).setName("cookie_raw").setColors(0xF1D598).setTextureFood("cookie", "O");
 	public static FoodForItem cookie_cooked = new FoodForItem("cookie_cooked").setFoodStats(2, 0.2F).setName("cookie_cooked").setColors(0xE79042).setTextureFood("cookie", "O");
 
 	public static FoodForItem cookie_chocolate_chips_raw = new FoodForItem("cookie_chocolate_chips_raw").setFoodStats(2, 0.2F).setName("cookie_chocolate_chips_raw").setColors(0xF1D598, 0x3F1800).setTextureFood("cookie", "O");
 	public static FoodForItem cookie_chocolate_chips_cooked = new FoodForItem("cookie_chocolate_chips_cooked").setFoodStats(2, 0.2F).setName("cookie_chocolate_chips_cooked").setColors(0xE79042, 0x3F1800).setTextureFood("cookie", "O");
-	/*
+
 	public static FoodForItem cookie_red_raw = new FoodForItem("cookie_red_raw").setFoodStats(2, 0.2F).setName("cookie_raw").setColors(0xF1D598, 0xFF0000).setTextureFood("cookie", "O");
 	public static FoodForItem cookie_red_cooked = new FoodForItem("cookie_red_cooked").setFoodStats(2, 0.2F).setName("cookie_cooked").setColors(0xE79042, 0xFF0000).setTextureFood("cookie", "O");
 	public static FoodForItem cookie_green_raw = new FoodForItem("cookie_green_raw").setFoodStats(2, 0.2F).setName("cookie_raw").setColors(0xF1D598, 0x00FF00).setTextureFood("cookie", "O");
 	public static FoodForItem cookie_green_cooked = new FoodForItem("cookie_green_cooked").setFoodStats(2, 0.2F).setName("cookie_cooked").setColors(0xE79042, 0x00FF00).setTextureFood("cookie", "O");
 	public static FoodForItem cookie_blue_raw = new FoodForItem("cookie_blue_raw").setFoodStats(2, 0.2F).setName("cookie_raw").setColors(0xF1D598, 0x0000FF).setTextureFood("cookie", "O");
 	public static FoodForItem cookie_blue_cooked = new FoodForItem("cookie_blue_cooked").setFoodStats(2, 0.2F).setName("cookie_cooked").setColors(0xE79042, 0x0000FF).setTextureFood("cookie", "O");
-	 */
+
 	public static FoodForItem cracker_raw = new FoodForItem("cracker_raw").setFoodStats(2, 0.2F).setName("cracker_raw").setColors(0xFFD57F).setTextureFood("cracker");
 	public static FoodForItem cracker_fried = new FoodForItem("cracker_fried").setFoodStats(2, 0.2F).setName("cracker_fried").setColors(0xF3B420).setTextureFood("cracker");
 
 	public static FoodForItem cupcake_01_raw = new FoodForItem("cupcake_01_raw").setFoodStats(2, 0.2F).setName("cupcake_01_raw").setColors(0xD9D481).setTextureFood("cupcake_01");
 	public static FoodForItem cupcake_01_fried = new FoodForItem("cupcake_01_fried").setFoodStats(2, 0.2F).setName("cupcake_01_fried").setColors(0xBB9949).setTextureFood("cupcake_01");
-	/*
+
 	public static FoodForItem cupcake_02_raw = new FoodForItem("cupcake_02_raw").setFoodStats(2, 0.2F).setName("cupcake_02_raw").setColors(0xD9D481, 0xFF0000).setTextureFood("cupcake_02", "O");
 	public static FoodForItem cupcake_02_fried = new FoodForItem("cupcake_02_fried").setFoodStats(2, 0.2F).setName("cupcake_02_fried").setColors(0xBB9949, 0xFF0000).setTextureFood("cupcake_02", "O");
-	 */
+
 	public static FoodForItem pancake_raw = new FoodForItem("pancake_raw").setFoodStats(2, 0.2F).setName("pancake_raw").setColors(0xD9D481).setTextureFood("pancake");
 	public static FoodForItem pancake_fried = new FoodForItem("pancake_fried").setFoodStats(2, 0.2F).setName("pancake_fried").setColors(0xBB9949).setTextureFood("pancake");
-	/*
+
 	public static FoodForItem pancake_red = new FoodForItem("pancake_red").setFoodStats(2, 0.2F).setName("pancake_red").setColors(0xBB9949, 0x00FF00).setTextureFood("pancake", "O");
 	public static FoodForItem pancake_green = new FoodForItem("pancake_green").setFoodStats(2, 0.2F).setName("pancake_green").setColors(0xBB9949, 0xFF0000).setTextureFood("pancake", "O");
 	public static FoodForItem pancake_blue = new FoodForItem("pancake_blue").setFoodStats(2, 0.2F).setName("pancake_blue").setColors(0xBB9949, 0x0000FF).setTextureFood("pancake", "O");
-	 */
+
 	public static FoodForItem doughnut_raw = new FoodForItem("doughnut_raw").setFoodStats(2, 0.2F).setName("doughnut_raw").setColors(0xD9D481).setTextureFood("doughnut_raw");
 	public static FoodForItem doughnut_cooked = new FoodForItem("doughnut_cooked").setFoodStats(2, 0.2F).setName("doughnut_cooked").setColors(0xBB9949).setTextureFood("doughnut_cooked");
-	/*
+
 	public static FoodForItem doughnut_cooked_red = new FoodForItem("doughnut_cooked_red").setFoodStats(2, 0.2F).setName("doughnut_cooked_red").setColors(0xBB9949, 0xFF0000).setTextureFood("doughnut_cooked", "O");
 	public static FoodForItem doughnut_cooked_green = new FoodForItem("doughnut_cooked_green").setFoodStats(2, 0.2F).setName("doughnut_cooked_green").setColors(0xBB9949, 0x00FF00).setTextureFood("doughnut_cooked", "O");
 	public static FoodForItem doughnut_cooked_blue = new FoodForItem("doughnut_cooked_blue").setFoodStats(2, 0.2F).setName("doughnut_cooked_blue").setColors(0xBB9949, 0x0000FF).setTextureFood("doughnut_cooked", "O");
-	 */
+
 	public static FoodForItem bun_raw = new FoodForItem("bun_raw").setFoodStats(2, 0.2F).setName("bun_raw").setColors(0xD9D481).setTextureFood("bun_raw");
 	public static FoodForItem bun_cooked = new FoodForItem("bun_cooked").setFoodStats(2, 0.2F).setName("bun_cooked").setColors(0xBB9949).setTextureFood("bun_cooked");
-	/*
+
 	public static FoodForItem bun_red_raw = new FoodForItem("bun_red_raw").setFoodStats(2, 0.2F).setName("bun_red_raw").setColors(0xD9D481, 0xFF0000).setTextureFood("bun_raw", "O");
 	public static FoodForItem bun_red_cooked = new FoodForItem("bun_red_cooked").setFoodStats(2, 0.2F).setName("bun_red_cooked").setColors(0xBB9949, 0xFF0000).setTextureFood("bun_cooked", "O");
 	public static FoodForItem bun_green_raw = new FoodForItem("bun_green_raw").setFoodStats(2, 0.2F).setName("bun_green_raw").setColors(0xD9D481, 0x00FF00).setTextureFood("bun_raw", "O");
 	public static FoodForItem bun_green_cooked = new FoodForItem("bun_green_cooked").setFoodStats(2, 0.2F).setName("bun_green_cooked").setColors(0xBB9949, 0x00FF00).setTextureFood("bun_cooked", "O");
 	public static FoodForItem bun_blue_raw = new FoodForItem("bun_blue_raw").setFoodStats(2, 0.2F).setName("bun_blue_raw").setColors(0xD9D481, 0x0000FF).setTextureFood("bun_raw", "O");
 	public static FoodForItem bun_blue_cooked = new FoodForItem("bun_blue_cooked").setFoodStats(2, 0.2F).setName("bun_blue_cooked").setColors(0xBB9949, 0x0000FF).setTextureFood("bun_cooked", "O");
-	 */
+
 	public static FoodForItem tortilla = new FoodForItem("tortilla").setFoodStats(2, 0.2F).setName("tortilla").setColors(0xFFFFFF).setTextureFood("tortilla");
 	public static FoodForItem bond01 = new FoodForItem("bond01").setFoodStats(2, 0.2F).setName("bond01").setColors(0xFFFFFF).setTextureFood("bond01");
 	public static FoodForItem bond02 = new FoodForItem("bond02").setFoodStats(2, 0.2F).setName("bond02").setColors(0xFFFFFF).setTextureFood("bond02");
@@ -132,17 +135,17 @@ public class ListFoodFirst {
 	public static FoodForItem burger_lettuce = new FoodForItem("burger_lettuce").setFoodStats(2, 0.2F).setName("burger_lettuce").setColors(0xFFFFFF).setTextureFood("burger_lettuce");
 
 	public static FoodForItem pie_part = new FoodForItem("pie_part").setFoodStats(2, 0.2F).setName("pie_part").setColors(0xFFFFFF, 0xFFFFFF).setTextureFood("pie_part", "O");
-	/*
+
 	public static FoodForItem pie_red_part = new FoodForItem("pie_red_part").setFoodStats(2, 0.2F).setName("pie_red_part").setColors(0xFFFFFF, 0xFF0000).setTextureFood("pie_part", "O");
 	public static FoodForItem pie_green_part = new FoodForItem("pie_green_part").setFoodStats(2, 0.2F).setName("pie_green_part").setColors(0xFFFFFF, 0x00FF00).setTextureFood("pie_part", "O");
 	public static FoodForItem pie_blue_part = new FoodForItem("pie_blue_part").setFoodStats(2, 0.2F).setName("pie_blue_part").setColors(0xFFFFFF, 0x0000FF).setTextureFood("pie_part", "O");
-	 */
+
 	public static FoodForItem pizza_part = new FoodForItem("pizza_part").setFoodStats(2, 0.2F).setName("pizza_part").setColors(0xFFFFFF, 0xFFFFFF).setTextureFood("pizza_part", "O");
-	/*
+
 	public static FoodForItem pizza_red_part = new FoodForItem("pizza_red_part").setFoodStats(2, 0.2F).setName("pizza_red_part").setColors(0xFFFFFF, 0xFF0000).setTextureFood("pizza_part", "O");
 	public static FoodForItem pizza_green_part = new FoodForItem("pizza_green_part").setFoodStats(2, 0.2F).setName("pizza_green_part").setColors(0xFFFFFF, 0x00FF00).setTextureFood("pizza_part", "O");
 	public static FoodForItem pizza_blue_part = new FoodForItem("pizza_blue_part").setFoodStats(2, 0.2F).setName("pizza_blue_part").setColors(0xFFFFFF, 0x0000FF).setTextureFood("pizza_part", "O");
-	 */
+
 	public static FoodForItem sugar_stick_white = new FoodForItem("sugar_stick_white").setFoodStats(2, 0.2F).setName("sugar_stick_white").setColors(0xFFFFFF).setTextureFood("sugar_stick01", "O");
 	public static FoodForItem boiled_sugar = new FoodForItem("boiled_sugar").setFoodStats(2, 0.2F).setName("boiled_sugar").setColors(0xFFFFFF).setTextureFood("boiled_sugar");
 	public static FoodForItem cotton_candy = new FoodForItem("cotton_candy").setFoodStats(2, 0.2F).setName("cotton_candy").setColors(0xFFFFFF).setTextureFood("cotton_candy");
@@ -155,9 +158,13 @@ public class ListFoodFirst {
 	public static FoodForItem toast_butter = new FoodForItem("toast_butter").setFoodStats(2, 0.2F).setName("toast_butter").setColors(0xFFFFFF).setTextureFood("toast");
 	public static FoodForItem toast_nutella = new FoodForItem("toast_nutella").setFoodStats(2, 0.2F).setName("toast_nutella").setColors(0xFFFFFF).setTextureFood("toast");
 	public static FoodForItem cookie = new FoodForItem().setFoodStats(2, 0.2F).setName("cookie").setColors(0xFFFFFF).setTextureFood("cookie");
-	/*
+
 	public static FoodForItem test1 = new FoodForItem("test1").setFoodStats(2, 0.2F).setName("cookie").setColors(0xFFFFFF).setTexture("test_1", "O");
 	public static FoodForItem test2 = new FoodForItem("test2").setFoodStats(2, 0.2F).setName("cookie").setColors(0xFFFFFF).setTextureFood("test_1", "O");
 	 */
 	/*---	---*/
+	public static void init() {
+		
+	}
+
 }

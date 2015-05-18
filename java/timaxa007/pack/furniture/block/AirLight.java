@@ -3,7 +3,7 @@ package timaxa007.pack.furniture.block;
 import java.util.Random;
 
 import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.object.ModifiedBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;

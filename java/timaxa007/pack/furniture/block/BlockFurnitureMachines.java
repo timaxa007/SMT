@@ -11,8 +11,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureMachines;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.object.ModifiedBlock;
 
 public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntityProvider {
 
@@ -53,7 +53,7 @@ public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntity
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityFurnitureMachines) {
-			player.openGui(CoreTMS.instance, PackFurniture.gui_furniture_machines, world, x, y, z);
+			player.openGui(CoreSMT.instance, PackFurniture.gui_furniture_machines, world, x, y, z);
 			return true;
 		}
 		return false;

@@ -1,6 +1,6 @@
 package timaxa007.pack.mining.item;
 
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.util.UtilSMT;
 import net.minecraft.item.Item;
 
 public class ListItem {
@@ -21,7 +21,7 @@ public class ListItem {
 				items_for_mining
 		};
 
-		UtilTMS.UtilItem.RegItem(list_item);
+		UtilSMT.UtilItem.RegItem(list_item);
 
 	}
 

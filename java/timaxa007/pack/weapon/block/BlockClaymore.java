@@ -2,8 +2,8 @@ package timaxa007.pack.weapon.block;
 
 import timaxa007.pack.weapon.PackWeapons;
 import timaxa007.pack.weapon.tile.TileEntityClaymore;
-import timaxa007.tms.lib.ActionModel;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.lib.ActionModel;
+import timaxa007.smt.object.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;

@@ -26,12 +26,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**@author timaxa007**/
 public class PackMining implements IPackClass {
 
 	public static final String MODID = "miningpack";
 	public static final String MODNAME = "PackMining";
 	public static final String VERSION = "0.227";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
@@ -60,7 +60,7 @@ public class PackMining implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackMining.MODNAME + ", build: " + PackMining.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/pack", PackMining.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackMining.MODID + ".cfg"));
 		cfg.load();
 
 		world_dim_mining_id = cfg.get("world", "dimension_mining_id", 30).getInt();
@@ -103,7 +103,7 @@ public class PackMining implements IPackClass {
 
 		DimensionManager.registerProviderType(world_dim_only_night_id, WorldOnlyNight.class, true);
 		DimensionManager.registerDimension(world_dim_only_night_id, world_dim_only_night_id);
-		*/
+		  */
 		Recipes_Mining.list();
 
 		MinecraftForge.EVENT_BUS.register(new EventMining());

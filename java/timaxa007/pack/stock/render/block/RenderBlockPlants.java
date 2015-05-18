@@ -7,9 +7,10 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import timaxa007.pack.stock.lib.Plants;
 import timaxa007.pack.stock.tile.TileEntityPlants;
-import timaxa007.tms.lib.ModelT;
+import timaxa007.pack.stock.util.Plant;
+import timaxa007.pack.stock.util.RegistryPlants;
+import timaxa007.smt.lib.ModelT;
 
 public class RenderBlockPlants extends TileEntitySpecialRenderer {
 
@@ -19,7 +20,7 @@ public class RenderBlockPlants extends TileEntitySpecialRenderer {
 	}
 
 	private void renderTileEntity(TileEntityPlants te, double dx, double dy, double dz, float f) {
-		Plants plant = null;
+		Plant plant = null;
 		String plant_type = "";
 		int width = 0;
 		int height = 0;
@@ -27,7 +28,7 @@ public class RenderBlockPlants extends TileEntitySpecialRenderer {
 		double slc = (double)1/16;
 
 		if (te != null) {
-			plant = Plants.get(te.getPlant());
+			plant = RegistryPlants.getPlant(te.getPlant());
 			plant_type = te.getPlantType();
 			width = te.getWidth();
 			height = te.getHeight();

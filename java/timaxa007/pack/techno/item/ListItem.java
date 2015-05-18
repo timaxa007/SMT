@@ -1,7 +1,7 @@
 package timaxa007.pack.techno.item;
 
 import net.minecraft.item.Item;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.util.UtilSMT;
 
 public class ListItem {
 
@@ -39,7 +39,7 @@ public class ListItem {
 				electric_detector
 		};
 
-		UtilTMS.UtilItem.RegItem(list_item);
+		UtilSMT.UtilItem.RegItem(list_item);
 
 	}
 

@@ -5,17 +5,18 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import timaxa007.pack.stock.lib.Plants;
-import timaxa007.pack.stock.lib.Plants.PlantParametersMain;
-import timaxa007.tms.util.ITileEntityOwner;
-import timaxa007.tms.util.UtilString;
+import timaxa007.module.forbidden.api.ITileEntityOwner;
+import timaxa007.pack.stock.util.Plant;
+import timaxa007.pack.stock.util.RegistryPlants;
+import timaxa007.pack.stock.util.RegistryPlants.PlantParametersMain;
+import timaxa007.smt.util.UtilString;
 
 public class TileEntityPlants extends TileEntity implements ITileEntityOwner {
 
 	private String plant;
 	private String plant_type;
 
-	private Plants.PlantParametersMain parameters_plant_main;
+	private RegistryPlants.PlantParametersMain parameters_plant_main;
 	private int width;
 	private int height;
 
@@ -25,7 +26,7 @@ public class TileEntityPlants extends TileEntity implements ITileEntityOwner {
 	public TileEntityPlants() {
 		this.plant = "";
 		this.plant_type = "";
-		this.parameters_plant_main = Plants.PlantParametersMain.create(0x00000000);
+		this.parameters_plant_main = RegistryPlants.PlantParametersMain.create(0x00000000);
 		this.width = 0;
 		this.height = 0;
 		this.style = "";
@@ -39,18 +40,18 @@ public class TileEntityPlants extends TileEntity implements ITileEntityOwner {
 	public String getPlantType() {return plant_type;}
 
 	public void setPlantParametersMain(int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, int resistance, int protection, boolean dead_plant) {
-		this.parameters_plant_main = Plants.PlantParametersMain.create(growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant);
+		this.parameters_plant_main = RegistryPlants.PlantParametersMain.create(growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant);
 	}
 
 	public void setPlantParametersMain(int parameters_plant_main) {
-		this.parameters_plant_main = Plants.PlantParametersMain.create(parameters_plant_main);
+		this.parameters_plant_main = RegistryPlants.PlantParametersMain.create(parameters_plant_main);
 	}
 
 	public void setPlantParametersMain(PlantParametersMain parameters_plant_main) {
 		this.parameters_plant_main = parameters_plant_main;
 	}
 
-	public Plants.PlantParametersMain getPlantParametersMain() {return parameters_plant_main;}
+	public RegistryPlants.PlantParametersMain getPlantParametersMain() {return parameters_plant_main;}
 
 	public void setGrowthMach(int growth_mach) {getPlantParametersMain().editGrowthMach(growth_mach);}
 	public void setGrowthQuality(int growth_quality) {getPlantParametersMain().editGrowthQuality(growth_quality);}
@@ -85,24 +86,24 @@ public class TileEntityPlants extends TileEntity implements ITileEntityOwner {
 		if (te != null && te instanceof TileEntityPlants) {
 			TileEntityPlants tile = (TileEntityPlants)te;
 			if (worldObj.getWorldTime() % (20 * 1) == 0) {
-				if (Plants.hasTag(getPlant())) {
+				if (RegistryPlants.hasPlant(getPlant())) {
 
-					if (tile.getGrowthMach() < Plants.PlantParametersMain.GrowthMachMax)
+					if (tile.getGrowthMach() < RegistryPlants.PlantParametersMain.GrowthMachMax)
 						tile.setGrowthMach(tile.getGrowthMach() + 1);
 
-					if (tile.getGrowthQuality() < Plants.PlantParametersMain.GrowthQualityMax)
+					if (tile.getGrowthQuality() < RegistryPlants.PlantParametersMain.GrowthQualityMax)
 						tile.setGrowthQuality(tile.getGrowthQuality() + 1);
 
-					if (tile.getFertilityQuality() < Plants.PlantParametersMain.FertilityQualityMax)
+					if (tile.getFertilityQuality() < RegistryPlants.PlantParametersMain.FertilityQualityMax)
 						tile.setFertilityQuality(tile.getFertilityQuality() + 1);
 
-					if (tile.getFertilityQuantity() < Plants.PlantParametersMain.FertilityQuantityMax)
+					if (tile.getFertilityQuantity() < RegistryPlants.PlantParametersMain.FertilityQuantityMax)
 						tile.setFertilityQuantity(tile.getFertilityQuantity() + 1);
 
-					if (tile.getResistance() < Plants.PlantParametersMain.ResistanceMax)
+					if (tile.getResistance() < RegistryPlants.PlantParametersMain.ResistanceMax)
 						tile.setResistance(tile.getResistance() + 1);
 
-					if (tile.getProtection() < Plants.PlantParametersMain.ProtectionMax)
+					if (tile.getProtection() < RegistryPlants.PlantParametersMain.ProtectionMax)
 						tile.setProtection(tile.getProtection() + 1);
 
 					tile.setDeadPlant(!tile.getDeadPlant());

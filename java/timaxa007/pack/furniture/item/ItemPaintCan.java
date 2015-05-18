@@ -1,7 +1,7 @@
 package timaxa007.pack.furniture.item;
 
 import timaxa007.pack.mining.PackMining;
-import timaxa007.tms.object.ModifiedItem;
+import timaxa007.smt.object.ModifiedItem;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

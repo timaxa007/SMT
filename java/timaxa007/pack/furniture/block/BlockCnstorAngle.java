@@ -4,7 +4,7 @@ import java.util.List;
 
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityAngleMod;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.object.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -72,7 +72,7 @@ public class BlockCnstorAngle extends ModifiedBlock implements ITileEntityProvid
 	 */
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		//for (int j = 0; j < TileTexture.consMT.length; ++j) {
+		//for (int j = 0; j < TileTexture.conSMT.length; ++j) {
 		//for (int i = 0; i < 16; ++i) {
 		//int j = 0;
 		list.add(addNBT(0, 0));

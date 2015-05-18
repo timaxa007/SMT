@@ -2,8 +2,8 @@ package timaxa007.pack.mining.render.block;
 
 import timaxa007.pack.mining.block.OreOres;
 import timaxa007.pack.mining.tile.TileEntityOreOres;
-import timaxa007.tms.lib.AddTextureModel;
-import timaxa007.tms.util.UtilRender;
+import timaxa007.smt.lib.AddTextureModel;
+import timaxa007.smt.util.UtilRender;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;

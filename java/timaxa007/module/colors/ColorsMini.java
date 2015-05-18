@@ -1,6 +1,6 @@
 package timaxa007.module.colors;
 
-import timaxa007.tms.CoreTMS;
+import timaxa007.smt.CoreSMT;
 
 public class ColorsMini {
 
@@ -30,7 +30,7 @@ public class ColorsMini {
 	private String name;
 
 	public ColorsMini(int hex, String name) {
-		if (CoreTMS.config.show_system_info_testing) checkHex(this, hex);
+		if (CoreSMT.config.show_system_info_testing) checkHex(this, hex);
 		this.hex = hex;
 		list[hex] = this;
 		this.name = name;
@@ -55,7 +55,7 @@ public class ColorsMini {
 
 	private static void checkHex(ColorsMini color, int hex) {
 		if (list[hex] != null)
-			throw new IllegalArgumentException("Duplicate: " + hex + " in " + color.getClass() + ".");
+			throw new IllegalArgumentException("Duplicate: " + hex + ".");
 	}
 
 	public static ColorsMini get(int hex) {

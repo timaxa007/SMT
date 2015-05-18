@@ -20,9 +20,9 @@ import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.packet.MessageTechnoTool;
 import timaxa007.pack.techno.util.ITechnoTool;
-import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.util.UtilString;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.util.UtilString;
+import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -245,7 +245,7 @@ public class ToolElectricSaw extends ModifiedItem implements IActionMouse, IActi
 
 				if (nbt.hasKey("ModeID") && nbt.getInteger("ModeID") == 1) {
 					if (block == Blocks.leaves || block == Blocks.leaves2) {
-						UtilTMS.UtilWorld.dropItem(world, x, y, z, new ItemStack(block, 1, world.getBlockMetadata(x, y, z)));
+						UtilSMT.UtilWorld.dropItem(world, x, y, z, new ItemStack(block, 1, world.getBlockMetadata(x, y, z)));
 					}
 				}
 

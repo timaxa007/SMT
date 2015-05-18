@@ -19,12 +19,13 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.item.ItemPlants;
-import timaxa007.pack.stock.lib.Plants;
 import timaxa007.pack.stock.tile.TileEntityPlants;
-import timaxa007.tms.lib.AddTextureModel;
-import timaxa007.tms.object.ModifiedBlock;
-import timaxa007.tms.util.UtilString;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.pack.stock.util.Plant;
+import timaxa007.pack.stock.util.RegistryPlants;
+import timaxa007.smt.lib.AddTextureModel;
+import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.smt.util.UtilString;
+import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -51,7 +52,7 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityPlants) {
 			TileEntityPlants tile = (TileEntityPlants)te;
-			if (!Plants.isNull(tile.getPlant()))
+			if (RegistryPlants.hasPlant(tile.getPlant()))
 				return ItemPlants.addNBT(tile.getPlant(), tile.getPlantType(), tile.getPlantParametersMain(), tile.getWidth(), tile.getHeight());
 		}
 		return null;
@@ -66,17 +67,13 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 		if (te != null && te instanceof TileEntityPlants) {
 			TileEntityPlants tile = (TileEntityPlants)te;
 
-			Plants plant = Plants.get(tile.getPlant());
+			Plant plant = RegistryPlants.getPlant(tile.getPlant());
 
 			if (current != null) {
-				//				if (current.getItem() instanceof ItemPlants && current.getTagCompound() != null && 
+				//if (current.getItem() instanceof ItemPlants && current.getTagCompound() != null && 
 				if (player.isSneaking()) {
 
 				} else {
-
-					if (Plants.hasTag(tile.getPlant())) {
-
-					}
 
 				}
 
@@ -421,19 +418,19 @@ world.spawnEntityInWorld(entityitem2);
 			if (te != null && te instanceof TileEntityPlants) {
 				TileEntityPlants tile = (TileEntityPlants)te;
 				//----------------------------------------------------
-				if (!Plants.isNull(tile.getPlant())) {
+				if (RegistryPlants.hasPlant(tile.getPlant())) {
 
 					ItemStack is_item = ItemPlants.addNBT(
 							tile.getPlant(), tile.getPlantType(), 
 							tile.getPlantParametersMain(), 
 							tile.getWidth(), tile.getHeight());
 
-					UtilTMS.UtilWorld.dropItem(world, x, y, z, is_item);
+					UtilSMT.UtilWorld.dropItem(world, x, y, z, is_item);
 				}
 				//----------------------------------------------------
 				if (UtilString.hasString(tile.getStyle())) {
 					ItemStack is_block = addNBT(tile.getStyle());
-					UtilTMS.UtilWorld.dropItem(world, x, y, z, is_block);
+					UtilSMT.UtilWorld.dropItem(world, x, y, z, is_block);
 				}
 				//----------------------------------------------------
 			}

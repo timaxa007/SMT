@@ -10,9 +10,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.lib.ActionModel;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.lib.ActionModel;
+import timaxa007.smt.object.ModifiedBlock;
 
 public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityProvider {
 
@@ -68,7 +68,7 @@ public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityPro
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityFurnitureChest) {
-			player.openGui(CoreTMS.instance, PackFurniture.gui_furniture_chest, world, x, y, z);
+			player.openGui(CoreSMT.instance, PackFurniture.gui_furniture_chest, world, x, y, z);
 			return true;
 		}
 		return false;

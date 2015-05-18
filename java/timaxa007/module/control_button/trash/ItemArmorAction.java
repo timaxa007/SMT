@@ -5,7 +5,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IActionArmor;
-import timaxa007.tms.object.ModifiedItem;
+import timaxa007.smt.object.ModifiedItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

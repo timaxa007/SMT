@@ -7,14 +7,15 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IModuleClass;
+import timaxa007.module.fluids.util.ListFluidType;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+/**@author timaxa007**/
 public class ModuleFluids implements IModuleClass {
 
 	public static final String MODID = "fluids";
 	public static final String MODNAME = "Fluids";
-	public static final String VERSION = "0.021";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
+	public static final String VERSION = "0.025";
 
 	public static Logger log;
 
@@ -24,12 +25,12 @@ public class ModuleFluids implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleFluids.MODNAME + ", build: " + ModuleFluids.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleFluids.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleFluids.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();
 
-		//if (fluid instanceof IFluids) ;
+		ListFluidType.init();
 
 	}
 

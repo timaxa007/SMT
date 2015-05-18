@@ -3,77 +3,79 @@ package timaxa007.pack.furniture.inventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.common.util.Constants;
+import timaxa007.smt.util.UtilString;
 
 public class InventoryBackpack implements IInventory {
 
-	public static ItemStack[] list_slot = new ItemStack[27];
+	private String name = "Inventory Backpack";
+	public static final int INV_SIZE = 27;
+	private ItemStack[] inventory = new ItemStack[INV_SIZE];
+
+	private final ItemStack invItem;
+
+	public InventoryBackpack(ItemStack stack) {
+		this.invItem = stack;
+
+		if (!stack.hasTagCompound()) {
+			stack.setTagCompound(new NBTTagCompound());
+		}
+
+		readFromNBT(stack.getTagCompound());
+	}
 
 	@Override
 	public int getSizeInventory() {
-		return list_slot.length;
+		return inventory.length;
 	}
 
 	@Override
-	public ItemStack getStackInSlot(int i) {
-		return list_slot[i];
+	public ItemStack getStackInSlot(int slot) {
+		return inventory[slot];
 	}
 
 	@Override
-	public ItemStack decrStackSize(int i1, int i2) {
-		if (list_slot[i1] != null) {
-			ItemStack itemstack;
-
-			if (list_slot[i1].stackSize <= i2) {
-				itemstack = list_slot[i1];
-				list_slot[i1] = null;
+	public ItemStack decrStackSize(int slot, int amount) {
+		ItemStack is = getStackInSlot(slot);
+		if(is != null) {
+			if (is.stackSize > amount) {
+				is = is.splitStack(amount);
 				markDirty();
-				return itemstack;
-			} else {
-				itemstack = list_slot[i1].splitStack(i2);
-
-				if (list_slot[i1].stackSize == 0) {
-					list_slot[i1] = null;
-				}
-
-				markDirty();
-				return itemstack;
-			}
+			} else
+				setInventorySlotContents(slot, null);
 		}
-		else {
-			return null;
-		}
+		return is;
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int i) {
-		if (list_slot[i] != null) {
-			ItemStack itemstack = list_slot[i];
-			list_slot[i] = null;
-			return itemstack;
-		} else {
-			return null;
-		}
+	public ItemStack getStackInSlotOnClosing(int slot) {
+		ItemStack is = getStackInSlot(slot);
+		if (is != null) setInventorySlotContents(slot, null);
+		return is;
 	}
 
 	@Override
-	public void setInventorySlotContents(int i, ItemStack is) {
-		list_slot[i] = is;
+	public void setInventorySlotContents(int slot, ItemStack is) {
+		this.inventory[slot] = is;
 
-		if (is != null && is.stackSize > getInventoryStackLimit()) {
-			is.stackSize = getInventoryStackLimit();
+		if (is != null && is.stackSize > this.getInventoryStackLimit()) {
+			is.stackSize = this.getInventoryStackLimit();
 		}
 
 		markDirty();
 	}
 
+
 	@Override
 	public String getInventoryName() {
-		return "container.furniture_chest";
+		return name;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		return false;
+		return UtilString.hasString(name);
 	}
 
 	@Override
@@ -82,28 +84,61 @@ public class InventoryBackpack implements IInventory {
 	}
 
 	@Override
+	public void markDirty() {
+		for (int i = 0; i < getSizeInventory(); ++i) {
+			if (getStackInSlot(i) != null && getStackInSlot(i).stackSize == 0)
+				inventory[i] = null;
+		}
+		//be sure to write to NBT when the inventory changes!
+		writeToNBT(invItem.getTagCompound());
+	}
+
+	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return true;
+		return player.getHeldItem() == invItem;
 	}
 
 	@Override
 	public void openInventory() {
-		System.out.println("openInventory ItemBackpack");
+
 	}
 
 	@Override
 	public void closeInventory() {
-		System.out.println("closeInventory ItemBackpack");
+
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int i, ItemStack is) {
-		return true;
+	public boolean isItemValidForSlot(int slot, ItemStack is) {
+		return !(is != null && is.getItem() instanceof IBackpack);
+	}
+	//-----------------------------------------------------------------
+	public void readFromNBT(NBTTagCompound tagcompound) {
+		NBTTagList items = tagcompound.getTagList("InventoryBackpack", Constants.NBT.TAG_COMPOUND);
+
+		for (int i = 0; i < items.tagCount(); ++i) {
+			NBTTagCompound item = (NBTTagCompound)items.getCompoundTagAt(i);
+			byte slot = item.getByte("Slot");
+
+			if (slot >= 0 && slot < getSizeInventory())
+				inventory[slot] = ItemStack.loadItemStackFromNBT(item);
+
+		}
 	}
 
-	@Override
-	public void markDirty() {
-		
-	}
+	public void writeToNBT(NBTTagCompound tagcompound) {
+		NBTTagList items = new NBTTagList();
 
+		for (int i = 0; i < getSizeInventory(); ++i) {
+			if (getStackInSlot(i) != null) {
+				NBTTagCompound item = new NBTTagCompound();
+				item.setInteger("Slot", i);
+				getStackInSlot(i).writeToNBT(item);
+				items.appendTag(item);
+			}
+		}
+
+		tagcompound.setTag("InventoryBackpack", items);
+	}
+	//-----------------------------------------------------------------
 }

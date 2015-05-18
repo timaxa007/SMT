@@ -25,12 +25,12 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**@author timaxa007**/
 public class PackTechno implements IPackClass {
 
 	public static final String MODID = "technopack";
 	public static final String MODNAME = "PackTechno";
 	public static final String VERSION = "0.213";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
@@ -55,7 +55,7 @@ public class PackTechno implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackTechno.MODNAME + ", build: " + PackTechno.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/pack", PackTechno.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackTechno.MODID + ".cfg"));
 		cfg.load();
 
 		block.electric_machines_be = cfg.get("block", "electric_machines", true).getBoolean();

@@ -2,7 +2,7 @@ package timaxa007.pack.magic.block;
 
 import net.minecraft.block.Block;
 import timaxa007.pack.magic.tile.*;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.util.UtilSMT;
 
 public class ListBlock {
 
@@ -42,14 +42,14 @@ public class ListBlock {
 				magic_cauldron
 		};
 
-		UtilTMS.UtilBlock.RegBlock(list_block);
+		UtilSMT.UtilBlock.RegBlock(list_block);
 
 		list_te = new Class[] {
 				te_magic_machines,
 				te_magic_cauldron
 		};
 
-		UtilTMS.UtilBlock.RegTE(list_te);
+		UtilSMT.UtilBlock.RegTE(list_te);
 
 	}
 

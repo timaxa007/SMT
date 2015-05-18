@@ -10,10 +10,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import timaxa007.pack.stock.PackStock;
-import timaxa007.pack.stock.lib.Plants;
 import timaxa007.pack.stock.tile.TileEntityPlants;
-import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.util.UtilString;
+import timaxa007.pack.stock.util.Plant;
+import timaxa007.pack.stock.util.RegistryPlants;
+import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -22,9 +23,6 @@ public class ItemPlants extends ModifiedItem {
 	@SideOnly(Side.CLIENT) private IIcon icon_a;
 	@SideOnly(Side.CLIENT) private IIcon icon_b;
 	 */
-
-	public static Plants test_plant = new Plants("test_plant").setType("Plant").setPlantStats(5, 4, 3, 2, 1, 10)
-			.setTemperatures(30.0F, 0.0F, 60.0F).setHumidity(30.0F, 0.0F, 60.0F);
 
 	public ItemPlants(String tag) {
 		super(tag);
@@ -41,7 +39,7 @@ public class ItemPlants extends ModifiedItem {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (nbt != null && te != null && te instanceof TileEntityPlants) {
 				TileEntityPlants tile = (TileEntityPlants)te;
-				if (Plants.isNull(tile.getPlant())) {
+				if (RegistryPlants.hasPlant(nbt.getString("Plant")) && !RegistryPlants.hasPlant(tile.getPlant())) {
 					//-----------------------------------------------
 					if (nbt.hasKey("Plant")) tile.setPlant(nbt.getString("Plant"));
 					//-----------------------------------------------
@@ -62,7 +60,7 @@ public class ItemPlants extends ModifiedItem {
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Plant"))
-			return "plant." + Plants.get(nbt.getString("Plant")).getName();
+			return "plant." + RegistryPlants.getPlant(nbt.getString("Plant")).getName();
 		return super.getUnlocalizedName();
 	}
 
@@ -70,11 +68,12 @@ public class ItemPlants extends ModifiedItem {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
-				if (nbt.hasKey("Plant")) list.add("Plant: " + nbt.getString("Plant") + ".");
+				Plant plant = RegistryPlants.getPlant(nbt.getString("Plant"));
+				if (nbt.hasKey("Plant")) list.add("Plant: " + plant.getLocalizedName() + ".");
 				if (nbt.hasKey("PlantType")) list.add("PlantType: " + nbt.getString("PlantType") + ".");
 
 				if (nbt.hasKey("PlantParametersMain")) {
-					Plants.PlantParametersMain parameters_main = Plants.PlantParametersMain.create(nbt.getInteger("PlantParametersMain"));
+					RegistryPlants.PlantParametersMain parameters_main = RegistryPlants.PlantParametersMain.create(nbt.getInteger("PlantParametersMain"));
 					list.add(UtilString.getText("Growth_Mach") + ": " + (parameters_main.growth_mach) + ".");
 					list.add(UtilString.getText("Growth_Quality") + ": " + (parameters_main.growth_quality) + ".");
 					list.add(UtilString.getText("Fertility_Quality") + ": " + (parameters_main.fertility_quality) + ".");
@@ -92,19 +91,23 @@ public class ItemPlants extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		for (Plants plant : Plants.list) {
-			if (!Plants.isNull(plant)) {
-				list.add(addNBT(
-						plant.tag, 
-						plant.getType(), 
-						plant.getGrowthMach(), 
-						plant.getGrowthQuality(), 
-						plant.getFertilityQuality(), 
-						plant.getFertilityQuantity(), 
-						plant.getResistance(), 
-						plant.getProtection(), 
-						plant.getDeadPlant()
-						));
+		List lst = RegistryPlants.getTagPlants();
+		for (int i = 0; i < lst.size(); i++) {
+			if (lst.get(i) != null) {
+				Plant plant = RegistryPlants.getPlant(lst.get(i).toString());
+				if (RegistryPlants.hasPlant(plant)) {
+					list.add(addNBT(
+							plant.getTag(), 
+							plant.getType(), 
+							plant.getGrowthMach(), 
+							plant.getGrowthQuality(), 
+							plant.getFertilityQuality(), 
+							plant.getFertilityQuantity(), 
+							plant.getResistance(), 
+							plant.getProtection(), 
+							plant.getDeadPlant()
+							));
+				}
 			}
 		}
 		//list.add(new ItemStack(id, 1, 0));
@@ -115,10 +118,10 @@ public class ItemPlants extends ModifiedItem {
 	}
 
 	public static ItemStack addNBT(String plant, String plant_type, int growth_mach, int growth_quality, int fertility_quality, int fertility_quantity, int resistance, int protection, boolean dead_plant, int width, int height) {
-		return addNBT(plant, plant_type, Plants.PlantParametersMain.create(growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant), width, height);
+		return addNBT(plant, plant_type, RegistryPlants.PlantParametersMain.create(growth_mach, growth_quality, fertility_quality, fertility_quantity, resistance, protection, dead_plant), width, height);
 	}
 
-	public static ItemStack addNBT(String plant, String plant_type, Plants.PlantParametersMain parameters_main, int width, int height) {
+	public static ItemStack addNBT(String plant, String plant_type, RegistryPlants.PlantParametersMain parameters_main, int width, int height) {
 		ItemStack is = new ItemStack(PackStock.item.plants);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Plant", plant);

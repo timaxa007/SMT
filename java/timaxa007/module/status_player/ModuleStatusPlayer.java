@@ -16,12 +16,12 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
+/**@author timaxa007**/
 public class ModuleStatusPlayer implements IModuleClass {
 
 	public static final String MODID = "status_player";
 	public static final String MODNAME = "StatusPlayer";
 	public static final String VERSION = "0.002";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
@@ -34,7 +34,7 @@ public class ModuleStatusPlayer implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleStatusPlayer.MODNAME + ", build: " + ModuleStatusPlayer.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleStatusPlayer.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleStatusPlayer.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();

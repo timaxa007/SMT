@@ -1,8 +1,9 @@
 package timaxa007.pack.stock.item;
 
 import net.minecraft.item.Item;
-import timaxa007.pack.stock.lib.food.ListFoodFirst;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.pack.stock.lib.ListPlants;
+import timaxa007.pack.stock.lib.food.ListFoodItem;
+import timaxa007.smt.util.UtilSMT;
 
 public class ListItem {
 
@@ -39,10 +40,13 @@ public class ListItem {
 	public static void preInit() {
 
 		if (items_for_stock_be) items_for_stock = new ItemsStock("items_for_stock");
-		if (plants_be) plants = new ItemPlants("plants");
+		if (plants_be) {
+			ListPlants.init();
+			plants = new ItemPlants("plants");
+		}
 		if (nature_product_be) nature_product= new ItemNatureProduct("nature_product");
 		if (foods_be) {
-			new ListFoodFirst();
+			ListFoodItem.init();
 			foods = new ItemFoods("foods");
 		}
 		if (drinks_be) drinks = new ItemDrinks("drinks");
@@ -66,7 +70,7 @@ public class ListItem {
 				petals
 		};
 
-		UtilTMS.UtilItem.RegItem(list_item);
+		UtilSMT.UtilItem.RegItem(list_item);
 
 	}
 

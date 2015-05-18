@@ -5,7 +5,7 @@ import java.util.Random;
 
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityBoxParticles;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.object.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

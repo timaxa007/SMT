@@ -1,6 +1,6 @@
 package timaxa007.pack.mining.lib;
 
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.util.UtilString;
 import net.minecraft.util.StatCollector;
 /**
  * Use in <b>ItemsMining</b>.

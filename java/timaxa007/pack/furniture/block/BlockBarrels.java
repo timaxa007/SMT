@@ -13,7 +13,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityBarrels;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.object.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

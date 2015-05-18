@@ -26,7 +26,7 @@ public class ActionMagic {
 
 		//MovingObjectPosition obj = Minecraft.getMinecraft().objectMouseOver;
 		MovingObjectPosition obj_block = Minecraft.getMinecraft().renderViewEntity.rayTrace(80.0D, 1.0F);
-		MovingObjectPosition obj_entity = UtilTMS.LookOBJ.getEntityDistance(80.0D);
+		MovingObjectPosition obj_entity = UtilSMT.LookOBJ.getEntityDistance(80.0D);
 
 		if (obj_entity != null) {
 			Entity entity = obj_entity.entityHit;
@@ -43,7 +43,7 @@ public class ActionMagic {
 			}
 
 
-			if (CoreTMS.show_system_info_testing) System.out.println("obj_entity - " + obj_entity.toString());
+			if (CoreSMT.show_system_info_testing) System.out.println("obj_entity - " + obj_entity.toString());
 		} else if (obj_block != null && obj_block.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
 			int x = obj_block.blockX;
 			int y = obj_block.blockY;
@@ -52,9 +52,9 @@ public class ActionMagic {
 
 			//if (block.getMaterial() != Material.air) {}
 
-			if (CoreTMS.show_system_info_testing) System.out.println(block.getLocalizedName() + "obj_block - " + obj_block.toString());
+			if (CoreSMT.show_system_info_testing) System.out.println(block.getLocalizedName() + "obj_block - " + obj_block.toString());
 		} else {
-			if (CoreTMS.show_system_info_testing) System.out.println("Air");
+			if (CoreSMT.show_system_info_testing) System.out.println("Air");
 		}
 
 	}
@@ -62,7 +62,7 @@ public class ActionMagic {
 	public static void actionVoid2(World world, EntityPlayer player) {
 
 		MovingObjectPosition obj_block = Minecraft.getMinecraft().renderViewEntity.rayTrace(200.0D, 1.0F);
-		MovingObjectPosition obj_entity = UtilTMS.LookOBJ.getEntityDistance();
+		MovingObjectPosition obj_entity = UtilSMT.LookOBJ.getEntityDistance();
 
 		if (obj_entity != null) {
 			Entity entity = obj_entity.entityHit;
@@ -79,7 +79,7 @@ public class ActionMagic {
 			}
 
 
-			if (CoreTMS.show_system_info_testing) System.out.println("obj_entity - " + obj_entity.toString());
+			if (CoreSMT.show_system_info_testing) System.out.println("obj_entity - " + obj_entity.toString());
 		} else if (obj_block != null && obj_block.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
 			int x = obj_block.blockX;
 			int y = obj_block.blockY;
@@ -90,16 +90,16 @@ public class ActionMagic {
 
 			if (world.getBlock(x, y + 1, z) == Blocks.flowing_lava) {
 				world.setBlockToAir(x, y + 1, z);
-				UtilTMS.UtilWorld.dropItem(world, x, y + 1, z, new ItemStack(Blocks.cobblestone));
+				UtilSMT.UtilWorld.dropItem(world, x, y + 1, z, new ItemStack(Blocks.cobblestone));
 			}
 
 			if (block == Blocks.dirt && world.getBlockMetadata(x, y, z) == 0) {
 				world.setBlock(x, y, z, Blocks.grass);
 			}
 
-			if (CoreTMS.show_system_info_testing) System.out.println(block.getLocalizedName() + "obj_block - " + obj_block.toString());
+			if (CoreSMT.show_system_info_testing) System.out.println(block.getLocalizedName() + "obj_block - " + obj_block.toString());
 		} else {
-			if (CoreTMS.show_system_info_testing) System.out.println("Air");
+			if (CoreSMT.show_system_info_testing) System.out.println("Air");
 		}
 
 		double d0 = (double)(50);
@@ -154,7 +154,7 @@ public class ActionMagic {
 	 */
 	/*
 	public static void actionVoid3(World world, EntityPlayer player) {
-		CoreTMS.network.sendToAllAround(new MessageSpawnParticle(1, player.posX, player.posY, player.posZ), 
+		CoreSMT.network.sendToAllAround(new MessageSpawnParticle(1, player.posX, player.posY, player.posZ), 
 				new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 18.5D));
 	}
 	 */

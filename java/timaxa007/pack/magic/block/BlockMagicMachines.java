@@ -11,8 +11,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.tile.TileEntityMagicMachines;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.object.ModifiedBlock;
 
 public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProvider {
 
@@ -33,12 +33,13 @@ public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProv
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityMagicMachines) {
+			TileEntityMagicMachines tile = (TileEntityMagicMachines)te;
 
 			int l = MathHelper.floor_double((double)(entity.rotationYaw*4.0F/360.0F)+0.5D)&3;
-			((TileEntityMagicMachines)te).setRot(l);
+			tile.setRot(l);
 
 			if (nbt != null) {
-				if (nbt.hasKey("Type")) ((TileEntityMagicMachines)te).setType(nbt.getInteger("Type"));
+				if (nbt.hasKey("Type")) tile.setType(nbt.getInteger("Type"));
 			}
 			/*
 			if (is.hasDisplayName()) {
@@ -54,7 +55,7 @@ public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProv
 		if (player.isSneaking()) return false;
 
 		if (te != null && te instanceof TileEntityMagicMachines) {
-			player.openGui(CoreTMS.instance, PackMagic.gui_magic_machines, world, x, y, z);
+			player.openGui(CoreSMT.instance, PackMagic.gui_magic_machines, world, x, y, z);
 			return true;
 		}
 

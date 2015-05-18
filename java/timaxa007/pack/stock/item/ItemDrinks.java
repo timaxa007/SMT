@@ -11,10 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import timaxa007.module.fluids.Fluids;
+import timaxa007.module.fluids.util.Fluid;
+import timaxa007.module.fluids.util.RegistryFluids;
 import timaxa007.pack.stock.PackStock;
-import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -23,113 +24,46 @@ public class ItemDrinks extends ModifiedItem {
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
+	public static final Fluid TEST1 = new Fluid("test1").setColor(0xFF0000);
+	public static final Fluid TEST2 = new Fluid("test2").setColor(0x0000FF).setNutriment(2, 1.0F, 3, 2.0F);
+	public static final Fluid TEST3 = new Fluid("test3").setColor(0x00FF00).setFoodStat(2, 1.0F);
+	public static final Fluid TEST4 = new Fluid("test4").setColor(0xFF00FF).setDrinkStat(3, 2.0F);
+
 	public ItemDrinks(String tag) {
 		super(tag);
-		//setCreativeTab(PackStock.tab_food);
+		setCreativeTab(PackStock.tab_food);
 		setHasSubtypes(true);
 		setMaxDamage(0);
+		RegistryFluids.registerFluid(TEST1);
+		RegistryFluids.registerFluid(TEST2);
+		RegistryFluids.registerFluid(TEST3);
+		RegistryFluids.registerFluid(TEST4);
+		RegistryFluids.registerFluid(new Fluid("test5").setColor(0xFFFF00).setDrinkStat(1, 0.5F).setSafeDrink(false).setSpeedDrinking(64));
 	}
-
 	//tea - flower, tea, 
 	//boiled, hot, normal, 
-
-	public enum drinks {
-		//Cup(0, 0xFFFFFF, 0xFFFFFF), 
-		Bottle(0, 0xFFFFFF, 0xFFFFFF);
-
-		private int lvl;
-		private int hex1;
-		private int hex2;
-
-		static boolean hasStrCode(String str) {
-			for (drinks j : drinks.values()) {
-				if (str.equalsIgnoreCase(j.toString())) {
-					return true;
-				}
-			}
-			return false;
-		}
-
-		drinks(int p_lvl, int p_hex1, int p_hex2) {
-			lvl = p_lvl;
-			hex1 = p_hex1;
-			hex2 = p_hex2;
-		}
-
-	}
+	public enum drinks {Bottle;}
 	/*
-public enum liquid_for_drinking {
 Water(0.0F, 0xFFFFFF), 
 Tea(0.0F, 0xFFFFFF), 
 Coffee(0.0F, 0xFFFFFF), 
 Milk(0.0F, 0xFFFFFF), 
 Cacao(0.0F, 0xFFFFFF), 
 Juice_of_apples(0.0F, 0xFFFFFF), 
-Juice_of_carrot(0.0F, 0xFFFFFF), 
-Juice_of_melon(0.0F, 0xFFFFFF), 
-Juice_of_pumpkin(0.0F, 0xFFFFFF), 
-Juice_of_potato(0.0F, 0xFFFFFF), 
 Milkshake(0.0F, 0xFFFFFF), 
 Lemonade(0.0F, 0xFFFFFF), 
-NONE(0.0F, 0xFFFFFF);
-
-private float sat;
-private int liquid_hex;
-
-static boolean hasStrCode(String str) {
-for (liquid_for_drinking j : liquid_for_drinking.values()) {
-if (str.equalsIgnoreCase(j.toString())) {
-return true;
-}
-}
-return false;
-}
-
-liquid_for_drinking(float p_sat, int liq_hex) {
-sat = p_sat;
-liquid_hex = liq_hex;
-}
-
-}
 	 */
-	public enum temperature {
-		Hot(45.0F, 0xFFFFFF), 
-		Very_hot(60.0F, 0xFFFFFF), 
-		Very_cool(-45.0F, 0xFFFFFF), 
-		Cool(0.0F, 0xFFFFFF), 
-		NONE(0.0F, 0xFFFFFF);
-
-		private float t;
-		private int t_hex;
-
-		static boolean hasStrCode(String str) {
-			for (temperature j : temperature.values()) {
-				if (str.equalsIgnoreCase(j.toString())) {
-					return true;
-				}
-			}
-			return false;
-		}
-
-		temperature(float temp, int temp_hex) {
-			t = temp;
-			t_hex = temp_hex;
-		}
-
-	}
-
 	public ItemStack onEaten(ItemStack is, World world, EntityPlayer player) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (!player.capabilities.isCreativeMode) {--is.stackSize;}
 		if (!world.isRemote) {
-			if (nbt != null) {
-				if (nbt.hasKey("NameID") && nbt.hasKey("LiquidID")) {
-					player.getFoodStats().addStats(2, 0.5F);
-				} else {
-				}
+			if (nbt != null && nbt.hasKey("FluidTag")) {
+				Fluid fluid = RegistryFluids.getFluid(nbt.getString("FluidTag"));
+				player.getFoodStats().addStats(fluid.getFoodLevel(), fluid.getFoodSaturation());
+				//player.statDrink().addStats(fluid.getDrinkLevel(), fluid.getThirstQuenching());
+				//player.statFood().addStats(fluid.getFoodLevel(), fluid.getFoodSaturation());
 			}
 		}
-		//return new ItemStack(Item.bucketEmpty);
 		return is;
 	}
 
@@ -140,7 +74,11 @@ liquid_hex = liq_hex;
 	}
 
 	public int getMaxItemUseDuration(ItemStack is) {
-		return 32;
+		NBTTagCompound nbt = is.getTagCompound();
+		if (nbt != null && nbt.hasKey("FluidTag")) {
+			Fluid fluid = RegistryFluids.getFluid(nbt.getString("FluidTag"));
+			return fluid.getSpeedDrinking();
+		} else return 32;
 	}
 
 	public EnumAction getItemUseAction(ItemStack is) {
@@ -149,8 +87,9 @@ liquid_hex = liq_hex;
 
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("LiquidID")) {
-			return "fluid." + Fluids.list[nbt.getInteger("LiquidID")].getName();
+		if (nbt != null && nbt.hasKey("FluidTag")) {
+			Fluid fluid = RegistryFluids.getFluid(nbt.getString("FluidTag"));
+			return "fluid." + fluid.getName();
 		}
 		return super.getUnlocalizedName();
 	}
@@ -159,41 +98,42 @@ liquid_hex = liq_hex;
 		NBTTagCompound nbt = is.getTagCompound();
 		if (UtilString.isShiftKeyDown()) {
 			if (nbt != null) {
+
 				if (nbt.hasKey("NameID")) {
 					list.add("NameID: " + nbt.getString("NameID") + ".");
-					list.add("Saturation Level: " + drinks.valueOf(nbt.getString("NameID")).lvl + ".");
 				}
-				if (nbt.hasKey("LiquidID") && Fluids.list[nbt.getInteger("LiquidID")] != null) {
-					list.add("LiquidID: " + nbt.getInteger("LiquidID") + "/" + 
-							Fluids.list[nbt.getInteger("LiquidID")].getLocalizedName() + ".");
-					list.add("Liquid Type: " + Fluids.list[nbt.getInteger("LiquidID")].getType() + ".");
+
+				if (nbt.hasKey("FluidTag")) {
+					Fluid fluid = RegistryFluids.getFluid(nbt.getString("FluidTag"));
+					list.add(UtilString.getText("Name") + ": " + fluid.getLocalizedName() + ".");
+					list.add("Stat: drink - (" + fluid.getDrinkLevel() + ", " + fluid.getThirstQuenching() + 
+							") / food - (" + fluid.getFoodLevel() + ", " + fluid.getFoodSaturation() + ").");
 				}
+
 			}
-		} else {
-			list.add(UtilString.hldshiftinf);
-		}
+		} else list.add(UtilString.hldshiftinf);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (drinks j1 : drinks.values()) {
-			for (int i = 0; i < Fluids.list.length; ++i) {
-				if (Fluids.list[i] != null) {
-					list.add(addNBT(j1.toString(), i));
+			List lst = RegistryFluids.getListFluids();
+			for (int i = 0; i < lst.size(); ++i) {
+				if (lst.get(i) != null) {
+					Fluid fluid = RegistryFluids.getFluid(lst.get(i).toString());
+					if (RegistryFluids.hasFluid(fluid)/* && fluid.isNutriment()*/)
+						list.add(addNBT(j1.toString(), fluid.getTag()));
 				}
 			}
 
 		}
-		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	public static ItemStack addNBT(String par1, int par2) {
-		ItemStack is = new ItemStack(PackStock.item.drinks, 1, 0);
+	public static ItemStack addNBT(String par1, String par2) {
+		ItemStack is = new ItemStack(PackStock.item.drinks);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);
-		nbt.setInteger("LiquidID", par2);
-		nbt.setFloat("TempID", 30.0F);
-		//nbt.setFloat("Sat", drinks.valueOf(par1).sat);
+		nbt.setString("FluidTag", par2);
 		is.setTagCompound(nbt);
 		return is;
 	}
@@ -218,13 +158,14 @@ liquid_hex = liq_hex;
 	public int getColorFromItemStack(ItemStack is, int renderPass) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (renderPass == 0) {
-			if (nbt != null && nbt.hasKey("NameID")) {
+			/*if (nbt != null && nbt.hasKey("NameID")) {
 				return drinks.valueOf(nbt.getString("NameID")).hex1;
-			} else {return 16777215;}
+			} else return 0xFFFFFF;*/
+			return 0xFFFFFF;
 		} else {
-			if (nbt != null && nbt.hasKey("LiquidID")) {
-				return Fluids.list[nbt.getInteger("LiquidID")].getColor();
-			} else {return 16777215;}
+			if (nbt != null && nbt.hasKey("FluidTag")) {
+				return RegistryFluids.getFluid(nbt.getString("FluidTag")).getColor();
+			} else return 0xFFFFFF;
 		}
 	}
 

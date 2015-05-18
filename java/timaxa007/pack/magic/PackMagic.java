@@ -28,12 +28,12 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**@author timaxa007**/
 public class PackMagic implements IPackClass {
 
 	public static final String MODID = "magicpack";
 	public static final String MODNAME = "PackMagic";
 	public static final String VERSION = "0.437";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
@@ -78,7 +78,7 @@ public class PackMagic implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackMagic.MODNAME + ", build: " + PackMining.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/pack", PackMagic.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackMagic.MODID + ".cfg"));
 		cfg.load();
 
 		block.magic_machines_be = cfg.get("block", "magic_machines", true).getBoolean();

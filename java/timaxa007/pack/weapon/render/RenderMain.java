@@ -36,7 +36,7 @@ public class RenderMain {
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackWeapons.block.claymore), new ItemRendererClaymore());
 
 		//Item
-		MinecraftForgeClient.registerItemRenderer(PackWeapons.item.weapons, new ItemRendererWeapons());
+		MinecraftForgeClient.registerItemRenderer(PackWeapons.item.weapon, new ItemRendererWeapons());
 
 		//Entity
 		//RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderEntityBullet());

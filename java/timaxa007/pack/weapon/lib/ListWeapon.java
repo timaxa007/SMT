@@ -1,40 +1,111 @@
 package timaxa007.pack.weapon.lib;
 
+import timaxa007.pack.weapon.util.Ammo;
+import timaxa007.pack.weapon.util.Clip;
+import timaxa007.pack.weapon.util.RegistryWeapons;
+import timaxa007.pack.weapon.util.Weapon;
+
 
 public class ListWeapon {
 
-	public static AmmoFor bullet = new AmmoFor("bullet");
-	public static AmmoFor bullet_pistol = new AmmoFor("bullet_pistol");
-	public static AmmoFor bullet_shotgun = new AmmoFor("bullet_shotgun");
-	public static AmmoFor bullet_avtomat = new AmmoFor("bullet_avtomat");
-	public static AmmoFor bullet_pulemet = new AmmoFor("bullet_pulemet");
-	public static AmmoFor bullet_sniper = new AmmoFor("bullet_sniper");
+	public static Ammo
+	bullet,
+	bullet_pistol,
+	bullet_shotgun,
+	bullet_avtomat,
+	bullet_pulemet,
+	bullet_sniper
+	;
 
-	public static MagazineFor magazine_bullet = new MagazineFor("magazine_bullet").setSize(10).setBullet(bullet);
-	public static MagazineFor magazine_pistol = new MagazineFor("magazine_pistol").setSize(7).setBullet(bullet_pistol);
-	public static MagazineFor magazine_avtomat = new MagazineFor("magazine_avtomat").setSize(30).setBullet(bullet_avtomat);
-	public static MagazineFor magazine_pulemet = new MagazineFor("magazine_pulemet").setSize(100).setBullet(bullet_pulemet);
-	public static MagazineFor magazine_sniper = new MagazineFor("magazine_sniper").setSize(20).setBullet(bullet_sniper);
+	public static Clip
+	magazine_bullet,
+	magazine_pistol,
+	magazine_avtomat,
+	magazine_pulemet,
+	magazine_sniper
+	;
 
-	public static WeaponFor weapon = new WeaponFor("weapon")
-	.setDelay(1).setSoundFire("timaxa007:mp5-1").setSoundReload("timaxa007:mp5_slideback").setAmmo(magazine_bullet);
+	public static Weapon
+	weapon,
+	weapon_pistol,
+	weapon_shotgun_1,
+	weapon_shotgun_2,
+	weapon_avtomat,
+	weapon_pulemet,
+	weapon_sniper
+	;
 
-	public static WeaponFor weapon_pistol = new WeaponFor("weapon_pistol")
-	.setDelay(4).setSoundFire("timaxa007:fiveseven-1").setSoundReload("timaxa007:fiveseven_slidepull").setAmmo(magazine_pistol);
+	public static Ammo[] list_ammo;
+	public static Clip[] list_clip;
+	public static Weapon[] list_weapon;
 
-	public static WeaponFor weapon_shotgun_1 = new WeaponFor("weapon_shotgun_1")
-	.setDelay(8).setSoundFire("timaxa007:m3-1").setSoundReload("timaxa007:m3_pump").setAmmo(bullet_shotgun).setSizeAmmo(2);
+	public static void init() {
 
-	public static WeaponFor weapon_shotgun_2 = new WeaponFor("weapon_shotgun_2")
-	.setDelay(12).setSoundFire("timaxa007:m3-1").setSoundReload("timaxa007:m3_pump").setAmmo(bullet_shotgun).setSizeAmmo(7);
+		bullet = new Ammo("bullet");
+		bullet_pistol = new Ammo("bullet_pistol");
+		bullet_shotgun = new Ammo("bullet_shotgun");
+		bullet_avtomat = new Ammo("bullet_avtomat");
+		bullet_pulemet = new Ammo("bullet_pulemet");
+		bullet_sniper = new Ammo("bullet_sniper");
 
-	public static WeaponFor weapon_avtomat = new WeaponFor("weapon_avtomat")
-	.setDelay(2).setSoundFire("timaxa007:ak47-1").setSoundReload("timaxa007:ak47_boltpull").setAmmo(magazine_avtomat);
+		list_ammo = new Ammo[] {
+				bullet,
+				bullet_pistol,
+				bullet_shotgun,
+				bullet_avtomat,
+				bullet_pulemet,
+				bullet_sniper
+		};
 
-	public static WeaponFor weapon_pulemet = new WeaponFor("weapon_pulemet")
-	.setDelay(2).setSoundFire("timaxa007:m249-1").setSoundReload("timaxa007:m249_chain").setAmmo(magazine_pulemet);
+		magazine_bullet = new Clip("magazine_bullet").setMaxAmountAmmo(10).setAmmo(bullet);
+		magazine_pistol = new Clip("magazine_pistol").setMaxAmountAmmo(7).setAmmo(bullet_pistol);
+		magazine_avtomat = new Clip("magazine_avtomat").setMaxAmountAmmo(30).setAmmo(bullet_avtomat);
+		magazine_pulemet = new Clip("magazine_pulemet").setMaxAmountAmmo(100).setAmmo(bullet_pulemet);
+		magazine_sniper = new Clip("magazine_sniper").setMaxAmountAmmo(20).setAmmo(bullet_sniper);
 
-	public static WeaponFor weapon_sniper = new WeaponFor("weapon_sniper")
-	.setDelay(25).setSoundFire("timaxa007:scout_fire-1").setSoundReload("timaxa007:scout_bolt").setAmmo(magazine_sniper);
+		list_clip = new Clip[] {
+				magazine_bullet,
+				magazine_pistol,
+				magazine_avtomat,
+				magazine_pulemet,
+				magazine_sniper
+		};
+
+		weapon = new Weapon("weapon", magazine_bullet)
+		.setDelay(1).setSoundFire("timaxa007:mp5-1").setSoundReload("timaxa007:mp5_slideback");
+
+		weapon_pistol = new Weapon("weapon_pistol", magazine_pistol)
+		.setDelay(4).setSoundFire("timaxa007:fiveseven-1").setSoundReload("timaxa007:fiveseven_slidepull");
+
+		weapon_shotgun_1 = new Weapon("weapon_shotgun_1", bullet_shotgun, 2)
+		.setDelay(8).setSoundFire("timaxa007:m3-1").setSoundReload("timaxa007:m3_pump");
+
+		weapon_shotgun_2 = new Weapon("weapon_shotgun_2", bullet_shotgun, 7)
+		.setDelay(12).setSoundFire("timaxa007:m3-1").setSoundReload("timaxa007:m3_pump");
+
+		weapon_avtomat = new Weapon("weapon_avtomat", magazine_avtomat)
+		.setDelay(2).setSoundFire("timaxa007:ak47-1").setSoundReload("timaxa007:ak47_boltpull");
+
+		weapon_pulemet = new Weapon("weapon_pulemet", magazine_pulemet)
+		.setDelay(2).setSoundFire("timaxa007:m249-1").setSoundReload("timaxa007:m249_chain");
+
+		weapon_sniper = new Weapon("weapon_sniper", magazine_sniper)
+		.setDelay(25).setSoundFire("timaxa007:scout_fire-1").setSoundReload("timaxa007:scout_bolt");
+
+		list_weapon = new Weapon[] {
+				weapon,
+				weapon_pistol,
+				weapon_shotgun_1,
+				weapon_shotgun_2,
+				weapon_avtomat,
+				weapon_pulemet,
+				weapon_sniper
+		};
+
+		RegistryWeapons.RegistryAmmo.registerWeapon(list_ammo);
+		RegistryWeapons.RegistryClip.registerWeapon(list_clip);
+		RegistryWeapons.RegistryWeapon.registerWeapon(list_weapon);
+
+	}
 
 }

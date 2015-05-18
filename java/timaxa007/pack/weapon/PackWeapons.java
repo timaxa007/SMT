@@ -22,12 +22,12 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**@author timaxa007**/
 public class PackWeapons implements IPackClass {
 
 	public static final String MODID = "weaponpack";
 	public static final String MODNAME = "PackWeapon";
-	public static final String VERSION = "0.120";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
+	public static final String VERSION = "0.121";
 
 	//GUI
 	public static int gui_scope_1 = 1;
@@ -49,23 +49,23 @@ public class PackWeapons implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackWeapons.MODNAME + ", build: " + PackWeapons.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/pack", PackWeapons.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackWeapons.MODID + ".cfg"));
 		cfg.load();
 
 		block.claymore_be = cfg.get("block", "claymore", true).getBoolean();
 
 		item.items_for_weapons_be = cfg.get("item", "items_for_weapons", true).getBoolean();
 		item.molotov_cocktail_be = cfg.get("item", "molotov_cocktail", true).getBoolean();
-		item.weapons_be = cfg.get("item", "weapons", true).getBoolean();
-		item.ammos_be = cfg.get("item", "ammos", true).getBoolean();
-		item.magazines_be = cfg.get("item", "magazines", true).getBoolean();
+		item.weapon_be = cfg.get("item", "weapon", true).getBoolean();
+		item.ammo_be = cfg.get("item", "ammo", true).getBoolean();
+		item.magazine_be = cfg.get("item", "magazine", true).getBoolean();
 
 		cfg.save();
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackWeapons.MODID);
 		RegisterMessage.init(network);
 
-		new ListWeapon();
+		ListWeapon.init();
 
 		block.preInit();
 		item.preInit();

@@ -19,8 +19,8 @@ import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.packet.MessageTechnoTool;
 import timaxa007.pack.techno.util.ITechnoTool;
-import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

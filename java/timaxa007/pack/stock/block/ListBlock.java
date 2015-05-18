@@ -1,7 +1,7 @@
 package timaxa007.pack.stock.block;
 
 import timaxa007.pack.stock.tile.*;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.util.UtilSMT;
 import net.minecraft.block.Block;
 
 public class ListBlock {
@@ -69,7 +69,7 @@ public class ListBlock {
 				petalled
 		};
 
-		UtilTMS.UtilBlock.RegBlock(list_block);
+		UtilSMT.UtilBlock.RegBlock(list_block);
 
 		list_te = new Class[] {
 				te_plants,
@@ -79,7 +79,7 @@ public class ListBlock {
 				te_petalled
 		};
 
-		UtilTMS.UtilBlock.RegTE(list_te);
+		UtilSMT.UtilBlock.RegTE(list_te);
 
 	}
 

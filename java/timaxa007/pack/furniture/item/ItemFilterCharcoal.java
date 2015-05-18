@@ -2,7 +2,7 @@ package timaxa007.pack.furniture.item;
 
 import java.util.List;
 
-import timaxa007.tms.object.ModifiedItem;
+import timaxa007.smt.object.ModifiedItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

@@ -3,7 +3,7 @@ package timaxa007.pack.item.item;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.util.UtilSMT;
 
 public class ListItem {
 
@@ -145,7 +145,7 @@ public class ListItem {
 				tool_craft
 		};
 
-		UtilTMS.UtilItem.RegItem(list_item);
+		UtilSMT.UtilItem.RegItem(list_item);
 	}
 
 }

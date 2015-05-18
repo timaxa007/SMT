@@ -1,5 +1,6 @@
 package timaxa007.pack.magic.tile;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -8,8 +9,9 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import timaxa007.tms.util.ITileEntityOwner;
-import timaxa007.tms.util.UtilString;
+import timaxa007.module.forbidden.api.ITileEntityOwner;
+import timaxa007.pack.magic.PackMagic;
+import timaxa007.smt.util.UtilString;
 
 public class TileEntityMagicMachines extends TileEntity implements ISidedInventory, ITileEntityOwner {
 
@@ -31,6 +33,17 @@ public class TileEntityMagicMachines extends TileEntity implements ISidedInvento
 
 	public void setOwner(String username) {owner = username;}
 	public String getOwner() {return owner;}
+
+	public void updateEntity() {
+		Block block = worldObj.getBlock(xCoord, yCoord, zCoord);
+		float light = worldObj.getSunBrightness(1.0F);
+
+		if (worldObj.canBlockSeeTheSky(xCoord, yCoord + 1, zCoord) && light >= 0.9F) {
+			if (block == PackMagic.block.magic_machines) {
+				System.out.println("day - " + light);
+			}
+		}
+	}
 
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);

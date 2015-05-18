@@ -9,9 +9,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import timaxa007.tms.util.UtilInteger;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.util.UtilInteger;
+import timaxa007.smt.util.UtilString;
 
 /**Spells same Enchantment, but better.<br><b>WIP</b>
  * @author timaxa007
@@ -232,9 +233,9 @@ public class Spells {
 	}
 
 	public static void addSpell(NBTTagCompound nbt, String spell, int power, int times) {
-		if (!nbt.hasKey("spells", 9)) nbt.setTag("spells", new NBTTagList());
+		if (!nbt.hasKey("spells", Constants.NBT.TAG_LIST)) nbt.setTag("spells", new NBTTagList());
 
-		NBTTagList nbttaglist = nbt.getTagList("spells", 10);
+		NBTTagList nbttaglist = nbt.getTagList("spells", Constants.NBT.TAG_COMPOUND);
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		nbttagcompound.setString("spell", spell);
 		nbttagcompound.setByte("power", (byte)UtilInteger.setMaxByte(power));
@@ -243,11 +244,11 @@ public class Spells {
 	}
 
 	public static NBTTagList getSpellsTagList(ItemStack is) {
-		return is.getTagCompound() == null ? null : is.getTagCompound().getTagList("spells", 10);
+		return is.getTagCompound() == null ? null : is.getTagCompound().getTagList("spells", Constants.NBT.TAG_COMPOUND);
 	}
 
 	public static boolean isSpell(ItemStack is) {
-		return is.getTagCompound() != null && is.getTagCompound().hasKey("spells", 9);
+		return is.getTagCompound() != null && is.getTagCompound().hasKey("spells", Constants.NBT.TAG_LIST);
 	}
 
 	public static boolean isSpell(ItemStack is, Spells spell) {
@@ -268,7 +269,7 @@ public class Spells {
 					int power = UtilInteger.getMaxByte((int)tagAt.getByte("power"));
 					int times = (int)tagAt.getShort("times");
 					//---------------------------------------------------------------------------------
-					if (spelly == spell) return true;
+					if (spelly.equals(spell)) return true;
 				}
 			}
 		}

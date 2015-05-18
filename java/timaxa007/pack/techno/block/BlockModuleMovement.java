@@ -4,7 +4,7 @@ import java.util.List;
 
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.tile.TileEntityModuleMovement;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.object.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

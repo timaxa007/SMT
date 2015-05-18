@@ -17,9 +17,9 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.lib.ReceivingNutriment;
-import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.util.UtilInteger;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.util.UtilInteger;
+import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -9,12 +9,12 @@ import org.apache.logging.log4j.Logger;
 import timaxa007.api.IModuleClass;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+/**@author timaxa007**/
 public class ModuleControlButton implements IModuleClass {
 
 	public static final String MODID = "control_button";
 	public static final String MODNAME = "ControlButton";
 	public static final String VERSION = "0.023";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
 
@@ -27,7 +27,7 @@ public class ModuleControlButton implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleControlButton.MODNAME + ", build: " + ModuleControlButton.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleControlButton.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleControlButton.MODID + ".cfg"));
 		cfg.load();
 
 		button_left = cfg.get("buttons", "button_left", false).getBoolean(false);

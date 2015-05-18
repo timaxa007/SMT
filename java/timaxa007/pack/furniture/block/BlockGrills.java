@@ -17,8 +17,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityGrills;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.object.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -68,7 +68,7 @@ public class BlockGrills extends ModifiedBlock implements ITileEntityProvider {
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityGrills) {
-			player.openGui(CoreTMS.instance, PackFurniture.gui_grills, world, x, y, z);
+			player.openGui(CoreSMT.instance, PackFurniture.gui_grills, world, x, y, z);
 			return true;
 		}
 		return false;

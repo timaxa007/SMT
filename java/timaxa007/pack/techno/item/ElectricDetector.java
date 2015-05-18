@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IUpdateClient;
 import timaxa007.pack.techno.PackTechno;
-import timaxa007.tms.object.ModifiedItem;
+import timaxa007.smt.object.ModifiedItem;
 
 public class ElectricDetector extends ModifiedItem implements IUpdateClient {
 

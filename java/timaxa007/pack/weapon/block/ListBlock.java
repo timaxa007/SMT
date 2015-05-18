@@ -1,7 +1,7 @@
 package timaxa007.pack.weapon.block;
 
 import timaxa007.pack.weapon.tile.*;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.util.UtilSMT;
 import net.minecraft.block.Block;
 
 public class ListBlock {
@@ -30,13 +30,13 @@ public class ListBlock {
 				claymore
 		};
 
-		UtilTMS.UtilBlock.RegBlock(list_block);
+		UtilSMT.UtilBlock.RegBlock(list_block);
 
 		list_te = new Class[] {
 				te_claymore
 		};
 
-		UtilTMS.UtilBlock.RegTE(list_te);
+		UtilSMT.UtilBlock.RegTE(list_te);
 
 	}
 

@@ -3,11 +3,9 @@ package timaxa007.pack.stock;
 import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 
 import org.apache.logging.log4j.Logger;
 
@@ -21,19 +19,22 @@ import timaxa007.pack.stock.packet.RegisterMessage;
 import timaxa007.pack.stock.recipe.Recipes_Stock;
 import timaxa007.pack.stock.render.RenderMain;
 import timaxa007.pack.stock.world.GeneratorPackStock;
+import timaxa007.smt.Config;
+import timaxa007.smt.CoreSMT;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**@author timaxa007**/
 public class PackStock implements IPackClass {
 
 	public static final String MODID = "stockpack";
 	public static final String MODNAME = "PackStock";
 	public static final String VERSION = "0.243";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
@@ -66,10 +67,10 @@ public class PackStock implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackStock.MODNAME + ", build: " + PackStock.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/pack", PackStock.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackStock.MODID + ".cfg"));
 		cfg.load();
 
-		is_drop_vanilla_flowers = getProperty(cfg, "config", "what_is_to_drop_of_vanilla_flowers", 
+		is_drop_vanilla_flowers = Config.getProperty(cfg, "config", "what_is_to_drop_of_vanilla_flowers", 
 				"What is to drop of vanilla flowers?\n"
 						+ "<default> - do not change drop in vanilla flowers.\n"
 						+ "<vanilla_dye> - drop vanilla dye (not from the recipe, but in the recipe)-[with plus].\n"
@@ -104,7 +105,8 @@ public class PackStock implements IPackClass {
 		block.preInit();
 		item.preInit();
 
-		EntityList.addMapping(EntityTest.class, "Test", 111, 0x0033FF, 0x00CCFF);
+		//EntityList.addMapping(EntityTest.class, "Test", 111, 0x0033FF, 0x00CCFF);
+		EntityRegistry.registerModEntity(EntityTest.class, "Test", 111, CoreSMT.instance, 64, 10, true);
 
 		GameRegistry.registerWorldGenerator(new GeneratorPackStock(), 0);
 
@@ -114,18 +116,6 @@ public class PackStock implements IPackClass {
 
 		MinecraftForge.EVENT_BUS.register(new EventStock());
 
-	}
-	//---------------------------------------------------------------------
-	private static boolean getProperty(Configuration cfg, String category, String name, String comment, boolean flag) {
-		Property show_system_info_testing_cfg = cfg.get(category, name, flag);
-		show_system_info_testing_cfg.comment = comment;
-		return show_system_info_testing_cfg.getBoolean();
-	}
-
-	private static String getProperty(Configuration cfg, String category, String name, String comment, String flag) {
-		Property show_system_info_testing_cfg = cfg.get(category, name, flag);
-		show_system_info_testing_cfg.comment = comment;
-		return show_system_info_testing_cfg.getString();
 	}
 	//---------------------------------------------------------------------
 	public static enum typeDropVanillaFlowers {

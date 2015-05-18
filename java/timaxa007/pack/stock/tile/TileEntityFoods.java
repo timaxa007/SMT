@@ -1,7 +1,7 @@
 package timaxa007.pack.stock.tile;
 
-import timaxa007.tms.util.ITileEntityOwner;
-import timaxa007.tms.util.UtilString;
+import timaxa007.module.forbidden.api.ITileEntityOwner;
+import timaxa007.smt.util.UtilString;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;

@@ -16,12 +16,12 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
+/**@author timaxa007**/
 public class ModuleWeight implements IModuleClass {
 
 	public static final String MODID = "weight";
 	public static final String MODNAME = "SystemWeight";
 	public static final String VERSION = "0.013";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
@@ -34,7 +34,7 @@ public class ModuleWeight implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleWeight.MODNAME + ", build: " + ModuleWeight.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/module", ModuleWeight.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleWeight.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();

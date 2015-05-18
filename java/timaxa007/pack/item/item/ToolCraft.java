@@ -11,11 +11,11 @@ import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.pack.item.PackItems;
 import timaxa007.pack.item.util.IToolCraft;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.packet.MessageInteractionBlock;
-import timaxa007.tms.packet.MessageInteractionEntity;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.packet.MessageInteractionBlock;
+import timaxa007.smt.packet.MessageInteractionEntity;
+import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -40,7 +40,7 @@ public class ToolCraft extends ModifiedItem implements IActionMouse, IActionPrim
 	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
 		if (tick >= 2 && tick % 20 == 2) {
-			MovingObjectPosition entity = UtilTMS.LookOBJ.look(true);
+			MovingObjectPosition entity = UtilSMT.LookOBJ.look(true);
 
 			if (entity != null) {
 				if (entity.entityHit != null && entity.typeOfHit == MovingObjectType.ENTITY) {
@@ -50,7 +50,7 @@ public class ToolCraft extends ModifiedItem implements IActionMouse, IActionPrim
 					double pos_z = entity.entityHit.posZ;
 					world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 255.0D, 0.0D);
 
-					CoreTMS.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
+					CoreSMT.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
 				}
 				if (entity.typeOfHit == MovingObjectType.BLOCK) {
 
@@ -58,7 +58,7 @@ public class ToolCraft extends ModifiedItem implements IActionMouse, IActionPrim
 					int pos_y = entity.blockY;
 					int pos_z = entity.blockZ;
 
-					CoreTMS.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
+					CoreSMT.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
 				}
 
 			}

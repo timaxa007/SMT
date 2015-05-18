@@ -1,7 +1,7 @@
 package timaxa007.pack.item.item;
 
 import timaxa007.pack.item.PackItems;
-import timaxa007.tms.object.ModifiedItem;
+import timaxa007.smt.object.ModifiedItem;
 
 public class ToolSickle extends ModifiedItem {
 

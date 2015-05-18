@@ -1,7 +1,7 @@
 package timaxa007.pack.mining.block;
 
 import timaxa007.pack.mining.tile.*;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.util.UtilSMT;
 import net.minecraft.block.Block;
 
 public class ListBlock {
@@ -45,14 +45,14 @@ public class ListBlock {
 				cristals
 		};
 
-		UtilTMS.UtilBlock.RegBlock(list_block);
+		UtilSMT.UtilBlock.RegBlock(list_block);
 
 		list_te = new Class[] {
 				te_ore_ores, 
 				te_cristals
 		};
 
-		UtilTMS.UtilBlock.RegTE(list_te);
+		UtilSMT.UtilBlock.RegTE(list_te);
 
 	}
 

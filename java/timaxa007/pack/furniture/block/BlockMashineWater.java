@@ -15,8 +15,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityMashineWater;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.object.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -79,7 +79,7 @@ public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvi
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityMashineWater) {
-			player.openGui(CoreTMS.instance, PackFurniture.gui_mashine_water, world, x, y, z);
+			player.openGui(CoreSMT.instance, PackFurniture.gui_mashine_water, world, x, y, z);
 			return true;
 		}
 		return false;

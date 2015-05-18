@@ -1,7 +1,7 @@
 package timaxa007.pack.techno.block;
 
 import timaxa007.pack.techno.tile.*;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.util.UtilSMT;
 import net.minecraft.block.Block;
 
 public class ListBlock {
@@ -62,7 +62,7 @@ public class ListBlock {
 				farm_mashines
 		};
 
-		UtilTMS.UtilBlock.RegBlock(list_block);
+		UtilSMT.UtilBlock.RegBlock(list_block);
 
 		list_te = new Class[] {
 				te_electric_machines,
@@ -71,7 +71,7 @@ public class ListBlock {
 				te_farm_mashines
 		};
 
-		UtilTMS.UtilBlock.RegTE(list_te);
+		UtilSMT.UtilBlock.RegTE(list_te);
 
 	}
 

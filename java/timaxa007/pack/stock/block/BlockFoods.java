@@ -15,10 +15,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import timaxa007.pack.stock.PackStock;
-import timaxa007.pack.stock.lib.FoodForBlock;
 import timaxa007.pack.stock.tile.TileEntityFoods;
-import timaxa007.tms.lib.ActionModel;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.pack.stock.util.RegistryFoods;
+import timaxa007.smt.lib.ActionModel;
+import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -44,7 +45,7 @@ public class BlockFoods extends ModifiedBlock implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te != null && te instanceof TileEntityFoods) {
 			TileEntityFoods tile = (TileEntityFoods)te;
-			return addNBT(tile.getTag(), tile.getColor1(), tile.getColor2());
+			return addNBT(tile.getTag()/*, tile.getColor1(), tile.getColor2()*/);
 		}
 		return null;
 	}
@@ -57,9 +58,9 @@ public class BlockFoods extends ModifiedBlock implements ITileEntityProvider {
 		if (te != null && te instanceof TileEntityFoods && nbt != null) {
 			TileEntityFoods tile = (TileEntityFoods)te;
 
-			if (nbt.hasKey("NameID")) tile.setTag(nbt.getString("NameID"));
-			if (nbt.hasKey("Color1")) tile.setColor1(nbt.getInteger("Color1"));
-			if (nbt.hasKey("Color2")) tile.setColor2(nbt.getInteger("Color2"));
+			if (nbt.hasKey("FoodTag")) tile.setTag(nbt.getString("FoodTag"));
+			//if (nbt.hasKey("Color1")) tile.setColor1(nbt.getInteger("Color1"));
+			//if (nbt.hasKey("Color2")) tile.setColor2(nbt.getInteger("Color2"));
 			tile.setRotation(ActionModel.rotation_model_8sides(entity.rotationYaw));
 
 		}
@@ -72,31 +73,32 @@ public class BlockFoods extends ModifiedBlock implements ITileEntityProvider {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityFoods && !player.capabilities.isCreativeMode) {
 				TileEntityFoods tile = (TileEntityFoods)te;
-				dropBlockAsItem(world, x, y, z, addNBT(tile.getTag(), tile.getColor1(), tile.getColor2()));
-				world.removeTileEntity(x, y, z);
-				world.setBlockToAir(x, y, z);
+				UtilSMT.UtilWorld.breakupBlock(world, x, y, z, addNBT(tile.getTag()/*, tile.getColor1(), tile.getColor2()*/));
 			}
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item id, CreativeTabs table, List list) {
-		for (int j = 1; j < FoodForBlock.list.length; ++j) {
-			if (FoodForBlock.list[j] != null) {
-				list.add(addNBT(
-						FoodForBlock.list[j].tag, 
-						FoodForBlock.list[j].getColor1(), 
-						FoodForBlock.list[j].getColor2()
-						));
-			}
+		List lst = RegistryFoods.RegistryFoodBlock.getTagFoodBlocks();
+		for (int i = 0; i < lst.size(); ++i) {
+			if (lst.get(i) != null)
+				list.add(addNBT(lst.get(i).toString()));
 		}
-		//list.add(new ItemStack(id, 1, 0));
 	}
 
-	public static ItemStack addNBT(String par1, int par2, int par3) {
-		ItemStack is = new ItemStack(PackStock.block.foods, 1, 0);
+	public static ItemStack addNBT(String tag) {
+		ItemStack is = new ItemStack(PackStock.block.foods);
 		NBTTagCompound nbt = new NBTTagCompound();
-		nbt.setString("NameID", par1);
+		nbt.setString("FoodTag", tag);
+		is.setTagCompound(nbt);
+		return is;
+	}
+
+	public static ItemStack addNBT(String tag, int par2, int par3) {
+		ItemStack is = new ItemStack(PackStock.block.foods);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setString("FoodTag", tag);
 		nbt.setInteger("Color1", par2);
 		nbt.setInteger("Color2", par3);
 		is.setTagCompound(nbt);

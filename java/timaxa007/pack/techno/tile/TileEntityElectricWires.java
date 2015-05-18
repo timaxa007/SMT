@@ -6,8 +6,8 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import timaxa007.tms.util.ITileEntityOwner;
-import timaxa007.tms.util.UtilString;
+import timaxa007.module.forbidden.api.ITileEntityOwner;
+import timaxa007.smt.util.UtilString;
 
 public class TileEntityElectricWires extends TileEntity implements ITileEntityOwner {
 

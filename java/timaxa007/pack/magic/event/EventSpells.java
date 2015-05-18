@@ -13,9 +13,9 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import timaxa007.pack.magic.lib.Spells;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.util.UtilInteger;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.util.UtilInteger;
+import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventSpells {
@@ -79,7 +79,7 @@ public class EventSpells {
 
 		public static boolean isNoShowHard(EntityPlayer player) {
 			return (player.capabilities.isCreativeMode || 
-					(CoreTMS.config.show_tip_info_testing || player.worldObj.difficultySetting != EnumDifficulty.HARD));
+					(CoreSMT.config.show_tip_info_testing || player.worldObj.difficultySetting != EnumDifficulty.HARD));
 		}
 
 		@Deprecated
@@ -94,7 +94,7 @@ public class EventSpells {
 
 		public static boolean isShowPeace(EntityPlayer player) {
 			return (player.capabilities.isCreativeMode || 
-					CoreTMS.config.show_tip_info_testing || player.worldObj.difficultySetting == EnumDifficulty.PEACEFUL);
+					CoreSMT.config.show_tip_info_testing || player.worldObj.difficultySetting == EnumDifficulty.PEACEFUL);
 		}
 
 	}

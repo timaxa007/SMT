@@ -1,6 +1,6 @@
 package timaxa007.pack.furniture.lib;
 
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.util.UtilString;
 
 /**
  * Use in <b>BlockMetal</b>.

@@ -3,7 +3,7 @@ package timaxa007.pack.furniture.packet;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.tms.CoreTMS;
+import timaxa007.smt.CoreSMT;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -57,7 +57,7 @@ public class MessageBackpackGuiOpen implements IMessage {
 			case 16:id_gui_open = PackFurniture.gui_backpack_16;
 			}
 
-			FMLNetworkHandler.openGui(player, CoreTMS.instance, id_gui_open, 
+			FMLNetworkHandler.openGui(player, CoreSMT.instance, id_gui_open, 
 					player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
 
 			return null;

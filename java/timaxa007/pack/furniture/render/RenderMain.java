@@ -156,13 +156,6 @@ public class RenderMain {
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.jar01), new ItemRenderBlockJar01());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.pipes), new ItemRenderBlockPipes());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.mashine_waiter), new ItemRenderBlockMashineWater());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.rock_blocks), new ItemRenderBlockRockBlocks());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.glass_blocks), new ItemRenderBlockGlassBlocks());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.wood_blocks), new ItemRenderBlockWoodBlocks());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.ground_blocks), new ItemRenderBlockGroundBlocks());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.sand_blocks), new ItemRenderBlockSandBlocks());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.cloth_blocks), new ItemRenderBlockClothBlocks());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.metal_blocks), new ItemRenderBlockMetalBlocks());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.storage), new ItemRenderBlockStorage());
 
 		//Items

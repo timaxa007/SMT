@@ -24,12 +24,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**@author timaxa007**/
 public class PackItems implements IPackClass {
 
 	public static final String MODID = "itemspack";
 	public static final String MODNAME = "PackItems";
 	public static final String VERSION = "0.117";
-	public static final String[] AUTHORS = new String[] {"timaxa007"};
 
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
@@ -52,7 +52,7 @@ public class PackItems implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackItems.MODNAME + ", build: " + PackItems.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/tms/pack", PackItems.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackItems.MODID + ".cfg"));
 		cfg.load();
 
 		//block.items_machines_be = cfg.get("block", "items_machines", true).getBoolean();

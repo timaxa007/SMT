@@ -1,6 +1,6 @@
 package timaxa007.pack.magic.item;
 
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.util.UtilSMT;
 import net.minecraft.item.Item;
 
 public class ListItem {
@@ -43,7 +43,7 @@ public class ListItem {
 				magic_bag
 		};
 
-		UtilTMS.UtilItem.RegItem(list_item);
+		UtilSMT.UtilItem.RegItem(list_item);
 
 	}
 

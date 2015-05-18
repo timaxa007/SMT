@@ -14,9 +14,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityStorage;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.lib.ActionModel;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.lib.ActionModel;
+import timaxa007.smt.object.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -61,7 +61,7 @@ public class BlockStorage extends ModifiedBlock implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityStorage) {
-			if (!world.isRemote) player.openGui(CoreTMS.instance, PackFurniture.gui_storage, world, x, y, z);
+			if (!world.isRemote) player.openGui(CoreSMT.instance, PackFurniture.gui_storage, world, x, y, z);
 			return true;
 		}
 		return false;

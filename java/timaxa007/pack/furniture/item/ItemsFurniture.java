@@ -1,8 +1,8 @@
 package timaxa007.pack.furniture.item;
 
 import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.tms.lib.ActionModel;
-import timaxa007.tms.object.ModifiedItem;
+import timaxa007.smt.lib.ActionModel;
+import timaxa007.smt.object.ModifiedItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;

@@ -26,11 +26,11 @@ import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.lib.Spells;
 import timaxa007.pack.magic.packet.MessagePuff;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.packet.MessageInteractionBlock;
-import timaxa007.tms.packet.MessageInteractionEntity;
-import timaxa007.tms.util.UtilTMS;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.packet.MessageInteractionBlock;
+import timaxa007.smt.packet.MessageInteractionEntity;
+import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -114,7 +114,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
 		if (tick >= 20 && tick % 20 == 0) {
-			MovingObjectPosition entity = UtilTMS.LookOBJ.look(1.0F, 25.0F, true);
+			MovingObjectPosition entity = UtilSMT.LookOBJ.look(1.0F, 25.0F, true);
 
 			if (entity != null) {
 				if (entity.entityHit != null && entity.typeOfHit == MovingObjectType.ENTITY) {
@@ -124,7 +124,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					double pos_z = entity.entityHit.posZ;
 					world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 255.0D, 0.0D);
 
-					CoreTMS.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
+					CoreSMT.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
 				}
 				if (entity.typeOfHit == MovingObjectType.BLOCK) {
 
@@ -132,7 +132,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					int pos_y = entity.blockY;
 					int pos_z = entity.blockZ;
 
-					CoreTMS.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
+					CoreSMT.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
 				}
 
 			}
@@ -145,7 +145,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 	public void onLeftClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		isLeftClick = isPress;
 		/*
-		MovingObjectPosition entity = UtilTMS.LookOBJ.look(0.5F, 25.0F, true);
+		MovingObjectPosition entity = UtilSMT.LookOBJ.look(0.5F, 25.0F, true);
 
 		if (entity != null) {
 			if (isPress) {
@@ -303,7 +303,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 			if (is_entity_b.stackSize > element_b.stackSize) is_entity_b.stackSize -= element_b.stackSize; 
 			else item_entity_b.setDead();
 
-			UtilTMS.UtilWorld.dropItem(item_entity_a.worldObj, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, out);
+			UtilSMT.UtilWorld.dropItem(item_entity_a.worldObj, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, out);
 
 			PackMagic.network.sendToAllAround(new MessagePuff(2, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ), 
 					new NetworkRegistry.TargetPoint(item_entity_a.dimension, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, 18.5D));
@@ -325,7 +325,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 			if (is_entity_a.stackSize > in.stackSize) is_entity_a.stackSize -= in.stackSize; 
 			else item_entity_a.setDead();
 
-			UtilTMS.UtilWorld.dropItem(item_entity_a.worldObj, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, out);
+			UtilSMT.UtilWorld.dropItem(item_entity_a.worldObj, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, out);
 
 			PackMagic.network.sendToAllAround(new MessagePuff(3, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ), 
 					new NetworkRegistry.TargetPoint(item_entity_a.dimension, item_entity_a.posX, item_entity_a.posY, item_entity_a.posZ, 18.5D));
@@ -356,7 +356,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 					item_entity.setDead();
 
-					UtilTMS.UtilWorld.dropItem(world, pos_x, pos_y, pos_z, is_new);
+					UtilSMT.UtilWorld.dropItem(world, pos_x, pos_y, pos_z, is_new);
 
 				}
 				//------------------------------------------------------------------------------------
@@ -367,7 +367,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					if (is_entity.getTagCompound() != null) {
 						ItemStack is_new = new ItemStack(Items.paper);
 						is_new.setTagCompound(is_entity.getTagCompound());
-						UtilTMS.UtilWorld.dropItem(world, pos_x, pos_y, pos_z, is_new);
+						UtilSMT.UtilWorld.dropItem(world, pos_x, pos_y, pos_z, is_new);
 					}
 
 					item_entity.setDead();
@@ -404,7 +404,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		isRightClick = isPress;
 
-		MovingObjectPosition block = UtilTMS.LookOBJ.block(1.0F, 25.0F, true);
+		MovingObjectPosition block = UtilSMT.LookOBJ.block(1.0F, 25.0F, true);
 		if (block != null) {
 			if (isPress) {
 				System.out.println(block.toString());
@@ -415,7 +415,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					int pos_z = block.blockZ;
 					//world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 0.0D, 255.0D);
 
-					CoreTMS.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
+					CoreSMT.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
 				}
 			}
 			//world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 255.0D);
@@ -427,7 +427,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 	}
 
 	public void actBlock1(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {
-		UtilTMS.UtilWorld.setBiome(BiomeGenBase.desert, world, x, z);
+		UtilSMT.UtilWorld.setBiome(BiomeGenBase.desert, world, x, z);
 
 		blockAct1(is, world, player, block, x, y, z);
 		blockAct2(is, world, player, block, x, y, z);
@@ -443,7 +443,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 		if (block == Blocks.ice) {
 			ItemStack is_new = new ItemStack(Items.snowball, 1);
-			UtilTMS.UtilWorld.dropItem(world, x, y, z, is_new);
+			UtilSMT.UtilWorld.dropItem(world, x, y, z, is_new);
 			world.setBlock(x, y, z, Blocks.water);
 		}
 
@@ -459,7 +459,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 		if (block == Blocks.bookshelf) {
 			ItemStack is_new = new ItemStack(Items.book, 3);
-			UtilTMS.UtilWorld.dropItem(world, x, y, z, is_new);
+			UtilSMT.UtilWorld.dropItem(world, x, y, z, is_new);
 			world.setBlock(x, y, z, Blocks.planks);
 		}
 
@@ -469,19 +469,19 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 					(world.getBlockMetadata(x, y, z) < 4 ? 
 							world.getBlockMetadata(x, y, z) : (world.getBlockMetadata(x, y, z) - 4)));
 
-			UtilTMS.UtilWorld.dropItem(world, x, y, z, is_new);
+			UtilSMT.UtilWorld.dropItem(world, x, y, z, is_new);
 			world.setBlock(x, y, z, Blocks.deadbush);
 		}
 
 		if (block == Blocks.log) {
 			ItemStack is_new = new ItemStack(Blocks.planks, 4, world.getBlockMetadata(x, y, z));
-			UtilTMS.UtilWorld.dropItem(world, x, y, z, is_new);
+			UtilSMT.UtilWorld.dropItem(world, x, y, z, is_new);
 			world.setBlockToAir(x, y, z);
 		}
 
 		if (block == Blocks.log2) {
 			ItemStack is_new = new ItemStack(Blocks.planks, 4, world.getBlockMetadata(x, y, z) + 4);
-			UtilTMS.UtilWorld.dropItem(world, x, y, z, is_new);
+			UtilSMT.UtilWorld.dropItem(world, x, y, z, is_new);
 			world.setBlockToAir(x, y, z);
 		}
 

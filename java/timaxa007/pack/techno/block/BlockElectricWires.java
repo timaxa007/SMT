@@ -15,9 +15,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.tile.TileEntityElectricWires;
-import timaxa007.tms.lib.AddTextureModel;
-import timaxa007.tms.object.ModifiedBlock;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.lib.AddTextureModel;
+import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

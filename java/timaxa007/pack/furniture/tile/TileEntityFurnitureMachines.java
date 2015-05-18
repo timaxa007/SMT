@@ -5,7 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import timaxa007.tms.util.UtilString;
+import timaxa007.smt.util.UtilString;
 
 public class TileEntityFurnitureMachines extends TileEntity {
 

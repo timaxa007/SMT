@@ -17,11 +17,12 @@ import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.module.control_button.api.IScope;
 import timaxa007.pack.weapon.PackWeapons;
-import timaxa007.pack.weapon.lib.WeaponFor;
 import timaxa007.pack.weapon.packet.MessageActionWeapons;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.object.ModifiedItem;
-import timaxa007.tms.util.UtilString;
+import timaxa007.pack.weapon.util.RegistryWeapons;
+import timaxa007.pack.weapon.util.Weapon;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -76,7 +77,7 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 			if (nbt.getInteger("AmmoAtm") > 0) {
 				if (delay == 0) {
 					//System.out.println("fire1 " + tick);
-					delay = WeaponFor.get(nbt.getString("Weapon")).getDelay();
+					delay = RegistryWeapons.RegistryWeapon.getWeapon(nbt.getString("Weapon")).getDelay();
 					System.out.println(delay);
 					PackWeapons.network.sendToServer(new MessageActionWeapons(1));
 				}
@@ -150,8 +151,8 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 	public void reload(ItemStack is, World world, EntityPlayer player) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Weapon")) {
-			//nbt.setInteger("AmmoAtm", WeaponFor.get(nbt.getString("Weapon")).getSizeAmmo());
-			nbt.setInteger("AmmoAtm", 20);
+			Weapon weapon = RegistryWeapons.RegistryWeapon.getWeapon(nbt.getString("Weapon"));
+			nbt.setInteger("AmmoAtm", weapon.getMaxAmountAmmo());
 			playSound(is, world, player, "reload");
 			is.setTagCompound(nbt);
 		}
@@ -179,7 +180,7 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 	}
 
 	public void mode(ItemStack is, World world, EntityPlayer player) {
-		player.openGui(CoreTMS.instance, PackWeapons.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+		player.openGui(CoreSMT.instance, PackWeapons.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -241,9 +242,9 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 	public void playSound(ItemStack is, World world, EntityPlayer player, String type) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Weapon")) {
-			WeaponFor weapon = WeaponFor.get(nbt.getString("Weapon"));
+			Weapon weapon = RegistryWeapons.RegistryWeapon.getWeapon(nbt.getString("Weapon"));
 			//System.out.println(weapon);
-			if (!WeaponFor.isNull(weapon)) {
+			if (RegistryWeapons.RegistryWeapon.hasWeapon(weapon)) {
 
 				String sound = null;
 				if (type == "fire") sound = weapon.getSoundFire()[0];
@@ -265,7 +266,7 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Weapon"))
-			return "weapon." + WeaponFor.get(nbt.getString("Weapon")).getName();
+			return "weapon." + RegistryWeapons.RegistryWeapon.getWeapon(nbt.getString("Weapon")).getName();
 		return super.getUnlocalizedName();
 	}
 
@@ -275,16 +276,16 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 			if (nbt != null) {
 
 				if (nbt.hasKey("Weapon")) {
-					list.add("Weapon: " + nbt.getString("Weapon") + "/" + WeaponFor.get(nbt.getString("Weapon")).getLocalizedName() + ".");
-					list.add("Weapon: " + WeaponFor.get(nbt.getString("Weapon")).getType() + 
-							"/" + WeaponFor.get(nbt.getString("Weapon")).getName() + ".");
+					Weapon weapon = RegistryWeapons.RegistryWeapon.getWeapon(nbt.getString("Weapon"));
+					list.add("Weapon: " + nbt.getString("Weapon") + "/" + weapon + ".");
+					list.add("Weapon: " + weapon.getType() + "/" + weapon.getName() + ".");
 				}
 
 				if (nbt.hasKey("AmmoAtm")) {
 					list.add("AmmoAtm: " + nbt.getInteger("AmmoAtm") + ".");
 				}
 
-				if (nbt.hasKey("ZoomFov") && CoreTMS.config.show_tip_info_testing) {
+				if (nbt.hasKey("ZoomFov") && CoreSMT.config.show_tip_info_testing) {
 					list.add("ZoomFov: " + nbt.getByte("ZoomFov") + ".");
 				}
 
@@ -294,18 +295,16 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		for (int i = 0; i < WeaponFor.list.length; i++) {
-			if (WeaponFor.list[i] != null) {
-				if (WeaponFor.list[i].tag != null) {
-					list.add(addNBT(WeaponFor.list[i].tag));
-				}
-			}
+		List lst = RegistryWeapons.RegistryWeapon.getTagWeapons();
+		for (int i = 0; i < lst.size(); i++) {
+			if (lst.get(i) != null)
+				list.add(addNBT(lst.get(i).toString()));
 		}
 		//list.add(new ItemStack(id, 1, 0));
 	}
 
 	public static ItemStack addNBT(String par1) {
-		ItemStack is = new ItemStack(PackWeapons.item.weapons, 1, 0);
+		ItemStack is = new ItemStack(PackWeapons.item.weapon, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Weapon", par1);
 

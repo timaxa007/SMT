@@ -15,8 +15,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityMincer;
-import timaxa007.tms.CoreTMS;
-import timaxa007.tms.object.ModifiedBlock;
+import timaxa007.smt.CoreSMT;
+import timaxa007.smt.object.ModifiedBlock;
 
 public class BlockMincer extends ModifiedBlock implements ITileEntityProvider {
 	private static boolean keepFurnaceInventory;
@@ -62,7 +62,7 @@ public class BlockMincer extends ModifiedBlock implements ITileEntityProvider {
 		//if (!world.isRemote) {return false;}
 		if (player.isSneaking()) {return false;}
 		if (te != null && te instanceof TileEntityMincer) {
-			player.openGui(CoreTMS.instance, PackFurniture.gui_mincer, world, x, y, z);
+			player.openGui(CoreSMT.instance, PackFurniture.gui_mincer, world, x, y, z);
 			return true;
 		}
 		return false;

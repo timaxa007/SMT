@@ -1,7 +1,7 @@
 package timaxa007.pack.furniture.render.block;
 
 import timaxa007.pack.furniture.tile.TileEntityAngleMod;
-import timaxa007.tms.lib.AddTextureModel;
+import timaxa007.smt.lib.AddTextureModel;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
