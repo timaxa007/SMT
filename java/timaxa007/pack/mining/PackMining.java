@@ -60,7 +60,7 @@ public class PackMining implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackMining.MODNAME + ", build: " + PackMining.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackMining.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/pack", PackMining.MODID + ".cfg"));
 		cfg.load();
 
 		world_dim_mining_id = cfg.get("world", "dimension_mining_id", 30).getInt();

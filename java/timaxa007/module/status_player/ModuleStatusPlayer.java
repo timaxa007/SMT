@@ -34,7 +34,7 @@ public class ModuleStatusPlayer implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleStatusPlayer.MODNAME + ", build: " + ModuleStatusPlayer.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleStatusPlayer.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleStatusPlayer.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();

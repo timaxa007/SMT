@@ -24,7 +24,7 @@ public class ModuleForbidden implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleForbidden.MODNAME + ", build: " + ModuleForbidden.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleForbidden.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleForbidden.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();

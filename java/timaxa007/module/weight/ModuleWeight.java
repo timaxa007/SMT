@@ -34,7 +34,7 @@ public class ModuleWeight implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleWeight.MODNAME + ", build: " + ModuleWeight.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleWeight.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleWeight.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();

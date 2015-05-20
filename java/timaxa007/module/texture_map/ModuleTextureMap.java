@@ -25,7 +25,7 @@ public class ModuleTextureMap implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleTextureMap.MODNAME + ", build: " + ModuleTextureMap.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleTextureMap.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleTextureMap.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();

@@ -52,7 +52,7 @@ public class PackItems implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackItems.MODNAME + ", build: " + PackItems.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackItems.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/pack", PackItems.MODID + ".cfg"));
 		cfg.load();
 
 		//block.items_machines_be = cfg.get("block", "items_machines", true).getBoolean();

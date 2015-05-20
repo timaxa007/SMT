@@ -24,7 +24,7 @@ public class ModuleColors implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleColors.MODNAME + ", build: " + ModuleColors.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleColors.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleColors.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();

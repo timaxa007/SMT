@@ -62,7 +62,7 @@ public class EventDetector {
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	public double distanceTo(EntityPlayer player, int x, int y, int z) {
+	public static double distanceTo(EntityPlayer player, int x, int y, int z) {
 		double d0 = ((double)x + 0.5F) - player.posX;
 		double d1 = ((double)y + 0.5F) - player.posY;
 		double d2 = ((double)z + 0.5F) - player.posZ;

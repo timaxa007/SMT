@@ -75,7 +75,7 @@ public class PackFurniture implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackFurniture.MODNAME + ", build: " + PackStock.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackFurniture.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/pack", PackFurniture.MODID + ".cfg"));
 		cfg.load();
 
 		block.furniture_machines_be = cfg.get("block", "furniture_machines", true).getBoolean();

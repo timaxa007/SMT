@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IPackClass;
 import timaxa007.pack.stock.block.ListBlock;
-import timaxa007.pack.stock.entity.EntityTest;
 import timaxa007.pack.stock.event.EventStock;
 import timaxa007.pack.stock.item.ListItem;
 import timaxa007.pack.stock.lib.ListStock;
@@ -19,12 +18,10 @@ import timaxa007.pack.stock.packet.RegisterMessage;
 import timaxa007.pack.stock.recipe.Recipes_Stock;
 import timaxa007.pack.stock.render.RenderMain;
 import timaxa007.pack.stock.world.GeneratorPackStock;
-import timaxa007.smt.Config;
-import timaxa007.smt.CoreSMT;
+import timaxa007.smt.lib.Config;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -67,7 +64,7 @@ public class PackStock implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackStock.MODNAME + ", build: " + PackStock.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackStock.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/pack", PackStock.MODID + ".cfg"));
 		cfg.load();
 
 		is_drop_vanilla_flowers = Config.getProperty(cfg, "config", "what_is_to_drop_of_vanilla_flowers", 
@@ -104,9 +101,6 @@ public class PackStock implements IPackClass {
 
 		block.preInit();
 		item.preInit();
-
-		//EntityList.addMapping(EntityTest.class, "Test", 111, 0x0033FF, 0x00CCFF);
-		EntityRegistry.registerModEntity(EntityTest.class, "Test", 111, CoreSMT.instance, 64, 10, true);
 
 		GameRegistry.registerWorldGenerator(new GeneratorPackStock(), 0);
 

@@ -34,7 +34,7 @@ public class ModuleEnvironment implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleEnvironment.MODNAME + ", build: " + ModuleEnvironment.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleEnvironment.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleEnvironment.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();

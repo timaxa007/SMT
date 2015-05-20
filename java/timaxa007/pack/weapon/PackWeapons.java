@@ -49,7 +49,7 @@ public class PackWeapons implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackWeapons.MODNAME + ", build: " + PackWeapons.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackWeapons.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/pack", PackWeapons.MODID + ".cfg"));
 		cfg.load();
 
 		block.claymore_be = cfg.get("block", "claymore", true).getBoolean();

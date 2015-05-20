@@ -1,4 +1,4 @@
-package timaxa007.smt;
+package timaxa007.smt.lib;
 
 import java.io.File;
 
@@ -6,6 +6,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import timaxa007.api.IModuleClass;
 import timaxa007.api.IPackClass;
+import timaxa007.smt.CoreSMT;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class Config {
@@ -83,7 +84,7 @@ public class Config {
 	;
 
 	public static void module(FMLPreInitializationEvent event) {
-		Configuration cfg_module = new Configuration(new File("./config/SMT", "node_module.cfg"));
+		Configuration cfg_module = new Configuration(new File("./config/smt", "node_module.cfg"));
 
 		cfg_module.load();
 
@@ -114,17 +115,17 @@ public class Config {
 
 	public static void core(FMLPreInitializationEvent event) {
 
-		Configuration cfg = new Configuration(new File("./config/SMT", "core_SMT.cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt", "core_smt.cfg"));
 		cfg.load();
 
 		debug = cfg.get("debugging", "debug", false).getBoolean();
 
 		show_tip_info_testing = getProperty(cfg, "debugging", "show_tip_info_testing", 
-				"Show additional information on the addInformation(...), if it exists? /n"
+				"Show additional information on the addInformation(...), if it exists?\n"
 						+ "<true> - Yes, <false> - No.", false);
 
 		show_system_info_testing = getProperty(cfg, "debugging", "show_system_info_testing", 
-				"Show additional information on the System.out.println(...), if it exists? /n"
+				"Show additional information on the System.out.println(...), if it exists?\n"
 						+ "<true> - Yes, <false> - No.", false);
 
 		cfg.save();
@@ -132,7 +133,7 @@ public class Config {
 	}
 
 	public static void pack(FMLPreInitializationEvent event) {
-		Configuration cfg_pack = new Configuration(new File("./config/SMT", "node_pack.cfg"));
+		Configuration cfg_pack = new Configuration(new File("./config/smt", "node_pack.cfg"));
 		cfg_pack.load();
 
 		disable_pack_furniture = cfg_pack.get("disable_pack", "furniture", false).getBoolean();

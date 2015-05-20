@@ -25,7 +25,7 @@ public class ModuleFluids implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleFluids.MODNAME + ", build: " + ModuleFluids.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleFluids.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleFluids.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();

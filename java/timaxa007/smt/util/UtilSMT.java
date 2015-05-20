@@ -26,6 +26,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class UtilSMT {
 	public static Minecraft mc = Minecraft.getMinecraft();
@@ -158,6 +159,13 @@ public class UtilSMT {
 			}
 		}
 
+		public static void dropBlock(World world, int x, int y, int z) {
+			if (!world.isAirBlock(x, y, z)) {
+				UtilSMT.UtilWorld.dropItem(world, x, y, z, new ItemStack(world.getBlock(x, y, z), 1, world.getBlockMetadata(x, y, z)));
+				setAir(world, x, y, z);
+			}
+		}
+
 		public static void breakBlock(World world, int x, int y, int z) {
 			if (!world.isAirBlock(x, y, z)) {
 				ArrayList<ItemStack> items = world.getBlock(x, y, z).getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
@@ -166,28 +174,19 @@ public class UtilSMT {
 			}
 		}
 
-		public static void dropBlock(World world, int x, int y, int z) {
-			if (!world.isAirBlock(x, y, z)) {
-				UtilSMT.UtilWorld.dropItem(world, x, y, z, new ItemStack(world.getBlock(x, y, z), 1, world.getBlockMetadata(x, y, z)));
-				setAir(world, x, y, z);
-			}
-		}
-
 		public static void breakupBlock(World world, int x, int y, int z, ItemStack is) {
-			if (is != null)
-				UtilSMT.UtilWorld.dropItem(world, x, y, z, is);
+			if (is != null) UtilSMT.UtilWorld.dropItem(world, x, y, z, is);
 			setAir(world, x, y, z);
 		}
 
 		public static void setAir(World world, int x, int y, int z) {
-			if (!world.isAirBlock(x, y, z)) {
-				if (world.getTileEntity(x, y, z) != null) world.removeTileEntity(x, y, z);
-				world.setBlockToAir(x, y, z);
-			}
+			if (world.getTileEntity(x, y, z) != null) world.removeTileEntity(x, y, z);
+			if (!world.isAirBlock(x, y, z)) world.setBlockToAir(x, y, z);
 		}
 
 	}
 	//-----------------------------------------------------------------------------------------------
+	@SideOnly(Side.CLIENT)
 	public static class LookOBJ {
 		//-------------------------------
 		public static MovingObjectPosition look() {
@@ -248,9 +247,7 @@ public class UtilSMT {
 
 				d0 = d1;
 
-				if (objectMouseOver != null) {
-					d1 = objectMouseOver.hitVec.distanceTo(vec3);
-				}
+				if (objectMouseOver != null) d1 = objectMouseOver.hitVec.distanceTo(vec3);
 
 				Vec3 vec31 = mc.renderViewEntity.getLook(fasc);
 				Vec3 vec32 = vec3.addVector(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0);

@@ -27,7 +27,7 @@ public class ModuleControlButton implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleControlButton.MODNAME + ", build: " + ModuleControlButton.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleControlButton.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleControlButton.MODID + ".cfg"));
 		cfg.load();
 
 		button_left = cfg.get("buttons", "button_left", false).getBoolean(false);

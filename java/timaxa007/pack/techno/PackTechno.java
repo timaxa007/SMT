@@ -55,7 +55,7 @@ public class PackTechno implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackTechno.MODNAME + ", build: " + PackTechno.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/pack", PackTechno.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/pack", PackTechno.MODID + ".cfg"));
 		cfg.load();
 
 		block.electric_machines_be = cfg.get("block", "electric_machines", true).getBoolean();

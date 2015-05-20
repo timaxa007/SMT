@@ -24,7 +24,7 @@ public class ModuleEffect implements IModuleClass {
 		log = event.getModLog();
 		log.info("Starting module " + ModuleEffect.MODNAME + ", build: " + ModuleEffect.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/SMT/module", ModuleEffect.MODID + ".cfg"));
+		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleEffect.MODID + ".cfg"));
 		cfg.load();
 
 		cfg.save();
