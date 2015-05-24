@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.module.control_button.api.IScope;
+import timaxa007.module.control_button.api.IUpdateClient;
 import timaxa007.pack.weapon.PackWeapons;
 import timaxa007.pack.weapon.packet.MessageActionWeapons;
 import timaxa007.pack.weapon.util.RegistryWeapons;
@@ -26,7 +27,11 @@ import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPrimaryKey, IScope {
+public class ItemWeapons extends ModifiedItem implements 
+IActionMouse, IActionPrimaryKey, 
+IScope, 
+IUpdateClient
+{
 
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;
@@ -59,9 +64,15 @@ public class ItemWeapons extends ModifiedItem implements IActionMouse, IActionPr
 			ItemStack current = player.getCurrentEquippedItem();
 			NBTTagCompound nbt = is.getTagCompound();
 			if (nbt != null) {
-				delayUpdate();
+				//delayUpdate();
 			}
 		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void updateClient(ItemStack is, World world, EntityPlayer player) {
+		if (delay > 0) --delay;
+		//else if (delay < 0) ++delay;
 	}
 
 	@SideOnly(Side.CLIENT)

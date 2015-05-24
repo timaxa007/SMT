@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class UtilSMT {
-	public static Minecraft mc = Minecraft.getMinecraft();
+	public static final Minecraft mc = Minecraft.getMinecraft();
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilBlock {
 
@@ -41,16 +41,18 @@ public class UtilSMT {
 				Class<? extends TileEntity> te = null;
 
 				for (int j = 0; j < objects[i].length; j++) {
+					if (objects[i][j] != null) {
 
-					if (objects[i][j] != null && objects[i][j] instanceof Block)
-						block = (Block)objects[i][j];
+						if (objects[i][j] instanceof Block)
+							block = (Block)objects[i][j];
 
-					if (objects[i][j] != null && objects[i][j] instanceof ItemBlock)
-						item = (Class<? extends ItemBlock>)objects[i][j];
+						if (objects[i][j] instanceof ItemBlock)
+							item = (Class<? extends ItemBlock>)objects[i][j];
 
-					if (objects[i][j] != null && objects[i][j] instanceof TileEntity)
-						te = (Class<? extends TileEntity>)objects[i][j];
+						if (objects[i][j] instanceof TileEntity)
+							te = (Class<? extends TileEntity>)objects[i][j];
 
+					}
 				}
 
 				if (block != null && item != null) RegBlock(block, item);
@@ -67,7 +69,7 @@ public class UtilSMT {
 					if (block instanceof ModifiedBlock)
 						GameRegistry.registerBlock(block, "block_" + ((ModifiedBlock)block).getTag());
 					else if (block instanceof Block)
-						GameRegistry.registerBlock(block, block.getUnlocalizedName());
+						GameRegistry.registerBlock(block, block.getUnlocalizedName().substring(5));
 				}
 			}
 		}
@@ -77,7 +79,7 @@ public class UtilSMT {
 				if (block instanceof ModifiedBlock)
 					GameRegistry.registerBlock(block, item, "block_" + ((ModifiedBlock)block).getTag());
 				else if (block instanceof Block)
-					GameRegistry.registerBlock(block, item, block.getUnlocalizedName());
+					GameRegistry.registerBlock(block, item, "block_" + block.getUnlocalizedName().substring(5));
 			}
 		}
 
@@ -108,6 +110,8 @@ public class UtilSMT {
 				if (item != null) {
 					if (item instanceof ModifiedItem)
 						GameRegistry.registerItem(item, "item_" + ((ModifiedItem)item).getTag());
+					else if (item instanceof Item)
+						GameRegistry.registerItem(item, item.getUnlocalizedName().replace(".", "_"));
 				}
 			}
 		}
@@ -348,10 +352,12 @@ public class UtilSMT {
 		return FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT;
 	}
 
+	@SideOnly(Side.CLIENT)
 	public static World getWorldClient() {
 		return FMLClientHandler.instance().getWorldClient();
 	}
 
+	@SideOnly(Side.CLIENT)
 	public static EntityPlayer getPlayerClient() {
 		return FMLClientHandler.instance().getClientPlayerEntity();
 	}

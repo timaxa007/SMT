@@ -1,8 +1,5 @@
 package timaxa007.smt;
 
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
 import org.apache.logging.log4j.Logger;
@@ -19,9 +16,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 //dependencies = "required-before:01miningpack;required-before:06weaponpack"
 @Mod (modid = CoreSMT.MODID, name = CoreSMT.MODNAME, version = CoreSMT.VERSION)
@@ -31,7 +25,7 @@ public class CoreSMT {
 	public static final boolean OBFUSCATED = isObfuscated();
 	public static final String MODID = "timaxa007";
 	public static final String MODNAME = "Project SMT";
-	public static final String VERSION = "0.2.7a";
+	public static final String VERSION = "0.2.8a";
 	public static final String PATH_MODULE = "timaxa007.module";
 	public static final String PATH_PACK = "timaxa007.pack";
 	public static final String[] AUTHORS = new String[] {"timaxa007", "Dragon2488"};
@@ -42,13 +36,6 @@ public class CoreSMT {
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
 	public static Config config;
-
-	public static CreativeTabs tab_smt = new CreativeTabs("tab_smt") {
-		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return CoreSMT.item_test;}
-	};
-
-	public static Block block_test;
-	public static Item item_test;
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -65,12 +52,6 @@ public class CoreSMT {
 		config.pack(event);
 		//--------------------------------------------------------------------------------------------
 		new ListTextureModel();
-
-		block_test = new TestBlock();
-		GameRegistry.registerBlock(block_test, "block_test");
-
-		item_test = new TestItem();
-		GameRegistry.registerItem(item_test, "item_test");
 
 		Recipes_SMT.list();
 

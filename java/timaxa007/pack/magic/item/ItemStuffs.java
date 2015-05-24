@@ -21,8 +21,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import timaxa007.api.IInteractionWithBlock;
+import timaxa007.api.IInteractionWithEntity;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
+import timaxa007.module.control_button.api.IUpdateClient;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.lib.Spells;
 import timaxa007.pack.magic.packet.MessagePuff;
@@ -35,7 +38,11 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPrimaryKey {
+public class ItemStuffs extends ModifiedItem implements 
+IActionMouse, IActionPrimaryKey, 
+IInteractionWithBlock, IInteractionWithEntity, 
+IUpdateClient
+{
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;
@@ -109,6 +116,11 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 			}
 		}
 	}
+
+	@SideOnly(Side.CLIENT)
+	public void updateClient(ItemStack is, World world, EntityPlayer player) {
+
+	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
@@ -176,8 +188,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 	}
 
-	/**For Testing.**/
-	public void act1(ItemStack is, World world, EntityPlayer player, Entity entity) {
+	public void interactionWithEntity(ItemStack is, World world, EntityPlayer player, Entity entity) {
 		magicAct1(is, world, player, entity);
 		magicAct2(is, world, player, entity);
 	}
@@ -426,7 +437,7 @@ public class ItemStuffs extends ModifiedItem implements IActionMouse, IActionPri
 
 	}
 
-	public void actBlock1(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {
+	public void interactionWithBlock(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {
 		UtilSMT.UtilWorld.setBiome(BiomeGenBase.desert, world, x, z);
 
 		blockAct1(is, world, player, block, x, y, z);

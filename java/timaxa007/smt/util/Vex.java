@@ -22,6 +22,12 @@ public class Vex {
 			return "(" + this.x + ", " + this.z + ")";
 		}
 
+		public static Integer2 fromString(String int2) {
+			int2.substring(1, int2.length() - 1);
+			String[] int2b = int2.split(", ");
+			return new Integer2(Integer.parseInt(int2b[0]), Integer.parseInt(int2b[1]));
+		}
+
 	}
 	//-------------------------------------------------------------
 	public static class Integer3 {
@@ -42,6 +48,12 @@ public class Vex {
 
 		public String toString() {
 			return "(" + this.x + ", " + this.y + ", " + this.z + ")";
+		}
+
+		public static Integer3 fromString(String int3) {
+			int3.substring(1, int3.length() - 1);
+			String[] int3b = int3.split(", ");
+			return new Integer3(Integer.parseInt(int3b[0]), Integer.parseInt(int3b[1]), Integer.parseInt(int3b[2]));
 		}
 
 	}
@@ -66,6 +78,13 @@ public class Vex {
 			return "(" + this.x + ", " + this.y + ", " + this.z + ", " + this.u + ", " + this.v + ", " + this.w + ")";
 		}
 
+		public static Integer6 fromString(String int6) {
+			int6.substring(1, int6.length() - 1);
+			String[] int6b = int6.split(", ");
+			return new Integer6(Integer.parseInt(int6b[0]), Integer.parseInt(int6b[1]), Integer.parseInt(int6b[2]), 
+					Integer.parseInt(int6b[3]), Integer.parseInt(int6b[4]), Integer.parseInt(int6b[5]));
+		}
+
 	}
 	//-------------------------------------------------------------
 	public static class Double2 {
@@ -88,6 +107,12 @@ public class Vex {
 			return "(" + this.x + ", " + this.z + ")";
 		}
 
+		public static Double2 fromString(String d2) {
+			d2.substring(1, d2.length() - 1);
+			String[] d2b = d2.split(", ");
+			return new Double2(Double.parseDouble(d2b[0]), Double.parseDouble(d2b[1]));
+		}
+
 	}
 	//-------------------------------------------------------------
 	public static class Double3 {
@@ -108,6 +133,12 @@ public class Vex {
 
 		public String toString() {
 			return "(" + this.x + ", " + this.y + ", " + this.z + ")";
+		}
+
+		public static Double3 fromString(String d3) {
+			d3.substring(1, d3.length() - 1);
+			String[] d3b = d3.split(", ");
+			return new Double3(Double.parseDouble(d3b[0]), Double.parseDouble(d3b[1]), Double.parseDouble(d3b[2]));
 		}
 
 	}
@@ -154,6 +185,12 @@ public class Vex {
 			return "(" + this.x + ", " + this.z + ")";
 		}
 
+		public static Float2 fromString(String f2) {
+			f2.substring(1, f2.length() - 1);
+			String[] f2b = f2.split(", ");
+			return new Float2(Float.parseFloat(f2b[0]), Float.parseFloat(f2b[1]));
+		}
+
 	}
 	//-------------------------------------------------------------
 	public static class Float3 {
@@ -174,6 +211,12 @@ public class Vex {
 
 		public String toString() {
 			return "(" + this.x + ", " + this.y + ", " + this.z + ")";
+		}
+
+		public static Float3 fromString(String f3) {
+			f3.substring(1, f3.length() - 1);
+			String[] f3b = f3.split(", ");
+			return new Float3(Float.parseFloat(f3b[0]), Float.parseFloat(f3b[1]), Float.parseFloat(f3b[2]));
 		}
 
 	}

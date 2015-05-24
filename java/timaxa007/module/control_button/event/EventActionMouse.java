@@ -10,11 +10,19 @@ import cpw.mods.fml.relauncher.Side;
 
 public class EventActionMouse {
 	//--------------------------------------------------------------------------------------------------------------
-	boolean lc, lc_last = false;
-	int tick_lc = 0;
+	private static boolean lc, lc_last;
+	private static int tick_lc;
 
-	boolean rc, rc_last = false;
-	int tick_rc = 0;
+	private static boolean rc, rc_last;
+	private static int tick_rc;
+
+	static {
+		lc = lc_last = false;
+		tick_lc = 0;
+
+		rc = rc_last = false;
+		tick_rc = 0;
+	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void actionBindAttack(TickEvent.PlayerTickEvent event) {

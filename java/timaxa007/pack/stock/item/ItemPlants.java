@@ -54,7 +54,7 @@ public class ItemPlants extends ModifiedItem {
 				}
 			}
 		}
-		return false;
+		return super.onItemUse(is, player, world, x, y, z, side, hitX, hitY, hitZ);
 	}
 
 	public String getUnlocalizedName(ItemStack is) {

@@ -2,7 +2,7 @@ package timaxa007.smt.packet;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
-import timaxa007.pack.magic.util.ActionInteractionBlock;
+import timaxa007.smt.util.ActionInteractionBlock;
 import timaxa007.smt.util.Vex;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;

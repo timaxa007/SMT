@@ -3,7 +3,7 @@ package timaxa007.smt.packet;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
-import timaxa007.pack.magic.util.ActionInteractionEntity;
+import timaxa007.smt.util.ActionInteractionEntity;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;

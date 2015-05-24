@@ -8,23 +8,41 @@ import cpw.mods.fml.relauncher.Side;
 
 public class EventActionPrimaryKey {
 	//--------------------------------------------------------------------------------------------------------------
-	boolean 
-	k_reload, k_reload_last, 
-	k_charge, k_charge_last, 
-	k_mode, k_mode_last, 
-	k_action, k_action_last, 
-	k_mode_in, k_mode_in_last, 
+	private static boolean
+	k_reload, k_reload_last,
+	k_charge, k_charge_last,
+	k_mode, k_mode_last,
+	k_action, k_action_last,
+	k_mode_in, k_mode_in_last,
 	k_mode_out, k_mode_out_last
-	= false;
-	
-	int 
-	tick_reload, 
-	tick_charge, 
-	tick_mode, 
-	tick_action, 
-	tick_mode_in, 
-	tick_mode_out 
-	= 0;
+	;
+
+	private static int
+	tick_reload,
+	tick_charge,
+	tick_mode,
+	tick_action,
+	tick_mode_in,
+	tick_mode_out
+	;
+
+	static {
+		k_reload = k_reload_last = 
+				k_charge = k_charge_last = 
+				k_mode = k_mode_last = 
+				k_action = k_action_last = 
+				k_mode_in = k_mode_in_last = 
+				k_mode_out = k_mode_out_last = 
+				false;
+
+		tick_reload = 
+				tick_charge = 
+				tick_mode = 
+				tick_action = 
+				tick_mode_in = 
+				tick_mode_out = 
+				0;
+	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void actionReload(TickEvent.PlayerTickEvent event) {

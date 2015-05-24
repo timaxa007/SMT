@@ -8,19 +8,33 @@ import cpw.mods.fml.relauncher.Side;
 
 public class EventActionArmorKey {
 	//--------------------------------------------------------------------------------------------------------------
-	boolean 
+	private static boolean
 	k_helmet, k_helmet_last, 
 	k_chest, k_chest_last, 
 	k_leggin, k_leggin_last, 
 	k_boot, k_boot_last
 	= false;
 
-	int 
+	private static int
 	tick_helmet, 
 	tick_chest, 
 	tick_leggin, 
 	tick_boot 
-	= 0;
+	;
+
+	static {
+		k_helmet = k_helmet_last = 
+				k_chest = k_chest_last = 
+				k_leggin = k_leggin_last = 
+				k_boot = k_boot_last = 
+				false;
+
+		tick_helmet = 
+				tick_chest = 
+				tick_leggin = 
+				tick_boot = 
+				0;
+	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void actionHelmet(TickEvent.PlayerTickEvent event) {

@@ -7,7 +7,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,6 +15,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
+import timaxa007.module.control_button.api.IUpdateClient;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.packet.MessageTechnoTool;
 import timaxa007.pack.techno.util.ITechnoTool;
@@ -24,7 +24,11 @@ import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolElectricDrill extends ModifiedItem implements IActionMouse, IActionPrimaryKey, ITechnoTool {
+public class ToolElectricDrill extends ModifiedItem implements
+IActionMouse, IActionPrimaryKey,
+ITechnoTool, 
+IUpdateClient
+{
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;
@@ -49,6 +53,11 @@ public class ToolElectricDrill extends ModifiedItem implements IActionMouse, IAc
 		setMaxStackSize(1);
 		setNoRepair();
 		setTextureName("timaxa007:tool/electric/drill");
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void updateClient(ItemStack is, World world, EntityPlayer player) {
+
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
