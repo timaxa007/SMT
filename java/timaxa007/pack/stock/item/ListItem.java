@@ -7,7 +7,7 @@ import timaxa007.smt.util.UtilSMT;
 
 public class ListItem {
 
-	public static boolean 
+	public static boolean
 	items_for_stock_be,
 	plants_be,
 	nature_product_be,
@@ -17,11 +17,12 @@ public class ListItem {
 	honeycombs_be,
 	bee_products_be,
 	bees_be,
-	petals_be
+	petals_be,
+	fuel_jetpack_be
 	;
 	//food_dog_be;
 
-	public static Item 
+	public static Item
 	items_for_stock,
 	plants,
 	nature_product,
@@ -31,7 +32,8 @@ public class ListItem {
 	honeycombs,
 	bee_products,
 	bees,
-	petals
+	petals,
+	fuel_jetpack
 	;
 	//food_dog;
 
@@ -55,6 +57,7 @@ public class ListItem {
 		if (bee_products_be) bee_products = new ItemBeeProducts("bee_products");
 		if (bees_be) bees = new ItemBees("bees");
 		if (petals_be) petals = new ItemPetals("petals");
+		if (fuel_jetpack_be) fuel_jetpack = new ItemFuelJetpack("fuel_jetpack");
 		//if (food_dog_be) food_dog = new ItemFoodDog(food_dog_itemID);
 
 		list_item = new Item[] {
@@ -67,7 +70,8 @@ public class ListItem {
 				honeycombs,
 				bee_products,
 				bees,
-				petals
+				petals,
+				fuel_jetpack
 		};
 
 		UtilSMT.UtilItem.RegItem(list_item);

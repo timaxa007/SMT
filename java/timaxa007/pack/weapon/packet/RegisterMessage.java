@@ -9,7 +9,7 @@ public class RegisterMessage {
 
 	public static void init(SimpleNetworkWrapper network) {
 		network.registerMessage(MessageActionWeapons.Handler.class, MessageActionWeapons.class, id++, Side.SERVER);
-		network.registerMessage(MessageOpenGui.Handler.class, MessageOpenGui.class, id++, Side.CLIENT);
+		//network.registerMessage(MessageOpenGui.Handler.class, MessageOpenGui.class, id++, Side.CLIENT);
 	}
 
 }

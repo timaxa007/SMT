@@ -1,8 +1,5 @@
 package timaxa007.module.colors;
 
-import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import timaxa007.smt.CoreSMT;
 
 public class Colors {
@@ -51,6 +48,14 @@ public class Colors {
 	private int hex;
 	private String name;
 
+	public Colors(int red, int green, int blue, int alpha, String name) {
+		int h = (int)alpha << 24 | (int)red << 16 | (int)green << 8 | (int)blue;
+		if (CoreSMT.config.show_system_info_testing) checkHex(this, h);
+		this.hex = h;
+		list[hex] = this;
+		this.name = name;
+	}
+
 	public Colors(int hex, String name) {
 		if (CoreSMT.config.show_system_info_testing) checkHex(this, hex);
 		this.hex = hex;
@@ -60,6 +65,10 @@ public class Colors {
 
 	public int getColor() {return hex;}
 	public String getName() {return name;}
+	public int getRed() {return (hex >> 16 & 0xFF);}
+	public int getGreen() {return (hex >> 8 & 0xFF);}
+	public int getBlue() {return (hex & 0xFF);}
+	public int getAlpha() {return (hex >> 24 & 0xFF);}
 	//--------------------------------------------------------
 	public static int getColor(Colors color) {
 		for (Colors clr : list)

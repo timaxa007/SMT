@@ -5,7 +5,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class EventTechno {
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
-	public void onEmpty() {
+	public void corpseSpawn(LivingDeathEvent event) {
 
 	}*/
 	//--------------------------------------------------------------------------------------------------------------

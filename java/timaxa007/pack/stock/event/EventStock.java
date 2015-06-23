@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityChicken;
@@ -16,6 +17,7 @@ import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
@@ -24,6 +26,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import timaxa007.pack.stock.PackStock;
+import timaxa007.pack.stock.entity.EntityCorpse;
 import timaxa007.pack.stock.item.ItemPetals;
 import timaxa007.pack.stock.item.ItemsStock;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -158,10 +161,10 @@ public class EventStock {
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void dropFlower(BlockEvent.HarvestDropsEvent event) {
-		boolean drop_default = (PackStock.geteDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.DEFAULT);
-		boolean drop_vanilla_dye = (PackStock.geteDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.VANILLA_DYE);
-		boolean drop_petals = (PackStock.geteDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.PETALS);
-		boolean drop_other = (PackStock.geteDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.OTHER);
+		boolean drop_default = (PackStock.getDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.DEFAULT);
+		boolean drop_vanilla_dye = (PackStock.getDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.VANILLA_DYE);
+		boolean drop_petals = (PackStock.getDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.PETALS);
+		boolean drop_other = (PackStock.getDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.OTHER);
 		if (!drop_default) {
 			//-------------------------------------------------------------------------------------
 			if (event.block == Blocks.red_flower) {
@@ -259,7 +262,7 @@ public class EventStock {
 			//-------------------------------------------------------------------------------------
 		}
 	}
-	//--------------------------------------------------------------------------------------------------------------
+
 	private static void renewDropFlower(BlockEvent.HarvestDropsEvent event, ItemStack is) {
 		event.drops.clear();
 		if (is != null) event.drops.add(is);
@@ -270,6 +273,31 @@ public class EventStock {
 		if (is != null) {
 			is.stackSize = size;
 			event.drops.add(is);
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	@SubscribeEvent
+	public void corpseSpawn(LivingDeathEvent event) {
+		EntityLivingBase entity = event.entityLiving;
+		if (entity != null) {
+			World world = entity.worldObj;
+			if (world != null) {
+
+				if (!(event.entity instanceof EntityCorpse)) {
+
+					EntityCorpse corpse = new EntityCorpse(world);
+					corpse.setPositionAndRotation(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
+					
+					/*if (entity instanceof EntityZombie) {}
+					else if (entity instanceof EntityCow) {}
+					else if (entity instanceof EntityPig) {}
+					else {}*/
+					
+					//if (!world.isRemote) world.spawnEntityInWorld(corpse);
+
+				}
+
+			}
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------

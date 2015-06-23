@@ -57,6 +57,7 @@ public class RenderMain {
 
 		//Entity
 		RenderingRegistry.registerEntityRenderingHandler(EntityTest.class, new RenderEntityTest());
+		RenderingRegistry.registerEntityRenderingHandler(EntityCorpse.class, new RenderEntityCorpse());
 
 	}
 

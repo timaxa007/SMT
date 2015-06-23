@@ -1,9 +1,9 @@
 [
 {
   "modid": "timaxa007",
-  "name": "TMS",
-  "description": "Too Many Staff.",
-  "version": "0.2/2a",
+  "name": "SMT",
+  "description": "So Many Things.",
+  "version": "alpha",
   "mcversion": "1.7.10",
   "url": "http://forum.mcmodding.ru/viewtopic.php?id=4",
   "updateUrl": "",

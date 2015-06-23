@@ -9,46 +9,60 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 public class PlayerStatusPlayer implements IExtendedEntityProperties {
 
 	public final static String WEIGHT_NAME = "StatusPlayer";
-	private float health;
-	private float blood;
 
-	private float protein;
-	private float fat;
-	private float carbohydrate;
-	private float vitamin;
-	private float minerals;
-	private float micronutrients;
+	private static float p_health;
+	private static float p_blood;
 
-	private float water;
-	private float oxygen;
-	private float temperature;
-	private float salt;
-	private float sugar;
-	private float stomach;
+	private static float p_protein;
+	private static float p_fat;
+	private static float p_carbohydrate;
+
+	private static float p_oxygen;
+	private static float p_water;
+
+	private static float p_salt;
+	private static float p_sugar;
+
+	private static float p_herb;
+	private static float p_meat;
+
+	private static float p_temperature;
+	private static float p_humidity;
+
+	private static float p_stomach;
+
+	static {
+
+		p_health = 1.0F;
+		p_blood = 1.0F;
+
+		p_protein = 1.0F;
+		p_fat = 1.0F;
+		p_carbohydrate = 1.0F;
+
+		p_oxygen = 1.0F;
+		p_water = 1.0F;
+
+		p_salt = 1.0F;
+		p_sugar = 1.0F;
+
+		p_herb = 1.0F;
+		p_meat = 1.0F;
+
+		p_temperature = 1.0F;
+		p_humidity = 1.0F;
+
+		p_stomach = 1.0F;
+
+	}
 
 	@Override
 	public void init(Entity entity, World world) {
-		health = 100.0F;
-		blood = 5.000F;
-		//nutriment = 5.000F;
-		water = 5.000F;
-		oxygen = 5.000F;
-		temperature = 5.000F;
-		salt = 5.000F;
-		sugar = 5.000F;
-		stomach = 5.000F;
+
 	}
 
 	public PlayerStatusPlayer() {
-		health = 100.0F;
-		blood = 5.000F;
-		//nutriment = 5.000F;
-		water = 5.000F;
-		oxygen = 5.000F;
-		temperature = 5.000F;
-		salt = 5.000F;
-		sugar = 5.000F;
-		stomach = 5.000F;
+
 	}
 
 	public static void reg(EntityPlayer player) {
@@ -62,68 +76,113 @@ public class PlayerStatusPlayer implements IExtendedEntityProperties {
 	@Override
 	public void saveNBTData(NBTTagCompound nbt) {
 		NBTTagCompound nbt_tag = new NBTTagCompound();
-		nbt_tag.setFloat("Health", health);
-		nbt_tag.setFloat("Blood", blood);
-		//nbt_tag.setFloat("Nutriment", nutriment);
-		nbt_tag.setFloat("Water", water);
-		nbt_tag.setFloat("Oxygen", oxygen);
-		nbt_tag.setFloat("Temperature", temperature);
-		nbt_tag.setFloat("Salt", salt);
-		nbt_tag.setFloat("Sugar", sugar);
-		nbt_tag.setFloat("Stomach", stomach);
+
+		nbt_tag.setFloat("Health", p_health);
+		nbt_tag.setFloat("Blood", p_blood);
+
+		nbt_tag.setFloat("Protein", p_protein);
+		nbt_tag.setFloat("Fat", p_fat);
+		nbt_tag.setFloat("Carbohydrate", p_carbohydrate);
+
+		nbt_tag.setFloat("Oxygen", p_oxygen);
+		nbt_tag.setFloat("Water", p_water);
+
+		nbt_tag.setFloat("Salt", p_salt);
+		nbt_tag.setFloat("Sugar", p_sugar);
+
+		nbt_tag.setFloat("Herb", p_herb);
+		nbt_tag.setFloat("Meat", p_meat);
+
+		nbt_tag.setFloat("Temperature", p_temperature);
+		nbt_tag.setFloat("Humidity", p_humidity);
+
+		nbt_tag.setFloat("Stomach", p_stomach);
+
 		nbt.setTag(WEIGHT_NAME, nbt_tag);
 	}
 
 	@Override
 	public void loadNBTData(NBTTagCompound nbt) {
 		NBTTagCompound nbt_tag = (NBTTagCompound)nbt.getTag(WEIGHT_NAME);
-		health = nbt_tag.getFloat("Health");
-		blood = nbt_tag.getFloat("Blood");
-		//nutriment = nbt_tag.getFloat("Nutriment");
-		water = nbt_tag.getFloat("Water");
-		oxygen = nbt_tag.getFloat("Oxygen");
-		temperature = nbt_tag.getFloat("Temperature");
-		salt = nbt_tag.getFloat("Salt");
-		sugar = nbt_tag.getFloat("Sugar");
-		stomach = nbt_tag.getFloat("Stomach");
+
+		p_health = nbt_tag.getFloat("Health");
+		p_blood = nbt_tag.getFloat("Blood");
+
+		p_protein = nbt_tag.getFloat("Protein");
+		p_fat = nbt_tag.getFloat("Fat");
+		p_carbohydrate = nbt_tag.getFloat("Carbohydrate");
+
+		p_oxygen = nbt_tag.getFloat("Oxygen");
+		p_water = nbt_tag.getFloat("Water");
+
+		p_salt = nbt_tag.getFloat("Salt");
+		p_sugar = nbt_tag.getFloat("Sugar");
+
+		p_herb = nbt_tag.getFloat("Herb");
+		p_meat = nbt_tag.getFloat("Meat");
+
+		p_temperature = nbt_tag.getFloat("Temperature");
+		p_humidity = nbt_tag.getFloat("Humidity");
+
+		p_stomach = nbt_tag.getFloat("Stomach");
+
 	}
 	//-----------------------------------
-	public void addHealth(float health) {this.health += health;}
-	public void setHealth(float health) {this.health = health;}
-	public float getHealth() {return health;}
+	public void addHealth(float health) {p_health += health;}
+	public void setHealth(float health) {p_health = health;}
+	public float getHealth() {return p_health;}
 	//-----------------------------------
-	public void addBlood(float blood) {this.blood += blood;}
-	public void setBlood(float blood) {this.blood = blood;}
-	public float getBlood() {return blood;}
+	public void addBlood(float blood) {p_blood += blood;}
+	public void setBlood(float blood) {p_blood = blood;}
+	public float getBlood() {return p_blood;}
 	//-----------------------------------
-	/*public boolean isAddNutriment() {return (((nutriment + water) < stomach) ? true : false );}
-	public void addNutriment(float nutriment) {this.nutriment += nutriment;}
-	public void setNutriment(float nutriment) {this.nutriment = nutriment;}
-	public float getNutriment() {return nutriment;}*/
+	public void addProtein(float protein) {p_protein += protein;}
+	public void setProtein(float protein) {p_protein = protein;}
+	public float getProtein() {return p_protein;}
 	//-----------------------------------
-	public boolean isAddWater() {return (((water /*+ nutriment*/) < stomach) ? true : false );}
-	public void addWater(float water) {this.water += water;}
-	public void setWater(float water) {this.water = water;}
-	public float getWater() {return water;}
+	public void addFat(float fat) {p_fat += fat;}
+	public void setFat(float fat) {p_fat = fat;}
+	public float getFat() {return p_fat;}
 	//-----------------------------------
-	public void addOxygen(float oxygen) {this.oxygen += oxygen;}
-	public void setOxygen(float oxygen) {this.oxygen = oxygen;}
-	public float getOxygen() {return oxygen;}
+	public void addCarbohydrate(float carbohydrate) {p_carbohydrate += carbohydrate;}
+	public void setCarbohydrate(float carbohydrate) {p_carbohydrate = carbohydrate;}
+	public float getCarbohydrate() {return p_carbohydrate;}
 	//-----------------------------------
-	public void addTemperature(float temperature) {this.temperature += temperature;}
-	public void setTemperature(float temperature) {this.temperature = temperature;}
-	public float getTemperature() {return temperature;}
+	public void addOxygen(float oxygen) {p_oxygen += oxygen;}
+	public void setOxygen(float oxygen) {p_oxygen = oxygen;}
+	public float getOxygen() {return p_oxygen;}
 	//-----------------------------------
-	public void addSalt(float salt) {this.salt += salt;}
-	public void setSalt(float salt) {this.salt = salt;}
-	public float getSalt() {return salt;}
+	public boolean isAddWater() {return (((p_water /*+ nutriment*/) < p_stomach) ? true : false );}
+	public void addWater(float water) {p_water += water;}
+	public void setWater(float water) {p_water = water;}
+	public float getWater() {return p_water;}
 	//-----------------------------------
-	public void addSugar(float sugar) {this.sugar += sugar;}
-	public void setSugar(float sugar) {this.sugar = sugar;}
-	public float getSugar() {return sugar;}
+	public void addSalt(float salt) {p_salt += salt;}
+	public void setSalt(float salt) {p_salt = salt;}
+	public float getSalt() {return p_salt;}
 	//-----------------------------------
-	public void addStomach(float stomach) {this.stomach += stomach;}
-	public void setStomach(float stomach) {this.stomach = stomach;}
-	public float getStomach() {return stomach;}
+	public void addSugar(float sugar) {p_sugar += sugar;}
+	public void setSugar(float sugar) {p_sugar = sugar;}
+	public float getSugar() {return p_sugar;}
+	//-----------------------------------
+	public void addHerb(float herb) {p_herb += herb;}
+	public void setHerb(float herb) {p_herb = herb;}
+	public float getHerb() {return p_herb;}
+	//-----------------------------------
+	public void addMeat(float meat) {p_meat += meat;}
+	public void setMeat(float meat) {p_meat = meat;}
+	public float getMeat() {return p_meat;}
+	//-----------------------------------
+	public void addTemperature(float temperature) {p_temperature += temperature;}
+	public void setTemperature(float temperature) {p_temperature = temperature;}
+	public float getTemperature() {return p_temperature;}
+	//-----------------------------------
+	public void addHumidity(float humidity) {p_humidity += humidity;}
+	public void setHumidity(float humidity) {p_humidity = humidity;}
+	public float getHumidity() {return p_humidity;}
+	//-----------------------------------
+	public void addStomach(float stomach) {p_stomach += stomach;}
+	public void setStomach(float stomach) {p_stomach = stomach;}
+	public float getStomach() {return p_stomach;}
 	//-----------------------------------
 }

@@ -9,6 +9,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IPackClass;
+import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.weapon.block.ListBlock;
 import timaxa007.pack.weapon.item.ListItem;
 import timaxa007.pack.weapon.lib.ListWeapon;
@@ -22,16 +23,13 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@PackNode(moduleTag = PackWeapons.MODID, moduleName = PackWeapons.MODNAME, moduleVersion = PackWeapons.VERSION)
 /**@author timaxa007**/
 public class PackWeapons implements IPackClass {
 
 	public static final String MODID = "weaponpack";
 	public static final String MODNAME = "PackWeapon";
 	public static final String VERSION = "0.121";
-
-	//GUI
-	public static int gui_scope_1 = 1;
-	public static int gui_modify = 19;
 
 	public static ListBlock block;
 	public static ListItem item;

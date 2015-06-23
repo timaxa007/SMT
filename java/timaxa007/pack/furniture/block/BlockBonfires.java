@@ -28,13 +28,10 @@ public class BlockBonfires extends ModifiedBlock {
 				world.setBlock(x, y, z, PackFurniture.block.bonfires_burning);
 				current.setItemDamage(current.getItemDamage() + 1);
 				return true;
-			} else {
-				return false;
-			}
+			} else return false;
 			//--------------------------------
-		} else {
-			return false;
 		}
+		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
 	}
 
 }

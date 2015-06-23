@@ -86,6 +86,7 @@ public class BlockFurnitureGroundBlocks extends ModifiedBlock implements ITileEn
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+		if (te == null || player.isSneaking()) return false;
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			TileEntity te = world.getTileEntity(x, y, z);
@@ -109,7 +110,7 @@ public class BlockFurnitureGroundBlocks extends ModifiedBlock implements ITileEn
 			else return false;
 			//--------------------------------
 		}
-		return false;
+		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
 	}
 
 	@SideOnly(Side.CLIENT)

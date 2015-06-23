@@ -18,6 +18,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+import timaxa007.gui.HandlerGuiSMT;
 import timaxa007.smt.CoreSMT;
 import timaxa007.smt.object.ModifiedBlock;
 import timaxa007.smt.object.ModifiedItem;
@@ -29,7 +30,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class UtilSMT {
-	public static final Minecraft mc = Minecraft.getMinecraft();
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilBlock {
 
@@ -69,7 +69,7 @@ public class UtilSMT {
 					if (block instanceof ModifiedBlock)
 						GameRegistry.registerBlock(block, "block_" + ((ModifiedBlock)block).getTag());
 					else if (block instanceof Block)
-						GameRegistry.registerBlock(block, block.getUnlocalizedName().substring(5));
+						GameRegistry.registerBlock(block, "block_" + block.getUnlocalizedName().substring(5));
 				}
 			}
 		}
@@ -114,6 +114,14 @@ public class UtilSMT {
 						GameRegistry.registerItem(item, item.getUnlocalizedName().replace(".", "_"));
 				}
 			}
+		}
+
+	}
+	//-----------------------------------------------------------------------------------------------
+	public static class UtilPlayer {
+
+		public static void openGui(int id, EntityPlayer player) {
+			player.openGui(CoreSMT.instance, id, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
 		}
 
 	}
@@ -192,6 +200,8 @@ public class UtilSMT {
 	//-----------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public static class LookOBJ {
+		//-------------------------------
+		public static final Minecraft mc = Minecraft.getMinecraft();
 		//-------------------------------
 		public static MovingObjectPosition look() {
 			return look(1.0F, false);

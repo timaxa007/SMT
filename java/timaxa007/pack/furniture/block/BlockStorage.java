@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import timaxa007.gui.HandlerGuiSMT;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityStorage;
 import timaxa007.smt.CoreSMT;
@@ -59,12 +60,13 @@ public class BlockStorage extends ModifiedBlock implements ITileEntityProvider {
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if (player.isSneaking()) {return false;}
+		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityStorage) {
-			if (!world.isRemote) player.openGui(CoreSMT.instance, PackFurniture.gui_storage, world, x, y, z);
+			if (!world.isRemote) player.openGui(CoreSMT.instance, HandlerGuiSMT.storage, world, x, y, z);
 			return true;
 		}
-		return false;
+
+		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
 	}
 
 	@SideOnly(Side.CLIENT)

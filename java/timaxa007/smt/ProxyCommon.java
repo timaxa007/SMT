@@ -10,6 +10,8 @@ public class ProxyCommon {
 
 	public static IProxyModuleCommon 
 	control_button,
+	survival_tabs,
+	crafting,
 	environment,
 	status_player,
 	weight,
@@ -17,7 +19,8 @@ public class ProxyCommon {
 	colors,
 	fluids,
 	forbidden,
-	texture_map
+	texture_map,
+	information
 	;
 
 	public static IProxyPackCommon 
@@ -35,6 +38,8 @@ public class ProxyCommon {
 		verificationModuleCommon();
 
 		if (control_button != null) control_button.preInit();
+		if (survival_tabs != null) survival_tabs.preInit();
+		if (crafting != null) crafting.preInit();
 		if (environment != null) environment.preInit();
 		if (status_player != null) status_player.preInit();
 		if (weight != null) weight.preInit();
@@ -43,6 +48,7 @@ public class ProxyCommon {
 		if (fluids != null) fluids.preInit();
 		if (forbidden != null) forbidden.preInit();
 		if (texture_map != null) texture_map.preInit();
+		if (information != null) information.preInit();
 
 		verificationPackCommon();
 
@@ -58,7 +64,11 @@ public class ProxyCommon {
 
 	public void init() {
 
+		if (CoreSMT.config.debug) FMLLog.log(CoreSMT.MODID, Level.DEBUG, "Successful initialized common part.");
+
 		if (control_button != null) control_button.init();
+		if (survival_tabs != null) survival_tabs.init();
+		if (crafting != null) crafting.init();
 		if (environment != null) environment.init();
 		if (status_player != null) status_player.init();
 		if (weight != null) weight.init();
@@ -67,6 +77,7 @@ public class ProxyCommon {
 		if (fluids != null) fluids.init();
 		if (forbidden != null) forbidden.init();
 		if (texture_map != null) texture_map.init();
+		if (information != null) information.init();
 
 		if (furniture != null) furniture.init();
 		if (item != null) item.init();
@@ -76,12 +87,13 @@ public class ProxyCommon {
 		if (techno != null) techno.init();
 		if (weapon != null) weapon.init();
 
-		if (CoreSMT.config.debug) FMLLog.log(CoreSMT.MODID, Level.DEBUG, "Successful initialized common part.");
 	}
 
 	public void postInit() {
 
 		if (control_button != null) control_button.postInit();
+		if (survival_tabs != null) survival_tabs.postInit();
+		if (crafting != null) crafting.postInit();
 		if (environment != null) environment.postInit();
 		if (status_player != null) status_player.postInit();
 		if (weight != null) weight.postInit();
@@ -90,6 +102,7 @@ public class ProxyCommon {
 		if (fluids != null) fluids.postInit();
 		if (forbidden != null) forbidden.postInit();
 		if (texture_map != null) texture_map.postInit();
+		if (information != null) information.postInit();
 
 		if (furniture != null) furniture.postInit();
 		if (item != null) item.postInit();
@@ -105,6 +118,12 @@ public class ProxyCommon {
 
 		if (CoreSMT.config.isModuleControlButton)
 			control_button = checkModuleCommon(CoreSMT.PATH_MODULE + ".control_button.ProxyCommon");
+
+		if (CoreSMT.config.isModuleSurvivalTabs)
+			survival_tabs = checkModuleCommon(CoreSMT.PATH_MODULE + ".survival_tabs.ProxyCommon");
+
+		if (CoreSMT.config.isModuleCrafting)
+			crafting = checkModuleCommon(CoreSMT.PATH_MODULE + ".crafting.ProxyCommon");
 
 		if (CoreSMT.config.isModuleEnvironment)
 			environment = checkModuleCommon(CoreSMT.PATH_MODULE + ".environment.ProxyCommon");
@@ -129,6 +148,9 @@ public class ProxyCommon {
 
 		if (CoreSMT.config.isModuleTextureMap)
 			texture_map = checkModuleCommon(CoreSMT.PATH_MODULE + ".texture_map.ProxyCommon");
+
+		if (CoreSMT.config.isModuleInformation)
+			information = checkModuleCommon(CoreSMT.PATH_MODULE + ".information.ProxyCommon");
 
 	}
 

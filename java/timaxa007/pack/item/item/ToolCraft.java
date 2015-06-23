@@ -1,16 +1,16 @@
 package timaxa007.pack.item.item;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
+import timaxa007.api.IInteractionWithBlock;
+import timaxa007.api.IInteractionWithEntity;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.pack.item.PackItems;
-import timaxa007.pack.item.util.IToolCraft;
 import timaxa007.smt.CoreSMT;
 import timaxa007.smt.object.ModifiedItem;
 import timaxa007.smt.packet.MessageInteractionBlock;
@@ -19,7 +19,7 @@ import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolCraft extends ModifiedItem implements IActionMouse, IActionPrimaryKey, IToolCraft {
+public class ToolCraft extends ModifiedItem implements IActionMouse, IActionPrimaryKey, IInteractionWithBlock, IInteractionWithEntity {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;
@@ -145,11 +145,11 @@ public class ToolCraft extends ModifiedItem implements IActionMouse, IActionPrim
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@Override
-	public void interactionWichEntity(ItemStack is, World world, EntityPlayer player, Entity entity) {
+	public void interactionWithEntity(ItemStack is, World world, EntityPlayer player, Entity entity) {
 
 	}
 	@Override
-	public void interactionWichEntityBlock(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {
+	public void interactionWithBlock(ItemStack is, World world, EntityPlayer player, int x, int y, int z) {
 
 	}
 	//--------------------------------------------------------------------------------------------------------------

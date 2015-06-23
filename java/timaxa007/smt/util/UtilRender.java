@@ -2,14 +2,22 @@ package timaxa007.smt.util;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.HashMap;
 
-import timaxa007.smt.lib.ImageUtils;
+import javax.imageio.ImageIO;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import timaxa007.smt.lib.ImageUtils;
 
 public class UtilRender {
 	//------------------------------------------------------------------------------------------------------
@@ -188,6 +196,7 @@ public class UtilRender {
 		int a3, r3, g3, b3;
 
 		if (a1 > a2) a3 = a1; else a3 = a2;
+		if (a1 == 0 && a2 == 0) a3 = 0;
 		if (r1 > r2) r3 = r1; else r3 = r2;
 		if (g1 > g2) g3 = g1; else g3 = g2;
 		if (b1 > b2) b3 = b1; else b3 = b2;
@@ -223,6 +232,8 @@ public class UtilRender {
 		return a << 24 | r << 16 | g << 8 | b;
 	}
 	//------------------------------------------------------------------------------------------------------
+	public static HashMap<String, Integer> map = new HashMap<String, Integer>();
+
 	public static final void mergerImage(BufferedImage img1, BufferedImage img2) {
 		int w = Math.max(img1.getWidth(), img2.getWidth());
 		int h = Math.max(img1.getHeight(), img2.getHeight());
@@ -235,7 +246,7 @@ public class UtilRender {
 		ImageUtils.bindTextureFromImage(image);
 	}
 
-	public static final void mergerImage(ResourceLocation tex1, ResourceLocation tex2) {
+	public static final void mergerImage(String name, ResourceLocation tex1, ResourceLocation tex2) {
 		BufferedImage img1 = ImageUtils.getImageFrom(tex1);
 		BufferedImage img2 = ImageUtils.getImageFrom(tex2);
 
@@ -249,7 +260,8 @@ public class UtilRender {
 
 		//img1.getGraphics().drawImage(img2, 0, 0, (ImageObserver)null);
 		//TextureUtil.uploadTextureImage(this.getGlTextureId(), img1);
-		ImageUtils.bindTextureFromImage(image);
+		//ImageUtils.bindTextureFromImage(image);
+		map.put(name, TextureUtil.uploadTextureImageAllocate(TextureUtil.glGenTextures(), image, false, false));
 	}
 
 	public static final void mergerImage(ResourceLocation tex1, ResourceLocation tex2, int hex) {
@@ -273,11 +285,70 @@ public class UtilRender {
 		//img1.getGraphics().drawImage(img2, 0, 0, (ImageObserver)null);
 		//TextureUtil.uploadTextureImage(this.getGlTextureId(), img1);
 		ImageUtils.bindTextureFromImage(image);
+		map.put("null", TextureUtil.uploadTextureImageAllocate(TextureUtil.glGenTextures(), image, false, false));
 	}
 	//------------------------------------------------------------------------------------------------------
 	public static void render(EntityPlayer player) {
 		ItemStack is = player.getCurrentEquippedItem();
 		RenderBlocks rb = new RenderBlocks(player.getEntityWorld());
 	}
+	//------------------------------------------------------------------------------------------------------
+	/*MrCreppo*/
+
+	public static HashMap<String, ResourceLocation> img = new HashMap<String, ResourceLocation>();
+
+	public static final void mergerImg(String name, ResourceLocation rl1, ResourceLocation rl2) {
+		//-----------------
+		BufferedImage img1;
+		BufferedImage img2;
+		//-----------------
+		try {img1 = ImageIO.read(Minecraft.getMinecraft().getResourceManager().getResource(rl1).getInputStream());}
+		catch (IOException ioexception) {throw new RuntimeException(ioexception);}
+		//-----------------
+		try {img2 = ImageIO.read(Minecraft.getMinecraft().getResourceManager().getResource(rl2).getInputStream());}
+		catch (IOException ioexception) {throw new RuntimeException(ioexception);}
+		//-----------------
+		int w = Math.max(img1.getWidth(), img2.getWidth());
+		int h = Math.max(img1.getHeight(), img2.getHeight());
+
+		BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		Graphics g = image.getGraphics();
+		g.drawImage(img1, 0, 0, null);
+		g.drawImage(img2, 0, 0, null);
+		//-----------------
+		ResourceLocation rl = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation(name, new DynamicTexture(image));
+		img.put(name, rl);
+	}
+
+	public static final void mergerImg(String name, ResourceLocation rl1, ResourceLocation rl2, Integer hex) {
+		//-----------------
+		BufferedImage img1;
+		BufferedImage img2;
+		//-----------------
+		try {img1 = ImageIO.read(Minecraft.getMinecraft().getResourceManager().getResource(rl1).getInputStream());}
+		catch (IOException ioexception) {throw new RuntimeException(ioexception);}
+		//-----------------
+		try {img2 = ImageIO.read(Minecraft.getMinecraft().getResourceManager().getResource(rl2).getInputStream());}
+		catch (IOException ioexception) {throw new RuntimeException(ioexception);}
+		//-----------------
+		for (int x = 0; x < img2.getWidth(); x++){
+			for (int y = 0; y < img2.getHeight(); y++){
+				img2.setRGB(x, y, UtilRender.colorMixLowerAlpha(img2.getRGB(x, y), UtilRender.getHEXa(hex)));
+			}
+		}
+		//-----------------
+		int w = Math.max(img1.getWidth(), img2.getWidth());
+		int h = Math.max(img1.getHeight(), img2.getHeight());
+
+		BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		Graphics g = image.getGraphics();
+		g.drawImage(img1, 0, 0, null);
+		g.drawImage(img2, 0, 0, null);
+		//-----------------
+		ResourceLocation rl = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation(name, new DynamicTexture(image));
+		img.put(name, rl);
+	}
+
+	public static final ResourceLocation getImg(String name) {return img.get(name);}
 	//------------------------------------------------------------------------------------------------------
 }

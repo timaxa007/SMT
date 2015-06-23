@@ -8,6 +8,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IModuleClass;
+import timaxa007.module.NodeModule.ModuleNode;
 import timaxa007.module.environment.util.ItemEnvironment;
 import timaxa007.module.environment.util.MessageEnvironment;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -16,6 +17,7 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
+@ModuleNode(moduleTag = ModuleEnvironment.MODID, moduleName = ModuleEnvironment.MODNAME, moduleVersion = ModuleEnvironment.VERSION)
 /**@author timaxa007**/
 public class ModuleEnvironment implements IModuleClass {
 

@@ -8,6 +8,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IModuleClass;
+import timaxa007.module.NodeModule.ModuleNode;
 import timaxa007.module.status_player.util.ItemStatusPlayer;
 import timaxa007.module.status_player.util.MessageStatusPlayer;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -16,6 +17,7 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
+@ModuleNode(moduleTag = ModuleStatusPlayer.MODID, moduleName = ModuleStatusPlayer.MODNAME, moduleVersion = ModuleStatusPlayer.VERSION)
 /**@author timaxa007**/
 public class ModuleStatusPlayer implements IModuleClass {
 

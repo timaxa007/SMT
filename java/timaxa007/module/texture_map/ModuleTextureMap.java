@@ -7,9 +7,11 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IModuleClass;
+import timaxa007.module.NodeModule.ModuleNode;
 import timaxa007.module.texture_map.util.TextureMap;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+@ModuleNode(moduleTag = ModuleTextureMap.MODID, moduleName = ModuleTextureMap.MODNAME, moduleVersion = ModuleTextureMap.VERSION)
 /**@author timaxa007**/
 public class ModuleTextureMap implements IModuleClass {
 

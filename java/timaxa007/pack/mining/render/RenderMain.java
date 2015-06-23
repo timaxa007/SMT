@@ -13,10 +13,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class RenderMain {
 
 	public static int block_cristals_modelID;
+	public static int block_ore_modelID;
 
 	public static void preInit() {
 
 		block_cristals_modelID = -1;
+		block_ore_modelID = -1;
 
 	}
 

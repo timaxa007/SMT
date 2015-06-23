@@ -9,6 +9,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IPackClass;
+import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.item.block.ListBlock;
 import timaxa007.pack.item.item.ListItem;
 import timaxa007.pack.item.lib.ListPackItems;
@@ -24,6 +25,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@PackNode(moduleTag = PackItems.MODID, moduleName = PackItems.MODNAME, moduleVersion = PackItems.VERSION)
 /**@author timaxa007**/
 public class PackItems implements IPackClass {
 
@@ -38,10 +40,6 @@ public class PackItems implements IPackClass {
 	public static ListItem item;
 	public static RenderMain render;
 
-	//GUI
-	//public static int guiID = 0;
-	public static int gui_items_machines = 1;
-
 	public static CreativeTabs tab_items = new CreativeTabs("tab_items") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackItems.item.items_for_items;}
 	};
@@ -55,7 +53,13 @@ public class PackItems implements IPackClass {
 		Configuration cfg = new Configuration(new File("./config/smt/pack", PackItems.MODID + ".cfg"));
 		cfg.load();
 
-		//block.items_machines_be = cfg.get("block", "items_machines", true).getBoolean();
+		block.rock_blocks_be = cfg.get("block", "rock_blocks", true).getBoolean();
+		block.glass_blocks_be = cfg.get("block", "glass_blocks", true).getBoolean();
+		block.wood_blocks_be = cfg.get("block", "wood_blocks", true).getBoolean();
+		block.ground_blocks_be = cfg.get("block", "ground_blocks", true).getBoolean();
+		block.sand_blocks_be = cfg.get("block", "sand_blocks", true).getBoolean();
+		block.cloth_blocks_be = cfg.get("block", "cloth_blocks", true).getBoolean();
+		block.metal_blocks_be = cfg.get("block", "metal_blocks", true).getBoolean();
 
 		item.items_for_items_be = cfg.get("item", "items_for_items", true).getBoolean();
 

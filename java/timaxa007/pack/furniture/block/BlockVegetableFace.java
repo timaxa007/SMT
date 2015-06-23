@@ -154,7 +154,7 @@ public class BlockVegetableFace extends ModifiedBlock implements ITileEntityProv
 			//--------------------------------
 			else return false;
 			//--------------------------------
-		} else return false;
+		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
 	}
 	 */
 	@SideOnly(Side.CLIENT)

@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import timaxa007.gui.HandlerGuiSMT;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.smt.CoreSMT;
 import timaxa007.smt.object.ModifiedItem;
@@ -27,7 +28,7 @@ public class ItemBackpack extends ModifiedItem {
 		if (player.isSneaking()) {
 
 		} else {
-			player.openGui(CoreSMT.instance, PackFurniture.gui_backpack, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+			player.openGui(CoreSMT.instance, HandlerGuiSMT.backpack, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 		}
 		return super.onItemRightClick(is, world, player);
 	}

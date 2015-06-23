@@ -1,17 +1,13 @@
 package timaxa007.pack.mining.render.block;
 
-import timaxa007.pack.mining.block.OreOres;
-import timaxa007.pack.mining.tile.TileEntityOreOres;
-import timaxa007.smt.lib.AddTextureModel;
-import timaxa007.smt.util.UtilRender;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import timaxa007.pack.mining.tile.TileEntityOreOres;
+import timaxa007.smt.util.UtilRender;
 
 public class RenderBlockOreOres extends TileEntitySpecialRenderer {
 
@@ -27,7 +23,7 @@ public class RenderBlockOreOres extends TileEntitySpecialRenderer {
 		//int clr = 0x88FF00;
 		int clr = 0xFF0000;
 		boolean light = false;
-		byte brl = 0xFF/2;
+		//int brl = 0xFF/2;
 
 		if (te != null) {
 			typ = te.getType();
@@ -37,18 +33,12 @@ public class RenderBlockOreOres extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		GL11.glColor3f(1.0F, 1.0F, 1.0F);
 		GL11.glEnable(GL11.GL_BLEND);
-		//GL11.glDisable(GL11.GL_ALPHA_TileEntityST);
-		/*if (light) {
-			GL11.glBlendFunc(GL11.GL_ONE, GL11.GL_ONE);
-		} else {
-			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		}*/
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
 		GL11.glDisable(GL11.GL_LIGHTING);
-		GL11.glTranslated(dx - 0.0025D, dy - 0.0025D, dz - 0.0025D);
-		GL11.glScalef(1.005F, 1.005F, 1.005F);
-
+		//GL11.glTranslated(dx - 0.0025D, dy - 0.0025D, dz - 0.0025D);
+		//GL11.glScalef(1.005F, 1.005F, 1.005F);
+		/*
 		if (light) {
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 127.0F, 1.0F);
 		} else {
@@ -59,26 +49,13 @@ public class RenderBlockOreOres extends TileEntitySpecialRenderer {
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
 			//GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		}
-		/*
-		bindTexture(new ResourceLocation("timaxa007", 
-				"textures/blocks/ore/ore_" + (typ < OreOres.type_ore.length && typ >= 0 ? OreOres.type_ore[typ] : OreOres.type_ore[0]) + "_overlay.png"));
 		 */
-		/*
-		BufferedImage img1 = ImageUtils.getImageFrom(AddTextureModel.get("minecraft_dirt").getTexture());
-		BufferedImage img2 = ImageUtils.getImageFrom(new ResourceLocation("timaxa007", 
-				"textures/blocks/ore/ore_" + (typ < OreOres.type_ore.length && typ >= 0 ? OreOres.type_ore[typ] : OreOres.type_ore[0]) + "_overlay.png"));
-
-		UtilRender.mergerImage(img1, img2);
-		 */
-		UtilRender.mergerImage(AddTextureModel.get("minecraft_dirt").getTexture(), 
-				new ResourceLocation("timaxa007", 
-						"textures/blocks/ore/ore_" + (typ < OreOres.type_ore.length && typ >= 0 ? OreOres.type_ore[typ] : OreOres.type_ore[0]) + "_overlay.png"),
-						0xFF0000);
+		bindTexture(UtilRender.getImg("cb_mtl"));
 
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
 		//tessellator.setColorOpaque_I(clr);
-		tessellator.setBrightness(brl);
+		//tessellator.setBrightness(brl);
 
 		//Down
 		tessellator.addVertexWithUV(1.0D, 0.0D, 1.0D, 1.0D, 1.0D);

@@ -52,42 +52,11 @@ public class OreOres extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityOreOres();
-	}
-	/*
-	public int getRenderType() {
-		return -1;
-	}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityOreOres();}
 
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	public boolean isOpaqueCube() {
-		return false;
-	}
-	 */
-	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess block_access, int x, int y, int z) {
-		TileEntity te = block_access.getTileEntity(x, y, z);
-		if (te != null && te instanceof TileEntityOreOres) {
-			return ((TileEntityOreOres)te).getColorBlock();
-		}
-		return 0xFFFFFF;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public IIcon getBlockTexture(IBlockAccess block_access, int x, int y, int z, int side) {
-		TileEntity te = block_access.getTileEntity(x, y, z);
-		if (te != null && te instanceof TileEntityOreOres) {
-			if (this == PackMining.block.ore_rock_ores) {return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-			if (this == PackMining.block.ore_nether_ores) {return Blocks.netherrack.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-			if (this == PackMining.block.ore_ender_ores) {return Blocks.end_stone.getIcon(side, block_access.getBlockMetadata(x, y, z));}
-			return Blocks.stone.getIcon(side, block_access.getBlockMetadata(x, y, z));
-		}
-		return getIcon(side, block_access.getBlockMetadata(x, y, z));
-	}
+	public int getRenderType() {return PackMining.render.block_ore_modelID;}
+	public boolean isOpaqueCube() {return false;}
+	public boolean renderAsNormalBlock() {return false;}
 
 	public int idPicked(World world, int x, int y, int z) {return 0;}
 

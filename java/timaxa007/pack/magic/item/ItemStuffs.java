@@ -38,9 +38,9 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemStuffs extends ModifiedItem implements 
-IActionMouse, IActionPrimaryKey, 
-IInteractionWithBlock, IInteractionWithEntity, 
+public class ItemStuffs extends ModifiedItem implements
+IActionMouse, IActionPrimaryKey,
+IInteractionWithBlock, IInteractionWithEntity,
 IUpdateClient
 {
 	//--------------------------------------------------------------------------------------------------------------
@@ -437,11 +437,16 @@ IUpdateClient
 
 	}
 
-	public void interactionWithBlock(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {
-		UtilSMT.UtilWorld.setBiome(BiomeGenBase.desert, world, x, z);
+	@Override
+	public void interactionWithBlock(ItemStack is, World world, EntityPlayer player, int x, int y, int z) {
+		if (!world.isAirBlock(x, y, z)) {
+			Block block = world.getBlock(x, y, z);
 
-		blockAct1(is, world, player, block, x, y, z);
-		blockAct2(is, world, player, block, x, y, z);
+			UtilSMT.UtilWorld.setBiome(BiomeGenBase.desert, world, x, z);
+
+			blockAct1(is, world, player, block, x, y, z);
+			blockAct2(is, world, player, block, x, y, z);
+		}
 	}
 
 	public static void blockAct1(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z) {

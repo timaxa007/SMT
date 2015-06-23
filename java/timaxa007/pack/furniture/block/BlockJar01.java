@@ -71,9 +71,11 @@ public class BlockJar01 extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if (te == null || player.isSneaking()) return false;
+
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
-			TileEntity te = world.getTileEntity(x, y, z);
 			//--------------------------------
 			/*if (current.getItem() == PackFurniture.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
 				--current.stackSize;
@@ -82,7 +84,7 @@ public class BlockJar01 extends ModifiedBlock implements ITileEntityProvider {
 			} else return false;*/
 			//--------------------------------
 		}
-		return false;
+		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
 	}
 
 	@SideOnly(Side.CLIENT)

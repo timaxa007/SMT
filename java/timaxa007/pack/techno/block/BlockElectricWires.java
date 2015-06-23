@@ -26,6 +26,7 @@ public class BlockElectricWires extends ModifiedBlock implements ITileEntityProv
 	public BlockElectricWires(String tag) {
 		super(tag, Material.glass);
 		setCreativeTab(PackTechno.tab_techno);
+		setHardness(0.25F);
 		setBlockTextureName("glass");
 	}
 
@@ -72,14 +73,15 @@ public class BlockElectricWires extends ModifiedBlock implements ITileEntityProv
 
 	@Override
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
-		if (!world.isRemote) {
-			TileEntity te = world.getTileEntity(x, y, z);
-			if (te != null && te instanceof TileEntityElectricWires && !player.capabilities.isCreativeMode) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if (te != null && te instanceof TileEntityElectricWires) {
+			if (!world.isRemote && !player.capabilities.isCreativeMode) {
 				TileEntityElectricWires tile = (TileEntityElectricWires)te;
 				dropBlockAsItem(world, x, y, z, addNBT(tile.getStyle(), tile.getSize(), tile.getColor()));
 				world.removeTileEntity(x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
+			TileEntityElectricWires.updateExtensively(world, x, y, z);
 		}
 	}
 

@@ -9,6 +9,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IPackClass;
+import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.furniture.block.ListBlock;
 import timaxa007.pack.furniture.item.ListItem;
 import timaxa007.pack.furniture.lib.ListFurniture;
@@ -24,6 +25,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@PackNode(moduleTag = PackFurniture.MODID, moduleName = PackFurniture.MODNAME, moduleVersion = PackFurniture.VERSION)
 /**@author timaxa007**/
 public class PackFurniture implements IPackClass {
 
@@ -37,33 +39,6 @@ public class PackFurniture implements IPackClass {
 	public static ListBlock block;
 	public static ListItem item;
 	public static RenderMain render;
-
-	//GUI
-	//public static int guiID = 0;
-	public static int gui_furniture_machines = 1;
-	public static int gui_furniture_chest = 15;
-	public static int gui_bookshelf = 16;
-	public static int gui_mincer = 17;
-	public static int gui_grills = 18;
-	public static int gui_mashine_water = 19;
-	public static int gui_backpack = 20;
-	public static int gui_storage = 21;
-	public static int gui_backpack_1 = 32;
-	public static int gui_backpack_2 = 33;
-	public static int gui_backpack_3 = 34;
-	public static int gui_backpack_4 = 35;
-	public static int gui_backpack_5 = 36;
-	public static int gui_backpack_6 = 37;
-	public static int gui_backpack_7 = 38;
-	public static int gui_backpack_8 = 39;
-	public static int gui_backpack_9 = 40;
-	public static int gui_backpack_10 = 41;
-	public static int gui_backpack_11 = 42;
-	public static int gui_backpack_12 = 43;
-	public static int gui_backpack_13 = 44;
-	public static int gui_backpack_14 = 45;
-	public static int gui_backpack_15 = 46;
-	public static int gui_backpack_16 = 47;
 
 	public static CreativeTabs tab_furniture = new CreativeTabs("tab_furniture") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackFurniture.item.items_for_furniture;}

@@ -11,6 +11,7 @@ public class ActionInteractionEntity {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null && current.getItem() instanceof IInteractionWithEntity)
 			((IInteractionWithEntity)current.getItem()).interactionWithEntity(current, player.worldObj, player, entity);
+		//if (current == null);
 	}
 
 }

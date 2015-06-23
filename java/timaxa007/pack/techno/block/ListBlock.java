@@ -1,8 +1,11 @@
 package timaxa007.pack.techno.block;
 
-import timaxa007.pack.techno.tile.*;
-import timaxa007.smt.util.UtilSMT;
 import net.minecraft.block.Block;
+import timaxa007.pack.techno.tile.TileEntityElectricMachines;
+import timaxa007.pack.techno.tile.TileEntityElectricWires;
+import timaxa007.pack.techno.tile.TileEntityFarmMashines;
+import timaxa007.pack.techno.tile.TileEntityModuleMovement;
+import timaxa007.smt.util.UtilSMT;
 
 public class ListBlock {
 
@@ -27,6 +30,12 @@ public class ListBlock {
 	te_farm_mashines
 	;
 
+	public static final Block.SoundType soundElectricMachines = new Block.SoundType("stone", 1.0F, 1.0F) {
+		//public String getBreakSound() {return "dig.stone";}
+		public String getStepResourcePath() {return "step.gravel";}
+		//public String func_150496_b() {return "dig.wood";}
+	};
+
 	public static Block[] list_block;
 
 	public static Class[] list_te;
@@ -34,7 +43,7 @@ public class ListBlock {
 	public static void preInit() {
 
 		if (electric_machines_be) {
-			electric_machines = new BlockElectricMachines("electric_machines");
+			electric_machines = new BlockElectricMachines("electric_machines").setStepSound(soundElectricMachines);
 			te_electric_machines = TileEntityElectricMachines.class;
 		}
 
@@ -47,12 +56,12 @@ public class ListBlock {
 			module_movement = new BlockModuleMovement("module_movement");
 			te_module_movement = TileEntityModuleMovement.class;
 		}
-		
+
 		if (farm_mashines_be) {
 			farm_mashines = new BlockFarmMashines("farm_mashines");
 			te_farm_mashines = TileEntityFarmMashines.class;
 		}
-		
+
 		//transporter belt
 
 		list_block = new Block[] {

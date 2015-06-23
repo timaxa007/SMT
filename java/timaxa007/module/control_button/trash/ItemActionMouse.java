@@ -11,11 +11,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**For example.**/@Deprecated
 public class ItemActionMouse extends ModifiedItem implements IActionMouse {
 	//--------------------------------------------------------------------------------------------------------------
-	@SideOnly(Side.CLIENT)
-	public static boolean isLeftClick;
-
-	@SideOnly(Side.CLIENT)
-	public static boolean isRightClick;
+	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
+	@SideOnly(Side.CLIENT) public static boolean isRightClick;
 	//--------------------------------------------------------------------------------------------------------------
 	public ItemActionMouse(String tag) {
 		super(tag);

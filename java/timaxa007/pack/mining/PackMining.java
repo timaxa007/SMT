@@ -11,6 +11,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IPackClass;
+import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.mining.block.ListBlock;
 import timaxa007.pack.mining.event.EventMining;
 import timaxa007.pack.mining.item.ListItem;
@@ -26,6 +27,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@PackNode(moduleTag = PackMining.MODID, moduleName = PackMining.MODNAME, moduleVersion = PackMining.VERSION)
 /**@author timaxa007**/
 public class PackMining implements IPackClass {
 

@@ -11,6 +11,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IPackClass;
+import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.techno.block.ListBlock;
 import timaxa007.pack.techno.event.EventTechno;
 import timaxa007.pack.techno.item.ListItem;
@@ -25,6 +26,7 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@PackNode(moduleTag = PackTechno.MODID, moduleName = PackTechno.MODNAME, moduleVersion = PackTechno.VERSION)
 /**@author timaxa007**/
 public class PackTechno implements IPackClass {
 
@@ -40,10 +42,6 @@ public class PackTechno implements IPackClass {
 	public static ListBlock block;
 	public static ListItem item;
 	public static RenderMain render;
-
-	//GUI
-	//public static int guiID = 0;
-	public static int gui_electric_machines = 1;
 
 	public static CreativeTabs tab_techno = new CreativeTabs("tab_techno") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackTechno.item.items_for_techno;}
@@ -68,6 +66,8 @@ public class PackTechno implements IPackClass {
 		item.tool_electric_drill_be = cfg.get("item", "tool_electric_drill", true).getBoolean();
 		item.tool_electric_saw_be = cfg.get("item", "tool_electric_saw", true).getBoolean();
 		item.electric_detector_be = cfg.get("item", "electric_detector", true).getBoolean();
+		item.electric_jetpack_be = cfg.get("item", "electric_jetpack", true).getBoolean();
+		item.electric_robot_be = cfg.get("item", "electric_robot", true).getBoolean();
 
 		cfg.save();
 

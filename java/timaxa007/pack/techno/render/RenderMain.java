@@ -3,10 +3,14 @@ package timaxa007.pack.techno.render;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import timaxa007.pack.techno.PackTechno;
+import timaxa007.pack.techno.entity.*;
 import timaxa007.pack.techno.render.block.*;
+import timaxa007.pack.techno.render.entity.*;
 import timaxa007.pack.techno.render.item.*;
+import timaxa007.pack.techno.render.model.*;
 import timaxa007.pack.techno.tile.*;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -61,6 +65,7 @@ public class RenderMain {
 		//Items
 
 		//Entity
+		RenderingRegistry.registerEntityRenderingHandler(EntityElectricRobot.class, new RenderEntityElectricRobot(new ModelRobot(), 1.0F));
 
 	}
 

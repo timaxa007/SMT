@@ -5,26 +5,38 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
+import timaxa007.api.IInteractionWithBlock;
+import timaxa007.api.IInteractionWithEntity;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.pack.techno.PackTechno;
+import timaxa007.pack.techno.entity.EntityElectricRobot;
 import timaxa007.pack.techno.packet.MessageTechnoTool;
 import timaxa007.pack.techno.util.ITechnoTool;
+import timaxa007.smt.CoreSMT;
 import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.packet.MessageInteractionEntity;
+import timaxa007.smt.util.UtilSMT;
 import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IActionPrimaryKey, ITechnoTool {
+public class ToolElectricWrench extends ModifiedItem implements
+IActionMouse, IActionPrimaryKey,
+IInteractionWithBlock, IInteractionWithEntity,
+ITechnoTool
+{
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;
@@ -52,6 +64,35 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 		setTextureName("timaxa007:tool/electric/wrench");
 	}
 	//--------------------------------------------------------------------------------------------------------------
+	@Override
+	public void interactionWithEntity(ItemStack is, World world, EntityPlayer player, Entity entity) {
+
+		if (entity instanceof EntityElectricRobot) {
+			EntityElectricRobot robot = (EntityElectricRobot)entity;
+
+
+			NBTTagCompound nbt = is.getTagCompound();
+
+			if (nbt != null && nbt.hasKey("ModeID")) {
+				int nbn = nbt.getInteger("ModeID");
+
+				if (nbn == 1) {
+					if (!world.isRemote)
+						UtilSMT.UtilWorld.dropItem(world, robot.getPosition(1.0F), ElectricRobot.addNBT(robot.getTier()));
+					robot.setDead();
+				}
+			}
+
+
+		}
+
+	}
+
+	@Override
+	public void interactionWithBlock(ItemStack is, World world, EntityPlayer player, int x, int y, int z) {
+
+	}
+	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
 	public void onLeftClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 
@@ -71,6 +112,26 @@ public class ToolElectricWrench extends ModifiedItem implements IActionMouse, IA
 	@SideOnly(Side.CLIENT)
 	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		isRightClick = isPress;
+
+		if (!isRightClick) {
+
+			MovingObjectPosition entity = UtilSMT.LookOBJ.look(/*1.0F, 1.0F, */true);
+			if (entity != null) {
+
+				if (entity.entityHit != null && entity.typeOfHit == MovingObjectType.ENTITY)
+					CoreSMT.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
+
+				/*if (entity.typeOfHit == MovingObjectType.BLOCK) {
+
+				int pos_x = entity.blockX;
+				int pos_y = entity.blockY;
+				int pos_z = entity.blockZ;
+
+				CoreSMT.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
+			}*/
+
+			}
+		}
 
 	}
 	//--------------------------------------------------------------------------------------------------------------

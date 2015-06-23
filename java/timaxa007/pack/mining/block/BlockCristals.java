@@ -29,25 +29,13 @@ public class BlockCristals extends ModifiedBlock implements ITileEntityProvider 
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityCristals();
-	}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityCristals();}
 
-	public int getRenderType() {
-		return PackMining.render.block_cristals_modelID;
-	}
+	public int getRenderType() {return PackMining.render.block_cristals_modelID;}
+	public boolean isOpaqueCube() {return false;}
+	public boolean renderAsNormalBlock() {return false;}
 
-	public boolean isOpaqueCube() {
-		return false;
-	}
-
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	public int idPicked(World world, int x, int y, int z) {
-		return 0;
-	}
+	public int idPicked(World world, int x, int y, int z) {return 0;}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);

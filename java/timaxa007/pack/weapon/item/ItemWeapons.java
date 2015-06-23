@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import timaxa007.gui.HandlerGuiSMT;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.module.control_button.api.IScope;
@@ -32,7 +33,7 @@ IActionMouse, IActionPrimaryKey,
 IScope, 
 IUpdateClient
 {
-
+	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;
 
@@ -47,7 +48,7 @@ IUpdateClient
 
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
-
+	//--------------------------------------------------------------------------------------------------------------
 	public ItemWeapons(String tag) {
 		super(tag);
 		setMaxStackSize(1);
@@ -56,7 +57,7 @@ IUpdateClient
 		setCreativeTab(PackWeapons.tab_weapons);
 		setTextureName("timaxa007:weapons");
 	}
-
+	//--------------------------------------------------------------------------------------------------------------
 	@Override
 	public void onUpdate(ItemStack is, World world, Entity entity, int par4, boolean par5) {
 		if (entity instanceof EntityPlayer) {
@@ -191,7 +192,7 @@ IUpdateClient
 	}
 
 	public void mode(ItemStack is, World world, EntityPlayer player) {
-		player.openGui(CoreSMT.instance, PackWeapons.gui_modify, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+		player.openGui(CoreSMT.instance, HandlerGuiSMT.modify_weapon, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)

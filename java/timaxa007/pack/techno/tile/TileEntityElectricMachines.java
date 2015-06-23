@@ -1,6 +1,12 @@
 package timaxa007.pack.techno.tile;
 
+import java.util.Iterator;
+import java.util.List;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -8,7 +14,9 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import timaxa007.module.forbidden.api.ITileEntityOwner;
+import timaxa007.smt.util.UtilSMT;
 import timaxa007.smt.util.UtilString;
 
 public class TileEntityElectricMachines extends TileEntity implements ISidedInventory, ITileEntityOwner {
@@ -31,6 +39,39 @@ public class TileEntityElectricMachines extends TileEntity implements ISidedInve
 
 	public void setOwner(String username) {owner = username;}
 	public String getOwner() {return owner;}
+
+	public void updateEntity() {
+
+		double d0 = 0.0625D;
+
+		AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(
+				(double)this.xCoord, (double)this.yCoord, (double)this.zCoord, 
+				(double)this.xCoord + 1.0D, (double)this.yCoord + 1.0D, (double)this.zCoord + 1.0D).expand(d0, d0, d0);
+		List list = this.worldObj.getEntitiesWithinAABB(Entity.class, axisalignedbb);
+		Iterator iterator = list.iterator();
+		Entity entity = null;
+
+		while(iterator.hasNext()) {
+			entity = (Entity)iterator.next();
+
+			if (entity instanceof EntityItem) {
+				EntityItem entity_item = (EntityItem)entity;
+				ItemStack is_entity = entity_item.getEntityItem();
+
+				if (is_entity.getItem() == Items.diamond) {
+					if (is_entity.stackSize >= 3) {
+						UtilSMT.UtilWorld.dropItem(this.worldObj, this.xCoord, this.yCoord, this.zCoord, new ItemStack(Items.golden_apple));
+						if (!this.worldObj.isRemote) {if (is_entity.stackSize == 3) entity_item.setDead(); else is_entity.stackSize -= 3;}
+						break;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {

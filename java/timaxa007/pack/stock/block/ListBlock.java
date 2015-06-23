@@ -1,31 +1,31 @@
 package timaxa007.pack.stock.block;
 
+import net.minecraft.block.Block;
 import timaxa007.pack.stock.tile.*;
 import timaxa007.smt.util.UtilSMT;
-import net.minecraft.block.Block;
 
 public class ListBlock {
 
-	public static boolean 
+	public static boolean
+	stock_machines_be,
 	plants_be,
 	foods_be,
-	healing_be,
 	apiary_be,
 	petalled_be
 	;
 
-	public static Block 
+	public static Block
+	stock_machines,
 	plants,
 	foods,
-	healing,
 	apiary,
 	petalled
 	;
 
-	public static Class 
+	public static Class
+	te_stock_machines,
 	te_plants,
 	te_foods,
-	te_healing,
 	te_apiary,
 	te_petalled
 	;
@@ -36,6 +36,11 @@ public class ListBlock {
 
 	public static void preInit() {
 
+		if (stock_machines_be) {
+			stock_machines = new BlockStockMachines("stock_machines");
+			te_stock_machines = TileEntityStockMachines.class;
+		}
+
 		if (plants_be) {
 			plants = new BlockPlants("plants");
 			te_plants = TileEntityPlants.class;
@@ -44,11 +49,6 @@ public class ListBlock {
 		if (foods_be) {
 			foods = new BlockFoods("foods");
 			te_foods = TileEntityFoods.class;
-		}
-
-		if (healing_be) {
-			healing = new BlockHealing("healing");
-			te_healing = TileEntityHealing.class;
 		}
 
 		if (apiary_be) {
@@ -62,9 +62,9 @@ public class ListBlock {
 		}
 
 		list_block = new Block[] {
+				stock_machines,
 				plants,
 				foods,
-				healing,
 				apiary,
 				petalled
 		};
@@ -72,9 +72,9 @@ public class ListBlock {
 		UtilSMT.UtilBlock.RegBlock(list_block);
 
 		list_te = new Class[] {
+				te_stock_machines,
 				te_plants,
 				te_foods,
-				te_healing,
 				te_apiary,
 				te_petalled
 		};

@@ -11,6 +11,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IPackClass;
+import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.magic.block.ListBlock;
 import timaxa007.pack.magic.event.EventMagic;
 import timaxa007.pack.magic.event.EventMana;
@@ -21,13 +22,13 @@ import timaxa007.pack.magic.packet.RegisterMessage;
 import timaxa007.pack.magic.recipe.Recipes_Magic;
 import timaxa007.pack.magic.render.RenderMain;
 import timaxa007.pack.magic.util.MaterialOreMagic;
-import timaxa007.pack.mining.PackMining;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@PackNode(moduleTag = PackMagic.MODID, moduleName = PackMagic.MODNAME, moduleVersion = PackMagic.VERSION)
 /**@author timaxa007**/
 public class PackMagic implements IPackClass {
 
@@ -64,10 +65,6 @@ public class PackMagic implements IPackClass {
 	};
 	//ShardElements ~= gems
 
-	//GUI
-	//public static int guiID = 0;
-	public static int gui_magic_machines = 1;
-
 	public static CreativeTabs tab_magic = new CreativeTabs("tab_magic") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMagic.item.items_for_magic;}
 	};
@@ -76,20 +73,23 @@ public class PackMagic implements IPackClass {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		log = event.getModLog();
-		log.info("Starting sub-mod " + PackMagic.MODNAME + ", build: " + PackMining.VERSION + ".");
+		log.info("Starting sub-mod " + PackMagic.MODNAME + ", build: " + PackMagic.VERSION + ".");
 
 		Configuration cfg = new Configuration(new File("./config/smt/pack", PackMagic.MODID + ".cfg"));
 		cfg.load();
 
 		block.magic_machines_be = cfg.get("block", "magic_machines", true).getBoolean();
 		block.magic_cauldron_be = cfg.get("block", "magic_cauldron", true).getBoolean();
+		block.magic_spawner_be = cfg.get("block", "magic_spawner", true).getBoolean();
 
 		item.items_for_magic_be = cfg.get("item", "items_for_magic", true).getBoolean();
 		item.wands_be = cfg.get("item", "wands", true).getBoolean();
 		item.stuffs_be = cfg.get("item", "stuffs", true).getBoolean();
 		item.teleport_be = cfg.get("item", "teleport", true).getBoolean();
 		item.globular_be = cfg.get("item", "globular", true).getBoolean();
-		item.magic_bag_be = cfg.get("item", "magic_bag_be", true).getBoolean();
+		item.magic_bag_be = cfg.get("item", "magic_bag", true).getBoolean();
+		item.magic_wings_be = cfg.get("item", "magic_wings", true).getBoolean();
+		item.spawner_be = cfg.get("item", "spawner", true).getBoolean();
 
 		cfg.save();
 

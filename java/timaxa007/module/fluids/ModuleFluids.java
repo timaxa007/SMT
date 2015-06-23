@@ -7,9 +7,11 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IModuleClass;
+import timaxa007.module.NodeModule.ModuleNode;
 import timaxa007.module.fluids.util.ListFluidType;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+@ModuleNode(moduleTag = ModuleFluids.MODID, moduleName = ModuleFluids.MODNAME, moduleVersion = ModuleFluids.VERSION)
 /**@author timaxa007**/
 public class ModuleFluids implements IModuleClass {
 

@@ -29,6 +29,14 @@ public class ColorsMini {
 	private int hex;
 	private String name;
 
+	public ColorsMini(int red, int green, int blue, int alpha, String name) {
+		int h = (int)alpha << 12 | (int)red << 8 | (int)green << 4 | (int)blue;
+		if (CoreSMT.config.show_system_info_testing) checkHex(this, h);
+		this.hex = h;
+		list[hex] = this;
+		this.name = name;
+	}
+
 	public ColorsMini(int hex, String name) {
 		if (CoreSMT.config.show_system_info_testing) checkHex(this, hex);
 		this.hex = hex;
@@ -38,6 +46,10 @@ public class ColorsMini {
 
 	public int getColor() {return hex;}
 	public String getName() {return name;}
+	public int getRed() {return (hex >> 8 & 0xF);}
+	public int getGreen() {return (hex >> 4 & 0xF);}
+	public int getBlue() {return (hex & 0xF);}
+	public int getAlpha() {return (hex >> 12 & 0xF);}
 	//--------------------------------------------------------
 	public static int getColor(ColorsMini color) {
 		for (ColorsMini clr : list)

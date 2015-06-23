@@ -10,7 +10,9 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IPackClass;
+import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.stock.block.ListBlock;
+import timaxa007.pack.stock.entity.ListEntity;
 import timaxa007.pack.stock.event.EventStock;
 import timaxa007.pack.stock.item.ListItem;
 import timaxa007.pack.stock.lib.ListStock;
@@ -26,6 +28,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@PackNode(moduleTag = PackStock.MODID, moduleName = PackStock.MODNAME, moduleVersion = PackStock.VERSION)
 /**@author timaxa007**/
 public class PackStock implements IPackClass {
 
@@ -74,9 +77,9 @@ public class PackStock implements IPackClass {
 						+ "<petals> - drop petals this mod.", 
 				"default");
 
+		block.stock_machines_be = cfg.get("block", "stock_machines", true).getBoolean();
 		block.plants_be = cfg.get("block", "plants", true).getBoolean();
 		block.foods_be = cfg.get("block", "foods", true).getBoolean();
-		block.healing_be = cfg.get("block", "healing", true).getBoolean();
 		block.apiary_be = cfg.get("block", "apiary", true).getBoolean();
 		block.petalled_be = cfg.get("block", "petalled", true).getBoolean();
 
@@ -90,6 +93,7 @@ public class PackStock implements IPackClass {
 		item.bee_products_be = cfg.get("item", "bee_products", true).getBoolean();
 		item.bees_be = cfg.get("item", "bees", true).getBoolean();
 		item.petals_be = cfg.get("item", "petals", true).getBoolean();
+		item.fuel_jetpack_be = cfg.get("item", "fuel_jetpack", true).getBoolean();
 		//item.food_dog_be = cfg.get("item", "food_dog", true).getBoolean();
 
 		cfg.save();
@@ -107,6 +111,7 @@ public class PackStock implements IPackClass {
 		//GameRegistry.addRecipe(new RecipeFoodsColors());
 
 		Recipes_Stock.list();
+		ListEntity.regEntity();
 
 		MinecraftForge.EVENT_BUS.register(new EventStock());
 
@@ -119,13 +124,10 @@ public class PackStock implements IPackClass {
 		OTHER;
 	}
 
-	public static typeDropVanillaFlowers geteDropVanillaFlowers() {
-		if (is_drop_vanilla_flowers.equals("default"))
-			return typeDropVanillaFlowers.DEFAULT;
-		else if (is_drop_vanilla_flowers.equals("vanilla_dye"))
-			return typeDropVanillaFlowers.VANILLA_DYE;
-		else if (is_drop_vanilla_flowers.equals("petals"))
-			return typeDropVanillaFlowers.PETALS;
+	public static typeDropVanillaFlowers getDropVanillaFlowers() {
+		if (is_drop_vanilla_flowers.equals("default")) return typeDropVanillaFlowers.DEFAULT;
+		else if (is_drop_vanilla_flowers.equals("vanilla_dye")) return typeDropVanillaFlowers.VANILLA_DYE;
+		else if (is_drop_vanilla_flowers.equals("petals")) return typeDropVanillaFlowers.PETALS;
 		else return typeDropVanillaFlowers.OTHER;
 	}
 	//---------------------------------------------------------------------

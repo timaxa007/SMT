@@ -7,6 +7,6 @@ import net.minecraft.world.World;
 
 public interface IInteractionWithBlock {
 
-	public void interactionWithBlock(ItemStack is, World world, EntityPlayer player, Block block, int x, int y, int z);
+	public void interactionWithBlock(ItemStack is, World world, EntityPlayer player, int x, int y, int z);
 
 }

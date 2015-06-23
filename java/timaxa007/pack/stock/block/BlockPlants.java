@@ -95,7 +95,8 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 				}
 			}
 		}
-		return false;
+
+		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
 	}
 
 	private static void blankMessage1(EntityPlayer player, String text1, int text2) {

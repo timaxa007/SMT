@@ -30,7 +30,7 @@ public class UtilNBT {
 	}
 
 	public static boolean hasColorHex(int color_hex) {
-		return color_hex != -1;
+		return color_hex != -1 || color_hex != 0;
 	}
 	//-----------------------------------------------------------------------------
 	public static NBTTagCompound setRotation(NBTTagCompound nbt, byte rotation) {
@@ -82,6 +82,5 @@ public class UtilNBT {
 		if (nbt == null) nbt = new NBTTagCompound();
 		return nbt;
 	}
-	//------------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------------
 }

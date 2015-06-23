@@ -9,6 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import timaxa007.gui.HandlerGuiSMT;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureMachines;
 import timaxa007.smt.CoreSMT;
@@ -50,13 +51,12 @@ public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntity
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		//if (!world.isRemote) {return false;}
-		if (player.isSneaking()) {return false;}
+		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityFurnitureMachines) {
-			player.openGui(CoreSMT.instance, PackFurniture.gui_furniture_machines, world, x, y, z);
+			player.openGui(CoreSMT.instance, HandlerGuiSMT.furniture_machines, world, x, y, z);
 			return true;
 		}
-		return false;
+		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
 	}
 
 }

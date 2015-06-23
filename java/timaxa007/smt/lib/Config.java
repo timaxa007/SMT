@@ -12,7 +12,15 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class Config {
 
 	public static boolean
+	debug,
+	show_tip_info_testing,
+	show_system_info_testing
+	;
+
+	public static boolean
 	disable_module_control_button,
+	disable_module_survival_tabs,
+	disable_module_crafting,
 	disable_module_environment,
 	disable_module_status_player,
 	disable_module_weight,
@@ -20,11 +28,14 @@ public class Config {
 	disable_module_colors,
 	disable_module_fluids,
 	disable_module_forbidden,
-	disable_module_texture_map
+	disable_module_texture_map,
+	disable_module_information
 	;
 
 	public static IModuleClass
 	control_button,
+	survival_tabs,
+	crafting,
 	environment,
 	status_player,
 	weight,
@@ -32,11 +43,14 @@ public class Config {
 	colors,
 	fluids,
 	forbidden,
-	texture_map
+	texture_map,
+	information
 	;
 
 	public static boolean
 	isModuleControlButton,
+	isModuleSurvivalTabs,
+	isModuleCrafting,
 	isModuleEnvironment,
 	isModuleStatusPlayer,
 	isModuleWeight,
@@ -44,13 +58,8 @@ public class Config {
 	isModuleColors,
 	isModuleFluids,
 	isModuleForbidden,
-	isModuleTextureMap
-	;
-
-	public static boolean
-	debug,
-	show_tip_info_testing,
-	show_system_info_testing
+	isModuleTextureMap,
+	isModuleInformation
 	;
 
 	public static IPackClass
@@ -83,36 +92,6 @@ public class Config {
 	disable_pack_weapon
 	;
 
-	public static void module(FMLPreInitializationEvent event) {
-		Configuration cfg_module = new Configuration(new File("./config/smt", "node_module.cfg"));
-
-		cfg_module.load();
-
-		disable_module_control_button = cfg_module.get("disable_module", "control_button", false).getBoolean();
-		disable_module_environment = cfg_module.get("disable_module", "environment", false).getBoolean();
-		disable_module_status_player = cfg_module.get("disable_module", "status_player", false).getBoolean();
-		disable_module_weight = cfg_module.get("disable_module", "weight", false).getBoolean();
-		disable_module_effects = cfg_module.get("disable_module", "effects", false).getBoolean();
-		disable_module_colors = cfg_module.get("disable_module", "colors", false).getBoolean();
-		disable_module_fluids = cfg_module.get("disable_module", "fluids", false).getBoolean();
-		disable_module_forbidden = cfg_module.get("disable_module", "forbidden", false).getBoolean();
-		disable_module_texture_map = cfg_module.get("disable_module", "texture_map", false).getBoolean();
-
-		cfg_module.save();
-
-		verificationModule();
-
-		if (isModuleControlButton) control_button.preInit(event);
-		if (isModuleEnvironment) environment.preInit(event);
-		if (isModuleStatusPlayer) status_player.preInit(event);
-		if (isModuleWeight) weight.preInit(event);
-		if (isModuleEffect) effects.preInit(event);
-		if (isModuleColors) colors.preInit(event);
-		if (isModuleFluids) fluids.preInit(event);
-		if (isModuleForbidden) forbidden.preInit(event);
-		if (isModuleTextureMap) texture_map.preInit(event);
-	}
-
 	public static void core(FMLPreInitializationEvent event) {
 
 		Configuration cfg = new Configuration(new File("./config/smt", "core_smt.cfg"));
@@ -130,6 +109,42 @@ public class Config {
 
 		cfg.save();
 
+	}
+
+	public static void module(FMLPreInitializationEvent event) {
+		Configuration cfg_module = new Configuration(new File("./config/smt", "node_module.cfg"));
+
+		cfg_module.load();
+
+		disable_module_control_button = cfg_module.get("disable_module", "control_button", false).getBoolean();
+		disable_module_survival_tabs = cfg_module.get("disable_module", "survival_tabs", false).getBoolean();
+		disable_module_crafting = cfg_module.get("disable_module", "crafting", false).getBoolean();
+		disable_module_environment = cfg_module.get("disable_module", "environment", false).getBoolean();
+		disable_module_status_player = cfg_module.get("disable_module", "status_player", false).getBoolean();
+		disable_module_weight = cfg_module.get("disable_module", "weight", false).getBoolean();
+		disable_module_effects = cfg_module.get("disable_module", "effects", false).getBoolean();
+		disable_module_colors = cfg_module.get("disable_module", "colors", false).getBoolean();
+		disable_module_fluids = cfg_module.get("disable_module", "fluids", false).getBoolean();
+		disable_module_forbidden = cfg_module.get("disable_module", "forbidden", false).getBoolean();
+		disable_module_texture_map = cfg_module.get("disable_module", "texture_map", false).getBoolean();
+		disable_module_information = cfg_module.get("disable_module", "information", false).getBoolean();
+
+		cfg_module.save();
+
+		verificationModule();
+
+		if (isModuleControlButton) control_button.preInit(event);
+		if (isModuleSurvivalTabs) survival_tabs.preInit(event);
+		if (isModuleCrafting) crafting.preInit(event);
+		if (isModuleEnvironment) environment.preInit(event);
+		if (isModuleStatusPlayer) status_player.preInit(event);
+		if (isModuleWeight) weight.preInit(event);
+		if (isModuleEffect) effects.preInit(event);
+		if (isModuleColors) colors.preInit(event);
+		if (isModuleFluids) fluids.preInit(event);
+		if (isModuleForbidden) forbidden.preInit(event);
+		if (isModuleTextureMap) texture_map.preInit(event);
+		if (isModuleInformation) information.preInit(event);
 	}
 
 	public static void pack(FMLPreInitializationEvent event) {
@@ -175,6 +190,14 @@ public class Config {
 			control_button = checkModule(CoreSMT.PATH_MODULE + ".control_button.ModuleControlButton");
 		isModuleControlButton = control_button != null;
 
+		if (!disable_module_survival_tabs)
+			survival_tabs = checkModule(CoreSMT.PATH_MODULE + ".survival_tabs.ModuleSurvivalTabs");
+		isModuleSurvivalTabs = survival_tabs != null;
+
+		if (!disable_module_crafting)
+			crafting = checkModule(CoreSMT.PATH_MODULE + ".crafting.ModuleCrafting");
+		isModuleCrafting = crafting != null;
+
 		if (!disable_module_environment)
 			environment = checkModule(CoreSMT.PATH_MODULE + ".environment.ModuleEnvironment");
 		isModuleEnvironment = environment != null;
@@ -206,6 +229,10 @@ public class Config {
 		if (!disable_module_texture_map)
 			texture_map = checkModule(CoreSMT.PATH_MODULE + ".texture_map.ModuleTextureMap");
 		isModuleTextureMap = texture_map != null;
+
+		if (!disable_module_information)
+			information = checkModule(CoreSMT.PATH_MODULE + ".information.ModuleInformation");
+		isModuleInformation = information != null;
 
 	}
 
@@ -257,4 +284,21 @@ public class Config {
 		return null;
 	}
 
+	//---------------------------------------------------------------------
+	public static enum typeDifficulty {
+		AUTO,
+		EASY,
+		MEDIUM,
+		HARD,
+		OTHER;
+	}
+
+	public static typeDifficulty getTypeDifficulty(String str) {
+		if (str.equals("auto")) return typeDifficulty.AUTO;
+		else if (str.equals("easy")) return typeDifficulty.EASY;
+		else if (str.equals("medium")) return typeDifficulty.MEDIUM;
+		else if (str.equals("hard")) return typeDifficulty.HARD;
+		else return typeDifficulty.OTHER;
+	}
+	//---------------------------------------------------------------------
 }

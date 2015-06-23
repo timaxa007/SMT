@@ -7,8 +7,10 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IModuleClass;
+import timaxa007.module.NodeModule.ModuleNode;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+@ModuleNode(moduleTag = ModuleColors.MODID, moduleName = ModuleColors.MODNAME, moduleVersion = ModuleColors.VERSION)
 /**@author timaxa007**/
 public class ModuleColors implements IModuleClass {
 
