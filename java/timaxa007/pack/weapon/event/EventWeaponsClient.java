@@ -12,6 +12,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import org.lwjgl.opengl.GL11;
 
 import timaxa007.module.control_button.api.IScope;
+import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventWeaponsClient {
@@ -20,7 +21,7 @@ public class EventWeaponsClient {
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void onRenderCrosshairs(RenderGameOverlayEvent.Pre e) {
-		EntityClientPlayerMP player = mc.thePlayer;
+		EntityClientPlayerMP player = UtilSMT.getPlayerClient();
 		ItemStack current = player.getCurrentEquippedItem();
 
 		if (current != null && current.getItem() instanceof IScope && current.getTagCompound() != null) {

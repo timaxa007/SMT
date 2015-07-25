@@ -56,19 +56,17 @@ public class ElectricRobot extends ModifiedItem {
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		list.add(new ItemStack(id));
-		if (addNBT(0) != null) list.add(addNBT(0));
-		if (addNBT(1) != null) list.add(addNBT(1));
-		if (addNBT(2) != null) list.add(addNBT(2));
+		list.add(addNBT(0));
+		list.add(addNBT(1));
+		list.add(addNBT(2));
 	}
 
 	public static ItemStack addNBT(int tier) {
-		if (PackTechno.item.electric_robot_be) {
-			ItemStack is = new ItemStack(PackTechno.item.electric_robot);
-			NBTTagCompound nbt = new NBTTagCompound();
-			nbt.setByte("TierRobot", (byte)tier);
-			is.setTagCompound(nbt);
-			return is;
-		} else return null;
+		ItemStack is = new ItemStack(PackTechno.item.electric_robot);
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setByte("TierRobot", (byte)tier);
+		is.setTagCompound(nbt);
+		return is;
 	}
 
 }

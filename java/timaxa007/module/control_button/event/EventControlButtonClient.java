@@ -1,12 +1,12 @@
 package timaxa007.module.control_button.event;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import timaxa007.module.control_button.api.IScope;
+import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventControlButtonClient {
@@ -29,7 +29,7 @@ public class EventControlButtonClient {
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void onRenderCrosshairs(RenderGameOverlayEvent.Pre e) {
-		ItemStack current = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
+		ItemStack current = UtilSMT.getPlayerClient().getCurrentEquippedItem();
 
 		if (current != null && current.getItem() instanceof IScope) {
 			NBTTagCompound nbt = current.getTagCompound();

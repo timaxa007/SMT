@@ -23,13 +23,9 @@ public class ModifiedBlock extends Block implements IWeight {
 		return this;
 	}
 
-	public String getTag() {
-		return tag;
-	}
+	public String getTag() {return tag;}
 
 	@Override
-	public float getWeight(ItemStack is) {
-		return 0.0F;
-	}
+	public float getWeight(ItemStack is) {return 0.0F;}
 
 }

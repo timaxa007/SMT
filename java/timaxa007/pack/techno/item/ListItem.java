@@ -12,7 +12,8 @@ public class ListItem {
 	tool_electric_saw_be,
 	electric_detector_be,
 	electric_jetpack_be,
-	electric_robot_be
+	electric_robot_be,
+	container_fluid_be
 	;
 
 	public static Item
@@ -22,7 +23,8 @@ public class ListItem {
 	tool_electric_saw,
 	electric_detector,
 	electric_jetpack,
-	electric_robot
+	electric_robot,
+	container_fluid
 	;
 
 	public static Item[] list_item;
@@ -35,7 +37,8 @@ public class ListItem {
 		if (tool_electric_saw_be) tool_electric_saw = new ToolElectricSaw("tool_electric_saw");
 		if (electric_detector_be) electric_detector = new ElectricDetector("electric_detector");
 		if (electric_jetpack_be) electric_jetpack = new ElectricJetpack("electric_jetpack");
-		if (electric_robot_be) electric_robot = new ElectricRobot("robot");
+		if (electric_robot_be) electric_robot = new ElectricRobot("electric_robot");
+		if (container_fluid_be) container_fluid = new ContainerSubstance("container_fluid");
 
 		list_item = new Item[] {
 				items_for_techno,
@@ -44,7 +47,8 @@ public class ListItem {
 				tool_electric_saw,
 				electric_detector,
 				electric_jetpack,
-				electric_robot
+				electric_robot,
+				container_fluid
 		};
 
 		UtilSMT.UtilItem.RegItem(list_item);

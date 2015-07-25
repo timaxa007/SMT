@@ -5,14 +5,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import timaxa007.pack.item.PackItems;
+import timaxa007.pack.item.PackItem;
 import timaxa007.smt.object.ModifiedItem;
 
 public class ItemsItems extends ModifiedItem {
 
 	public ItemsItems(String tag) {
 		super(tag);
-		setCreativeTab(PackItems.tab_items);
+		setCreativeTab(PackItem.tab_items);
 		setTextureName("timaxa007:icon/item");
 	}
 

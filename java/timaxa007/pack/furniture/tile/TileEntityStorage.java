@@ -14,7 +14,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import timaxa007.gui.StorageContainer;
+import timaxa007.gui.tile.StorageContainer;
 import timaxa007.smt.util.UtilString;
 
 public class TileEntityStorage extends TileEntity implements IInventory {
@@ -66,6 +66,32 @@ public class TileEntityStorage extends TileEntity implements IInventory {
 					}
 				}
 			}
+
+			TileEntity tile = worldObj.getTileEntity(xCoord, yCoord, zCoord);
+
+			if (tile != null && tile instanceof IInventory) {
+				IInventory inv = (IInventory)tile;
+
+				//Определёный слот
+				//---start
+				ItemStack slot_0 = inv.getStackInSlot(0);
+				if (slot_0 != null) {
+
+				}
+				//---end
+
+				//Все слоты
+				//---start
+				for (int i = 0; i < inv.getSizeInventory(); i++) {
+					ItemStack slot = inv.getStackInSlot(i);
+					if (slot != null) {
+
+					}
+				}
+				//---end
+
+			}
+
 		}
 
 		prevLidAngle = lidAngle;

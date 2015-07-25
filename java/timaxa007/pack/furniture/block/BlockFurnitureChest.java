@@ -8,10 +8,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import timaxa007.gui.HandlerGuiSMT;
+import timaxa007.gui.HelperGui;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
-import timaxa007.smt.CoreSMT;
 import timaxa007.smt.lib.ActionModel;
 import timaxa007.smt.object.ModifiedBlock;
 
@@ -68,7 +67,7 @@ public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityPro
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityFurnitureChest) {
-			player.openGui(CoreSMT.instance, HandlerGuiSMT.furniture_chest, world, x, y, z);
+			HelperGui.openGui(HelperGui.GuiID.FURNITURE_CHEST, player);
 			return true;
 		}
 		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);

@@ -3,7 +3,7 @@ package timaxa007.pack.weapon.item;
 import java.util.List;
 
 import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.weapon.PackWeapons;
+import timaxa007.pack.weapon.PackWeapon;
 import timaxa007.smt.object.ModifiedItem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,7 +16,7 @@ public class Blaster extends ModifiedItem {
 
 	public Blaster(String tag) {
 		super(tag);
-		setCreativeTab(PackWeapons.tab_weapons);
+		setCreativeTab(PackWeapon.tab_weapons);
 		setFull3D();
 	}
 

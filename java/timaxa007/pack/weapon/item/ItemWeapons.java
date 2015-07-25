@@ -13,12 +13,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import timaxa007.gui.HandlerGuiSMT;
+import timaxa007.gui.HelperGui;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.module.control_button.api.IScope;
 import timaxa007.module.control_button.api.IUpdateClient;
-import timaxa007.pack.weapon.PackWeapons;
+import timaxa007.pack.weapon.PackWeapon;
 import timaxa007.pack.weapon.packet.MessageActionWeapons;
 import timaxa007.pack.weapon.util.RegistryWeapons;
 import timaxa007.pack.weapon.util.Weapon;
@@ -54,7 +54,7 @@ IUpdateClient
 		setMaxStackSize(1);
 		setMaxDamage(1024);
 		setNoRepair();
-		setCreativeTab(PackWeapons.tab_weapons);
+		setCreativeTab(PackWeapon.tab_weapons);
 		setTextureName("timaxa007:weapons");
 	}
 	//--------------------------------------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ IUpdateClient
 					//System.out.println("fire1 " + tick);
 					delay = RegistryWeapons.RegistryWeapon.getWeapon(nbt.getString("Weapon")).getDelay();
 					System.out.println(delay);
-					PackWeapons.network.sendToServer(new MessageActionWeapons(1));
+					PackWeapon.network.sendToServer(new MessageActionWeapons(1));
 				}
 			}
 
@@ -124,16 +124,16 @@ IUpdateClient
 	public void onRightClickTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 		/*
 		if (isModeIn && !isModeOut)
-			PackWeapons.network.sendToServer(new MessageActionWeapons(5, true));
+			PackWeapon.network.sendToServer(new MessageActionWeapons(5, true));
 		if (isModeOut && !isModeIn)
-			PackWeapons.network.sendToServer(new MessageActionWeapons(6, true));
+			PackWeapon.network.sendToServer(new MessageActionWeapons(6, true));
 		 */
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void onRightClickClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		isRightClick = isPress;
-		PackWeapons.network.sendToServer(new MessageActionWeapons((isPress ? 2 : -2)));
+		PackWeapon.network.sendToServer(new MessageActionWeapons((isPress ? 2 : -2)));
 	}
 
 	public void scope(ItemStack is, World world, EntityPlayer player, boolean isPress) {
@@ -155,7 +155,7 @@ IUpdateClient
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt != null && nbt.hasKey("Weapon")) {
 			if (isPress) {
-				PackWeapons.network.sendToServer(new MessageActionWeapons(3));
+				PackWeapon.network.sendToServer(new MessageActionWeapons(3));
 			}
 		}
 	}
@@ -188,11 +188,11 @@ IUpdateClient
 	@SideOnly(Side.CLIENT)
 	public void onModeClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		isMode = isPress;
-		PackWeapons.network.sendToServer(new MessageActionWeapons(4));
+		PackWeapon.network.sendToServer(new MessageActionWeapons(4));
 	}
 
 	public void mode(ItemStack is, World world, EntityPlayer player) {
-		player.openGui(CoreSMT.instance, HandlerGuiSMT.modify_weapon, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+		HelperGui.openGui(HelperGui.GuiID.MODIFY_WEAPON, player);
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)
@@ -209,14 +209,14 @@ IUpdateClient
 	public void onModeInTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 		if (tick > 10 && isRightClick && !isModeOut)
 			if (tick % 4 == 0)
-				PackWeapons.network.sendToServer(new MessageActionWeapons(5));
+				PackWeapon.network.sendToServer(new MessageActionWeapons(5));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void onModeInClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		isModeIn = isPress;
 		if (isPress && isRightClick && !isModeOut)
-			PackWeapons.network.sendToServer(new MessageActionWeapons(5));
+			PackWeapon.network.sendToServer(new MessageActionWeapons(5));
 	}
 
 	public void zoomIn(ItemStack is, World world, EntityPlayer player) {
@@ -232,14 +232,14 @@ IUpdateClient
 	public void onModeOutTickClient(ItemStack is, World world, EntityPlayer player, int tick) {
 		if (tick > 10 && isRightClick && !isModeIn)
 			if (tick % 4 == 0)
-				PackWeapons.network.sendToServer(new MessageActionWeapons(6));
+				PackWeapon.network.sendToServer(new MessageActionWeapons(6));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void onModeOutClient(ItemStack is, World world, EntityPlayer player, boolean isPress) {
 		isModeOut = isPress;
 		if (isPress && isRightClick && !isModeIn)
-			PackWeapons.network.sendToServer(new MessageActionWeapons(6));
+			PackWeapon.network.sendToServer(new MessageActionWeapons(6));
 	}
 
 	public void zoomOut(ItemStack is, World world, EntityPlayer player) {
@@ -316,7 +316,7 @@ IUpdateClient
 	}
 
 	public static ItemStack addNBT(String par1) {
-		ItemStack is = new ItemStack(PackWeapons.item.weapon, 1, 0);
+		ItemStack is = new ItemStack(PackWeapon.item.weapon, 1, 0);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("Weapon", par1);
 

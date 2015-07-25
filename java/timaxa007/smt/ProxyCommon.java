@@ -10,7 +10,7 @@ public class ProxyCommon {
 
 	public static IProxyModuleCommon 
 	control_button,
-	survival_tabs,
+	player_inventory,
 	crafting,
 	environment,
 	status_player,
@@ -38,7 +38,7 @@ public class ProxyCommon {
 		verificationModuleCommon();
 
 		if (control_button != null) control_button.preInit();
-		if (survival_tabs != null) survival_tabs.preInit();
+		if (player_inventory != null) player_inventory.preInit();
 		if (crafting != null) crafting.preInit();
 		if (environment != null) environment.preInit();
 		if (status_player != null) status_player.preInit();
@@ -67,7 +67,7 @@ public class ProxyCommon {
 		if (CoreSMT.config.debug) FMLLog.log(CoreSMT.MODID, Level.DEBUG, "Successful initialized common part.");
 
 		if (control_button != null) control_button.init();
-		if (survival_tabs != null) survival_tabs.init();
+		if (player_inventory != null) player_inventory.init();
 		if (crafting != null) crafting.init();
 		if (environment != null) environment.init();
 		if (status_player != null) status_player.init();
@@ -92,7 +92,7 @@ public class ProxyCommon {
 	public void postInit() {
 
 		if (control_button != null) control_button.postInit();
-		if (survival_tabs != null) survival_tabs.postInit();
+		if (player_inventory != null) player_inventory.postInit();
 		if (crafting != null) crafting.postInit();
 		if (environment != null) environment.postInit();
 		if (status_player != null) status_player.postInit();
@@ -119,8 +119,8 @@ public class ProxyCommon {
 		if (CoreSMT.config.isModuleControlButton)
 			control_button = checkModuleCommon(CoreSMT.PATH_MODULE + ".control_button.ProxyCommon");
 
-		if (CoreSMT.config.isModuleSurvivalTabs)
-			survival_tabs = checkModuleCommon(CoreSMT.PATH_MODULE + ".survival_tabs.ProxyCommon");
+		if (CoreSMT.config.isModulePlayerInventory)
+			player_inventory = checkModuleCommon(CoreSMT.PATH_MODULE + ".player_inventory.ProxyCommon");
 
 		if (CoreSMT.config.isModuleCrafting)
 			crafting = checkModuleCommon(CoreSMT.PATH_MODULE + ".crafting.ProxyCommon");
@@ -140,8 +140,8 @@ public class ProxyCommon {
 		if (CoreSMT.config.isModuleColors)
 			colors = checkModuleCommon(CoreSMT.PATH_MODULE + ".colors.ProxyCommon");
 
-		if (CoreSMT.config.isModuleFluids)
-			fluids = checkModuleCommon(CoreSMT.PATH_MODULE + ".fluids.ProxyCommon");
+		if (CoreSMT.config.isModuleSubstance)
+			fluids = checkModuleCommon(CoreSMT.PATH_MODULE + ".substance.ProxyCommon");
 
 		if (CoreSMT.config.isModuleForbidden)
 			forbidden = checkModuleCommon(CoreSMT.PATH_MODULE + ".forbidden.ProxyCommon");

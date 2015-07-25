@@ -1,11 +1,10 @@
 package timaxa007.gui;
 
-import timaxa007.pack.weapon.item.ItemWeapons;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -14,10 +13,13 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 import org.lwjgl.opengl.GL11;
 
+import timaxa007.pack.weapon.item.ItemWeapons;
+import timaxa007.smt.util.UtilSMT;
+
 public class WeaponsIngameGUI extends GuiIngameForge {
 
 	Minecraft mc = Minecraft.getMinecraft();
-	EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+	EntityClientPlayerMP player = UtilSMT.getPlayerClient();
 
 	private static final int WHITE = 0xFFFFFF;
 
@@ -124,7 +126,7 @@ public class WeaponsIngameGUI extends GuiIngameForge {
 	public void renderAmmoAmt(int width, int height) {
 		Tessellator tessellator = Tessellator.instance;
 
-		ItemStack current = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem();
+		ItemStack current = UtilSMT.getPlayerClient().getCurrentEquippedItem();
 
 		if (current != null && current.getItem() instanceof ItemWeapons && current.getTagCompound() != null) {
 			NBTTagCompound nbt = current.getTagCompound();

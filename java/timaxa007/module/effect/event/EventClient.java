@@ -1,13 +1,13 @@
 package timaxa007.module.effect.event;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 
 import org.lwjgl.opengl.GL11;
 
+import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventClient {
@@ -15,7 +15,7 @@ public class EventClient {
 	@SubscribeEvent
 	public void fogDistance(EntityViewRenderEvent.RenderFogEvent e) {
 		float f1 = e.farPlaneDistance;
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		EntityClientPlayerMP player = UtilSMT.getPlayerClient();
 		ItemStack current = player.getCurrentEquippedItem();
 
 		if (current != null) {
@@ -35,7 +35,7 @@ public class EventClient {
 	@SubscribeEvent
 	public void fogDistance(EntityViewRenderEvent.RenderFogEvent e) {
 		float f1 = e.farPlaneDistance;
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		EntityClientPlayerMP player = UtilSMT.getPlayerClient();
 		ItemStack current = player.getCurrentEquippedItem();
 
 		if (current != null) {
@@ -49,7 +49,7 @@ public class EventClient {
 
 	@SubscribeEvent
 	public void fogColor(EntityViewRenderEvent.FogColors e) {
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		EntityClientPlayerMP player = UtilSMT.getPlayerClient();
 		ItemStack current = player.getCurrentEquippedItem();
 
 		if (current != null) {

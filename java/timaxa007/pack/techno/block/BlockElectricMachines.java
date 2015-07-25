@@ -11,10 +11,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import timaxa007.gui.HandlerGuiSMT;
+import timaxa007.gui.HelperGui;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.tile.TileEntityElectricMachines;
-import timaxa007.smt.CoreSMT;
 import timaxa007.smt.object.ModifiedBlock;
 
 public class BlockElectricMachines extends ModifiedBlock implements ITileEntityProvider {
@@ -86,7 +85,7 @@ public class BlockElectricMachines extends ModifiedBlock implements ITileEntityP
 		if (te == null || player.isSneaking()) return false;
 
 		if (te != null && te instanceof TileEntityElectricMachines) {
-			player.openGui(CoreSMT.instance, HandlerGuiSMT.electric_machines, world, x, y, z);
+			HelperGui.openGui(HelperGui.GuiID.ELECTRIC_MACHINES, player);
 			return true;
 		}
 

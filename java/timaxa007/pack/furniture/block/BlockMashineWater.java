@@ -13,10 +13,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import timaxa007.gui.HandlerGuiSMT;
+import timaxa007.gui.HelperGui;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityMashineWater;
-import timaxa007.smt.CoreSMT;
 import timaxa007.smt.object.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,25 +31,11 @@ public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvi
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityMashineWater();
-	}
-
-	public int getRenderType() {
-		return PackFurniture.render.block_jar01_modelID;
-	}
-
-	public boolean isOpaqueCube() {
-		return false;
-	}
-
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	public int idPicked(World world, int x, int y, int z) {
-		return 0;
-	}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityMashineWater();}
+	public int getRenderType() {return PackFurniture.render.block_jar01_modelID;}
+	public boolean isOpaqueCube() {return false;}
+	public boolean renderAsNormalBlock() {return false;}
+	public int idPicked(World world, int x, int y, int z) {return 0;}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
@@ -81,7 +66,7 @@ public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvi
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityMashineWater) {
-			player.openGui(CoreSMT.instance, HandlerGuiSMT.mashine_water, world, x, y, z);
+			HelperGui.openGui(HelperGui.GuiID.MASHINE_WATER, player);
 			return true;
 		}
 		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);

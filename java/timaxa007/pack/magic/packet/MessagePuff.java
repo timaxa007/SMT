@@ -1,9 +1,10 @@
 package timaxa007.pack.magic.packet;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.entity.player.EntityPlayer;
 import timaxa007.pack.magic.util.ActionPuff;
+import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -46,12 +47,11 @@ public class MessagePuff implements IMessage {
 			double cord_x = packet.cord_x;
 			double cord_y = packet.cord_y;
 			double cord_z = packet.cord_z;
-			EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
 			
 			switch(act) {
-			case 1:ActionPuff.puff1(player, cord_x, cord_y, cord_z);break;
-			case 2:ActionPuff.craft1(player, cord_x, cord_y, cord_z);break;
-			case 3:ActionPuff.fried1(player, cord_x, cord_y, cord_z);break;
+			case 1:ActionPuff.puff1(cord_x, cord_y, cord_z);break;
+			case 2:ActionPuff.craft1(cord_x, cord_y, cord_z);break;
+			case 3:ActionPuff.fried1(cord_x, cord_y, cord_z);break;
 			default:break;
 			}
 

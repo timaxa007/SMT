@@ -1,10 +1,12 @@
 package timaxa007.pack.techno.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import timaxa007.pack.techno.tile.TileEntityElectricMachines;
 import timaxa007.pack.techno.tile.TileEntityElectricWires;
 import timaxa007.pack.techno.tile.TileEntityFarmMashines;
 import timaxa007.pack.techno.tile.TileEntityModuleMovement;
+import timaxa007.pack.techno.util.MaterialTechno;
 import timaxa007.smt.util.UtilSMT;
 
 public class ListBlock {
@@ -29,6 +31,8 @@ public class ListBlock {
 	te_module_movement,
 	te_farm_mashines
 	;
+
+	public static Material techno_block = new MaterialTechno();
 
 	public static final Block.SoundType soundElectricMachines = new Block.SoundType("stone", 1.0F, 1.0F) {
 		//public String getBreakSound() {return "dig.stone";}

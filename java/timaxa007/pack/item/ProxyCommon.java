@@ -1,5 +1,6 @@
 package timaxa007.pack.item;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraftforge.common.MinecraftForge;
 import timaxa007.api.IProxyPackCommon;
 import timaxa007.pack.item.event.*;
@@ -20,6 +21,7 @@ public class ProxyCommon implements IProxyPackCommon {
 	public void init() {
 
 		MinecraftForge.EVENT_BUS.register(new EventWorldBlockData());
+		FMLCommonHandler.instance().bus().register(new EventUpdate());
 
 	}
 

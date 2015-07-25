@@ -5,6 +5,8 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +20,6 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
-import timaxa007.gui.HandlerGuiSMT;
 import timaxa007.smt.CoreSMT;
 import timaxa007.smt.object.ModifiedBlock;
 import timaxa007.smt.object.ModifiedItem;
@@ -120,10 +121,6 @@ public class UtilSMT {
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilPlayer {
 
-		public static void openGui(int id, EntityPlayer player) {
-			player.openGui(CoreSMT.instance, id, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
-		}
-
 	}
 	//-----------------------------------------------------------------------------------------------
 	public static class UtilEntity {
@@ -161,7 +158,7 @@ public class UtilSMT {
 		}
 
 		public static void setBiome(int biomeID, World world, int x, int z) {
-			if (world == null) world = Minecraft.getMinecraft().theWorld;
+			if (world == null) world = UtilSMT.getWorldClient();
 			if (world != null) {
 				Chunk chunk = world.getChunkFromBlockCoords(x, z);
 				byte[] array = chunk.getBiomeArray();
@@ -251,7 +248,7 @@ public class UtilSMT {
 		}
 
 		public static MovingObjectPosition entity(float fasc, double dist, boolean interact) {
-			if (mc.renderViewEntity != null && mc.theWorld != null) {
+			if (mc.renderViewEntity != null && UtilSMT.getWorldClient() != null) {
 
 				Entity pointedEntity = null;
 				double d0 = dist;
@@ -268,7 +265,7 @@ public class UtilSMT {
 				pointedEntity = null;
 				Vec3 vec33 = null;
 				float f1 = 1.0F;
-				List list = mc.theWorld.getEntitiesWithinAABBExcludingEntity(mc.renderViewEntity, mc.renderViewEntity.boundingBox.addCoord(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0).expand((double)f1, (double)f1, (double)f1));
+				List list = UtilSMT.getWorldClient().getEntitiesWithinAABBExcludingEntity(mc.renderViewEntity, mc.renderViewEntity.boundingBox.addCoord(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0).expand((double)f1, (double)f1, (double)f1));
 				double d2 = d1;
 
 				for (int i = 0; i < list.size(); ++i) {
@@ -331,13 +328,13 @@ public class UtilSMT {
 		}
 
 		public static MovingObjectPosition block(float fasc, double dist, boolean interact) {
-			if (mc.renderViewEntity != null && mc.theWorld != null) {
+			if (mc.renderViewEntity != null && UtilSMT.getWorldClient() != null) {
 
 				Vec3 vec3 = mc.renderViewEntity.getPosition(fasc);
 				Vec3 vec31 = mc.renderViewEntity.getLook(fasc);
 				Vec3 vec32 = vec3.addVector(vec31.xCoord * dist, vec31.yCoord * dist, vec31.zCoord * dist);
 
-				MovingObjectPosition movingobjectposition = mc.theWorld.rayTraceBlocks(vec3, vec32, interact);
+				MovingObjectPosition movingobjectposition = UtilSMT.getWorldClient().rayTraceBlocks(vec3, vec32, interact);
 
 				return movingobjectposition;
 			}
@@ -363,12 +360,12 @@ public class UtilSMT {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static World getWorldClient() {
+	public static WorldClient getWorldClient() {
 		return FMLClientHandler.instance().getWorldClient();
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static EntityPlayer getPlayerClient() {
+	public static EntityClientPlayerMP getPlayerClient() {
 		return FMLClientHandler.instance().getClientPlayerEntity();
 	}
 

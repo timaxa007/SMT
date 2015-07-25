@@ -15,7 +15,7 @@ public class EventClientInformation {
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void onRenderCrosshairs(RenderGameOverlayEvent.Pre e) {
-		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+		EntityClientPlayerMP player = UtilSMT.getPlayerClient();
 		WorldClient world = Minecraft.getMinecraft().theWorld;
 		ItemStack current = player.getCurrentEquippedItem();
 		MovingObjectPosition mop = UtilSMT.LookOBJ.look(true);

@@ -9,10 +9,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import timaxa007.gui.HandlerGuiSMT;
+import timaxa007.gui.HelperGui;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureMachines;
-import timaxa007.smt.CoreSMT;
 import timaxa007.smt.object.ModifiedBlock;
 
 public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntityProvider {
@@ -53,7 +52,7 @@ public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntity
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityFurnitureMachines) {
-			player.openGui(CoreSMT.instance, HandlerGuiSMT.furniture_machines, world, x, y, z);
+			HelperGui.openGui(HelperGui.GuiID.FURNITURE_MACHINES, player);
 			return true;
 		}
 		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);

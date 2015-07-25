@@ -7,7 +7,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import timaxa007.pack.item.PackItems;
+import timaxa007.pack.item.PackItem;
 import timaxa007.smt.object.ModifiedItem;
 
 public class ToolShield extends ModifiedItem {
@@ -19,7 +19,7 @@ public class ToolShield extends ModifiedItem {
 		setDamage(1);
 		setMaxStackSize(1);
 		setMaxDamage(1000);
-		setCreativeTab(PackItems.tab_items);
+		setCreativeTab(PackItem.tab_items);
 	}
 
 	public Item setDamage(int damage) {

@@ -1,22 +1,22 @@
 package timaxa007.pack.stock.lib;
 
-import timaxa007.module.fluids.util.Fluid;
+import timaxa007.module.substance.util.Substance;
 
 public class ListStock {
 	/*
-	public static final Fluid.TypeFluid vegetable_oil = new Fluid.TypeFluid("vegetable_oil");
-	public static final Fluid.TypeFluid fat = new Fluid.TypeFluid("fat");
-	public static final Fluid.TypeFluid sauce = new Fluid.TypeFluid("sauce");
-	public static final Fluid.TypeFluid jam = new Fluid.TypeFluid("jam");
-	public static final Fluid.TypeFluid jelly = new Fluid.TypeFluid("jelly");
-	public static final Fluid.TypeFluid icecream = new Fluid.TypeFluid("icecream");
+	public static final Substance.TypeSubstance vegetable_oil = new Substance.TypeSubstance("vegetable_oil");
+	public static final Substance.TypeSubstance fat = new Substance.TypeSubstance("fat");
+	public static final Substance.TypeSubstance sauce = new Substance.TypeSubstance("sauce");
+	public static final Substance.TypeSubstance jam = new Substance.TypeSubstance("jam");
+	public static final Substance.TypeSubstance jelly = new Substance.TypeSubstance("jelly");
+	public static final Substance.TypeSubstance icecream = new Substance.TypeSubstance("icecream");
 
-	public static final Fluid fluid_water_clear = new Fluid("water_clear").setName("water_clear").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water_dirt = new Fluid("water_dirt").setName("water_dirt").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water_salt = new Fluid("water_salt").setName("water_salt").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water_sweet = new Fluid("water_sweet").setName("water_sweet").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water_mineral = new Fluid("water_mineral").setName("water_mineral").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water_reed = new Fluid("water_reed").setName("water_reed").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_clear = new Substance("water_clear").setName("water_clear").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_dirt = new Substance("water_dirt").setName("water_dirt").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_salt = new Substance("water_salt").setName("water_salt").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_sweet = new Substance("water_sweet").setName("water_sweet").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_mineral = new Substance("water_mineral").setName("water_mineral").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_reed = new Substance("water_reed").setName("water_reed").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 	 */
 	/*
 	public ListStock() {
@@ -244,92 +244,92 @@ public class ListStock {
 	}
 	 */
 	/*
-	public static final Fluid fluid_catalyst_mix = new Fluid("catalyst_mix").setName("catalyst_mix").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_catalyst_sweet = new Fluid("catalyst_sweet").setName("catalyst_sweet").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_catalyst_mix = new Substance("catalyst_mix").setName("catalyst_mix").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_catalyst_sweet = new Substance("catalyst_sweet").setName("catalyst_sweet").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 
-	public static final Fluid fluid_ferment_mix = new Fluid("ferment_mix").setName("ferment_mix").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_ferment_sweet = new Fluid("ferment_sweet").setName("ferment_sweet").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_ferment_manure = new Fluid("ferment_manure").setName("ferment_manure").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_ferment_mineral = new Fluid("ferment_mineral").setName("ferment_mineral").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_ferment_mix = new Substance("ferment_mix").setName("ferment_mix").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_ferment_sweet = new Substance("ferment_sweet").setName("ferment_sweet").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_ferment_manure = new Substance("ferment_manure").setName("ferment_manure").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_ferment_mineral = new Substance("ferment_mineral").setName("ferment_mineral").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 
-	public static final Fluid fluid_honey_mix = new Fluid("honey_mix").setName("honey").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_molten_chocolate = new Fluid("molten_chocolate").setName("molten_chocolate").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_molten_caramel = new Fluid("molten_caramel").setName("molten_caramel").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(32.0F);
-	public static final Fluid fluid_molten_butter = new Fluid("molten_butter").setName("molten_butter").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_molten_nutella = new Fluid("molten_nutella").setName("molten_nutella").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_beer = new Fluid("beer").setName("beer").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_beer_dark = new Fluid("beer_dark").setName("beer_dark").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_beer_light = new Fluid("beer_light").setName("beer_light").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_honey_mix = new Substance("honey_mix").setName("honey").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_molten_chocolate = new Substance("molten_chocolate").setName("molten_chocolate").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_molten_caramel = new Substance("molten_caramel").setName("molten_caramel").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(32.0F);
+	public static final Substance fluid_molten_butter = new Substance("molten_butter").setName("molten_butter").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_molten_nutella = new Substance("molten_nutella").setName("molten_nutella").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_beer = new Substance("beer").setName("beer").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_beer_dark = new Substance("beer_dark").setName("beer_dark").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_beer_light = new Substance("beer_light").setName("beer_light").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
 
-	public static final Fluid fluid_soy_sauce = new Fluid("soy_sauce").setName("soy_sauce").setType(sauce).setColor(0x5C2010).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_ketchup = new Fluid("sauce_ketchup").setName("sauce_ketchup").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_mayonnaise = new Fluid("sauce_mayonnaise").setName("sauce_mayonnaise").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_chilly = new Fluid("sauce_chilly").setName("sauce_chilly").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_hot = new Fluid("sauce_hot").setName("sauce_hot").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_tomato = new Fluid("sauce_tomato").setName("sauce_tomato").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_mustard = new Fluid("sauce_mustard").setName("sauce_mustard").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_horseradish = new Fluid("sauce_horseradish").setName("sauce_horseradish").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_sour_cream = new Fluid("sauce_sour_cream").setName("sauce_sour_cream").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_cream = new Fluid("sauce_cream").setName("sauce_cream").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_milky = new Fluid("sauce_milky").setName("sauce_milky").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_mushroom = new Fluid("sauce_mushroom").setName("sauce_mushroom").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_cheese = new Fluid("sauce_cheese").setName("sauce_cheese").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_vanilla = new Fluid("sauce_vanilla").setName("sauce_vanilla").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_chocolate = new Fluid("sauce_chocolate").setName("sauce_chocolate").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_lemon = new Fluid("sauce_lemon").setName("sauce_lemon").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_fruit = new Fluid("sauce_fruit").setName("sauce_fruit").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_sauce_berry = new Fluid("sauce_berry").setName("sauce_berry").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_soy_sauce = new Substance("soy_sauce").setName("soy_sauce").setType(sauce).setColor(0x5C2010).setTemperature(16.0F);
+	public static final Substance fluid_sauce_ketchup = new Substance("sauce_ketchup").setName("sauce_ketchup").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_mayonnaise = new Substance("sauce_mayonnaise").setName("sauce_mayonnaise").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_chilly = new Substance("sauce_chilly").setName("sauce_chilly").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_hot = new Substance("sauce_hot").setName("sauce_hot").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_tomato = new Substance("sauce_tomato").setName("sauce_tomato").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_mustard = new Substance("sauce_mustard").setName("sauce_mustard").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_horseradish = new Substance("sauce_horseradish").setName("sauce_horseradish").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_sour_cream = new Substance("sauce_sour_cream").setName("sauce_sour_cream").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_cream = new Substance("sauce_cream").setName("sauce_cream").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_milky = new Substance("sauce_milky").setName("sauce_milky").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_mushroom = new Substance("sauce_mushroom").setName("sauce_mushroom").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_cheese = new Substance("sauce_cheese").setName("sauce_cheese").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_vanilla = new Substance("sauce_vanilla").setName("sauce_vanilla").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_chocolate = new Substance("sauce_chocolate").setName("sauce_chocolate").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_lemon = new Substance("sauce_lemon").setName("sauce_lemon").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_fruit = new Substance("sauce_fruit").setName("sauce_fruit").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_sauce_berry = new Substance("sauce_berry").setName("sauce_berry").setType(sauce).setColor(0xFFFFFF).setTemperature(16.0F);
 
-	public static final Fluid fluid_cider = new Fluid("cider").setName("cider").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_wine = new Fluid("wine").setName("wine").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_moonshine = new Fluid("moonshine").setName("moonshine").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_vodka = new Fluid("vodka").setName("vodka").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water_coffee = new Fluid("water_coffee").setName("water_coffee").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water_cappuccino = new Fluid("water_cappuccino").setName("water_coffee").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water_latte = new Fluid("water_latte").setName("water_coffee").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water_tea = new Fluid("water_tea").setName("water_tea").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_cocoa_water = new Fluid("cocoa_water").setName("cocoa_water").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_cocoa_milk = new Fluid("cocoa_milk").setName("cocoa_milk").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_soda = new Fluid("soda").setName("soda").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_vinegar = new Fluid("vinegar").setName("vinegar").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_broth = new Fluid("broth").setName("broth").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_decoction = new Fluid("decoction").setName("decoction").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_condensed_milk = new Fluid("condensed_milk").setName("condensed_milk").setType(Fluid.TypeFluid.liquid).setColor(0xFFD9A5).setTemperature(16.0F);
-	public static final Fluid fluid_beaten_egg = new Fluid("beaten_egg").setName("beaten_egg").setType(Fluid.TypeFluid.liquid).setColor(0xFFA9A9).setTemperature(16.0F);
+	public static final Substance fluid_cider = new Substance("cider").setName("cider").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_wine = new Substance("wine").setName("wine").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_moonshine = new Substance("moonshine").setName("moonshine").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_vodka = new Substance("vodka").setName("vodka").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_coffee = new Substance("water_coffee").setName("water_coffee").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_cappuccino = new Substance("water_cappuccino").setName("water_coffee").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_latte = new Substance("water_latte").setName("water_coffee").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water_tea = new Substance("water_tea").setName("water_tea").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_cocoa_water = new Substance("cocoa_water").setName("cocoa_water").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_cocoa_milk = new Substance("cocoa_milk").setName("cocoa_milk").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_soda = new Substance("soda").setName("soda").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_vinegar = new Substance("vinegar").setName("vinegar").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_broth = new Substance("broth").setName("broth").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_decoction = new Substance("decoction").setName("decoction").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_condensed_milk = new Substance("condensed_milk").setName("condensed_milk").setType(Substance.TypeSubstance.liquid).setColor(0xFFD9A5).setTemperature(16.0F);
+	public static final Substance fluid_beaten_egg = new Substance("beaten_egg").setName("beaten_egg").setType(Substance.TypeSubstance.liquid).setColor(0xFFA9A9).setTemperature(16.0F);
 
-	public static final Fluid fluid_sucrose = new Fluid("sucrose").setName("sucrose").setType(Fluid.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
-	public static final Fluid fluid_glucose = new Fluid("glucose").setName("glucose").setType(Fluid.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
-	public static final Fluid fluid_fructose = new Fluid("fructose").setName("fructose").setType(Fluid.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final Substance fluid_sucrose = new Substance("sucrose").setName("sucrose").setType(Substance.TypeSubstance.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final Substance fluid_glucose = new Substance("glucose").setName("glucose").setType(Substance.TypeSubstance.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final Substance fluid_fructose = new Substance("fructose").setName("fructose").setType(Substance.TypeSubstance.dust).setColor(0xFFFFFF).setTemperature(8.0F);
 	// glucose or fructose from fruit or berry
-	public static final Fluid fluid_sugar_sand_cane = new Fluid("sugar_sand_cane").setName("sugar_sand_cane").setType(Fluid.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
-	public static final Fluid fluid_sugar_sand_beet = new Fluid("sugar_sand_beet").setName("sugar_sand_beet").setType(Fluid.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
-	public static final Fluid fluid_sugar_sand_maple = new Fluid("sugar_sand_maple").setName("sugar_sand_maple").setType(Fluid.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
-	public static final Fluid fluid_sugar_sand_palm = new Fluid("sugar_sand_palm").setName("sugar_sand_palm").setType(Fluid.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
-	public static final Fluid fluid_sugar_sand_sorghum = new Fluid("sugar_sand_sorghum").setName("sugar_sand_sorghum").setType(Fluid.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
-	//public static final Fluid fluid_sugar_ = new Fluid("sugar_").setName("sugar_").setType(Fluid.TypeFluid.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final Substance fluid_sugar_sand_cane = new Substance("sugar_sand_cane").setName("sugar_sand_cane").setType(Substance.TypeSubstance.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final Substance fluid_sugar_sand_beet = new Substance("sugar_sand_beet").setName("sugar_sand_beet").setType(Substance.TypeSubstance.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final Substance fluid_sugar_sand_maple = new Substance("sugar_sand_maple").setName("sugar_sand_maple").setType(Substance.TypeSubstance.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final Substance fluid_sugar_sand_palm = new Substance("sugar_sand_palm").setName("sugar_sand_palm").setType(Substance.TypeSubstance.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	public static final Substance fluid_sugar_sand_sorghum = new Substance("sugar_sand_sorghum").setName("sugar_sand_sorghum").setType(Substance.TypeSubstance.dust).setColor(0xFFFFFF).setTemperature(8.0F);
+	//public static final Substance fluid_sugar_ = new Substance("sugar_").setName("sugar_").setType(Substance.TypeSubstance.dust).setColor(0xFFFFFF).setTemperature(8.0F);
 	// sugar_sand -> molten_caramel ->
 	//Meat
 	//Gas
-	public static final Fluid fluid_gas_smoke_burned_food = new Fluid("gas_smoke_burned_food").setName("smoke_burned_food").setType(Fluid.TypeFluid.smoke).setColor(0xFFFFFF).setTemperature(18.0F);
+	public static final Substance fluid_gas_smoke_burned_food = new Substance("gas_smoke_burned_food").setName("smoke_burned_food").setType(Substance.TypeSubstance.smoke).setColor(0xFFFFFF).setTemperature(18.0F);
 
 	//Vegetable
 
 	//Vegetable Oil 0xC2C832 - normal, 0xA7C832 - new, 0xC29332 - old.
-	public static final Fluid fluid_palm_oil = new Fluid("palm_oil").setName("palm_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	//public static final Fluid fluid_cocoa_oil = new Fluid("cocoa_oil").setName("cocoa_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_coconut_oil = new Fluid("coconut_oil").setName("coconut_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_rape_oil = new Fluid("rape_oil").setName("rape_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_flax_oil = new Fluid("flax_oil").setName("flax_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_cottonseed_oil = new Fluid("cottonseed_oil").setName("cottonseed_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_apricot_oil = new Fluid("apricot_oil").setName("apricot_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_safflower_oil = new Fluid("safflower_oil").setName("safflower_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_pistachio_oil = new Fluid("pistachio_oil").setName("pistachio_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_sesame_oil = new Fluid("sesame_oil").setName("sesame_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_hemp_oil = new Fluid("hemp_oil").setName("hemp_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_cedar_oil = new Fluid("cedar_oil").setName("cedar_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_camellia_oil = new Fluid("camellia_oil").setName("camellia_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_rosehip_oil = new Fluid("rosehip_oil").setName("rosehip_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_borage_oil = new Fluid("borage_oil").setName("borage_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
-	public static final Fluid fluid_blackcurrant_oil = new Fluid("blackcurrant_oil").setName("blackcurrant_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_palm_oil = new Substance("palm_oil").setName("palm_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	//public static final Substance fluid_cocoa_oil = new Substance("cocoa_oil").setName("cocoa_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_coconut_oil = new Substance("coconut_oil").setName("coconut_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_rape_oil = new Substance("rape_oil").setName("rape_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_flax_oil = new Substance("flax_oil").setName("flax_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_cottonseed_oil = new Substance("cottonseed_oil").setName("cottonseed_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_apricot_oil = new Substance("apricot_oil").setName("apricot_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_safflower_oil = new Substance("safflower_oil").setName("safflower_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_pistachio_oil = new Substance("pistachio_oil").setName("pistachio_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_sesame_oil = new Substance("sesame_oil").setName("sesame_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_hemp_oil = new Substance("hemp_oil").setName("hemp_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_cedar_oil = new Substance("cedar_oil").setName("cedar_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_camellia_oil = new Substance("camellia_oil").setName("camellia_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_rosehip_oil = new Substance("rosehip_oil").setName("rosehip_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_borage_oil = new Substance("borage_oil").setName("borage_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
+	public static final Substance fluid_blackcurrant_oil = new Substance("blackcurrant_oil").setName("blackcurrant_oil").setType(vegetable_oil).setColor(0xC2C832).setTemperature(16.0F);
 */
 }

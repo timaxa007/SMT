@@ -1,18 +1,16 @@
 package timaxa007.pack.mining;
 
-import java.io.File;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
 import timaxa007.api.IPackClass;
 import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.mining.block.ListBlock;
+import timaxa007.pack.mining.config.ConfigMining;
 import timaxa007.pack.mining.event.EventMining;
 import timaxa007.pack.mining.item.ListItem;
 import timaxa007.pack.mining.lib.ListMining;
@@ -35,19 +33,15 @@ public class PackMining implements IPackClass {
 	public static final String MODNAME = "PackMining";
 	public static final String VERSION = "0.227";
 
+	public static final ConfigMining config = new ConfigMining();
+	public static final ListBlock block = new ListBlock();
+	public static final ListItem item = new ListItem();
+	public static final RenderMain render = new RenderMain();
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
-	public static ListBlock block;
-	public static ListItem item;
-	public static RenderMain render;
-
 	public static BiomeGenBase biome_test;
 	public static BiomeGenBase biome_hot;
-
-	public static int world_dim_mining_id;
-	public static int world_dim_only_day_id;
-	public static int world_dim_only_night_id;
 
 	public static CreativeTabs tab_mining = new CreativeTabs("tab_mining") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMining.item.items_for_mining;}
@@ -62,21 +56,7 @@ public class PackMining implements IPackClass {
 		log = event.getModLog();
 		log.info("Starting sub-mod " + PackMining.MODNAME + ", build: " + PackMining.VERSION + ".");
 
-		Configuration cfg = new Configuration(new File("./config/smt/pack", PackMining.MODID + ".cfg"));
-		cfg.load();
-
-		world_dim_mining_id = cfg.get("world", "dimension_mining_id", 30).getInt();
-		world_dim_only_day_id = cfg.get("world", "dimension_only_day_id", 31).getInt();
-		world_dim_only_night_id = cfg.get("world", "dimension_only_night_id", 32).getInt();
-
-		block.ore_rock_ores_be = cfg.get("block", "ore_rock_ores", true).getBoolean();
-		block.ore_nether_ores_be = cfg.get("block", "ore_nether_ores", true).getBoolean();
-		block.ore_ender_ores_be = cfg.get("block", "ore_ender_ores", true).getBoolean();
-		block.cristals_be = cfg.get("block", "cristals", true).getBoolean();
-
-		item.items_for_mining_be = cfg.get("item", "items_for_mining", true).getBoolean();
-
-		cfg.save();
+		config.main();
 
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMining.MODID);
 		RegisterMessage.init(network);

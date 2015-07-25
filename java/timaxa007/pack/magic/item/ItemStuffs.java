@@ -68,6 +68,7 @@ IUpdateClient
 	public void onUpdate(ItemStack is, World world, Entity entity, int tick, boolean flag) {
 
 		if (entity instanceof EntityPlayer) {
+
 			double d0 = 8.0D;
 
 			AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double)entity.posX, (double)entity.posY, (double)entity.posZ, (double)(entity.posX + 1), (double)(entity.posY + 1), (double)(entity.posZ + 1)).expand(d0, d0, d0);

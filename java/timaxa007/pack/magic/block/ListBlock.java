@@ -1,7 +1,9 @@
 package timaxa007.pack.magic.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import timaxa007.pack.magic.tile.*;
+import timaxa007.pack.magic.util.MaterialOreMagic;
 import timaxa007.smt.util.UtilSMT;
 
 public class ListBlock {
@@ -23,6 +25,8 @@ public class ListBlock {
 	te_magic_cauldron,
 	te_magic_spawner
 	;
+
+	public static final Material ore_magic = new MaterialOreMagic();
 
 	public static Block[] list_block;
 

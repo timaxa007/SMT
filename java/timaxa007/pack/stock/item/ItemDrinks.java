@@ -11,8 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import timaxa007.module.fluids.util.Fluid;
-import timaxa007.module.fluids.util.RegistryFluids;
+import timaxa007.module.substance.util.Substance;
+import timaxa007.module.substance.util.RegistrySubstance;
 import timaxa007.pack.stock.PackStock;
 import timaxa007.smt.object.ModifiedItem;
 import timaxa007.smt.util.UtilString;
@@ -24,21 +24,21 @@ public class ItemDrinks extends ModifiedItem {
 	@SideOnly(Side.CLIENT) private IIcon[] icon_tex;
 	@SideOnly(Side.CLIENT) private IIcon[] icon_ovl;
 
-	public static final Fluid TEST1 = new Fluid("test1").setColor(0xFF0000);
-	public static final Fluid TEST2 = new Fluid("test2").setColor(0x0000FF).setNutriment(2, 1.0F, 3, 2.0F);
-	public static final Fluid TEST3 = new Fluid("test3").setColor(0x00FF00).setFoodStat(2, 1.0F);
-	public static final Fluid TEST4 = new Fluid("test4").setColor(0xFF00FF).setDrinkStat(3, 2.0F);
+	public static final Substance TEST1 = new Substance("test1").setColor(0xFF0000);
+	public static final Substance TEST2 = new Substance("test2").setColor(0x0000FF).setNutriment(2, 1.0F, 3, 2.0F);
+	public static final Substance TEST3 = new Substance("test3").setColor(0x00FF00).setFoodStat(2, 1.0F);
+	public static final Substance TEST4 = new Substance("test4").setColor(0xFF00FF).setDrinkStat(3, 2.0F);
 
 	public ItemDrinks(String tag) {
 		super(tag);
 		setCreativeTab(PackStock.tab_food);
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		RegistryFluids.registerFluid(TEST1);
-		RegistryFluids.registerFluid(TEST2);
-		RegistryFluids.registerFluid(TEST3);
-		RegistryFluids.registerFluid(TEST4);
-		RegistryFluids.registerFluid(new Fluid("test5").setColor(0xFFFF00).setDrinkStat(1, 0.5F).setSafeDrink(false).setSpeedDrinking(64));
+		RegistrySubstance.registerSubstance(TEST1);
+		RegistrySubstance.registerSubstance(TEST2);
+		RegistrySubstance.registerSubstance(TEST3);
+		RegistrySubstance.registerSubstance(TEST4);
+		RegistrySubstance.registerSubstance(new Substance("test5").setColor(0xFFFF00).setDrinkStat(1, 0.5F).setSafeDrink(false).setSpeedDrinking(64));
 	}
 	//tea - flower, tea, 
 	//boiled, hot, normal, 
@@ -57,8 +57,8 @@ Lemonade(0.0F, 0xFFFFFF),
 		NBTTagCompound nbt = is.getTagCompound();
 		if (!player.capabilities.isCreativeMode) {--is.stackSize;}
 		if (!world.isRemote) {
-			if (nbt != null && nbt.hasKey("FluidTag")) {
-				Fluid fluid = RegistryFluids.getFluid(nbt.getString("FluidTag"));
+			if (nbt != null && nbt.hasKey("SubstanceTag")) {
+				Substance fluid = RegistrySubstance.getSubstance(nbt.getString("SubstanceTag"));
 				player.getFoodStats().addStats(fluid.getFoodLevel(), fluid.getFoodSaturation());
 				//player.statDrink().addStats(fluid.getDrinkLevel(), fluid.getThirstQuenching());
 				//player.statFood().addStats(fluid.getFoodLevel(), fluid.getFoodSaturation());
@@ -75,8 +75,8 @@ Lemonade(0.0F, 0xFFFFFF),
 
 	public int getMaxItemUseDuration(ItemStack is) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("FluidTag")) {
-			Fluid fluid = RegistryFluids.getFluid(nbt.getString("FluidTag"));
+		if (nbt != null && nbt.hasKey("SubstanceTag")) {
+			Substance fluid = RegistrySubstance.getSubstance(nbt.getString("SubstanceTag"));
 			return fluid.getSpeedDrinking();
 		} else return 32;
 	}
@@ -87,8 +87,8 @@ Lemonade(0.0F, 0xFFFFFF),
 
 	public String getUnlocalizedName(ItemStack is) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("FluidTag")) {
-			Fluid fluid = RegistryFluids.getFluid(nbt.getString("FluidTag"));
+		if (nbt != null && nbt.hasKey("SubstanceTag")) {
+			Substance fluid = RegistrySubstance.getSubstance(nbt.getString("SubstanceTag"));
 			return "fluid." + fluid.getName();
 		}
 		return super.getUnlocalizedName();
@@ -103,8 +103,8 @@ Lemonade(0.0F, 0xFFFFFF),
 					list.add("NameID: " + nbt.getString("NameID") + ".");
 				}
 
-				if (nbt.hasKey("FluidTag")) {
-					Fluid fluid = RegistryFluids.getFluid(nbt.getString("FluidTag"));
+				if (nbt.hasKey("SubstanceTag")) {
+					Substance fluid = RegistrySubstance.getSubstance(nbt.getString("SubstanceTag"));
 					list.add(UtilString.getText("Name") + ": " + fluid.getLocalizedName() + ".");
 					list.add("Stat: drink - (" + fluid.getDrinkLevel() + ", " + fluid.getThirstQuenching() + 
 							") / food - (" + fluid.getFoodLevel() + ", " + fluid.getFoodSaturation() + ").");
@@ -117,11 +117,11 @@ Lemonade(0.0F, 0xFFFFFF),
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
 		for (drinks j1 : drinks.values()) {
-			List lst = RegistryFluids.getListFluids();
+			List lst = RegistrySubstance.getListSubstance();
 			for (int i = 0; i < lst.size(); ++i) {
 				if (lst.get(i) != null) {
-					Fluid fluid = RegistryFluids.getFluid(lst.get(i).toString());
-					if (RegistryFluids.hasFluid(fluid)/* && fluid.isNutriment()*/)
+					Substance fluid = RegistrySubstance.getSubstance(lst.get(i).toString());
+					if (RegistrySubstance.hasSubstance(fluid)/* && fluid.isNutriment()*/)
 						list.add(addNBT(j1.toString(), fluid.getTag()));
 				}
 			}
@@ -133,7 +133,7 @@ Lemonade(0.0F, 0xFFFFFF),
 		ItemStack is = new ItemStack(PackStock.item.drinks);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("NameID", par1);
-		nbt.setString("FluidTag", par2);
+		nbt.setString("SubstanceTag", par2);
 		is.setTagCompound(nbt);
 		return is;
 	}
@@ -163,8 +163,8 @@ Lemonade(0.0F, 0xFFFFFF),
 			} else return 0xFFFFFF;*/
 			return 0xFFFFFF;
 		} else {
-			if (nbt != null && nbt.hasKey("FluidTag")) {
-				return RegistryFluids.getFluid(nbt.getString("FluidTag")).getColor();
+			if (nbt != null && nbt.hasKey("SubstanceTag")) {
+				return RegistrySubstance.getSubstance(nbt.getString("SubstanceTag")).getColor();
 			} else return 0xFFFFFF;
 		}
 	}

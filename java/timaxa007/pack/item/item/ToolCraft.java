@@ -10,7 +10,7 @@ import timaxa007.api.IInteractionWithBlock;
 import timaxa007.api.IInteractionWithEntity;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
-import timaxa007.pack.item.PackItems;
+import timaxa007.pack.item.PackItem;
 import timaxa007.smt.CoreSMT;
 import timaxa007.smt.object.ModifiedItem;
 import timaxa007.smt.packet.MessageInteractionBlock;
@@ -33,7 +33,7 @@ public class ToolCraft extends ModifiedItem implements IActionMouse, IActionPrim
 	//--------------------------------------------------------------------------------------------------------------
 	public ToolCraft(String tag) {
 		super(tag);
-		setCreativeTab(PackItems.tab_items);
+		setCreativeTab(PackItem.tab_items);
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)

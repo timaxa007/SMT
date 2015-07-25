@@ -262,7 +262,7 @@ ITechnoTool
 				isWorking = nbt.getBoolean("Working");
 
 				Material material = block.getMaterial();
-				if (material == PackTechno.techno_block)
+				if (material == PackTechno.block.techno_block)
 					return isWorking ? 10.0F : 1.0F;
 
 				//for hing speed with Upgrade or setting speed-up
@@ -285,7 +285,7 @@ ITechnoTool
 		NBTTagCompound nbt = is.getTagCompound();
 
 		Material material = block.getMaterial();
-		if (material == PackTechno.techno_block) {
+		if (material == PackTechno.block.techno_block) {
 			is.damageItem(1, entity);
 			return true;
 		}
@@ -308,7 +308,7 @@ ITechnoTool
 
 		}
 
-		if (material == PackTechno.techno_block) return true;
+		if (material == PackTechno.block.techno_block) return true;
 
 		return super.canHarvestBlock(block, is);
 	}

@@ -7,7 +7,7 @@ import net.minecraft.block.Block;
 
 public class ListBlock {
 
-	public static boolean 
+	public static boolean
 	furniture_machines_be,
 	furniture_rock_blocks_be,
 	furniture_glass_blocks_be,
@@ -26,11 +26,6 @@ public class ListBlock {
 	cnstor_wall_be,
 	cnstor_door_be,
 	cnstor_bed_be,
-
-	fluid_fake_water_be,
-	fluid_fake_water_flowing_be,
-	fluid_fake_lava_be,
-	fluid_fake_lava_flowing_be,
 
 	air_light_0_be,
 	air_light_1_be,
@@ -92,7 +87,7 @@ public class ListBlock {
 	storage_be
 	;
 
-	public static Block 
+	public static Block
 	furniture_machines,
 	furniture_rock_blocks,
 	furniture_glass_blocks,
@@ -111,11 +106,6 @@ public class ListBlock {
 	cnstor_wall,
 	cnstor_door,
 	cnstor_bed,
-
-	fluid_fake_water,
-	fluid_fake_water_flowing,
-	fluid_fake_lava,
-	fluid_fake_lava_flowing,
 
 	air_light_0,
 	air_light_1,
@@ -288,19 +278,6 @@ public class ListBlock {
 
 		if (cnstor_bed_be) {cnstor_bed = new BlockCnstorBed("cnstor_bed");}
 
-		if (fluid_fake_water_be) {
-			fluid_fake_water = new BlockFluidFakeWaterStatic("fluid_fake_water").setLightOpacity(3).setBlockTextureName("water_still");
-		}
-		if (fluid_fake_water_flowing_be) {
-			fluid_fake_water_flowing = new BlockFluidFakeWaterDynamic("fluid_fake_water_flowing").setLightOpacity(3).setBlockTextureName("water_flow");
-		}
-		if (fluid_fake_lava_be) {
-			fluid_fake_lava = new BlockFluidFakeLavaStatic("fluid_fake_lava").setLightLevel(1.0F).setBlockTextureName("lava_still");
-		}
-		if (fluid_fake_lava_flowing_be) {
-			fluid_fake_lava_flowing = new BlockFluidFakeLavaDynamic("fluid_fake_lava_flowing").setLightLevel(1.0F).setBlockTextureName("lava_flow");
-		}
-
 		if (air_light_0_be) air_light_0 = new AirLight("air_light_0").setLightLevel(0.0F);
 		if (air_light_1_be) air_light_1 = new AirLight("air_light_1").setLightLevel(0.0625F);
 		if (air_light_2_be) air_light_2 = new AirLight("air_light_2").setLightLevel(0.125F);
@@ -457,11 +434,6 @@ public class ListBlock {
 				cnstor_wall,
 				cnstor_door,
 				cnstor_bed,
-
-				fluid_fake_water,
-				fluid_fake_water_flowing,
-				fluid_fake_lava,
-				fluid_fake_lava_flowing,
 
 				air_light_0,
 				air_light_1,

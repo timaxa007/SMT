@@ -14,7 +14,7 @@ public class ProxyClient extends ProxyCommon {
 
 	public static IProxyModuleClient 
 	control_button,
-	survival_tabs,
+	player_inventory,
 	crafting,
 	environment,
 	status_player,
@@ -43,7 +43,7 @@ public class ProxyClient extends ProxyCommon {
 		verificationModuleClient();
 
 		if (control_button != null) control_button.preInit();
-		if (survival_tabs != null) survival_tabs.preInit();
+		if (player_inventory != null) player_inventory.preInit();
 		if (crafting != null) crafting.preInit();
 		if (environment != null) environment.preInit();
 		if (status_player != null) status_player.preInit();
@@ -78,7 +78,7 @@ public class ProxyClient extends ProxyCommon {
 		MinecraftForge.EVENT_BUS.register(new EventClientSMT());
 
 		if (control_button != null) control_button.init();
-		if (survival_tabs != null) survival_tabs.init();
+		if (player_inventory != null) player_inventory.init();
 		if (crafting != null) crafting.init();
 		if (environment != null) environment.init();
 		if (status_player != null) status_player.init();
@@ -105,7 +105,7 @@ public class ProxyClient extends ProxyCommon {
 		super.postInit();
 
 		if (control_button != null) control_button.postInit();
-		if (survival_tabs != null) survival_tabs.postInit();
+		if (player_inventory != null) player_inventory.postInit();
 		if (crafting != null) crafting.postInit();
 		if (environment != null) environment.postInit();
 		if (status_player != null) status_player.postInit();
@@ -132,8 +132,8 @@ public class ProxyClient extends ProxyCommon {
 		if (CoreSMT.config.isModuleControlButton)
 			control_button = checkModuleClient(CoreSMT.PATH_MODULE + ".control_button.ProxyClient");
 
-		if (CoreSMT.config.isModuleSurvivalTabs)
-			survival_tabs = checkModuleClient(CoreSMT.PATH_MODULE + ".survival_tabs.ProxyClient");
+		if (CoreSMT.config.isModulePlayerInventory)
+			player_inventory = checkModuleClient(CoreSMT.PATH_MODULE + ".player_inventory.ProxyClient");
 
 		if (CoreSMT.config.isModuleCrafting)
 			crafting = checkModuleClient(CoreSMT.PATH_MODULE + ".crafting.ProxyClient");
@@ -153,8 +153,8 @@ public class ProxyClient extends ProxyCommon {
 		if (CoreSMT.config.isModuleColors)
 			colors = checkModuleClient(CoreSMT.PATH_MODULE + ".colors.ProxyClient");
 
-		if (CoreSMT.config.isModuleFluids)
-			fluids = checkModuleClient(CoreSMT.PATH_MODULE + ".fluids.ProxyClient");
+		if (CoreSMT.config.isModuleSubstance)
+			fluids = checkModuleClient(CoreSMT.PATH_MODULE + ".substance.ProxyClient");
 
 		if (CoreSMT.config.isModuleForbidden)
 			forbidden = checkModuleClient(CoreSMT.PATH_MODULE + ".forbidden.ProxyClient");

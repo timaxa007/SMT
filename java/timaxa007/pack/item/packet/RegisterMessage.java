@@ -8,7 +8,7 @@ public class RegisterMessage {
 	private static int id = 0;
 
 	public static void init(SimpleNetworkWrapper network) {
-		network.registerMessage(MessageOpenGui.Handler.class, MessageOpenGui.class, id++, Side.SERVER);
+
 	}
 
 }

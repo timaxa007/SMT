@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
-import timaxa007.pack.item.PackItems;
+import timaxa007.pack.item.PackItem;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class RenderBlockRockBlocks implements ISimpleBlockRenderingHandler {
@@ -12,7 +12,7 @@ public class RenderBlockRockBlocks implements ISimpleBlockRenderingHandler {
 	private static int renderID;
 
 	public RenderBlockRockBlocks() {
-		this.renderID = PackItems.render.rock_blocks_renderID;
+		this.renderID = PackItem.render.rock_blocks_renderID;
 	}
 
 	public RenderBlockRockBlocks(int renderID) {

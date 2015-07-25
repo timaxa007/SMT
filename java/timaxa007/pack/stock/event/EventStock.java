@@ -12,7 +12,6 @@ import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -26,6 +25,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import timaxa007.pack.stock.PackStock;
+import timaxa007.pack.stock.config.ConfigStock;
 import timaxa007.pack.stock.entity.EntityCorpse;
 import timaxa007.pack.stock.item.ItemPetals;
 import timaxa007.pack.stock.item.ItemsStock;
@@ -116,13 +116,18 @@ public class EventStock {
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void onEatFoodItem(PlayerEvent event) {
+		/*enter to server = crash
+		EntityPlayer player = event.entityPlayer;
 
-		if (event.entityPlayer.isEating() && event.entityPlayer.getCurrentEquippedItem() != null) {
-			if (event.entityPlayer.getCurrentEquippedItem().getItem() instanceof ItemFood) {
+		if (player != null) {
+			ItemStack current = player.getCurrentEquippedItem();
+			if (player.isEating() && current != null) {
+				if (current.getItem() instanceof ItemFood) {
+				}
+
 			}
-
 		}
-
+		 */
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
@@ -161,10 +166,10 @@ public class EventStock {
 	//--------------------------------------------------------------------------------------------------------------
 	@SubscribeEvent
 	public void dropFlower(BlockEvent.HarvestDropsEvent event) {
-		boolean drop_default = (PackStock.getDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.DEFAULT);
-		boolean drop_vanilla_dye = (PackStock.getDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.VANILLA_DYE);
-		boolean drop_petals = (PackStock.getDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.PETALS);
-		boolean drop_other = (PackStock.getDropVanillaFlowers() == PackStock.typeDropVanillaFlowers.OTHER);
+		boolean drop_default = (ConfigStock.getDropVanillaFlowers() == ConfigStock.typeDropVanillaFlowers.DEFAULT);
+		boolean drop_vanilla_dye = (ConfigStock.getDropVanillaFlowers() == ConfigStock.typeDropVanillaFlowers.VANILLA_DYE);
+		boolean drop_petals = (ConfigStock.getDropVanillaFlowers() == ConfigStock.typeDropVanillaFlowers.PETALS);
+		boolean drop_other = (ConfigStock.getDropVanillaFlowers() == ConfigStock.typeDropVanillaFlowers.OTHER);
 		if (!drop_default) {
 			//-------------------------------------------------------------------------------------
 			if (event.block == Blocks.red_flower) {
@@ -287,12 +292,12 @@ public class EventStock {
 
 					EntityCorpse corpse = new EntityCorpse(world);
 					corpse.setPositionAndRotation(entity.posX, entity.posY, entity.posZ, entity.rotationYaw, entity.rotationPitch);
-					
+
 					/*if (entity instanceof EntityZombie) {}
 					else if (entity instanceof EntityCow) {}
 					else if (entity instanceof EntityPig) {}
 					else {}*/
-					
+
 					//if (!world.isRemote) world.spawnEntityInWorld(corpse);
 
 				}

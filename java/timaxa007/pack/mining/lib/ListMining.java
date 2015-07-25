@@ -1,13 +1,13 @@
 package timaxa007.pack.mining.lib;
 
-import timaxa007.module.fluids.util.Fluid;
+import timaxa007.module.substance.util.Substance;
 
 public class ListMining {
 /*
-	public static final Fluid fluid_air = new Fluid("air").setName("air").setType(Fluid.TypeFluid.air).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_water = new Fluid("water").setName("water").setType(Fluid.TypeFluid.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
-	public static final Fluid fluid_gas_smoke = new Fluid("gas_smoke").setName("smoke").setType(Fluid.TypeFluid.smoke).setColor(0xFFFFFF).setTemperature(18.0F);
-	public static final Fluid fluid_gas_steam = new Fluid("gas_steam").setName("steam").setType(Fluid.TypeFluid.gas).setColor(0xFFFFFF).setTemperature(48.0F);
+	public static final Substance fluid_air = new Substance("air").setName("air").setType(Substance.TypeSubstance.air).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_water = new Substance("water").setName("water").setType(Substance.TypeSubstance.liquid).setColor(0xFFFFFF).setTemperature(16.0F);
+	public static final Substance fluid_gas_smoke = new Substance("gas_smoke").setName("smoke").setType(Substance.TypeSubstance.smoke).setColor(0xFFFFFF).setTemperature(18.0F);
+	public static final Substance fluid_gas_steam = new Substance("gas_steam").setName("steam").setType(Substance.TypeSubstance.gas).setColor(0xFFFFFF).setTemperature(48.0F);
 
 	public ListMining() {
 	}
