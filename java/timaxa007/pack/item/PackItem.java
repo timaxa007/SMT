@@ -38,7 +38,7 @@ public class PackItem implements IPackClass {
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
-	public static CreativeTabs tab_items = new CreativeTabs("tab_items") {
+	public static final CreativeTabs tab_items = new CreativeTabs("tab_items") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackItem.item.items_for_items;}
 	};
 

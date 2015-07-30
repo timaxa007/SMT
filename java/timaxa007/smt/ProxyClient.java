@@ -180,7 +180,7 @@ public class ProxyClient extends ProxyCommon {
 		if (CoreSMT.config.isPackFurniture)
 			furniture = checkPackClient(CoreSMT.PATH_PACK + ".furniture.ProxyClient");
 
-		if (CoreSMT.config.isPackItems)
+		if (CoreSMT.config.isPackItem)
 			item = checkPackClient(CoreSMT.PATH_PACK + ".item.ProxyClient");
 
 		if (CoreSMT.config.isPackMagic)
@@ -195,7 +195,7 @@ public class ProxyClient extends ProxyCommon {
 		if (CoreSMT.config.isPackTechno)
 			techno = checkPackClient(CoreSMT.PATH_PACK + ".techno.ProxyClient");
 
-		if (CoreSMT.config.isPackWeapons)
+		if (CoreSMT.config.isPackWeapon)
 			weapon = checkPackClient(CoreSMT.PATH_PACK + ".weapon.ProxyClient");
 
 	}

@@ -87,7 +87,6 @@ public class ConfigFurniture {
 		PackFurniture.block.mashine_waiter_be = cfg.get("block", "mashine_waiter", true).getBoolean();
 		PackFurniture.block.vegetable_face_be = cfg.get("block", "vegetable_face", true).getBoolean();
 		PackFurniture.block.furniture_chest_be = cfg.get("block", "furniture_chest", true).getBoolean();
-		PackFurniture.block.storage_be = cfg.get("block", "storage", true).getBoolean();
 
 
 		PackFurniture.item.items_for_furniture_be = cfg.get("item", "items_for_furniture", true).getBoolean();

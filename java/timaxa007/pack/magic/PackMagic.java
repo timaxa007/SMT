@@ -55,7 +55,7 @@ public class PackMagic implements IPackClass {
 	};
 	//ShardElements ~= gems
 
-	public static CreativeTabs tab_magic = new CreativeTabs("tab_magic") {
+	public static final CreativeTabs tab_magic = new CreativeTabs("tab_magic") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMagic.item.items_for_magic;}
 	};
 

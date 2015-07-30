@@ -1,5 +1,6 @@
-package timaxa007.gui.player;
+package timaxa007.gui.client;
 
+import timaxa007.gui.server.BackpackContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 

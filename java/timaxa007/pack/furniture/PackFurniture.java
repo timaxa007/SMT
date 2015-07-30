@@ -38,7 +38,7 @@ public class PackFurniture implements IPackClass {
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
-	public static CreativeTabs tab_furniture = new CreativeTabs("tab_furniture") {
+	public static final CreativeTabs tab_furniture = new CreativeTabs("tab_furniture") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackFurniture.item.items_for_furniture;}
 	};
 

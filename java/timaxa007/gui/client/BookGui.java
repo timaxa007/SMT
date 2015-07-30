@@ -1,4 +1,4 @@
-package timaxa007.gui.gui;
+package timaxa007.gui.client;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;

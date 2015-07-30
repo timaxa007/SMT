@@ -37,10 +37,10 @@ public class PackTechno implements IPackClass {
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
-	public static CreativeTabs tab_techno = new CreativeTabs("tab_techno") {
+	public static final CreativeTabs tab_techno = new CreativeTabs("tab_techno") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackTechno.item.items_for_techno;}
 	};
-	public static CreativeTabs tab_container_fluid = new CreativeTabs("tab_container_fluid") {
+	public static final CreativeTabs tab_container_fluid = new CreativeTabs("tab_container_fluid") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackTechno.item.container_fluid;}
 	};
 

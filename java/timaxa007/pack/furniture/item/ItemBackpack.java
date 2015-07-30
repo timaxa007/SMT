@@ -34,7 +34,7 @@ public class ItemBackpack extends ModifiedItem {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item id, CreativeTabs table, List list) {
-		//list.add(addNBT());
+		list.add(new ItemStack(id));
 		//list.add(new ItemStack(id, 1, 0));
 	}
 

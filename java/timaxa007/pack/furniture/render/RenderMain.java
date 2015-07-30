@@ -32,8 +32,7 @@ public class RenderMain {
 	block_jar01_modelID,
 	block_pipes_modelID,
 	block_mashine_waiter_modelID,
-	block_furniture_chest_modelID,
-	block_storage_modelID
+	block_furniture_chest_modelID
 	;
 
 	public static int[] list_render_id;
@@ -60,7 +59,6 @@ public class RenderMain {
 		block_pipes_modelID = -1;
 		block_mashine_waiter_modelID = -1;
 		block_furniture_chest_modelID = -1;
-		block_storage_modelID = -1;
 
 		list_render_id = new int[] {
 				block_cnstor_block_modelID,
@@ -82,8 +80,7 @@ public class RenderMain {
 				block_jar01_modelID,
 				block_pipes_modelID,
 				block_mashine_waiter_modelID,
-				block_furniture_chest_modelID,
-				block_storage_modelID
+				block_furniture_chest_modelID
 		};
 
 	}
@@ -118,7 +115,6 @@ public class RenderMain {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPipes.class, new RenderBlockPipes());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMashineWater.class, new RenderBlockMashineWater());
 		//ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodBlocks.class, new RenderBlockWoodBlocks());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStorage.class, new RenderBlockStorage());
 
 		//Blocks
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.cnstor_block), new ItemRenderCnstorBlock());
@@ -156,7 +152,6 @@ public class RenderMain {
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.jar01), new ItemRenderBlockJar01());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.pipes), new ItemRenderBlockPipes());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.mashine_waiter), new ItemRenderBlockMashineWater());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackFurniture.block.storage), new ItemRenderBlockStorage());
 
 		//Items
 

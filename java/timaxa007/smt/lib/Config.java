@@ -14,7 +14,8 @@ public class Config {
 	public static boolean
 	debug,
 	show_tip_info_testing,
-	show_system_info_testing
+	show_system_info_testing,
+	show_log_testing
 	;
 
 	public static boolean
@@ -74,12 +75,12 @@ public class Config {
 
 	public static boolean
 	isPackFurniture,
-	isPackItems,
+	isPackItem,
 	isPackMagic,
 	isPackMining,
 	isPackStock,
 	isPackTechno,
-	isPackWeapons
+	isPackWeapon
 	;
 
 	public static boolean
@@ -105,6 +106,10 @@ public class Config {
 
 		show_system_info_testing = getProperty(cfg, "debugging", "show_system_info_testing", 
 				"Show additional information on the System.out.println(...), if it exists?\n"
+						+ "<true> - Yes, <false> - No.", false);
+
+		show_log_testing = getProperty(cfg, "debugging", "show_log_testing", 
+				"Show additional information on the Log4, if it exists?\n"
 						+ "<true> - Yes, <false> - No.", false);
 
 		cfg.save();
@@ -164,24 +169,24 @@ public class Config {
 		verificationPack();
 
 		if (isPackFurniture) furniture.preInit(event);
-		if (isPackItems) item.preInit(event);
+		if (isPackItem) item.preInit(event);
 		if (isPackMagic) magic.preInit(event);
 		if (isPackMining) mining.preInit(event);
 		if (isPackStock) stock.preInit(event);
 		if (isPackTechno) techno.preInit(event);
-		if (isPackWeapons) weapon.preInit(event);
+		if (isPackWeapon) weapon.preInit(event);
 	}
 
 	public static boolean getProperty(Configuration cfg, String category, String name, String comment, boolean flag) {
-		Property show_system_info_testing_cfg = cfg.get(category, name, flag);
-		show_system_info_testing_cfg.comment = comment;
-		return show_system_info_testing_cfg.getBoolean();
+		Property p = cfg.get(category, name, flag);
+		p.comment = comment;
+		return p.getBoolean();
 	}
 
 	public static String getProperty(Configuration cfg, String category, String name, String comment, String flag) {
-		Property show_system_info_testing_cfg = cfg.get(category, name, flag);
-		show_system_info_testing_cfg.comment = comment;
-		return show_system_info_testing_cfg.getString();
+		Property p = cfg.get(category, name, flag);
+		p.comment = comment;
+		return p.getString();
 	}
 
 	public static void verificationModule() {
@@ -251,8 +256,8 @@ public class Config {
 		isPackFurniture = furniture != null;
 
 		if (!disable_pack_item)
-			item = checkPack(CoreSMT.PATH_PACK + ".item.PackItems");
-		isPackItems = item != null;
+			item = checkPack(CoreSMT.PATH_PACK + ".item.PackItem");
+		isPackItem = item != null;
 
 		if (!disable_pack_magic)
 			magic = checkPack(CoreSMT.PATH_PACK + ".magic.PackMagic");
@@ -271,8 +276,8 @@ public class Config {
 		isPackTechno = techno != null;
 
 		if (!disable_pack_weapon)
-			weapon = checkPack(CoreSMT.PATH_PACK + ".weapon.PackWeapons");
-		isPackWeapons = weapon != null;
+			weapon = checkPack(CoreSMT.PATH_PACK + ".weapon.PackWeapon");
+		isPackWeapon = weapon != null;
 
 	}
 

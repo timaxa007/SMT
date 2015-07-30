@@ -43,10 +43,10 @@ public class PackMining implements IPackClass {
 	public static BiomeGenBase biome_test;
 	public static BiomeGenBase biome_hot;
 
-	public static CreativeTabs tab_mining = new CreativeTabs("tab_mining") {
+	public static final CreativeTabs tab_mining = new CreativeTabs("tab_mining") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMining.item.items_for_mining;}
 	};
-	public static CreativeTabs tab_tools = new CreativeTabs("tab_tools") {
+	public static final CreativeTabs tab_tools = new CreativeTabs("tab_tools") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMining.item.items_for_mining;}
 	};
 

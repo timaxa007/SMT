@@ -1,11 +1,11 @@
-package timaxa007.gui.player;
+package timaxa007.gui.server;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 
-public class BagContainer extends Container {
+public class BackpackContainer extends Container {
 
-	public BagContainer(EntityPlayer player) {
+	public BackpackContainer(EntityPlayer player) {
 
 	}
 

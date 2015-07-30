@@ -36,7 +36,7 @@ public class PackWeapon implements IPackClass {
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
-	public static CreativeTabs tab_weapons = new CreativeTabs("tab_weapons") {
+	public static final CreativeTabs tab_weapons = new CreativeTabs("tab_weapons") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackWeapon.item.items_for_weapons;}
 	};
 

@@ -40,19 +40,19 @@ public class PackStock implements IPackClass {
 	public static Logger log;
 	public static SimpleNetworkWrapper network;
 
-	public static CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
+	public static final CreativeTabs tab_stock = new CreativeTabs("tab_stock") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.items_for_stock;}
 	};
-	public static CreativeTabs tab_plant = new CreativeTabs("tab_plant") {
+	public static final CreativeTabs tab_plant = new CreativeTabs("tab_plant") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.plants;}
 	};
-	public static CreativeTabs tab_food = new CreativeTabs("tab_food") {
+	public static final CreativeTabs tab_food = new CreativeTabs("tab_food") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.foods;}
 	};
-	public static CreativeTabs tab_medical = new CreativeTabs("tab_medical") {
+	public static final CreativeTabs tab_medical = new CreativeTabs("tab_medical") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.medicals;}
 	};
-	public static CreativeTabs tab_apis = new CreativeTabs("tab_apis") {
+	public static final CreativeTabs tab_apis = new CreativeTabs("tab_apis") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackStock.item.bees;}
 	};
 

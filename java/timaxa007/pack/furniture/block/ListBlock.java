@@ -83,8 +83,7 @@ public class ListBlock {
 	pipes_be,
 	mashine_waiter_be,
 	vegetable_face_be,
-	furniture_chest_be,
-	storage_be
+	furniture_chest_be
 	;
 
 	public static Block
@@ -163,8 +162,7 @@ public class ListBlock {
 	pipes,
 	mashine_waiter,
 	vegetable_face,
-	furniture_chest,
-	storage
+	furniture_chest
 	;
 
 	public static Class
@@ -198,8 +196,7 @@ public class ListBlock {
 	te_mashine_water,
 	te_block_blocks,
 	te_vegetable_face,
-	te_furniture_chest,
-	te_storage
+	te_furniture_chest
 	;
 
 	public static Block[] list_block;
@@ -408,11 +405,6 @@ public class ListBlock {
 			te_furniture_chest = TileEntityFurnitureChest.class;
 		}
 
-		if (storage_be) {
-			storage = new BlockStorage("storage");
-			te_storage = TileEntityStorage.class;
-		}
-
 		te_block_blocks = TileEntityBlockBlocks.class;
 
 		list_block = new Block[] {
@@ -491,8 +483,7 @@ public class ListBlock {
 				pipes,
 				mashine_waiter,
 				vegetable_face,
-				furniture_chest,
-				storage
+				furniture_chest
 		};
 
 		UtilSMT.UtilBlock.RegBlock(list_block);
@@ -528,8 +519,7 @@ public class ListBlock {
 				te_mashine_water,
 				te_block_blocks,
 				te_vegetable_face,
-				te_furniture_chest,
-				te_storage
+				te_furniture_chest
 		};
 
 		UtilSMT.UtilBlock.RegTE(list_te);

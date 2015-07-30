@@ -414,6 +414,7 @@ world.spawnEntityInWorld(entityitem2);
 	}
 
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
+		System.out.println("meta - " + meta);
 		if (!player.capabilities.isCreativeMode) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			if (te != null && te instanceof TileEntityPlants) {

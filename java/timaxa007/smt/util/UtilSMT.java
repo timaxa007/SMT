@@ -112,7 +112,7 @@ public class UtilSMT {
 					if (item instanceof ModifiedItem)
 						GameRegistry.registerItem(item, "item_" + ((ModifiedItem)item).getTag());
 					else if (item instanceof Item)
-						GameRegistry.registerItem(item, item.getUnlocalizedName().replace(".", "_"));
+						GameRegistry.registerItem(item, "item_" + item.getUnlocalizedName().substring(5));
 				}
 			}
 		}

@@ -167,7 +167,7 @@ public class ProxyCommon {
 		if (CoreSMT.config.isPackFurniture)
 			furniture = checkPackCommon(CoreSMT.PATH_PACK + ".furniture.ProxyCommon");
 
-		if (CoreSMT.config.isPackItems)
+		if (CoreSMT.config.isPackItem)
 			item = checkPackCommon(CoreSMT.PATH_PACK + ".item.ProxyCommon");
 
 		if (CoreSMT.config.isPackMagic)
@@ -182,7 +182,7 @@ public class ProxyCommon {
 		if (CoreSMT.config.isPackTechno)
 			techno = checkPackCommon(CoreSMT.PATH_PACK + ".techno.ProxyCommon");
 
-		if (CoreSMT.config.isPackWeapons)
+		if (CoreSMT.config.isPackWeapon)
 			weapon = checkPackCommon(CoreSMT.PATH_PACK + ".weapon.ProxyCommon");
 
 	}
