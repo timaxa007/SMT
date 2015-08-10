@@ -42,7 +42,7 @@ public class BlockLight extends ModifiedBlock implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityLights();
+		return new TileEntityLights(world);
 	}
 
 	public int quantityDropped(Random random) {

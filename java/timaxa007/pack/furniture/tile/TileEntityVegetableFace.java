@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityVegetableFace extends TileEntity {
 
@@ -13,7 +14,8 @@ public class TileEntityVegetableFace extends TileEntity {
 	//private int rotation;
 	private int color_block;
 
-	public TileEntityVegetableFace() {
+	public TileEntityVegetableFace(World world) {
+		this.worldObj = world;
 		sub_id = 0;
 		face_id = 0;
 		//rotation = 0;

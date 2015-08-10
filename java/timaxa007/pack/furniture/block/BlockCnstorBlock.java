@@ -35,7 +35,7 @@ public class BlockCnstorBlock extends ModifiedBlock implements ITileEntityProvid
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityCnstorBlock();
+		return new TileEntityCnstorBlock(world);
 	}
 
 	public int quantityDropped(Random radom) {

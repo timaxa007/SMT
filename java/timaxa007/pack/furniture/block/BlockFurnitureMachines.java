@@ -9,7 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import timaxa007.gui.HelperGui;
+import timaxa007.gui.HandlerGui;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureMachines;
 import timaxa007.smt.object.ModifiedBlock;
@@ -26,7 +26,7 @@ public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntity
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityFurnitureMachines();
+		return new TileEntityFurnitureMachines(world);
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
@@ -52,7 +52,7 @@ public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntity
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityFurnitureMachines) {
-			HelperGui.openGui(HelperGui.GuiID.FURNITURE_MACHINES, player);
+			HandlerGui.openGui(HandlerGui.GuiID.FURNITURE_MACHINES, player);
 			return true;
 		}
 		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);

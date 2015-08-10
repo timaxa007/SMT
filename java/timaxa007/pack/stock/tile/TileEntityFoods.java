@@ -7,6 +7,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityFoods extends TileEntity implements ITileEntityOwner {
 
@@ -16,7 +17,8 @@ public class TileEntityFoods extends TileEntity implements ITileEntityOwner {
 	private int rotation;
 	private String owner;
 
-	public TileEntityFoods() {
+	public TileEntityFoods(World world) {
+		this.worldObj = world;
 		tag = null;
 		color1 = 0;
 		color2 = 0;

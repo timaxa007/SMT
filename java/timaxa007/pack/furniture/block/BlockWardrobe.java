@@ -28,7 +28,7 @@ public class BlockWardrobe extends ModifiedBlock implements ITileEntityProvider 
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityWardrobe();
+		return new TileEntityWardrobe(world);
 	}
 
 	public int getRenderType() {

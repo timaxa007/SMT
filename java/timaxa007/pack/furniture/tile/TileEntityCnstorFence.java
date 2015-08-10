@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityCnstorFence extends TileEntity {
 
@@ -14,7 +15,8 @@ public class TileEntityCnstorFence extends TileEntity {
 	private boolean stepW;
 	private boolean stepE;
 
-	public TileEntityCnstorFence() {
+	public TileEntityCnstorFence(World world) {
+		this.worldObj = world;
 		style = "";
 		stepN = false;
 		stepS = false;

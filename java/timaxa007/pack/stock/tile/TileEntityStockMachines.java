@@ -10,12 +10,14 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
 
 public class TileEntityStockMachines extends TileEntity implements ITileEntityOwner {
 
 	private String owner;
 
-	public TileEntityStockMachines() {
+	public TileEntityStockMachines(World world) {
+		this.worldObj = world;
 		owner = "";
 	}
 

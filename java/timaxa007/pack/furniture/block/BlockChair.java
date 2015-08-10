@@ -28,7 +28,7 @@ public class BlockChair extends ModifiedBlock implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityChair();
+		return new TileEntityChair(world);
 	}
 	public int getRenderType() {
 		return PackFurniture.render.block_chair_modelID;

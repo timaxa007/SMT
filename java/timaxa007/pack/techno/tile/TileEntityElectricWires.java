@@ -24,7 +24,8 @@ public class TileEntityElectricWires extends TileEntity implements ITileEntityOw
 	public boolean west;
 	public boolean east;
 
-	public TileEntityElectricWires() {
+	public TileEntityElectricWires(World world) {
+		this.worldObj = world;
 		//type = 0;
 		size = 0;
 		color_hex = 0xFFFFFF;

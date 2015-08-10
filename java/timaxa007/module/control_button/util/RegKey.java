@@ -17,15 +17,12 @@ public class RegKey {
 	public static final KeyBinding mode_in = new KeyBinding("key.mode_in.name", Keyboard.KEY_EQUALS, cat_name);
 	public static final KeyBinding mode_out = new KeyBinding("key.mode_out.name", Keyboard.KEY_MINUS, cat_name);
 	public static final KeyBinding action = new KeyBinding("key.action.name", Keyboard.KEY_G, cat_name);
-	
-	public static final KeyBinding action_helmet = new KeyBinding("key.action_helmet.name", Keyboard.KEY_L, cat_name);
-	public static final KeyBinding action_chest = new KeyBinding("key.action_chest.name", Keyboard.KEY_K, cat_name);
-	public static final KeyBinding action_leggin = new KeyBinding("key.action_leggin.name", Keyboard.KEY_J, cat_name);
-	public static final KeyBinding action_boot = new KeyBinding("key.action_boot.name", Keyboard.KEY_H, cat_name);
 
 	public static final KeyBinding booster = new KeyBinding("key.booster.name", Keyboard.KEY_B, cat_name);
 	public static final KeyBinding grab = new KeyBinding("key.grab.name", Keyboard.KEY_V, cat_name);
 	public static final KeyBinding lie = new KeyBinding("key.lie.name", Keyboard.KEY_C, cat_name);
+	
+	public static final KeyBinding movement_action = new KeyBinding("key.movement_action.name", Keyboard.KEY_H, cat_name);
 
 	public static KeyBinding button_left;
 	public static KeyBinding button_right;
@@ -42,7 +39,6 @@ public class RegKey {
 
 		list_key = new KeyBinding[] {
 				reload, charge, mode, mode_in, mode_out, action, 
-				action_helmet, action_chest, action_leggin, action_boot, 
 				booster, grab, lie,
 				button_left, button_right
 		};

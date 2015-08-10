@@ -50,6 +50,7 @@ public class ConfigItem {
 		PackItem.item.tool_tomahawk_be = cfg.get("item", "tool_tomahawk", true).getBoolean();
 		PackItem.item.tool_shield_be = cfg.get("item", "tool_shield", true).getBoolean();
 		PackItem.item.tool_craft_be = cfg.get("item", "tool_craft", true).getBoolean();
+		PackItem.item.armor_techne_be = cfg.get("item", "armor_techne", true).getBoolean();
 
 		cfg.save();
 	}

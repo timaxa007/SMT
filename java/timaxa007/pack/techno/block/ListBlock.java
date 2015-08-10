@@ -2,10 +2,7 @@ package timaxa007.pack.techno.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import timaxa007.pack.techno.tile.TileEntityElectricMachines;
-import timaxa007.pack.techno.tile.TileEntityElectricWires;
-import timaxa007.pack.techno.tile.TileEntityFarmMashines;
-import timaxa007.pack.techno.tile.TileEntityModuleMovement;
+import timaxa007.pack.techno.tile.*;
 import timaxa007.pack.techno.util.MaterialTechno;
 import timaxa007.smt.util.UtilSMT;
 
@@ -14,22 +11,19 @@ public class ListBlock {
 	public static boolean
 	electric_machines_be,
 	electric_wires_be,
-	module_movement_be,
-	farm_mashines_be
+	module_movement_be
 	;
 
 	public static Block
 	electric_machines,
 	electric_wires,
-	module_movement,
-	farm_mashines
+	module_movement
 	;
 
 	public static Class
 	te_electric_machines,
 	te_electric_wires,
-	te_module_movement,
-	te_farm_mashines
+	te_module_movement
 	;
 
 	public static Material techno_block = new MaterialTechno();
@@ -61,18 +55,12 @@ public class ListBlock {
 			te_module_movement = TileEntityModuleMovement.class;
 		}
 
-		if (farm_mashines_be) {
-			farm_mashines = new BlockFarmMashines("farm_mashines");
-			te_farm_mashines = TileEntityFarmMashines.class;
-		}
-
 		//transporter belt
 
 		list_block = new Block[] {
 				electric_machines,
 				electric_wires,
-				module_movement,
-				farm_mashines
+				module_movement
 		};
 
 		UtilSMT.UtilBlock.RegBlock(list_block);
@@ -80,8 +68,7 @@ public class ListBlock {
 		list_te = new Class[] {
 				te_electric_machines,
 				te_electric_wires,
-				te_module_movement,
-				te_farm_mashines
+				te_module_movement
 		};
 
 		UtilSMT.UtilBlock.RegTE(list_te);

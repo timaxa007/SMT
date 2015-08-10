@@ -26,7 +26,7 @@ public class BlockFurnitureGroundBlocks extends ModifiedBlock implements ITileEn
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityFurnitureGroundBlocks();
+		return new TileEntityFurnitureGroundBlocks(world);
 	}
 	/*
 	public int quantityDropped(Random random) {

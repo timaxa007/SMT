@@ -29,7 +29,7 @@ public class BlockCristals extends ModifiedBlock implements ITileEntityProvider 
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityCristals();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityCristals(world);}
 
 	public int getRenderType() {return PackMining.render.block_cristals_modelID;}
 	public boolean isOpaqueCube() {return false;}

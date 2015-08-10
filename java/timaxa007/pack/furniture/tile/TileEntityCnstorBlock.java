@@ -5,13 +5,15 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityCnstorBlock extends TileEntity {
 
 	private String style;
 	private int color_hex;
 
-	public TileEntityCnstorBlock() {
+	public TileEntityCnstorBlock(World world) {
+		this.worldObj = world;
 		color_hex = 0xFFFFFF;
 	}
 

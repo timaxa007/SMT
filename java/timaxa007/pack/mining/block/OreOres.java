@@ -52,7 +52,7 @@ public class OreOres extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityOreOres();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityOreOres(world);}
 
 	public int getRenderType() {return PackMining.render.block_ore_modelID;}
 	public boolean isOpaqueCube() {return false;}

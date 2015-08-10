@@ -5,13 +5,15 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityWoodBlocks extends TileEntity {
 
 	private int sub_id;
 	private int color_block;
 
-	public TileEntityWoodBlocks() {
+	public TileEntityWoodBlocks(World world) {
+		this.worldObj = world;
 		sub_id = 0;
 		color_block = 0xFFFFFF;
 	}

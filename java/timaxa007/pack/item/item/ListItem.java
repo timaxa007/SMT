@@ -38,7 +38,8 @@ public class ListItem {
 	tool_shuriken_be,
 	tool_tomahawk_be,
 	tool_shield_be,
-	tool_craft_be
+	tool_craft_be,
+	armor_techne_be
 	;
 
 	public static Item 
@@ -72,7 +73,8 @@ public class ListItem {
 	tool_shuriken,
 	tool_tomahawk,
 	tool_shield,
-	tool_craft
+	tool_craft,
+	armor_techne
 	;
 
 	public static Item[] list_item;
@@ -110,6 +112,7 @@ public class ListItem {
 		if (tool_tomahawk_be) tool_tomahawk = new ToolAxe("tool_tomahawk");
 		if (tool_shield_be) tool_shield = new ToolShield("tool_shield");
 		if (tool_craft_be) tool_craft = new ToolCraft("tool_craft");
+		if (armor_techne_be) armor_techne = new ArmorTechne("armor_techne");
 
 		list_item = new Item[] {
 				items_for_items,
@@ -142,7 +145,8 @@ public class ListItem {
 				tool_shuriken,
 				tool_tomahawk,
 				tool_shield,
-				tool_craft
+				tool_craft,
+				armor_techne
 		};
 
 		UtilSMT.UtilItem.RegItem(list_item);

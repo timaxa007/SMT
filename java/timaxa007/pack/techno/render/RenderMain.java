@@ -20,8 +20,7 @@ public class RenderMain {
 	public static int
 	block_electric_wires_modelID,
 	block_chip_modelID,
-	block_module_movement_modelID,
-	block_farm_mashines_modelID
+	block_module_movement_modelID
 	;
 
 	public static int[] list_render_id;
@@ -31,13 +30,11 @@ public class RenderMain {
 		block_electric_wires_modelID = -1;
 		block_chip_modelID = -1;
 		block_module_movement_modelID = -1;
-		block_farm_mashines_modelID = -1;
 
 		list_render_id = new int[] {
 				block_electric_wires_modelID,
 				block_chip_modelID,
-				block_module_movement_modelID,
-				block_farm_mashines_modelID
+				block_module_movement_modelID
 		};
 
 	}
@@ -57,11 +54,6 @@ public class RenderMain {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModuleMovement.class, new BlockRenderModuleMovement());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.block.module_movement), new ItemRenderBlockModuleMovement());
 		}
-		if (PackTechno.block.farm_mashines_be) {
-			ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFarmMashines.class, new BlockRenderFarmMashines());
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PackTechno.block.farm_mashines), new ItemRenderBlockFarmMashines());
-		}
-
 		//Items
 
 		//Entity

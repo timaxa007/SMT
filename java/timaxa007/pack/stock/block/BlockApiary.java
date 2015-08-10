@@ -39,7 +39,7 @@ public class BlockApiary extends ModifiedBlock implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityApiary();
+		return new TileEntityApiary(world);
 	}
 
 	public int getRenderType() {return PackStock.render.block_apiary_modelID;}

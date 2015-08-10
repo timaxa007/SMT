@@ -31,7 +31,7 @@ public class BlockBoxParticles extends ModifiedBlock implements ITileEntityProvi
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityBoxParticles();
+		return new TileEntityBoxParticles(world);
 	}
 
 	public int getRenderType() {

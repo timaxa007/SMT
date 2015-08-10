@@ -35,6 +35,7 @@ public class EventClientSMT {
 	}*/
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
+	//RenderPlayer
 	public void fogDistance(RenderFogEvent e) {
 		if(e.entity.worldObj.provider instanceof WorldProviderSurface) {
 			float f1 = e.farPlaneDistance;
@@ -48,6 +49,11 @@ public class EventClientSMT {
 			}
 
 		}
+	}*/
+	//--------------------------------------------------------------------------------------------------------------
+	/*@SubscribeEvent
+	public void renderArmor(RenderPlayerEvent e) {
+
 	}*/
 	//--------------------------------------------------------------------------------------------------------------
 }

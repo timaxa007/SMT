@@ -26,7 +26,7 @@ public class BlockFurnitureMetalBlocks extends ModifiedBlock implements ITileEnt
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityFurnitureMetalBlocks();
+		return new TileEntityFurnitureMetalBlocks(world);
 	}
 	/*
 	@SideOnly(Side.CLIENT)

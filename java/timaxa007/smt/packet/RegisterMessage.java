@@ -11,6 +11,8 @@ public class RegisterMessage {
 		network.registerMessage(MessageSetBiome.Handler.class, MessageSetBiome.class, id++, Side.CLIENT);
 		network.registerMessage(MessageInteractionEntity.Handler.class, MessageInteractionEntity.class, id++, Side.SERVER);
 		network.registerMessage(MessageInteractionBlock.Handler.class, MessageInteractionBlock.class, id++, Side.SERVER);
+		network.registerMessage(MessageOpenContainer.Handler.class, MessageOpenContainer.class, id++, Side.SERVER);
+		network.registerMessage(MessageOpenGui.Handler.class, MessageOpenGui.class, id++, Side.CLIENT);
 	}
 
 }

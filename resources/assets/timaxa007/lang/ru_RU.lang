@@ -1,4 +1,6 @@
 ﻿
+inventory.storage.name=Хранилище
+
 category.control_button.name=Контролирование Кнопок (Модуль)
 
 key.reload.name=Перезарядка
@@ -8,14 +10,11 @@ key.mode_in.name=Режим Увеличения
 key.mode_out.name=Режим Уменьшения
 key.action.name=Действие
 
-key.action_helmet.name=Действие Шлем
-key.action_chest.name=Действие Нагрудник
-key.action_leggin.name=Действие Штаны
-key.action_boot.name=Действие Сапоги
-
 key.booster.name=Усилитель
 key.grab.name=Захват
 key.lie.name=Лечь
+
+key.movement_action.name=Движения и Действия
 
 key.button_left.name=Левая Кнопка Мыши
 key.button_right.name=Правая Кнопка Мыши

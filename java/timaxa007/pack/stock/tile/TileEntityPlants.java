@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import timaxa007.module.forbidden.api.ITileEntityOwner;
 import timaxa007.pack.stock.util.Plant;
 import timaxa007.pack.stock.util.RegistryPlants;
@@ -23,7 +24,8 @@ public class TileEntityPlants extends TileEntity implements ITileEntityOwner {
 	private String style;
 	private String owner;
 
-	public TileEntityPlants() {
+	public TileEntityPlants(World world) {
+		this.worldObj = world;
 		this.plant = "";
 		this.plant_type = "";
 		this.parameters_plant_main = RegistryPlants.PlantParametersMain.create(0x00000000);

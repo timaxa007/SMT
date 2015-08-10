@@ -14,7 +14,6 @@ public class ConfigTechno {
 		PackTechno.block.electric_machines_be = cfg.get("block", "electric_machines", true).getBoolean();
 		PackTechno.block.electric_wires_be = cfg.get("block", "electric_wires", true).getBoolean();
 		PackTechno.block.module_movement_be = cfg.get("block", "module_movement", true).getBoolean();
-		PackTechno.block.farm_mashines_be = cfg.get("block", "farm_mashines", true).getBoolean();
 
 		PackTechno.item.items_for_techno_be = cfg.get("item", "items_for_techno", true).getBoolean();
 		PackTechno.item.tool_electric_wrench_be = cfg.get("item", "tool_electric_wrench", true).getBoolean();

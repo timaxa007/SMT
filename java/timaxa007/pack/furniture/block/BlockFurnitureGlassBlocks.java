@@ -26,7 +26,7 @@ public class BlockFurnitureGlassBlocks extends ModifiedBlock implements ITileEnt
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityFurnitureGlassBlocks();
+		return new TileEntityFurnitureGlassBlocks(world);
 	}
 	/*
 

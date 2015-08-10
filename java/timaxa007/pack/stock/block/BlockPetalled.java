@@ -15,7 +15,7 @@ public class BlockPetalled extends ModifiedBlock implements ITileEntityProvider 
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityPetalled();
+		return new TileEntityPetalled(world);
 	}
 
 }

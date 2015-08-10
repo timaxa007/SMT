@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import timaxa007.gui.HelperGui;
+import timaxa007.gui.HandlerGui;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
 import timaxa007.smt.lib.ActionModel;
@@ -26,7 +26,7 @@ public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityPro
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityFurnitureChest();
+		return new TileEntityFurnitureChest(world);
 	}
 
 	public boolean isOpaqueCube() {
@@ -67,7 +67,7 @@ public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityPro
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityFurnitureChest) {
-			HelperGui.openGui(HelperGui.GuiID.FURNITURE_CHEST, player);
+			HandlerGui.openGui(HandlerGui.GuiID.FURNITURE_CHEST, player);
 			return true;
 		}
 		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);

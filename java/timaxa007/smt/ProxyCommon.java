@@ -4,6 +4,9 @@ import org.apache.logging.log4j.Level;
 
 import timaxa007.api.IProxyModuleCommon;
 import timaxa007.api.IProxyPackCommon;
+import timaxa007.smt.event.EventItemStorage;
+import timaxa007.smt.event.EventSMT2;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 
 public class ProxyCommon {
@@ -65,6 +68,8 @@ public class ProxyCommon {
 	public void init() {
 
 		if (CoreSMT.config.debug) FMLLog.log(CoreSMT.MODID, Level.DEBUG, "Successful initialized common part.");
+		FMLCommonHandler.instance().bus().register(new EventItemStorage());
+		FMLCommonHandler.instance().bus().register(new EventSMT2());
 
 		if (control_button != null) control_button.init();
 		if (player_inventory != null) player_inventory.init();

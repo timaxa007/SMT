@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import timaxa007.module.forbidden.api.ITileEntityOwner;
 import timaxa007.smt.util.UtilString;
 
@@ -14,7 +15,8 @@ public class TileEntityModuleMovement extends TileEntity implements ITileEntityO
 	private int rot;
 	private String owner;
 
-	public TileEntityModuleMovement() {
+	public TileEntityModuleMovement(World world) {
+		this.worldObj = world;
 		type = 0;
 		rot = 0;
 		owner = "";

@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityCrystals extends TileEntity {
 
@@ -12,7 +13,8 @@ public class TileEntityCrystals extends TileEntity {
 	private int types;
 	private int rot;
 
-	public TileEntityCrystals() {
+	public TileEntityCrystals(World world) {
+		this.worldObj = world;
 		amount = 8;
 		types = 0;
 		rot = 0;

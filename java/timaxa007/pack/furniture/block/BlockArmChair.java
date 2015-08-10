@@ -32,7 +32,7 @@ public class BlockArmChair extends ModifiedBlock implements ITileEntityProvider 
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityArmChair();
+		return new TileEntityArmChair(world);
 	}
 
 	@Override

@@ -31,7 +31,7 @@ public class BlockElectricWires extends ModifiedBlock implements ITileEntityProv
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityElectricWires();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityElectricWires(world);}
 	public int getRenderType() {return PackTechno.render.block_electric_wires_modelID;}
 	public boolean isOpaqueCube() {return false;}
 	public boolean renderAsNormalBlock() {return false;}

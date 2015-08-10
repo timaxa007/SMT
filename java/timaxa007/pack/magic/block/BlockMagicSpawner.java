@@ -29,7 +29,7 @@ public class BlockMagicSpawner extends ModifiedBlock implements ITileEntityProvi
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityMagicSpawner();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityMagicSpawner(world);}
 
 	public int quantityDropped(Random random) {return 0;}
 	public boolean isOpaqueCube() {return false;}

@@ -31,7 +31,7 @@ public class BlockCandle extends ModifiedBlock implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityCandle();
+		return new TileEntityCandle(world);
 	}
 
 	public int quantityDropped(Random random) {

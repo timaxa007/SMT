@@ -5,13 +5,14 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityBarrels extends TileEntity {
 
 	//private int typeB;
 
-	public TileEntityBarrels() {
-
+	public TileEntityBarrels(World world) {
+		this.worldObj = world;
 	}
 	/*
 	public void setTypeB(int i) {

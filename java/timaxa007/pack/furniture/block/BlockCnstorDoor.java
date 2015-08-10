@@ -38,7 +38,7 @@ public class BlockCnstorDoor extends ModifiedBlock implements ITileEntityProvide
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityCnstorDoors();
+		return new TileEntityCnstorDoors(world);
 	}
 
 	public int idPicked(World world, int x, int y, int z) {

@@ -55,6 +55,11 @@ public class UtilNBT {
 
 	}
 
+	public static ItemStack init(ItemStack is) {
+		if (!is.hasTagCompound()) is.setTagCompound(new NBTTagCompound());
+		return is;
+	}
+
 	public ItemStack saveNBTData(ItemStack is) {
 		checkNBT(is);
 		return is;
@@ -76,7 +81,7 @@ public class UtilNBT {
 	public static void checkNBT(NBTTagCompound nbt) {
 		if (nbt == null) nbt = new NBTTagCompound();
 	}
-	
+
 	public static NBTTagCompound checkNBT(ItemStack is) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (nbt == null) nbt = new NBTTagCompound();

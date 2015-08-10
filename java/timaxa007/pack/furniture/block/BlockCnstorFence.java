@@ -33,7 +33,7 @@ public class BlockCnstorFence extends ModifiedBlock implements ITileEntityProvid
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityCnstorFence();
+		return new TileEntityCnstorFence(world);
 	}
 
 	public int getRenderType() {

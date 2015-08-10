@@ -31,7 +31,7 @@ public class BlockCnstorAngle extends ModifiedBlock implements ITileEntityProvid
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityAngleMod();
+		return new TileEntityAngleMod(world);
 	}
 
 	public int getRenderType() {

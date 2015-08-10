@@ -369,6 +369,11 @@ public class UtilSMT {
 		return FMLClientHandler.instance().getClientPlayerEntity();
 	}
 
+	@SideOnly(Side.CLIENT)
+	public static Minecraft getClient() {
+		return FMLClientHandler.instance().getClient();
+	}
+
 	/*public static boolean isGUI(String str) {
 		if (!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) {//GuiContainer
 			return true;

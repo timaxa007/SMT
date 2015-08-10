@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import timaxa007.gui.HelperGui;
+import timaxa007.gui.HandlerGui;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityMashineWater;
 import timaxa007.smt.object.ModifiedBlock;
@@ -31,7 +31,7 @@ public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvi
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityMashineWater();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityMashineWater(world);}
 	public int getRenderType() {return PackFurniture.render.block_jar01_modelID;}
 	public boolean isOpaqueCube() {return false;}
 	public boolean renderAsNormalBlock() {return false;}
@@ -66,7 +66,7 @@ public class BlockMashineWater extends ModifiedBlock implements ITileEntityProvi
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityMashineWater) {
-			HelperGui.openGui(HelperGui.GuiID.MASHINE_WATER, player);
+			HandlerGui.openGui(HandlerGui.GuiID.MASHINE_WATER, player);
 			return true;
 		}
 		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);

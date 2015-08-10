@@ -4,7 +4,7 @@ import net.minecraft.world.World;
 
 import org.apache.logging.log4j.Logger;
 
-import timaxa007.gui.HandlerGuiSMT;
+import timaxa007.gui.HandlerGui;
 import timaxa007.smt.lib.Config;
 import timaxa007.smt.lib.ListTextureModel;
 import timaxa007.smt.packet.RegisterMessage;
@@ -63,9 +63,7 @@ public class CoreSMT {
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
-
-		NetworkRegistry.INSTANCE.registerGuiHandler(CoreSMT.MODID, new HandlerGuiSMT());
-
+		NetworkRegistry.INSTANCE.registerGuiHandler(CoreSMT.MODID, new HandlerGui());
 		proxy.init();
 	}
 

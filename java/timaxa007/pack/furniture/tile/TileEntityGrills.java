@@ -5,13 +5,15 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityGrills extends TileEntity {
 
 	private String style;
 	private int rot;
 
-	public TileEntityGrills() {
+	public TileEntityGrills(World world) {
+		this.worldObj = world;
 		style = "";
 		rot = 0;
 	}

@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityBlender extends TileEntity {
 
@@ -17,7 +18,8 @@ public class TileEntityBlender extends TileEntity {
 	private int size;
 	private int rotation;
 
-	public TileEntityBlender() {
+	public TileEntityBlender(World world) {
+		this.worldObj = world;
 		type = 0;
 		typeCap = 0;
 		typeHandler = 0;

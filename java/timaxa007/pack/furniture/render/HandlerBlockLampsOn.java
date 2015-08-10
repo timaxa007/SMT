@@ -11,7 +11,7 @@ public class HandlerBlockLampsOn implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
-		TileEntityRendererDispatcher.instance.renderTileEntity(new TileEntityLights(), 1.0F);
+		TileEntityRendererDispatcher.instance.renderTileEntity(new TileEntityLights(null), 1.0F);
 
 	}
 

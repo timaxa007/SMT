@@ -16,7 +16,7 @@ public class BlockStockMachines extends ModifiedBlock implements ITileEntityProv
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityStockMachines();
+		return new TileEntityStockMachines(world);
 	}
 
 }

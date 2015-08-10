@@ -27,7 +27,7 @@ public class BlockBarrels extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityBarrels();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityBarrels(world);}
 	public int getRenderType() {return PackFurniture.render.block_barrels_modelID;}
 	public boolean isOpaqueCube() {return false;}
 	public boolean renderAsNormalBlock() {return false;}

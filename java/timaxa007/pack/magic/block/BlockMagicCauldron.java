@@ -17,7 +17,7 @@ public class BlockMagicCauldron extends ModifiedBlock implements ITileEntityProv
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityMagicCauldron();
+		return new TileEntityMagicCauldron(world);
 	}
 
 	public int getRenderType() {

@@ -12,7 +12,7 @@ public class ListItem {
 	items_for_furniture_be,
 	colored_be,
 	paint_can_be,
-	backpack_be,
+	storage_be,
 	filter_charcoal_be,
 	kitchenware_be,
 	particles_gun_be,
@@ -25,7 +25,7 @@ public class ListItem {
 	items_for_furniture,
 	colored,
 	paint_can,
-	backpack,
+	storage,
 	filter_charcoal,
 	kitchenware,
 	particles_gun,
@@ -41,7 +41,7 @@ public class ListItem {
 		if (items_for_furniture_be) items_for_furniture = new ItemsFurniture("items_for_furniture");
 		if (colored_be) colored = new ItemColored("colored");
 		if (paint_can_be) paint_can = new ItemPaintCan("paint_can");
-		if (backpack_be) backpack = new ItemBackpack("backpack");
+		if (storage_be) storage = new ItemStorage("storage");
 		if (filter_charcoal_be) filter_charcoal = new ItemFilterCharcoal("filter_charcoal");
 		if (kitchenware_be) kitchenware = new ItemKitchenware("kitchenware");
 		if (particles_gun_be) particles_gun = new ItemParticlesGun("particles_gun");
@@ -53,7 +53,7 @@ public class ListItem {
 				items_for_furniture,
 				colored,
 				paint_can,
-				backpack,
+				storage,
 				filter_charcoal,
 				kitchenware,
 				particles_gun,

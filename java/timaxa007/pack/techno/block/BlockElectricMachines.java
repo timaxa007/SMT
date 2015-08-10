@@ -1,7 +1,5 @@
 package timaxa007.pack.techno.block;
 
-import java.util.Random;
-
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,9 +7,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import timaxa007.gui.HelperGui;
+import timaxa007.gui.HandlerGui;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.tile.TileEntityElectricMachines;
 import timaxa007.smt.object.ModifiedBlock;
@@ -28,7 +25,7 @@ public class BlockElectricMachines extends ModifiedBlock implements ITileEntityP
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityElectricMachines();
+		return new TileEntityElectricMachines(world);
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
@@ -37,55 +34,25 @@ public class BlockElectricMachines extends ModifiedBlock implements ITileEntityP
 		if (te != null && te instanceof TileEntityElectricMachines) {
 			TileEntityElectricMachines tile = (TileEntityElectricMachines)te;
 
-			int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			tile.setRot(l);
-
 			if (nbt != null) {
-				if (nbt.hasKey("Type")) tile.setType(nbt.getInteger("Type"));
+				//if (nbt.hasKey("Type")) tile.setType(nbt.getInteger("Type"));
 			}
 
 			if (entity instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer)entity;
-				tile.setOwner(player.getCommandSenderName());
+				tile.setOwner(player);
 			}
-			/*
-			if (is.hasDisplayName()) {
-				((TileEntityElectricMachines)te).setGuiDisplayName(is.getDisplayName());
-			}
-			 */
-		}
-	}
-
-	public void onNeighborBlockChange(World world, int x, int y, int z, int par5) {
-		if (!world.isRemote) {
-			if (world.isBlockIndirectlyGettingPowered(x, y, z)) {
-
-				desBreak(world, x, y, z);
-
-			}
-		}
-	}
-
-	public void updateTick(World world, int x, int y, int z, Random rdm) {
-		if (!world.isRemote && !world.isBlockIndirectlyGettingPowered(x, y, z)) {
-
-			//desBreak(world, x, y, z);
 
 		}
-	}
-
-	private void desBreak(World world, int x, int y, int z) {
-		++x;
-		//world.destroyBlock(x, y, z, true);
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntity te = world.getTileEntity(x, y, z);
 
-		if (te == null || player.isSneaking()) return false;
+		if (player.isSneaking()) return false;
 
 		if (te != null && te instanceof TileEntityElectricMachines) {
-			HelperGui.openGui(HelperGui.GuiID.ELECTRIC_MACHINES, player);
+			HandlerGui.openGui(HandlerGui.GuiID.ELECTRIC_MACHINES, player);
 			return true;
 		}
 

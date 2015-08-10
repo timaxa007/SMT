@@ -5,12 +5,14 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityClaymore extends TileEntity {
 /*
 	private int sticks;
 */
-	public TileEntityClaymore() {
+	public TileEntityClaymore(World world) {
+		this.worldObj = world;
 
 	}
 /*

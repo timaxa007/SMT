@@ -41,7 +41,7 @@ public class BlockPlants extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityPlants();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityPlants(world);}
 	public int getRenderType() {return PackStock.render.block_plants_modelID;}
 	public int quantityDropped(Random random) {return 0;}
 	public boolean isOpaqueCube() {return false;}

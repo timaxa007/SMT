@@ -55,7 +55,7 @@ public class BlockVegetableFace extends ModifiedBlock implements ITileEntityProv
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityVegetableFace();
+		return new TileEntityVegetableFace(world);
 	}
 
 	/*public int getRenderType() {

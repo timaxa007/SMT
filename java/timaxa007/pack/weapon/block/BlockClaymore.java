@@ -27,7 +27,7 @@ public class BlockClaymore extends ModifiedBlock implements ITileEntityProvider 
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityClaymore();
+		return new TileEntityClaymore(world);
 	}
 
 	public int getRenderType() {

@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityCristals extends TileEntity {
 
@@ -12,7 +13,8 @@ public class TileEntityCristals extends TileEntity {
 	private int color;
 	private int size;
 
-	public TileEntityCristals() {
+	public TileEntityCristals(World world) {
+		this.worldObj = world;
 		type = 0;
 		color = 0;
 		size = 0;

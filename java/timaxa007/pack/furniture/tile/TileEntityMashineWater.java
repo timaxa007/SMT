@@ -8,6 +8,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityMashineWater extends TileEntity implements IInventory {
 
@@ -16,7 +17,8 @@ public class TileEntityMashineWater extends TileEntity implements IInventory {
 	private int rotation;
 	private boolean part;
 
-	public TileEntityMashineWater() {
+	public TileEntityMashineWater(World world) {
+		this.worldObj = world;
 		color = 0;
 		type = 0;
 		rotation = 0;

@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import timaxa007.gui.HelperGui;
+import timaxa007.gui.HandlerGui;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.module.control_button.api.IScope;
@@ -192,7 +192,7 @@ IUpdateClient
 	}
 
 	public void mode(ItemStack is, World world, EntityPlayer player) {
-		HelperGui.openGui(HelperGui.GuiID.MODIFY_WEAPON, player);
+		HandlerGui.openGui(HandlerGui.GuiID.MODIFY_WEAPON, player);
 	}
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT)

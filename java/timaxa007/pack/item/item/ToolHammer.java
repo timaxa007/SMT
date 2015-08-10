@@ -1,8 +1,15 @@
 package timaxa007.pack.item.item;
 
+import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import timaxa007.pack.item.PackItem;
 import timaxa007.smt.object.ModifiedItem;
+import timaxa007.smt.util.UtilSMT;
 
 public class ToolHammer extends ModifiedItem {
 	/*
@@ -17,6 +24,22 @@ public class ToolHammer extends ModifiedItem {
 		setMaxDamage(10);
 		setContainerItem(this);
 		setTextureName("timaxa007:tool/hammer");
+	}
+
+	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if (!player.canPlayerEdit(x, y, z, side, is)) return false;
+		else {
+			Block block = world.getBlock(x, y, z);
+			//-------------------------------------
+			if (block == Blocks.coal_block) {
+				ItemStack coal = new ItemStack(Items.coal, 8 + world.rand.nextInt(2));
+				UtilSMT.UtilWorld.breakupBlock(world, x, y, z, coal);
+				is.damageItem(1, player);
+				return true;
+			}
+			//-------------------------------------
+		}
+		return super.onItemUse(is, player, world, x, y, z, side, hitX, hitY, hitZ);
 	}
 
 	public ItemStack getContainerItem(ItemStack is) {

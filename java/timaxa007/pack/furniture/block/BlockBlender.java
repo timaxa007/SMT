@@ -29,7 +29,7 @@ public class BlockBlender extends ModifiedBlock implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityBlender();
+		return new TileEntityBlender(world);
 	}
 
 	public int getRenderType() {

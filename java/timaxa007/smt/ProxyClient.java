@@ -7,7 +7,10 @@ import org.apache.logging.log4j.Level;
 import timaxa007.api.IProxyModuleClient;
 import timaxa007.api.IProxyPackClient;
 import timaxa007.smt.event.EventClientSMT;
+import timaxa007.smt.event.EventClientSMT2;
+import timaxa007.smt.event.EventItemStorageClient;
 import timaxa007.smt.lib.LangLib;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 
 public class ProxyClient extends ProxyCommon {
@@ -76,6 +79,9 @@ public class ProxyClient extends ProxyCommon {
 		if (CoreSMT.config.debug) FMLLog.log(CoreSMT.MODID, Level.DEBUG, "Successful initialized client part.");
 
 		MinecraftForge.EVENT_BUS.register(new EventClientSMT());
+		FMLCommonHandler.instance().bus().register(new EventItemStorageClient());
+		FMLCommonHandler.instance().bus().register(new EventClientSMT2());
+
 
 		if (control_button != null) control_button.init();
 		if (player_inventory != null) player_inventory.init();

@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityPipes extends TileEntity {
 
@@ -18,7 +19,8 @@ public class TileEntityPipes extends TileEntity {
 	public boolean west;
 	public boolean east;
 
-	public TileEntityPipes() {
+	public TileEntityPipes(World world) {
+		this.worldObj = world;
 		style = "";
 		size = 0;
 		color_hex = 0;

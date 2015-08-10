@@ -34,7 +34,7 @@ public class BlockFoods extends ModifiedBlock implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityFoods();}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityFoods(world);}
 	public int quantityDropped(Random random) {return 0;}
 	public int getRenderType() {return PackStock.render.block_foods_modelID;}
 	public boolean isOpaqueCube() {return false;}

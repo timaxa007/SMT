@@ -29,7 +29,7 @@ public class BlockPipes extends ModifiedBlock implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityPipes();
+		return new TileEntityPipes(world);
 	}
 
 	public int getRenderType() {

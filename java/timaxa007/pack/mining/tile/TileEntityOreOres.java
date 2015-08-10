@@ -5,13 +5,15 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityOreOres extends TileEntity {
 
 	private int type;
 	private int color_block;
 
-	public TileEntityOreOres() {
+	public TileEntityOreOres(World world) {
+		this.worldObj = world;
 		type = 0;
 		color_block = 0xFFFFFF;
 	}

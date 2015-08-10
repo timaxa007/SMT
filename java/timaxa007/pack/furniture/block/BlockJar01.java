@@ -31,7 +31,7 @@ public class BlockJar01 extends ModifiedBlock implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityJar01();
+		return new TileEntityJar01(world);
 	}
 
 	public int getRenderType() {

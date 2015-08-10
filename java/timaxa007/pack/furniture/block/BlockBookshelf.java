@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import timaxa007.gui.HelperGui;
+import timaxa007.gui.HandlerGui;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityBookshelf;
 import timaxa007.smt.object.ModifiedBlock;
@@ -32,25 +32,11 @@ public class BlockBookshelf extends ModifiedBlock implements ITileEntityProvider
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityBookshelf();
-	}
-
-	public int getRenderType() {
-		return -1;
-	}
-
-	public boolean isOpaqueCube() {
-		return false;
-	}
-
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	public int idPicked(World world, int x, int y, int z) {
-		return 0;
-	}
+	public TileEntity createNewTileEntity(World world, int meta) {return new TileEntityBookshelf(world);}
+	public int getRenderType() {return PackFurniture.render.block_bookshelf_modelID;}
+	public boolean isOpaqueCube() {return false;}
+	public boolean renderAsNormalBlock() {return false;}
+	public int idPicked(World world, int x, int y, int z) {return 0;}
 
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
@@ -65,7 +51,7 @@ public class BlockBookshelf extends ModifiedBlock implements ITileEntityProvider
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityBookshelf) {
-			HelperGui.openGui(HelperGui.GuiID.BOOKSHELF, player);
+			HandlerGui.openGui(HandlerGui.GuiID.BOOKSHELF, player);
 			return true;
 		}
 		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);

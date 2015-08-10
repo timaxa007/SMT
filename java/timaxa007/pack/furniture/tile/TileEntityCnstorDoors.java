@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityCnstorDoors extends TileEntity {
 
@@ -12,7 +13,8 @@ public class TileEntityCnstorDoors extends TileEntity {
 	private int color_block;
 	private String username;
 
-	public TileEntityCnstorDoors() {
+	public TileEntityCnstorDoors(World world) {
+		this.worldObj = world;
 		sub_id = 0;
 		color_block = 0xFFFFFF;
 		username = "";

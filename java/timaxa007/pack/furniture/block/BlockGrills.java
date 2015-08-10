@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import timaxa007.gui.HelperGui;
+import timaxa007.gui.HandlerGui;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityGrills;
 import timaxa007.smt.object.ModifiedBlock;
@@ -37,7 +37,7 @@ public class BlockGrills extends ModifiedBlock implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityGrills();
+		return new TileEntityGrills(world);
 	}
 
 	public int getRenderType() {
@@ -67,7 +67,7 @@ public class BlockGrills extends ModifiedBlock implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(x, y, z);
 		if (te == null || player.isSneaking()) return false;
 		if (te != null && te instanceof TileEntityGrills) {
-			HelperGui.openGui(HelperGui.GuiID.GRILLS, player);
+			HandlerGui.openGui(HandlerGui.GuiID.GRILLS, player);
 			return true;
 		}
 		return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);

@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityLights extends TileEntity {
 
@@ -12,7 +13,8 @@ public class TileEntityLights extends TileEntity {
 	private int light_level;// 0 >= 16
 	private int color_hex1;
 
-	public TileEntityLights() {
+	public TileEntityLights(World world) {
+		this.worldObj = world;
 		type = "";
 		light_level = 0;
 		color_hex1 = 0xFFFFFF;

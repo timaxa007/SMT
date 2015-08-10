@@ -9,7 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import timaxa007.gui.HelperGui;
+import timaxa007.gui.HandlerGui;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.tile.TileEntityMagicMachines;
 import timaxa007.smt.object.ModifiedBlock;
@@ -26,7 +26,7 @@ public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProv
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityMagicMachines();
+		return new TileEntityMagicMachines(world);
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
@@ -55,7 +55,7 @@ public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProv
 		if (te == null || player.isSneaking()) return false;
 
 		if (te != null && te instanceof TileEntityMagicMachines) {
-			HelperGui.openGui(HelperGui.GuiID.MAGIC_MACHINES, player);
+			HandlerGui.openGui(HandlerGui.GuiID.MAGIC_MACHINES, player);
 			return true;
 		}
 

@@ -1,4 +1,6 @@
 ﻿
+inventory.storage.name=Storage
+
 category.control_button.name=Control Buttons (Module)
 
 key.reload.name=Reload
@@ -8,14 +10,11 @@ key.mode_in.name=Mode Increase
 key.mode_out.name=Mode Decrease
 key.action.name=Action
 
-key.action_helmet.name=Action Helmet
-key.action_chest.name=Action Chest-plate
-key.action_leggin.name=Action Leggings
-key.action_boot.name=Action Boots
-
 key.booster.name=Booster
 key.grab.name=Grab
 key.lie.name=Lie Down
+
+key.movement_action.name=Movement And Action
 
 key.button_left.name=Left Button Mouse
 key.button_right.name=Right Button Mouse

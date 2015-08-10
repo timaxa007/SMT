@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import timaxa007.smt.util.UtilString;
 
 public class TileEntityFurnitureMachines extends TileEntity {
@@ -13,7 +14,8 @@ public class TileEntityFurnitureMachines extends TileEntity {
 	private int rotation;
 	private String owner;
 
-	public TileEntityFurnitureMachines() {
+	public TileEntityFurnitureMachines(World world) {
+		this.worldObj = world;
 		type = 0;
 		rotation = 0;
 		owner = "";

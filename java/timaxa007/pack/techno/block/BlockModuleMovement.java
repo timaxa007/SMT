@@ -38,7 +38,7 @@ public class BlockModuleMovement extends ModifiedBlock implements ITileEntityPro
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityModuleMovement();
+		return new TileEntityModuleMovement(world);
 	}
 
 	public int getRenderType() {

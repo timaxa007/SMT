@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import timaxa007.module.forbidden.api.ITileEntityOwner;
 import timaxa007.smt.util.UtilString;
 
@@ -12,7 +13,8 @@ public class TileEntityMagicCauldron extends TileEntity implements ITileEntityOw
 
 	private String owner;
 
-	public TileEntityMagicCauldron() {
+	public TileEntityMagicCauldron(World world) {
+		this.worldObj = world;
 		owner = "";
 	}
 

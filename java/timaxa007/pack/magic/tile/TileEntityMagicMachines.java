@@ -9,6 +9,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import timaxa007.module.forbidden.api.ITileEntityOwner;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.smt.util.UtilString;
@@ -19,7 +20,8 @@ public class TileEntityMagicMachines extends TileEntity implements ISidedInvento
 	private int rot;
 	private String owner;
 
-	public TileEntityMagicMachines() {
+	public TileEntityMagicMachines(World world) {
+		this.worldObj = world;
 		type = 0;
 		rot = 0;
 		owner = "";

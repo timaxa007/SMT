@@ -29,7 +29,7 @@ public class BlockCrystals extends ModifiedBlock implements ITileEntityProvider 
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityCrystals();
+		return new TileEntityCrystals(world);
 	}
 
 	public int getRenderType() {

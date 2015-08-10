@@ -9,6 +9,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityFurnitureChest extends TileEntity implements IInventory {
 
@@ -19,8 +20,9 @@ public class TileEntityFurnitureChest extends TileEntity implements IInventory {
 	private int rotation;
 	private String custom_name;
 
-	public TileEntityFurnitureChest() {
-
+	public TileEntityFurnitureChest(World world) {
+		this.worldObj = world;
+		rotation = 0;
 	}
 
 	public void setTag(String tag) {

@@ -92,7 +92,7 @@ public class ConfigFurniture {
 		PackFurniture.item.items_for_furniture_be = cfg.get("item", "items_for_furniture", true).getBoolean();
 		PackFurniture.item.colored_be = cfg.get("item", "colored", true).getBoolean();
 		PackFurniture.item.paint_can_be = cfg.get("item", "paint_can", true).getBoolean();
-		PackFurniture.item.backpack_be = cfg.get("item", "backpack", true).getBoolean();
+		PackFurniture.item.storage_be = cfg.get("item", "storage", true).getBoolean();
 		PackFurniture.item.filter_charcoal_be = cfg.get("item", "filter_charcoal", true).getBoolean();
 		PackFurniture.item.kitchenware_be = cfg.get("item", "kitchenware", true).getBoolean();
 		PackFurniture.item.particles_gun_be = cfg.get("item", "particles_gun", true).getBoolean();
