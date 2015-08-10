@@ -11,6 +11,8 @@ public class StorageSlot extends Slot {
 		super(inv, id, x, y);
 	}
 
+	//Нельзя поставить в этот слот предмет с экземляром IItemStorage.
+	//В дальшейшем я тут буду добавлять, чтобы нельяз из других модов вставлять предметы с хранением вещей.
 	@Override
 	public boolean isItemValid(ItemStack is) {
 		return (is != null && is.getItem() instanceof IItemStorage) ? false : super.isItemValid(is);

@@ -18,7 +18,6 @@ public class EventItemStorage {
 			ItemStack current = player.getCurrentEquippedItem();
 			Container con = player.openContainer;
 			if (con != null) {
-				//System.out.println(con.toString());
 				//----------------------------------------------------------------------------------------------
 				if (con instanceof ItemStorageContainer) {
 					ItemStorageContainer bc = (ItemStorageContainer)con;

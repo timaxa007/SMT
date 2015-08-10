@@ -59,11 +59,7 @@ public class ItemStorage extends ModifiedItem implements IItemStorage {
 
 	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (UtilString.isShiftKeyDown()) {
-			if (nbt != null) {
-				if (nbt.hasKey("CustomSize")) list.add("Slots: " + (int)(nbt.getByte("CustomSize") & 255) + ".");
-			}
-		} else list.add(UtilString.hldshiftinf);
+		if (nbt != null && nbt.hasKey("CustomSize")) list.add("Slots: " + (int)(nbt.getByte("CustomSize") & 255) + ".");
 	}
 
 	public static ItemStack addNBT(Item item, size_storage size) {
@@ -83,15 +79,15 @@ public class ItemStorage extends ModifiedItem implements IItemStorage {
 
 	public static enum size_storage {
 
-		SIZE1(9),
-		SIZE2(18),
-		SIZE3(27),
-		SIZE4(36),
-		SIZE5(45),
-		SIZE6(54),
-		SIZE7(63),
-		SIZE8(72),
-		SIZE9(81);
+		SIZE1(9),//(9 * 1)
+		SIZE2(18),//(9 * 2)
+		SIZE3(27),//(9 * 3)//размеры как у одинарный сундук
+		SIZE4(36),//(9 * 4)
+		SIZE5(45),//(9 * 5)
+		SIZE6(54),//(9 * 6)//размеры как у двойной сундук
+		SIZE7(63),//(9 * 7)
+		SIZE8(72),//(9 * 8)
+		SIZE9(81);//(9 * 9)
 
 		private int size;
 

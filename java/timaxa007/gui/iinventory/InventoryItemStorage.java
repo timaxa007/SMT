@@ -6,12 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
-import timaxa007.smt.util.UtilString;
 //InventoryBasic TileEntityChest
 public class InventoryItemStorage implements IInventory {
 
-	private ItemStack current;
-	private ItemStack[] inventory;
+	private ItemStack current;//Предмет который будет хранить вещи
+	private ItemStack[] inventory;//Массив слотов инвентаря в виде ItemStack
 
 	public InventoryItemStorage(ItemStack is) {
 		if (!is.hasTagCompound()) is.setTagCompound(new NBTTagCompound());
@@ -20,7 +19,9 @@ public class InventoryItemStorage implements IInventory {
 	}
 
 	@Override
-	public int getSizeInventory() {return inventory.length;}
+	public int getSizeInventory() {
+		return inventory.length;//Количество слотов инвентаря
+	}
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
@@ -67,53 +68,69 @@ public class InventoryItemStorage implements IInventory {
 	}
 
 	@Override
-	public String getInventoryName() {return current.getDisplayName();}
+	public String getInventoryName() {
+		return current.getDisplayName();//Своё имя
+	}
 
 	@Override
-	public boolean hasCustomInventoryName() {return current.hasDisplayName();}
+	public boolean hasCustomInventoryName() {
+		return current.hasDisplayName();//Есть-ли своё имя
+	}
 
 	@Override
-	public int getInventoryStackLimit() {return 64;}
+	public int getInventoryStackLimit() {
+		return 64;//Лимит размер стака в слоте
+	}
 
 	@Override
 	public void markDirty() {
-		//save();
+		//У меня этот метод от 3 и более раза за раз вызываеться, так-что я с ним ни чего не делаю.
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {return true;}
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		//Может-ли игрок использовать этот инвентарь
+		return true;
+	}
 
+	//Открытие инвентаря
 	@Override
 	public void openInventory() {
-		//markDirty();
 		load();
 	}
 
+	//Закрытие инвентаря
 	@Override
 	public void closeInventory() {
-		//markDirty();
 		save();
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int slot, ItemStack is) {return true;}
-
-	public void load() {load(current.getTagCompound());}
-
-	public ItemStack load(ItemStack is) {
-		NBTTagCompound nbt = load(is.getTagCompound());
-		if (nbt != null) is.setTagCompound(nbt);
-		return is;
+	public boolean isItemValidForSlot(int slot, ItemStack is) {
+		//Можно-ли взаимодействовать со слотом(-ами).
+		return true;
 	}
 
-	public NBTTagCompound load(NBTTagCompound nbt) {
+	//Методы "load" должны из предмета драть нужные теги для простой работы с инвентарём.
+	public void load() {
+		load(current);
+	}
+
+	public void load(ItemStack is) {
+		load(is.getTagCompound());
+	}
+
+	public void load(NBTTagCompound nbt) {
 		if (nbt != null) {
 			NBTTagList nbttaglist = nbt.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 
+			//Мне так показалось проще сделать, чем брать значение из "nbttagcompound1.getByte("Slot")"
+			//Наш NBT тег из которого будем брать максимальное количества слотов для нашего инвентаря Item Storage
+			//Желательно, чтобы размеры инвентаря были [9 * n]
 			if (nbt.hasKey("CustomSize", Constants.NBT.TAG_BYTE))
 				inventory = new ItemStack[nbt.getByte("CustomSize") & 255];
-			else
-				inventory = new ItemStack[(9 * 3)];
+			//Если нету нужно тега, то замер инвентаря Item Storage будет в 27 слотов.
+			else inventory = new ItemStack[(9 * 3)];
 
 			for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 				NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
@@ -124,10 +141,12 @@ public class InventoryItemStorage implements IInventory {
 			}
 
 		}
-		return nbt;
 	}
 
-	public void save() {save(current.getTagCompound());}
+	//Методы "save" должны в предмет сохранять инвентарь Item Storage в теги.
+	public void save() {
+		current = save(current);
+	}
 
 	public ItemStack save(ItemStack is) {
 		if (is != null && current != null) {
@@ -160,6 +179,7 @@ public class InventoryItemStorage implements IInventory {
 	}
 
 	public ItemStack update(EntityPlayer player) {
+		//Да - каждый тик будет сохраняться. Но при этом, практически не наблюдаеться дюп или тупой работы инвентаря.
 		return save(player.getCurrentEquippedItem());
 	}
 

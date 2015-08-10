@@ -2,7 +2,7 @@ package timaxa007.gui.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -15,23 +15,27 @@ public class ItemStorageGui extends GuiContainer {
 
 	private static final ResourceLocation field_147017_u = new ResourceLocation("textures/gui/container/generic_54.png");
 	private int inventoryRows;
-	private IInventory inv_p;
+	private InventoryPlayer inv_p;
 	private InventoryItemStorage inv;
 
-	public ItemStorageGui(EntityPlayer player, InventoryItemStorage inventoryStorage) {
-		super(new ItemStorageContainer(player, inventoryStorage));
+	public ItemStorageGui(EntityPlayer player, InventoryItemStorage inventoryItemStorage) {
+		super(new ItemStorageContainer(player, inventoryItemStorage));
 		inv_p = player.inventory;
-		inv = inventoryStorage;
-		inventoryRows = inventoryStorage.getSizeInventory() / 9;
-        short short1 = 222;
-        int i = short1 - 108;
-        ySize = i + inventoryRows * 18;
+		inv = inventoryItemStorage;
+		inventoryRows = inventoryItemStorage.getSizeInventory() / 9;
+		short short1 = 222;
+		int i = short1 - 108;
+		ySize = i + inventoryRows * 18;
 	}
 
 	@Override
 	public void drawGuiContainerForegroundLayer(int i1, int i2) {
-		fontRendererObj.drawString((inv.hasCustomInventoryName() ? inv.getInventoryName() : StatCollector.translateToLocal("inventory.storage.name")), 8, 6, 4210752);
-		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, inventoryRows * 18 + 19, 4210752);
+		//Именование инвенторя Item Storage
+		if (inv != null) fontRendererObj.drawString(
+				(inv.hasCustomInventoryName() ? inv.getInventoryName() : StatCollector.translateToLocal("inventory.storage.name")), 8, 6, 4210752);
+		//Именование инвентаря игрока
+		if (inv_p != null) fontRendererObj.drawString(
+				StatCollector.translateToLocal("container.inventory"), 8, inventoryRows * 18 + 19, 4210752);
 	}
 
 	@Override
