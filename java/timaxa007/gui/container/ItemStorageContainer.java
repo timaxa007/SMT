@@ -4,7 +4,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import timaxa007.api.IItemStorage;
 import timaxa007.gui.iinventory.InventoryItemStorage;
+import timaxa007.gui.iinventory.ListAccess;
 import timaxa007.gui.slot.SlotNoTakeStorage;
 import timaxa007.gui.slot.StorageSlot;
 
@@ -52,6 +54,8 @@ public class ItemStorageContainer extends Container {
 		if (slot != null && slot.getHasStack()) {
 			ItemStack is1 = slot.getStack();
 			is = is1.copy();
+			
+			if (ListAccess.blackForStorage(is1)) return null;
 
 			if (slot_i < inv.getSizeInventory()) {
 				if (!mergeItemStack(is1, inv.getSizeInventory(), inventorySlots.size(), true)) return null;
