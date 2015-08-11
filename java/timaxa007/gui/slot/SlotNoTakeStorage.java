@@ -11,13 +11,11 @@ public class SlotNoTakeStorage extends Slot {
 		super(inv, id, x, y);
 	}
 
-	//Нельзя взять из этого слота, если это находиться в руке игрока.
-	//Хотя по стандарту, можно только для хот-бара, но я не уверен на счёт других модов.
 	@Override
 	public boolean canTakeStack(EntityPlayer player) {
 		ItemStack is = inventory.getStackInSlot(getSlotIndex());
-		//if (is != null && is.getItem() instanceof ItemStorage) return false;
-		if (is != null && is == player.getCurrentEquippedItem()) return false;
+		ItemStack current = player.getCurrentEquippedItem();
+		if (is != null && current != null && is == current) return false;
 		return super.canTakeStack(player);
 	}
 

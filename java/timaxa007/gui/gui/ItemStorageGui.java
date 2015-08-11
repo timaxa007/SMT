@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL11;
 
 import timaxa007.gui.container.ItemStorageContainer;
 import timaxa007.gui.iinventory.InventoryItemStorage;
-//GuiChest
+
 public class ItemStorageGui extends GuiContainer {
 
 	private static final ResourceLocation field_147017_u = new ResourceLocation("textures/gui/container/generic_54.png");
@@ -30,10 +30,8 @@ public class ItemStorageGui extends GuiContainer {
 
 	@Override
 	public void drawGuiContainerForegroundLayer(int i1, int i2) {
-		//Именование инвенторя Item Storage
 		if (inv != null) fontRendererObj.drawString(
 				(inv.hasCustomInventoryName() ? inv.getInventoryName() : StatCollector.translateToLocal("inventory.storage.name")), 8, 6, 4210752);
-		//Именование инвентаря игрока
 		if (inv_p != null) fontRendererObj.drawString(
 				StatCollector.translateToLocal("container.inventory"), 8, inventoryRows * 18 + 19, 4210752);
 	}
