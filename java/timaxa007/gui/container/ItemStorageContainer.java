@@ -55,7 +55,7 @@ public class ItemStorageContainer extends Container {
 			ItemStack is1 = slot.getStack();
 			is = is1.copy();
 			
-			if (ListAccess.blackForStorage(is1)) return null;
+			if (ListAccess.deniedForStorage(is1)) return null;
 
 			if (slot_i < inv.getSizeInventory()) {
 				if (!mergeItemStack(is1, inv.getSizeInventory(), inventorySlots.size(), true)) return null;

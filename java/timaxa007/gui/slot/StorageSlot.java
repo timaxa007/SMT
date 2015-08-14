@@ -14,7 +14,7 @@ public class StorageSlot extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack is) {
-		if (ListAccess.blackForStorage(is)) return false;
+		if (ListAccess.deniedForStorage(is)) return false;
 		return super.isItemValid(is);
 	}
 

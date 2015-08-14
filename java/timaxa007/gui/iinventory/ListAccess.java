@@ -5,7 +5,7 @@ import timaxa007.pack.conjoint.api.IItemStorage;
 
 public class ListAccess {
 
-	public static boolean blackForStorage(ItemStack is) {
+	public static boolean deniedForStorage(ItemStack is) {
 		if (is != null) {
 			//-----------------------------------------------------
 			if (is.getItem() instanceof IItemStorage) return true;
@@ -27,11 +27,11 @@ public class ListAccess {
 		return false;
 	}
 
-	public static boolean black(ItemStack is) {
+	public static boolean denied(ItemStack is) {
 		return false;
 	}
 
-	public static boolean white(ItemStack is) {
+	public static boolean allowed(ItemStack is) {
 		return false;
 	}
 
