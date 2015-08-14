@@ -14,7 +14,7 @@ import timaxa007.module.substance.util.RegistrySubstance;
 import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.item.ItemDrinks.drinks;
 import timaxa007.pack.techno.PackTechno;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 import timaxa007.smt.util.UtilString;
 
 public class ContainerSubstance extends ModifiedItem {

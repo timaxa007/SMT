@@ -1,6 +1,6 @@
 package timaxa007.pack.techno.render.entity;
 
-import timaxa007.smt.lib.AddTextureModel;
+import timaxa007.pack.conjoint.lib.AddTextureModel;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;

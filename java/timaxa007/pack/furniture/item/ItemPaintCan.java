@@ -1,8 +1,8 @@
 package timaxa007.pack.furniture.item;
 
-import timaxa007.pack.mining.PackMining;
-import timaxa007.smt.object.ModifiedItem;
 import net.minecraft.util.IIcon;
+import timaxa007.pack.conjoint.object.ModifiedItem;
+import timaxa007.pack.furniture.PackFurniture;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -13,9 +13,9 @@ public class ItemPaintCan extends ModifiedItem {
 
 	public ItemPaintCan(String tag) {
 		super(tag);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setMaxStackSize(1);
 		setMaxDamage(15);
-		setCreativeTab(PackMining.tab_tools);
 	}
 
 }

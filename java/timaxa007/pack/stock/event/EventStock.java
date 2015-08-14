@@ -1,5 +1,6 @@
 package timaxa007.pack.stock.event;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.entity.Entity;
@@ -303,6 +304,25 @@ public class EventStock {
 				}
 
 			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------------------------
+	public void deathPlayer(LivingDeathEvent event) {
+		if (event.entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)event.entityLiving;
+			
+			//spawn block inv get in box-AABB
+			
+			/*
+			ArrayList<ItemStack> list = new ArrayList<ItemStack>();
+			for (ItemStack is : player.inventory.mainInventory) {
+				list.add(is);
+			}
+			for (ItemStack is : player.inventory.mainInventory) {
+				list.add(is);
+			}
+			*/
+			
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------

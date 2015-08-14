@@ -1,7 +1,7 @@
 package timaxa007.gui.iinventory;
 
 import net.minecraft.item.ItemStack;
-import timaxa007.api.IItemStorage;
+import timaxa007.pack.conjoint.api.IItemStorage;
 
 public class ListAccess {
 
@@ -18,7 +18,10 @@ public class ListAccess {
 			//Ранец не хранит в себе, он просто как апгрейд для игрока, но всё-же добавил. Скоро будет опциональна, как и всё другое.
 			try {if (Class.forName("tconstruct.armor.items.Knapsack").isInstance(is.getItem())) return true;} catch(Exception e) {}
 			//Дальше, просто по-поиску из import'ов
-			try {if (Class.forName("de.eydamos.backpack.item.ItemBackpackBase").isInstance(is.getItem())) return true;} catch(Exception e) {}
+			try {if (Class.forName("de.eydamos.backpack.conjoint.ItemBackpackBase").isInstance(is.getItem())) return true;} catch(Exception e) {}
+			try {if (Class.forName("com.darkona.adventurebackpack.conjoint.ItemAB").isInstance(is.getItem())) return true;} catch(Exception e) {}
+			try {if (Class.forName("backpack.conjoint.ItemBackpackBase").isInstance(is.getItem())) return true;} catch(Exception e) {}
+			try {if (Class.forName("net.mcft.copy.betterstorage.item.ItemBackpack").isInstance(is.getItem())) return true;} catch(Exception e) {}
 			//-----------------------------------------------------
 		}
 		return false;

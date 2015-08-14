@@ -3,10 +3,10 @@ package timaxa007.pack.mining;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import timaxa007.api.IProxyPackClient;
+import timaxa007.pack.conjoint.lib.AddTextureModel;
 import timaxa007.pack.mining.block.OreOres;
 import timaxa007.pack.mining.event.EventMiningClient;
 import timaxa007.pack.mining.render.RenderMain;
-import timaxa007.smt.lib.AddTextureModel;
 import timaxa007.smt.util.UtilRender;
 
 public class ProxyClient implements IProxyPackClient {

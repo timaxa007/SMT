@@ -10,7 +10,7 @@ import timaxa007.gui.HandlerGui;
 import timaxa007.gui.HandlerGuiSMT;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.information.api.ISeeLook;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

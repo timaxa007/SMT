@@ -1,9 +1,9 @@
 package timaxa007.pack.furniture.recipe;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import timaxa007.pack.conjoint.lib.RemoveRecipe;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.item.ItemStorage;
-import timaxa007.smt.lib.RemoveRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

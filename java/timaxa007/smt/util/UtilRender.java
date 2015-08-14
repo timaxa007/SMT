@@ -17,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import timaxa007.smt.lib.ImageUtils;
+import timaxa007.pack.conjoint.lib.ImageUtils;
 
 public class UtilRender {
 	//------------------------------------------------------------------------------------------------------

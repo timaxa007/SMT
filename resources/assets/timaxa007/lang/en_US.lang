@@ -1,6 +1,8 @@
 ﻿
 inventory.storage.name=Storage
 
+generator.world_smt=World SMT
+
 category.control_button.name=Control Buttons (Module)
 
 key.reload.name=Reload

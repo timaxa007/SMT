@@ -4,7 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.lib.ReceivingNutriment;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 
 public class ItemPetals extends ModifiedItem {
 

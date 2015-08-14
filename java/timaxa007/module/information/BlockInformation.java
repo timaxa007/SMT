@@ -1,7 +1,7 @@
 package timaxa007.module.information;
 
 import net.minecraft.block.material.Material;
-import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.pack.conjoint.object.ModifiedBlock;
 
 public class BlockInformation extends ModifiedBlock {
 

@@ -1,6 +1,6 @@
 package timaxa007.pack.furniture.render.item;
 
-import timaxa007.smt.lib.AddTextureModel;
+import timaxa007.pack.conjoint.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

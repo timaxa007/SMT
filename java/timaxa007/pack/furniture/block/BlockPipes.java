@@ -2,10 +2,10 @@ package timaxa007.pack.furniture.block;
 
 import java.util.List;
 
+import timaxa007.pack.conjoint.lib.AddTextureModel;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityPipes;
-import timaxa007.smt.lib.AddTextureModel;
-import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.pack.conjoint.object.ModifiedBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

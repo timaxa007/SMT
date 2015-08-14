@@ -29,7 +29,7 @@ public class PackFurniture implements IPackClass {
 
 	public static final String MODID = "furniturepack";
 	public static final String MODNAME = "PackFurniture";
-	public static final String VERSION = "0.332";
+	public static final String VERSION = "0.334";
 
 	public static final ConfigFurniture config = new ConfigFurniture();
 	public static final ListBlock block = new ListBlock();

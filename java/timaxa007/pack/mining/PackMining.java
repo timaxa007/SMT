@@ -3,7 +3,6 @@ package timaxa007.pack.mining;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.MinecraftForge;
 
 import org.apache.logging.log4j.Logger;
 
@@ -11,13 +10,13 @@ import timaxa007.api.IPackClass;
 import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.mining.block.ListBlock;
 import timaxa007.pack.mining.config.ConfigMining;
-import timaxa007.pack.mining.event.EventMining;
 import timaxa007.pack.mining.item.ListItem;
 import timaxa007.pack.mining.lib.ListMining;
 import timaxa007.pack.mining.packet.RegisterMessage;
 import timaxa007.pack.mining.recipe.Recipes_Mining;
 import timaxa007.pack.mining.render.RenderMain;
 import timaxa007.pack.mining.world.Generator_Mining;
+import timaxa007.pack.mining.world.WorldSMT;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -31,7 +30,7 @@ public class PackMining implements IPackClass {
 
 	public static final String MODID = "miningpack";
 	public static final String MODNAME = "PackMining";
-	public static final String VERSION = "0.227";
+	public static final String VERSION = "0.228";
 
 	public static final ConfigMining config = new ConfigMining();
 	public static final ListBlock block = new ListBlock();
@@ -46,9 +45,6 @@ public class PackMining implements IPackClass {
 	public static final CreativeTabs tab_mining = new CreativeTabs("tab_mining") {
 		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMining.item.items_for_mining;}
 	};
-	public static final CreativeTabs tab_tools = new CreativeTabs("tab_tools") {
-		@SideOnly(Side.CLIENT) public Item getTabIconItem() {return PackMining.item.items_for_mining;}
-	};
 
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
@@ -61,10 +57,13 @@ public class PackMining implements IPackClass {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMining.MODID);
 		RegisterMessage.init(network);
 
+		new WorldSMT();
 		new ListMining();
 
 		block.preInit();
 		item.preInit();
+
+		Recipes_Mining.list();
 
 		//OreDictionary.registerOre("ignotCopper", new ItemStack(itemMetals, 1, 64));
 
@@ -86,9 +85,7 @@ public class PackMining implements IPackClass {
 		DimensionManager.registerProviderType(world_dim_only_night_id, WorldOnlyNight.class, true);
 		DimensionManager.registerDimension(world_dim_only_night_id, world_dim_only_night_id);
 		  */
-		Recipes_Mining.list();
 
-		MinecraftForge.EVENT_BUS.register(new EventMining());
 
 	}
 

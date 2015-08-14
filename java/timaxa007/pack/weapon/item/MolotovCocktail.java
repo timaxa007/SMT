@@ -1,7 +1,7 @@
 package timaxa007.pack.weapon.item;
 
 import timaxa007.pack.weapon.PackWeapon;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;

@@ -17,15 +17,15 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import timaxa007.pack.conjoint.lib.AddTextureModel;
 import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.item.ItemPlants;
 import timaxa007.pack.stock.tile.TileEntityPlants;
 import timaxa007.pack.stock.util.Plant;
 import timaxa007.pack.stock.util.RegistryPlants;
-import timaxa007.smt.lib.AddTextureModel;
-import timaxa007.smt.object.ModifiedBlock;
-import timaxa007.smt.util.UtilString;
+import timaxa007.pack.conjoint.object.ModifiedBlock;
 import timaxa007.smt.util.UtilSMT;
+import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

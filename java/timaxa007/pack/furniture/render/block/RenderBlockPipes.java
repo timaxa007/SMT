@@ -1,8 +1,8 @@
 package timaxa007.pack.furniture.render.block;
 
+import timaxa007.pack.conjoint.lib.AddTextureModel;
+import timaxa007.pack.conjoint.lib.ModelT;
 import timaxa007.pack.furniture.tile.TileEntityPipes;
-import timaxa007.smt.lib.AddTextureModel;
-import timaxa007.smt.lib.ModelT;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;

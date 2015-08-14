@@ -21,18 +21,18 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import timaxa007.api.IInteractionWithBlock;
-import timaxa007.api.IInteractionWithEntity;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.module.control_button.api.IUpdateClient;
+import timaxa007.pack.conjoint.PackConjoint;
+import timaxa007.pack.conjoint.api.IInteractionWithBlock;
+import timaxa007.pack.conjoint.api.IInteractionWithEntity;
+import timaxa007.pack.conjoint.object.ModifiedItem;
+import timaxa007.pack.conjoint.packet.MessageInteractionBlock;
+import timaxa007.pack.conjoint.packet.MessageInteractionEntity;
 import timaxa007.pack.magic.PackMagic;
 import timaxa007.pack.magic.lib.Spells;
 import timaxa007.pack.magic.packet.MessagePuff;
-import timaxa007.smt.CoreSMT;
-import timaxa007.smt.object.ModifiedItem;
-import timaxa007.smt.packet.MessageInteractionBlock;
-import timaxa007.smt.packet.MessageInteractionEntity;
 import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -137,7 +137,7 @@ IUpdateClient
 					double pos_z = entity.entityHit.posZ;
 					world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 255.0D, 0.0D);
 
-					CoreSMT.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
+					PackConjoint.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
 				}
 				if (entity.typeOfHit == MovingObjectType.BLOCK) {
 
@@ -145,7 +145,7 @@ IUpdateClient
 					int pos_y = entity.blockY;
 					int pos_z = entity.blockZ;
 
-					CoreSMT.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
+					PackConjoint.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
 				}
 
 			}
@@ -427,7 +427,7 @@ IUpdateClient
 					int pos_z = block.blockZ;
 					//world.spawnParticle("reddust", pos_x, pos_y, pos_z, 0.0D, 0.0D, 255.0D);
 
-					CoreSMT.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
+					PackConjoint.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
 				}
 			}
 			//world.spawnParticle("reddust", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 255.0D);

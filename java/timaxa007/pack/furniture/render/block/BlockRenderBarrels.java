@@ -8,8 +8,8 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
+import timaxa007.pack.conjoint.lib.AddTextureModel;
 import timaxa007.pack.furniture.tile.TileEntityBarrels;
-import timaxa007.smt.lib.AddTextureModel;
 
 public class BlockRenderBarrels extends TileEntitySpecialRenderer {
 

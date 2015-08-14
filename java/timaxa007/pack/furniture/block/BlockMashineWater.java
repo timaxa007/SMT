@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import timaxa007.gui.HandlerGui;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityMashineWater;
-import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.pack.conjoint.object.ModifiedBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -1,21 +1,14 @@
 package timaxa007.smt;
 
-import net.minecraftforge.common.MinecraftForge;
-
 import org.apache.logging.log4j.Level;
 
 import timaxa007.api.IProxyModuleClient;
 import timaxa007.api.IProxyPackClient;
-import timaxa007.smt.event.EventClientSMT;
-import timaxa007.smt.event.EventClientSMT2;
-import timaxa007.smt.event.EventItemStorageClient;
-import timaxa007.smt.lib.LangLib;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 
 public class ProxyClient extends ProxyCommon {
 
-	public static IProxyModuleClient 
+	public static IProxyModuleClient
 	control_button,
 	player_inventory,
 	crafting,
@@ -30,9 +23,9 @@ public class ProxyClient extends ProxyCommon {
 	information
 	;
 
-	public static IProxyPackClient 
+	public static IProxyPackClient
+	conjoint,
 	furniture,
-	item,
 	magic,
 	mining,
 	stock,
@@ -60,15 +53,13 @@ public class ProxyClient extends ProxyCommon {
 
 		verificationPackClient();
 
+		if (conjoint != null) conjoint.preInit();
 		if (furniture != null) furniture.preInit();
-		if (item != null) item.preInit();
 		if (magic != null) magic.preInit();
 		if (mining != null) mining.preInit();
 		if (stock != null) stock.preInit();
 		if (forbidden != null) forbidden.preInit();
 		if (weapon != null) weapon.preInit();
-
-		LangLib.init(CoreSMT.MODID);
 
 	}
 
@@ -77,11 +68,6 @@ public class ProxyClient extends ProxyCommon {
 		super.init();
 
 		if (CoreSMT.config.debug) FMLLog.log(CoreSMT.MODID, Level.DEBUG, "Successful initialized client part.");
-
-		MinecraftForge.EVENT_BUS.register(new EventClientSMT());
-		FMLCommonHandler.instance().bus().register(new EventItemStorageClient());
-		FMLCommonHandler.instance().bus().register(new EventClientSMT2());
-
 
 		if (control_button != null) control_button.init();
 		if (player_inventory != null) player_inventory.init();
@@ -96,8 +82,8 @@ public class ProxyClient extends ProxyCommon {
 		if (texture_map != null) texture_map.init();
 		if (information != null) information.init();
 
+		if (conjoint != null) conjoint.init();
 		if (furniture != null) furniture.init();
-		if (item != null) item.init();
 		if (magic != null) magic.init();
 		if (mining != null) mining.init();
 		if (stock != null) stock.init();
@@ -123,8 +109,8 @@ public class ProxyClient extends ProxyCommon {
 		if (texture_map != null) texture_map.postInit();
 		if (information != null) information.postInit();
 
+		if (conjoint != null) conjoint.postInit();
 		if (furniture != null) furniture.postInit();
-		if (item != null) item.postInit();
 		if (magic != null) magic.postInit();
 		if (mining != null) mining.postInit();
 		if (stock != null) stock.postInit();
@@ -183,11 +169,11 @@ public class ProxyClient extends ProxyCommon {
 
 	public static void verificationPackClient() {
 
+		if (CoreSMT.config.isPackConjoint)
+			conjoint = checkPackClient(CoreSMT.PATH_PACK + ".conjoint.ProxyClient");
+
 		if (CoreSMT.config.isPackFurniture)
 			furniture = checkPackClient(CoreSMT.PATH_PACK + ".furniture.ProxyClient");
-
-		if (CoreSMT.config.isPackItem)
-			item = checkPackClient(CoreSMT.PATH_PACK + ".item.ProxyClient");
 
 		if (CoreSMT.config.isPackMagic)
 			magic = checkPackClient(CoreSMT.PATH_PACK + ".magic.ProxyClient");

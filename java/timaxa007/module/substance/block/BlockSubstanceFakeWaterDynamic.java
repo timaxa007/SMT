@@ -1,7 +1,7 @@
 package timaxa007.module.substance.block;
 
 import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.pack.conjoint.object.ModifiedBlock;
 import net.minecraft.block.material.Material;
 
 public class BlockSubstanceFakeWaterDynamic extends ModifiedBlock {

@@ -1,7 +1,7 @@
 package timaxa007.pack.weapon.item;
 
 import timaxa007.pack.weapon.PackWeapon;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 
 public class ItemsWeapons extends ModifiedItem {
 

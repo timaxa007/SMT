@@ -1,19 +1,8 @@
 package timaxa007.pack.furniture.item;
 
-import java.util.List;
-
-import timaxa007.pack.furniture.PackFurniture;
-import timaxa007.pack.mining.PackMining;
-import timaxa007.smt.object.ModifiedItem;
-import timaxa007.smt.util.UtilString;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+import timaxa007.pack.conjoint.object.ModifiedItem;
+import timaxa007.pack.furniture.PackFurniture;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -24,7 +13,7 @@ public class ToolBrush extends ModifiedItem {
 
 	public ToolBrush(String tag) {
 		super(tag);
-		setCreativeTab(PackMining.tab_tools);
+		setCreativeTab(PackFurniture.tab_furniture);
 		setMaxStackSize(1);
 		setMaxDamage(8);
 		setTextureName("timaxa007:colors/tool_brush");

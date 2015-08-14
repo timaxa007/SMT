@@ -16,8 +16,8 @@ import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.util.FoodItem;
 import timaxa007.pack.stock.util.RegistryFoods;
 import timaxa007.smt.CoreSMT;
-import timaxa007.smt.object.ModifiedItem;
 import timaxa007.smt.util.UtilString;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

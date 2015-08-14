@@ -7,7 +7,7 @@ import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import timaxa007.smt.lib.ModelT;
+import timaxa007.pack.conjoint.lib.ModelT;
 
 public class ItemRenderBlockPlants implements IItemRenderer {
 

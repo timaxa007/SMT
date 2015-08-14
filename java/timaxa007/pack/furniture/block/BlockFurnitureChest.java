@@ -9,10 +9,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import timaxa007.gui.HandlerGui;
+import timaxa007.pack.conjoint.lib.ActionModel;
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.furniture.tile.TileEntityFurnitureChest;
-import timaxa007.smt.lib.ActionModel;
-import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.pack.conjoint.object.ModifiedBlock;
 
 public class BlockFurnitureChest extends ModifiedBlock implements ITileEntityProvider {
 

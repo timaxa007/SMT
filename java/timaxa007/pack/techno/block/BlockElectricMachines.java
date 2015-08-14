@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import timaxa007.gui.HandlerGui;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.tile.TileEntityElectricMachines;
-import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.pack.conjoint.object.ModifiedBlock;
 
 public class BlockElectricMachines extends ModifiedBlock implements ITileEntityProvider {
 

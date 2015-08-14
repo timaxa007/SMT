@@ -1,7 +1,7 @@
 package timaxa007.pack.magic.item;
 
 import timaxa007.pack.magic.PackMagic;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 
 public class ItemsMagic extends ModifiedItem {
 

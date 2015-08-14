@@ -1,7 +1,7 @@
 package timaxa007.pack.techno.render.item;
 
+import timaxa007.pack.conjoint.lib.AddTextureModel;
 import timaxa007.pack.techno.render.block.BlockRenderElectricWires;
-import timaxa007.smt.lib.AddTextureModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;

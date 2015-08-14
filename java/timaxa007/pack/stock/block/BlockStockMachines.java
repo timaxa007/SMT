@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import timaxa007.pack.stock.tile.TileEntityStockMachines;
-import timaxa007.smt.object.ModifiedBlock;
+import timaxa007.pack.conjoint.object.ModifiedBlock;
 
 
 public class BlockStockMachines extends ModifiedBlock implements ITileEntityProvider {

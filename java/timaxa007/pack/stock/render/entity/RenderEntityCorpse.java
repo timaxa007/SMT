@@ -3,9 +3,9 @@ package timaxa007.pack.stock.render.entity;
 import net.minecraft.client.renderer.entity.RenderEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import timaxa007.pack.conjoint.lib.AddTextureModel;
 import timaxa007.pack.stock.entity.EntityCorpse;
 import timaxa007.pack.stock.render.model.ModelEntityCorpse;
-import timaxa007.smt.lib.AddTextureModel;
 
 
 public class RenderEntityCorpse extends RenderEntity {

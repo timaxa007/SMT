@@ -1,7 +1,7 @@
 package timaxa007.pack.mining.item;
 
 import timaxa007.pack.mining.PackMining;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 
 public class ItemsMining extends ModifiedItem {
 

@@ -29,9 +29,9 @@ public class ListBlock {
 	public static Material techno_block = new MaterialTechno();
 
 	public static final Block.SoundType soundElectricMachines = new Block.SoundType("stone", 1.0F, 1.0F) {
-		//public String getBreakSound() {return "dig.stone";}
+		public String getBreakSound() {return "dig.stone";}
 		public String getStepResourcePath() {return "step.gravel";}
-		//public String func_150496_b() {return "dig.wood";}
+		public String func_150496_b() {return "dig.stone";}
 	};
 
 	public static Block[] list_block;

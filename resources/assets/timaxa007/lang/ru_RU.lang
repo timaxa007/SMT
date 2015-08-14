@@ -1,6 +1,8 @@
 ﻿
 inventory.storage.name=Хранилище
 
+generator.world_smt=Мир SMT
+
 category.control_button.name=Контролирование Кнопок (Модуль)
 
 key.reload.name=Перезарядка

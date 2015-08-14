@@ -1,6 +1,6 @@
 package timaxa007.module.player_inventory;
 
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 
 public class ItemUpgradeForInventory extends ModifiedItem {
 

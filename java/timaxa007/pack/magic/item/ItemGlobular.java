@@ -3,7 +3,7 @@ package timaxa007.pack.magic.item;
 import java.util.List;
 
 import timaxa007.pack.magic.PackMagic;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;

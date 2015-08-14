@@ -13,7 +13,7 @@ import timaxa007.pack.stock.PackStock;
 import timaxa007.pack.stock.tile.TileEntityPlants;
 import timaxa007.pack.stock.util.Plant;
 import timaxa007.pack.stock.util.RegistryPlants;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

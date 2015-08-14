@@ -5,14 +5,18 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-import timaxa007.gui.container.*;
-import timaxa007.gui.gui.*;
-import timaxa007.gui.iinventory.*;
+import timaxa007.gui.container.BookCreativeContainer;
+import timaxa007.gui.container.ItemStorageContainer;
+import timaxa007.gui.gui.BookCreativeGui;
+import timaxa007.gui.gui.BookGui;
+import timaxa007.gui.gui.ItemStorageGui;
+import timaxa007.gui.iinventory.InventoryItemStorage;
 import timaxa007.module.player_inventory.gui.ContainerPlayerInventory;
 import timaxa007.module.player_inventory.gui.GuiPlayerInventory;
+import timaxa007.pack.conjoint.PackConjoint;
+import timaxa007.pack.conjoint.packet.MessageOpenContainer;
+import timaxa007.pack.conjoint.packet.MessageOpenGui;
 import timaxa007.smt.CoreSMT;
-import timaxa007.smt.packet.MessageOpenContainer;
-import timaxa007.smt.packet.MessageOpenGui;
 import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -99,7 +103,7 @@ public class HandlerGuiSMT {
 	public static void openGui(int id, EntityPlayer player, boolean flag) {
 		if (player == null) player = UtilSMT.getPlayerClient();
 		openGui(HandlerGuiSMT.getGui(id, player));
-		if (flag) CoreSMT.network.sendToServer(new MessageOpenContainer(id));
+		if (flag) PackConjoint.network.sendToServer(new MessageOpenContainer(id));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -123,7 +127,7 @@ public class HandlerGuiSMT {
 		Container container = getContainer(id, player);
 		if (player != null && container != null) {
 			player.openContainer = container;
-			if (flag && player instanceof EntityPlayerMP) CoreSMT.network.sendTo(new MessageOpenGui(id), (EntityPlayerMP)player);
+			if (flag && player instanceof EntityPlayerMP) PackConjoint.network.sendTo(new MessageOpenGui(id), (EntityPlayerMP)player);
 		}
 
 	}

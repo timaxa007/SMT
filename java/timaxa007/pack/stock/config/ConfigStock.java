@@ -6,7 +6,7 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
 import timaxa007.pack.stock.PackStock;
-import timaxa007.smt.lib.Config;
+import timaxa007.smt.Config;
 
 public class ConfigStock {
 	//--------------------------------------------------------------------------------------------------------------

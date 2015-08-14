@@ -16,17 +16,17 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
-import timaxa007.api.IInteractionWithBlock;
-import timaxa007.api.IInteractionWithEntity;
 import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
+import timaxa007.pack.conjoint.PackConjoint;
+import timaxa007.pack.conjoint.api.IInteractionWithBlock;
+import timaxa007.pack.conjoint.api.IInteractionWithEntity;
+import timaxa007.pack.conjoint.object.ModifiedItem;
+import timaxa007.pack.conjoint.packet.MessageInteractionEntity;
 import timaxa007.pack.techno.PackTechno;
 import timaxa007.pack.techno.entity.EntityElectricRobot;
 import timaxa007.pack.techno.packet.MessageTechnoTool;
 import timaxa007.pack.techno.util.ITechnoTool;
-import timaxa007.smt.CoreSMT;
-import timaxa007.smt.object.ModifiedItem;
-import timaxa007.smt.packet.MessageInteractionEntity;
 import timaxa007.smt.util.UtilSMT;
 import timaxa007.smt.util.UtilString;
 import cpw.mods.fml.relauncher.Side;
@@ -119,7 +119,7 @@ ITechnoTool
 			if (entity != null) {
 
 				if (entity.entityHit != null && entity.typeOfHit == MovingObjectType.ENTITY)
-					CoreSMT.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
+					PackConjoint.network.sendToServer(new MessageInteractionEntity(entity.entityHit.getEntityId()));
 
 				/*if (entity.typeOfHit == MovingObjectType.BLOCK) {
 
@@ -127,7 +127,7 @@ ITechnoTool
 				int pos_y = entity.blockY;
 				int pos_z = entity.blockZ;
 
-				CoreSMT.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
+				PackConjoint.network.sendToServer(new MessageInteractionBlock(pos_x, pos_y, pos_z));
 			}*/
 
 			}

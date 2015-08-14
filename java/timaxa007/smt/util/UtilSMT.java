@@ -9,7 +9,6 @@ import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -20,10 +19,10 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
-import timaxa007.smt.CoreSMT;
-import timaxa007.smt.object.ModifiedBlock;
-import timaxa007.smt.object.ModifiedItem;
-import timaxa007.smt.packet.MessageSetBiome;
+import timaxa007.pack.conjoint.PackConjoint;
+import timaxa007.pack.conjoint.object.ModifiedBlock;
+import timaxa007.pack.conjoint.object.ModifiedItem;
+import timaxa007.pack.conjoint.packet.MessageSetBiome;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -164,7 +163,7 @@ public class UtilSMT {
 				byte[] array = chunk.getBiomeArray();
 				array[((z & 0xF) << 4 | x & 0xF)] = ((byte)(biomeID & 0xFF));
 				chunk.setBiomeArray(array);
-				if (!world.isRemote) CoreSMT.network.sendToAll(new MessageSetBiome(biomeID, x, z));
+				if (!world.isRemote) PackConjoint.network.sendToAll(new MessageSetBiome(biomeID, x, z));
 			}
 		}
 

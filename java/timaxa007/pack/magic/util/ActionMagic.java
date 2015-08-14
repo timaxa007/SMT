@@ -154,7 +154,7 @@ public class ActionMagic {
 	 */
 	/*
 	public static void actionVoid3(World world, EntityPlayer player) {
-		CoreSMT.network.sendToAllAround(new MessageSpawnParticle(1, player.posX, player.posY, player.posZ), 
+		PackConjoint.network.sendToAllAround(new MessageSpawnParticle(1, player.posX, player.posY, player.posZ), 
 				new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 18.5D));
 	}
 	 */

@@ -23,8 +23,8 @@ import timaxa007.pack.weapon.packet.MessageActionWeapons;
 import timaxa007.pack.weapon.util.RegistryWeapons;
 import timaxa007.pack.weapon.util.Weapon;
 import timaxa007.smt.CoreSMT;
-import timaxa007.smt.object.ModifiedItem;
 import timaxa007.smt.util.UtilString;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

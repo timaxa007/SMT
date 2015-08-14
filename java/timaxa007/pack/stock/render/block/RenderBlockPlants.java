@@ -7,10 +7,10 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import timaxa007.pack.conjoint.lib.ModelT;
 import timaxa007.pack.stock.tile.TileEntityPlants;
 import timaxa007.pack.stock.util.Plant;
 import timaxa007.pack.stock.util.RegistryPlants;
-import timaxa007.smt.lib.ModelT;
 
 public class RenderBlockPlants extends TileEntitySpecialRenderer {
 

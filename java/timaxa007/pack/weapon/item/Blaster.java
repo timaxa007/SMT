@@ -4,7 +4,7 @@ import java.util.List;
 
 import timaxa007.pack.furniture.PackFurniture;
 import timaxa007.pack.weapon.PackWeapon;
-import timaxa007.smt.object.ModifiedItem;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;

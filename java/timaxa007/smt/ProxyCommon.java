@@ -4,14 +4,11 @@ import org.apache.logging.log4j.Level;
 
 import timaxa007.api.IProxyModuleCommon;
 import timaxa007.api.IProxyPackCommon;
-import timaxa007.smt.event.EventItemStorage;
-import timaxa007.smt.event.EventSMT2;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 
 public class ProxyCommon {
 
-	public static IProxyModuleCommon 
+	public static IProxyModuleCommon
 	control_button,
 	player_inventory,
 	crafting,
@@ -26,9 +23,9 @@ public class ProxyCommon {
 	information
 	;
 
-	public static IProxyPackCommon 
+	public static IProxyPackCommon
+	conjoint,
 	furniture,
-	item,
 	magic,
 	mining,
 	stock,
@@ -55,8 +52,8 @@ public class ProxyCommon {
 
 		verificationPackCommon();
 
+		if (conjoint != null) conjoint.preInit();
 		if (furniture != null) furniture.preInit();
-		if (item != null) item.preInit();
 		if (magic != null) magic.preInit();
 		if (mining != null) mining.preInit();
 		if (stock != null) stock.preInit();
@@ -68,8 +65,6 @@ public class ProxyCommon {
 	public void init() {
 
 		if (CoreSMT.config.debug) FMLLog.log(CoreSMT.MODID, Level.DEBUG, "Successful initialized common part.");
-		FMLCommonHandler.instance().bus().register(new EventItemStorage());
-		FMLCommonHandler.instance().bus().register(new EventSMT2());
 
 		if (control_button != null) control_button.init();
 		if (player_inventory != null) player_inventory.init();
@@ -84,8 +79,8 @@ public class ProxyCommon {
 		if (texture_map != null) texture_map.init();
 		if (information != null) information.init();
 
+		if (conjoint != null) conjoint.init();
 		if (furniture != null) furniture.init();
-		if (item != null) item.init();
 		if (magic != null) magic.init();
 		if (mining != null) mining.init();
 		if (stock != null) stock.init();
@@ -109,8 +104,8 @@ public class ProxyCommon {
 		if (texture_map != null) texture_map.postInit();
 		if (information != null) information.postInit();
 
+		if (conjoint != null) conjoint.postInit();
 		if (furniture != null) furniture.postInit();
-		if (item != null) item.postInit();
 		if (magic != null) magic.postInit();
 		if (mining != null) mining.postInit();
 		if (stock != null) stock.postInit();
@@ -169,11 +164,11 @@ public class ProxyCommon {
 
 	public static void verificationPackCommon() {
 
+		if (CoreSMT.config.isPackConjoint)
+			conjoint = checkPackCommon(CoreSMT.PATH_PACK + ".conjoint.ProxyCommon");
+
 		if (CoreSMT.config.isPackFurniture)
 			furniture = checkPackCommon(CoreSMT.PATH_PACK + ".furniture.ProxyCommon");
-
-		if (CoreSMT.config.isPackItem)
-			item = checkPackCommon(CoreSMT.PATH_PACK + ".item.ProxyCommon");
 
 		if (CoreSMT.config.isPackMagic)
 			magic = checkPackCommon(CoreSMT.PATH_PACK + ".magic.ProxyCommon");

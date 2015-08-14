@@ -1,9 +1,9 @@
 package timaxa007.pack.furniture.render.block;
 
+import timaxa007.pack.conjoint.lib.AddTextureModel;
 import timaxa007.pack.furniture.render.model.ModelCandle;
 import timaxa007.pack.furniture.render.model.ModelCandles;
 import timaxa007.pack.furniture.tile.TileEntityCandle;
-import timaxa007.smt.lib.AddTextureModel;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
