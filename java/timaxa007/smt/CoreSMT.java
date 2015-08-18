@@ -20,7 +20,7 @@ public class CoreSMT {
 	public static final boolean OBFUSCATED = isObfuscated();
 	public static final String MODID = "timaxa007";
 	public static final String MODNAME = "Project SMT";
-	public static final String VERSION = "0.2.9a";
+	public static final String VERSION = "0.3.0a";
 	public static final String PATH_MODULE = "timaxa007.module";
 	public static final String PATH_PACK = "timaxa007.pack";
 	public static final String[] AUTHORS = new String[] {"timaxa007", "Dragon2488"};

@@ -1,4 +1,4 @@
-package timaxa007.pack.furniture.item;
+package timaxa007.pack.conjoint.item;
 
 import java.util.List;
 

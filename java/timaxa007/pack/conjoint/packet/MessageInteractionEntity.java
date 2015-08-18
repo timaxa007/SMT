@@ -18,6 +18,10 @@ public class MessageInteractionEntity implements IMessage {
 		this.entityID = entityID;
 	}
 
+	public MessageInteractionEntity(Entity entity) {
+		this.entityID = entity.getEntityId();
+	}
+
 	@Override
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(entityID);

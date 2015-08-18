@@ -30,6 +30,7 @@ public class RegisterEntity {
 	public static void registerEntity(Class<? extends Entity> entityClass, String entityName) {
 		//EntityList.addMapping(entityClass, entityName, id, 0x0033FF, 0x00CCFF);
 		EntityRegistry.registerModEntity(entityClass, entityName, id++, CoreSMT.instance, 64, 1, true);
+		EntityRegistry.registerGlobalEntityID(entityClass, entityName, EntityRegistry.findGlobalUniqueEntityId());
 		//EntityRegistry.addSpawn
 	}
 

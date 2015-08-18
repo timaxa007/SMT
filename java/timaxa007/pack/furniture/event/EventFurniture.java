@@ -1,15 +1,11 @@
 package timaxa007.pack.furniture.event;
 
-import timaxa007.pack.furniture.block.BlockArmChair;
-import timaxa007.pack.furniture.tile.TileEntityArmChair;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -29,38 +25,6 @@ public class EventFurniture {
 		}
 	}
 	//--------------------------------------------------------------------------------------------------------------
-	/*@SubscribeEvent
-	public void onLampOn(PlayerInteractEvent event) {
-		EntityPlayer player = event.entityPlayer;
-		World world = player.worldObj;
-		ItemStack current = player.getCurrentEquippedItem();
-		if (current == null) {
-			if (player != null && world != null && !world.isRemote && event.action == event.action.RIGHT_CLICK_BLOCK) {
-				Block block = world.getBlock(event.x, event.y, event.z);
-				if (block != null && block == PackFurniture.block.lamps_click_off) {
-					System.out.println("on");
-					event.setResult(Result.ALLOW);
-				}
-			}
-		}
-	}*/
-	//--------------------------------------------------------------------------------------------------------------
-	/*@SubscribeEvent
-	public void onLampOff(PlayerInteractEvent event) {
-		EntityPlayer player = event.entityPlayer;
-		World world = player.worldObj;
-		ItemStack current = player.getCurrentEquippedItem();
-		if (current == null) {
-			if (player != null && world != null && !world.isRemote && event.action == event.action.RIGHT_CLICK_BLOCK) {
-				Block block = world.getBlock(event.x, event.y, event.z);
-				if (block != null && block == PackFurniture.block.lamps_click_on) {
-					System.out.println("off");
-					event.setResult(Result.ALLOW);
-				}
-			}
-		}
-	}*/
-	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent(priority = EventPriority.LOW)
 	public void onUseCraftHammer(PlayerEvent.ItemCraftedEvent e) {
 		System.out.println("event craft");
@@ -74,43 +38,5 @@ public class EventFurniture {
 			}
 		}
 	}*/
-	//--------------------------------------------------------------------------------------------------------------
-	/*@SubscribeEvent
-	public void onLampOn(PlayerInteractEvent event) {
-		EntityPlayer player = event.entityPlayer;
-		World world = player.worldObj;
-		if (player != null && world != null && !world.isRemote && event.action == event.action.RIGHT_CLICK_BLOCK) {
-			Block block = world.getBlock(event.x, event.y, event.z);
-			TileEntity te = world.getTileEntity(event.x, event.y, event.z);
-			if (block != null && te != null && te instanceof TileEntityLampsOff) {
-				System.out.println("on");
-				te = new TileEntityLampsOn();
-				event.setResult(Result.ALLOW);
-			}
-		}
-	}*/
-	//--------------------------------------------------------------------------------------------------------------
-	/*@SubscribeEvent
-	public void onLampOff(PlayerInteractEvent event) {
-		EntityPlayer player = event.entityPlayer;
-		World world = player.worldObj;
-		if (player != null && world != null && !world.isRemote && event.action == event.action.RIGHT_CLICK_BLOCK) {
-			Block block = world.getBlock(event.x, event.y, event.z);
-			TileEntity te = world.getTileEntity(event.x, event.y, event.z);
-			if (block != null && te != null && te instanceof TileEntityLampsOn) {
-				System.out.println("off");
-				te = new TileEntityLampsOff();
-				event.setResult(Result.ALLOW);
-			}
-		}
-	}*/
-	//--------------------------------------------------------------------------------------------------------------
-	@SubscribeEvent
-	public void dropCobblestone(BlockEvent.HarvestDropsEvent e) {
-		if (e.block instanceof BlockArmChair) {
-			e.drops.clear();
-			e.setResult(Result.ALLOW);
-		}
-	}
 	//--------------------------------------------------------------------------------------------------------------
 }

@@ -5,14 +5,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import timaxa007.gui.HandlerGuiSMT.GuiID;
-import timaxa007.gui.container.BookCreativeContainer;
-import timaxa007.gui.container.ItemStorageContainer;
-import timaxa007.gui.gui.BookCreativeGui;
-import timaxa007.gui.gui.ItemStorageGui;
-import timaxa007.gui.iinventory.InventoryItemStorage;
-import timaxa007.module.player_inventory.gui.ContainerPlayerInventory;
-import timaxa007.module.player_inventory.gui.GuiPlayerInventory;
 import timaxa007.smt.CoreSMT;
 import cpw.mods.fml.common.network.IGuiHandler;
 

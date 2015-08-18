@@ -11,7 +11,6 @@ import timaxa007.pack.NodePack.PackNode;
 import timaxa007.pack.conjoint.block.ListBlock;
 import timaxa007.pack.conjoint.config.ConfigItem;
 import timaxa007.pack.conjoint.item.ListItem;
-import timaxa007.pack.conjoint.lib.LangLib;
 import timaxa007.pack.conjoint.lib.ListPackConjoint;
 import timaxa007.pack.conjoint.lib.ListTextureModel;
 import timaxa007.pack.conjoint.packet.RegisterMessage;
@@ -64,16 +63,14 @@ public class PackConjoint implements IPackClass {
 		RegisterMessage.init(network);
 
 		new ListTextureModel();
-		new ListPackConjoint();
+		ListPackConjoint.main();
 
 		block.preInit();
 		item.preInit();
 
-		Recipes_PackConjoint.list();
+		Recipes_PackConjoint.main();
 		//GameRegistry.addRecipe(new RecipeArmorColor());
 		GameRegistry.addRecipe(new RecipeToolHammer());
-
-		LangLib.init(PackConjoint.MODID);
 
 	}
 

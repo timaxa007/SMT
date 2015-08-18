@@ -10,7 +10,7 @@ public class ConfigFurniture {
 	public static void main() {
 		Configuration cfg = new Configuration(new File("./config/smt/pack/" + PackFurniture.MODID, "main.cfg"));
 		cfg.load();
-
+		//----------------------------------------------------------------------------------------------------------
 		PackFurniture.block.furniture_machines_be = cfg.get("block", "furniture_machines", true).getBoolean();
 		PackFurniture.block.furniture_rock_blocks_be = cfg.get("block", "furniture_rock_blocks", true).getBoolean();
 		PackFurniture.block.furniture_glass_blocks_be = cfg.get("block", "furniture_glass_blocks", true).getBoolean();
@@ -87,19 +87,17 @@ public class ConfigFurniture {
 		PackFurniture.block.mashine_waiter_be = cfg.get("block", "mashine_waiter", true).getBoolean();
 		PackFurniture.block.vegetable_face_be = cfg.get("block", "vegetable_face", true).getBoolean();
 		PackFurniture.block.furniture_chest_be = cfg.get("block", "furniture_chest", true).getBoolean();
-
-
+		//----------------------------------------------------------------------------------------------------------
 		PackFurniture.item.items_for_furniture_be = cfg.get("item", "items_for_furniture", true).getBoolean();
 		PackFurniture.item.colored_be = cfg.get("item", "colored", true).getBoolean();
 		PackFurniture.item.paint_can_be = cfg.get("item", "paint_can", true).getBoolean();
-		PackFurniture.item.storage_be = cfg.get("item", "storage", true).getBoolean();
 		PackFurniture.item.filter_charcoal_be = cfg.get("item", "filter_charcoal", true).getBoolean();
 		PackFurniture.item.kitchenware_be = cfg.get("item", "kitchenware", true).getBoolean();
 		PackFurniture.item.particles_gun_be = cfg.get("item", "particles_gun", true).getBoolean();
 
 		PackFurniture.item.tool_brush_be = cfg.get("item", "tool_brush", true).getBoolean();
 		PackFurniture.item.tool_airbrush_be = cfg.get("item", "tool_airbrush", true).getBoolean();
-
+		//----------------------------------------------------------------------------------------------------------
 		cfg.save();
 	}
 	//--------------------------------------------------------------------------------------------------------------

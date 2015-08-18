@@ -5,9 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-import timaxa007.gui.container.BookCreativeContainer;
 import timaxa007.gui.container.ItemStorageContainer;
-import timaxa007.gui.gui.BookCreativeGui;
 import timaxa007.gui.gui.BookGui;
 import timaxa007.gui.gui.ItemStorageGui;
 import timaxa007.gui.iinventory.InventoryItemStorage;
@@ -39,7 +37,7 @@ public class HandlerGuiSMT {
 		if (current != null) {
 			if (ID == GuiID.ITEM_STORAGE.ordinal()) return new ItemStorageContainer(player, new InventoryItemStorage(current));
 			if (ID == GuiID.PLAYER_INVENTORY_STYLE1.ordinal()) return new ContainerPlayerInventory(player);
-			if (ID == GuiID.INFO_BOOK_CREATIVE.ordinal()) return new BookCreativeContainer(player);
+			//if (ID == GuiID.INFO_BOOK_CREATIVE.ordinal()) return new BookCreativeContainer(player);
 		}
 		//---------------------------------------------------------------------------------------------
 		CoreSMT.log.error("HandlerGuiSMT - Container, id = " + ID + ".");
@@ -55,7 +53,7 @@ public class HandlerGuiSMT {
 		if (current != null) {
 			if (ID == GuiID.ITEM_STORAGE.ordinal()) return new ItemStorageGui(player, new InventoryItemStorage(current));
 			if (ID == GuiID.PLAYER_INVENTORY_STYLE1.ordinal()) return new GuiPlayerInventory(player);
-			if (ID == GuiID.INFO_BOOK_CREATIVE.ordinal()) return new BookCreativeGui(player);
+			//if (ID == GuiID.INFO_BOOK_CREATIVE.ordinal()) return new BookCreativeGui(player);
 		}
 		//---------------------------------------------------------------------------------------------
 		//	Only GUI
@@ -76,7 +74,7 @@ public class HandlerGuiSMT {
 		//	Only GUI
 		//---------------------------------------------------------------------------------------------
 		INFO_BOOK,
-		INFO_BOOK_CREATIVE
+		//INFO_BOOK_CREATIVE
 		//---------------------------------------------------------------------------------------------
 		;
 	}

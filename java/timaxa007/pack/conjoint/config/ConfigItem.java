@@ -10,6 +10,8 @@ public class ConfigItem {
 	public static void main() {
 		Configuration cfg = new Configuration(new File("./config/smt/pack/" + PackConjoint.MODID, "main.cfg"));
 		cfg.load();
+		//----------------------------------------------------------------------------------------------------------
+		PackConjoint.block.information_be = cfg.get("block", "block_information", true).getBoolean();
 
 		PackConjoint.block.rock_blocks_be = cfg.get("block", "rock_blocks", true).getBoolean();
 		PackConjoint.block.glass_blocks_be = cfg.get("block", "glass_blocks", true).getBoolean();
@@ -18,8 +20,12 @@ public class ConfigItem {
 		PackConjoint.block.sand_blocks_be = cfg.get("block", "sand_blocks", true).getBoolean();
 		PackConjoint.block.cloth_blocks_be = cfg.get("block", "cloth_blocks", true).getBoolean();
 		PackConjoint.block.metal_blocks_be = cfg.get("block", "metal_blocks", true).getBoolean();
-
+		//----------------------------------------------------------------------------------------------------------
 		PackConjoint.item.items_for_conjoint_be = cfg.get("item", "items_for_conjoint", true).getBoolean();
+
+		PackConjoint.item.information_be = cfg.get("item", "item_information", true).getBoolean();
+
+		PackConjoint.item.storage_be = cfg.get("item", "storage", true).getBoolean();
 
 		PackConjoint.item.tool_axe_be = cfg.get("item", "tool_axe", true).getBoolean();
 		PackConjoint.item.tool_shovel_be = cfg.get("item", "tool_shovel", true).getBoolean();
@@ -51,7 +57,7 @@ public class ConfigItem {
 		PackConjoint.item.tool_shield_be = cfg.get("item", "tool_shield", true).getBoolean();
 		PackConjoint.item.tool_craft_be = cfg.get("item", "tool_craft", true).getBoolean();
 		PackConjoint.item.armor_techne_be = cfg.get("item", "armor_techne", true).getBoolean();
-
+		//----------------------------------------------------------------------------------------------------------
 		cfg.save();
 	}
 	//--------------------------------------------------------------------------------------------------------------

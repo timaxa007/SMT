@@ -3,6 +3,8 @@ inventory.storage.name=Storage
 
 generator.world_smt=World SMT
 
+entity.timaxa007.EntityLivingChest.name=Living Chest
+
 category.control_button.name=Control Buttons (Module)
 
 key.reload.name=Reload

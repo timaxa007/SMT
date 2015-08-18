@@ -1,8 +1,14 @@
 package timaxa007.pack.magic.lib;
 
 import timaxa007.module.substance.util.Substance;
+import timaxa007.pack.magic.entity.EntityLivingChest;
+import timaxa007.pack.stock.util.RegisterEntity;
 
 public class ListMagic {
+
+	public static void init() {
+		RegisterEntity.registerEntity(EntityLivingChest.class, "EntityLivingChest");
+	}
 /*
 	public static final Substance fluid_molten_blaze = new Substance("molten_blaze").setName("molten_blaze").setType(Substance.TypeSubstance.molten).setColor(0xFF7F20).setTemperature(32.0F);
 	public static final Substance fluid_molten_ender = new Substance("molten_ender").setName("molten_ender").setType(Substance.TypeSubstance.molten).setColor(0x32007F).setTemperature(32.0F);

@@ -1,4 +1,4 @@
-package timaxa007.module.information.api;
+package timaxa007.pack.conjoint.api;
 
 import net.minecraft.item.ItemStack;
 

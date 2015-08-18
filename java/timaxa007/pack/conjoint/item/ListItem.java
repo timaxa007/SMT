@@ -1,14 +1,16 @@
 package timaxa007.pack.conjoint.item;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraftforge.common.util.EnumHelper;
 import timaxa007.smt.util.UtilSMT;
 
 public class ListItem {
 
-	public static boolean 
+	public static boolean
 	items_for_conjoint_be,
+
+	information_be,
+
+	storage_be,
 
 	tool_axe_be,
 	tool_shovel_be,
@@ -44,6 +46,10 @@ public class ListItem {
 
 	public static Item 
 	items_for_conjoint,
+
+	information,
+
+	storage,
 
 	tool_axe,
 	tool_shovel,
@@ -83,6 +89,10 @@ public class ListItem {
 
 		if (items_for_conjoint_be) items_for_conjoint = new ItemsItems("items_for_items");
 
+		if (information_be) information = new ItemInformation("information");
+
+		if (storage_be) storage = new ItemStorage("storage");
+
 		if (tool_axe_be) tool_axe = new ToolAxe("tool_axe");
 		if (tool_shovel_be) tool_shovel = new ToolShovel("tool_shovel");
 		if (tool_pickaxe_be) tool_pickaxe = new ToolPickaxe("tool_pickaxe");
@@ -116,6 +126,10 @@ public class ListItem {
 
 		list_item = new Item[] {
 				items_for_conjoint,
+
+				information,
+
+				storage,
 
 				tool_axe,
 				tool_shovel,

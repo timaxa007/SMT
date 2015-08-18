@@ -70,7 +70,7 @@ public class PackMagic implements IPackClass {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(PackMagic.MODID);
 		RegisterMessage.init(network);
 
-		new ListMagic();
+		ListMagic.init();
 
 		block.preInit();
 		item.preInit();

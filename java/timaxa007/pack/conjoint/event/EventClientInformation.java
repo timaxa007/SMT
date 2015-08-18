@@ -1,4 +1,4 @@
-package timaxa007.module.information.event;
+package timaxa007.pack.conjoint.event;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
@@ -7,7 +7,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import timaxa007.module.information.api.ISeeLook;
+import timaxa007.pack.conjoint.api.ISeeLook;
 import timaxa007.smt.util.UtilSMT;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 

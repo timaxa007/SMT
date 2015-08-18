@@ -6,6 +6,8 @@ import timaxa007.smt.util.UtilSMT;
 public class ListBlock {
 
 	public static boolean
+	information_be,
+
 	rock_blocks_be,
 	glass_blocks_be,
 	wood_blocks_be,
@@ -16,6 +18,8 @@ public class ListBlock {
 	;
 
 	public static Block
+	information,
+
 	rock_blocks,
 	glass_blocks,
 	wood_blocks,
@@ -29,6 +33,8 @@ public class ListBlock {
 
 	public static void preInit() {
 
+		if (information_be) information = new BlockInformation("information");
+
 		if (rock_blocks_be) rock_blocks = new BlockRockBlocks("rock_blocks");
 		if (glass_blocks_be) glass_blocks = new BlockGlassBlocks("glass_blocks");
 		if (wood_blocks_be) wood_blocks = new BlockWoodBlocks("wood_blocks");
@@ -38,6 +44,8 @@ public class ListBlock {
 		if (metal_blocks_be) metal_blocks = new BlockMetalBlocks("metal_blocks");
 
 		list_block = new Block[] {
+				information,
+
 				rock_blocks,
 				glass_blocks,
 				wood_blocks,

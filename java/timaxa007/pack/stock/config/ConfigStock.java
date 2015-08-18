@@ -16,13 +16,13 @@ public class ConfigStock {
 	public static void main() {
 		Configuration cfg = new Configuration(new File("./config/smt/pack/" + PackStock.MODID, "main.cfg"));
 		cfg.load();
-
+		//----------------------------------------------------------------------------------------------------------
 		PackStock.block.stock_machines_be = cfg.get("block", "stock_machines", true).getBoolean();
 		PackStock.block.plants_be = cfg.get("block", "plants", true).getBoolean();
 		PackStock.block.foods_be = cfg.get("block", "foods", true).getBoolean();
 		PackStock.block.apiary_be = cfg.get("block", "apiary", true).getBoolean();
 		PackStock.block.petalled_be = cfg.get("block", "petalled", true).getBoolean();
-
+		//----------------------------------------------------------------------------------------------------------
 		PackStock.item.items_for_stock_be = cfg.get("item", "items_for_stock", true).getBoolean();
 		PackStock.item.plants_be = cfg.get("item", "plants", true).getBoolean();
 		PackStock.item.nature_product_be = cfg.get("item", "nature_product", true).getBoolean();
@@ -35,7 +35,7 @@ public class ConfigStock {
 		PackStock.item.petals_be = cfg.get("item", "petals", true).getBoolean();
 		PackStock.item.fuel_jetpack_be = cfg.get("item", "fuel_jetpack", true).getBoolean();
 		//PackStock.item.food_dog_be = cfg.get("item", "food_dog", true).getBoolean();
-
+		//----------------------------------------------------------------------------------------------------------
 		cfg.save();
 	}
 	//--------------------------------------------------------------------------------------------------------------

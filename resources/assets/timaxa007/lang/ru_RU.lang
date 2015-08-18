@@ -3,6 +3,8 @@ inventory.storage.name=Хранилище
 
 generator.world_smt=Мир SMT
 
+entity.timaxa007.EntityLivingChest.name=Живой Сундук
+
 category.control_button.name=Контролирование Кнопок (Модуль)
 
 key.reload.name=Перезарядка

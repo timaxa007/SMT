@@ -1,7 +1,6 @@
 package timaxa007.pack.conjoint.item;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -30,6 +29,34 @@ public class ToolHammer extends ModifiedItem {
 		if (!player.canPlayerEdit(x, y, z, side, is)) return false;
 		else {
 			Block block = world.getBlock(x, y, z);
+			/*
+			ArrayList<ItemStack> tinOre = OreDictionary.getOres("oreTin");
+			//-------------------------------------
+			for (ItemStack item : tinOre) {
+				Block get_block = Block.getBlockFromItem(item.getItem());
+				if (get_block != null && get_block != Blocks.air && get_block == block) {
+					ItemStack apple = new ItemStack(Items.apple, 8 + world.rand.nextInt(2));
+					UtilSMT.UtilWorld.breakupBlock(world, x, y, z, apple);
+					is.damageItem(1, player);
+					return true;
+				}
+			}
+			 */
+			//-------------------------------------
+			/*
+			ItemStack tinicis = IC2Items.getItem("tinOre");
+			ItemStack crushed_tin_ore = IC2Items.getItem("crushedTinOre");
+			if (tinicis != null && crushed_tin_ore != null) {
+				Block tinOre = Block.getBlockFromItem(tinicis.getItem());
+				if (tinOre != Blocks.air && block == tinOre) {
+					crushed_tin_ore.stackSize = 1 + world.rand.nextInt(2);
+					UtilSMT.UtilWorld.breakupBlock(world, x, y, z, crushed_tin_ore);
+					is.damageItem(1, player);
+					world.setBlockToAir(x, y, z);
+					return true;
+				}
+			}
+			 */
 			//-------------------------------------
 			if (block == Blocks.coal_block) {
 				ItemStack coal = new ItemStack(Items.coal, 8 + world.rand.nextInt(2));
