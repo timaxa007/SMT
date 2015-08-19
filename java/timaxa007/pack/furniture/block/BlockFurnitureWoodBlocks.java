@@ -75,9 +75,9 @@ public class BlockFurnitureWoodBlocks extends ModifiedBlock implements ITileEnti
 		TileEntity te = world.getTileEntity(x, y, z);
 		NBTTagCompound nbt = is.getTagCompound();
 		if (te != null && te instanceof TileEntityWoodBlocks && tag != null) {
-			if (nbt.hasKey("SubID")) {((TileEntityWoodBlocks)te).setSubID((int)nbt.getByte("SubID"));} 
+			if (nbt.hasKey("SubID") {((TileEntityWoodBlocks)te).setSubID((int)nbt.getByte("SubID"));} 
 			else {((TileEntityWoodBlocks)te).setSubID(0);}
-			if (nbt.hasKey("ColorBlock")) {((TileEntityWoodBlocks)te).setColorBlock(nbt.getInteger("ColorBlock"));} 
+			if (nbt.hasKey("ColorBlock") {((TileEntityWoodBlocks)te).setColorBlock(nbt.getInteger("ColorBlock"));} 
 			else {((TileEntityWoodBlocks)te).setColorBlock(0xFFFFFF);}
 		}
 	}
@@ -100,7 +100,7 @@ public class BlockFurnitureWoodBlocks extends ModifiedBlock implements ITileEnti
 		if (current != null) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			//--------------------------------
-			if (current.getItem() == PackFurniture.item.colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
+			if (current.getItem() == PackFurniture.item.colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16) {
 				if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 				//((TileEntityWoodBlocks)te).setColorBlock(GetColors.getHexColors[current.getItemDamage()]);
 				((TileEntityWoodBlocks)te).setColorBlock(GetColors.getColorMix(GetColors.getHexColors[current.getItemDamage()], ((TileEntityWoodBlocks)te).getColorBlock()));
@@ -108,7 +108,7 @@ public class BlockFurnitureWoodBlocks extends ModifiedBlock implements ITileEnti
 				return true;
 			}
 			//--------------------------------
-			else if (current.getItem() == Items.dye && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
+			else if (current.getItem() == Items.dye && (current.getItemDamage() >= 0 && current.getItemDamage() < 16) {
 				if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 				//((TileEntityWoodBlocks)te).setColorBlock(ItemDye.dyeColors[current.getItemDamage()]);
 				((TileEntityWoodBlocks)te).setColorBlock(GetColors.getColorMix(ItemDye.field_150922_c[current.getItemDamage()], ((TileEntityWoodBlocks)te).getColorBlock()));

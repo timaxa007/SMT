@@ -11,7 +11,7 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
-public class ItemRenderGrills implements IItemRenderer{
+public class ItemRenderGrills implements IItemRenderer {
 	private static final IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/grill01.obj"));
 
 	public ItemRenderGrills() {
@@ -35,7 +35,7 @@ public class ItemRenderGrills implements IItemRenderer{
 		String tex = "";
 
 		if (nbt != null) {
-			if (nbt.hasKey("Style")) {tex = nbt.getString("Style");}
+			if (nbt.hasKey("Style")) tex = nbt.getString("Style");
 		}
 
 		GL11.glPushMatrix();

@@ -11,7 +11,7 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
-public class ItemRenderBookshelf implements IItemRenderer{
+public class ItemRenderBookshelf implements IItemRenderer {
 	private static final IModelCustom mdl1 = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/bookshelf_side.obj"));
 	private static final IModelCustom mdl2 = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/bookshelf_shelf.obj"));
 

@@ -44,27 +44,27 @@ public class TileEntityLights extends TileEntity {
 		color_hex1 = i;
 	}
 
-	public String getType()	{
+	public String getType()	 {
 		return type;
 	}
 
-	public int getLightLevel()		{
+	public int getLightLevel()		 {
 		return light_level;
 	}
 
-	public float getLightValue()	{
+	public float getLightValue()	 {
 		return ((float)light_level) / 16.0F;
 	}
 
-	public int getColorHex1()	{
+	public int getColorHex1()	 {
 		return color_hex1;
 	}
 
-	public boolean isGlow()	{
+	public boolean isGlow()	 {
 		return light_level != 0;
 	}
 
-	public boolean isLit()	{
+	public boolean isLit()	 {
 		if (light_level != 0) {
 			return true;
 		} else {

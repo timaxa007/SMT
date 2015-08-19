@@ -41,7 +41,7 @@ public class ActionModel {
 		case 1:return 3;
 		case 2:return 0;
 		case 3:return 1;
-		default:{System.out.println("Error in invert_4sides - " + i + ".");return -1;}
+		default: {System.out.println("Error in invert_4sides - " + i + ".");return -1;}
 		}
 	}
 	//------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ public class ActionModel {
 		case 5:return 1;
 		case 6:return 2;
 		case 7:return 3;
-		default:{System.out.println("Error in invert_8sides - " + i + ".");return -1;}
+		default: {System.out.println("Error in invert_8sides - " + i + ".");return -1;}
 		}
 	}
 	//------------------------------------------------------------------------------

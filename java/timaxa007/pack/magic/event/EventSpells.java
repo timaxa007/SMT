@@ -38,7 +38,7 @@ public class EventSpells {
 
 						if (UtilString.isControlKeyDown() && isShowPeace(e.entityPlayer)) {
 
-							//if (!Spells.isNull(spell)) {
+							//if (!Spells.isNull(spell) {
 
 							e.toolTip.add("");
 
@@ -59,7 +59,7 @@ public class EventSpells {
 										UtilString.getText("spells.spells") + 
 										EnumChatFormatting.RESET);
 
-							//if (!Spells.isNull(spell)) {
+							//if (!Spells.isNull(spell) {
 
 							e.toolTip.add(Spells.get(spell).getLocalizedName() + 
 									(" (" + power + ") ") + 

@@ -338,7 +338,7 @@ public class EntityBulletBase extends Entity implements IProjectile {
 			rotationYaw = (float)(Math.atan2(motionX, motionZ) * 180.0D / Math.PI);
 
 			for (rotationPitch = (float)(Math.atan2(motionY, (double)f2) * 180.0D / Math.PI); rotationPitch - prevRotationPitch < -180.0F; prevRotationPitch -= 360.0F)
-			{;}
+			 {;}
 
 			while (rotationPitch - prevRotationPitch >= 180.0F) {
 				prevRotationPitch += 360.0F;

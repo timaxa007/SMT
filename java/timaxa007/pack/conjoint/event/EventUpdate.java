@@ -58,9 +58,9 @@ public class EventUpdate {
 					last_damage = -1;
 				}
 				//-----------------------------------------
-				if (head != null && head.getDisplayName().endsWith("228")) {
+				if (head != null && head.getDisplayName().endsWith("228") {
 					++cooldown228;
-					if (cooldown228 > (20 * 60)) {
+					if (cooldown228 > (20 * 60) {
 						player.playSound("modid:hat228", 1.0F, 1.0F);
 						cooldown228 = 0;
 						//System.out.println("hat228");

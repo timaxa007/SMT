@@ -33,7 +33,7 @@ public class MessageGui implements IMessage {
 		public IMessage onMessage(MessageGui packet, MessageContext message) {
 			EntityPlayerMP player = message.getServerHandler().playerEntity;
 			//player.openContainer = new ContainerPlayerInventory(player);//is not normal
-			switch(packet.act){
+			switch(packet.act) {
 			case 0:HandlerGui.openGui(HandlerGui.GuiID.PLAYER_INVENTORY_STYLE1, player);
 			}
 			return null;

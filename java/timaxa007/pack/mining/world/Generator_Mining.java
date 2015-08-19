@@ -30,7 +30,7 @@ public class Generator_Mining implements IWorldGenerator {
 			for (int y = 0; y < 16; ++y) {
 				for (int z = 1; z < world.getHeight(); ++z) {
 					if (world.getBiomeGenForCoords(chunkX + x, y).biomeID == 30 || world.getBiomeGenForCoords(chunkX + x, chunkY + y).biomeID == 31) {
-						if ((world.getBlock(chunkX + x, z, chunkY + y) == Blocks.grass || world.getBlock(chunkX + x, z, chunkY + y) == Blocks.netherrack)) {
+						if ((world.getBlock(chunkX + x, z, chunkY + y) == Blocks.grass || world.getBlock(chunkX + x, z, chunkY + y) == Blocks.netherrack) {
 							world.setBlock(chunkX + x, z, chunkY + y, PackMining.blockRock);
 						}
 					}

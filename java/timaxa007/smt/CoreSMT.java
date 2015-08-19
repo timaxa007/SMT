@@ -23,7 +23,7 @@ public class CoreSMT {
 	public static final String VERSION = "0.3.0a";
 	public static final String PATH_MODULE = "timaxa007.module";
 	public static final String PATH_PACK = "timaxa007.pack";
-	public static final String[] AUTHORS = new String[] {"timaxa007", "Dragon2488"};
+	public static final String[] AUTHORS = new String[]{"timaxa007", "Dragon2488"};
 
 	@Mod.Instance(CoreSMT.MODID) public static CoreSMT instance;
 	@SidedProxy(modId = CoreSMT.MODID, clientSide = "timaxa007.smt.ProxyClient", serverSide = "timaxa007.smt.ProxyCommon")
@@ -56,7 +56,7 @@ public class CoreSMT {
 	public void postInit(FMLPostInitializationEvent event) {proxy.postInit();}
 
 	private static boolean isObfuscated() {
-		try {return !World.class.getName().endsWith("World");}catch(Exception e){return false;}
+		try{return !World.class.getName().endsWith("World");}catch(Exception e){return false;}
 	}
 
 }

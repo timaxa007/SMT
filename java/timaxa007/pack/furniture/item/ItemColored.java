@@ -21,9 +21,9 @@ public class ItemColored extends ModifiedItem {
 	/*
 public String getUnlocalizedName(ItemStack is) {
 NBTTagCompound nbt = is.getTagCompound();
-if (tag != null && nbt.hasKey("NameID")) {
+if (tag != null && nbt.hasKey("NameID") {
 return super.getUnlocalizedName() + "." + ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))].getName();
-} else if (tag != null && nbt.hasKey("ItemID")) {
+} else if (tag != null && nbt.hasKey("ItemID") {
 return super.getUnlocalizedName() + "." + ItemForStock.item_list[nbt.getInteger("ItemID")].getName();
 }
 return super.getUnlocalizedName();
@@ -31,10 +31,10 @@ return super.getUnlocalizedName();
 
 public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
 NBTTagCompound nbt = is.getTagCompound();
-if (UtilString.isShiftKeyDown()) {
+if (UtilString.isShiftKeyDown() {
 if (tag != null) {
 //-------------------------------------------------------------------------------------
-if (nbt.hasKey("NameID")) {
+if (nbt.hasKey("NameID") {
 if (ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))] != null) {
 list.add("NameID: " + nbt.getString("NameID") + " / [-] ID: " + ItemForStock.getID_name(nbt.getString("NameID")) + ".");
 	if (ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))].getType() != "none") {
@@ -45,7 +45,7 @@ list.add("Bag Item is in NameID: " + nbt.getString("NameID") + ".");
 }
 }
 //-------------------------------------------------------------------------------------
-if (nbt.hasKey("ItemID")) {
+if (nbt.hasKey("ItemID") {
 if (ItemForStock.item_list[nbt.getInteger("ItemID")] != null) {
 if (ItemForStock.item_list[nbt.getInteger("ItemID")].nameID != null) {
 list.add("NameID: " + ItemForStock.item_list[nbt.getInteger("ItemID")].nameID + " [-] / ID: " + nbt.getInteger("ItemID") + ".");
@@ -97,13 +97,13 @@ public boolean requiresMultipleRenderPasses() {return true;}
 
 public IIcon getIcon(ItemStack is, int pass) {
 NBTTagCompound nbt = is.getTagCompound();
-if (tag != null && nbt.hasKey("NameID")) {
+if (tag != null && nbt.hasKey("NameID") {
 if (pass == 0) {
 return icon_tex[ItemForStock.getID_name(nbt.getString("NameID"))];
 } else {
 return icon_ovl[ItemForStock.getID_name(nbt.getString("NameID"))];
 }
-} else if (tag != null && nbt.hasKey("ItemID")) {
+} else if (tag != null && nbt.hasKey("ItemID") {
 if (pass == 0) {
 return icon_tex[nbt.getInteger("ItemID")];
 } else {
@@ -117,13 +117,13 @@ return itemIcon;
 @SideOnly(Side.CLIENT)
 public int getColorFromItemStack(ItemStack is, int pass) {
 NBTTagCompound nbt = is.getTagCompound();
-if (tag != null && nbt.hasKey("NameID")) {
+if (tag != null && nbt.hasKey("NameID") {
 if (pass == 0) {
 return ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))].getColor1();
 } else {
 return ItemForStock.item_list[ItemForStock.getID_name(nbt.getString("NameID"))].getColor2();
 }
-} else if (tag != null && nbt.hasKey("ItemID")) {
+} else if (tag != null && nbt.hasKey("ItemID") {
 if (pass == 0) {
 return ItemForStock.item_list[nbt.getInteger("ItemID")].getColor1();
 } else {
@@ -143,7 +143,7 @@ icon_ovl = new IIcon[ItemForStock.item_list.length];
 for (int i = 0; i < ItemForStock.item_list.length; i++) {
 if (ItemForStock.item_list[i] != null) {
 icon_tex[i] = ir.registerIcon(getIconString() + ItemForStock.item_list[i].getTexture1());
-	if (ItemForStock.item_list[i].getTexture2() == ItemForStock.item_list[i].getTexture1()) {
+	if (ItemForStock.item_list[i].getTexture2() == ItemForStock.item_list[i].getTexture1() {
 	icon_ovl[i] = ir.registerIcon(getIconString() + "empty");
 	} else {
 	icon_ovl[i] = ir.registerIcon(getIconString() + ItemForStock.item_list[i].getTexture2());

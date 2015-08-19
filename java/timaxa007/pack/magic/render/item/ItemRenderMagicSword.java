@@ -36,7 +36,7 @@ public class ItemRenderMagicSword implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		switch(type) {
-		case EQUIPPED:{
+		case EQUIPPED: {
 			GL11.glPushMatrix();
 
 			GL11.glRotatef(90F, 1F, 0F, 0F);
@@ -45,7 +45,7 @@ public class ItemRenderMagicSword implements IItemRenderer {
 
 			boolean isFirstPirson=true;
 			if (data[1] != null && data[1] instanceof EntityPlayer) {
-				if (!((EntityPlayer)data[1] == Minecraft.getMinecraft().renderViewEntity && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && !((Minecraft.getMinecraft().currentScreen instanceof GuiInventory || Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative) && RenderManager.instance.playerViewY == 180.0F)));{
+				if (!((EntityPlayer)data[1] == Minecraft.getMinecraft().renderViewEntity && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && !((Minecraft.getMinecraft().currentScreen instanceof GuiInventory || Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative) && RenderManager.instance.playerViewY == 180.0F))); {
 					GL11.glTranslatef(-0.0F, -0.0F, -0.0F);
 				}
 			} else {

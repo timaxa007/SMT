@@ -1,6 +1,6 @@
 package timaxa007.pack.conjoint.lib;
 
-public enum EnumCord{
+public enum EnumCord {
 NORTH(0, 0, 0, "north"), 
 SOUTH(0, 0, 0, "south"), 
 WEST(0, 0, 0, "west"), 

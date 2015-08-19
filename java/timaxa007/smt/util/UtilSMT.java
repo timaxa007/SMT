@@ -374,7 +374,7 @@ public class UtilSMT {
 	}
 
 	/*public static boolean isGUI(String str) {
-		if (!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen)) {//GuiContainer
+		if (!(Minecraft.getMinecraft().currentScreen instanceof GuiScreen) {//GuiContainer
 			return true;
 		}
 		return false;

@@ -5,6 +5,8 @@ import java.io.File;
 import net.minecraft.client.Minecraft;
 
 public class LangLib {
+	
+	private static Minecraft mc = Minecraft.getMinecraft();
 
 	private static File file;
 	//private static final String LANGUAGE_PATH="/assets/timaxa007/Lib/";
@@ -14,7 +16,8 @@ public class LangLib {
 	};*/
 
 	public static void init(String mod_id) {
-		File preFile = new File("./assets/timaxa007/lang", mod_id + "." + Minecraft.getMinecraft().gameSettings.language);
+		File preFile = new File(mc.mcDataDir + "/assets/timaxa007/lang", mod_id + "." + mc.gameSettings.language);
+		//File preFile = new File("." + "/assets/timaxa007/lang", mod_id + "." + mc.gameSettings.language);
 		if (preFile.exists()) {
 			file = preFile;
 		}

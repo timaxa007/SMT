@@ -10,7 +10,7 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
-public class ItemRenderMincer implements IItemRenderer{
+public class ItemRenderMincer implements IItemRenderer {
 	private static final IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/micer.obj"));
 
 	public ItemRenderMincer() {

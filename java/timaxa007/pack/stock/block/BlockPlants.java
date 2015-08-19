@@ -294,7 +294,7 @@ if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSiz
 ((TileEntityPlants)te).setGrowing(0);
 if (!player.capabilities.isCreativeMode) {--current.stackSize;--current.stackSize;--current.stackSize;--current.stackSize;}
 //--------------------------------
-} else if ((current.getItem() == Item.dyePowder)&&(current.getItemDamage() == 15)) {
+} else if ((current.getItem() == Item.dyePowder)&&(current.getItemDamage() == 15) {
 world.spawnParticle("happyVillager", (double)x + 0.5F, (double)y + 0.25F, (double)z + 0.5F, 0, 0, 0);
 
 world.spawnParticle("happyVillager", (double)x + 0.26F, (double)y + 0.25F, (double)z + 0.26F, 0, 0, 0);
@@ -367,7 +367,7 @@ Block.plantYellow,
 private void spawnPlod(World world, int x, int y, int z, int ps1, int pc1, int ps2, int pc2) {
 if (!world.isRemote) {
 
-if ((ps1 >= 1)&&(pc1 >= 1)) {
+if ((ps1 >= 1)&&(pc1 >= 1) {
 for(int j1 = 0;j1<pc1/2; ++j1) {
 ItemStack isitem1 = new ItemStack(plods1[ps1-1], 1, 0);
 EntityItem entityitem1 = new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, isitem1);
@@ -376,7 +376,7 @@ world.spawnEntityInWorld(entityitem1);
 }
 } else {}
 
-if ((ps1 == 3)&&(pc1 >= 4)) {
+if ((ps1 == 3)&&(pc1 >= 4) {
 for(int j3 = 0;j3<(pc1 + 1)/2; ++j3) {
 ItemStack isitem1p = new ItemStack(plods2[ps1-1], 1, 0);
 EntityItem entityitem1p = new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, isitem1p);
@@ -385,7 +385,7 @@ world.spawnEntityInWorld(entityitem1p);
 }
 }
 
-if ((ps2 >= 1)&&(pc2 >= 1)) {
+if ((ps2 >= 1)&&(pc2 >= 1) {
 for(int j2 = 0;j2<(pc2 + 1)/2; ++j2) {
 ItemStack isitem2 = new ItemStack(plods2[ps2-1], 1, 0);
 EntityItem entityitem2 = new EntityItem(world, (double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, isitem2);

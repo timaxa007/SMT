@@ -42,7 +42,7 @@ public class BlockMagicMachines extends ModifiedBlock implements ITileEntityProv
 				if (nbt.hasKey("Type")) tile.setType(nbt.getInteger("Type"));
 			}
 			/*
-			if (is.hasDisplayName()) {
+			if (is.hasDisplayName() {
 				((TileEntityMagicMachines)te).setGuiDisplayName(is.getDisplayName());
 			}
 			 */

@@ -268,8 +268,8 @@ public class UtilRender {
 		BufferedImage img1 = ImageUtils.getImageFrom(tex1);
 		BufferedImage img2 = ImageUtils.getImageFrom(tex2);
 
-		for (int x = 0; x < img2.getWidth(); x++){
-			for (int y = 0; y < img2.getHeight(); y++){
+		for (int x = 0; x < img2.getWidth(); x++) {
+			for (int y = 0; y < img2.getHeight(); y++) {
 				img2.setRGB(x, y, UtilRender.colorMixLowerAlpha(img2.getRGB(x, y), UtilRender.getHEXa(hex)));
 			}
 		}
@@ -331,8 +331,8 @@ public class UtilRender {
 		try {img2 = ImageIO.read(Minecraft.getMinecraft().getResourceManager().getResource(rl2).getInputStream());}
 		catch (IOException ioexception) {throw new RuntimeException(ioexception);}
 		//-----------------
-		for (int x = 0; x < img2.getWidth(); x++){
-			for (int y = 0; y < img2.getHeight(); y++){
+		for (int x = 0; x < img2.getWidth(); x++) {
+			for (int y = 0; y < img2.getHeight(); y++) {
 				img2.setRGB(x, y, UtilRender.colorMixLowerAlpha(img2.getRGB(x, y), UtilRender.getHEXa(hex)));
 			}
 		}

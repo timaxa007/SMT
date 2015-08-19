@@ -10,7 +10,7 @@ public class EventClientSMT {
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
 	public void look2(RenderFogEvent e) {
-		if(e.entity.isPotionActive(Potion.damageBoost.id)) {
+		if(e.entity.isPotionActive(Potion.damageBoost.id) {
 			float f1 = 5.0F;
 			int j = e.entity.getActivePotionEffect(Potion.damageBoost).getDuration();
 

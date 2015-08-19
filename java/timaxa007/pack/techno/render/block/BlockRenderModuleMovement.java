@@ -10,7 +10,7 @@ import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
-public class BlockRenderModuleMovement extends TileEntitySpecialRenderer{
+public class BlockRenderModuleMovement extends TileEntitySpecialRenderer {
 	private static final IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation("timaxa007", "obj/module_movement.obj"));
 
 	public BlockRenderModuleMovement() {

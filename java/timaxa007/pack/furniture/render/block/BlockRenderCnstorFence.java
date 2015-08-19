@@ -52,7 +52,7 @@ public class BlockRenderCnstorFence extends TileEntitySpecialRenderer {
 			model.renderPart("plank_c_4");
 		} else {model.renderPart("pillar");}
 		 */
-		//f((sN&&sS&&!sE&&!sW)||(!sN&&!sS&&sE&&sW)) {;} else {
+		//f((sN&&sS&&!sE&&!sW)||(!sN&&!sS&&sE&&sW) {;} else {
 		model.renderPart("pillar");
 		//}
 

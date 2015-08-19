@@ -105,7 +105,7 @@ else if (random == 4) {world.spawnParticle("witchFurniture", d0 - 0.3D, d1 + 0.2
 else if (random == 5) {world.spawnParticle("witchFurniture", d0 + 0.3D, d1 + 0.2D, d2, 0.0D - 0.1D, 0.0D + 0.1D, 0.0D);}
 else if (random == 6) {world.spawnParticle("witchFurniture", d0, d1 + 0.2D, d2 - 0.3D, 0.0D, 0.0D + 0.1D, 0.0D + 0.1D);}
 else if (random == 7) {world.spawnParticle("witchFurniture", d0, d1 + 0.2D, d2 + 0.3D, 0.0D, 0.0D + 0.1D, 0.0D - 0.1D);}
-world{
+world {
 world.spawnParticle("smoke", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 world.spawnParticle("flame", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 }

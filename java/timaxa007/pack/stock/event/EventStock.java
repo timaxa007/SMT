@@ -151,7 +151,7 @@ public class EventStock {
 	//--------------------------------------------------------------------------------------------------------------
 	/*@SubscribeEvent
 	public void dropCobblestone(LivingDropsEvent event) {
-		if (event.source.getDamageType().equals("player")) {
+		if (event.source.getDamageType().equals("player") {
 			random = new Random();
 			if (event.entityLiving instanceof EntityZombie) {
 				random = new Random();

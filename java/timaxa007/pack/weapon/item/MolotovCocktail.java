@@ -1,12 +1,12 @@
 package timaxa007.pack.weapon.item;
 
-import timaxa007.pack.weapon.PackWeapon;
-import timaxa007.pack.conjoint.object.ModifiedItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import timaxa007.pack.conjoint.object.ModifiedItem;
+import timaxa007.pack.weapon.PackWeapon;
 
 public class MolotovCocktail extends ModifiedItem {
 

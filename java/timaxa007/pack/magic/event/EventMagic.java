@@ -28,9 +28,9 @@ public class EventMagic {
 			chestplateI = new ItemStack(PackFurniture.armor_new_chest);
 			leggingsI = new ItemStack(PackFurniture.armor_new_leggin);
 			bootsI = new ItemStack(PackFurniture.armor_new_boot);
-			if (boots.getItem() == helmetI.getItem() && leggings.getItem() == chestplateI.getItem() && chestplate.getItem() == leggingsI.getItem() && helmet.getItem() == bootsI.getItem()) {
+			if (boots.getItem() == helmetI.getItem() && leggings.getItem() == chestplateI.getItem() && chestplate.getItem() == leggingsI.getItem() && helmet.getItem() == bootsI.getItem() {
 
-				if (e.entityLiving.isSneaking()) {
+				if (e.entityLiving.isSneaking() {
 
 				}
 
@@ -38,11 +38,11 @@ public class EventMagic {
 
 				}
 
-				if (e.entityLiving.isSprinting()) {
+				if (e.entityLiving.isSprinting() {
 					e.entityLiving.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 20 * 1, 3));
 				}
 
-				if (e.entityLiving.isEating()) {
+				if (e.entityLiving.isEating() {
 					e.entityLiving.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 20 * 1, 3));
 				}
 

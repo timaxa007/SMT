@@ -110,7 +110,7 @@ public class ActionMagic {
 		Iterator iterator = list.iterator();
 		Entity entity;
 
-		while(iterator.hasNext()) {
+		while(iterator.hasNext() {
 			entity = (Entity)iterator.next();
 			MovingObjectPosition target = new MovingObjectPosition(entity);
 			//System.out.println(target.toString());
@@ -133,7 +133,7 @@ public class ActionMagic {
 
 			if (entity instanceof EntityArrow) {
 				for (int i = 0; i < player.inventory.mainInventory.length; i++) {
-					if (player.inventory.mainInventory[i] == null || (player.inventory.mainInventory[i].getItem() == Items.arrow)) {
+					if (player.inventory.mainInventory[i] == null || (player.inventory.mainInventory[i].getItem() == Items.arrow) {
 						player.inventory.addItemStackToInventory(new ItemStack(Items.arrow, 1));
 						entity.setDead();
 						break;

@@ -75,7 +75,7 @@ public class EventPackConjoints {
 			}
 
 			if (e.source.isMagicDamage()) {
-				player_to.addChatMessage(new ChatComponentText("isMagicDamage"));
+
 			}
 
 			if (e.source.isUnblockable()) {

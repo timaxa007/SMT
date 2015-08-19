@@ -35,7 +35,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 			for (int j = 0; j < 16; j++) {
 				for (int x2 = -2; x2 <= 2; ++x2) {
 					for (int z2 = -2; z2 <= 2; ++z2) {
-						if (world.getBlock(x1 + x2, y - 1, z1 + z2) == Blocks.grass && world.isAirBlock(x1 + x2, y, z1 + z2)) {
+						if (world.getBlock(x1 + x2, y - 1, z1 + z2) == Blocks.grass && world.isAirBlock(x1 + x2, y, z1 + z2) {
 							if (random.nextInt(25) == 5) {
 								world.setBlock(x1 + x2, y, z1 + z2, PackStock.block.healing, random.nextInt(15), 3);
 							}
@@ -99,7 +99,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 			for (int y = 1; y < world.getHeight(); ++y) {
 				for (int x1 = x; x < x + 16; x1++) {
 					for (int z1 = z; z < z + 16; z1++) {
-						if (world.getBlock(x1, y - 1, z1) == Blocks.grass && world.isAirBlock(x1, y, z1)) {
+						if (world.getBlock(x1, y - 1, z1) == Blocks.grass && world.isAirBlock(x1, y, z1) {
 							world.setBlock(x1, y, z1, PackStock.block.germination_plants);
 						}
 					}
@@ -118,7 +118,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 									(world.getBlock(x1 + 1, y - 1, z1).getMaterial() == Material.water || 
 									world.getBlock(x1 - 1, y - 1, z1).getMaterial() == Material.water || 
 									world.getBlock(x1, y - 1, z1 + 1).getMaterial() == Material.water || 
-									world.getBlock(x1, y - 1, z1 - 1).getMaterial() == Material.water)) {
+									world.getBlock(x1, y - 1, z1 - 1).getMaterial() == Material.water) {
 								world.setBlock(x1, y, z1, PackStock.block.germination_plants);
 							}
 						}
@@ -132,7 +132,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 		/*
 		 * if (world.getBiomeGenForCoords(x, z).biomeID == BiomeGenBase.forest.biomeID || world.getBiomeGenForCoords(x, z).biomeID == BiomeGenBase.forestHills.biomeID) {
 			for (int y = 1; y < world.getHeight(); ++y) {
-				if (world.getBlock(x1, y - 1, z1) == Blocks.grass && world.isAirBlock(x1, y, z1)) {
+				if (world.getBlock(x1, y - 1, z1) == Blocks.grass && world.isAirBlock(x1, y, z1) {
 					world.setBlock(x1, y, z1, PackStock.block.saplings);
 					TileEntitySaplings te = new TileEntitySaplings();
 					te.setType("oak");
@@ -157,7 +157,7 @@ public class GeneratorPackStock implements IWorldGenerator {
 			for (int z = 1; z < world.getHeight(); ++z) {
 				for (int x2 = 0; x2 < 16; ++x2) {
 					for (int y2 = 0; y2 < 16; ++y2) {
-						if ((world.getBlock(x + x2, z - 1, y + y2) == Block.grass || world.getBlock(x + x2, z - 1, y + y2) == Block.netherrack) && world.isAirBlock(x + x2, z, y + y2)) {
+						if ((world.getBlock(x + x2, z - 1, y + y2) == Block.grass || world.getBlock(x + x2, z - 1, y + y2) == Block.netherrack) && world.isAirBlock(x + x2, z, y + y2) {
 							world.setBlock(x + x2, z, y + y2, PackStock.blockSapling2);
 						}
 					}

@@ -41,7 +41,7 @@ public class BlockFurnitureMachines extends ModifiedBlock implements ITileEntity
 				if (nbt.hasKey("Type")) ((TileEntityFurnitureMachines)te).setType(nbt.getInteger("Type"));
 			}
 			/*
-			if (is.hasDisplayName()) {
+			if (is.hasDisplayName() {
 				((TileEntityFurnitureMachines)te).setGuiDisplayName(is.getDisplayName());
 			}
 			 */

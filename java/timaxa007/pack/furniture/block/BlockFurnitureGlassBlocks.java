@@ -114,7 +114,7 @@ public class BlockFurnitureGlassBlocks extends ModifiedBlock implements ITileEnt
 		if (current != null) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			//--------------------------------
-			if (current.getItem() == PackFurniture.item.colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
+			if (current.getItem() == PackFurniture.item.colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16) {
 				if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 				//((TileEntityGlassBlocks)te).setColorBlock(GetColors.getHexColors[current.getItemDamage()]);
 				((TileEntityGlassBlocks)te).setColorBlock(GetColors.getColorMix(GetColors.getHexColors[current.getItemDamage()], ((TileEntityGlassBlocks)te).getColorBlock()));
@@ -122,7 +122,7 @@ public class BlockFurnitureGlassBlocks extends ModifiedBlock implements ITileEnt
 				return true;
 			}
 			//--------------------------------
-			else if (current.getItem() == Items.dye && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
+			else if (current.getItem() == Items.dye && (current.getItemDamage() >= 0 && current.getItemDamage() < 16) {
 				if (!player.capabilities.isCreativeMode) {--current.stackSize;}
 				//((TileEntityGlassBlocks)te).setColorBlock(ItemDye.dyeColors[current.getItemDamage()]);
 				((TileEntityGlassBlocks)te).setColorBlock(GetColors.getColorMix(ItemDye.field_150922_c[current.getItemDamage()], ((TileEntityGlassBlocks)te).getColorBlock()));

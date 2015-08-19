@@ -138,7 +138,7 @@ public class ItemPlants extends ModifiedItem {
 public boolean requiresMultipleRenderPasses() {return true;}
 
 public IIcon getIcon(ItemStack is, int pass) {
-if (tag != null && nbt.hasKey("Plant")) {
+if (tag != null && nbt.hasKey("Plant") {
 if (pass == 0) {
 return icon_a;
 } else {

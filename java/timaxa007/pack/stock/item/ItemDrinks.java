@@ -158,7 +158,7 @@ Lemonade(0.0F, 0xFFFFFF),
 	public int getColorFromItemStack(ItemStack is, int renderPass) {
 		NBTTagCompound nbt = is.getTagCompound();
 		if (renderPass == 0) {
-			/*if (nbt != null && nbt.hasKey("NameID")) {
+			/*if (nbt != null && nbt.hasKey("NameID") {
 				return drinks.valueOf(nbt.getString("NameID")).hex1;
 			} else return 0xFFFFFF;*/
 			return 0xFFFFFF;

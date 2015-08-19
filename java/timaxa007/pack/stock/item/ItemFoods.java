@@ -130,7 +130,7 @@ public class ItemFoods extends ModifiedItem {
 				/*
 				list.add("Saturation Level: " + foods.valueOf(nbt.getString("FoodTag")).level + ".");
 
-				if (!nbt.hasKey("Sat")) {
+				if (!nbt.hasKey("Sat") {
 				list.add("Saturation: " + foods.valueOf(nbt.getString("FoodTag")).sat + ".");
 				} else {
 				list.add("Saturation*: " + nbt.getFloat("Sat") + ".");
@@ -172,7 +172,7 @@ public class ItemFoods extends ModifiedItem {
 	/*
 	public IIcon getIcon(ItemStack is, int pass) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("FoodTag")) {
+		if (nbt != null && nbt.hasKey("FoodTag") {
 			FoodItem ffi = FoodItem.get(nbt.getString("FoodTag"));
 			if (!FoodItem.isNull(ffi))
 				return icon_food[ffi.id][pass];
@@ -183,10 +183,10 @@ public class ItemFoods extends ModifiedItem {
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack is, int pass) {
 		NBTTagCompound nbt = is.getTagCompound();
-		if (nbt != null && nbt.hasKey("FoodTag")) {
+		if (nbt != null && nbt.hasKey("FoodTag") {
 			FoodItem food_item = RegistryFoods.RegistryFoodItem.getFoodItem(nbt.getString("FoodTag"));
 
-			if (nbt.hasKey("ColorHex")) {
+			if (nbt.hasKey("ColorHex") {
 				int clr1 = FoodItem.get(nbt.getString("FoodTag")).getColor(pass);
 				int r1 = (int)(clr1 >> 16 & 255);int g1 = (int)(clr1 >> 8 & 255);int b1 = (int)(clr1 >> 0 & 255);
 				int clr2 = nbt.getInteger("ColorHex");
@@ -210,7 +210,7 @@ public class ItemFoods extends ModifiedItem {
 		icon_food = new IIcon[FoodItem.list.length][4];
 		for (FoodItem ffi : FoodItem.list) {
 			for (int j = 0; j < 4; j++) {
-				if (!FoodItem.isNull(ffi)) {
+				if (!FoodItem.isNull(ffi) {
 					icon_food[ffi.id][j] = ir.registerIcon("timaxa007:" + ffi.getTexture(j));
 				} else {
 					icon_food[0][j] = itemIcon;

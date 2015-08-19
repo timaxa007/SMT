@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -50,20 +49,21 @@ public class TileEntityElectricMachines extends TileEntity {
 
 		while(iterator.hasNext()) {
 			entity = (EntityLivingBase)iterator.next();
-			if (getOwner() != null && !(entity instanceof EntityPlayer)) {
-				DamageSource dmg = DamageSource.magic;
-				//dmg.causePlayerDamage(getOwner());
+			if (getOwner() != null && entity != getOwner()) {
+				//DamageSource dmg = DamageSource.causePlayerDamage(getOwner());
+				DamageSource dmg = DamageSource.causePlayerDamage((EntityPlayer)null);
 				entity.attackEntityFrom(dmg, 1.0F);
-				//entity.onKillEntity(getOwner());
-				//entity.onDeath(dmg);
-				//entity.setDead();
+			}
+			/*
+				DamageSource dmg = DamageSource.magic;
+				entity.attackEntityFrom(dmg, 1.0F);
 				if (entity.getHealth() <= 0.0F) {
 					EntityXPOrb xp = new EntityXPOrb(worldObj, entity.posX, entity.posY, entity.posZ, 1);
 					if (!worldObj.isRemote)
 						if (worldObj.getWorldTime() % (20 * 1) == 0)
 							worldObj.spawnEntityInWorld(xp);
 				}
-			}
+			 */
 			break;
 		}
 

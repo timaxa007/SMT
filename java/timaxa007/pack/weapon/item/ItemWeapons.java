@@ -18,13 +18,13 @@ import timaxa007.module.control_button.api.IActionMouse;
 import timaxa007.module.control_button.api.IActionPrimaryKey;
 import timaxa007.module.control_button.api.IScope;
 import timaxa007.module.control_button.api.IUpdateClient;
+import timaxa007.pack.conjoint.object.ModifiedItem;
 import timaxa007.pack.weapon.PackWeapon;
 import timaxa007.pack.weapon.packet.MessageActionWeapons;
 import timaxa007.pack.weapon.util.RegistryWeapons;
 import timaxa007.pack.weapon.util.Weapon;
 import timaxa007.smt.CoreSMT;
 import timaxa007.smt.util.UtilString;
-import timaxa007.pack.conjoint.object.ModifiedItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

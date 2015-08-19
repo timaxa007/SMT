@@ -11,7 +11,7 @@ public class EventModulePlayerInventory1Client {
 	@SubscribeEvent
 	public void onKey(InputEvent.KeyInputEvent event) {
 		EntityPlayer player = mc.thePlayer;
-		//if (mc.gameSettings.keyBindInventory.isPressed()) {}
+		//if (mc.gameSettings.keyBindInventory.isPressed() {}
 	}
 	//--------------------------------------------------------------------------------------------------------------
 }

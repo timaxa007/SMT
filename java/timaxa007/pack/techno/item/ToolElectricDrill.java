@@ -28,7 +28,7 @@ public class ToolElectricDrill extends ModifiedItem implements
 IActionMouse, IActionPrimaryKey,
 ITechnoTool, 
 IUpdateClient
-{
+ {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;
@@ -229,7 +229,7 @@ IUpdateClient
 				boolean isWorking = nbt.getBoolean("Working");
 				int efc = 1;				
 				/*
-				if (nbt.hasKey("ModeID")) {
+				if (nbt.hasKey("ModeID") {
 					if (nbt.getInteger("ModeID") == 0) {efc = 2;}
 					if (nbt.getInteger("ModeID") == 1) {efc = 3;}
 					if (nbt.getInteger("ModeID") == 2) {efc = 1;}
@@ -250,7 +250,7 @@ IUpdateClient
 			int es = 10;
 			if (nbt != null) {
 				/*
-				if(nbt.hasKey("ModeID")) {
+				if(nbt.hasKey("ModeID") {
 					if (nbt.getInteger("ModeID") == 0) {es = 10;}
 					if (nbt.getInteger("ModeID") == 1) {es = 20;}
 					if (nbt.getInteger("ModeID") == 2) {es = 5;}

@@ -77,7 +77,7 @@ public class BlockJar01 extends ModifiedBlock implements ITileEntityProvider {
 		ItemStack current = player.getCurrentEquippedItem();
 		if (current != null) {
 			//--------------------------------
-			/*if (current.getItem() == PackFurniture.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16)) {
+			/*if (current.getItem() == PackFurniture.item_colored && (current.getItemDamage() >= 0 && current.getItemDamage() < 16) {
 				--current.stackSize;
 				((TileEntityJar01)te).setColorWater(GetColors.getHexColors[current.getItemDamage()]);
 				return true;

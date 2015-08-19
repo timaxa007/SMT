@@ -42,7 +42,7 @@ public class ItemStuffs extends ModifiedItem implements
 IActionMouse, IActionPrimaryKey,
 IInteractionWithBlock, IInteractionWithEntity,
 IUpdateClient
-{
+ {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;

@@ -36,7 +36,7 @@ public class ToolElectricWrench extends ModifiedItem implements
 IActionMouse, IActionPrimaryKey,
 IInteractionWithBlock, IInteractionWithEntity,
 ITechnoTool
-{
+ {
 	//--------------------------------------------------------------------------------------------------------------
 	@SideOnly(Side.CLIENT) public static boolean isLeftClick;
 	@SideOnly(Side.CLIENT) public static boolean isRightClick;
