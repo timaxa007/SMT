@@ -1,40 +1,42 @@
 package timaxa007.gui.container;
 
+import timaxa007.gui.IItemStorage;
+import timaxa007.gui.inventory.ItemStorageInventory;
+import timaxa007.gui.slot.SlotNoTakeStorage;
+import timaxa007.gui.slot.StorageSlot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import timaxa007.gui.iinventory.InventoryItemStorage;
-import timaxa007.gui.iinventory.ListAccess;
-import timaxa007.gui.slot.SlotNoTakeStorage;
-import timaxa007.gui.slot.StorageSlot;
-import timaxa007.pack.conjoint.api.IItemStorage;
 
 public class ItemStorageContainer extends Container {
 
-	private InventoryItemStorage inv;
+	private ItemStorageInventory inv;
 	private int numRows;
 
-	public ItemStorageContainer(EntityPlayer player, InventoryItemStorage inventoryItemStorage) {
+	public ItemStorageContainer(EntityPlayer player, ItemStorageInventory inventoryItemStorage) {
 		inv = inventoryItemStorage;
-		inv.openInventory();
+		inv.openInventory();//Типа инициализируем открытия инвентаря
 		numRows = inv.getSizeInventory() / 9;
 		int i = (numRows - 4) * 18;
 		int j;
 		int k;
 
+		//Слоты инвентаря Item Storage
 		for (j = 0; j < numRows; ++j) {
 			for (k = 0; k < 9; ++k) {
 				addSlotToContainer(new StorageSlot(inv, k + j * 9, 8 + k * 18, 18 + j * 18));
 			}
 		}
 
+		//Слоты инвентаря игрока
 		for (j = 0; j < 3; ++j) {
 			for (k = 0; k < 9; ++k) {
 				addSlotToContainer(new SlotNoTakeStorage(player.inventory, k + j * 9 + 9, 8 + k * 18, 103 + j * 18 + i));
 			}
 		}
 
+		//Слоты хот-бара игрока
 		for (j = 0; j < 9; ++j) {
 			addSlotToContainer(new SlotNoTakeStorage(player.inventory, j, 8 + j * 18, 161 + i));
 		}
@@ -54,13 +56,12 @@ public class ItemStorageContainer extends Container {
 		if (slot != null && slot.getHasStack()) {
 			ItemStack is1 = slot.getStack();
 			is = is1.copy();
-			
-			if (ListAccess.deniedForStorage(is1)) return null;
+
+			if (is1.getItem() instanceof IItemStorage) return null;
 
 			if (slot_i < inv.getSizeInventory()) {
 				if (!mergeItemStack(is1, inv.getSizeInventory(), inventorySlots.size(), true)) return null;
-			} else if (!mergeItemStack(is1, 0, inv.getSizeInventory(), false))
-				return null;
+			} else if (!mergeItemStack(is1, 0, inv.getSizeInventory(), false)) return null;
 
 			if (is1.stackSize == 0) slot.putStack((ItemStack)null);
 			else slot.onSlotChanged();
@@ -72,15 +73,14 @@ public class ItemStorageContainer extends Container {
 	@Override
 	public ItemStack slotClick(int slot, int button, int modifier, EntityPlayer player) {
 		if (player == null) return null;
-		//System.out.println(" - slot:" + slot + ", button:" + button + ", modifier:" + modifier + ".");//своеобразный для debug
-		if (modifier == 2) return null;//Lock use the player buttons with numbers
+		if (modifier == 2) return null;//Блокируем возможность использование игроком цифровых кнопок, чтобы не было попытки подмены
 		return super.slotClick(slot, button, modifier, player);
 	}
 
 	@Override
 	public void onContainerClosed(EntityPlayer player) {
 		super.onContainerClosed(player);
-		inv.closeInventory();
+		inv.closeInventory();//Типа инициализируем закрытия инвентаря
 	}
 
 	public ItemStack update(EntityPlayer player) {

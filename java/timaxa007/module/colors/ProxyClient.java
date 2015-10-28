@@ -1,20 +1,20 @@
 package timaxa007.module.colors;
 
-import timaxa007.api.IProxyModuleClient;
+import timaxa007.module.api.IModuleClientSMT;
 
-public class ProxyClient implements IProxyModuleClient {
+public class ProxyClient implements IModuleClientSMT {
 
+	@Override
 	public void preInit() {
 
 	}
 
+	@Override
 	public void init() {
-
-		//MinecraftForge.EVENT_BUS.register(new EventClient());
-		//FMLCommonHandler.instance().bus().register(new EventClient());
 
 	}
 
+	@Override
 	public void postInit() {
 
 	}

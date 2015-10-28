@@ -1,36 +1,15 @@
 package timaxa007.module.colors;
 
-import java.io.File;
+import timaxa007.module.api.IModuleSMT;
 
-import net.minecraftforge.common.config.Configuration;
-
-import org.apache.logging.log4j.Logger;
-
-import timaxa007.api.IModuleClass;
-import timaxa007.module.NodeModule.ModuleNode;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-
-@ModuleNode(moduleTag = ModuleColors.MODID, moduleName = ModuleColors.MODNAME, moduleVersion = ModuleColors.VERSION)
-/**@author timaxa007**/
-public class ModuleColors implements IModuleClass {
-
-	public static final String MODID = "colors";
-	public static final String MODNAME = "Colors";
-	public static final String VERSION = "0.031";
-
-	public static Logger log;
-
+public class ModuleColors implements IModuleSMT {
+	//-----------------------------------------------------------------------------------------------
+	public static final String MODULE_TAG = "color";
+	public static final String VERSION = "0.001a";
+	//-----------------------------------------------------------------------------------------------
 	@Override
-	public void preInit(FMLPreInitializationEvent event) {
-
-		log = event.getModLog();
-		log.info("Starting module " + ModuleColors.MODNAME + ", build: " + ModuleColors.VERSION + ".");
-
-		Configuration cfg = new Configuration(new File("./config/smt/module", ModuleColors.MODID + ".cfg"));
-		cfg.load();
-
-		cfg.save();
+	public void preInit(cpw.mods.fml.common.event.FMLPreInitializationEvent event) {
 
 	}
-
+	//-----------------------------------------------------------------------------------------------
 }
