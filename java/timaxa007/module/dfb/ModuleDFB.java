@@ -8,7 +8,7 @@ import timaxa007.module.api.IModuleSMT;
 public class ModuleDFB implements IModuleSMT {
 	//-----------------------------------------------------------------------------------------------
 	public static final String MODULE_TAG = "dfb";
-	public static final String VERSION = "0.001a";
+	public static final String VERSION = "0.003";
 	//-----------------------------------------------------------------------------------------------
 	@Override
 	public void preInit(cpw.mods.fml.common.event.FMLPreInitializationEvent event) {

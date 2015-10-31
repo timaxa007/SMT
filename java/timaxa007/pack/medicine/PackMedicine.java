@@ -9,7 +9,7 @@ import timaxa007.pack.medicine.item.ListItem;
 public class PackMedicine implements IPackSMT {
 	//-----------------------------------------------------------------------------------------------
 	public static final String PACK_TAG = "medicine";
-	public static final String VERSION = "0.001a";
+	public static final String VERSION = "0.001";
 	//-----------------------------------------------------------------------------------------------
 	public static final Config config = new Config();
 	public static final ListBlock blocks = new ListBlock();

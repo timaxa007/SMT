@@ -1,13 +1,12 @@
-package timaxa007.module.dfb;
+package timaxa007.module.substance;
 
-import net.minecraftforge.common.MinecraftForge;
 import timaxa007.module.api.IModuleClientSMT;
 
 public class ProxyClient implements IModuleClientSMT {
 
 	@Override
 	public void preInit() {
-		MinecraftForge.EVENT_BUS.register(new timaxa007.module.dfb.event.EventDurabilityBlockClient());
+
 	}
 
 	@Override

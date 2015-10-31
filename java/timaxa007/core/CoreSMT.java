@@ -8,7 +8,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 public class CoreSMT {
 	//-----------------------------------------------------------------------------------------------
 	public static final String MODID = "smt";
-	public static final String VERSION = "0.001a";
+	public static final String VERSION = "0.001";
 	//-----------------------------------------------------------------------------------------------
 	@Mod.Instance(CoreSMT.MODID) public static CoreSMT instance;
 	@SidedProxy(modId = CoreSMT.MODID, clientSide = "timaxa007.core.ProxyClient", serverSide = "timaxa007.core.ProxyCommon")

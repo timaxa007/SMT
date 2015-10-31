@@ -25,6 +25,7 @@ public class Config {
 		cfg.load();
 		String catModule = "module";
 		RegistrationModules.disableModuleColors = cfg.get(catModule, "disableModuleColors", false, "Disable Module Colors?").getBoolean();
+		RegistrationModules.disableModuleSubstance = cfg.get(catModule, "disableModuleSubstance", false, "Disable Module Substance?").getBoolean();
 		RegistrationModules.disableModuleCraftTable = cfg.get(catModule, "disableModuleCraftTable", false, "Disable Module CraftTable?").getBoolean();
 		RegistrationModules.disableModuleDurabilityBlock = cfg.get(catModule, "disableModuleDurabilityBlock", false, "Disable Module DurabilityBlock?").getBoolean();
 		cfg.save();
