@@ -107,7 +107,7 @@ public class SMTCorePlugin implements IFMLCallHook, IFMLLoadingPlugin {
     /**
     * Does some pre-startup stuffs, such as
     * log initialization and other stuffs
-    * @return dummy void
+    * @return null
     */
     @Override
     public Void call() {

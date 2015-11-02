@@ -6,7 +6,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.*;
 import net.minecraft.util.ResourceLocation;
-import smt.core.SMTContainer;
 
 import java.util.HashMap;
 import java.util.Map;
