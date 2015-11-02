@@ -1,3 +1,4 @@
+
 buildscript {
     repositories {
         mavenCentral()
@@ -15,45 +16,49 @@ buildscript {
     }
 }
 
+
+//Applies scala and forge modules
 apply plugin: 'scala'
 apply plugin: 'forge'
 
-
-version = "0.11"
-group= "timaxa007" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "TMS"
-
+//Minecraft project settings
 minecraft {
-    version = "1.7.10-10.13.2.1291"
-    runDir = "run/client"
+
+    //Project version
+    version = "1.7.10-10.13.4.1541-1.7.10"
+
 }
 
+//Base settings
+version = "0.11a"
+group= "timaxa007"
+archivesBaseName = "SoManyThings"
+
+//Applies global settings
+allprojects {
+    //Increases compatibility to 1.7
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+}
+
+//Processing dependencies
 dependencies {
-
-    //compile "some.group:artifact:version"
-    //compile "org.javassist:javassist:3.19.0-GA"
-    compile files('lib/industrialcraft-2-2.2.772-experimental-dev.jar', 'lib/slick.jar')
+    //auto-compile files in 'dependencies' folder
+    for(file in new File(rootDir, "dependencies").listFiles())
+        compile files("dependencies/" + file.name)
 }
 
+//Processing sources
 sourceSets {
-    main { output.resourcesDir = output.classesDir }
+    main {
+        //Fixes bug with invisible resources folder
+        output.resourcesDir = output.classesDir
+    }
 }
 
+//Processing resources
 processResources {
-    // this will ensure that this task is redone when the versions change.
+    //This will ensure that this task is redone when the versions change
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
 }
