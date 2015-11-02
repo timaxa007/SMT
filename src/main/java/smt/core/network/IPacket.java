@@ -1,4 +1,4 @@
-package timaxa007.smt.core.network;
+package smt.core.network;
 
 import cpw.mods.fml.relauncher.Side;
 import java.io.Serializable;

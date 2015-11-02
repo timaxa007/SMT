@@ -1,4 +1,4 @@
-package timaxa007.smt.core.network;
+package smt.core.network;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.FMLEventChannel;
@@ -11,14 +11,14 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.PacketBuffer;
-import timaxa007.smt.core.SMTContainer;
+import smt.core.SMTContainer;
 
 import java.io.*;
 
 /**
  * Network manager with involved serialization and serialization
  * Credits to anti344, thanks for part of implementation
- * @see timaxa007.smt.core.network.IPacket
+ * @see smt.core.network.IPacket
  * @author Dragon2488
  */
 public class NetworkManager {

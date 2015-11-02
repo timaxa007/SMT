@@ -1,9 +1,9 @@
-package timaxa007.smt.durability;
+package smt.durability;
 
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import timaxa007.smt.core.network.IPacket;
+import smt.core.network.IPacket;
 
 /**
  * Simple client-side packet, plays block break effects on client-side

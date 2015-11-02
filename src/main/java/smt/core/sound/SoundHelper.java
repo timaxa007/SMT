@@ -1,4 +1,4 @@
-package timaxa007.smt.core.sound;
+package smt.core.sound;
 
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -6,7 +6,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.*;
 import net.minecraft.util.ResourceLocation;
-import timaxa007.smt.core.SMTContainer;
+import smt.core.SMTContainer;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,11 +1,11 @@
-package timaxa007.smt.core.network;
+package smt.core.network;
 
 import cpw.mods.fml.relauncher.Side;
-import timaxa007.smt.core.SMTContainer;
+import smt.core.SMTContainer;
 
 /**
  * Simple dump packet, it's only report about network error
- * @see timaxa007.smt.core.network.NetworkManager
+ * @see smt.core.network.NetworkManager
  * @author Dragon2488
  */
 public class DumpPacket implements IPacket {

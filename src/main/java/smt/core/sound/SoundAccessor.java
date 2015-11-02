@@ -1,4 +1,4 @@
-package timaxa007.smt.core.sound;
+package smt.core.sound;
 
 import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.audio.SoundEventAccessorComposite;

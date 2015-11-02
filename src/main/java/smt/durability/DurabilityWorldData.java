@@ -1,4 +1,4 @@
-package timaxa007.smt.durability;
+package smt.durability;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;

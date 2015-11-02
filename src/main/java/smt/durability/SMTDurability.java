@@ -1,4 +1,4 @@
-package timaxa007.smt.durability;
+package smt.durability;
 
 import com.google.common.collect.Lists;
 import cpw.mods.fml.common.Mod;
@@ -23,7 +23,7 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import org.lwjgl.input.Keyboard;
-import timaxa007.smt.core.SMTContainer;
+import smt.core.SMTContainer;
 
 import java.io.File;
 import java.util.HashMap;

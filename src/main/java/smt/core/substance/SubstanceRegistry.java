@@ -1,6 +1,6 @@
-package timaxa007.smt.core.substance;
+package smt.core.substance;
 
-import timaxa007.smt.core.SMTContainer;
+import smt.core.SMTContainer;
 
 import java.util.ArrayList;
 import java.util.HashMap;

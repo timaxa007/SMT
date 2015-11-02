@@ -1,4 +1,4 @@
-package timaxa007.smt.core;
+package smt.core;
 
 import com.google.common.collect.Lists;
 import com.google.common.eventbus.EventBus;
@@ -9,9 +9,9 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
-import timaxa007.smt.core.network.NetworkManager;
-import timaxa007.smt.core.plugin.SMTCorePlugin;
-import timaxa007.smt.core.sound.SoundHelper;
+import smt.core.network.NetworkManager;
+import smt.core.plugin.SMTCorePlugin;
+import smt.core.sound.SoundHelper;
 
 import java.io.File;
 import java.util.List;
@@ -31,7 +31,7 @@ public class SMTContainer extends DummyModContainer {
 
     /**
      * Primary logger, similar to SMTCorePlugin logger
-     * @see timaxa007.smt.core.plugin.SMTCorePlugin
+     * @see smt.core.plugin.SMTCorePlugin
      */
     public static Logger log;
 

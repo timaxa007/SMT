@@ -1,4 +1,4 @@
-package timaxa007.smt.core.plugin;
+package smt.core.plugin;
 
 import cpw.mods.fml.relauncher.IFMLCallHook;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
@@ -17,7 +17,7 @@ import java.util.Map;
  */
 @IFMLLoadingPlugin.Name("SMT")
 @IFMLLoadingPlugin.MCVersion("1.7.10")
-@IFMLLoadingPlugin.TransformerExclusions("timaxa007.smt.core.plugin")
+@IFMLLoadingPlugin.TransformerExclusions("smt.core.plugin")
 public class SMTCorePlugin implements IFMLCallHook, IFMLLoadingPlugin {
 
     /**
@@ -77,7 +77,7 @@ public class SMTCorePlugin implements IFMLCallHook, IFMLLoadingPlugin {
      */
     @Override
     public String getModContainerClass() {
-        return "timaxa007.smt.core.SMTContainer";
+        return "smt.core.SMTContainer";
     }
 
     /**
