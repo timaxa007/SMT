@@ -12,14 +12,14 @@ import smt.core.network.IPacket;
  */
 public class PacketBlockBreakEffects implements IPacket {
 
-    /**
+    /*
      * Info fields, since network system automatically
      * serialize and deserialize packet, there should be
      * only serializable objects and primitives
      */
     private int blockX, blockY, blockZ, id, meta;
 
-    /**
+    /*
      * Constructs new packet with given params
      * @param blockX destroyed block x position
      * @param blockY destroyed block y position
@@ -35,9 +35,10 @@ public class PacketBlockBreakEffects implements IPacket {
         this.meta = meta;
     }
 
-    /**
-     * Executes effects on client-side only
-     * @param side side, which is processed
+    /*
+     * Executes effects
+     * Checks side, because we don't want server
+     * crashes when invalid packer received
      */
     @Override
     public void execute(Side side) {

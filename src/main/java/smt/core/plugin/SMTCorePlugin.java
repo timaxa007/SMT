@@ -11,8 +11,7 @@ import java.io.File;
 import java.util.Map;
 
 /**
- * SMT Core Plugin
- * Contains useful methods
+ * Contains core plugin
  * @author Dragon2488
  */
 @IFMLLoadingPlugin.Name("SMT")
@@ -50,51 +49,32 @@ public class SMTCorePlugin implements IFMLCallHook, IFMLLoadingPlugin {
      */
     public static boolean runtimeDeobfuscation;
 
-    /**
+    /*
      * TODO: Classes transforming
-     * @return class transformers
-     * @see net.minecraft.launchwrapper.IClassTransformer
      */
     @Override
     public String[] getASMTransformerClass() {
         return new String[] {};
     }
 
-    /**
+    /*
      * TODO: Access classes transforming
-     * @return access transformer class
-     * @see net.minecraft.launchwrapper.IClassNameTransformer
      */
     @Override
     public String getAccessTransformerClass() {
         return null;
     }
 
-    /**
-     * Used to load mod container
-     * @return mod container class
-     * @see cpw.mods.fml.common.ModContainer
-     */
     @Override
     public String getModContainerClass() {
         return "smt.core.SMTContainer";
     }
 
-    /**
-     * Used to get class with call() method,
-     * for us it's same as core plugin class
-     * @return setup class
-     * @see cpw.mods.fml.relauncher.IFMLCallHook
-     */
     @Override
     public String getSetupClass() {
         return getClass().getName();
     }
 
-    /**
-     * Receives given data and stores it
-     * @param data given data
-     */
     @Override
     public void injectData(Map<String, Object> data) {
         coremodLocation = (File) data.get("coremodLocation");
@@ -104,11 +84,6 @@ public class SMTCorePlugin implements IFMLCallHook, IFMLLoadingPlugin {
         runtimeDeobfuscation = (Boolean) data.get("runtimeDeobfuscationEnabled");
     }
 
-    /**
-    * Does some pre-startup stuffs, such as
-    * log initialization and other stuffs
-    * @return null
-    */
     @Override
     public Void call() {
         log = (Logger) LogManager.getLogger("SMT");

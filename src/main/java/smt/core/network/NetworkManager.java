@@ -23,19 +23,19 @@ import java.io.*;
  */
 public class NetworkManager {
 
-    /**
+    /*
      * Channel name, can't be null or empty
      * Used for channel identification
      */
     private final String channelName;
 
-    /**
+    /*
      * FMLEventChannel, used to handle network
      * events and send packets
      */
     private FMLEventChannel channel;
 
-    /**
+    /*
      * Constructs new NetworkManager with given channel name
      * @param channelName channel name, can't be null or empty
      */
@@ -46,7 +46,7 @@ public class NetworkManager {
 
     }
 
-    /**
+    /*
      * Converts fml proxy packet to our executable packet
      * @param proxy fml proxy source packet
      * @return dump packet on error, otherwise converted packet
@@ -65,7 +65,7 @@ public class NetworkManager {
         }
     }
 
-    /**
+    /*
      * Converts our packet to fml proxy packet
      * @param packet our source packet
      * @return empty packet on error, otherwise converted packet
@@ -85,9 +85,8 @@ public class NetworkManager {
         }
     }
 
-    /**
+    /*
      * Handle and execute client-received packets
-     * THIS IS INTERNAL METHOD, IT SHOULDNT BE CALLED DIRECTLY!
      */
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
@@ -95,9 +94,8 @@ public class NetworkManager {
         proxyToPacket(event.packet).execute(event.side());
     }
 
-    /**
+    /*
      * Handle and execute server-received packets
-     * THIS IS INTERNAL METHOD, IT SHOULDNT BE CALLED DIRECTLY!
      */
     @SubscribeEvent
     public void receivedOnServer(FMLNetworkEvent.ServerCustomPacketEvent event){

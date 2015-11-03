@@ -14,7 +14,6 @@ public class SoundAccessor extends SoundEventAccessorComposite {
 
     /**
      * Underlying SoundPoolEntry
-     * Can't be null
      */
     private final SoundPoolEntry underlyingEntry;
 
@@ -32,18 +31,16 @@ public class SoundAccessor extends SoundEventAccessorComposite {
         underlyingEntry = new SoundPoolEntry(location, volumeMod, pitchMod, streaming);
     }
 
-    /**
+    /*
      * Dummy override of listeners count getter
-     * @return the count of listeners
      */
     @Override
     public int func_148721_a() {
         return 1;
     }
 
-    /**
-     * Returns SoundPoolEntry of this accessor
-     * @return Underlying SoundPoolEntry
+    /*
+     * Dummy override of SoundPoolEntry getter
      */
     @Override
     public SoundPoolEntry func_148720_g() {

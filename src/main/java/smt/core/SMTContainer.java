@@ -23,10 +23,7 @@ import java.util.List;
  */
 public class SMTContainer extends DummyModContainer {
 
-    /**
-     * Instance of this container,
-     * can't be null
-     */
+
     public static SMTContainer instance;
 
     /**
@@ -48,10 +45,6 @@ public class SMTContainer extends DummyModContainer {
     @SideOnly(Side.CLIENT)
     public static SoundHelper soundManager;
 
-    /**
-     * Initializes mod container and
-     * fill it with meta info
-     */
     public SMTContainer() {
         super(new ModMetadata());
         ModMetadata meta = getMetadata();
@@ -68,29 +61,20 @@ public class SMTContainer extends DummyModContainer {
         instance = this;
     }
 
-    /**
-     * Performs early load, such as network manager init
-     * THIS IS INTERNAL METHOD, IT SHOULDNT BE CALLED DIRECTLY!
-     */
     @Subscribe
     public void preInit(FMLPreInitializationEvent event) {
         network = new NetworkManager(getModId());
     }
 
-    /**
-     * Performs post load, such as sound system init
-     * THIS IS INTERNAL METHOD, IT SHOULDNT BE CALLED DIRECTLY!
-     */
     @Subscribe
     public void postInit(FMLPostInitializationEvent event) {
         if(FMLCommonHandler.instance().getSide().isClient())
             soundManager = new SoundHelper();
     }
 
-    /**
-     * Overrides dummy mod container method
-     * We should receive events, so we need to return true
-     * @return true if mod registers bus
+    /*
+     * We should receive events, so we need to
+     * register yourself and return true
      */
     @Override
     public boolean registerBus(EventBus bus, LoadController controller) {
@@ -98,47 +82,27 @@ public class SMTContainer extends DummyModContainer {
         return true;
     }
 
-    /**
-     * Overrides dummy mod container method
-     * @return source of mod, null if unavailable
-     */
     @Override
     public File getSource() {
         return SMTCorePlugin.coremodLocation;
     }
 
-    /**
-     * Overrides dummy mod container method
-     * @return this container, it's mod object
-     */
     @Override
     public Object getMod() {
         return this;
     }
 
-    /**
-     * Overrides dummy mod container method
-     * @return true if mod is this, otherwise false
-     */
+
     @Override
     public boolean matches(Object mod) {
         return getMod() == mod;
     }
 
-    /**
-     * Used to display disablable button
-     * Core isn't disablable, button is disabled
-     * @return is mod disablable
-     */
     @Override
     public Disableable canBeDisabled() {
         return Disableable.NEVER;
     }
 
-    /**
-     * Used to get list of core-owned packages
-     * @return list of mod-owned packages, currently only one package
-     */
     @Override
     public List<String> getOwnedPackages() {
         return Lists.newArrayList("timaxa007.tms.core");

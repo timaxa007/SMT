@@ -9,6 +9,11 @@ import net.minecraft.world.WorldSavedData;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Stores blocks durability across world saves
+ * Yes, there's no any documentation
+ * @author Dragon2488
+ */
 public class DurabilityWorldData extends WorldSavedData {
 
     private static final String ID = "DURABILITY";
