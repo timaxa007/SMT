@@ -10,9 +10,9 @@ import smt.core.SMTContainer;
  */
 public class DumpPacket implements IPacket {
 
-    @Override
-    public void execute(Side side) {
-        SMTContainer.log.error("Executed dump packet! Network error is somewhere here...");
-    }
+	@Override
+	public void execute(Side side) {
+		SMTContainer.log.error("Executed dump packet! Network error is somewhere here...");
+	}
 
 }

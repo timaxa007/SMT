@@ -16,13 +16,13 @@ import java.io.Serializable;
  */
 public interface IPacket extends Serializable {
 
-    /**
-     * Executes packet on given side
-     * If side is invalid, packet should't be executed
-     *
-     * @param side side, which is processed
-     * @see cpw.mods.fml.relauncher.Side
-     */
-    public void execute(Side side);
+	/**
+	 * Executes packet on given side
+	 * If side is invalid, packet should't be executed
+	 *
+	 * @param side side, which is processed
+	 * @see cpw.mods.fml.relauncher.Side
+	 */
+	public void execute(Side side);
 
 }

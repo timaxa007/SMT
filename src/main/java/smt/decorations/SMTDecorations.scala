@@ -8,7 +8,7 @@ import cpw.mods.fml.common.{ModMetadata, Mod}
  * Decorations module, add some useful and nice stuffs
  * @author Dragon2488
  */
-@Mod(name = "SMT: Decorations", modid = "SMT|DECORATIONS", version = "0.11a", dependencies = "required-after:SMT|CORE", useMetadata = true)
+@Mod(name = "SMT: Decorations", modid = "SMT|DECORATIONS", version = "0.11a", dependencies = "required-after:SMT|CORE", modLanguage = "scala", useMetadata = true)
 object SMTDecorations {
 
   @Mod.EventHandler
