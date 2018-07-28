@@ -1,0 +1,16 @@
+[
+{
+  "modid": "smt",
+  "name": "SMT Mod",
+  "description": "Nan.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["timaxa007"],
+  "credits": "Thx",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

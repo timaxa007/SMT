@@ -1,11 +1,12 @@
 package smt.pack.medicine.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
-public class BlockBlocksMedicine extends smt.pack.medicine.object.BlockDummy {
+public class BlockBlocksMedicine extends Block {
 
-	public BlockBlocksMedicine(String tag) {
-		super(tag, Material.wood);
+	public BlockBlocksMedicine() {
+		super(Material.wood);
 	}
 
 }

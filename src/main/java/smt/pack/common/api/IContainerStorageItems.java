@@ -1,0 +1,10 @@
+package smt.pack.common.api;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+
+public interface IContainerStorageItems {
+
+	void update(EntityPlayer player);
+
+}

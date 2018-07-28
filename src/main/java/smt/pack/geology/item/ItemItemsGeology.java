@@ -1,9 +1,11 @@
 package smt.pack.geology.item;
 
-public class ItemItemsGeology extends smt.pack.geology.object.ItemDummy {
+import net.minecraft.item.Item;
 
-	public ItemItemsGeology(String tag) {
-		super(tag);
+public class ItemItemsGeology extends Item {
+
+	public ItemItemsGeology() {
+		super();
 	}
 
 }

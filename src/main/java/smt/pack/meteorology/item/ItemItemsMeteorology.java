@@ -1,9 +1,11 @@
 package smt.pack.meteorology.item;
 
-public class ItemItemsMeteorology extends smt.pack.meteorology.object.ItemDummy {
+import net.minecraft.item.Item;
 
-	public ItemItemsMeteorology(String tag) {
-		super(tag);
+public class ItemItemsMeteorology extends Item {
+
+	public ItemItemsMeteorology() {
+		super();
 	}
 
 }

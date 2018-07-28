@@ -1,0 +1,55 @@
+{
+	"Title": "pistol_aim",
+	"TimeLine": 8,
+	"Loop": false,
+	"TranslateX": [
+		"0, 0, outCube",
+		"3, 0.70, inCube",
+		"7, 0"
+	],
+	"TranslateY": [
+		"0, 0, inOutCube",
+		"3, 0.15, inOutCube",
+		"7, 0"
+	],
+	"RotateX": [
+		"0, 0, outCube",
+		"3, 1.6, inCube",
+		"7, 0"
+	],
+
+	"Title": "pistol_aim2",
+	"TimeLine": 8,
+	"Loop": false,
+	"TranslateX": [
+		"0, 0",
+		"3, 0.70",
+		"7, 0"
+	],
+	"TranslateY": [
+		"0, 0",
+		"3, 0.15",
+		"7, 0"
+	],
+	"RotateZ": [
+		"0, 0",
+		"3, 90",
+		"7, 0"
+	],
+
+	"Title": "pistol_ammo",
+	"TimeLine": 21,
+	"Loop": false,
+	"TranslateY": [
+		"0, 0",
+		"7, -0.5",
+		"12, -0.5",
+		"20, 0"
+	],
+	"TranslateZ": [
+		"0, 0",
+		"7, -0.2",
+		"12, -0.2",
+		"20, 0"
+	]
+}

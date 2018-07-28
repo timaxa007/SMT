@@ -1,0 +1,20 @@
+{
+    "step.01": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "step/01",
+                "stream": true
+            }
+        ]
+    },
+    "step.02": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "step/02",
+                "stream": true
+            }
+        ]
+    }
+}

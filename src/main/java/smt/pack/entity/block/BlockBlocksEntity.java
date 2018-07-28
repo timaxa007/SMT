@@ -1,11 +1,12 @@
 package smt.pack.entity.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
-public class BlockBlocksEntity extends smt.pack.entity.object.BlockDummy {
+public class BlockBlocksEntity extends Block {
 
-	public BlockBlocksEntity(String tag) {
-		super(tag, Material.wood);
+	public BlockBlocksEntity() {
+		super(Material.wood);
 	}
 
 }
