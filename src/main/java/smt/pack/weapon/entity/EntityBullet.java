@@ -56,8 +56,11 @@ public class EntityBullet extends Entity implements IProjectile {
 		System.out.println("EntityBullet onImpact");
 		switch(mop.typeOfHit) {
 		case ENTITY:
-			if (mop.entityHit != null && bullet != null)
+			if (mop.entityHit != null && bullet != null) {
 				mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), bullet.getDamage());
+				mop.entityHit.hurtResistantTime = 0;
+				mop.entityHit.motionY *= 0.1;
+			}
 			break;
 		case BLOCK:
 			if (worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ) == Blocks.glass) {
